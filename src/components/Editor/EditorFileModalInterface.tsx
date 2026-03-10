@@ -97,7 +97,11 @@ const EditorFileModalInterface: React.FC<{
   openAddFile: () => void;
 }> = ({ onSelect, openAddFile }) => {
   return (
-    <InstantSearch indexName={indexName} searchClient={searchClient}>
+    <InstantSearch
+      indexName={indexName}
+      searchClient={searchClient}
+      future={{ preserveSharedStateOnUnmount: true }}
+    >
       <FileSearch onSelect={onSelect} openAddFile={openAddFile} />
     </InstantSearch>
   );

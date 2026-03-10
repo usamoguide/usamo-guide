@@ -9,7 +9,7 @@ if (!process.env.GATSBY_SUPABASE_ANON_KEY && process.env.SUPABASE_ANON_KEY) {
 }
 
 const flags = {
-  FAST_DEV: true,
+  FAST_DEV: false,
   DEV_SSR: false,
 };
 

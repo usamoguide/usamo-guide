@@ -497,6 +497,15 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
       plugins: [plugins.provide({ process: 'process/browser' })],
     });
   }
+  if (stage === 'develop') {
+    actions.setWebpackConfig({
+      cache: false,
+      devServer: {
+        hot: false,
+        liveReload: true,
+      },
+    });
+  }
   if (stage === 'build-html' || stage === 'develop-html') {
     actions.setWebpackConfig({
       module: {

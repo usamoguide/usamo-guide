@@ -6,6 +6,10 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import LaTeXEditor from '../../components/contest/LaTeXEditor';
 import ContestTimer from '../../components/contest/ContestTimer';
+import Layout from '../../components/layout';
+import SignInGate from '../../components/SignInGate';
+import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
+import { useCurrentUser } from '../../context/UserDataContext/UserDataContext';
 import { apiFetch } from '../../lib/api/client';
 import { supabase } from '../../lib/supabaseClient';
 import useAntiCheat from '../../hooks/useAntiCheat';
@@ -95,8 +99,9 @@ export default function ContestWorkspacePage() {
   const [error, setError] = useState('');
   const lastChangeRef = useRef<number>(0);
   const channelRef = useRef<BroadcastChannel | null>(null);
+  const currentUser = useCurrentUser();
 
-  useAntiCheat(contestId || null);
+  useAntiCheat(currentUser ? contestId || null : null);
 
   const fetchUserData = useCallback((id: string) => {
     apiFetch<{
@@ -123,7 +128,7 @@ export default function ContestWorkspacePage() {
       }, []);
 
   useEffect(() => {
-    if (!contestId) return;
+    if (!contestId || !currentUser) return;
     apiFetch<{ contests: ContestRow[] }>(`/api/contests?contestId=${contestId}`)
       .then((data) => setContest(data.contests[0] ?? null))
       .catch(() => setContest(null));
@@ -147,15 +152,15 @@ export default function ContestWorkspacePage() {
       .catch(() => setSession(null));
 
     fetchUserData(contestId);
-  }, [contestId, fetchUserData]);
+  }, [contestId, currentUser, fetchUserData]);
 
   useEffect(() => {
-    if (!contestId || !session) return;
+    if (!contestId || !session || !currentUser) return;
     const interval = setInterval(() => {
       fetchUserData(contestId);
     }, 30000);
     return () => clearInterval(interval);
-  }, [contestId, session, fetchUserData]);
+  }, [contestId, session, currentUser, fetchUserData]);
 
   useEffect(() => {
     if (!selectedProblem || !contestId) return;
@@ -290,214 +295,228 @@ export default function ContestWorkspacePage() {
   const selectedSubmission = selectedProblem ? submissions[selectedProblem.problem_id] : undefined;
   const selectedGrade = selectedSubmission ? grades[selectedSubmission.id] : undefined;
 
-  if (!contestId) {
+  const signedInContent = () => {
+    if (!contestId) {
+      return (
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-3xl p-6">Missing contestId.</div>
+        </main>
+      );
+    }
+
+    if (!contest) {
+      return (
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-3xl p-6">Loading contest...</div>
+        </main>
+      );
+    }
+
     return (
       <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-3xl p-6">Missing contestId.</div>
-      </main>
-    );
-  }
-
-  if (!contest) {
-    return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-3xl p-6">Loading contest...</div>
-      </main>
-    );
-  }
-
-  return (
-    <main className="ui-page min-h-screen px-6 py-12">
-      <div className="mx-auto max-w-6xl space-y-6">
-        <section className="ui-card p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div className="space-y-2">
-              <h1 className="text-2xl font-semibold">{contest.title}</h1>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="ui-pill">{status}</span>
-                <span className="ui-pill">{isRated ? 'Rated' : 'Unrated'}</span>
-                {sessionMode ? <span className="ui-pill">{sessionMode.toUpperCase()}</span> : null}
-              </div>
-            </div>
-            {countdownEnd && sessionMode !== 'practice' ? (
-              <ContestTimer endTime={countdownEnd} />
-            ) : (
-              <div className="ui-pill">Practice mode</div>
-            )}
-          </div>
-          <div className="mt-4 ui-text-secondary">{contest.description}</div>
-          <div className="mt-4 text-sm ui-muted">
-            {dayjs(contest.start_time).format('MMM D, YYYY h:mm A')} -{' '}
-            {dayjs(contest.end_time).format('MMM D, YYYY h:mm A')}
-          </div>
-        </section>
-
-        {!session ? (
+        <div className="mx-auto max-w-6xl space-y-6">
           <section className="ui-card p-6">
-            <div className="text-sm ui-muted">Choose a mode to begin.</div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <button className="ui-button ui-button-primary" onClick={() => join('live')}>
-                Start Live
-              </button>
-              <button className="ui-button" onClick={() => join('virtual')}>
-                Start Virtual
-              </button>
-              <button className="ui-button" onClick={() => join('practice')}>
-                Start Practice
-              </button>
-              <button className="ui-button" onClick={() => navigate('/contests')}>
-                Back
-              </button>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="space-y-2">
+                <h1 className="text-2xl font-semibold">{contest.title}</h1>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="ui-pill">{status}</span>
+                  <span className="ui-pill">{isRated ? 'Rated' : 'Unrated'}</span>
+                  {sessionMode ? <span className="ui-pill">{sessionMode.toUpperCase()}</span> : null}
+                </div>
+              </div>
+              {countdownEnd && sessionMode !== 'practice' ? (
+                <ContestTimer endTime={countdownEnd} />
+              ) : (
+                <div className="ui-pill">Practice mode</div>
+              )}
+            </div>
+            <div className="mt-4 ui-text-secondary">{contest.description}</div>
+            <div className="mt-4 text-sm ui-muted">
+              {dayjs(contest.start_time).format('MMM D, YYYY h:mm A')} -{' '}
+              {dayjs(contest.end_time).format('MMM D, YYYY h:mm A')}
             </div>
           </section>
-        ) : null}
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          <aside className="space-y-3">
-            <div className="ui-card p-4">
-              <div className="text-sm font-semibold">Problems</div>
-              <div className="mt-3 space-y-2">
-                {problems.map((problem, index) => (
-                  <button
-                    key={problem.problem_id}
-                    className={`ui-button w-full justify-between text-left ${
-                      selectedProblem?.problem_id === problem.problem_id
-                        ? 'border-[color:var(--accent)]'
-                        : ''
-                    }`}
-                    onClick={() => setSelectedProblem(problem)}
-                  >
-                    <div>
-                      <div className="font-semibold">
-                        {index + 1}. {problem.problems.title}
-                      </div>
-                      <div className="text-xs ui-muted">
-                        {problem.problems.point_value} pts · {problem.problems.difficulty}
-                      </div>
-                    </div>
-                  </button>
-                ))}
+          {!session ? (
+            <section className="ui-card p-6">
+              <div className="text-sm ui-muted">Choose a mode to begin.</div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button className="ui-button ui-button-primary" onClick={() => join('live')}>
+                  Start Live
+                </button>
+                <button className="ui-button" onClick={() => join('virtual')}>
+                  Start Virtual
+                </button>
+                <button className="ui-button" onClick={() => join('practice')}>
+                  Start Practice
+                </button>
+                <button className="ui-button" onClick={() => navigate('/contests')}>
+                  Back
+                </button>
               </div>
-            </div>
-            <div className="ui-card p-4">
-              <div className="text-sm font-semibold">Contest summary</div>
-              <div className="mt-2 text-sm ui-text-secondary">
-                Total score: {totalScore ?? 0}
-              </div>
-              {contest.state === 'finalized' ? (
-                <div className="mt-2 text-sm ui-text-secondary">
-                  Rating change: {ratingDelta ?? 'Pending'}
-                </div>
-              ) : null}
-              {contest.state === 'finalized' ? (
-                <Link
-                  to={`/contests/leaderboard?contestId=${contest.id}`}
-                  className="ui-link mt-3 inline-block"
-                >
-                  View leaderboard
-                </Link>
-              ) : null}
-            </div>
-          </aside>
+            </section>
+          ) : null}
 
-          <section className="lg:col-span-2 space-y-4">
-            <div className="ui-card p-5 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <div className="text-sm ui-muted">Problem</div>
-                  <div className="text-lg font-semibold">
-                    {selectedProblem?.problems.title}
-                  </div>
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {selectedProblem?.problems.tags?.map((tag) => (
-                    <span key={tag} className="ui-pill">
-                      {tag}
-                    </span>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <aside className="space-y-3">
+              <div className="ui-card p-4">
+                <div className="text-sm font-semibold">Problems</div>
+                <div className="mt-3 space-y-2">
+                  {problems.map((problem, index) => (
+                    <button
+                      key={problem.problem_id}
+                      className={`ui-button w-full justify-between text-left ${
+                        selectedProblem?.problem_id === problem.problem_id
+                          ? 'border-[color:var(--accent)]'
+                          : ''
+                      }`}
+                      onClick={() => setSelectedProblem(problem)}
+                    >
+                      <div>
+                        <div className="font-semibold">
+                          {index + 1}. {problem.problems.title}
+                        </div>
+                        <div className="text-xs ui-muted">
+                          {problem.problems.point_value} pts · {problem.problems.difficulty}
+                        </div>
+                      </div>
+                    </button>
                   ))}
                 </div>
               </div>
-
-              <div className="space-y-3">
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                  {selectedProblem?.problems.statement_latex ?? ''}
-                </ReactMarkdown>
-                {selectedProblem?.problems.problem_parts?.length ? (
-                  <div className="space-y-3">
-                    {selectedProblem.problems.problem_parts.map((part) => (
-                      <div key={part.id} className="ui-surface p-3">
-                        <div className="text-sm font-semibold">
-                          Part {part.label} · {part.point_value} pts
-                        </div>
-                        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                          {part.statement_latex}
-                        </ReactMarkdown>
-                      </div>
-                    ))}
+              <div className="ui-card p-4">
+                <div className="text-sm font-semibold">Contest summary</div>
+                <div className="mt-2 text-sm ui-text-secondary">
+                  Total score: {totalScore ?? 0}
+                </div>
+                {contest.state === 'finalized' ? (
+                  <div className="mt-2 text-sm ui-text-secondary">
+                    Rating change: {ratingDelta ?? 'Pending'}
                   </div>
                 ) : null}
-              </div>
-            </div>
-
-            <div className="ui-card p-5 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="text-lg font-semibold">Submission</div>
-                <div className="text-sm ui-muted">
-                  {selectedSubmission?.last_submit_at
-                    ? `Last submitted ${dayjs(selectedSubmission.last_submit_at).format('MMM D, h:mm A')}`
-                    : 'No submission yet'}
-                </div>
-              </div>
-              <LaTeXEditor
-                value={content}
-                onChange={setContent}
-                label="Your solution"
-              />
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  className="ui-button ui-button-primary"
-                  onClick={submitFinal}
-                  disabled={saving || !canEdit}
-                >
-                  Submit final
-                </button>
-                <div className="text-sm ui-muted">
-                  {saving ? 'Saving...' : submitStatus}
-                </div>
-                {!canEdit ? (
-                  <div className="text-sm ui-muted">Submissions are locked.</div>
+                {contest.state === 'finalized' ? (
+                  <Link
+                    to={`/contests/leaderboard?contestId=${contest.id}`}
+                    className="ui-link mt-3 inline-block"
+                  >
+                    View leaderboard
+                  </Link>
                 ) : null}
               </div>
-              {error ? <div className="text-sm text-red-600">{error}</div> : null}
-            </div>
+            </aside>
 
-            {selectedGrade ? (
-              <div className="ui-card p-5 space-y-3">
-                <div className="text-lg font-semibold">Grading Feedback</div>
-                <div className="text-sm ui-text-secondary">
-                  Score: {selectedGrade.score} / {selectedGrade.max_score}
-                </div>
-                {selectedGrade.feedback ? (
-                  <div className="ui-surface p-3 text-sm">{selectedGrade.feedback}</div>
-                ) : null}
-                {selectedGrade.grade_parts?.length ? (
-                  <div className="space-y-2">
-                    {selectedGrade.grade_parts.map((part, idx) => (
-                      <div key={`${part.part_id ?? idx}`} className="ui-surface p-3 text-sm">
-                        <div className="font-semibold">
-                          Part {idx + 1}: {part.score} / {part.max_score}
-                        </div>
-                        {part.feedback ? <div className="ui-muted">{part.feedback}</div> : null}
-                      </div>
+            <section className="lg:col-span-2 space-y-4">
+              <div className="ui-card p-5 space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="text-sm ui-muted">Problem</div>
+                    <div className="text-lg font-semibold">
+                      {selectedProblem?.problems.title}
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {selectedProblem?.problems.tags?.map((tag) => (
+                      <span key={tag} className="ui-pill">
+                        {tag}
+                      </span>
                     ))}
                   </div>
-                ) : null}
+                </div>
+
+                <div className="space-y-3">
+                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                    {selectedProblem?.problems.statement_latex ?? ''}
+                  </ReactMarkdown>
+                  {selectedProblem?.problems.problem_parts?.length ? (
+                    <div className="space-y-3">
+                      {selectedProblem.problems.problem_parts.map((part) => (
+                        <div key={part.id} className="ui-surface p-3">
+                          <div className="text-sm font-semibold">
+                            Part {part.label} · {part.point_value} pts
+                          </div>
+                          <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                            {part.statement_latex}
+                          </ReactMarkdown>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
               </div>
-            ) : null}
-          </section>
+
+              <div className="ui-card p-5 space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="text-lg font-semibold">Submission</div>
+                  <div className="text-sm ui-muted">
+                    {selectedSubmission?.last_submit_at
+                      ? `Last submitted ${dayjs(selectedSubmission.last_submit_at).format('MMM D, h:mm A')}`
+                      : 'No submission yet'}
+                  </div>
+                </div>
+                <LaTeXEditor
+                  value={content}
+                  onChange={setContent}
+                  label="Your solution"
+                />
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    className="ui-button ui-button-primary"
+                    onClick={submitFinal}
+                    disabled={saving || !canEdit}
+                  >
+                    Submit final
+                  </button>
+                  <div className="text-sm ui-muted">
+                    {saving ? 'Saving...' : submitStatus}
+                  </div>
+                  {!canEdit ? (
+                    <div className="text-sm ui-muted">Submissions are locked.</div>
+                  ) : null}
+                </div>
+                {error ? <div className="text-sm text-red-600">{error}</div> : null}
+              </div>
+
+              {selectedGrade ? (
+                <div className="ui-card p-5 space-y-3">
+                  <div className="text-lg font-semibold">Grading Feedback</div>
+                  <div className="text-sm ui-text-secondary">
+                    Score: {selectedGrade.score} / {selectedGrade.max_score}
+                  </div>
+                  {selectedGrade.feedback ? (
+                    <div className="ui-surface p-3 text-sm">{selectedGrade.feedback}</div>
+                  ) : null}
+                  {selectedGrade.grade_parts?.length ? (
+                    <div className="space-y-2">
+                      {selectedGrade.grade_parts.map((part, idx) => (
+                        <div key={`${part.part_id ?? idx}`} className="ui-surface p-3 text-sm">
+                          <div className="font-semibold">
+                            Part {idx + 1}: {part.score} / {part.max_score}
+                          </div>
+                          {part.feedback ? <div className="ui-muted">{part.feedback}</div> : null}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+            </section>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    );
+  };
+
+  return (
+    <Layout>
+      <TopNavigationBar />
+      <SignInGate
+        title="Sign in to access contests"
+        message="Contests require an account so your work can be saved and graded."
+      >
+        {signedInContent()}
+      </SignInGate>
+    </Layout>
   );
 }
 

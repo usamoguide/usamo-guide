@@ -55,7 +55,7 @@ export const EditorTopNav = (): JSX.Element => {
         )}
         {activeFile?.path && (
           <a
-            href={`https://github.com/usamo-guide/usamo-guide/blob/main/${encodeURI(
+            href={`https://github.com/usamoguide/usamo-guide/blob/main/${encodeURI(
               activeFile?.path
             )}`}
             target="_blank"
@@ -87,7 +87,7 @@ export const EditorTopNav = (): JSX.Element => {
         <div className="mx-4 block h-6 self-center border-l border-gray-200 dark:border-gray-700" />
 
         <a
-          href="https://github.com/usamo-guide/usamo-guide/blob/main/docs/Math_Topic_Template.md"
+          href="https://github.com/usamoguide/usamo-guide/blob/main/docs/Math_Topic_Template.md"
           target="_blank"
           rel="noreferrer"
           className="group inline-flex items-center space-x-2 text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-400 dark:hover:text-gray-200"

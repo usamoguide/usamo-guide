@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ContestForm from '../../components/admin/ContestForm';
+import Layout from '../../components/layout';
+import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
 import { apiFetch } from '../../lib/api/client';
 
 type ContestRow = {
@@ -41,25 +43,31 @@ export default function AdminContestsPage() {
 
   if (error) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-5xl p-8">
-          <h1 className="text-2xl font-semibold">Contests</h1>
-          <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
-            {error}
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-5xl p-8">
+            <h1 className="text-2xl font-semibold">Contests</h1>
+            <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
+              {error}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </Layout>
     );
   }
 
   if (!roles) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-5xl p-8">
-          <h1 className="text-2xl font-semibold">Contests</h1>
-          <div className="mt-6">Loading...</div>
-        </div>
-      </main>
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-5xl p-8">
+            <h1 className="text-2xl font-semibold">Contests</h1>
+            <div className="mt-6">Loading...</div>
+          </div>
+        </main>
+      </Layout>
     );
   }
 
@@ -87,70 +95,73 @@ export default function AdminContestsPage() {
   }
 
   return (
-    <main className="ui-page min-h-screen px-6 py-12">
-      <div className="mx-auto max-w-5xl space-y-8">
-        <div className="ui-card p-8">
-          <h1 className="text-2xl font-semibold">Contests</h1>
-          {userId ? <ContestForm currentUserId={userId} onSaved={load} /> : null}
-        </div>
-        <div className="space-y-4">
-          {contests.map((contest) => (
-            <div key={contest.id} className="ui-card p-4">
-              <div className="text-lg font-semibold">{contest.title}</div>
-              <div className="text-sm ui-text-secondary">
-                {contest.state} · {contest.visibility}
-              </div>
-              <div className="text-sm ui-text-secondary">
-                {contest.start_time} - {contest.end_time}
-              </div>
-              <div className="mt-3 grid gap-2 md:grid-cols-2">
-                <input
-                  className="ui-input text-sm"
-                  placeholder="Problem IDs (comma separated)"
-                  value={problemInputs[contest.id] ?? ''}
-                  onChange={(event) =>
-                    setProblemInputs((current) => ({
-                      ...current,
-                      [contest.id]: event.target.value,
-                    }))
-                  }
-                />
+    <Layout>
+      <TopNavigationBar />
+      <main className="ui-page min-h-screen px-6 py-12">
+        <div className="mx-auto max-w-5xl space-y-8">
+          <div className="ui-card p-8">
+            <h1 className="text-2xl font-semibold">Contests</h1>
+            {userId ? <ContestForm currentUserId={userId} onSaved={load} /> : null}
+          </div>
+          <div className="space-y-4">
+            {contests.map((contest) => (
+              <div key={contest.id} className="ui-card p-4">
+                <div className="text-lg font-semibold">{contest.title}</div>
+                <div className="text-sm ui-text-secondary">
+                  {contest.state} · {contest.visibility}
+                </div>
+                <div className="text-sm ui-text-secondary">
+                  {contest.start_time} - {contest.end_time}
+                </div>
+                <div className="mt-3 grid gap-2 md:grid-cols-2">
+                  <input
+                    className="ui-input text-sm"
+                    placeholder="Problem IDs (comma separated)"
+                    value={problemInputs[contest.id] ?? ''}
+                    onChange={(event) =>
+                      setProblemInputs((current) => ({
+                        ...current,
+                        [contest.id]: event.target.value,
+                      }))
+                    }
+                  />
+                  <button
+                    className="ui-button"
+                    onClick={() => attachProblems(contest.id)}
+                  >
+                    Attach problems
+                  </button>
+                </div>
+                <div className="mt-3 grid gap-2 md:grid-cols-2">
+                  <input
+                    className="ui-input text-sm"
+                    placeholder="Grader user ID"
+                    value={graderInputs[contest.id] ?? ''}
+                    onChange={(event) =>
+                      setGraderInputs((current) => ({
+                        ...current,
+                        [contest.id]: event.target.value,
+                      }))
+                    }
+                  />
+                  <button
+                    className="ui-button"
+                    onClick={() => assignGrader(contest.id)}
+                  >
+                    Assign grader
+                  </button>
+                </div>
                 <button
-                  className="ui-button"
-                  onClick={() => attachProblems(contest.id)}
+                  className="ui-button ui-button-danger mt-3"
+                  onClick={() => finalizeContest(contest.id)}
                 >
-                  Attach problems
+                  Finalize
                 </button>
               </div>
-              <div className="mt-3 grid gap-2 md:grid-cols-2">
-                <input
-                  className="ui-input text-sm"
-                  placeholder="Grader user ID"
-                  value={graderInputs[contest.id] ?? ''}
-                  onChange={(event) =>
-                    setGraderInputs((current) => ({
-                      ...current,
-                      [contest.id]: event.target.value,
-                    }))
-                  }
-                />
-                <button
-                  className="ui-button"
-                  onClick={() => assignGrader(contest.id)}
-                >
-                  Assign grader
-                </button>
-              </div>
-              <button
-                className="ui-button ui-button-danger mt-3"
-                onClick={() => finalizeContest(contest.id)}
-              >
-                Finalize
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Layout>
   );
 }

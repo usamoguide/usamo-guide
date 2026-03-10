@@ -87,6 +87,7 @@ const ProblemAutocompleteModal = ({
                 <InstantSearch
                   indexName={indexName}
                   searchClient={searchClient}
+                  future={{ preserveSharedStateOnUnmount: true }}
                 >
                   <ProblemAutocomplete
                     onProblemSelect={onProblemSelect}

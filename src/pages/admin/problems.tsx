@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProblemManagerForm from '../../components/admin/ProblemManagerForm';
+import Layout from '../../components/layout';
+import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
 import { apiFetch } from '../../lib/api/client';
 
 type ProblemRow = {
@@ -35,46 +37,55 @@ export default function AdminProblemsPage() {
 
   if (error) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-5xl p-8">
-          <h1 className="text-2xl font-semibold">Problem Manager</h1>
-          <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
-            {error}
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-5xl p-8">
+            <h1 className="text-2xl font-semibold">Problem Manager</h1>
+            <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
+              {error}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </Layout>
     );
   }
 
   if (!roles) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-5xl p-8">
-          <h1 className="text-2xl font-semibold">Problem Manager</h1>
-          <div className="mt-6">Loading...</div>
-        </div>
-      </main>
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-5xl p-8">
+            <h1 className="text-2xl font-semibold">Problem Manager</h1>
+            <div className="mt-6">Loading...</div>
+          </div>
+        </main>
+      </Layout>
     );
   }
 
   return (
-    <main className="ui-page min-h-screen px-6 py-12">
-      <div className="mx-auto max-w-5xl space-y-8">
-        <div className="ui-card p-8">
-          <h1 className="text-2xl font-semibold">Problem Manager</h1>
-          <ProblemManagerForm />
-        </div>
-        <div className="space-y-2">
-          {problems.map((problem) => (
-            <div key={problem.id} className="ui-card p-4">
-              <div className="font-semibold">{problem.title}</div>
-              <div className="text-sm ui-text-secondary">
-                {problem.difficulty} · {problem.point_value} pts
+    <Layout>
+      <TopNavigationBar />
+      <main className="ui-page min-h-screen px-6 py-12">
+        <div className="mx-auto max-w-5xl space-y-8">
+          <div className="ui-card p-8">
+            <h1 className="text-2xl font-semibold">Problem Manager</h1>
+            <ProblemManagerForm />
+          </div>
+          <div className="space-y-2">
+            {problems.map((problem) => (
+              <div key={problem.id} className="ui-card p-4">
+                <div className="font-semibold">{problem.title}</div>
+                <div className="text-sm ui-text-secondary">
+                  {problem.difficulty} · {problem.point_value} pts
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Layout>
   );
 }

@@ -117,7 +117,11 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
       <div className="dark:bg-dark-surface min-h-screen bg-gray-100">
         <TopNavigationBar />
 
-        <InstantSearch searchClient={searchClient} indexName={indexName}>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={indexName}
+          future={{ preserveSharedStateOnUnmount: true }}
+        >
           <div className="bg-blue-600 px-5 py-16 dark:bg-blue-900">
             <div className="mx-auto mb-6 max-w-3xl">
               <h1 className="dark:text-dark-high-emphasis mb-6 text-center text-3xl font-bold text-white sm:text-5xl">

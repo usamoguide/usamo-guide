@@ -86,7 +86,7 @@ function GithubActions() {
         await octokit.request(
           'GET /repos/{owner}/{repo}/git/matching-refs/{ref}',
           {
-            owner: 'usamo-guide',
+            owner: 'usamoguide',
             repo: 'usamo-guide',
             ref: 'heads/main',
             headers: {
@@ -133,7 +133,7 @@ function GithubActions() {
                 <p>No fork detected.</p>
                 <a
                   className="btn mt-1"
-                  href="https://github.com/usamo-guide/usamo-guide/fork"
+                  href="https://github.com/usamoguide/usamo-guide/fork"
                   target="_blank"
                   rel="noreferrer"
                 >

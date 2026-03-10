@@ -17,7 +17,7 @@ export default function TrustedBy() {
     };
 
     void loadStats();
-    fetch('https://api.github.com/repos/cpinitiative/usamo-guide')
+    fetch('https://api.github.com/repos/usamoguide/usamo-guide')
       .then(resp => resp.json())
       .then(data => {
         setNumStars(data.stargazers_count);

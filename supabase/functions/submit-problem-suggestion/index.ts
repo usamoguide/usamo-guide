@@ -158,7 +158,7 @@ serve(async req => {
     };
 
     const refsResponse = await fetch(
-      'https://api.github.com/repos/cpinitiative/usamo-guide/git/refs/heads',
+      'https://api.github.com/repos/usamoguide/usamo-guide/git/refs/heads',
       { headers: githubHeaders }
     );
     const refs = await refsResponse.json();
@@ -172,7 +172,7 @@ serve(async req => {
       const branchName =
         branchNameBase + (increment === 0 ? '' : '-' + increment);
       const branchResp = await fetch(
-        `https://api.github.com/repos/cpinitiative/usamo-guide/branches/${branchName}`,
+        `https://api.github.com/repos/usamoguide/usamo-guide/branches/${branchName}`,
         { headers: githubHeaders }
       );
       if (branchResp.status === 404) {
@@ -192,7 +192,7 @@ serve(async req => {
 
     const branchName =
       branchNameBase + (increment === 0 ? '' : '-' + increment);
-    await fetch('https://api.github.com/repos/cpinitiative/usamo-guide/git/refs', {
+    await fetch('https://api.github.com/repos/usamoguide/usamo-guide/git/refs', {
       method: 'POST',
       headers: githubHeaders,
       body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: masterHash }),
@@ -200,7 +200,7 @@ serve(async req => {
 
     const filePathJson = `content/${String(filePath).replace(/\.mdx$/, '.problems.json')}`;
     const oldFileResp = await fetch(
-      `https://api.github.com/repos/cpinitiative/usamo-guide/contents/${filePathJson}?ref=${branchName}`,
+      `https://api.github.com/repos/usamoguide/usamo-guide/contents/${filePathJson}?ref=${branchName}`,
       { headers: githubHeaders }
     );
     const oldFileData = await oldFileResp.json();
@@ -237,7 +237,7 @@ serve(async req => {
     });
 
     await fetch(
-      `https://api.github.com/repos/cpinitiative/usamo-guide/contents/${filePathJson}`,
+      `https://api.github.com/repos/usamoguide/usamo-guide/contents/${filePathJson}`,
       {
         method: 'PUT',
         headers: githubHeaders,
@@ -251,7 +251,7 @@ serve(async req => {
     );
 
     const prResp = await fetch(
-      'https://api.github.com/repos/cpinitiative/usamo-guide/pulls',
+      'https://api.github.com/repos/usamoguide/usamo-guide/pulls',
       {
         method: 'POST',
         headers: githubHeaders,
@@ -267,7 +267,7 @@ serve(async req => {
     const pr = await prResp.json();
 
     await fetch(
-      `https://api.github.com/repos/cpinitiative/usamo-guide/issues/${pr.number}/labels`,
+      `https://api.github.com/repos/usamoguide/usamo-guide/issues/${pr.number}/labels`,
       {
         method: 'POST',
         headers: githubHeaders,

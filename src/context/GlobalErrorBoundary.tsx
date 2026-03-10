@@ -43,7 +43,7 @@ export default class GlobalErrorBoundary extends React.Component<
             </a>
             ,{' '}
             <a
-              href="https://github.com/cpinitiative/usamo-guide/issues"
+              href="https://github.com/usamoguide/usamo-guide/issues"
               target="_blank"
               className="text-blue-600 underline dark:text-blue-400"
               rel="noreferrer"

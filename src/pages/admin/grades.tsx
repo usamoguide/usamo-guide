@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../../lib/supabaseClient';
 import GradeTable from '../../components/admin/GradeTable';
+import Layout from '../../components/layout';
+import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
 import { apiFetch } from '../../lib/api/client';
+import { supabase } from '../../lib/supabaseClient';
 
 type SubmissionRow = {
   id: string;
@@ -42,66 +44,75 @@ export default function AdminGradesPage() {
 
   if (error) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-6xl p-8">
-          <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
-          <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
-            {error}
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-6xl p-8">
+            <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
+            <div className="mt-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
+              {error}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </Layout>
     );
   }
 
   if (!roles) {
     return (
-      <main className="ui-page min-h-screen px-6 py-12">
-        <div className="ui-card mx-auto max-w-6xl p-8">
-          <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
-          <div className="mt-6">Loading...</div>
-        </div>
-      </main>
+      <Layout>
+        <TopNavigationBar />
+        <main className="ui-page min-h-screen px-6 py-12">
+          <div className="ui-card mx-auto max-w-6xl p-8">
+            <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
+            <div className="mt-6">Loading...</div>
+          </div>
+        </main>
+      </Layout>
     );
   }
 
   return (
-    <main className="ui-page min-h-screen px-6 py-12">
-      <div className="mx-auto max-w-6xl">
-        <div className="ui-card p-8">
-          <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <div className="space-y-2">
-              {submissions.map((submission) => (
-                <button
-                  key={submission.id}
-                  className="ui-button w-full justify-between text-left"
-                  onClick={() => setSelected(submission)}
-                >
-                  <div>
-                    <div className="text-sm ui-text-secondary">{submission.user_id}</div>
-                    <div className="font-semibold">Submission {submission.id.slice(0, 8)}</div>
+    <Layout>
+      <TopNavigationBar />
+      <main className="ui-page min-h-screen px-6 py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="ui-card p-8">
+            <h1 className="text-2xl font-semibold">Grading Dashboard</h1>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div className="space-y-2">
+                {submissions.map((submission) => (
+                  <button
+                    key={submission.id}
+                    className="ui-button w-full justify-between text-left"
+                    onClick={() => setSelected(submission)}
+                  >
+                    <div>
+                      <div className="text-sm ui-text-secondary">{submission.user_id}</div>
+                      <div className="font-semibold">Submission {submission.id.slice(0, 8)}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {selected ? (
+                <div className="space-y-4">
+                  <div className="ui-surface p-4">
+                    <pre className="whitespace-pre-wrap text-sm">{selected.content_latex}</pre>
                   </div>
-                </button>
-              ))}
-            </div>
-            {selected ? (
-              <div className="space-y-4">
-                <div className="ui-surface p-4">
-                  <pre className="whitespace-pre-wrap text-sm">{selected.content_latex}</pre>
+                  <GradeTable
+                    submissionId={selected.id}
+                    parts={[{ id: null, label: 'Total', maxScore: 7 }]}
+                  />
                 </div>
-                <GradeTable
-                  submissionId={selected.id}
-                  parts={[{ id: null, label: 'Total', maxScore: 7 }]}
-                />
-              </div>
-            ) : (
-              <div className="ui-surface p-6 text-sm ui-muted">
-                Select a submission to grade.
-              </div>
-            )}
+              ) : (
+                <div className="ui-surface p-6 text-sm ui-muted">
+                  Select a submission to grade.
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Layout>
   );
 }

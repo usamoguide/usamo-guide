@@ -409,7 +409,7 @@ export default function ProblemSuggestionModal({
                   <br />
                   This will be submitted as a public{' '}
                   <a
-                    href="https://github.com/cpinitiative/usamo-guide/pulls"
+                    href="https://github.com/usamoguide/usamo-guide/pulls"
                     target="_blank"
                     rel="noreferrer"
                     className="text-blue-600 underline dark:text-blue-300"

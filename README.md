@@ -50,7 +50,7 @@ Contributors receive public recognition and the chance to build something meanin
 
 See docs/Math_Topic_Template.md for content guidelines. All contributions are
 welcome! To get started, simply pick an
-[issue](https://github.com/usamo-guide/usamo-guide/issues) you'd like to work
+[issue](https://github.com/usamoguide/usamo-guide/issues) you'd like to work
 on, leave a comment, and submit a Pull Request!
 
 ## Our Team

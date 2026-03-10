@@ -45,7 +45,7 @@ const useSectionFromLang = (sections: {
         {/* Please choose a different default language for now.  */}
         Submitting a Pull Request on{' '}
         <a
-          href="https://github.com/cpinitiative/usamo-guide"
+          href="https://github.com/usamoguide/usamo-guide"
           target="_blank"
           rel="noreferrer"
         >

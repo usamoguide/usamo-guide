@@ -2,13 +2,13 @@ export const fetchFileContent = async (
   filePath: string
 ): Promise<{ markdown: string; problems?: string }> => {
   const githubURL = encodeURI(
-    `https://raw.githubusercontent.com/usamo-guide/usamo-guide/main/${filePath}`
+    `https://raw.githubusercontent.com/usamoguide/usamo-guide/main/${filePath}`
   );
   const promises = [fetch(githubURL)];
   if (filePath.startsWith('content/')) {
     // module
     const githubProblemsURL = encodeURI(
-      `https://raw.githubusercontent.com/usamo-guide/usamo-guide/main/${filePath.replace(
+      `https://raw.githubusercontent.com/usamoguide/usamo-guide/main/${filePath.replace(
         /\.mdx$/,
         '.problems.json'
       )}`

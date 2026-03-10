@@ -48,6 +48,7 @@
     "chromatic": "^13.1.2",
     "classnames": "^2.5.1",
     "concurrently": "^9.2.0",
+    "cross-env": "^7.0.3",
     "cssnano": "^5.0.8",
     "dayjs": "^1.11.13",
     "dotenv": "^16.3.1",
@@ -136,8 +137,10 @@
   "scripts": {
     "build": "node -e \"require('fs').copyFileSync('content/problems.schema.json','static/problems.schema.json')\" && gatsby build",
     "dev": "gatsby develop",
+    "dev:nohmr": "cross-env GATSBY_DISABLE_HOT_RELOAD=1 gatsby develop",
     "dev:optimized": "yarn build:css-once && concurrently \"gatsby develop\" \"yarn build:css-watch\"",
     "develop": "gatsby develop",
+    "develop:nohmr": "cross-env GATSBY_DISABLE_HOT_RELOAD=1 gatsby develop",
     "format": "prettier --write .",
     "lint": "npm run eslint",
     "eslint": "eslint --fix --ext .jsx --ext .js --ext .ts --ext .tsx --cache src",
@@ -155,10 +158,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/usamo-guide/usamo-guide"
+    "url": "https://github.com/usamoguide/usamo-guide"
   },
   "bugs": {
-    "url": "https://github.com/usamo-guide/usamo-guide/issues"
+    "url": "https://github.com/usamoguide/usamo-guide/issues"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "eslint --config .eslintrc.js --resolve-plugins-relative-to .",

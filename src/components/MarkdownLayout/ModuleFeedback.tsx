@@ -16,7 +16,7 @@ export default function ModuleFeedback({
       <p className="mb-4 text-gray-600 dark:text-gray-400">
         Leave suggestions by opening an issue on the{' '}
         <a
-          href="https://github.com/cpinitiative/usamo-guide/issues"
+          href="https://github.com/usamoguide/usamo-guide/issues"
           target="_blank"
           rel="noreferrer"
           className="text-blue-600 underline dark:text-blue-300"

@@ -73,7 +73,11 @@ const ModuleSearch = () => {
 
 const SearchModalInterface: React.FC = () => {
   return (
-    <InstantSearch indexName={indexName} searchClient={searchClient}>
+    <InstantSearch
+      indexName={indexName}
+      searchClient={searchClient}
+      future={{ preserveSharedStateOnUnmount: true }}
+    >
       <Configure hitsPerPage={10} attributesToSnippet={['content:30']} />
       <ModuleSearch />
     </InstantSearch>

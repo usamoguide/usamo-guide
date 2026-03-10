@@ -27,7 +27,7 @@ export default function FocusProblem({
   const problem: ProblemInfo = problemList.problems[0];
 
   // transform must go in the isHovered condition
-  // See https://github.com/cpinitiative/usamo-guide/issues/198
+  // See https://github.com/usamoguide/usamo-guide/issues/198
   // transform creates a new stacking context :(
   return (
     <div

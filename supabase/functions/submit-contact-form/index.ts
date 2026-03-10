@@ -47,7 +47,7 @@ serve(async req => {
     }
 
     const issueResponse = await fetch(
-      'https://api.github.com/repos/cpinitiative/usamo-guide/issues',
+      'https://api.github.com/repos/usamoguide/usamo-guide/issues',
       {
         method: 'POST',
         headers: {

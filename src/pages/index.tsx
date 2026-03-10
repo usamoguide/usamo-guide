@@ -669,7 +669,7 @@ export default function IndexPage({ path }): JSX.Element {
                     <p className="text-base leading-6 text-gray-500 dark:text-gray-400">
                       Contributions are welcome! Visit our{' '}
                       <a
-                        href="https://github.com/cpinitiative/usamo-guide"
+                        href="https://github.com/usamoguide/usamo-guide"
                         target="_blank"
                         rel="noreferrer"
                         className="text-blue-600 underline dark:text-blue-400"
@@ -688,7 +688,7 @@ export default function IndexPage({ path }): JSX.Element {
                     <p className="text-base leading-6 text-gray-500 dark:text-gray-400">
                       Yes! Check out our{' '}
                       <a
-                        href="https://github.com/cpinitiative/usamo-guide"
+                        href="https://github.com/usamoguide/usamo-guide"
                         target="_blank"
                         rel="noreferrer"
                         className="text-blue-600 underline dark:text-blue-400"

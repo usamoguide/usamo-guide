@@ -181,7 +181,7 @@ export default function ContactUsSlideover({
           Contact us about anything: suggestions, bugs, assistance, and more!
           This will be submitted as a public{' '}
           <a
-            href="https://github.com/usamo-guide/usamo-guide/issues"
+            href="https://github.com/usamoguide/usamo-guide/issues"
             target="_blank"
             rel="noreferrer"
             className="underline"
@@ -334,7 +334,7 @@ export default function ContactUsSlideover({
                               className="text-blue-600 hover:underline dark:text-blue-300"
                               target="_blank"
                               rel="noreferrer"
-                              href="https://github.com/usamo-guide/usamo-guide/pulls"
+                              href="https://github.com/usamoguide/usamo-guide/pulls"
                             >
                               here
                             </a>{' '}
@@ -343,7 +343,7 @@ export default function ContactUsSlideover({
                               className="text-blue-600 hover:underline dark:text-blue-300"
                               target="_blank"
                               rel="noreferrer"
-                              href="https://github.com/usamo-guide/usamo-guide/blob/main/docs/Math_Topic_Template.md"
+                              href="https://github.com/usamoguide/usamo-guide/blob/main/docs/Math_Topic_Template.md"
                             >
                               this module
                             </a>{' '}
