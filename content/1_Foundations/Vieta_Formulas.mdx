@@ -1,77 +1,55 @@
 ---
-id: vieta-formulas
-title: Vieta's Formulas
-author: USAMO Guide Team
-description: Relating roots to coefficients for quadratics and cubics.
-prerequisites: []
+id: vietas-formula
+title: Vieta's Formula
+author: Daniel Liao
+description: Relating polynomial coefficients to sums and products of roots, from quadratics through higher-degree polynomials, for AMC 10/12 and beyond.
+prerequisites: ["algebra-basics", "polynomials"]
 ---
 
 ## Overview
 
-Vieta's formulas turn sums and products of roots into coefficients. They are
-indispensable for root-sum problems and symmetric expressions.
+Vieta's Formulas allow us to find information on the sums and products of the roots of a polynomial without directly solving for them. It relates the coefficients of the polynomial with the symmetric sums of the roots.
+
+## Derivation
+
+Since $r_1, r_2$ are roots of $ax^2 + bx + c$, we can factor:
+
+$$ax^2 + bx + c = a(x - r_1)(x - r_2) = ax^2 - a(r_1+r_2)x + ar_1r_2$$
+
+Matching coefficients gives the quadratic formulas:
+
+$$r_1 + r_2 = -\frac{b}{a}, \qquad r_1 r_2 = \frac{c}{a}$$
+
+The same argument extends to cubics. Since $ax^3 + bx^2 + cx + d = a(x-r_1)(x-r_2)(x-r_3)$, expanding the right side and matching coefficients gives the cubic formulas:
+
+$$r_1+r_2+r_3 = -\frac{b}{a}, \qquad r_1r_2+r_2r_3+r_3r_1 = \frac{c}{a}, \qquad r_1r_2r_3 = -\frac{d}{a}$$
+
+The pattern generalizes to degree $n$: the $k$-th elementary symmetric sum of the roots equals $(-1)^k \dfrac{a_{n-k}}{a_n}$.
 
 ## Key Ideas
 
-- For $ax^2+bx+c=0$ with roots $r,s$: $r+s=-\frac{b}{a}$, $rs=\frac{c}{a}$.
-- For $x^3+px^2+qx+r=0$ with roots $\alpha,\beta,\gamma$:
-  $\alpha+\beta+\gamma=-p$, $\alpha\beta+\alpha\gamma+\beta\gamma=q$,
-  $\alpha\beta\gamma=-r$.
-- Build a polynomial when the sum and product are known.
+- $r_1^2 + r_2^2$ is not a symmetric sum directly — rewrite it as $(r_1+r_2)^2 - 2r_1r_2$.
+- $\frac{1}{r_1} + \frac{1}{r_2}$ rewrites as $\frac{r_1+r_2}{r_1r_2}$. Always combine fractions first.
+- Expanding products like $(r_1+1)(r_2+1)(r_3+1)$ always produces elementary symmetric sums — a very common competition pattern.
+- Vieta's works over $\mathbb{C}$: even with complex roots, symmetric expressions are real and computable from the coefficients.
 
-## Core Skills
+## Worked Examples
 
-### Normalize to Monic Form
+**Example 1.** Let $p, q$ be the roots of $t^2 - 7t + 5 = 0$. Find $p^2 + q^2$.
 
-If the quadratic is not monic, divide by $a$ first to read off coefficients.
+$p+q = 7$, $pq = 5$, so $p^2+q^2 = (p+q)^2 - 2pq = 49 - 10 = \boxed{39}$.
 
-### Build a Polynomial
+**Example 2.** Let $m, n$ be the roots of $2x^2 + 15x + 16 = 0$. Find $\frac{1}{m} + \frac{1}{n}$.
 
-If $r+s$ and $rs$ are known, the monic quadratic is
-$x^2-(r+s)x+rs$.
+$m+n = -\frac{15}{2}$, $mn = 8$, so $\frac{1}{m}+\frac{1}{n} = \frac{m+n}{mn} = \frac{-15/2}{8} = \boxed{-\dfrac{15}{16}}$.
 
-### Use Symmetric Expressions
+**Example 3.** Let $p, q, r$ be the roots of $t^3 - 2t^2 + 3t - 4 = 0$. Find $(p+1)(q+1)(r+1)$.
 
-Expressions like $r^2+s^2$ or $1/r+1/s$ can be rewritten using $r+s$ and $rs$.
+$(p+1)(q+1)(r+1) = pqr + (pq+qr+rp) + (p+q+r) + 1 = 4+3+2+1 = \boxed{10}$.
 
-## Worked Example
+**Example 4.** The roots $r_1, r_2, r_3$ of $x^3 - 2x^2 - 11x + a = 0$ satisfy $r_1 + 2r_2 + 3r_3 = 0$. Find all values of $a$.
 
-Find a quadratic with roots $3$ and $5$.
-
-If $r+s=8$ and $rs=15$, then the monic quadratic is
-$x^2-(r+s)x+rs = x^2-8x+15$.
-
-## More Examples
-
-### Example 1: Sum and Product
-
-If a quadratic is $2x^2-3x-5=0$, find the sum and product of its roots.
-
-$r+s=3/2$ and $rs=-5/2$.
-
-### Example 2: Symmetric Expression
-
-If $r+s=4$ and $rs=1$, find $r^2+s^2$.
-
-$r^2+s^2=(r+s)^2-2rs=16-2=14$.
-
-### Example 3: Reciprocal Sum
-
-If roots are $r,s$ with $r+s=5$ and $rs=6$, find $\frac{1}{r}+\frac{1}{s}$.
-
-$\frac{1}{r}+\frac{1}{s}=\frac{r+s}{rs}=5/6$.
-
-## Strategy Checklist
-
-- Divide by $a$ to get monic form.
-- Use $r+s$ and $rs$ to rewrite symmetric expressions.
-- Build a polynomial when roots or sums are given.
-
-## Common Pitfalls
-
-- Forgetting the sign on the coefficient of $x$.
-- Mixing the monic and non-monic forms.
-- Confusing $r+s$ with $rs$ in symmetric expressions.
+Vieta's gives $r_1+r_2+r_3 = 2$. Subtracting: $r_2 + 2r_3 = -2$, so $r_2 = -2-2r_3$ and $r_1 = 4+r_3$. Substituting into $r_1r_2+r_2r_3+r_3r_1 = -11$ yields $3r_3^2+8r_3-3=0$, giving $r_3 = \frac{1}{3}$ or $r_3 = -3$. Thus $a = \boxed{\dfrac{104}{27} \text{ or } 12}$.
 
 ## Practice Problems
 
