@@ -49,7 +49,7 @@
       "Telescoping",
       "Sum"
     ],
-    "statement": "A sum problem that can be expressed as m/n, where m and n are positive integers. Find m + n.",
+    "statement": "The sum\[\frac{1}{2!}+\frac{2}{3!}+\frac{3}{4!}+\cdots+\frac{2021}{2022!}\]can be expressed as $a-\frac{1}{b!}$, where $a$ and $b$ are positive integers. What is $a+b$?",
     "solutionMetadata": {
       "kind": "none"
     }

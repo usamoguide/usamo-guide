@@ -1,15 +1,16 @@
 ---
 id: arithmetic-sequences
 title: Arithmetic Sequences
-author: USAMO Guide Team
+author: USAMO Guide Team - Wonwoo 
 description: Constant differences, term formulas, and sum tricks.
 prerequisites: []
 ---
 
 ## Overview
 
-Arithmetic sequences grow by a fixed difference. They show up in counting,
-number theory, and series problems.
+Arithmetic sequences grow by a fixed difference. They show up in many counting, number theory, and series problems. At the AMC level, the challenge is rarel
+Beyond the basics, arithmetic sequences connect to divisibility (multiples of $k$ form an arithmetic sequence), counting (how many integers in a range to satisfy a condition), and algebra (systems involving sequences).
+ 
 
 ## Key Ideas
 
@@ -19,20 +20,64 @@ number theory, and series problems.
 
 ## Core Skills
 
-### Find the Term Number
-
-Solve $a_n = a_1 + (n-1)d$ for $n$ when the last term is known. This prevents
-missing or extra terms in a sum.
-
-### Use Pairing
-
-Pair the first and last terms to get a constant sum, then multiply by the
-number of pairs.
-
-### Handle Negative Differences
-
-The common difference can be negative. The formulas still work as long as the
-term order is consistent.
+### The General Term
+ 
+For an arithmetic sequence with first term $a_1$ and common difference $d$, we have the formula
+ 
+$$a_n = a_1 + (n-1)d.$$
+ 
+- $d > 0$: increasing sequence.
+- $d < 0$: decreasing sequence.
+- $d = 0$: constant sequence (still arithmetic).
+ 
+The common difference is always $d = a_{k+1} - a_k$ for any consecutive pair.
+ 
+### The Sum Formula
+ 
+The sum of the first $n$ terms is equal to: 
+ 
+$$S_n = \frac{n}{2}(a_1 + a_n) = \frac{n}{2}(2a_1 + (n-1)d).$$
+ 
+Proof: Write the sum forwards and backwards and add, hence obtaining 
+ 
+$$\begin{aligned}
+S_n &= a_1 + (a_1+d) + \cdots + a_n \\
+S_n &= a_n + (a_n-d) + \cdots + a_1
+\end{aligned}$$
+ 
+Adding gives $2S_n = n(a_1 + a_n)$, so $S_n = \frac{n}{2}(a_1 + a_n)$.
+This is also known as Gauss's trick.
+ 
+### Finding the Number of Terms
+ 
+Hence given $a_1$, $d$, and the last term $a_n$:
+ 
+$$n = \frac{a_n - a_1}{d} + 1.$$
+ 
+Always solve for $n$ before applying the sum formula, as this can be a common source for errors off by one term. 
+ 
+### Arithmetic Mean
+ 
+The average of an arithmetic sequence always equals the average of the first
+and last terms:
+ 
+$$\bar{a} = \frac{a_1 + a_n}{2} = a_{\text{middle}}.$$
+ 
+For an odd number of terms, the middle term equals the mean. This makes
+the sum $S_n = n \cdot \bar{a}$ convinient to find when $n$ is known.
+ 
+A useful equations is the sum of the first $n$ positive integers,
+ 
+$$1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.$$
+ 
+This is the arithmetic sequence $a_1 = 1$, $d = 1$ with sum formula applied.
+ 
+### Multiples in a Range
+ 
+The number of multiples of $k$ in $\{1, 2, \ldots, N\}$ is $\lfloor N/k \rfloor$.
+Therefore, the multiples themselves form an arithmetic sequence $k, 2k, 3k, \ldots$ with $d = k$.
+ 
+More generally, the number of integers in $\{a, a+1, \ldots, b\}$ that are $\equiv r \pmod{k}$ is approximately $(b-a)/k$, can be found by finding the first and last terms and applying the $n$ formula.
 
 ## Worked Example
 
@@ -65,10 +110,11 @@ $S_n = 21\cdot 32 = 672$.
 
 ## Strategy Checklist
 
-- Identify $a_1$, $d$, and either $n$ or $a_n$.
+- First identify $a_1$, $d$, and either $n$ or $a_n$.
 - Solve for $n$ before summing.
 - Pair terms when the list is long.
 - Check that the last term fits the sequence.
+- Check both $d > 0$ and $d < 0$, as both give valid sequences unless the problem specifies if it is increasing or decreasing.
 
 ## Common Pitfalls
 

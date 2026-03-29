@@ -1,0 +1,161 @@
+---
+id: inclusion-exclusion-basic
+title: Inclusion-Exclusion 1
+author: USAMO Guide Team - Wonwoo
+description: Basic Two and three set inclusion exclusion, Venn diagram interpretation, and methods of solveing "at least one" problems.
+prerequisites: [counting-fundamentals, intro-probability]
+---
+## Overview
+The Principle of Inclusion-Exclusion (abbreviated PIE) provides an organized method/formula to find the number of elements in the union of a given group of sets, the size of each set, and the size of all possible intersections among the sets.
+When using PIE, one should understand how to strategically overcount and undercount, in the end making sure every element is counted once and only once. In particular, memorizing a formula for PIE is a bad idea for problem solving.
+Hence, When one wants to count elements belonging to at least one of several sets, the inclusion-exclusion principle fixes this by alternately adding and subtracting overlaps.
+ 
+## Key Ideas 
+- Always, and always define your sets precisely before writing any formula, to avoid confusion.
+- Many times in a problem, The complement is often cleaner and easier to calculate, especially in "at least" problems. Instead of $|A \cup B \cup C|$, compute $|U| - |A^c\cap B^c \cap C^c|$.
+- Utilize this visually through a Venn diagram.
+- For two sets: $|A \cup B| = |A| + |B| - |A \cap B|$.
+- You can apply the formula directly to probabilities: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+- Exactly one of $A$, $B$ equals $|A| + |B| - 2|A \cap B|$.
+
+## Core Skills
+1. Two-Set Formula
+ 
+For any two finite sets $A$ and $B$,
+ 
+$$|A \cup B| = |A| + |B| - |A \cap B|.$$
+ 
+Elements only in $A$ are counted once. Elements only in $B$ are counted once. Elements in both are counted twice by $|A|+|B|$, so subtracting $|A \cap B|$
+makes the double-counted only 1. In a venn diagram, we draw two overlapping circles and verify each of the three regions is counted exactly once.
+ 
+2. Three-Set Formula
+ 
+For sets $A$, $B$, $C$,
+ 
+$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.$$
+ 
+This process is the same for with the two-set formula but with one extra set. 
+
+3. Complement
+ 
+When "at least one" is harder to count directly, we count "none" instead, and subtract from U (total)
+ 
+$$|\text{none of } A, B, C| = |U| - |A \cup B \cup C|.$$
+ 
+Tip: Choose whichever side has simpler intersections, as it is useful for calculations. 
+
+4. Divisibility
+ 
+To count integers in $[1, n]$ divisible by $a$ or $b$, we utilize the same formula but within "divisibility" ideas. 
+
+$$\left\lfloor \frac{n}{a} \right\rfloor + \left\lfloor \frac{n}{b} \right\rfloor - \left\lfloor \frac{n}{\text{lcm}(a,b)} \right\rfloor.$$
+ 
+An integer is divisible by both $a$ and $b$ if and only if it is divisible by
+$\text{lcm}(a, b)$ — not $ab$ (those differ when $\gcd(a,b) > 1$). 
+
+## Worked Example - Core 
+How many integers from 1 to 100 are divisible by 2 or 3?
+ 
+Let $A$ = multiples of 2 in $[1,100]$ and $B$ = multiples of 3 in $[1,100]$.
+The intersection $A \cap B$ is multiples of $\text{lcm}(2,3) = 6$.
+ 
+$$|A| = \left\lfloor \tfrac{100}{2} \right\rfloor = 50, \quad |B| = \left\lfloor \tfrac{100}{3} \right\rfloor = 33, \quad |A \cap B| = \left\lfloor \tfrac{100}{6} \right\rfloor = 16.$$
+ 
+Hence, $$|A \cup B| = 50 + 33 - 16 = 67.$$
+ 
+Whenever the question states "divisible by $a$ or $b$", define sets by divisibility, and use $\text{lcm}$ for the intersection, and apply the two-set formula.
+
+5. "Exactly one" 
+When a question states exactly one of $A$, $B$ equals $|A| + |B| - 2|A \cap B|$.
+
+ 
+### Example 1: Three Overlapping identities
+ 
+In a school of 200 students, 80 play chess, 60 play Go, and 50 play Scrabble.
+30 play chess and Go, 20 play chess and Scrabble, 15 play Go and Scrabble, and
+10 play all three. How many play at least one game?
+ 
+$$|C \cup G \cup S| = 80 + 60 + 50 - 30 - 20 - 15 + 10 = 135.$$
+To find how many play none? $200 - 135 = 65$. It is important to always check which question is being asked.
+
+### Example 2: Using Complement
+ 
+What is the probability that when rolling two fair dice, at least one shows a number greater than 4?
+ 
+Taking the complement, which is both dice showing $\leq 4$:
+ 
+$$P(\text{both} \leq 4) = \left(\tfrac{4}{6}\right)^2 = \tfrac{4}{9}, \qquad P(\text{at least one} > 4) = 1 - \tfrac{4}{9} = \tfrac{5}{9}.$$
+ 
+Hence we see that the complement is almost always faster than applying PIE directly.
+
+### Example 3: "Exactly One"
+ 
+Out of 40 students, 18 are in the math club, 14 are in the robotics club, and 6 are in both. How many are in exactly one club?
+ 
+$|A \text{ only}| + |B \text{ only}| = (18-6) + (14-6) = 12 + 8 = 20$.
+ 
+Or use the formula directly: $|A| + |B| - 2|A \cap B| = 18 + 14 - 12 = 20$.
+
+## Strategy Checklist
+ 
+- First, always define each set precisely before writing any formula, and read the problem carefully. 
+- Identify the universal set ($U$) and its size.
+- Write out all pairwise and triple intersections before substituting.
+- For divisibility, use $\text{lcm}$ for intersections.
+- Always check in PIE if each element end up counted exactly once?
+- Is "exactly one" or "at least two" what's being asked? If so, one should adjust accordingly.
+ 
+## Common Pitfalls
+ 
+- Adding without subtracting overlaps. For instance, $|A \cup B| \neq |A| + |B|$ in general.
+- Forgetting to add $|A \cap B \cap C|$ back in the three-set formula.
+- Putting a $-$ sign on the triple intersection instead of $+$.
+- Using $ab$ instead of $\text{lcm}(a,b)$ for divisibility intersections.
+- Confusing "or" ($\cup$, at least one) with "and" ($\cap$, both).
+- Misreading "exactly one" as "at least one", and subtracting the overlap twice.
+
+## Practice Problems
+
+<Problems problems="practice" />
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Divisibility problems are a natural home for I-E: let $A_p$ be the multiples
+  of $p$ in a range, then intersections correspond to LCMs.

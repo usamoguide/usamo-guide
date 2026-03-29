@@ -37,7 +37,7 @@
     },
     {
       "uniqueId": "amc10a-2020-21",
-      "name": "Problem 21 (2020 AMC 10A)",
+      "name": "Problem 21 (2020 AMC 10A)", 
       "url": "https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems/Problem_21",
       "source": "AMC 10",
       "difficulty": "Hard",
@@ -49,4 +49,8 @@
       ],
       "statement": "There exists a unique strictly increasing sequence of nonnegative integers $a_1 < a_2 < \\cdots < a_k$ such that $$\\dfrac{2^{289}+1}{2^{17}+1} = 2^{a_1} + 2^{a_2} + \\cdots + 2^{a_k}.$$ What is $k$?",
       "solutionMetadata": {
-        "kind": "non
+        "kind": "none"
+      }
+    }
+  ]
+}

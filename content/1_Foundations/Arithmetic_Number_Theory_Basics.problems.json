@@ -12,7 +12,7 @@
         "Divisibility",
         "Remainders"
       ],
-      "statement": "This is a 2019 AMC 8 problem focusing on divisibility and remainders. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2019_AMC_8_Problems/Problem_6).",
+      "statement": "There are $81$ grid points (uniformly spaced) in the square shown in the diagram below, including the points on the edges. Point $P$ is in the center of the square. Given that point $Q$ is randomly chosen among the other $80$ points, what is the probability that the line $PQ$ is a line of symmetry for the square?",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -28,7 +28,7 @@
         "GCD",
         "Prime Factorization"
       ],
-      "statement": "This is a 2018 AMC 10A problem focusing on GCD and prime factorization. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Problems/Problem_4).",
+      "statement": "How many ways can a student schedule $3$ mathematics courses -- algebra, geometry, and number theory -- in a $6$-period day if no two mathematics courses can be taken in consecutive periods? (What courses the student takes during the other $3$ periods is of no concern here.)",
       "solutionMetadata": {
         "kind": "none"
       }

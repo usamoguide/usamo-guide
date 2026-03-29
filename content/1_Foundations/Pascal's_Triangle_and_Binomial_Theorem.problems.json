@@ -12,7 +12,7 @@
         "Binomial Theorem",
         "Modular Arithmetic"
       ],
-      "statement": "This is a 1999 AMC 8 problem focusing on binomial theorem and modular arithmetic. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/1999_AMC_8_Problems/Problem_24).",
+      "statement": "When $1999^{2000}$ is divided by $5$, the remainder is",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -29,7 +29,7 @@
         "Modular Arithmetic",
         "Pascal's Triangle"
       ],
-      "statement": "This is a 2011 AMC 10B problem focusing on binomial theorem, modular arithmetic, and Pascal's triangle. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2011_AMC_10B_Problems/Problem_23).",
+      "statement": "What is the hundreds digit of $2011^{2011}?$",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -45,7 +45,7 @@
         "Binomial Theorem",
         "Coefficient Extraction"
       ],
-      "statement": "This is a 2021 Fall AMC 12A problem focusing on binomial theorem and coefficient extraction. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12A_Problems/Problem_12).",
+      "statement": "What is the number of terms with rational coefficients among the $1001$ terms in the expansion of $\left(x\sqrt[3]{2}+y\sqrt{3}\right)^{1000}?$",
       "solutionMetadata": {
         "kind": "none"
       }

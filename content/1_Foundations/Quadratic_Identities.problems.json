@@ -2,19 +2,6 @@
   "MODULE_ID": "quadratic-identities",
   "practice": [
     {
-      "uniqueId": "2021-amc12-9",
-      "name": "Problem 9 (2021 AMC 12A)",
-      "url": "https://artofproblemsolving.com/wiki/index.php?title=2021_AMC_12A_Problems/Problem_9",
-      "source": "AMC 12",
-      "difficulty": "Medium",
-      "isStarred": true,
-      "tags": [],
-      "statement": "Which of the following is equivalent to \\[(2+3)(2^2+3^2)(2^4+3^4)(2^8+3^8)(2^{16}+3^{16})(2^{32}+3^{32})(2^{64}+3^{64})?\\]",
-      "solutionMetadata": {
-        "kind": "none"
-      }
-    },
-    {
       "uniqueId": "2023-amc10b-9",
       "name": "Problem 9 (2023 AMC 10B)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=2023_AMC_10B_Problems/Problem_9",

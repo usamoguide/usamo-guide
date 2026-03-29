@@ -1,55 +1,146 @@
 ---
-id: vietas-formula
-title: Vieta's Formula
-author: Daniel Liao
-description: Relating polynomial coefficients to sums and products of roots, from quadratics through higher-degree polynomials, for AMC 10/12 and beyond.
-prerequisites: ["algebra-basics", "polynomials"]
+id: vieta-formulas
+title: Vieta's Formulas
+author: Siddhant Arora
+description: Relating roots to coefficients for quadratics and cubics.
+prerequisites: []
 ---
 
 ## Overview
 
-Vieta's Formulas allow us to find information on the sums and products of the roots of a polynomial without directly solving for them. It relates the coefficients of the polynomial with the symmetric sums of the roots.
+### Quick Refresher:
 
-## Derivation
+**Polynomial**: a mathematical expression consisting of variables (also called indeterminates), coefficients, and constants, combined using addition, subtraction, and multiplication. e.g. $5x^2 - 16x + 7$
 
-Since $r_1, r_2$ are roots of $ax^2 + bx + c$, we can factor:
+**Roots**: Any constant that when plugged into a polynomial results in a value of 0. The roots of $x^2 - 5x + 6$ are $2$ and $3$.
 
-$$ax^2 + bx + c = a(x - r_1)(x - r_2) = ax^2 - a(r_1+r_2)x + ar_1r_2$$
-
-Matching coefficients gives the quadratic formulas:
-
-$$r_1 + r_2 = -\frac{b}{a}, \qquad r_1 r_2 = \frac{c}{a}$$
-
-The same argument extends to cubics. Since $ax^3 + bx^2 + cx + d = a(x-r_1)(x-r_2)(x-r_3)$, expanding the right side and matching coefficients gives the cubic formulas:
-
-$$r_1+r_2+r_3 = -\frac{b}{a}, \qquad r_1r_2+r_2r_3+r_3r_1 = \frac{c}{a}, \qquad r_1r_2r_3 = -\frac{d}{a}$$
-
-The pattern generalizes to degree $n$: the $k$-th elementary symmetric sum of the roots equals $(-1)^k \dfrac{a_{n-k}}{a_n}$.
+Vieta's formulas provide quick ways to find the sum of the products of some combination of the roots of a polynomial. Rather than strenuously finding roots of a polynomial, vieta's formulas (commonly referred to as *vieta's*) help us find the sum, pairwise sum, product, etc. of the roots of a polynomial without knowing a single root!
 
 ## Key Ideas
 
-- $r_1^2 + r_2^2$ is not a symmetric sum directly — rewrite it as $(r_1+r_2)^2 - 2r_1r_2$.
-- $\frac{1}{r_1} + \frac{1}{r_2}$ rewrites as $\frac{r_1+r_2}{r_1r_2}$. Always combine fractions first.
-- Expanding products like $(r_1+1)(r_2+1)(r_3+1)$ always produces elementary symmetric sums — a very common competition pattern.
-- Vieta's works over $\mathbb{C}$: even with complex roots, symmetric expressions are real and computable from the coefficients.
+Suppose you are tasked with finding the sum of the roots of a nasty quadratic like:
 
-## Worked Examples
+$26238x^2 - 37293x + 27919$
 
-**Example 1.** Let $p, q$ be the roots of $t^2 - 7t + 5 = 0$. Find $p^2 + q^2$.
+Obviously, finding the roots here is simply not feasible (don't even try it!). However, with vieta's, all we need to know is some of the coefficients.
 
-$p+q = 7$, $pq = 5$, so $p^2+q^2 = (p+q)^2 - 2pq = 49 - 10 = \boxed{39}$.
+> Consider the quadratic $ax^2+bx+c=0$ with roots $r,s$: $r+s=-\frac{b}{a}$, $rs=\frac{c}{a}$.
 
-**Example 2.** Let $m, n$ be the roots of $2x^2 + 15x + 16 = 0$. Find $\frac{1}{m} + \frac{1}{n}$.
+All this denotes is that to find the sum of the roots of a quadratic, we need the $x$ coefficient, $b$ and the $x^2$ coefficient, $a$, and evaluate $\frac{-b}{a}$. So in our case, the answer would be $37293/26238$
 
-$m+n = -\frac{15}{2}$, $mn = 8$, so $\frac{1}{m}+\frac{1}{n} = \frac{m+n}{mn} = \frac{-15/2}{8} = \boxed{-\dfrac{15}{16}}$.
+## General Form
 
-**Example 3.** Let $p, q, r$ be the roots of $t^3 - 2t^2 + 3t - 4 = 0$. Find $(p+1)(q+1)(r+1)$.
+More generally, Vieta's formulas can be utilized for polynomials of any positive integral degree.
 
-$(p+1)(q+1)(r+1) = pqr + (pq+qr+rp) + (p+q+r) + 1 = 4+3+2+1 = \boxed{10}$.
+Consider a degree $n$ polynomial with leading coefficient $a_n$ and roots $r_1, r_2, \dots, r_n$:
 
-**Example 4.** The roots $r_1, r_2, r_3$ of $x^3 - 2x^2 - 11x + a = 0$ satisfy $r_1 + 2r_2 + 3r_3 = 0$. Find all values of $a$.
+$a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 = 0$
 
-Vieta's gives $r_1+r_2+r_3 = 2$. Subtracting: $r_2 + 2r_3 = -2$, so $r_2 = -2-2r_3$ and $r_1 = 4+r_3$. Substituting into $r_1r_2+r_2r_3+r_3r_1 = -11$ yields $3r_3^2+8r_3-3=0$, giving $r_3 = \frac{1}{3}$ or $r_3 = -3$. Thus $a = \boxed{\dfrac{104}{27} \text{ or } 12}$.
+Vieta's formulas tell us:
+
+> $r_1 + r_2 + \cdots + r_n = -\dfrac{a_{n-1}}{a_n}$
+>
+> $\displaystyle\sum_{i < j} r_i r_j = \dfrac{a_{n-2}}{a_n}$
+>
+> $\displaystyle\sum_{i < j < k} r_i r_j r_k = -\dfrac{a_{n-3}}{a_n}$
+>
+> $\vdots$
+>
+> $r_1 r_2 \cdots r_n = (-1)^n \dfrac{a_0}{a_n}$
+
+In general, the sum of all products of $k$ roots taken at a time equals $(-1)^k \dfrac{a_{n-k}}{a_n}$.
+
+Notice the alternating sign: each successive formula picks up an extra factor of $-1$. This comes directly from expanding $(x - r_1)(x - r_2)\cdots(x - r_n)$ and matching coefficients.
+
+## Usecases
+
+Many problems in math contests involve finding some sum or product of the roots of a polynomial. Also, higher powers of those roots are also involved. For instance, you may be tasked to find $r^2 + s^2$ where $r, s$ are the roots of a quadratic. We will go through some common patterns alongside their derivations.
+
+Throughout this section, let $r, s$ be roots of $ax^2 + bx + c = 0$, so $r + s = -\frac{b}{a}$ and $rs = \frac{c}{a}$.
+
+> $r^2 + s^2$
+
+We use the identity $(r+s)^2 = r^2 + 2rs + s^2$, so:
+
+$r^2 + s^2 = (r+s)^2 - 2rs = \dfrac{b^2}{a^2} - \dfrac{2c}{a} = \dfrac{b^2 - 2ac}{a^2}$
+
+> $r^3 + s^3$
+
+We use the factorization $r^3 + s^3 = (r+s)(r^2 - rs + s^2) = (r+s)((r^2+s^2) - rs)$. Substituting:
+
+$r^3 + s^3 = (r+s)\left((r+s)^2 - 3rs\right) = \dfrac{-b}{a}\left(\dfrac{b^2}{a^2} - \dfrac{3c}{a}\right) = \dfrac{-b(b^2 - 3ac)}{a^3}$
+
+> $r - s$
+
+We use $(r-s)^2 = (r+s)^2 - 4rs$:
+
+$r - s = \pm\sqrt{(r+s)^2 - 4rs} = \pm\dfrac{\sqrt{b^2 - 4ac}}{a}$
+
+Notice this is just $\pm$ the discriminant over $a$, which makes sense.
+
+### Newton's Sums (General Power Sums)
+
+For higher powers, Newton's sums give a systematic approach. Define $P_k = r^k + s^k$. Then:
+
+> $P_1 = r + s$
+>
+> $P_k = (r+s) \cdot P_{k-1} - rs \cdot P_{k-2}$ for $k \geq 2$
+
+So each power sum is expressible purely in terms of the previous two and Vieta's quantities. For example:
+
+$P_4 = (r+s) \cdot P_3 - rs \cdot P_2$
+
+This recurrence generalizes to degree $n$ polynomials: $P_k$ satisfies a recurrence whose coefficients are exactly (up to sign) the coefficients of the polynomial.
+
+> $\frac{1}{r} + \frac{1}{s}$
+
+$\dfrac{1}{r} + \dfrac{1}{s} = \dfrac{r + s}{rs} = \dfrac{-b/a}{c/a} = \dfrac{-b}{c}$
+
+More generally, $\frac{1}{r^k} + \frac{1}{s^k} = \frac{P_k}{(rs)^k}$, so reciprocal power sums reduce to ordinary power sums.
+
+### Reciprocal Roots via Polynomial Manipulation
+
+Rather than applying formulas, we can directly construct the polynomial whose roots are $\frac{1}{r}$ and $\frac{1}{s}$ by **reversing the order of coefficients**. If $ax^2 + bx + c = 0$ has roots $r, s$, then substituting $x \to \frac{1}{x}$ and multiplying through by $x^2$:
+
+$a \cdot \frac{1}{x^2} + b \cdot \frac{1}{x} + c = 0 \implies cx^2 + bx + a = 0$
+
+So the polynomial with roots $\frac{1}{r}, \frac{1}{s}$ is just the original polynomial with coefficients reversed. Vieta's applied to this new polynomial immediately gives $\frac{1}{r} + \frac{1}{s} = -\frac{b}{c}$ and $\frac{1}{rs} = \frac{a}{c}$, consistent with what we found above.
+
+### Shifted Roots via Polynomial Manipulation
+
+Suppose we want the polynomial whose roots are $r + k$ and $s + k$ for some constant $k$. Substituting $x \to x - k$ into the original polynomial gives a new polynomial whose roots are exactly $r + k$ and $s + k$:
+
+$a(x-k)^2 + b(x-k) + c = 0$
+
+Expanding: $ax^2 + (b - 2ak)x + (ak^2 - bk + c) = 0$
+
+Applying Vieta's to this shifted polynomial:
+
+> $(r+k) + (s+k) = \dfrac{-(b-2ak)}{a} = -\dfrac{b}{a} + 2k = (r+s) + 2k$ ✓
+>
+> $(r+k)(s+k) = \dfrac{ak^2 - bk + c}{a} = rs + k(r+s) + k^2$ ✓
+
+This technique generalizes: to find Vieta's quantities for any transformation of the roots, substitute $x \to f^{-1}(x)$ into the original polynomial and read off the new coefficients.
+
+## Example Problem
+
+>The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4, 4,$ and $5$ is
+
+> $$\frac{1}{\frac{1}{3}\left(\frac{1}{4}+\frac{1}{4}+\frac{1}{5}\right)}=\frac{30}{7}$$
+
+> What is the harmonic mean of all the real roots of the $4050$th degree polynomial
+
+> $$\prod_{k=1}^{2025} (kx^2-4x-3)=(x^2-4x-3)(2x^2-4x-3)(3x^2-4x-3)\cdots(2025x^2-4x-3)?$$
+
+This problem seems scary but the key is to break it down. The reciprocal of the harmonic mean we can ignore for now, we can simply compute the arithmetic mean of the reciprocal of the roots of the given expression. This will involve knowing the sum of the reciprocal of the roots and the number of roots. As stated above, the sum of the reciprocal of roots can be easily found by flipping the coefficients of the polynomial. But how? We don't even have a simple polynomial!
+
+The key here is to realize that we don't care about the entire polynomial. Since we only want the *sum* of the reciprocal of the roots, we care about the coefficient of the $x$ term in the expression as when we flip coefficients, that coefficient will be the coefficient of the 2nd largest degree term which we need to find the sum of the reciprocals (this is derived from Vieta's). So, it remains to find the $x$ coefficient of the expression.
+
+To get an $x$, you must have $2024$ constant terms and one '$x$' term. There are $\binom{2025}{1}$ = 2025 ways this can happen (as we need one $x$ term and we have a total of $2025$). So, the coefficient will be $-2025\cdot4\cdot3^{2024}$. The quantity is negative as all $x$ terms have a negative sign attached, so getting one $x$ term will give a negative factor. Also, note that to find the sum of the reciprocal of the roots, we also need the coefficient of the largest degree term in the reversed polynomial, i.e, the constant term in the non-reversed/original polynomial. This is simply $-3^{2025}$. Hence, the sum of the reciprocal of the roots = $-\left(\dfrac{-2025 \cdot4\cdot 3^{2024}}{-3^{2025}}\right) = \dfrac{-8100}{3} = -2700$
+
+Since we wanted the arithmetic *mean* of the sum of reciprocal of roots, we need to divide by the number of roots (recall arithmetic mean = sum of all values divided by the number of values) which is $2\cdot2025 = 4050$ (2025 quadratic each with $2$ roots). 
+
+Dividing the above result by $4050$ and taking the reciprocal of that we get: $\dfrac{1}{\frac{-2700}{4050}} = \boxed{-\dfrac{3}{2}}$
 
 ## Practice Problems
 

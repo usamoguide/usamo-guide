@@ -50,7 +50,7 @@
       "Special Right Triangle",
       "Right Triangle"
     ],
-    "statement": "Problem statement available at the Art of Problem Solving wiki.",
+    "statement": "In rectangle $ABCD$, $\overline{AB}=20$ and $\overline{BC}=10$. Let $E$ be a point on $\overline{CD}$ such that $\angle CBE=15^\circ$. What is $\overline{AE}$?",
     "solutionMetadata": {
       "kind": "none"
     }

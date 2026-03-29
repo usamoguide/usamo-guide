@@ -1,61 +1,59 @@
 {
   "MODULE_ID": "newton-sums",
   "practice": [
-    [
-  {
-    "uniqueId": "amc12a-2019-17",
-    "name": "Problem 17 (2019 AMC 12A)",
-    "url": "https://artofproblemsolving.com/wiki/index.php?title=2019_AMC_12A_Problems/Problem_17",
-    "source": "AMC 12A",
-    "difficulty": "Hard",
-    "isStarred": false,
-    "tags": [
-      "Algebra",
-      "Polynomials",
-      "Newton Sums",
-      "Vieta's Formulas"
-    ],
-    "statement": "Let Sk denote the sum of the kth powers of the roots of the polynomial x³ + ax² + bx + c. In particular, S₁ = -a, S₂ = a² - 2b, and S₃ = -a³ + 3ab - 3c. Let a, b, c be real numbers such that for k = 1, 2, 3, Sk = 3^k. What is a + b + c?",
-    "solutionMetadata": {
-      "kind": "none"
+    {
+      "uniqueId": "amc12a-2019-17",
+      "name": "Problem 17 (2019 AMC 12A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php?title=2019_AMC_12A_Problems/Problem_17",
+      "source": "AMC 12A",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Algebra",
+        "Polynomials",
+        "Newton Sums",
+        "Vieta's Formulas"
+      ],
+      "statement": "Let Sk denote the sum of the kth powers of the roots of the polynomial x³ + ax² + bx + c. In particular, S₁ = -a, S₂ = a² - 2b, and S₃ = -a³ + 3ab - 3c. Let a, b, c be real numbers such that for k = 1, 2, 3, Sk = 3^k. What is a + b + c?",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2008-ii-7",
+      "name": "Problem 7 (2008 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2008_AIME_II_Problems/Problem_7",
+      "source": "AIME II",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": [
+        "Algebra",
+        "Polynomials",
+        "Newton Sums",
+        "Vieta's Formulas"
+      ],
+      "statement": "Let r, s, and t be the three roots of the equation x³ - 15x² + 74x - 120 = 0. Find r²s + rs² + r²t + rt² + s²t + st².",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2003-ii-9",
+      "name": "Problem 9 (2003 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php?title=2003_AIME_II_Problems/Problem_9",
+      "source": "AIME II",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": [
+        "Algebra",
+        "Polynomials",
+        "Newton Sums",
+        "Vieta's Formulas"
+      ],
+      "statement": "Consider the polynomials x² + ax + b and x² + px + q. Given that a and b are the roots of x² + px + q = 0, find a² + b² in terms of p and q.",
+      "solutionMetadata": {
+        "kind": "none"
+      }
     }
-  },
-  {
-    "uniqueId": "aime-2008-ii-7",
-    "name": "Problem 7 (2008 AIME II)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2008_AIME_II_Problems/Problem_7",
-    "source": "AIME II",
-    "difficulty": "Medium",
-    "isStarred": false,
-    "tags": [
-      "Algebra",
-      "Polynomials",
-      "Newton Sums",
-      "Vieta's Formulas"
-    ],
-    "statement": "Let r, s, and t be the three roots of the equation x³ - 15x² + 74x - 120 = 0. Find r²s + rs² + r²t + rt² + s²t + st².",
-    "solutionMetadata": {
-      "kind": "none"
-    }
-  },
-  {
-    "uniqueId": "aime-2003-ii-9",
-    "name": "Problem 9 (2003 AIME II)",
-    "url": "https://artofproblemsolving.com/wiki/index.php?title=2003_AIME_II_Problems/Problem_9",
-    "source": "AIME II",
-    "difficulty": "Medium",
-    "isStarred": false,
-    "tags": [
-      "Algebra",
-      "Polynomials",
-      "Newton Sums",
-      "Vieta's Formulas"
-    ],
-    "statement": "Consider the polynomials x² + ax + b and x² + px + q. Given that a and b are the roots of x² + px + q = 0, find a² + b² in terms of p and q.",
-    "solutionMetadata": {
-      "kind": "none"
-    }
-  }
-]
   ]
 }

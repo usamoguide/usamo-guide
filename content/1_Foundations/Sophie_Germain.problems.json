@@ -13,7 +13,7 @@
       "Sophie Germain Identity",
       "Sums of Powers"
     ],
-    "statement": "Compute (1⁴ + 4⁴ + 7⁴ + ··· + 34⁴) / (2⁴ + 5⁴ + 8⁴ + ··· + 35⁴)",
+    "statement": "Compute \\[\frac{(10^4+324)(22^4+324)(34^4+324)(46^4+324)(58^4+324)}{(4^4+324)(16^4+324)(28^4+324)(40^4+324)(52^4+324)}.\\]",
     "solutionMetadata": {
       "kind": "none"
     }
@@ -30,7 +30,7 @@
       "Sophie Germain Identity",
       "Factorization"
     ],
-    "statement": "Problem statement available at the Art of Problem Solving wiki.",
+    "statement": "What is the remainder when $2^{202} +202$ is divided by $2^{101}+2^{51}+1$?",
     "solutionMetadata": {
       "kind": "none"
     }
@@ -47,7 +47,7 @@
       "Sophie Germain Identity",
       "Number Theory"
     ],
-    "statement": "Find the largest prime divisor of 2¹⁸ + 1.",
+    "statement": "Find the largest prime divisor of $25^2+72^2$.",
     "solutionMetadata": {
       "kind": "none"
     }

@@ -1,55 +1,70 @@
 {
   "MODULE_ID": "mean-median-mode-harmonic",
   "practice": [
-  {
-    "uniqueId": "amc10b-2019-13",
-    "name": "Problem 13 (2019 AMC 10B)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems/Problem_13",
-    "source": "AMC 10B",
-    "difficulty": "Medium",
-    "isStarred": false,
-    "tags": ["Statistics", "Mean", "Median"],
-    "statement": "What is the sum of all real numbers $x$ for which the median of the numbers $4, 6, 8, 17,$ and $x$ is equal to the mean of those five numbers?"
-  },
-  {
-    "uniqueId": "amc10a-2021-5",
-    "name": "Problem 5 (2021 AMC 10A)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Problems/Problem_5",
-    "source": "AMC 10A",
-    "difficulty": "Easy",
-    "isStarred": false,
-    "tags": ["Number Theory", "Primes"],
-    "statement": "The six-digit number $\\underline{2}\\,\\underline{0}\\,\\underline{2}\\,\\underline{1}\\,\\underline{0}\\,\\underline{A}$ is prime for only one digit $A$. What is $A$?"
-  },
-  {
-    "uniqueId": "amc12b-2021-4",
-    "name": "Problem 4 (2021 AMC 12B)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_12B_Problems/Problem_4",
-    "source": "AMC 12B",
-    "difficulty": "Easy",
-    "isStarred": false,
-    "tags": ["Arithmetic", "Statistics"],
-    "statement": "Ms. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is $84$, and the afternoon class's mean score is $70$. The ratio of the number of students in the morning class to the number of students in the afternoon class is $\\frac{3}{4}$. What is the mean of the scores of all the students?"
-  },
-  {
-    "uniqueId": "amc12a-2021-16",
-    "name": "Problem 16 (2021 AMC 12A)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_12A_Problems/Problem_16",
-    "source": "AMC 12A",
-    "difficulty": "Hard",
-    "isStarred": false,
-    "tags": ["Algebra", "Statistics"],
-    "statement": "In the following list of numbers, the integer $n$ appears $n$ times in the list for $1 \\leq n \\leq 200$: $1, 2, 2, 3, 3, 3, 4, 4, 4, 4, \\dots, 200, \\dots, 200$. What is the median of the numbers in this list?"
-  },
-  {
-    "uniqueId": "amc12b-2023-18",
-    "name": "Problem 18 (2023 AMC 12B)",
-    "url": "https://artofproblemsolving.com/wiki/index.php/2023_AMC_12B_Problems/Problem_18",
-    "source": "AMC 12B",
-    "difficulty": "Hard",
-    "isStarred": false,
-    "tags": ["Statistics", "Averages"],
-    "statement": "Last academic year Yolanda and Zelda took different courses that did not necessarily administer the same number of quizzes during each of the two semesters. Yolanda's average on all the quizzes she took during the first semester was $3$ points higher than Zelda's average on all the quizzes she took during the first semester. Yolanda's average on all the quizzes she took during the second semester was also $3$ points higher than Zelda's average on all the quizzes she took during the second semester. Which of the following statements must be true?"
-  }
-]
+    {
+      "uniqueId": "amc10b-2019-13",
+      "name": "Problem 13 (2019 AMC 10B)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems/Problem_13",
+      "source": "AMC 10B",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": ["Statistics", "Mean", "Median"],
+      "statement": "What is the sum of all real numbers $x$ for which the median of the numbers $4, 6, 8, 17,$ and $x$ is equal to the mean of those five numbers?",
+      "solutionMetadata": {
+        "kind": "none"
+      }   
+    },
+    {
+      "uniqueId": "amc10a-2021-5",
+      "name": "Problem 5 (2021 AMC 10A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Problems/Problem_5",
+      "source": "AMC 10A",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Number Theory", "Primes"],
+      "statement": "The six-digit number $\\underline{2}\\,\\underline{0}\\,\\underline{2}\\,\\underline{1}\\,\\underline{0}\\,\\underline{A}$ is prime for only one digit $A$. What is $A$?",
+      "solutionMetadata": {
+        "kind": "none"
+      } 
+    },
+    {
+      "uniqueId": "amc12b-2021-4",
+      "name": "Problem 4 (2021 AMC 12B)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_12B_Problems/Problem_4",
+      "source": "AMC 12B",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Arithmetic", "Statistics"],
+      "statement": "Ms. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is $84$, and the afternoon class's mean score is $70$. The ratio of the number of students in the morning class to the number of students in the afternoon class is $\\frac{3}{4}$. What is the mean of the scores of all the students?",
+      "solutionMetadata": {
+        "kind": "none"
+      } 
+    },
+    {
+      "uniqueId": "amc12a-2021-16",
+      "name": "Problem 16 (2021 AMC 12A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_12A_Problems/Problem_16",
+      "source": "AMC 12A",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": ["Algebra", "Statistics"],
+      "statement": "In the following list of numbers, the integer $n$ appears $n$ times in the list for $1 \\leq n \\leq 200$: $1, 2, 2, 3, 3, 3, 4, 4, 4, 4, \\dots, 200, \\dots, 200$. What is the median of the numbers in this list?",
+      "solutionMetadata": {
+        "kind": "none"
+      } 
+    },
+    {
+      "uniqueId": "amc12b-2023-18",
+      "name": "Problem 18 (2023 AMC 12B)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2023_AMC_12B_Problems/Problem_18",
+      "source": "AMC 12B",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": ["Statistics", "Averages"],
+      "statement": "Last academic year Yolanda and Zelda took different courses that did not necessarily administer the same number of quizzes during each of the two semesters. Yolanda's average on all the quizzes she took during the first semester was $3$ points higher than Zelda's average on all the quizzes she took during the first semester. Yolanda's average on all the quizzes she took during the second semester was also $3$ points higher than Zelda's average on all the quizzes she took during the second semester. Which of the following statements must be true?",
+      "solutionMetadata": {
+        "kind": "none"
+      } 
+    }
+  ]
 }

@@ -8,11 +8,8 @@
       "source": "AMC 8",
       "difficulty": "Easy",
       "isStarred": true,
-      "tags": [
-        "Linear Equations",
-        "Simplification"
-      ],
-      "statement": "This is a 2017 AMC 8 problem focusing on linear equations and simplification. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2017_AMC_8_Problems/Problem_12).",
+      "tags": ["Linear Equations", "Simplification"],
+      "statement": "The smallest positive integer greater than 1 that leaves a remainder of 1 when divided by 4, 5, and 6 lies between which of the following pairs of numbers?",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -24,11 +21,8 @@
       "source": "AMC 10",
       "difficulty": "Easy",
       "isStarred": false,
-      "tags": [
-        "Factoring",
-        "Substitution"
-      ],
-      "statement": "This is a 2019 AMC 10B problem focusing on factoring and substitution techniques. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems/Problem_8).",
+      "tags": ["Factoring", "Substitution"],
+      "statement": "The figure below shows a square and four equilateral triangles, with each triangle having a side lying on a side of the square, such that each triangle has side length $2$ and the third vertices of the triangles meet at the center of the square. The region inside the square but outside the triangles is shaded. What is the area of the shaded region?",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -41,7 +35,7 @@
       "difficulty": "Easy",
       "isStarred": false,
       "tags": ["Brute Force"],
-      "statement": "This is a 2025 AMC 8 problem focusing on brute force enumeration techniques. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2025_AMC_8_Problems/Problem_9?srsltid=AfmBOopSxVAkbJ8NIlLV_fbFrW8gdHqpByFpVEEca2Q5rH6sGggVPI9Z).",
+      "statement": "Ningli looks at the $6$ pairs of numbers directly across from each other on a clock. She takes the average of each pair of numbers. What is the average of the resulting $6$ numbers?",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -54,7 +48,7 @@
       "difficulty": "Easy",
       "isStarred": false,
       "tags": ["Brute Force"],
-      "statement": "This is a 2023 AMC 8 problem focusing on brute force enumeration techniques. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2023_AMC_8_Problems/Problem_5?srsltid=AfmBOopoqq00IDsH9Mr80t2W16Iy_DJ2Vn6t4rKAAF0pRFRHdbQyRVey).",
+      "statement": "A lake contains $250$ trout, along with a variety of other fish. When a marine biologist catches and releases a sample of $180$ fish from the lake, $30$ are identified as trout. Assume that the ratio of trout to the total number of fish is the same in both the sample and the lake. How many fish are there in the lake?",
       "solutionMetadata": {
         "kind": "none"
       }

@@ -11,7 +11,7 @@
       "tags": [
         "Functional Equations"
       ],
-      "statement": "This is a 2015 AIME I problem focusing on functional equations. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2015_AIME_I_Problems/Problem_14).",
+      "statement": "For each integer $n \ge 2$, let $A(n)$ be the area of the region in the coordinate plane defined by the inequalities $1\le x \le n$ and $0\le y \le x \left\lfloor \sqrt x \right\rfloor$, where $\left\lfloor \sqrt x \right\rfloor$ is the greatest integer not exceeding $\sqrt x$. Find the number of values of $n$ with $2\le n \le 1000$ for which $A(n)$ is an integer.",
       "solutionMetadata": {
         "kind": "none"
       }
@@ -27,7 +27,7 @@
         "Functional Equations",
         "Substitution"
       ],
-      "statement": "This is a 2010 AIME I problem focusing on functional equations and substitution. See the full problem statement on [AoPS](https://artofproblemsolving.com/wiki/index.php/2010_AIME_I_Problems/Problem_9).",
+      "statement": "Let $(a,b,c)$ be the real solution of the system of equations $x^3 - xyz = 2$, $y^3 - xyz = 6$, $z^3 - xyz = 20$. The greatest possible value of $a^3 + b^3 + c^3$ can be written in the form $\frac {m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m + n$.",
       "solutionMetadata": {
         "kind": "none"
       }
