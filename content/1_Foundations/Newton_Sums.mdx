@@ -1,80 +1,87 @@
 ---
-id: newton-sums
+id: newtons-sums
 title: Newton's Sums
-author: USAMO Guide Team
-description: Recurrences that compute power sums from coefficients.
-prerequisites: []
+author: Daniel Liao
+description: Efficiently computing power sums of polynomial roots using Newton's identities.
+prerequisites: ["algebra-basics", "vietas-formula"]
 ---
 
 ## Overview
 
-Newton's sums connect coefficients of a polynomial to power sums of its roots.
-They let you compute $r^k+s^k+\cdots$ without solving for roots.
+Newton's Sums give a clever and efficient way to find the sums of roots of a polynomial raised to a power. They connect the power sums $P_k = x_1^k + x_2^k + \cdots + x_n^k$ to the coefficients of the polynomial via a recursive formula, without ever computing the roots themselves.
+
+## Setup
+
+Let $P(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots + a_0$ have roots $x_1, x_2, \ldots, x_n$. Define:
+
+$$P_k = x_1^k + x_2^k + \cdots + x_n^k$$
+
+Newton's Sums are a family of recurrences relating each $P_k$ to the polynomial's coefficients:
+
+$$a_n P_1 + a_{n-1} = 0$$
+$$a_n P_2 + a_{n-1}P_1 + 2a_{n-2} = 0$$
+$$a_n P_3 + a_{n-1}P_2 + a_{n-2}P_1 + 3a_{n-3} = 0$$
+$$a_n P_4 + a_{n-1}P_3 + a_{n-2}P_2 + a_{n-3}P_1 + 4a_{n-4} = 0$$
+
+The general recurrence, valid for all $k \geq 1$, is:
+
+$$\boxed{a_n P_k + a_{n-1}P_{k-1} + \cdots + a_{n-k+1}P_1 + k \cdot a_{n-k} = 0}$$
+
+where we define $a_j = 0$ for $j < 0$.
+
+These can equivalently be written in terms of elementary symmetric sums $S_j$ as:
+
+$$P_1 = S_1, \quad P_2 = S_1P_1 - 2S_2, \quad P_3 = S_1P_2 - S_2P_1 + 3S_3$$
+$$P_4 = S_1P_3 - S_2P_2 + S_3P_1 - 4S_4, \quad \ldots$$
+
+## Derivation
+
+Since each root $r_i$ satisfies $P(r_i) = 0$, we have:
+
+$$a_n r_i^n + a_{n-1}r_i^{n-1} + \cdots + a_0 = 0$$
+
+Multiply the equation for root $r_i$ by $r_i^{k-n}$, giving:
+
+$$a_n r_i^k + a_{n-1}r_i^{k-1} + \cdots + a_0 r_i^{k-n} = 0$$
+
+Summing these $n$ equations over all roots and recognizing each column as a power sum:
+
+$$a_n P_k + a_{n-1}P_{k-1} + a_{n-2}P_{k-2} + \cdots + a_0 P_{k-n} = 0$$
+
+In the special case $k = n$, note that $P_0 = r_1^0 + \cdots + r_n^0 = n$, so the last term becomes $na_0$, recovering the $k = n$ Newton sum. For $k < n$, the terms $a_{n-k-1}P_1, \ldots$ don't appear and instead each short recurrence ends with the coefficient $k \cdot a_{n-k}$, accounting for the "missing" $P_0$ terms.
 
 ## Key Ideas
 
-- For a monic quadratic $x^2 - S_1 x + S_2$, the roots satisfy
-  $P_1 = S_1$ and $P_2 = S_1 P_1 - 2S_2$.
-- For monic polynomials, the recurrence uses coefficients and earlier power sums.
-- Power sums are especially useful in symmetric expressions.
+- The recurrence is solved iteratively: compute $P_1$, then $P_2$, then $P_3$, and so on. Each new $P_k$ depends only on previously computed values and the polynomial's coefficients.
+- If a coefficient $a_j$ is zero, the corresponding term simply drops out, simplifying computation.
+- The leading term in every Newton sum is $a_n P_k$, so for a monic polynomial ($a_n = 1$) you can solve each recurrence directly for $P_k$.
+- Newton's Sums avoid computing the roots explicitly. They are especially powerful for AIME-style problems asking for $r^4 + s^4 + t^4$ or similar expressions.
 
-## Core Skills
+## Worked Examples
 
-### Make the Polynomial Monic
+**Example 1.** Let $P(x) = x^3 + 3x^2 + 4x - 8$ have roots $r, s, t$. Find $r^2 + s^2 + t^2$ and $r^4 + s^4 + t^4$.
 
-Divide by the leading coefficient so that the Newton sum recurrence applies
-cleanly.
+Here $a_3=1, a_2=3, a_1=4, a_0=-8$. Applying the recurrences in order:
 
-### Build a Recurrence
+$$P_1 + 3 = 0 \implies P_1 = -3$$
+$$P_2 + 3P_1 + 2(4) = 0 \implies P_2 + 3(-3) + 8 = 0 \implies P_2 = 1$$
+$$P_3 + 3P_2 + 4P_1 + 3(-8) = 0 \implies P_3 + 3 - 12 - 24 = 0 \implies P_3 = 33$$
+$$P_4 + 3P_3 + 4P_2 + (-8)P_1 = 0 \implies P_4 + 99 + 4 + 24 = 0 \implies P_4 = -127$$
 
-Use the relation between coefficients and power sums to compute $P_3,P_4,\ldots$
-from earlier values.
+So $r^2+s^2+t^2 = \boxed{1}$ and $r^4+s^4+t^4 = \boxed{-127}$.
 
-### Combine with Symmetric Identities
+**Example 2.** Find the sum of the cubes of the solutions of $x^2 - 3x + 3 = 0$.
 
-Convert $r^k+s^k$ into expressions involving $r+s$ and $rs$ when a direct
-recurrence is shorter.
+Here $a_2=1, a_1=-3, a_0=3$, so $n=2$ and we need $P_3$.
 
-## Worked Example
+$$P_1 + (-3) = 0 \implies P_1 = 3$$
+$$P_2 + (-3)P_1 + 2(3) = 0 \implies P_2 - 9 + 6 = 0 \implies P_2 = 3$$
 
-Let $x^2-5x+6=0$ have roots $r,s$. Find $r^3+s^3$.
+For $k=3 \geq n=2$, the recurrence drops the short-form and becomes:
 
-We have $S_1 = r+s = 5$ and $S_2 = rs = 6$.
-First compute $P_2 = r^2+s^2 = S_1^2 - 2S_2 = 25-12=13$.
-Then $r^3+s^3 = (r+s)(r^2 - rs + s^2) = 5(13-6)=35$.
+$$P_3 + (-3)P_2 + 3P_1 = 0 \implies P_3 - 9 + 9 = 0 \implies P_3 = \boxed{0}$$
 
-## More Examples
-
-### Example 1: Quadratic Power Sum
-
-If $x^2-3x+1=0$ has roots $r,s$, find $r^4+s^4$.
-
-$P_1=3$, $P_2=P_1^2-2=7$, then
-$P_3=3P_2-P_1=18$, $P_4=3P_3-P_2=47$.
-
-### Example 2: Cubic Recurrence
-
-For $x^3-2x^2+x-1=0$ with roots $r,s,t$, compute $r+s+t$ and $r^2+s^2+t^2$.
-
-$S_1=2$, $S_2=1$, so $P_1=2$ and $P_2=S_1P_1-2S_2=2\cdot 2-2=2$.
-
-### Example 3: Symmetric Shortcut
-
-If $r+s=4$ and $rs=3$, compute $r^3+s^3$.
-
-$r^3+s^3=(r+s)^3-3rs(r+s)=64-36=28$.
-
-## Strategy Checklist
-
-- Make the polynomial monic first.
-- Compute $P_1, P_2$ before higher powers.
-- Use symmetric shortcuts when faster.
-
-## Common Pitfalls
-
-- Forgetting to convert to monic form first.
-- Mixing $S_1,S_2$ with $P_1,P_2$.
-- Skipping earlier power sums needed for the recurrence.
+This is far easier than cubing the (complex) roots directly.
 
 ## Practice Problems
 
