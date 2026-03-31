@@ -1,77 +1,114 @@
 ---
 id: polynomial-manipulations
 title: Polynomial Manipulations
-author: USAMO Guide Team
-description: Shifting and inverting roots to simplify expressions.
-prerequisites: []
+author: USAMO Guide Team - Wonwoo Choi
+description: Shifting and inverting roots to simplify complex polynomial expressions.
+prerequisites: [vieta-formulas, symmetric-polynomials, algebra-basics]
 ---
 
 ## Overview
 
-Changing variables transforms roots and can make symmetric sums easier. Common
-moves include shifting and taking reciprocals.
+Changing variables transforms roots and can make symmetric sums way easier. For instance, instead of computing a complicated expression directly over the roots of $P(x)$, we find a new polynomial whose roots are exactly the transformed values, then apply either Vieta's formulas or other useful information given by the question to that new polynomial. Hence there are many ways for polynomial expressions that can be made. 
 
 ## Key Ideas
 
 - If $r$ is a root of $P(x)$, then $r+k$ is a root of $P(x-k)$.
-- If $r$ is a root of $P(x)$, then $1/r$ is a root of the reversed-coefficient
-  polynomial when the constant term is nonzero.
-- Use these to compute sums over transformed roots.
+- If $r$ is a root of $P(x)$, then $1/r$ is a root of the reversed-coefficient polynomial when $a_0 \ne 0$.
+- When scaling roots by $k$, one should replace $x$ with $x/k$ and make denominators simple. 
 
-## Core Skills
+## Shifting Roots
 
-### Shift the Variable
+If $r$ is a root of $P(x)$, then $r + k$ is a root of $P(x - k)$.
 
-Replace $x$ with $x-h$ to shift roots by $h$. This is the standard way to move
-between a polynomial and its translated version.
+Therefore, To find the polynomial with roots $r_1 + k, r_2 + k, \ldots, r_n + k$, replace every $x$ in $P(x)$ with $x - k$.
 
-### Reverse Coefficients for Reciprocals
+$$P(x) \xrightarrow{\text{shift by } k} Q(x) = P(x - k).$$
 
-If $P(x)=a_nx^n+\cdots+a_0$ and $a_0\ne 0$, then $x^nP(1/x)$ has roots $1/r$.
+$Q(r + k) = P((r+k) - k) = P(r) = 0$.
 
-### Use Vieta After Transformations
+### Reciprocal Roots
 
-Once the new polynomial is found, apply Vieta to compute sums and products.
+Similarly, If $P(x) = a_n x^n + \cdots + a_0$ with $a_0 \ne 0$, the polynomial with roots $1/r_1, \ldots, 1/r_n$ can be found by reversing the coefficients. 
+
+$$Q(x) = x^n P\!\left(\frac{1}{x}\right) = a_0 x^n + a_1 x^{n-1} + \cdots + a_n.$$
+
+Further, creating the condition $a_0 \ne 0$ ensures none of the original roots is zero. If $a_0 = 0$, we factor out $x$ first. 
+
+### Scaling Roots
+
+To get roots $k \cdot r_1, k \cdot r_2, \ldots$, replace $x$ with $x/k$, and hence obtaining 
+$$Q(x) = k^n \cdot P\!\left(\frac{x}{k}\right).$$
+
+### Polynomial Equations After Transformations/Manipultaions
+
+Once the new polynomial $Q(x)$ is found, we can apply Vieta's formulas directly from its coefficients. 
+
+For quick computations like $\sum 1/r_i$, it is often faster to use Vieta on the original directly, 
+
+$$\frac{1}{r} + \frac{1}{s} + \frac{1}{t} = \frac{rs + st + tr}{rst}.$$
+
 
 ## Worked Example
 
-If $x^2-5x+6=0$ has roots $r,s$, find the polynomial with roots $r+1, s+1$.
+If $x^2 - 5x + 6 = 0$ has roots $r, s$, find the polynomial with roots
+$r+1, s+1$.
 
-Replace $x$ by $x-1$:
-$(x-1)^2 - 5(x-1) + 6 = x^2 - 7x + 12$.
-So the new polynomial is $x^2 - 7x + 12$.
+Replace $x$ with $x - 1$:
+
+$$(x-1)^2 - 5(x-1) + 6 = x^2 - 2x + 1 - 5x + 5 + 6 = x^2 - 7x + 12.$$
+
+Now, rechecking the computed values with Vieta's Formulas, we get the new sum $= (r+1)+(s+1) = 5+2 = 7$,
+new product $= (r+1)(s+1) = rs+(r+s)+1 = 6+5+1 = 12$.
 
 ## More Examples
 
-### Example 1: Shift Down
+### Example 1: Roots that are manipulated
 
-If $x^2-2x-3=0$ has roots $r,s$, find the polynomial with roots $r-2, s-2$.
+If $x^2 - 2x - 3 = 0$ has roots $r, s$, find the polynomial with roots $r-2, s-2$.
 
-Replace $x$ by $x+2$: $(x+2)^2-2(x+2)-3 = x^2+2x-3$.
+Replace $x$ with $x+2$:
 
-### Example 2: Reciprocal Roots
+$$(x+2)^2 - 2(x+2) - 3 = x^2 + 4x + 4 - 2x - 4 - 3 = x^2 + 2x - 3.$$
 
-If $P(x)=x^2-3x+2$, find a polynomial with roots $1/r,1/s$.
+### Example 2: Roots that are in reciprocal 
 
-Compute $x^2P(1/x)=1-3x+2x^2$, so the polynomial is $2x^2-3x+1$.
+If $P(x) = x^2 - 3x + 2$, find a polynomial with roots $1/r, 1/s$.
 
-### Example 3: Sum of Shifted Roots
+We create a new $Q(x) = 2x^2 - 3x + 1$. (Here, the polynomials has been reversed.) 
 
-If $r+s=4$, find $(r+1)+(s+1)$.
+The roots of $P$ are $1$ and $2$, so the roots of reciprocal form are $1$ and $1/2$.
+$Q(1) = 2-3+1 = 0$, $Q(1/2) = 1/2 - 3/2 + 1 = 0$.
 
-The sum increases by $2$, so it is $6$.
+### Example 3: Applying Vieta's Formulas in Polynomial Manipulations 
+
+The roots of $2x^3 - 3x^2 + x - 5 = 0$ are $r, s, t$. Find $\dfrac{1}{r} + \dfrac{1}{s} + \dfrac{1}{t}$.
+
+Applying Vieta's formulas on the original polynomial, $rs+st+tr = 1/2$ and $rst = 5/2$.
+
+$$\frac{1}{r}+\frac{1}{s}+\frac{1}{t} = \frac{rs+st+tr}{rst} = \frac{1/2}{5/2} = \frac{1}{5}.$$
+
+### Example 4: Cubic Polynomials 
+
+The cubic $x^3 - 6x^2 + 11x - 6 = 0$ has $r+s+t = 6$. Find the cubic with roots $r-2, s-2, t-2$ (which will sum to zero).
+
+First, we replace $x$ with $x+2$:
+
+$$(x+2)^3 - 6(x+2)^2 + 11(x+2) - 6$$
+$$= x^3+6x^2+12x+8 - 6x^2-24x-24 + 11x+22 - 6 = x^3 - x.$$
+
+The new roots sum to $0$. Hence factoring: $x(x-1)(x+1)$ gives shifted roots of $0, 1, -1$, so we know that the original roots are $2, 3, 1$.
 
 ## Strategy Checklist
 
-- Decide whether you need a shift or a reciprocal.
-- Apply the substitution carefully and simplify.
-- Use Vieta to extract root sums/products.
+- There are many forms of polynomial manipulations, shift, a reciprocal, or a scale.
+- For a shift of $k$, we replace $x$ with $x - k$ and expand the polynomial.
+- A lot of graphing can also be done with polynomials manipulation, for visual intuition. More about this is covered on other modules. 
 
 ## Common Pitfalls
 
-- Shifting in the wrong direction.
-- Forgetting that reciprocal roots require a nonzero constant term.
-- Dropping factors when forming $x^nP(1/x)$.
+- One can easily shifting the polynomial to the wrong direction. To get roots $r+k$, replace $x$ with $x-k$, and do not replace it with $x+k$.
+- If the constant term is zero, factor out $x$ first.
+- After a transformation, use the new polynomial's coefficients for Vieta's formulas, not the original's.
 
 ## Practice Problems
 
