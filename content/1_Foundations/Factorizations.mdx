@@ -1,0 +1,141 @@
+---
+id: factorizations
+title: Factorizations
+author: Siddhant Arora
+description: Key factorizations to simplify problems
+prerequisites: ["exponent-rules"]
+---
+
+## Overview
+
+Knowing how to factor an expression is a skill that is used from the AMC 8 level all the way to the olympiad level. Recognizing factorizations quickly or noticing similarities and adding/multiplying accordingly is an overlooked skill that can trivialize many problems. In this module, we will go over some of the most important factorizations and crucially, meta-cognition tricks to apply.
+
+## Why Factor?
+
+The key benefit factoring has is that it allows a series of sums to be translated into a product. This has various benefits, for instance, if we were to solve for solutions for an equation in integers, we now could iterate over factor pairs that multiply to the constant on the other side of the equation if there is one. 
+
+It also allows us to use divisibility properties. For instance, we may notice that two terms involved in a product are relatively prime (i.e, their *greatest common divisor* is $1$) which may be particularly useful. Essentially, factoring allows us to simplify a complex expression and use patterns/structure present to get a nicer product.
+
+## Factorizations
+
+Make sure you know each of these by heart!
+
+> 1\) $a^2 - b^2 = (a-b)(a+b)$
+
+**Derivation:** Expand $(a-b)(a+b) = a^2 + ab - ab - b^2 = a^2 - b^2$. $\square$
+
+> 2\) $a^3 - b^3 = (a-b)(a^2+ab+b^2)$
+
+**Derivation:** Expand $(a-b)(a^2+ab+b^2) = a^3 + a^2b + ab^2 - a^2b - ab^2 - b^3 = a^3 - b^3$. $\square$
+
+> 3\) $a^3 + b^3 = (a+b)(a^2-ab+b^2)$
+
+**Derivation:** Substitute $b \to -b$ into the previous identity: $a^3 - (-b)^3 = (a-(-b))(a^2+a(-b)+(-b)^2)$, which gives $a^3 + b^3 = (a+b)(a^2-ab+b^2)$. $\square$
+
+> 4\) $a^2 + b^2 = (a+b)^2 - 2ab$
+
+**Derivation:** Expand $(a+b)^2 = a^2 + 2ab + b^2$, then subtract $2ab$ from both sides. This is extremely useful in Vieta's problems where we know $a+b$ and $ab$ but want $a^2+b^2$. $\square$
+
+> 5\) $a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + a^{n-3}b^2 + \cdots + ab^{n-2} + b^{n-1})$
+
+**Derivation:** Let $S = a^{n-1} + a^{n-2}b + \cdots + b^{n-1}$. Then $aS = a^n + a^{n-1}b + \cdots + ab^{n-1}$ and $bS = a^{n-1}b + \cdots + ab^{n-1} + b^n$. Subtracting: $aS - bS = (a-b)S = a^n - b^n$. Alternatively, note that $x = b/a$ (assuming $a \neq 0$) is a root of $x^n - 1$, and this factorization is just the factorization of $x^n - 1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + 1)$ scaled by $a^n$. $\square$
+
+> 6\) $a^n + b^n = (a+b)(a^{n-1} - a^{n-2}b + a^{n-3}b^2 - \cdots + b^{n-1})$ (odd $n$ only)
+
+**Derivation:** Substitute $b \to -b$ into the $a^n - b^n$ identity. We get $a^n - (-b)^n = a^n + b^n$ only when $n$ is odd (since $(-b)^n = -b^n$ for odd $n$). The second factor becomes an alternating sum. Note: $a^n + b^n$ does **not** factor nicely over the reals when $n$ is even. $\square$
+
+> 7\) $a^2 + b^2 + c^2 + 2(ab+bc+ac) = (a+b+c)^2$
+
+**Derivation:** Expand $(a+b+c)^2 = (a+b+c)(a+b+c)$. Distributing: $a^2 + ab + ac + ab + b^2 + bc + ac + bc + c^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ac$. $\square$
+
+> 8\) $(a+b+c)^3 - (a^3+b^3+c^3) = 3(a+b)(b+c)(a+c)$
+
+**Derivation:** Expand $(a+b+c)^3$ using the multinomial theorem:
+
+$(a+b+c)^3 = a^3 + b^3 + c^3 + 3(a^2b + a^2c + b^2a + b^2c + c^2a + c^2b) + 6abc$
+
+Subtracting $a^3+b^3+c^3$:
+
+$(a+b+c)^3 - (a^3+b^3+c^3) = 3(a^2b + a^2c + b^2a + b^2c + c^2a + c^2b) + 6abc$
+
+$= 3(a^2b + a^2c + b^2a + b^2c + c^2a + c^2b + 2abc)$
+
+$= 3(a+b)(b+c)(a+c)$
+
+The last step can be verified by expanding $(a+b)(b+c)(a+c) = (ab+b^2+ac+bc)(a+c) = a^2b + ab^2 + a^2c + 2abc + b^2c + ac^2 + bc^2$, which matches. $\square$
+
+## Direct Application
+
+> **2022 AMC 10B | Problem 13:** The positive difference between a pair of primes is equal to $2$, and the positive difference between the cubes of the two primes is $31106$. What is the sum of the digits of the least prime that is greater than those two primes?
+
+This is a direct application of **Factorization 2** (difference of cubes)!
+
+Let the two primes be $a$ and $b$ with $a > b$. We're given:
+
+$a - b = 2$ and $a^3 - b^3 = 31106$
+
+Applying the difference of cubes factorization $a^3 - b^3 = (a-b)(a^2+ab+b^2)$:
+
+$31106 = 2(a^2 + ab + b^2)$
+
+$a^2 + ab + b^2 = 15553$
+
+Since $a - b = 2$, we can write $a = b + 2$. Substituting:
+
+$(b+2)^2 + (b+2)b + b^2 = 15553$
+
+$b^2 + 4b + 4 + b^2 + 2b + b^2 = 15553$
+
+$3b^2 + 6b + 4 = 15553$
+
+$3b^2 + 6b = 15549$
+
+$b^2 + 2b = 5183$
+
+Now we use **Factorization 4** in reverse, completing the square:
+
+$b^2 + 2b + 1 = 5184$
+
+$(b+1)^2 = 5184 = 72^2$
+
+$b + 1 = 72 \implies b = 71$
+
+So the twin primes are $71$ and $73$. The next prime after $73$ is $79$, and the sum of its digits is $7 + 9 = \boxed{16}$
+
+## Meta-Cognition
+
+Most problems you encounter will not have a simple expression waiting to be easily factored. In such cases, it may be useful to add a term to make the expression factorable (as discussed in *Simon's Factoring Trick*). 
+
+> Consider $a^2 + b^2 + ab = (ab)^2$. 
+
+This can be easily simplified if we look and see how the left hand side is *almost* $a^2 + b^2 + 2ab = (a + b) ^2$. We can attain this by simply adding $ab$ to be sides.
+
+$(a + b)^2 = (ab)^2 + ab, (a+b)^2=ab(ab+1)$
+
+This is much easier to work with than the last expression not only because we have reduced this into products and perfect-squares, but also because we can use the fact that $ab$ and $ab+1$ are relatively prime.
+
+Furthermore, problems may involve evaluating an expression involving $ab$ terms given only the values of $a+b$ and $a^2 + b^2$, we can reverse-engineer from one of our factorizations, i.e, $(a+b)^2=a^2+b^2+2ab$ to isolate for $ab$
+
+The best thing to think about when you see a *nasty* expression is to look at the equation, notice any patterns, add terms/factor accordingly, and take advantage of the simplified equation.
+
+
+### Example Problem
+
+> **2023 AMC 10B | Problem 14:** How many ordered pairs of integers $(m, n)$ satisfy the equation $m^2+mn+n^2 = m^2n^2$?
+
+As discussed above, we look at the equation for a bit. The left hand side is *almost* $(m+n)^2$. We can add $mn$ to both sides to *complete the square*
+
+$(m + n)^2 = m^2n^2 + mn = mn(mn + 1)$
+
+Now, we have to use a *little* bit of observational skills and number theory. Notice first that in the prime factorization of a perfect square (here, the $(m+n)^2$ term), every prime has an even exponent. Also, notice how $mn$ and $mn+1$ are relatively prime, that means they don't share any prime factors. Hence, for their product to be a perfect square, both $mn$ and $mn+1$ must be perfect squares!
+
+Two consecutive numbers being perfect squares indeed does not happen often, the only case is $(0, 1)$. This gives $(m + n)^2 = mn(mn + 1) = 0\cdot1 = 0$. This tells us $m = -n$. Now we do casework:
+
+1) $mn = 0, m = -n: (m, n) = (0, 0)$
+2) $mn + 1 = 0, m = -n: (m, n) = (1, -1), (-1, 1)$
+
+These were all the cases making the answer $\boxed{3} $
+
+## Practice Problems
+
+<Problems problems="practice" />
