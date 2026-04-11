@@ -1,0 +1,73 @@
+---
+id: descartes-theorem
+title: Descartes' Theorem
+author: Macquel Ko
+description: Tangents to circles, used in AMC10/12 and AIME.
+prerequisites: ["geometry-basics"]
+---
+
+## Overview
+
+Descartes' theorem is a formula in four variables which describes the relationship between the radii of 4 mutually tangent circles. It most commonly appears in AMC10/12 and some AIME problems.
+
+## Key Ideas
+
+- The formal statement of the theorem is
+$k_{1} + k_{2} + k_{3}+ k_{4} = \sqrt{2(k_{1} + k_{2} + k_{3} + k_{4})}$ where $k_{i} = \pm \frac{1}{r_{i}}$ and r is the length of the radii of the i-th circle. K is known as the 
+"curvature" of the i-th circle.
+
+- The sign of the curvature depends on whether or not the circle is internally or externally tangent to the other circles. For example,
+in the worked example below, the curvatures are all positive because they are all externally tangent to eachother.
+
+- Furthermore, Descartes' Theorem also works for lines instead of circles. For lines, the curvature is exactly 0, while the formula maintains its original form.
+
+## Worked Example
+ 
+Three mutually tangent circles have radii $1$, $2$, and $3$. A fourth circle is tangent to all three. Find the radius of the smallest such circle.
+
+We are given the radii of three circles and are asked to find an external tangent circle.
+
+We use Descartes’ Theorem with curvatures (reciprocals of the radii):
+$k_1 = 1, \quad k_2 = \tfrac{1}{2}, \quad k_3 = \tfrac{1}{3}$
+
+Descartes' Circle Formula states
+$(k_1 + k_2 + k_3 + k_4)^2 = 2(k_1^2 + k_2^2 + k_3^2 + k_4^2)$
+
+Plugging in:
+$\left(1 + \tfrac{1}{2} + \tfrac{1}{3} + k_4\right)^2 = 2\left(1 + \tfrac{1}{4} + \tfrac{1}{9} + k_4^2\right)$
+
+Simplifying:
+$\left(\tfrac{11}{6} + k_4\right)^2 = 2\left(\tfrac{49}{36} + k_4^2\right)$
+
+$\tfrac{121}{36} + \tfrac{11}{3}k_4 + k_4^2 = \tfrac{49}{18} + 2k_4^2$
+
+$k_4^2 - \tfrac{11}{3}k_4 - \tfrac{23}{36} = 0$
+
+Using the quadratic formula:
+$k_4 = \frac{\tfrac{11}{3} \pm \sqrt{\tfrac{121}{9} - (-\tfrac{23}{9})}}{2}
+= \frac{\tfrac{11}{3} \pm \sqrt{\tfrac{144}{9}}}{2}
+= \frac{\tfrac{11}{3} \pm \tfrac{12}{3}}{2}
+= \tfrac{23}{6}, -\tfrac{1}{6}$
+
+Since curvature is the reciprocal of the radius, the two possible circles are:
+$r = \frac{1}{|k_4|} = \frac{6}{23}$ and $6$
+
+The larger circle contains the three given circles, so the desired radius is $\frac{6}{23}$ 
+
+## More Examples
+
+## Strategy Checklist
+
+- Look for keywords such as "mutually tangent" and "the smallest circle".
+- If the problem involves 3 mutually tangent circles, see if Descartes' Theorem applies.
+- keep in mind that the theorem also holds for lines aswell.
+
+## Common Pitfalls
+
+- forgetting the sign of the curvatures.
+- forgetting it also works for a line.
+- incorrectly solving the quadratic.
+
+## Practice Problems
+
+<Problems problems="practice" />
