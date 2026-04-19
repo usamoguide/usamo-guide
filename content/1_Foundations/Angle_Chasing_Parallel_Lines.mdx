@@ -1,12 +1,12 @@
 ---
 id: angle-chasing-parallel-lines
 title: Angle Chasing and Parallel Lines
-author: USAMO Guide Team
+author: Lalith
 description: Navigating transversals, alternate interior angles, and supplementary relationships.
 prerequisites: []
 ---
 
-<IncompleteSection />
+
 
 ## Overview
 
@@ -29,26 +29,46 @@ is essential for AMC 8 geometry.
 
 ### Identifying Angle Pairs
 
-Label angles at each intersection and identify which pairs are alternate
-interior, corresponding, or co-interior.
+Angle pairs will be present at any given figure. Identifying angle pairs is crucial as it allows us to make various deductions about the properties of the figure and allows us to even coclude seemingly surprising things, such as a quadrilateral can be enclosed within a circle or 2 seemngly different figures being the same thing in terms of length of sides and angles(We will cover these concepts later!). 
 
-### Multi-Step Angle Chasing
+Identifying them is simple: You just observe what relations they have. In fact the process of finding angle pairs and making findings out of them itself is known as Angle Chasing and it is a key intermediate step in many geometry problems wich is dcussed below.
 
-Use one known angle to find the next, then the next, chaining relationships
-across the figure.
+## Multi-Step Angle Chasing
 
-### Exterior Angle Theorem
+Using one known angle to find the next, then the next, chaining relationships
+across the figure in a careful meticulous manner is known as angle chasing. And then using those relationships to obtain useful relationships. Angle chasing is done by applying multiple properties or theorems(This will be discussed later once again). Now we will dicuss some basic theorems and properties.
 
-An exterior angle of a triangle equals the sum of the two non-adjacent interior
-angles.
+### Angle on a line
+
+All angles that lie on a line will always add to $180\degree$. Whenever we have a pair of angles adding up to $180\degree$, they are known as **supplemetary angles**. Right now this may seem trivial but it is crucial as a foundation for other more complex theorems. 
+
+### Angles in line intersections
+
+Whenever we have two lines intersecting each other, the angle opposite to one angle is equal. We call these **Vertically opposite angles**.
+
+ Finally if there are 2 lines which are **parallel** to each other, and a line is cutting through them, it is known as a **transversal**. If the angles are on both the lines are same, they are known as **corresponding angles**. If they lie on the interior side of the line and we take the vertically opposite angle of the exterior correponding angle, they are known as **alternate interior angles**. Similarly we define **alternate exterior angles**.
+
+![Parallel lines cut by a transversal](https://t3.ftcdn.net/jpg/05/20/43/10/360_F_520431061_xiUGZ1mHnDCLHjMunEi4lOHuTq86pbSU.jpg)
+
+## Angles in a triangle
+
+The angles in a triangle always add to $180\degree$
 
 ## Worked Example
 
-Two parallel lines are cut by a transversal. One angle measures $65°$. Find the
-co-interior angle on the same side.
+#### Question
+Prove that the angles in a triangle add to $180\degree$
 
-Co-interior angles are supplementary: $180° - 65° = 115°$.
+#### Proof
+Let there be a triangle with 1 parallel line as shown below (These parallel lines are known as auxillary lines, which will be covered later) as below
+![Angles in a triangle](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUk8QHXuJXaDFkYLmn2Wr2R1tG0KXTJ8H9ZQ&s)
+Now observe that $BC$ and $AB$ are transversals.
 
+ Hence we can take the alternate interior angles to get $\angle CBE = c \degree$
+ and  $\angle ABD = a \degree$. Observe that $\angle ABC$, $\angle CBE$ and $\angle ABD$ all lie on a line. Hence:
+ $$
+ \angle ABC+\angle CBE+\angle ABD = 180\degree \implies \boxed{a\degree +b\degree+c\degree = 180\degree }
+ $$
 ## Practice Problems
 
 <Problems problems="practice" />
