@@ -25,6 +25,14 @@ The main idea of proof writing is that everyone who reads the proof should be ab
 * Write in complete sentences and justify each step.
 * Identify and highlight the key invariant, idea, or construction early.
 
+### How much do I need to write? 
+
+Answer: Include enough that grader will know that you know the solution. Additionally, if you have extra time you should always try to add extra detail to whatever you have written.
+For a general advise: 
+- If you're not sure a lemma you're using is not well known, it is safer to **write down a complete statement of a lemma and the outline of a proof of it**. 
+- **Be careful of the definition!** Wrong claims or typo's can be fixed quite easily by a grader, but if you write a definition wrong there's no way a grader can fix it. In particular, **include diagram a if you need**. For Geo specifically, a box of coloured pencils can go a long way in making your proof more readable, it also makes it less likely a marker will misinterpret your proof.
+
+
 ---
 ### Proof by Contradiction
 
@@ -123,55 +131,6 @@ Many otherwise strong solutions lose points due to missing cases. Always verify:
 * Usage of circular reasoning
 
 ---
-## Mathematical arguments
-In this section we talk about mathematical proofs; 
-you can't get a $7$ if you're mathematically wrong. 
-
-### "Find all" type problem is always two-part problem
-
-Some olympiad problems look like this: 
-"Find all $n$ such that the condition holds."
-If you think the answer set is $S$, then 
-we need to prove the following: 
-- For $n\in S$ prove that the condition holds. 
-- For $n\notin S$, prove that $n$ doesn't satisfy the condition. 
-
-Notice that we have to prove **both** of two statements; 
-we need to write it down even if it's trivial! 
-It is a common mistake to forget writing "this clearly works" 
-and losing $1$ point in a contest. 
-Thus, we recommend writing the solution in the following form: 
-1. Start by describing all the solutions you found, which looks like 
-	"The answer is $n\in \{1, 2, 4, 12\}$". 
-2. Show that these solutions you stated works. You **must** write this 
-	even if it's trivial, because it's the part of the problem. 
-3. Prove that those are the only ones that satisfy the condition. 
-	Again, you must write this part even if it's trivial, 
-	since it's a part of the problem. 
-
-Note that sometimes part 2 and 3 can be swapped, though **you must write both**. 
-By skipping the trivial part, the grader cannot tell whether you know it is trivial or whether you do not know the proof and therefore did not write it.
-
-### optimization problem is always two-part problem
-
-Optimization problem works similarly as above; 
-suppose a problem with: "find the minimum/maximum of $m$" 
-and you've got the answer $M$, then we need to prove that: 
-- There **exists** a situation where $m=M$. 
-- For **all** possible configurations we must have that 
-	$M$ is the minimum/maximum of $m$. 
-
-Thus, we recommend writing proofs as follows: 
-1. Describe your answer by writing "The answer is $m=\text{(something)}$"
-2. Show that the bound is achieved: "which is achieved when blah blah". 
-3. Show that we always have $m\le M$ (or $m\ge M$).
-
-### How much do I need to write? 
-
-Answer: Include enough that grader will know that you know the solution. Additionally, if you have extra time you should always try to add extra detail to whatever you have written.
-For a general advise: 
-- If you're not sure a lemma you're using is not well known, it is safer to **write down a complete statement of a lemma and the outline of a proof of it**. 
-- **Be careful of the definition!** Wrong claims or typo's can be fixed quite easily by a grader, but if you write a definition wrong there's no way a grader can fix it. In particular, **include diagram a if you need**. For Geo specifically, a box of coloured pencils can go a long way in making your proof more readable, it also makes it less likely a marker will misinterpret your proof.
 
 ## style argument 
 
@@ -241,6 +200,7 @@ Here's a short section about writing in the contest.
 	you can insert text or copy-paste it anytime. 
 	In hand-written solution, you can't do this, 
 	thus leaving space will help you. 
+- If you have time, draft the writeup or small parts of the writeup so you can work on clarity and check if the logic is sound.
 
 ## Example
 
@@ -254,7 +214,7 @@ Case 1:
 
 Now let us assume that $p\ne29$. Then we observe that the Greatest Common divisor of $p$ and $29$ is 1.
 
- The key idea here is to use$\boxed{Fermat's\;Little\;Theorem}$ to get:
+ The key idea here is to use $\boxed{Fermat's\;Little\;Theorem}$ to get:
 $$
 29^{p-1} \equiv 1\:(mod\:p) \implies 29^p \equiv 29\:(mod\:p)
 $$
