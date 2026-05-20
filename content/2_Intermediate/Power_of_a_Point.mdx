@@ -8,217 +8,108 @@ prerequisites: [circle-angles]
 
 ## Overview
 
-Power of a point is a key strategy when working with circles, lines, and points that shows up often in AMC/AIME problems. It's often applicable when multiple lines sharing one point intersect a circle, such as secants, tangents, or intersecting chords. The shared point may be inside or outside the circle, each yielding different formulas. The idea is that certain products of segment lengths are equal, allowing you to turn a geometric setup into a simple algebra equation and quickly find missing lengths.
+This lesson is the first of learning about all the amazing properties of circles. We will discussing an important topic known as power of a point. Circles provide unique angle properties that we must capitalize on which in turn allows us to discover similar triangles and ultimately length chase through the concept of power of a point.
 
-## Definitions
+Power of a point is a key strategy when working with circles, lines, and points that shows up often in many problems. It is often applicable when multiple lines sharing one point intersect a circle, such as secants, tangents, or intersecting chords. The shared point may be inside or outside the circle, each yielding different formulas. In particular, the key idea is that certain products of segment lengths are equal, allowing you to turn a geometric setup into a simple algebra equation and quickly find missing lengths.
+
+## Power of a Point
+
+### Definitions
+
+Throughout this lesson and generally the chapter, we will reference the following terms a lot.
 
 - A **chord** is a line segment with both endpoints on the circle.
 - A **secant line** is a line that intersects a circle at two points.
 - A **tangent line** is a line that touches a circle at exactly one point. When a radius is drawn from the center to this point, it will be perpendicular to the original tangent line.
 
-<!-- In circle O with radius r, the power of point P is OP^2 - r^2 = (OP+r)(OP-r). -->
+### The Theorem
 
-## Cases
+Now, using these definitions, we can make the following claim.
 
-Power of a point changes slightly depending on whether the point of intersection is inside or outside the circle, and whether the lines through the point are tangent or secant lines. 
+> **Power of a Point.** Let $\omega$ be a circle and $P$ be a point on $\omega$. Points $A$, $B$, $C$, and $D$ lie on $\omega$ such that $AC$ and $BD$ intersect at $P$. Then
+>
+> $$PA \cdot PC = PB \cdot PD.$$
 
-### Case 1: Inside (two intersecting chords)
+Note that this is true regardless of where $P$ is. Whether $P$ is outside or inside the circle, it doesn't matter. The proof here may seem familiar. 
 
-If chords $AB$ and $CD$ intersect at point $P$ inside a circle, then it holds that
+First, we will angle chase in order to find similar triangles, an outlined closely followed in the previous lesson. In this example, $ABCD$ is a cyclic quadrilateral. 
 
-$$AP \cdot BP = CP \cdot DP.$$
+* Suppose $P$ is inside the circle: As $\angle DAC = \angle DBC$ and $\angle ACB = \angle ADB$ (which follows from the fact that they subtend the same arc), then $\triangle PAD \sim \triangle PBC$. Hence, from similar triangles:
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 300" width="260" height="260">
-    {/* Circle: Center (150,150), Radius 120 */}
-    <circle cx="150" cy="150" r="120" fill="none" stroke="blwhiteack" strokeWidth="2"/>
-    
-    {/* A: Positioned bottom-left, shifted slightly further clockwise */}
-    <circle cx="58" cy="216" r="4" fill="white"/>
-    <text x="38" y="230" fontSize="14">A</text>
+  <div align="center">
 
-    {/* B: Kept top-right as a anchor point */}
-    <circle cx="235" cy="65" r="4" fill="white"/>
-    <text x="242" y="60" fontSize="14">B</text>
+  $$\dfrac{PA}{PD} = \dfrac{PB}{PC} \implies PA \cdot PC = PB \cdot PD$$
 
-    {/* C: Positioned top-left, lower than the original symmetric spot */}
-    <circle cx="80" cy="53" r="4" fill="white"/>
-    <text x="65" y="45" fontSize="14">C</text>
+  </div>
 
-    {/* D: Positioned bottom-right, very close to the bottom axis */}
-    <circle cx="196" cy="261" r="4" fill="white"/>
-    <text x="196" y="278" fontSize="14">D</text>
+* Suppose $P$ is outside the circle: As
 
-    {/* Chords (Main connections) */}
-    <line x1="58" y1="216" x2="235" y2="65" stroke="white" strokeWidth="2"/> {/* A-B */}
-    <line x1="80" y1="53" x2="196" y2="261" stroke="white" strokeWidth="2"/> {/* C-D */}
-    
-    {/* Auxiliary Connections */}
-    <line x1="58" y1="216" x2="80" y2="53" stroke="blue" strokeWidth="1.5" strokeDasharray="4"/> {/* A-C */}
-    <line x1="196" y1="261" x2="235" y2="65" stroke="blue" strokeWidth="1.5" strokeDasharray="4"/> {/* D-B */}
+  <div align="center">
+    $\angle PAB = 180^\circ - \angle CDB = \angle PDC$ <br>
+    $\angle PBA = 180^\circ - \angle DCA = \angle PCD$
+  </div>
 
-    {/* Intersection point P */}
-    <circle cx="132" cy="152" r="4" fill="red"/>
-    <text x="138" y="166" fontSize="14" fontWeight="bold">P</text>
-  </svg>
-</div>
+  which follows from the fact that opposite angles in a cyclic quadrilateral sum to $180^\circ$, then $\triangle PAB \sim \triangle PDC$. Hence, from similar triangles:
 
-*Proof:* Observe that $\angle ACD = \angle DBA$ as they are inscribed in the same arc. Similarly, $\angle CAB = \angle BDC,$ so $\triangle ACP \sim \triangle DBP.$ Then, we obtain
+  <div align="center">
 
-$$ \dfrac{CP}{BP} = \dfrac{AP}{DP} $$
+  $$\dfrac{PA}{PB} = \dfrac{PD}{PC} \implies PA \cdot PC = PB \cdot PD$$
 
-$$ (AP)(BP) = (CP)(DP).\square$$
+  </div>
 
-### Case 2: Outside
+Regardless, the desired result follows. Now, it is also important to look at a neat corollary to this which is considered what happens if $P$ is outside the circle. In the above scenario, we essentially assumed that two lines each intersected the circle at two points. However, there exists a scenario where one line could be tangent. In that scenario, what happens?
 
-If line $PX$ is tangent to the circle, and $PB$ and $PC$ are secants intersecting the circle at $A$ and $D,$ respectively, then it holds that
+We can actually think of this scenario as exactly the same. As we move say line passing through $P$, $A$, and $C$ closer and closer to the edge of circle to obtain the desired tangency, then $PA$ and $PC$ approach the same value. Therefore, we end up with the following conclusion.
 
-$$PX^2 = PA \cdot PB = PD \cdot PC.$$
+> **Power of a Point.** Point $P$ lies on circle $\omega$. Points $X$, $Y$, $Z$ lie on $\omega$ such that $XY$ passes through $P$ and $PZ$ is tangent to $\omega$. Then
+>
+> $$PX \cdot PY = PZ^2.$$
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 300" width="300" height="260">
-    <circle cx="210" cy="150" r="100" fill="none" stroke="white" strokeWidth="2"/>
+The proof isn't too far off from the proof for the case when $P$ is outside the circle mentioned above, so I won't go into too much detail. Rather, I will leave it as an exercise for the reader.
 
-    <circle cx="115.9" cy="115.9" r="4" fill="white"/> {/* A */}
-    <text x="100" y="110" fontSize="16">A</text>
+### The Converse Holds!
 
-    <circle cx="284.1" cy="82.9" r="4" fill="white"/> {/* B */}
-    <text x="295" y="75" fontSize="16">B</text>
+Although this may not shock you, it should. This is one of the key ideas in many, many Olympiad geometry problems. This, in particular, is one of the many ways to prove a quadrilateral is cyclic.
 
-    <circle cx="305.8" cy="179.3" r="4" fill="white"/> {/* C */}
-    <text x="315" y="195" fontSize="16">C</text>
+> **Converse of Power of a Point.** Let $A$, $B$, $C$, $D$, and $P$ be points such that
+> $$PA \cdot PC = PB \cdot PD.$$
+> It follows that $ABCD$ is cyclic.
 
-    <circle cx="110.1" cy="143.1" r="4" fill="white"/> {/* D */}
-    <text x="96" y="159" fontSize="16">D</text>
+Nicely enough, the proof for this is almost the exact same as above but whose steps are taken in reverse. To stress once again, while the initial statement can heavily be used for finding lengths in computational contests, this converse proposal is a key idea in many, many Olympiad geometry problems which we will look at very soon.
 
-    <circle cx="156.4" cy="65.6" r="4" fill="white"/> {/* X */}
-    <text x="150" y="55" fontSize="16">X</text>
+## Putting everything together
 
-    <circle cx="40" cy="130" r="5" fill="red"/> {/* P */}
-    <text x="30" y="115" fontSize="16" fill="red" fontWeight="bold">P</text>
+> **Example 1** (American Mathematics Competition). In unit square $ABCD$, the inscribed circle $\omega$ intersects $CD$ at $M$, and $AM$ intersects $\omega$ at a point $P$ different from $M$. Compute $AP$.
 
-    <line x1="40" y1="130" x2="284.1" y2="82.9" stroke="white" strokeWidth="2"/> {/* P-B */}
-    <line x1="40" y1="130" x2="305.8" y2="179.3" stroke="white" strokeWidth="2"/> {/* P-C */}
-    <line x1="40" y1="130" x2="156.4" y2="65.6" stroke="white" strokeWidth="2"/> {/* P-X */}
-  </svg>
-</div>
+The condition implies $M$ is the midpoint of $CD$. Due to Pythagoras,
 
-**Note:** $PX$ can be thought of as just another secant, except the two points at which it intersects the circle have become so close that they have condensed into one point, $X.$ From here the product $(PA)(PB)$ or similar becomes $(PX)(PX),$ revealing why the $PX^2$ term appears.
+$$AM = \sqrt{AD^2 + DM^2} = \sqrt{1^2+\left(\tfrac{1}{2}\right)^2} = \tfrac{\sqrt{5}}{2}.$$
 
-*Proof:* We will prove the case with two secants. Observe that $\angle ABC + \angle ADC = 180^\circ,$ as the arcs they are inscribed in form a $360^\circ$ circle. Therefore, $\angle ADP = 180 - \angle ADC = \angle ABC.$ Finally, it is clear that $\angle APD = \angle BPC,$ so we have $\triangle APD \sim \triangle CPB.$ Therefore,
+Let $N$ be the point of tangency between $\omega$ and $AD$. Then, by taking Power of the Point at $A$,
 
-$$\dfrac{PA}{PC} = \dfrac{PD}{PB}$$
+$$AN^2 = AM \cdot AP \implies \left(\dfrac{1}{2}\right)^2 = \dfrac{\sqrt{5}}{2}\cdot AP \implies AP = \dfrac{1}{2\sqrt{5}} = \dfrac{\sqrt{5}}{10}.$$
 
-$$(PA)(PB) = (PC)(PD). \square$$
+> **Example 2** (USA Junior Mathematics Olympiad). Let $ABCD$ be a convex quadrilateral inscribed in a circle and satisfying $DA < AB = BC < CD$. Points $E$ and $F$ are chosen on sides $CD$ and $AB$ such that $BE \perp AC$ and $EF \parallel BC$. Prove that $FB = FD$.
 
-The proof of the case involving tangent lines is left as an exercise.
+Angle chasing, we have that
 
-## Applications
+$$\angle FBD = \angle ABD = \angle ACD = \angle ACE.$$
 
-### Identify the Configuration
+In addition,
 
-If you see two intersecting secants, chords, or tangents, consider applying power of a point.
+$$\angle FED + \angle FAD = BCD + \left(180^{\circ} - \angle BCD\right) = 180^{\circ},$$
 
-### Combine with Triangle Similarity or Angle Chasing
+thus $AFED$ is cyclic. So, $\angle AFD = \angle AED$, so $\angle BFD = \angle AEC$. Thus, $\triangle BFD \sim \triangle AEC$. Since $AE = EC$ as $E$ is on the perpendicular bisector of $AC$, then $FB = FD$, as desired.
 
-Triangle similarity and angle chasing were the two key strategies used in the proof of power of a point. 
+## Alternate Form
 
-### Alternate Form
+Consider a circle $\omega$ with center $O$ and radius $r$. Let $P$ be an arbitrary point. Then, we define the power of $P$ with respect to $\omega$ to be
 
-If the distance from point $P$ to center $O,$ and radius $r$ are known, we can construct a secant/chord. Then, the power of point $P$ equals $|OP^2-r^2|,$ the absolute value included due to the two cases of $P$ being inside or outside the circle. Note that this expression is equal to $|(OP-r)(OP+r)|,$ making the geometric significance clearer.
+$$\text{Pow}(\omega, P) = PO^2 - r^2.$$
 
-In the below diagram, $(PA)(PB) = (r-OP)(r+OP) = r^2-OP^2 = (PC)(PD).$
+This will have more use later. But, for now, we will let allow a lingering question about what this function can do and its power.
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 300" width="300" height="260">
-    <circle cx="210" cy="150" r="100" fill="none" stroke="white" strokeWidth="2" />
-
-    <circle cx="210" cy="150" r="3" fill="white" /> {/* O (Center) */}
-    <text x="215" y="165" fontSize="16">O</text>
-
-    <circle cx="110" cy="150" r="4" fill="white" /> {/* A */}
-    <text x="110" y="140" fontSize="16">A</text>
-
-    <circle cx="310" cy="150" r="4" fill="white" /> {/* B */}
-    <text x="315" y="145" fontSize="16">B</text>
-
-    <circle cx="150" cy="230" r="4" fill="white" /> {/* C */}
-    <text x="150" y="250" fontSize="16">C</text>
-
-    <circle cx="170" cy="59" r="4" fill="white" /> {/* D */}
-    <text x="175" y="65" fontSize="16">D</text>
-
-    <circle cx="160" cy="150" r="5" fill="red" /> {/* P */}
-    <text x="165" y="165" fontSize="16" fill="red" fontWeight="bold">P</text>
-
-    <line x1="110" y1="150" x2="310" y2="150" stroke="white" strokeWidth="2" /> {/* A-B chord through P */}
-    <line x1="150" y1="230" x2="170" y2="59" stroke="white" strokeWidth="2" /> {/* C-D chord through P */}
-  </svg>
-</div>
-
-In the below diagram, $(PA)(PB) = (OP-r)(OP+r) = OP^2-r^2 = (PC)(PD).$
-
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 300" width="300" height="260">
-    <circle cx="210" cy="150" r="100" fill="none" stroke="white" strokeWidth="2"/>
-
-    <circle cx="210" cy="150" r="3" fill="white"/> {/* O (Center) */}
-    <text x="210" y="170" fontSize="16">O</text>
-
-    <circle cx="110" cy="150" r="4" fill="white"/> {/* A */}
-    <text x="110" y="140" fontSize="16">A</text>
-
-    <circle cx="310" cy="150" r="4" fill="white"/> {/* B */}
-    <text x="315" y="145" fontSize="16">B</text>
-
-    <circle cx="296.6" cy="200" r="4" fill="white"/> {/* C */}
-    <text x="305" y="215" fontSize="16">C</text>
-
-    <circle cx="115.4" cy="164.7" r="4" fill="white"/> {/* D */}
-    <text x="100" y="185" fontSize="16">D</text>
-
-    <circle cx="40" cy="150" r="5" fill="red"/> {/* P */}
-    <text x="25" y="145" fontSize="16" fill="red" fontWeight="bold">P</text>
-
-    <line x1="40" y1="150" x2="310" y2="150" stroke="white" strokeWidth="2"/> {/* P-B (thru center) */}
-    <line x1="40" y1="150" x2="296.6" y2="200" stroke="white" strokeWidth="2"/> {/* P-C (secant) */}
-  </svg>
-</div>
-
-
-
-## Common Mistakes
-
-- **Mixing up order along a secant:** In the case where $P$ is outside the circle, ensure you are multiplying $PA \cdot PB,$ and not $PA \cdot AB$ or similar. Be especially cautious of this mistake when the lengths for $PA$ and $AB$ are marked, as it may be tempting to multiply by $AB$ instead of $PB.$ 
-<!-- Using power-of-point for an interior point without absolute values. -->
-- **Mixing up secant and tangent:** Accidentally squaring a secant length (e.g. $PA^2$ instead of using the product $(PA)(PB).$)
-- **Incorrectly applying:** Applying power of a point when two segments through $P$ appear to be part of the same line, but are actually not. 
-
-
-
-## Worked Example
-
-A circle has radius $5$. Point $P$ is $8$ units from the center. If a secant
-through $P$ meets the circle at $A$ and $B$ with $PA=2$, find $PB$.
-
-Power is $8^2-5^2=39$. So $2\cdot PB = 39$, giving $PB=39/2$.
-
-## More Examples
-
-### Example 1: Tangent Length
-
-Point $P$ is $13$ units from the center of a circle of radius $5$. Find the
-tangent length.
-
-$PT^2=13^2-5^2=144$, so $PT=12$.
-
-### Example 2: Two Secants
-
-From $P$, one secant has $PA=3$ and $PB=15$. Another secant has $PC=5$.
-Find $PD$.
-
-$3\cdot 15 = 5\cdot PD$, so $PD=9$.
-
+A quick way to see the usefulness of this is the following: let $AB$ be a diameter of $\omega$ passing through $P$. Then, $PA \cdot PB = (PO-r)(PO+r)$. it follows that for any points $A$ and $B$ where segment $AB$ contains $P$, then $\text{Pow}(\omega, P) = AP \cdot PB$.
 
 
 ## Practice Problems
