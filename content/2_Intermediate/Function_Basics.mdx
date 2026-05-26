@@ -1,0 +1,889 @@
+---
+id: function-basics
+title: Function Basics
+author: Pranav Ramesh
+description: All about Polynomials and Ideas used in solving them.
+prerequisites: ["algebra-basics"]
+---
+ 
+## Introduction
+ 
+Functions are the ~~boring~~ foundational language of all of mathematics. Every time you write $y = x^2$, describe a sequence, or model a physical process, you are implicitly working with a function. In competition math, functions appear everywhere: from AMC problems that ask for the range of a composite expression, to AIME problems that construct elaborate functional equations and ask you to evaluate $f(2026)$.
+ 
+$$
+f(x) = 6x + 8
+$$
+ 
+The $(x)$ after $f$ on the left side indicates that we are
+putting $x$ into the function $f$. When speaking, $f(x)$ is read "f of x."
+The $x$ in the equation $f(x) = 6x + 8$ is a variable, which means that it is essentially a placeholder. When we put a specific number in our function, we replace $x$ with that number in the equation $f(x) = 6x + 8$ to determine what the machine outputs. 
+ 
+For example, 
+$$
+f(2) = 6(2) + 8 \\
+f(2) = 12 + 8 = 20
+$$
+ 
+Think of a function as a machine: you drop an input into one end, and exactly one output pops out the other.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 160" role="img">
+  <title>Function as a machine: input x enters, output f(x) exits</title>
+  <desc>A box labeled f with an arrow entering from the left labeled x and an arrow exiting to the right labeled f(x)</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <line x1="60" y1="80" x2="228" y2="80" class="arr" marker-end="url(#arrow)" stroke-width="2"/>
+  <text class="th" x="130" y="68" text-anchor="middle">input</text>
+  <text class="t" x="130" y="97" text-anchor="middle" font-style="italic">x</text>
+  <g class="c-purple">
+    <rect x="240" y="44" width="200" height="72" rx="12" stroke-width="1"/>
+    <text class="th" x="340" y="76" text-anchor="middle" dominant-baseline="central">function</text>
+    <text class="ts" x="340" y="98" text-anchor="middle" dominant-baseline="central">exactly one output</text>
+  </g>
+  <line x1="440" y1="80" x2="608" y2="80" class="arr" marker-end="url(#arrow)" stroke-width="2"/>
+  <text class="th" x="528" y="68" text-anchor="middle">output</text>
+  <text class="t" x="528" y="97" text-anchor="middle" font-style="italic">f(x)</text>
+</svg>
+</Diagram>
+
+The $\textbf{Domain}$ of a function consists of all the values we are able to input to the function and get an output, and the  $\textbf{Range}$ of the function consists of all the values that can possibly come out of the function.
+ 
+Taking $f(x) = \frac{1}{x-9}$, Since denominator $\neq 0 \text{ (since the function is not defined at that point)} \implies x \neq 9 $. This shows that domain of $f(x) = \frac{1}{x-9}$ is all real numbers except 9. $\\$
+ 
+Since we know that the range of $\frac{1}{y}$ is $(-\infty, 0) \cup (0, \infty)$ 
+$$
+\implies f(x) = \frac{1}{x-9} = (-\infty, 0) \cup (0, \infty)
+$$
+ 
+this means that the range of $f(x)$ is $(-\infty, 0) \cup (0, \infty)$ 
+ 
+Note: We call a function that can only output real numbers a real-valued function, or, a real function.
+ 
+Here are some definitions:
+ 
+**Function**: A function $f$ from a set $A$ to a set $B$ is a rule that assigns to each element $x \in A$ exactly *one* element $f(x) \in B$. The key word is *exactly one*, a function cannot give two different outputs for the same input.
+ 
+**Domain**: The set of all *inputs* for which the function is defined. If no domain is specified, assume it is the largest subset of $\mathbb{R}$ for which $f(x)$ makes sense.
+ 
+**Codomain**: The set $B$ that outputs are *declared* to land in. Not every element of $B$ need actually be achieved.
+ 
+**Range (Image)**: The set of all values $f(x)$ *actually* takes as $x$ ranges over the domain. The range is always a subset of the codomain.
+ 
+$$
+\text{Range}(f) = \{f(x) \mid x \in \text{Domain}(f)\}
+$$
+ 
+The distinction between codomain and range trips people up. If $f : \mathbb{R} \to \mathbb{R}$ is defined by $f(x) = x^2$, the codomain is $\mathbb{R}$ but the range is $[0, \infty)$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 220" role="img">
+  <title>Domain, codomain, and range: domain maps into codomain, range is the subset actually hit</title>
+  <desc>Two ovals side by side. Left oval is the domain with sample inputs. Right oval is the codomain with the range shaded inside it. Arrows from inputs land only in the range region.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Domain oval -->
+  <ellipse cx="185" cy="115" rx="140" ry="90" class="c-teal" stroke-width="1"/>
+  <text class="th" x="185" y="44" text-anchor="middle">Domain</text>
+  <text class="ts" x="185" y="60" text-anchor="middle">all valid inputs</text>
+  <text class="t" x="185" y="100" text-anchor="middle">−2</text>
+  <text class="t" x="185" y="125" text-anchor="middle">0</text>
+  <text class="t" x="185" y="150" text-anchor="middle">3</text>
+  <!-- Codomain oval -->
+  <ellipse cx="495" cy="115" rx="140" ry="90" class="c-gray" stroke-width="1"/>
+  <text class="th" x="495" y="44" text-anchor="middle">Codomain</text>
+  <!-- Range shaded region inside codomain -->
+  <ellipse cx="495" cy="120" rx="80" ry="54" class="c-purple" stroke-width="1"/>
+  <text class="ts" x="495" y="98" text-anchor="middle">range</text>
+  <text class="t" x="495" y="118" text-anchor="middle">4</text>
+  <text class="t" x="495" y="140" text-anchor="middle">0</text>
+  <text class="ts" x="590" y="180" text-anchor="middle">not achieved</text>
+  <!-- Arrows -->
+  <line x1="330" y1="100" x2="408" y2="112" class="arr" marker-end="url(#arrow)"/>
+  <line x1="330" y1="125" x2="408" y2="122" class="arr" marker-end="url(#arrow)"/>
+  <line x1="330" y1="150" x2="408" y2="132" class="arr" marker-end="url(#arrow)"/>
+</svg>
+</Diagram>
+---
+ 
+## Is It Even a Function? The Validity Test
+ 
+Not every rule or curve defines a function. Before you can even talk about domain and range, you need to check whether it's a function at all !!!
+ 
+### Numerical / Algebraic Test
+ 
+A rule is a function if every input produces at most one output. If you can find a single $x$ that maps to two different values, it fails.
+ 
+**Example:** Is $y^2 = x$ a function of $x$?
+ 
+For $x = 4$, we get $y = 2$ *and* $y = -2$. Two outputs for one input, so, not a function. However, $y = \sqrt{x}$ (taking only the positive root) *is* a function of x .
+ 
+**Example:** Is $f(x) = \dfrac{x^2 - 1}{x - 1}$ a function on all of $\mathbb{R}$?
+ 
+At $x = 1$, the expression is $\tfrac{0}{0}$, which is undefined. So $f$ is not defined on all of $\mathbb{R}$; its natural domain excludes $x = 1$.
+ 
+### Graphical Test: The Vertical Line Test
+ 
+A curve in the $xy$-plane is the graph of a function $y = f(x)$ if and only if every vertical line $x = c$ intersects the curve in *at most one point*.
+ 
+**Why?** A vertical line $x = c$ hits the graph at every point $(c, y)$ where $f(c) = y$. If there are two such points, $(c, y_1)$ and $(c, y_2)$ with $y_1 \neq y_2$, then $c$ has two outputs, which violates the definition of a function.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 260" role="img">
+  <title>Vertical line test: circle fails, parabola passes</title>
+  <desc>Two graphs side by side. Left shows a circle with a vertical line crossing it at two points — labeled FAIL. Right shows a parabola with a vertical line touching at exactly one point — labeled PASS.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- LEFT: circle (fails VLT) -->
+  <!-- Axes -->
+  <line x1="60" y1="130" x2="290" y2="130" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="175" y1="30" x2="175" y2="230" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <!-- Circle -->
+  <circle cx="175" cy="130" r="80" fill="none" class="c-coral" stroke-width="2"/>
+  <!-- Vertical line cutting circle at two points -->
+  <line x1="220" y1="30" x2="220" y2="230" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <!-- Two intersection dots -->
+  <circle cx="220" cy="91" r="6" fill="#D85A30"/>
+  <circle cx="220" cy="169" r="6" fill="#D85A30"/>
+  <text class="ts" x="232" y="88" fill="#D85A30">two points!</text>
+  <!-- FAIL label -->
+  <text class="th" x="175" y="248" text-anchor="middle" fill="#A32D2D">✗  circle — not a function</text>
+  <!-- RIGHT: parabola (passes VLT) -->
+  <!-- Axes -->
+  <line x1="390" y1="130" x2="630" y2="130" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="510" y1="30" x2="510" y2="230" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <!-- Parabola y = (x-510)^2 / 60 + 50 mapped to SVG -->
+  <path d="M390,197 Q510,40 630,197" fill="none" class="c-teal" stroke-width="2"/>
+  <!-- Vertical line touching at one point -->
+  <line x1="560" y1="30" x2="560" y2="230" stroke="#0F6E56" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <!-- Single intersection dot -->
+  <circle cx="560" cy="81" r="6" fill="#0F6E56"/>
+  <text class="ts" x="572" y="78" fill="#0F6E56">one point ✓</text>
+  <!-- PASS label -->
+  <text class="th" x="510" y="248" text-anchor="middle" fill="#085041">✓  parabola — is a function</text>
+</svg>
+</Diagram>
+Here are some examples to understand this concept. 
+ 
+- Circle $x^2 + y^2 = 1$: fails since the vertical line $x = 0$ hits at $(0, 1)$ and $(0, -1)$.
+- Parabola $y = x^2$: passes since each vertical line hits at exactly one point.
+- The upper semicircle $y = \sqrt{1 - x^2}$: passes since taking only positive $y$ removes the ambiguity of double roots.
+---
+ 
+## Finding Domain and Range: General Strategy
+ 
+**Finding the domain** (algebraic approach): Start with all real numbers and remove values of $x$ that cause problems:
+1. Denominator equal to zero (division undefined).
+2. Even root of a negative number (not real).
+3. Logarithm of a non-positive number.
+4. Any other specified restriction.
+**Finding the range** (three approaches):
+ 
+*Method 1 : Solve for $x$ in terms of $y$.* Set $y = f(x)$, solve for $x$, and identify which values of $y$ allow a real solution. This is the most reliable general method.
+ 
+*Method 2 : Graphical reasoning.* Sketch the graph and read off the $y$-values it achieves.
+ 
+*Method 3 : Calculus / monotonicity.* If $f$ is monotone on its domain, the range is the interval $[f(\text{left endpoint}), f(\text{right endpoint})]$ or similar.
+ 
+For competition problems, Method 1 is usually the best.
+ 
+---
+ 
+## Types of Functions: Domain and Range in Detail
+ 
+### Polynomial Functions
+ 
+A **polynomial function** of degree $n$ has the form
+ 
+$$
+f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0, \qquad a_n \neq 0
+$$
+ 
+Special cases you will see constantly:
+- **Linear**: $f(x) = ax + b$ (degree 1)
+- **Quadratic**: $f(x) = ax^2 + bx + c$ (degree 2)
+- **Cubic**: $f(x) = ax^3 + bx^2 + cx + d$ (degree 3)
+**Domain**: Always $(-\infty, \infty)$. Polynomials are defined for every real number (Since no denominators, no roots, no logs)
+ 
+**Range**:
+- *Odd degree* (linear, cubic, ...): Range is $(-\infty, \infty)$. An odd-degree polynomial goes to $+\infty$ in one direction and $-\infty$ in the other, so by the Intermediate Value Theorem it hits every real number.
+- *Even degree* (quadratic, quartic, ...): The range depends on the leading coefficient and the global extremum.
+  - For a quadratic $f(x) = a(x-h)^2 + k$ in vertex form: the vertex $(h, k)$ is the minimum if $a > 0$ and the maximum if $a < 0$.
+    $$
+    \text{Range} = \begin{cases} [k, \infty) & \text{if } a > 0 \\ (-\infty, k] & \text{if } a < 0 \end{cases}
+    $$
+  - For higher even degrees, find the global minimum or maximum by calculus or by completing the analysis of the leading term.
+**Example:** Find the range of $f(x) = 2x^2 - 8x + 3$.
+ 
+Complete the square: $f(x) = 2(x^2 - 4x) + 3 = 2(x-2)^2 - 8 + 3 = 2(x-2)^2 - 5$.
+ 
+Since $a = 2 > 0$, the vertex is a minimum at $k = -5$. Range: $[-5, \infty)$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 300" role="img">
+  <title>Polynomial shapes: linear, upward quadratic, downward quadratic, cubic</title>
+  <desc>Four small coordinate graphs showing a line, a U-shaped parabola, an inverted U-shaped parabola, and an S-shaped cubic</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Panel 1: Linear -->
+  <line x1="40" y1="150" x2="160" y2="150" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <line x1="100" y1="60" x2="100" y2="240" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <path d="M50,220 L150,80" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="th" x="100" y="270" text-anchor="middle">linear</text>
+  <text class="ts" x="100" y="286" text-anchor="middle">range: (−∞, ∞)</text>
+  <!-- Panel 2: Upward parabola -->
+  <line x1="200" y1="150" x2="320" y2="150" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <line x1="260" y1="60" x2="260" y2="240" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <path d="M205,215 Q260,75 315,215" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Vertex dot -->
+  <circle cx="260" cy="120" r="4" fill="#534AB7"/>
+  <text class="ts" x="278" y="117" fill="#534AB7">vertex (min)</text>
+  <!-- Range bracket on y-axis -->
+  <line x1="195" y1="120" x2="210" y2="120" stroke="#534AB7" stroke-width="1.5"/>
+  <line x1="195" y1="120" x2="195" y2="240" stroke="#534AB7" stroke-width="1.5"/>
+  <line x1="195" y1="240" x2="210" y2="240" stroke="#534AB7" stroke-width="1.5"/>
+  <text class="th" x="260" y="270" text-anchor="middle">quadratic (a&gt;0)</text>
+  <text class="ts" x="260" y="286" text-anchor="middle">range: [k, ∞)</text>
+  <!-- Panel 3: Downward parabola -->
+  <line x1="360" y1="150" x2="480" y2="150" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <line x1="420" y1="60" x2="420" y2="240" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <path d="M365,85 Q420,225 475,85" fill="none" stroke="#993C1D" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="420" cy="183" r="4" fill="#993C1D"/>
+  <text class="ts" x="436" y="190" fill="#993C1D">vertex (max)</text>
+  <line x1="355" y1="60" x2="370" y2="60" stroke="#993C1D" stroke-width="1.5"/>
+  <line x1="355" y1="60" x2="355" y2="183" stroke="#993C1D" stroke-width="1.5"/>
+  <line x1="355" y1="183" x2="370" y2="183" stroke="#993C1D" stroke-width="1.5"/>
+  <text class="th" x="420" y="270" text-anchor="middle">quadratic (a&lt;0)</text>
+  <text class="ts" x="420" y="286" text-anchor="middle">range: (−∞, k]</text>
+  <!-- Panel 4: Cubic -->
+  <line x1="520" y1="150" x2="640" y2="150" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <line x1="580" y1="60" x2="580" y2="240" stroke="var(--color-border-secondary)" stroke-width="0.8" fill="none"/>
+  <path d="M530,230 C550,230 555,150 580,150 C605,150 610,70 630,70" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="th" x="580" y="270" text-anchor="middle">cubic (odd)</text>
+  <text class="ts" x="580" y="286" text-anchor="middle">range: (−∞, ∞)</text>
+</svg>
+</Diagram>
+### Rational Functions
+ 
+A **rational function** is a ratio of two polynomials:
+ 
+$$
+f(x) = \frac{P(x)}{Q(x)}, \qquad Q(x) \not\equiv 0
+$$
+ 
+**Domain**: All real numbers *except* the zeros of $Q(x)$. Set $Q(x) = 0$, solve, and exclude those values.
+ 
+**Range**: Set $y = f(x)$, cross-multiply to get a polynomial equation in $x$ with $y$ as a parameter, and determine which values of $y$ allow a real solution. The values that force an inconsistency (e.g., make a discriminant negative or a leading coefficient zero with no solution) are excluded.
+ 
+**Example:** Find the domain and range of $f(x) = \dfrac{x+2}{x-3}$.
+ 
+*Domain*: $Q(x) = x - 3 = 0 \Rightarrow x = 3$ excluded. Domain: $(-\infty, 3) \cup (3, \infty)$.
+ 
+*Range*: Set $y = \dfrac{x+2}{x-3}$. Then $y(x-3) = x+2 \Rightarrow yx - 3y = x + 2 \Rightarrow x(y-1) = 3y + 2 \Rightarrow x = \dfrac{3y+2}{y-1}$.
+ 
+This is undefined when $y = 1$, which means $y = 1$ is never achieved. Range: $(-\infty, 1) \cup (1, \infty)$.
+ 
+> **Competition tip**: The excluded value from the range of a simple rational function $\dfrac{ax+b}{cx+d}$ is always the horizontal asymptote $y = a/c$. Memorize this.
+ 
+**Vertical asymptotes** occur at zeros of $Q$ that are *not* cancelled by a zero of $P$. If both $P$ and $Q$ vanish at $x = a$, factor out $(x-a)$ from both and cancel; what remains is a *hole* (removable discontinuity), not a vertical asymptote.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 300" role="img">
+  <title>Rational function f(x)=1/x showing vertical asymptote at x=0 and horizontal asymptote at y=0</title>
+  <desc>Graph of 1/x with a vertical dashed red line at x=0 and horizontal dashed blue line at y=0. The curve approaches but never touches either asymptote.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Axes -->
+  <line x1="80" y1="150" x2="600" y2="150" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="340" y1="40" x2="340" y2="270" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <text class="ts" x="608" y="154">x</text>
+  <text class="ts" x="346" y="38">y</text>
+  <!-- Vertical asymptote -->
+  <line x1="340" y1="40" x2="340" y2="270" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <!-- Horizontal asymptote -->
+  <line x1="80" y1="150" x2="600" y2="150" stroke="#185FA5" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <!-- f(x) = 1/x  right branch -->
+  <path d="M370,60 C375,75 390,100 420,125 C450,142 490,148 580,150" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- f(x) = 1/x  left branch -->
+  <path d="M100,150 C190,152 230,158 260,175 C290,200 305,225 310,240" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Labels -->
+  <text class="ts" x="370" y="57" fill="#D85A30">vertical asymptote x = 0</text>
+  <text class="ts" x="420" y="143" fill="#185FA5">horizontal asymptote y = 0</text>
+  <text class="th" x="490" y="100" fill="#085041">f(x) = 1/x</text>
+  <!-- Excluded domain marker -->
+  <circle cx="340" cy="150" r="6" fill="none" stroke="#D85A30" stroke-width="2"/>
+  <text class="ts" x="340" y="290" text-anchor="middle">Domain excludes x = 0 · Range excludes y = 0</text>
+</svg>
+</Diagram>
+### Radical Functions
+ 
+A **radical function** involves an expression under a root:
+ 
+$$
+f(x) = \sqrt[n]{g(x)}
+$$
+ 
+**Domain**:
+- *Even root* ($n = 2, 4, 6, \ldots$): The radicand must be non-negative. Solve $g(x) \geq 0$.
+- *Odd root* ($n = 3, 5, 7, \ldots$): Defined for all real numbers; odd roots of negative numbers are real and negative.
+**Range**:
+- *Even root*: Output is always $\geq 0$ (before any vertical shift). For $f(x) = \sqrt{g(x)} + k$, range starts at $k$: $[k, \infty)$.
+- *Odd root*: Range is $(-\infty, \infty)$.
+**Example:** Find the domain and range of $f(x) = \sqrt{9 - x^2}$.
+ 
+*Domain*: $9 - x^2 \geq 0 \Rightarrow x^2 \leq 9 \Rightarrow -3 \leq x \leq 3$. Domain: $[-3, 3]$.
+ 
+*Range*: At $x = 0$, $f = 3$ (maximum). At $x = \pm 3$, $f = 0$ (minimum). Range: $[0, 3]$.
+ 
+(Geometrically, this is the upper semicircle of radius 3.)
+ 
+**Example:** Find the domain of $f(x) = \dfrac{1}{\sqrt{x^2 - 5x + 6}}$.
+ 
+We need both $x^2 - 5x + 6 \neq 0$ (denominator nonzero) *and* $x^2 - 5x + 6 > 0$ (under even root). Factoring: $(x-2)(x-3) > 0$, giving $x < 2$ or $x > 3$. Domain: $(-\infty, 2) \cup (3, \infty)$.
+ 
+Note that combining both constraints at once (strictly greater than zero) handles both automatically.
+ 
+### Exponential Functions
+ 
+An **exponential function** has the form
+ 
+$$
+f(x) = a \cdot b^x + c, \qquad b > 0,\ b \neq 1
+$$
+ 
+The variable is in the exponent, not the base. ($b = 1$ gives a constant, which is boring.)
+ 
+**Domain**: $(-\infty, \infty)$ (Since you can raise a positive base to any real power.)
+ 
+**Range**: Since $b^x > 0$ for all $x$ and all positive $b$, we have $a \cdot b^x > 0$ (if $a > 0$) or $a \cdot b^x < 0$ (if $a < 0$), and the vertical shift by $c$ then moves the asymptote:
+ 
+$$
+\text{Range} = \begin{cases} (c, \infty) & \text{if } a > 0 \\ (-\infty, c) & \text{if } a < 0 \end{cases}
+$$
+ 
+The horizontal asymptote is always $y = c$, never achieved.
+ 
+**Key behaviors**: If $b > 1$, the function grows as $x \to \infty$. If $0 < b < 1$, the function decays as $x \to \infty$.
+ 
+**Example:** Range of $f(x) = 3 \cdot 2^x - 7$. Here $a = 3 > 0$, $c = -7$. Range: $(-7, \infty)$.
+ 
+### Logarithmic Functions
+ 
+The **logarithmic function** $f(x) = \log_b(x)$ (with $b > 0$, $b \neq 1$) is the inverse of $b^x$. The natural log $\ln x = \log_e x$ and common log $\log x = \log_{10} x$ are the most frequent.
+ 
+**Domain**: The argument must be strictly positive. For $f(x) = \log_b(g(x))$, solve $g(x) > 0$.
+ 
+**Range**: $(-\infty, \infty)$ (Since the logarithm achieves every real number.)
+ 
+**Example:** Find the domain of $f(x) = \log_2(x^2 - 4)$.
+ 
+Need $x^2 - 4 > 0 \Rightarrow (x-2)(x+2) > 0 \Rightarrow x < -2$ or $x > 2$. Domain: $(-\infty, -2) \cup (2, \infty)$.
+ 
+**Key log identities** you will use constantly:
+ 
+$$
+\log_b(mn) = \log_b m + \log_b n
+$$
+$$
+\log_b\!\left(\frac{m}{n}\right) = \log_b m - \log_b n
+$$
+$$
+\log_b(m^k) = k \log_b m
+$$
+$$
+\log_b m = \frac{\log_a m}{\log_a b} \quad \text{(change of base)}
+$$
+ 
+The exponential and log are inverses of each other — their graphs reflect across $y = x$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 310" role="img">
+  <title>Exponential growth vs decay and log function, showing inverse relationship</title>
+  <desc>Three curves on one set of axes: exponential growth b greater than 1, exponential decay 0 less than b less than 1, and the log function. A dashed line y equals x shows the reflection relationship between exponential and log.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Axes -->
+  <line x1="80" y1="230" x2="580" y2="230" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="160" y1="40" x2="160" y2="280" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <text class="ts" x="588" y="234">x</text>
+  <text class="ts" x="166" y="38">y</text>
+  <!-- y=x line (reflection axis) -->
+  <line x1="160" y1="230" x2="560" y2="50" stroke="var(--color-border-tertiary)" stroke-width="1" stroke-dasharray="5 4"/>
+  <text class="ts" x="545" y="48">y=x</text>
+  <!-- Exponential growth b>1 -->
+  <path d="M160,230 C200,225 250,215 300,195 C350,168 400,130 460,80 C490,60 520,50 550,44" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="ts" x="555" y="52" fill="#534AB7">b&gt;1</text>
+  <!-- Exponential decay 0<b<1 -->
+  <path d="M170,50 C195,65 220,100 260,145 C300,185 360,215 440,227 C480,230 520,230 560,230" fill="none" stroke="#993C1D" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="ts" x="452" y="223" fill="#993C1D">0&lt;b&lt;1</text>
+  <!-- Log function -->
+  <path d="M163,50 C170,90 190,150 240,185 C290,210 360,224 460,230" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="ts" x="462" y="225" fill="#0F6E56">log</text>
+  <!-- Horizontal asymptote for exponentials -->
+  <line x1="80" y1="230" x2="580" y2="230" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="4 3"/>
+  <!-- Labels -->
+  <text class="th" x="380" y="60" text-anchor="middle" fill="#534AB7">exponential</text>
+  <text class="th" x="380" y="270" text-anchor="middle" fill="#0F6E56">logarithm = inverse of exponential</text>
+  <!-- (1,0) marker on log -->
+  <circle cx="260" cy="230" r="4" fill="#0F6E56"/>
+  <text class="ts" x="260" y="248" text-anchor="middle" fill="#0F6E56">(1, 0)</text>
+</svg>
+</Diagram>
+### Absolute Value Functions
+ 
+The **absolute value function** is
+ 
+$$
+f(x) = |x| = \begin{cases} x & x \geq 0 \\ -x & x < 0 \end{cases}
+$$
+ 
+Its graph is V-shaped with vertex at the origin.
+ 
+**Domain**: $(-\infty, \infty)$ (Since absolute value is defined for all reals.)
+ 
+**Range**: $|x| \geq 0$ always, so for $f(x) = a|x - h| + k$:
+$$
+\text{Range} = \begin{cases} [k, \infty) & \text{if } a > 0 \\ (-\infty, k] & \text{if } a < 0 \end{cases}
+$$
+ 
+The vertex of $y = a|x - h| + k$ is $(h, k)$.
+ 
+**Solving absolute value equations**: $|A| = B$ has solutions $A = B$ or $A = -B$ (provided $B \geq 0$; if $B < 0$, no solution). $|A| = |B|$ means $A = B$ or $A = -B$.
+ 
+**Solving absolute value inequalities**:
+- $|A| < B \iff -B < A < B$
+- $|A| > B \iff A < -B$ or $A > B$
+**Example:** Range of $f(x) = -2|x + 1| + 5$. Vertex at $(-1, 5)$, $a = -2 < 0$. Range: $(-\infty, 5]$.
+ 
+### Trigonometric Functions
+ 
+The six trigonometric functions have the most intricate domain-range profiles, owing to their periodicity.
+ 
+| Function | Domain | Range |
+|---|---|---|
+| $\sin x$ | $(-\infty, \infty)$ | $[-1, 1]$ |
+| $\cos x$ | $(-\infty, \infty)$ | $[-1, 1]$ |
+| $\tan x$ | $x \neq \frac{\pi}{2} + k\pi,\ k \in \mathbb{Z}$ | $(-\infty, \infty)$ |
+| $\csc x$ | $x \neq k\pi,\ k \in \mathbb{Z}$ | $(-\infty, -1] \cup [1, \infty)$ |
+| $\sec x$ | $x \neq \frac{\pi}{2} + k\pi,\ k \in \mathbb{Z}$ | $(-\infty, -1] \cup [1, \infty)$ |
+| $\cot x$ | $x \neq k\pi,\ k \in \mathbb{Z}$ | $(-\infty, \infty)$ |
+ 
+For transformed sinusoids $f(x) = A\sin(Bx + C) + D$:
+- **Amplitude**: $|A|$ (half the height of the wave)
+- **Period**: $\dfrac{2\pi}{|B|}$
+- **Phase shift**: $-C/B$ (horizontal shift)
+- **Vertical shift**: $D$ (moves the midline)
+- **Range**: $[D - |A|,\ D + |A|]$
+**Example:** Range of $f(x) = 3\sin(2x - \pi) + 1$. Here $A = 3$, $D = 1$. Range: $[1 - 3, 1 + 3] = [-2, 4]$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 220" role="img">
+  <title>Sine wave with amplitude, period, midline and range labeled</title>
+  <desc>A sine wave showing two full periods. Dashed horizontal lines mark the maximum, minimum, and midline. Braces indicate amplitude and period. Range brackets appear on the y-axis.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Axes -->
+  <line x1="60" y1="110" x2="640" y2="110" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="80" y1="30" x2="80" y2="195" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <!-- Midline (D) -->
+  <line x1="80" y1="110" x2="630" y2="110" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="ts" x="638" y="114">midline D</text>
+  <!-- Max line -->
+  <line x1="80" y1="50" x2="630" y2="50" stroke="var(--color-border-tertiary)" stroke-width="0.8" stroke-dasharray="3 4"/>
+  <text class="ts" x="638" y="54">D+|A|</text>
+  <!-- Min line -->
+  <line x1="80" y1="170" x2="630" y2="170" stroke="var(--color-border-tertiary)" stroke-width="0.8" stroke-dasharray="3 4"/>
+  <text class="ts" x="638" y="174">D−|A|</text>
+  <!-- Sine wave: 2 full periods across x=80..620 -->
+  <path d="M80,110 C120,50 160,50 200,110 C240,170 280,170 320,110 C360,50 400,50 440,110 C480,170 520,170 560,110 C580,80 600,60 620,50" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Amplitude brace -->
+  <line x1="66" y1="50" x2="66" y2="110" stroke="#534AB7" stroke-width="1.5"/>
+  <line x1="66" y1="50" x2="72" y2="50" stroke="#534AB7" stroke-width="1.5"/>
+  <line x1="66" y1="110" x2="72" y2="110" stroke="#534AB7" stroke-width="1.5"/>
+  <text class="ts" x="60" y="84" text-anchor="end" fill="#534AB7">|A|</text>
+  <!-- Period brace -->
+  <line x1="80" y1="190" x2="320" y2="190" stroke="#185FA5" stroke-width="1.5"/>
+  <line x1="80" y1="185" x2="80" y2="195" stroke="#185FA5" stroke-width="1.5"/>
+  <line x1="320" y1="185" x2="320" y2="195" stroke="#185FA5" stroke-width="1.5"/>
+  <text class="ts" x="200" y="207" text-anchor="middle" fill="#185FA5">period = 2π/|B|</text>
+  <!-- Range bracket on y-axis -->
+  <rect x="72" y="50" width="6" height="120" fill="none" stroke="#993C1D" stroke-width="1.5" rx="2"/>
+  <text class="ts" x="68" y="115" text-anchor="end" fill="#993C1D">range</text>
+</svg>
+</Diagram>
+---
+ 
+## Graphical Representation and Transformations
+ 
+When we graph $y = f(x)$, we plot all points $(x, f(x))$ on the Cartesian plane as $x$ ranges over the domain. The *x*-intercepts are where $f(x) = 0$ (the roots), and the *y*-intercept is $f(0)$ (provided $0$ is in the domain).
+ 
+### Transformations
+ 
+Every transformation of $f(x)$ has a precise graphical effect. The following are ~~confusing~~ surprisingly systematic once you see the pattern.
+ 
+**Vertical shifts**: For $k > 0$,
+- $y = f(x) + k$: shift *up* by $k$
+- $y = f(x) - k$: shift *down* by $k$
+**Horizontal shifts**: For $k > 0$,
+- $y = f(x - k)$: shift *right* by $k$
+- $y = f(x + k)$: shift *left* by $k$
+> **Warning**: The direction of horizontal shifts is counterintuitive. $f(x + 2)$ shifts *left* by $2$, not right. To see why: the output that used to occur at $x = 5$ now occurs when $x + 2 = 5$, i.e., at $x = 3$ which is two units to the left.
+ 
+**Reflections**:
+- $y = -f(x)$: reflect over the *x*-axis (flip vertically)
+- $y = f(-x)$: reflect over the *y*-axis (flip horizontally)
+**Scalings**: For $k > 0$,
+- $y = kf(x)$: vertical stretch by $k$ (if $k > 1$) or compression (if $0 < k < 1$)
+- $y = f(kx)$: horizontal compression by factor $k$ (if $k > 1$) or stretch (if $0 < k < 1$)
+> **Warning**: $y = f(3x)$ compresses the graph *toward* the $y$-axis by a factor of $3$, shrinking widths by $\tfrac{1}{3}$. This might be the exact opposite of what many would expect. So understand why this happens.
+ 
+**Example:** Describe the transformation from $y = \sqrt{x}$ to $y = -2\sqrt{x + 3} + 1$.
+ 
+1. $\sqrt{x} \to \sqrt{x+3}$: shift left by $3$.
+2. $\to 2\sqrt{x+3}$: vertical stretch by factor $2$.
+3. $\to -2\sqrt{x+3}$: reflect over $x$-axis.
+4. $\to -2\sqrt{x+3} + 1$: shift up by $1$.
+Vertex moves from $(0, 0)$ to $(-3, 1)$; graph opens downward. Range: $(-\infty, 1]$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 260" role="img">
+  <title>Transformation summary map: six boxes arranged in two columns showing each transformation type with its effect</title>
+  <desc>A grid of six labelled boxes. Top row: shift up/down, shift right/left. Middle row: reflect over x-axis, reflect over y-axis. Bottom row: vertical stretch/compress, horizontal stretch/compress.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Row 1 -->
+  <g class="c-teal">
+    <rect x="40" y="20" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="180" y="44" text-anchor="middle" dominant-baseline="central">f(x) + k  /  f(x) − k</text>
+    <text class="ts" x="180" y="66" text-anchor="middle" dominant-baseline="central">shift up k  /  shift down k</text>
+  </g>
+  <g class="c-teal">
+    <rect x="360" y="20" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="500" y="44" text-anchor="middle" dominant-baseline="central">f(x − k)  /  f(x + k)</text>
+    <text class="ts" x="500" y="66" text-anchor="middle" dominant-baseline="central">shift right k  /  shift LEFT k ⚠</text>
+  </g>
+  <!-- Row 2 -->
+  <g class="c-purple">
+    <rect x="40" y="100" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="180" y="124" text-anchor="middle" dominant-baseline="central">−f(x)</text>
+    <text class="ts" x="180" y="146" text-anchor="middle" dominant-baseline="central">reflect over x-axis</text>
+  </g>
+  <g class="c-purple">
+    <rect x="360" y="100" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="500" y="124" text-anchor="middle" dominant-baseline="central">f(−x)</text>
+    <text class="ts" x="500" y="146" text-anchor="middle" dominant-baseline="central">reflect over y-axis</text>
+  </g>
+  <!-- Row 3 -->
+  <g class="c-amber">
+    <rect x="40" y="180" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="180" y="204" text-anchor="middle" dominant-baseline="central">k·f(x),  k &gt; 1</text>
+    <text class="ts" x="180" y="226" text-anchor="middle" dominant-baseline="central">vertical stretch by k</text>
+  </g>
+  <g class="c-amber">
+    <rect x="360" y="180" width="280" height="60" rx="8" stroke-width="0.5"/>
+    <text class="th" x="500" y="204" text-anchor="middle" dominant-baseline="central">f(kx),  k &gt; 1</text>
+    <text class="ts" x="500" y="226" text-anchor="middle" dominant-baseline="central">horizontal COMPRESS by k ⚠</text>
+  </g>
+</svg>
+</Diagram>
+---
+ 
+## Composition of Functions
+ 
+The **composition** $(f \circ g)(x) = f(g(x))$ means: first apply $g$, then feed the output into $f$. The notation $f(g(x))$ and $(f \circ g)(x)$ are interchangeable.
+ 
+Order matters enormously. In general, $f \circ g \neq g \circ f$.
+ 
+**Example:** Let $f(x) = x^2 + 1$ and $g(x) = \sqrt{x - 2}$.
+ 
+$(f \circ g)(x) = f(g(x)) = (\sqrt{x-2})^2 + 1 = x - 2 + 1 = x - 1$.
+ 
+$(g \circ f)(x) = g(f(x)) = \sqrt{(x^2+1) - 2} = \sqrt{x^2 - 1}$.
+ 
+These are completely different functions.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 140" role="img">
+  <title>Composition pipeline: x goes into g, output goes into f, final output is f(g(x))</title>
+  <desc>Three boxes in a row connected by arrows. Input x feeds into box g, output g(x) feeds into box f, final output is f(g(x)).</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- x input -->
+  <text class="th" x="55" y="74" text-anchor="middle" dominant-baseline="central" font-style="italic">x</text>
+  <line x1="76" y1="70" x2="150" y2="70" class="arr" marker-end="url(#arrow)" stroke-width="2"/>
+  <!-- g box -->
+  <g class="c-teal">
+    <rect x="158" y="44" width="120" height="52" rx="10" stroke-width="0.5"/>
+    <text class="th" x="218" y="70" text-anchor="middle" dominant-baseline="central">g</text>
+  </g>
+  <!-- middle arrow with label -->
+  <line x1="278" y1="70" x2="352" y2="70" class="arr" marker-end="url(#arrow)" stroke-width="2"/>
+  <text class="ts" x="315" y="62" text-anchor="middle">g(x)</text>
+  <!-- f box -->
+  <g class="c-purple">
+    <rect x="360" y="44" width="120" height="52" rx="10" stroke-width="0.5"/>
+    <text class="th" x="420" y="70" text-anchor="middle" dominant-baseline="central">f</text>
+  </g>
+  <!-- output arrow -->
+  <line x1="480" y1="70" x2="554" y2="70" class="arr" marker-end="url(#arrow)" stroke-width="2"/>
+  <text class="th" x="610" y="74" text-anchor="middle" dominant-baseline="central" font-style="italic">f(g(x))</text>
+  <!-- Bottom brace labeling the whole thing -->
+  <line x1="158" y1="115" x2="480" y2="115" stroke="var(--color-border-secondary)" stroke-width="1"/>
+  <line x1="158" y1="110" x2="158" y2="120" stroke="var(--color-border-secondary)" stroke-width="1"/>
+  <line x1="480" y1="110" x2="480" y2="120" stroke="var(--color-border-secondary)" stroke-width="1"/>
+  <text class="ts" x="319" y="133" text-anchor="middle">f ∘ g  (apply g first, then f)</text>
+</svg>
+</Diagram>
+### Iterated Composition
+ 
+We write $f^n(x)$ to mean $f$ applied $n$ times:
+ 
+$$
+f^2(x) = f(f(x)), \quad f^3(x) = f(f(f(x))), \quad \ldots
+$$
+ 
+> **AIME trap**: $f^n(x)$ in a function context means iterated composition, **not** $[f(x)]^n$. Read by context.
+ 
+Many AIME problems ask for $f^{2025}(x)$ for some cleverly chosen $f$ that becomes periodic under iteration. The strategy: compute $f^1, f^2, f^3, \ldots$ until you spot a cycle of length $k$, then reduce $2025 \pmod{k}$.
+ 
+> **2001 AIME I Problem 11 (flavor)**
+>
+> Let $f(x) = \dfrac{x}{x+1}$. Compute $f^{2001}(1)$.
+>
+> $f(1) = \tfrac{1}{2}$, $f^2(1) = f\!\left(\tfrac{1}{2}\right) = \tfrac{1/2}{3/2} = \tfrac{1}{3}$, $f^3(1) = f\!\left(\tfrac{1}{3}\right) = \tfrac{1/3}{4/3} = \tfrac{1}{4}$.
+>
+> Pattern: $f^n(1) = \dfrac{1}{n+1}$. So $f^{2001}(1) = \dfrac{1}{2002}$.
+ 
+### Domain of a Composite Function
+ 
+The domain of $f \circ g$ is the set of all $x$ in the domain of $g$ such that $g(x)$ is in the domain of $f$. Concretely:
+ 
+1. Find the domain of $g$. Call it $D_g$.
+2. Compute $f(g(x))$ and find additional restrictions from $f$'s requirements.
+3. The domain of $f \circ g$ is the intersection: $\{x \in D_g \mid g(x) \in D_f\}$.
+**Example:** Let $f(x) = \sqrt{x}$ and $g(x) = 1 - x^2$. Find the domain of $f \circ g$.
+ 
+$D_g = (-\infty, \infty)$. For $f$, we need $g(x) \geq 0$: $1 - x^2 \geq 0 \Rightarrow x^2 \leq 1 \Rightarrow -1 \leq x \leq 1$.
+ 
+Domain of $f \circ g$: $[-1, 1]$.
+ 
+---
+ 
+## Inverse Functions
+ 
+### Definition
+ 
+Functions $f$ and $g$ are **inverses** of each other if
+ 
+$$
+g(f(x)) = x \quad \text{for all } x \in \text{Domain}(f)
+$$
+$$
+f(g(x)) = x \quad \text{for all } x \in \text{Domain}(g)
+$$
+ 
+We write $g = f^{-1}$. Note that $f^{-1}(x)$ is *not* $\dfrac{1}{f(x)}$; it is a completely different object, the inverse function.
+ 
+Intuitively, $f^{-1}$ *undoes* whatever $f$ does: if $f$ takes $a$ to $b$, then $f^{-1}$ takes $b$ back to $a$.
+ 
+$$
+f(a) = b \iff f^{-1}(b) = a
+$$
+ 
+### When Does an Inverse Exist?
+ 
+A function has an inverse if and only if it is **one-to-one** (injective): no two different inputs produce the same output.
+ 
+If $f(a) = f(b)$ for some $a \neq b$, then $f^{-1}$ would need to send that common output to *both* $a$ and $b$ simultaneously... impossible.
+ 
+**Graphical test (Horizontal Line Test)**: $f$ has an inverse if and only if no horizontal line $y = c$ intersects the graph of $f$ more than once.
+ 
+Compare with the vertical line test: the VLT checks if $y = f(x)$ is a valid function; the HLT checks if that function has an inverse.
+ 
+**Example:** $f(x) = x^2$ fails the HLT ($y = 4$ hits at $x = 2$ and $x = -2$), so it has no inverse on $\mathbb{R}$. However, restricting to $x \geq 0$ makes it one-to-one, and then $f^{-1}(x) = \sqrt{x}$.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 290" role="img">
+  <title>Horizontal line test: full parabola fails HLT, right half passes HLT</title>
+  <desc>Two graphs side by side. Left shows a full parabola with a horizontal line crossing it at two points — HLT fails, no inverse. Right shows only the right half of the parabola with a horizontal line touching at one point — HLT passes, inverse exists.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- LEFT: full parabola (fails HLT) -->
+  <line x1="60" y1="200" x2="285" y2="200" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="172" y1="60" x2="172" y2="250" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <path d="M80,245 Q172,70 264,245" fill="none" stroke="#993C1D" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Horizontal line crossing at two points -->
+  <line x1="60" y1="170" x2="285" y2="170" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="120" cy="170" r="6" fill="#D85A30"/>
+  <circle cx="224" cy="170" r="6" fill="#D85A30"/>
+  <text class="ts" x="172" y="266" text-anchor="middle" fill="#A32D2D">✗  horizontal line hits twice</text>
+  <text class="th" x="172" y="283" text-anchor="middle" fill="#A32D2D">no inverse on ℝ</text>
+  <!-- RIGHT: half parabola (passes HLT) -->
+  <line x1="395" y1="200" x2="620" y2="200" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="406" y1="60" x2="406" y2="250" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <path d="M406,200 Q450,110 600,68" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Dashed left half (excluded) -->
+  <path d="M212,245 Q320,75 406,200" fill="none" stroke="var(--color-border-secondary)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <!-- Horizontal line touching at one point -->
+  <line x1="395" y1="155" x2="620" y2="155" stroke="#0F6E56" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="520" cy="155" r="6" fill="#0F6E56"/>
+  <text class="ts" x="510" y="143" fill="#0F6E56">one point ✓</text>
+  <text class="ts" x="508" y="266" text-anchor="middle" fill="#085041">✓  every horizontal line hits once</text>
+  <text class="th" x="508" y="283" text-anchor="middle" fill="#085041">inverse exists on x ≥ 0</text>
+</svg>
+</Diagram>
+### Finding the Inverse
+ 
+**Method**: To find $f^{-1}(x)$, solve the equation $f(y) = x$ for $y$ in terms of $x$.
+ 
+The result is $y = f^{-1}(x)$.
+ 
+**Example:** Find the inverse of $f(x) = 3x - 5$.
+ 
+Set $f(y) = x$: $3y - 5 = x \Rightarrow y = \dfrac{x + 5}{3}$.
+ 
+So $f^{-1}(x) = \dfrac{x+5}{3}$. Verify: $f(f^{-1}(x)) = 3 \cdot \dfrac{x+5}{3} - 5 = x$. ✓
+ 
+**Example:** Find the inverse of $f(x) = \dfrac{-5 - x}{3 - 2x}$.
+ 
+Set $f(y) = x$: $\dfrac{-5 - y}{3 - 2y} = x \Rightarrow -5 - y = x(3 - 2y) \Rightarrow -5 - y = 3x - 2xy$.
+ 
+Collect $y$ terms: $2xy - y = 3x + 5 \Rightarrow y(2x - 1) = 3x + 5 \Rightarrow y = \dfrac{3x + 5}{2x - 1}$.
+ 
+So $f^{-1}(x) = \dfrac{3x+5}{2x-1}$, defined for $x \neq \tfrac{1}{2}$.
+ 
+**Competition shortcut**: If you only need $f^{-1}(b)$ for a specific value, use the fact that $f^{-1}(b) = a \iff f(a) = b$. Instead of finding the full inverse, just solve $f(a) = b$ for $a$.
+ 
+> **Example:** If $f(x) = \dfrac{-5-x}{3-2x}$, find $f^{-1}(7)$.
+>
+> Solve $f(y) = 7$: $\dfrac{-5-y}{3-2y} = 7 \Rightarrow -5 - y = 21 - 14y \Rightarrow 13y = 26 \Rightarrow y = 2$.
+>
+> So $f^{-1}(7) = 2$.
+ 
+### Domains and Ranges of Inverses
+
+The domain of $f^{-1}$ is the range of $f$, and the range of $f^{-1}$ is the domain of $f$. This is immediate from the definition: $f^{-1}$ accepts as inputs exactly the outputs of $f$.
+
+Sometimes an inverse only exists after restricting the domain of $f$. For example, $f(x) = x^2$ on $[0, \infty)$ has inverse $f^{-1}(x) = \sqrt{x}$ on $[0, \infty)$. Trying to extend either to negative territory breaks the inverse relationship:
+
+$f(-3) = 9$, but $f^{-1}(f(-3)) = \sqrt{9} = 3 \neq -3$.
+
+The warning: $\sqrt{x^2} = |x|$, not $x$. When you square and then take a square root, you *must* account for the sign.
+ 
+### Graphical Relationship
+ 
+If $(a, b)$ is on the graph of $f$, then $(b, a)$ is on the graph of $f^{-1}$. Swapping coordinates $(a,b) \to (b,a)$ is geometrically the same as **reflecting over the line $y = x$**.
+ 
+Therefore: the graph of $y = f^{-1}(x)$ is the mirror image of the graph of $y = f(x)$ over the line $y = x$.
+ 
+*Why?* Let $P = (a, b)$ and $Q = (b, a)$. The slope of $PQ$ is $\dfrac{a - b}{b - a} = -1$, so $PQ \perp$ the line $y = x$. The midpoint of $PQ$ is $\left(\dfrac{a+b}{2}, \dfrac{a+b}{2}\right)$, which lies on $y = x$. So $y = x$ is the perpendicular bisector of $PQ$, confirming $P$ and $Q$ are reflections of each other.
+ 
+<Diagram>
+<svg width="100%" viewBox="0 0 680 320" role="img">
+  <title>A function and its inverse reflected over the line y equals x</title>
+  <desc>Graph showing f(x) equals 2 to the x as a curve, its inverse log base 2 of x as a reflected curve, and the dashed line y equals x as the mirror axis. Sample point (1,2) on f maps to (2,1) on the inverse.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Axes -->
+  <line x1="80" y1="280" x2="580" y2="280" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <line x1="80" y1="280" x2="80" y2="40" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" fill="none"/>
+  <text class="ts" x="588" y="284">x</text>
+  <text class="ts" x="86" y="38">y</text>
+  <!-- y=x mirror line -->
+  <line x1="80" y1="280" x2="530" y2="50" stroke="var(--color-border-tertiary)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text class="ts" x="540" y="46">y = x</text>
+  <!-- f(x) = 2^x (exponential curve) -->
+  <path d="M80,268 C130,265 180,255 230,235 C280,210 320,175 360,140 C400,106 440,80 490,60" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="th" x="496" y="57" fill="#534AB7">f(x) = 2ˣ</text>
+  <!-- f⁻¹(x) = log₂(x) (reflection of above) -->
+  <path d="M92,280 C112,230 142,180 182,145 C222,112 260,90 300,75 C350,58 410,52 490,48" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="th" x="496" y="44" fill="#0F6E56">f⁻¹(x) = log₂x</text>
+  <!-- Sample point (1,2) on f -->
+  <circle cx="230" cy="210" r="5" fill="#534AB7"/>
+  <text class="ts" x="238" y="207" fill="#534AB7">(1, 2)</text>
+  <!-- Sample point (2,1) on f⁻¹ -->
+  <circle cx="310" cy="230" r="5" fill="#0F6E56"/>
+  <text class="ts" x="318" y="244" fill="#0F6E56">(2, 1)</text>
+  <!-- Dashed connector between the two points -->
+  <line x1="230" y1="210" x2="310" y2="230" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="3 3"/>
+  <!-- Reflection label -->
+  <text class="ts" x="330" y="290" text-anchor="middle">graph of f⁻¹ is reflection of f over y = x</text>
+</svg>
+</Diagram>
+### Inverse of a Composition
+ 
+If both $f$ and $g$ have inverses, then
+ 
+$$
+(f \circ g)^{-1} = g^{-1} \circ f^{-1}
+$$
+ 
+The order reverses. Think of it like putting on socks then shoes: to undo it, you remove shoes first, then socks.
+ 
+*Proof*: Let $h = f \circ g$ and $t = g^{-1} \circ f^{-1}$. Then
+ 
+$$
+h(t(x)) = f(g(g^{-1}(f^{-1}(x)))) = f(f^{-1}(x)) = x
+$$
+ 
+and similarly $t(h(x)) = x$. So $t = h^{-1}$. $\blacksquare$
+ 
+---
+ 
+## Toolkit: When to Reach for Which Technique
+ 
+| Situation | What to do |
+|---|---|
+| Find domain of $f(x) = \frac{P}{Q}$ | Solve $Q = 0$, exclude those $x$ |
+| Find domain of $f(x) = \sqrt{g(x)}$ | Solve $g(x) \geq 0$ |
+| Find domain of $f \circ g$ | Domain of $g$, intersected with $\{x : g(x) \in \text{Dom}(f)\}$ |
+| Find range of any function | Set $y = f(x)$, solve for $x$, find excluded $y$ |
+| Check if inverse exists | Horizontal line test, or check if $f$ is strictly monotone |
+| Find $f^{-1}(b)$ for a specific $b$ | Solve $f(a) = b$ for $a$ directly |
+| Find $f^{-1}(x)$ in general | Solve $f(y) = x$ for $y$ |
+| Identify transformations | Compare to parent form; shifts, flips, stretches |
+| $f^n(x)$ for large $n$ | Compute first few, find period $k$, reduce $n \bmod k$ |
+ 
+---
+ 
+## Remarks
+ 
+Functions in olympiad questions come up in two methods: *explicit* (a formula is given and you extract information) and *implicit* (a functional equation like $f(x+y) = f(x) + f(y)$ is given and you must determine $f$ entirely from its properties). This module has focused on the explicit side. Functional equations deserve their own treatment, but the foundation built here of knowing what domains and ranges are, how compositions interact, and how inverses work are what makes functional equation problems solveable.
+ 
+You should develop a habit of making sure that whenever you see a composed or transformed function, you trace *one point* through every step. Pick a convenient input, watch where it goes, and let that anchor your intuition before you do any algebra.
+ 
+## Practice Problems
+ 
+<Problems problems="practice" />
