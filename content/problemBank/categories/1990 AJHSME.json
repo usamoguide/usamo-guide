@@ -8,13 +8,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Place Value",
-        "Optimization",
-        "Addition"
-      ],
-      "statement": "What is the smallest sum of two $3$-digit numbers that can be obtained by placing each of the six digits $4, 5, 6, 7, 8, 9$ in one of the six boxes in this addition problem?\n\n+\n$\\Box\\ \\Box\\ \\Box$\n$\\Box\\ \\Box\\ \\Box$",
+      "categorization": "Systematic Casework",
+      "tags": ["Digit Placement", "Minimizing Sum"],
+      "statement": "What is the smallest sum of two $3$-digit numbers that can be obtained by placing each of the six digits $4, 5, 6, 7, 8, 9$ in one of the six boxes in this addition problem? [See figure in original PDF]",
       "answerChoices": [
         "$947$",
         "$1037$",
@@ -33,11 +29,8 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Place Value",
-        "Decimals"
-      ],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": ["Place Value", "Decimals"],
       "statement": "Which digit of $0.12345$, when changed to $9$, gives the largest number?",
       "answerChoices": [
         "$1$",
@@ -57,12 +50,8 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": [
-        "Area",
-        "Fractions",
-        "Visual Geometry"
-      ],
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": ["Area", "Fractions"],
       "statement": "What fraction of the square is shaded? [See figure in original PDF]",
       "answerChoices": [
         "$\\frac{1}{3}$",
@@ -82,11 +71,8 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Units Digit",
-        "Perfect Squares"
-      ],
+      "categorization": "Units Digit and Periodicity",
+      "tags": ["Perfect Squares", "Units Digit"],
       "statement": "Which of the following could not be the unit's digit [one's digit] of the square of a whole number?",
       "answerChoices": [
         "$1$",
@@ -106,12 +92,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Estimation",
-        "Decimals"
-      ],
-      "statement": "Which of the following is closest to the product $(0.48017)(0.48017)(0.48017)$?",
+      "categorization": "Estimation and Bounding",
+      "tags": ["Decimals", "Approximation"],
+      "statement": "Which of the following is closest to the product $(0.48017) (0.48017)(0.48017)$?",
       "answerChoices": [
         "$0.011$",
         "$0.110$",
@@ -130,12 +113,8 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Fractions",
-        "Operations",
-        "Estimation"
-      ],
+      "categorization": "Estimation and Bounding",
+      "tags": ["Comparing Numbers", "Arithmetic Operations"],
       "statement": "Which of these five numbers is the largest?",
       "answerChoices": [
         "$13579+\\frac{1}{2468}$",
@@ -155,12 +134,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Optimization",
-        "Negative Numbers"
-      ],
-      "statement": "When three different numbers from the set $\\{-3, -2, -1, 4, 5\\}$ are multiplied, the largest possible product is",
+      "categorization": "Extremal Principle",
+      "tags": ["Negative Numbers", "Maximization"],
+      "statement": "When three different numbers from the set $\\{-3,-2,-1,4,5\\}$ are multiplied, the largest possible product is",
       "answerChoices": [
         "$10$",
         "$20$",
@@ -179,11 +155,8 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Percentages",
-        "Money"
-      ],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": ["Percentages", "Discounts and Taxes"],
       "statement": "A dress originally priced at $80$ dollars was put on sale for $25\\%$ off. If $10\\%$ tax was added to the sale price, then the total selling price (in dollars) of the dress was",
       "answerChoices": [
         "$45$",
@@ -203,12 +176,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Percentages",
-        "Data Interpretation"
-      ],
-      "statement": "The grading scale shown is used at Jones Junior High. The fifteen scores in Mr. Freeman's class were:\n$89, 72, 54, 97, 77, 92, 85, 74, 75, 63, 84, 78, 71, 80, 90$.\n\nIn Mr. Freeman's class, what percent of the students received a grade of C?\n\nA: $93-100$\nB: $85-92$\nC: $75-84$\nD: $70-74$\nF: $0-69$",
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": ["Data Interpretation", "Percentages"],
+      "statement": "The grading scale shown is used at Jones Junior High: A: $93-100$, B: $85-92$, C: $75-84$, D: $70-74$, F: $0-69$. The fifteen scores in Mr. Freeman's class were: $89, 72, 54, 97, 77, 92, 85, 74, 75, 63, 84, 78, 71, 80, 90$. In Mr. Freeman's class, what percent of the students received a grade of C?",
       "answerChoices": [
         "$20\\%$",
         "$25\\%$",
@@ -227,12 +197,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Calendars",
-        "Algebra"
-      ],
-      "statement": "On this monthly calendar, the date behind one of the letters is added to the date behind C. If this sum equals the sum of the dates behind A and B, then the letter is\n\n[See figure in original PDF]",
+      "categorization": "Arithmetic Sequences",
+      "tags": ["Calendar Math", "Algebraic Substitution"],
+      "statement": "On this monthly calendar, the date behind one of the letters is added to the date behind $C$. If this sum equals the sum of the dates behind $A$ and $B$, then the letter is [See figure in original PDF]",
       "answerChoices": [
         "$P$",
         "$Q$",
@@ -251,12 +218,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Spatial Reasoning",
-        "Logic"
-      ],
-      "statement": "The numbers on the faces of this cube are consecutive whole numbers. The sums of the two numbers on each of the three pairs of opposite faces are equal. The sum of the six numbers on this cube is\n\n[See figure in original PDF]",
+      "categorization": "Arithmetic Sequences",
+      "tags": ["Opposite Faces", "Consecutive Integers"],
+      "statement": "The numbers on the faces of this cube are consecutive whole numbers. The sums of the two numbers on each of the three pairs of opposite faces are equal. The sum of the six numbers on this cube is [See figure in original PDF]",
       "answerChoices": [
         "$75$",
         "$76$",
@@ -275,12 +239,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
-      "tags": [
-        "Permutations",
-        "Ordering"
-      ],
-      "statement": "There are twenty-four $4$-digit numbers that use each of the four digits $2, 5, 7$, and $4$ exactly once. Listed in numerical order from smallest to largest, the number in the $17^{\\text{th}}$ position in the list is",
+      "categorization": "Permutations and Combinations",
+      "tags": ["Lexicographic Order", "Digit Rearrangement"],
+      "statement": "There are twenty-four $4$-digit numbers that use each of the four digits $2, 4, 5,$ and $7$ exactly once. Listed in numerical order from smallest to largest, the number in the $17$th position in the list is",
       "answerChoices": [
         "$4527$",
         "$5724$",
@@ -299,18 +260,15 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Step Functions",
-        "Money"
-      ],
+      "categorization": "Word Problem Translation",
+      "tags": ["Step Functions", "Rates"],
       "statement": "One proposal for new postage rates for a letter was $30$ cents for the first ounce and $22$ cents for each additional ounce (or fraction of an ounce). The postage for a letter weighing $4.5$ ounces was",
       "answerChoices": [
-        "$96 \\text{ cents}$",
-        "$1.07 \\text{ dollars}$",
-        "$1.18 \\text{ dollars}$",
-        "$1.20 \\text{ dollars}$",
-        "$1.40 \\text{ dollars}$"
+        "$96\\text{ cents}$",
+        "$1.07\\text{ dollars}$",
+        "$1.18\\text{ dollars}$",
+        "$1.20\\text{ dollars}$",
+        "$1.40\\text{ dollars}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -324,10 +282,7 @@
       "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Introduction to Probability",
-      "tags": [
-        "Ratios",
-        "Proportions"
-      ],
+      "tags": ["Ratio", "Basic Probability"],
       "statement": "A bag contains only blue balls and green balls. There are $6$ blue balls. If the probability of drawing a blue ball at random from this bag is $\\frac{1}{4}$, then the number of green balls in the bag is",
       "answerChoices": [
         "$12$",
@@ -347,18 +302,15 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": [
-        "Area",
-        "Perimeter"
-      ],
-      "statement": "The area of this figure is $100 \\text{ cm}^2$. Its perimeter is\n\n[See figure in original PDF]",
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": ["Area and Perimeter", "Geometry"],
+      "statement": "The area of this figure is $100\\text{ cm}^2$. Its perimeter is [See figure in original PDF]",
       "answerChoices": [
-        "$20 \\text{ cm}$",
-        "$25 \\text{ cm}$",
-        "$30 \\text{ cm}$",
-        "$40 \\text{ cm}$",
-        "$50 \\text{ cm}$"
+        "$20\\text{ cm}$",
+        "$25\\text{ cm}$",
+        "$30\\text{ cm}$",
+        "$40\\text{ cm}$",
+        "$50\\text{ cm}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -372,11 +324,8 @@
       "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
-      "tags": [
-        "Telescoping",
-        "Summation"
-      ],
-      "statement": "$1990 - 1980 + 1970 - 1960 + \\dots - 20 + 10 =$",
+      "tags": ["Telescoping Sum", "Pattern Recognition"],
+      "statement": "$1990-1980+1970-1960+\\dots-20+10=$",
       "answerChoices": [
         "$-990$",
         "$-10$",
@@ -395,11 +344,8 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": [
-        "Volume",
-        "Unit Conversion"
-      ],
+      "categorization": "Estimation and Bounding",
+      "tags": ["Volume", "Unit Conversion"],
       "statement": "A straight concrete sidewalk is to be $3$ feet wide, $60$ feet long, and $3$ inches thick. How many cubic yards of concrete must a contractor order for the sidewalk if concrete must be ordered in a whole number of cubic yards?",
       "answerChoices": [
         "$2$",
@@ -419,13 +365,9 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": [
-        "3D Geometry",
-        "Polyhedra",
-        "Euler's Formula"
-      ],
-      "statement": "Each corner of a rectangular prism is cut off. Two (of the eight) cuts are shown. How many edges does the new figure have? Assume that the planes cutting the prism do not intersect anywhere in or on the prism.\n\n[See figure in original PDF]",
+      "categorization": "Counting Fundamentals",
+      "tags": ["Polyhedra", "Edges", "Spatial Geometry"],
+      "statement": "Each corner of a rectangular prism is cut off. Two (of the eight) cuts are shown. Assume that the planes cutting the prism do not intersect anywhere in or on the prism. How many edges does the new figure have? [See figure in original PDF]",
       "answerChoices": [
         "$24$",
         "$30$",
@@ -444,11 +386,8 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Optimization",
-        "Pigeonhole Principle"
-      ],
+      "categorization": "Extremal Principle",
+      "tags": ["Worst-Case Scenario", "Spacing"],
       "statement": "There are $120$ seats in a row. What is the fewest number of seats that must be occupied so the next person to be seated must sit next to someone?",
       "answerChoices": [
         "$30$",
@@ -466,20 +405,17 @@
       "name": "Problem 20 (1990 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
-      "tags": [
-        "Averages",
-        "Error Analysis"
-      ],
+      "categorization": "Word Problem Translation",
+      "tags": ["Mean Average", "Data Modification"],
       "statement": "The annual incomes of $1000$ families range from $8200$ dollars to $98000$ dollars. In error, the largest income was entered on the computer as $980000$ dollars. The difference between the mean of the incorrect data and the mean of the actual data is",
       "answerChoices": [
-        "$882 \\text{ dollars}$",
-        "$980 \\text{ dollars}$",
-        "$1078 \\text{ dollars}$",
-        "$482,000 \\text{ dollars}$",
-        "$882,000 \\text{ dollars}$"
+        "$882\\text{ dollars}$",
+        "$980\\text{ dollars}$",
+        "$1078\\text{ dollars}$",
+        "$482,000\\text{ dollars}$",
+        "$882,000\\text{ dollars}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -490,14 +426,11 @@
       "name": "Problem 21 (1990 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometric Sequences",
-      "tags": [
-        "Sequences",
-        "Working Backwards"
-      ],
-      "statement": "A list of $8$ numbers is formed by beginning with two given numbers. Each new number in the list is the product of the two previous numbers. Find the first number if the last three are shown:\n$\\dots, 16, 64, 1024$",
+      "categorization": "Exponent Rules",
+      "tags": ["Fibonacci Sequence", "Working Backwards"],
+      "statement": "A list of $8$ numbers is formed by beginning with two given numbers. Each new number in the list is the product of the two previous numbers. Find the first number if the last three are shown: $\\dots, \\dots, \\dots, \\dots, \\dots, 16, 64, 1024$",
       "answerChoices": [
         "$\\frac{1}{64}$",
         "$\\frac{1}{4}$",
@@ -516,11 +449,8 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
-        "Modulo Arithmetic",
-        "Division"
-      ],
+      "categorization": "Introduction to Modular Arithmetic",
+      "tags": ["Modular Arithmetic", "Divisors"],
       "statement": "Several students are seated at a large circular table. They pass around a bag containing $100$ pieces of candy. Each person receives the bag, takes one piece of candy and then passes the bag to the next person. If Chris takes the first and last piece of candy, then the number of students at the table could be",
       "answerChoices": [
         "$10$",
@@ -540,12 +470,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": [
-        "Graphs",
-        "Rate and Speed"
-      ],
-      "statement": "The graph relates the distance traveled [in miles] to the time elapsed [in hours] on a trip taken by an experimental airplane. During which hour was the average speed of this airplane the largest?\n\n[See figure in original PDF]",
+      "categorization": "Rates and Kinematics",
+      "tags": ["Slope", "Graph Interpretation"],
+      "statement": "The graph relates the distance traveled (in miles) to the time elapsed (in hours) on a trip taken by an experimental airplane. During which hour was the average speed of this airplane the largest? [See figure in original PDF]",
       "answerChoices": [
         "$\\text{first } (0-1)$",
         "$\\text{second } (1-2)$",
@@ -565,11 +492,8 @@
       "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Systems of Equations",
-      "tags": [
-        "Substitution",
-        "Visual Algebra"
-      ],
-      "statement": "Three $\\triangle$'s and a $\\bigcirc$ will balance nine $\\square$'s. One $\\triangle$ will balance a $\\square$ and a $\\bigcirc$. How many $\\square$'s will balance the two $\\bigcirc$'s in this balance?\n\n[See figure in original PDF]",
+      "tags": ["Substitution", "Balancing"],
+      "statement": "Three $\\Delta$'s and a $\\bigcirc$ will balance nine $\\square$'s. One $\\Delta$ will balance a $\\bigcirc$ and a $\\square$. How many $\\square$'s will balance the two $\\bigcirc$'s in this balance? [See figure in original PDF]",
       "answerChoices": [
         "$1$",
         "$2$",
@@ -588,13 +512,9 @@
       "source": "AJHSME",
       "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
-      "tags": [
-        "Symmetries",
-        "Combinatorics",
-        "Burnside's Lemma"
-      ],
-      "statement": "How many different patterns can be made by shading exactly two of the nine squares? Patterns that can be matched by flips and/or turns are not considered different. For example, the patterns shown below are not considered different.\n\n[See figure in original PDF]",
+      "categorization": "Permutations and Combinations",
+      "tags": ["Symmetry", "Burnside's Lemma", "Grid Shading"],
+      "statement": "How many different patterns can be made by shading exactly two of the nine squares? Patterns that can be matched by flips and/or turns are not considered different. For example, the patterns shown below are not considered different. [See figure in original PDF]",
       "answerChoices": [
         "$3$",
         "$6$",

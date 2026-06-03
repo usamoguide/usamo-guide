@@ -8,10 +8,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Comparing Fractions"
+        "Comparing fractions"
       ],
       "statement": "Which of the following is the largest?",
       "answerChoices": [
@@ -32,10 +31,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Addition"
+        "Adding fractions",
+        "Arithmetic"
       ],
       "statement": "$\\frac{1}{10}+\\frac{2}{10}+\\frac{3}{10}+\\frac{4}{10}+\\frac{5}{10}+\\frac{6}{10}+\\frac{7}{10}+\\frac{8}{10}+\\frac{9}{10}+\\frac{55}{10}=$",
       "answerChoices": [
@@ -56,10 +55,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Time",
-        "Clock Math"
+        "Time calculation"
       ],
       "statement": "Each day Maria must work $8$ hours. This does not include the $45$ minutes she takes for lunch. If she begins working at $7:25$ A.M. and takes her lunch break at noon, then her working day will end at",
       "answerChoices": [
@@ -80,9 +78,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
-        "Rotations",
+        "Rotation",
         "Symmetry"
       ],
       "statement": "Which of the following represents the result when the figure shown below is rotated clockwise $120^{\\circ}$ about its center? [See figure in original PDF]",
@@ -104,12 +102,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
-        "Unit Conversion",
-        "Multiplication"
+        "Unit conversion"
       ],
-      "statement": "Given that $1$ mile $= 8$ furlongs and $1$ furlong $= 40$ rods, the number of rods in one mile is",
+      "statement": "Given that $1$ mile $=8$ furlongs and $1$ furlong $=40$ rods, the number of rods in one mile is",
       "answerChoices": [
         "$5$",
         "$320$",
@@ -126,12 +123,12 @@
       "name": "Problem 6 (1994 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
-        "Units Digit",
-        "Consecutive Integers"
+        "Parity",
+        "Divisibility"
       ],
       "statement": "The unit's digit (one's digit) of the product of any six consecutive positive whole numbers is",
       "answerChoices": [
@@ -152,10 +149,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Triangle Angle Sum",
       "tags": [
-        "Angles",
-        "Triangles"
+        "Exterior angle theorem"
       ],
       "statement": "If $\\angle A=60^{\\circ}$, $\\angle E=40^{\\circ}$ and $\\angle C=30^{\\circ}$, then $\\angle BDC=$ [See figure in original PDF]",
       "answerChoices": [
@@ -176,10 +172,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
-        "Digit Sum",
-        "Casework"
+        "Digit sum"
       ],
       "statement": "For how many three-digit whole numbers does the sum of the digits equal $25$?",
       "answerChoices": [
@@ -200,10 +195,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percentages",
-        "Money"
+        "Sequential discounts"
       ],
       "statement": "A shopper buys a $100$ dollar coat on sale for $20\\%$ off. An additional $5$ dollars are taken off the sale price by using a discount coupon. A sales tax of $8\\%$ is paid on the final selling price. The total amount the shopper pays for the coat is",
       "answerChoices": [
@@ -224,10 +219,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Divisor Counting Formulas",
       "tags": [
-        "Factors",
-        "Divisibility"
+        "Factors"
       ],
       "statement": "For how many positive integer values of $N$ is the expression $\\frac{36}{N+2}$ an integer?",
       "answerChoices": [
@@ -248,10 +242,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Inclusion-Exclusion Principle",
       "tags": [
-        "Venn Diagrams",
-        "Logic"
+        "Two-way tables"
       ],
       "statement": "Last summer $100$ students attended basketball camp. Of those attending, $52$ were boys and $48$ were girls. Also, $40$ students were from Jonas Middle School and $60$ were from Clay Middle School. Twenty of the girls were from Jonas Middle School. How many of the boys were from Clay Middle School?",
       "answerChoices": [
@@ -272,10 +265,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Area",
-        "Fractions"
+        "Area comparison",
+        "Decomposition"
       ],
       "statement": "Each of the three large squares shown below is the same size. Segments that intersect the sides of the squares intersect at the midpoints of the sides. How do the shaded areas of these squares compare? [See figure in original PDF]",
       "answerChoices": [
@@ -296,10 +289,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Averages"
+        "Averages",
+        "Fractions"
       ],
       "statement": "The number halfway between $\\frac{1}{6}$ and $\\frac{1}{4}$ is",
       "answerChoices": [
@@ -320,10 +313,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Time",
-        "Averages"
+        "Resource allocation"
       ],
       "statement": "Two children at a time can play pairball. For $90$ minutes, with only two children playing at time, five children take turns so that each one plays the same amount of time. The number of minutes each child plays is",
       "answerChoices": [
@@ -344,10 +336,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic Sequences",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
-        "Patterns",
-        "Modular Arithmetic"
+        "Sequences",
+        "Patterns"
       ],
       "statement": "If this path is to continue in the same pattern: [See figure in original PDF] then which sequence of arrows goes from point $425$ to point $427$?",
       "answerChoices": [
@@ -366,12 +358,12 @@
       "name": "Problem 16 (1994 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Similarity Basics",
       "tags": [
-        "Similar Figures",
-        "Area Ratio"
+        "Scaling",
+        "Area ratio"
       ],
       "statement": "The perimeter of one square is $3$ times the perimeter of another square. The area of the larger square is how many times the area of the smaller square?",
       "answerChoices": [
@@ -392,10 +384,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Arithmetic Sequences",
       "tags": [
         "Volume",
-        "Arithmetic Progressions"
+        "Summation"
       ],
       "statement": "Pauline Bunyan can shovel snow at the rate of $20$ cubic yards for the first hour, $19$ cubic yards for the second, $18$ for the third, etc., always shoveling one cubic yard less per hour than the previous hour. If her driveway is $4$ yards wide, $10$ yards long, and covered with snow $3$ yards deep, then the number of hours it will take her to shovel it clean is closest to",
       "answerChoices": [
@@ -416,10 +408,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
-        "Graph Reading",
-        "Rates"
+        "Distance-time graphs"
       ],
       "statement": "Mike leaves home and drives slowly east through city traffic. When he reaches the highway he drives east more rapidly until he reaches the shopping mall where he stops. He shops at the mall for an hour. Mike returns home by the same route as he came, driving west rapidly along the highway and then slowly through city traffic. Each graph shows the distance from home on the vertical axis versus the time elapsed since leaving home on the horizontal axis. Which graph is the best representation of Mike's trip? [See figure in original PDF]",
       "answerChoices": [
@@ -438,12 +429,12 @@
       "name": "Problem 19 (1994 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Circles",
-        "Area"
+        "Semicircles",
+        "Geometry"
       ],
       "statement": "Around the outside of a $4$ by $4$ square, construct four semicircles (as shown in the figure) with the four sides of the square as their diameters. Another square, $ABCD$, has its sides parallel to the corresponding sides of the original square, and each side of $ABCD$ is tangent to one of the semicircles. The area of the square $ABCD$ is [See figure in original PDF]",
       "answerChoices": [
@@ -464,10 +455,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Extremal Principle",
       "tags": [
-        "Fractions",
-        "Minimization"
+        "Optimization",
+        "Fractions"
       ],
       "statement": "Let $W$, $X$, $Y$ and $Z$ be four different digits selected from the set $\\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$. If the sum $\\frac{W}{X}+\\frac{Y}{Z}$ is to be as small as possible, then $\\frac{W}{X}+\\frac{Y}{Z}$ must equal",
       "answerChoices": [
@@ -490,7 +481,7 @@
       "isStarred": false,
       "categorization": "Pigeonhole Principle",
       "tags": [
-        "Worst Case Scenario"
+        "Worst-case scenario"
       ],
       "statement": "A gumball machine contains $9$ red, $7$ white, and $8$ blue gumballs. The least number of gumballs a person must buy to be sure of getting four gumballs of the same color is",
       "answerChoices": [
@@ -514,7 +505,7 @@
       "categorization": "Introduction to Probability",
       "tags": [
         "Parity",
-        "Independent Events"
+        "Independent events"
       ],
       "statement": "The two wheels shown below are spun and the two resulting numbers are added. The probability that the sum is even is [See figure in original PDF]",
       "answerChoices": [
@@ -535,10 +526,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Base Number Systems",
       "tags": [
         "Cryptarithm",
-        "Digit Addition"
+        "Place value"
       ],
       "statement": "If $X$, $Y$ and $Z$ are different digits, then the largest possible $3$-digit sum for $XXX + YX + X$ has the form",
       "answerChoices": [
@@ -559,10 +550,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
         "Coloring",
-        "Casework"
+        "Constraints"
       ],
       "statement": "A $2$ by $2$ square is divided into four $1$ by $1$ squares. Each of the small squares is to be painted either green or red. In how many different ways can the painting be accomplished so that no green square shares its top or right side with any red square? There may be as few as zero or as many as four small green squares.",
       "answerChoices": [
@@ -581,14 +572,14 @@
       "name": "Problem 25 (1994 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Hard",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Base Number Systems",
       "tags": [
-        "Digit Sum",
-        "Pattern Recognition"
+        "Digit sum",
+        "Multiplication patterns"
       ],
-      "statement": "Find the sum of the digits in the answer to $\\underbrace{999\\dots99}_{94\\text{ nines}} \\times \\underbrace{444\\dots44}_{94\\text{ fours}}$ where a string of $94$ nines is multiplied by a string of $94$ fours.",
+      "statement": "Find the sum of the digits in the answer to $\\underbrace{999\\dots 9}_{94 \\text{ nines}} \\times \\underbrace{444\\dots 4}_{94 \\text{ fours}}$ where a string of $94$ nines is multiplied by a string of $94$ fours.",
       "answerChoices": [
         "$846$",
         "$855$",

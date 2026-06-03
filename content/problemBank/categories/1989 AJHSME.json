@@ -8,10 +8,11 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Absolute Value and Integer Operations",
             "tags": [
+                "Arithmetic",
                 "Addition",
-                "Grouping"
+                "Pairing"
             ],
             "statement": "$(1+11+21+31+41)+(9+19+29+39+49)=$",
             "answerChoices": [
@@ -32,10 +33,11 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
                 "Fractions",
-                "Decimals"
+                "Decimals",
+                "Place Value"
             ],
             "statement": "$\\frac{2}{10}+\\frac{4}{100}+\\frac{6}{1000}=$",
             "answerChoices": [
@@ -56,10 +58,11 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
                 "Decimals",
-                "Comparing Numbers"
+                "Inequalities",
+                "Ordering"
             ],
             "statement": "Which of the following numbers is the largest?",
             "answerChoices": [
@@ -80,12 +83,12 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Estimation and Bounding",
             "tags": [
                 "Estimation",
                 "Fractions"
             ],
-            "statement": "Estimate to determine which of the following numbers is closest to $\\frac{401}{205}.$",
+            "statement": "Estimate to determine which of the following numbers is closest to $\\frac{401}{205}$.",
             "answerChoices": [
                 "$.2$",
                 "$2$",
@@ -104,9 +107,10 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Absolute Value and Integer Operations",
             "tags": [
-                "Order of Operations"
+                "Order of Operations",
+                "Negative Numbers"
             ],
             "statement": "$-15+9\\times(6\\div3)=$",
             "answerChoices": [
@@ -127,10 +131,10 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Algebra Basics",
+            "categorization": "Proportional Reasoning",
             "tags": [
                 "Number Line",
-                "Distance"
+                "Spacing"
             ],
             "statement": "If the markings on the number line are equally spaced, what is the number $y$? [See figure in original PDF]",
             "answerChoices": [
@@ -151,10 +155,10 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Word Problems",
+            "categorization": "Linear Equations",
             "tags": [
-                "Money",
-                "Linear Equations"
+                "Word Problem",
+                "Coin Values"
             ],
             "statement": "If the value of $20$ quarters and $10$ dimes equals the value of $10$ quarters and $n$ dimes, then $n=$",
             "answerChoices": [
@@ -175,12 +179,12 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
                 "Fractions",
                 "Distributive Property"
             ],
-            "statement": "$(2\\times3\\times4)(\\frac{1}{2}+\\frac{1}{3 টেলিভিশন+\\frac{1}{4})=$",
+            "statement": "$(2\\times3\\times4)(\\frac{1}{2}+\\frac{1}{3}+\\frac{1}{4})=$",
             "answerChoices": [
                 "$1$",
                 "$3$",
@@ -199,7 +203,7 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Word Problems",
+            "categorization": "Proportional Reasoning",
             "tags": [
                 "Ratios",
                 "Percentages"
@@ -223,10 +227,10 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "Circle Angles",
             "tags": [
-                "Clocks",
-                "Angles"
+                "Clock Angles",
+                "Degrees"
             ],
             "statement": "What is the number of degrees in the smaller angle between the hour hand and the minute hand on a clock that reads seven o'clock?",
             "answerChoices": [
@@ -247,18 +251,18 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "Coordinate Geometry Basics",
             "tags": [
                 "Symmetry",
                 "Transformations"
             ],
             "statement": "Which of the five \"T-like shapes\" would be symmetric to the one shown with respect to the dashed line? [See figure in original PDF]",
             "answerChoices": [
-                "[Figure A]",
-                "[Figure B]",
-                "[Figure C]",
-                "[Figure D]",
-                "[Figure E]"
+                "$\\text{Choice A}$",
+                "$\\text{Choice B}$",
+                "$\\text{Choice C}$",
+                "$\\text{Choice D}$",
+                "$\\text{Choice E}$"
             ],
             "solutionMetadata": {
                 "kind": "none"
@@ -271,10 +275,10 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
-                "Fractions",
-                "Complex Fractions"
+                "Complex Fractions",
+                "Arithmetic"
             ],
             "statement": "$\\frac{1-\\frac{1}{3}}{1-\\frac{1}{2}}=$",
             "answerChoices": [
@@ -295,10 +299,10 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
-                "Fractions",
-                "Decimals"
+                "Decimals",
+                "Algebraic Manipulation"
             ],
             "statement": "$\\frac{9}{7\\times53}=$",
             "answerChoices": [
@@ -319,13 +323,13 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Word Problems",
+            "categorization": "Extremal Principle",
             "tags": [
                 "Digit Placement",
-                "Optimization",
-                "Subtraction"
+                "Subtraction",
+                "Minimization"
             ],
-            "statement": "When placing each of the digits $2, 4, 5, 6, 9$ in exactly one of the boxes of this subtraction problem, what is the smallest difference that is possible? [See figure in original PDF]",
+            "statement": "When placing each of the digits $2$, $4$, $5$, $6$, $9$ in exactly one of the boxes of this subtraction problem, what is the smallest difference that is possible? [See figure in original PDF]",
             "answerChoices": [
                 "$58$",
                 "$123$",
@@ -344,11 +348,11 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "Composite Figures and Shaded Areas",
             "tags": [
                 "Area",
                 "Parallelogram",
-                "Triangles"
+                "Shaded Region"
             ],
             "statement": "The area of the shaded region $BEDC$ in parallelogram $ABCD$ is [See figure in original PDF]",
             "answerChoices": [
@@ -369,10 +373,10 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Primes and Composites",
             "tags": [
-                "Primes",
-                "Sum of Primes"
+                "Sum of Primes",
+                "Parity"
             ],
             "statement": "In how many ways can $47$ be written as the sum of two primes?",
             "answerChoices": [
@@ -380,7 +384,7 @@
                 "$1$",
                 "$2$",
                 "$3$",
-                "more than $3$"
+                "$\\text{more than } 3$"
             ],
             "solutionMetadata": {
                 "kind": "none"
@@ -393,7 +397,7 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Mean, Median, Mode, and Harmonic Mean",
+            "categorization": "Estimation and Bounding",
             "tags": [
                 "Averages",
                 "Inequalities"
@@ -417,10 +421,10 @@
             "source": "AJHSME",
             "difficulty": "Very Easy",
             "isStarred": false,
-            "categorization": "Algebra Basics",
+            "categorization": "Defined Operations",
             "tags": [
                 "Reciprocals",
-                "Inverses"
+                "Involutions"
             ],
             "statement": "Many calculators have a reciprocal key $\\frac{1}{x}$ that replaces the current number displayed with its reciprocal. For example, if the display is $00004$ and the key is depressed, then the display becomes $000.25$. If $00032$ is currently displayed, what is the fewest number of times you must depress the $\\frac{1}{x}$ key so the display again reads $00032$?",
             "answerChoices": [
@@ -441,7 +445,7 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Word Problems",
+            "categorization": "No Category",
             "tags": [
                 "Graph Reading",
                 "Data Interpretation"
@@ -465,10 +469,11 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "No Category",
             "tags": [
                 "Spatial Reasoning",
-                "Nets"
+                "Nets",
+                "Cubes"
             ],
             "statement": "The figure may be folded along the lines shown to form a number cube. Three number faces come together at each corner of the cube. What is the largest sum of three numbers whose faces come together at a corner? [See figure in original PDF]",
             "answerChoices": [
@@ -489,10 +494,11 @@
             "source": "AJHSME",
             "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Word Problems",
+            "categorization": "Fraction, Decimal, Percent Conversions",
             "tags": [
                 "Percentages",
-                "Fractions"
+                "Successive Discounts",
+                "Word Problem"
             ],
             "statement": "Jack had a bag of $128$ apples. He sold $25\\%$ of them to Jill. Next he sold $25\\%$ of those remaining to June. Of those apples still in his bag, he gave the shiniest one to his teacher. How many apples did Jack have then?",
             "answerChoices": [
@@ -511,14 +517,15 @@
             "name": "Problem 22 (1989 AJHSME)",
             "url": null,
             "source": "AJHSME",
-            "difficulty": "Normal",
+            "difficulty": "Easy",
             "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
+            "categorization": "Units Digit and Periodicity",
             "tags": [
+                "Periodicity",
                 "Cycles",
-                "Least Common Multiple"
+                "LCM"
             ],
-            "statement": "The letters A, J, H, S, M, E and the digits $1, 9, 8, 9$ are \"cycled\" separately as follows and put together in a numbered list:\n$1$. JHSMEA $9891$\n$2$. HSMEAJ $8919$\n$3$. SMEAJH $9198$\nWhat is the number of the line on which AJHSME $1989$ will appear for the first time?",
+            "statement": "The letters $A$, $J$, $H$, $S$, $M$, $E$ and the digits $1$, $9$, $8$, $9$ are \"cycled\" separately as follows and put together in a numbered list:\n$1.\\ JHSMEA\\ 9891$\n$2.\\ HSMEAJ\\ 8919$\n$3.\\ SMEAJH\\ 9198$\nWhat is the number of the line on which $AJHSME\\ 1989$ will appear for the first time?",
             "answerChoices": [
                 "$6$",
                 "$10$",
@@ -537,10 +544,11 @@
             "source": "AJHSME",
             "difficulty": "Normal",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "Composite Figures and Shaded Areas",
             "tags": [
                 "Surface Area",
-                "3D Geometry"
+                "3D Geometry",
+                "Cubes"
             ],
             "statement": "An artist has $14$ cubes, each with an edge of $1$ meter. She stands them on the ground to form a sculpture as shown. She then paints the exposed surface of the sculpture. How many square meters does she paint? [See figure in original PDF]",
             "answerChoices": [
@@ -561,12 +569,13 @@
             "source": "AJHSME",
             "difficulty": "Normal",
             "isStarred": false,
-            "categorization": "Geometry Basics",
+            "categorization": "Proportional Reasoning",
             "tags": [
+                "Paper Folding",
                 "Perimeter",
-                "Paper Folding"
+                "Ratios"
             ],
-            "statement": "Suppose a square piece of paper is folded in half vertically. The folded paper is then cut in half along the dashed line. Three rectangles are formed—a large one and two small ones. What is the ratio of the perimeter of one of the small rectangles to the perimeter of the large rectangle? [See figure in original PDF]",
+            "statement": "Suppose a square piece of paper is folded in half vertically. The folded paper is then cut in half along the dashed line. Three rectangles are formed-a large one and two small ones. What is the ratio of the perimeter of one of the small rectangles to the perimeter of the large rectangle? [See figure in original PDF]",
             "answerChoices": [
                 "$\\frac{1}{2}$",
                 "$\\frac{2}{3}$",
@@ -588,16 +597,16 @@
             "categorization": "Introduction to Probability",
             "tags": [
                 "Probability",
-                "Spinners",
-                "Parity"
+                "Parity",
+                "Spinners"
             ],
             "statement": "Every time these two wheels are spun, two numbers are selected by the pointers. What is the probability that the sum of the two selected numbers is even? [See figure in original PDF]",
             "answerChoices": [
-                "$\\frac{1}{6}$",
+                "$\\frac{5}{6}$",
                 "$\\frac{3}{8}$",
-                "$\\frac{1}{2}$",
-                "$\\frac{5}{8}$",
-                "$\\frac{5}{6}$"
+                "$\\frac{4}{9}$",
+                "$\\frac{5}{7}$",
+                "$\\frac{7}{8}$"
             ],
             "solutionMetadata": {
                 "kind": "none"

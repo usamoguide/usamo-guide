@@ -8,19 +8,19 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
         "Multiplication",
-        "Negative Numbers",
-        "Fractions"
+        "Integers",
+        "Negative Numbers"
       ],
       "statement": "Which pair of numbers does NOT have a product equal to $36$?",
       "answerChoices": [
-        "$\\{-4,-9\\}$",
-        "$\\{-3,-12\\}$",
-        "$\\{\\frac{1}{2},-72\\}$",
-        "$\\{1,36\\}$",
-        "$\\{\\frac{3}{2},24\\}$"
+        "$\\{-4, -9\\}$",
+        "$\\{-3, -12\\}$",
+        "$\\{\\frac{1}{2}, -72\\}$",
+        "$\\{1, 36\\}$",
+        "$\\{\\frac{3}{2}, 24\\}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -33,10 +33,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Simplification"
+        "Fraction Simplification",
+        "Addition"
       ],
       "statement": "When the fraction $\\frac{49}{84}$ is expressed in simplest form, then the sum of the numerator and the denominator will be",
       "answerChoices": [
@@ -57,10 +57,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Prime Factorization",
       "tags": [
-        "Prime Factorization",
-        "Divisibility"
+        "Primes",
+        "Factors"
       ],
       "statement": "Which of the following numbers has the largest prime factor?",
       "answerChoices": [
@@ -81,19 +81,18 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Decimals",
-        "Powers of 10",
-        "Scientific Notation"
+        "Decimal Multiplication",
+        "Exponents"
       ],
       "statement": "$1000 \\times 1993 \\times 0.1993 \\times 10 =$",
       "answerChoices": [
-        "$1.993 \\times 10^{3}$",
+        "$1.993 \\times 10^3$",
         "$1993.1993$",
-        "$(199.3)^{2}$",
+        "$(199.3)^2$",
         "$1,993,001.993$",
-        "$(1993)^{2}$"
+        "$(1993)^2$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -106,19 +105,19 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Data Interpretation",
-        "Graphs",
-        "Proportions"
+        "Data Visualization",
+        "Pie Charts",
+        "Bar Graphs"
       ],
       "statement": "Which one of the following bar graphs could represent the data from the circle graph? [See figure in original PDF]",
       "answerChoices": [
-        "[Bar Graph A]",
-        "[Bar Graph B]",
-        "[Bar Graph C]",
-        "[Bar Graph D]",
-        "[Bar Graph E]"
+        "$A$",
+        "$B$",
+        "$C$",
+        "$D$",
+        "$E$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -131,10 +130,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
         "Ratios",
-        "Proportions"
+        "Word Problem"
       ],
       "statement": "A can of soup can feed $3$ adults or $5$ children. If there are $5$ cans of soup and $15$ children are fed, then how many adults would the remaining soup feed?",
       "answerChoices": [
@@ -157,15 +156,15 @@
       "isStarred": false,
       "categorization": "Exponent Rules",
       "tags": [
-        "Exponent Arithmetic",
+        "Exponent Addition",
         "Factoring"
       ],
-      "statement": "$3^{3} + 3^{3} + 3^{3} =$",
+      "statement": "$3^3 + 3^3 + 3^3 =$",
       "answerChoices": [
-        "$3^{4}$",
-        "$9^{3}$",
-        "$3^{9}$",
-        "$27^{3}$",
+        "$3^4$",
+        "$9^3$",
+        "$3^9$",
+        "$27^3$",
         "$3^{27}$"
       ],
       "solutionMetadata": {
@@ -179,18 +178,18 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
-        "Rates",
-        "Time Conversion"
+        "Rate Word Problem",
+        "Unit Conversion"
       ],
       "statement": "To control her blood pressure, Jill's grandmother takes one half of a pill every other day. If one supply of medicine contains $60$ pills, then the supply of medicine would last approximately",
       "answerChoices": [
-        "$1 \\text{ month}$",
-        "$4 \\text{ months}$",
-        "$6 \\text{ months}$",
-        "$8 \\text{ months}$",
-        "$1 \\text{ year}$"
+        "$1$ month",
+        "$4$ months",
+        "$6$ months",
+        "$8$ months",
+        "$1$ year"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -203,12 +202,12 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Defined Operations",
       "tags": [
-        "Custom Operations",
-        "Tables"
+        "Table Lookup",
+        "Custom Operations"
       ],
-      "statement": "Consider the operation $*$ defined by the following table:\n$$\\begin{matrix}*&1&2&3&4\\\\ 1&1&2&3&4\\\\ 2&2&4&1&3\\\\ 3&3&4&4&2\\\\ 4&3&2&1\\end{matrix}$$\nFor example, $3 * 2 = 1$. Then $(2 * 4) * (1 * 3) =$ [See figure in original PDF]",
+      "statement": "Consider the operation $*$ defined by the following table:\n$$\\begin{matrix} * & 1 & 2 & 3 & 4 \\\\ 1 & 1 & 2 & 3 & 4 \\\\ 2 & 2 & 4 & 1 & 3 \\\\ 3 & 3 & 4 & 4 & 2 \\\\ 4 & 4 & 3 & 2 & 1 \\end{matrix}$$\nFor example, $3 * 2 = 1$. Then $(2 * 4) * (1 * 3) =$",
       "answerChoices": [
         "$1$",
         "$2$",
@@ -227,18 +226,18 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "No Category",
       "tags": [
-        "Data Interpretation",
-        "Line Graphs"
+        "Line Graphs",
+        "Data Interpretation"
       ],
-      "statement": "This line graph represents the price of a trading card during the first $6$ months of $1993$. The greatest monthly drop in price occurred during [See figure in original PDF]",
+      "statement": "This line graph represents the price of a trading card during the first $6$ months of $1993$. [See figure in original PDF] The greatest monthly drop in price occurred during",
       "answerChoices": [
-        "$\\text{January}$",
-        "$\\text{March}$",
-        "$\\text{April}$",
-        "$\\text{May}$",
-        "$\\text{June}$"
+        "January",
+        "March",
+        "April",
+        "May",
+        "June"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -251,13 +250,13 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "No Category",
       "tags": [
-        "Histograms",
+        "Statistics",
         "Median",
-        "Statistics"
+        "Histogram"
       ],
-      "statement": "Consider this histogram of the scores for $81$ students taking a test. The median is in the interval labeled [See figure in original PDF]",
+      "statement": "Consider this histogram of the scores for $81$ students taking a test: [See figure in original PDF] The median is in the interval labeled",
       "answerChoices": [
         "$60$",
         "$65$",
@@ -276,12 +275,12 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Systematic Casework",
       "tags": [
         "Order of Operations",
-        "Combinatorics"
+        "Casework"
       ],
-      "statement": "If each of the three operation signs, $+$, $-$, $\\times$, is used exactly ONCE in one of the blanks in the expression $5 \\ \\_ \\ 4 \\ \\_ \\ 6 \\ \\_ \\ 3$ then the value of the result could equal",
+      "statement": "If each of the three operation signs, $+$, $-$, $\\times$, is used exactly ONCE in one of the blanks in the expression\n$5 \\_ 4 \\_ 6 \\_ 3$\nthen the value of the result could equal",
       "answerChoices": [
         "$9$",
         "$10$",
@@ -300,12 +299,12 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Area",
-        "Composite Shapes"
+        "Rectangles"
       ],
-      "statement": "The word \"HELP\" in block letters is painted in black with strokes $1$ unit wide on a $5$ by $15$ rectangular white sign with dimensions as shown. The area of the white portion of the sign, in square units, is [See figure in original PDF]",
+      "statement": "The word \"HELP\" in block letters is painted in black with strokes $1$ unit wide on a $5$ by $15$ rectangular white sign with dimensions as shown. [See figure in original PDF] The area of the white portion of the sign, in square units, is",
       "answerChoices": [
         "$30$",
         "$32$",
@@ -324,12 +323,12 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Systematic Casework",
       "tags": [
         "Logic Puzzle",
         "Latin Square"
       ],
-      "statement": "The nine squares in the table shown are to be filled so that every row and every column contains each of the numbers $1$, $2$, $3$. Then $A + B =$ [See figure in original PDF]",
+      "statement": "The nine squares in the table shown are to be filled so that every row and every column contains each of the numbers $1$, $2$, $3$. Then $A+B=$ [See figure in original PDF]",
       "answerChoices": [
         "$2$",
         "$3$",
@@ -346,12 +345,12 @@
       "name": "Problem 15 (1993 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Linear Equations",
       "tags": [
-        "Averages",
-        "Sums"
+        "Average",
+        "Mean"
       ],
       "statement": "The arithmetic mean (average) of four numbers is $85$. If the largest of these numbers is $97$, then the mean of the remaining three numbers is",
       "answerChoices": [
@@ -372,12 +371,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Continued Fractions",
-        "Simplification"
+        "Continued Fractions"
       ],
-      "statement": "$\\frac{1}{1 + \\frac{1}{2 + \\frac{1}{3}}} =$",
+      "statement": "$\\frac{1}{1+\\frac{1}{2+\\frac{1}{3}}} =$",
       "answerChoices": [
         "$\\frac{1}{6}$",
         "$\\frac{3}{10}$",
@@ -396,13 +394,13 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "3D Geometry",
         "Surface Area",
-        "Nets"
+        "Geometry",
+        "3D Folding"
       ],
-      "statement": "Square corners, $5$ units on a side, are removed from a $20$ unit by $30$ unit rectangular sheet of cardboard. The sides are then folded to form an open box. The surface area, in square units, of the interior of the box is",
+      "statement": "Square corners, $5$ units on a side, are removed from a $20$ unit by $30$ unit rectangular sheet of cardboard. The sides are then folded to form an open box. [See figure in original PDF] The surface area, in square units, of the interior of the box is",
       "answerChoices": [
         "$300$",
         "$500$",
@@ -419,15 +417,15 @@
       "name": "Problem 18 (1993 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Triangle Area Formulas",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Subtraction of Areas",
-        "Quadrilaterals",
+        "Area",
+        "Quadrilateral",
         "Midpoints"
       ],
-      "statement": "The rectangle shown has length $AC=32$, width $AE=20$, and $B$ and $F$ are midpoints of $\\overline{AC}$ and $\\overline{AE}$, respectively. The area of quadrilateral $ABDF$ is [See figure in original PDF]",
+      "statement": "The rectangle shown has length $AC=32$, width $AE=20$, and $B$ and $F$ are midpoints of $\\overline{AC}$ and $\\overline{AE}$, respectively. [See figure in original PDF] The area of quadrilateral $ABDF$ is",
       "answerChoices": [
         "$320$",
         "$325$",
@@ -444,13 +442,12 @@
       "name": "Problem 19 (1993 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Series",
-        "Grouping",
-        "Subtraction"
+        "Series Addition",
+        "Grouping"
       ],
       "statement": "$(1901 + 1902 + 1903 + \\dots + 1993) - (101 + 102 + 103 + \\dots + 193) =$",
       "answerChoices": [
@@ -471,10 +468,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
-        "Digit Sums",
-        "Patterns"
+        "Digit Sum",
+        "Subtraction"
       ],
       "statement": "When $10^{93} - 93$ is expressed as a single whole number, the sum of the digits is",
       "answerChoices": [
@@ -495,11 +492,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Percentages",
-        "Area",
-        "Rectangles"
+        "Percentage Change",
+        "Area"
       ],
       "statement": "If the length of a rectangle is increased by $20\\%$ and its width is increased by $50\\%$, then the area is increased by",
       "answerChoices": [
@@ -523,7 +519,7 @@
       "categorization": "Counting Fundamentals",
       "tags": [
         "Digit Counting",
-        "Pagination"
+        "Page Numbering"
       ],
       "statement": "Pat Peano has plenty of $0$'s, $1$'s, $3$'s, $4$'s, $5$'s, $6$'s, $7$'s, $8$'s and $9$'s, but he has only twenty-two $2$'s. How far can he number the pages of his scrapbook with these digits?",
       "answerChoices": [
@@ -544,18 +540,19 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Systematic Casework",
       "tags": [
-        "Ordering",
-        "Logic"
+        "Logic",
+        "Orderings",
+        "Permutations"
       ],
       "statement": "Five runners, $P$, $Q$, $R$, $S$, $T$, have a race, and $P$ beats $Q$, $P$ beats $R$, $Q$ beats $S$, and $T$ finishes after $P$ and before $Q$. Who could NOT have finished third in the race?",
       "answerChoices": [
-        "$P \\text{ and } Q$",
-        "$P \\text{ and } R$",
-        "$P \\text{ and } S$",
-        "$P \\text{ and } T$",
-        "$P \\text{, } S \\text{ and } T$"
+        "$P$ and $Q$",
+        "$P$ and $R$",
+        "$P$ and $S$",
+        "$P$ and $T$",
+        "$P$, $S$ and $T$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -570,9 +567,9 @@
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
+        "Number Arrays",
         "Patterns",
-        "Perfect Squares",
-        "Triangular Numbers"
+        "Perfect Squares"
       ],
       "statement": "What number is directly above $142$ in this array of numbers? [See figure in original PDF]",
       "answerChoices": [
@@ -593,19 +590,19 @@
       "source": "AJHSME",
       "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Extremal Principle",
       "tags": [
+        "Geometry",
         "Covering",
-        "Maximum and Minimum",
-        "Grid Geometry"
+        "Optimization"
       ],
       "statement": "A checkerboard consists of one-inch squares. A square card, $1.5$ inches on a side, is placed on the board so that it covers part or all of the area of each of $n$ squares. The maximum possible value of $n$ is",
       "answerChoices": [
-        "$4 \\text{ or } 5$",
-        "$6 \\text{ or } 7$",
-        "$8 \\text{ or } 9$",
-        "$10 \\text{ or } 11$",
-        "$12 \\text{ or more}$"
+        "$4$ or $5$",
+        "$6$ or $7$",
+        "$8$ or $9$",
+        "$10$ or $11$",
+        "$12$ or more"
       ],
       "solutionMetadata": {
         "kind": "none"

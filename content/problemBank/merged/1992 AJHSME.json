@@ -8,12 +8,12 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
         "Order of Operations",
-        "Fractions"
+        "Arithmetic"
       ],
-      "statement": "$\\frac{10-9+8-7+6-5+4-3+2-1}{1-2+3-4+5-6+7-8+9}=$",
+      "statement": "What is the value of $\\frac{10-9+8-7+6-5+4-3+2-1}{1-2+3-4+5-6+7-8+9}$?",
       "answerChoices": [
         "$-1$",
         "$1$",
@@ -21,10 +21,10 @@
         "$9$",
         "$10$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-2",
@@ -33,9 +33,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions"
+        "Equivalent Fractions",
+        "Mixed Numbers"
       ],
       "statement": "Which of the following is not equal to $\\frac{5}{4}$?",
       "answerChoices": [
@@ -45,10 +46,10 @@
         "$1\\frac{1}{5}$",
         "$1\\frac{10}{40}$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1992-3",
@@ -57,11 +58,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
         "Subtraction",
-        "Negative Numbers",
-        "Extremal Principle"
+        "Extremes"
       ],
       "statement": "What is the largest difference that can be formed by subtracting two numbers chosen from the set $\\{-16, -4, 0, 2, 4, 12\\}$?",
       "answerChoices": [
@@ -71,21 +71,22 @@
         "$28$",
         "$48$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1992-4",
       "name": "Problem 4 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_4",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Percentages"
+        "Percentages",
+        "Word Problem"
       ],
       "statement": "During the softball season, Judy had $35$ hits. Among her hits were $1$ home run, $1$ triple and $5$ doubles. The rest of her hits were single. What percent of her hits were single?",
       "answerChoices": [
@@ -95,10 +96,10 @@
         "$75\\%$",
         "$80\\%$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1992-5",
@@ -107,13 +108,13 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Area",
-        "Circles",
+        "Area of Rectangle",
+        "Area of Circle",
         "Estimation"
       ],
-      "statement": "A circle of diameter $1$ is removed from a $2 \\times 3$ rectangle, as shown. Which whole number is closest to the area of the shaded region? [See figure in original PDF]",
+      "statement": "A circle of diameter $1$ is removed from a $2\\times3$ rectangle, as shown. Which whole number is closest to the area of the shaded region? [See figure in original PDF]",
       "answerChoices": [
         "$1$",
         "$2$",
@@ -121,24 +122,23 @@
         "$4$",
         "$5$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1992-6",
       "name": "Problem 6 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_6",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Defined Operations",
       "tags": [
-        "Custom Operations",
-        "Evaluation"
+        "Custom Operators"
       ],
-      "statement": "Suppose that a table with $a$ and $b$ in the first row and $c$ in the second row means $a+b-c$. For example, a table with $5$ and $4$ in the first row and $6$ in the second row is $5+4-6=3$. Then the value of a table with $1$ and $2$ in the first row and $3$ in the second row is:",
+      "statement": "Suppose that a figure with $a$ and $b$ on the top row and $c$ on the bottom row means $a+b-c$. For example, a figure with $5$ and $4$ on the top row and $6$ on the bottom row is $5+4-6=3$. Then the sum of a figure with $1$ and $2$ on the top row and $3$ on the bottom row, and a figure with $4$ and $5$ on the top row and $6$ on the bottom row is [See figure in original PDF]",
       "answerChoices": [
         "$-2$",
         "$-1$",
@@ -146,23 +146,22 @@
         "$1$",
         "$2$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1992-7",
       "name": "Problem 7 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_7",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
         "Digit Sum",
-        "Parity",
-        "Casework"
+        "Even Numbers"
       ],
       "statement": "The digit-sum of $998$ is $9+9+8=26$. How many $3$-digit whole numbers, whose digit-sum is $26$, are even?",
       "answerChoices": [
@@ -172,19 +171,19 @@
         "$4$",
         "$5$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1992-8",
       "name": "Problem 8 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_8",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
         "Profit",
         "Linear Equations"
@@ -197,24 +196,24 @@
         "$1500$",
         "$1900$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1992-9",
       "name": "Problem 9 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_9",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
-        "Bar Graphs",
+        "Bar Charts",
         "Ratios"
       ],
-      "statement": "The population of a small town is $480$. A bar graph indicates the number of females and males in the town, but the vertical scale-values are omitted. How many males live in the town? [See figure in original PDF]",
+      "statement": "The population of a small town is $480$. The graph indicates the number of females and males in the town, but the vertical scale-values are omitted. How many males live in the town? [See figure in original PDF]",
       "answerChoices": [
         "$120$",
         "$160$",
@@ -222,25 +221,24 @@
         "$240$",
         "$360$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-10",
       "name": "Problem 10 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_10",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Area",
-        "Triangles",
-        "Symmetry"
+        "Area of Triangle",
+        "Congruence"
       ],
-      "statement": "An isosceles right triangle with legs of length $8$ is partitioned into $16$ congruent triangles as shown. The shaded area is: [See figure in original PDF]",
+      "statement": "An isosceles right triangle with legs of length $8$ is partitioned into $16$ congruent triangles as shown. The shaded area is [See figure in original PDF]",
       "answerChoices": [
         "$10$",
         "$20$",
@@ -248,10 +246,10 @@
         "$40$",
         "$64$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-11",
@@ -260,9 +258,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Bar Graphs",
+        "Bar Charts",
         "Percentages"
       ],
       "statement": "The bar graph shows the results of a survey on color preferences. What percent preferred blue? [See figure in original PDF]",
@@ -273,10 +271,10 @@
         "$36\\%$",
         "$42\\%$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-12",
@@ -285,10 +283,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Ratios",
-        "Proportions"
+        "Averages",
+        "Resource Allocation"
       ],
       "statement": "The five tires of a car (four road tires and a full-sized spare) were rotated so that each tire was used the same number of miles during the first $30,000$ miles the car traveled. For how many miles was each tire used?",
       "answerChoices": [
@@ -298,10 +296,10 @@
         "$30,000$",
         "$37,500$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1992-13",
@@ -310,10 +308,9 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Statistics",
-        "Sum"
+        "Mean, Median, Mode"
       ],
       "statement": "Five test scores have a mean (average score) of $90$, a median (middle score) of $91$ and a mode (most frequent score) of $94$. The sum of the two lowest test scores is",
       "answerChoices": [
@@ -323,22 +320,22 @@
         "$177$",
         "$\\text{not determined by the information given}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-14",
       "name": "Problem 14 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_14",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Linear Equations",
       "tags": [
         "Fractions",
-        "Algebraic Translation"
+        "Word Problem"
       ],
       "statement": "When four gallons are added to a tank that is one-third full, the tank is then one-half full. The capacity of the tank in gallons is",
       "answerChoices": [
@@ -348,24 +345,24 @@
         "$24$",
         "$48$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1992-15",
       "name": "Problem 15 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_15",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic Sequences",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
-        "Modular Arithmetic",
-        "Patterns"
+        "Sequences",
+        "Modulo"
       ],
-      "statement": "What is the $1992^{\\text{nd}}$ letter in this sequence? $$\\text{ABCDEDCBAABCDEDCBAABCDEDCBAABCDEDC}\\dots$$",
+      "statement": "What is the $1992^\\text{nd}$ letter in this sequence? ABCDEDCBAABCDEDCBAABCDEDCBAABCDEDC...",
       "answerChoices": [
         "$\\text{A}$",
         "$\\text{B}$",
@@ -373,10 +370,10 @@
         "$\\text{D}$",
         "$\\text{E}$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1992-16",
@@ -385,12 +382,13 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Proportional Reasoning",
       "tags": [
         "Volume",
-        "Cylinders"
+        "Cylinder",
+        "Proportionality"
       ],
-      "statement": "A cylinder has a radius of $10$ and a height of $5$. Which cylinder has twice the volume of the cylinder shown? [See figure in original PDF]",
+      "statement": "Which cylinder has twice the volume of the cylinder shown above? [See figure in original PDF]",
       "answerChoices": [
         "$\\text{Cylinder A}$",
         "$\\text{Cylinder B}$",
@@ -398,10 +396,10 @@
         "$\\text{Cylinder D}$",
         "$\\text{None of the above}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-17",
@@ -410,7 +408,7 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Triangle Fundamentals",
       "tags": [
         "Triangle Inequality"
       ],
@@ -422,21 +420,20 @@
         "$6$",
         "$7$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-18",
       "name": "Problem 18 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_18",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
-        "Rate",
         "Average Speed"
       ],
       "statement": "On a trip, a car traveled $80$ miles in an hour and a half, then was stopped in traffic for $30$ minutes, then traveled $100$ miles during the next $2$ hours. What was the car's average speed in miles per hour for the $4$-hour trip?",
@@ -447,10 +444,10 @@
         "$75$",
         "$90$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1992-19",
@@ -459,12 +456,12 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Inequalities Foundations",
+      "categorization": "Extremal Principle",
       "tags": [
-        "Extremal Principle",
-        "Maximization"
+        "Maximization",
+        "Distances"
       ],
-      "statement": "The distance between the $5^{\\text{th}}$ and $26^{\\text{th}}$ exits on an interstate highway is $118$ miles. If any two exits are at least $5$ miles apart, then what is the largest number of miles there can be between two consecutive exits that are between the $5^{\\text{th}}$ and $26^{\\text{th}}$ exits?",
+      "statement": "The distance between the $5^\\text{th}$ and $26^\\text{th}$ exits on an interstate highway is $118$ miles. If any two exits are at least $5$ miles apart, then what is the largest number of miles there can be between two consecutive exits that are between the $5^\\text{th}$ and $26^\\text{th}$ exits?",
       "answerChoices": [
         "$8$",
         "$13$",
@@ -472,10 +469,10 @@
         "$47$",
         "$98$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1992-20",
@@ -484,10 +481,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
-        "Spatial Reasoning",
-        "Nets"
+        "Nets",
+        "Cubes",
+        "Spatial Geometry"
       ],
       "statement": "Which pattern of identical squares could NOT be folded along the lines shown to form a cube? [See figure in original PDF]",
       "answerChoices": [
@@ -497,10 +495,10 @@
         "$\\text{Pattern D}$",
         "$\\text{Pattern E}$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1992-21",
@@ -509,9 +507,9 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Bar Graphs",
+        "Bar Charts",
         "Percentages"
       ],
       "statement": "Northside's Drum and Bugle Corps raised money for a trip. The drummers and bugle players kept separate sales records. According to the double bar graph, in what month did one group's sales exceed the other's by the greatest percent? [See figure in original PDF]",
@@ -522,24 +520,24 @@
         "$\\text{Apr}$",
         "$\\text{May}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-22",
       "name": "Problem 22 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_22",
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Extremal Principle",
       "tags": [
         "Perimeter",
-        "Grid Polygons"
+        "Polyominoes"
       ],
-      "statement": "Eight $1 \\times 1$ square tiles are arranged as shown so their outside edges form a polygon with a perimeter of $14$ units. Two additional tiles of the same size are added to the figure so that at least one side of each tile is shared with a side of one of the squares in the original figure. Which of the following could be the perimeter of the new figure? [See figure in original PDF]",
+      "statement": "Eight $1\\times1$ square tiles are arranged as shown so their outside edges form a polygon with a perimeter of $14$ units. Two additional tiles of the same size are added to the figure so that at least one side of each tile is shared with a side of one of the squares in the original figure. Which of the following could be the perimeter of the new figure? [See figure in original PDF]",
       "answerChoices": [
         "$15$",
         "$17$",
@@ -547,10 +545,10 @@
         "$19$",
         "$20$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1992-23",
@@ -562,9 +560,9 @@
       "categorization": "Introduction to Probability",
       "tags": [
         "Dice",
-        "Counting Outcomes"
+        "Product"
       ],
-      "statement": "If two dice are tossed, the probability that the product of the numbers showing on the tops of the dice is greater than $10$ is:",
+      "statement": "If two dice are tossed, the probability that the product of the numbers showing on the tops of the dice is greater than $10$ is",
       "answerChoices": [
         "$\\frac{3}{7}$",
         "$\\frac{17}{36}$",
@@ -572,10 +570,10 @@
         "$\\frac{5}{8}$",
         "$\\frac{11}{12}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1992-24",
@@ -584,13 +582,12 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
-        "Area",
         "Circles",
         "Squares"
       ],
-      "statement": "Four circles of radius $3$ are arranged as shown. Their centers are the vertices of a square. The area of the shaded region is closest to: [See figure in original PDF]",
+      "statement": "Four circles of radius $3$ are arranged as shown. Their centers are the vertices of a square. The area of the shaded region is closest to [See figure in original PDF]",
       "answerChoices": [
         "$7.7$",
         "$12.1$",
@@ -598,23 +595,22 @@
         "$18$",
         "$27$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1992-25",
       "name": "Problem 25 (1992 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1992_AJHSME_Problems/Problem_25",
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Telescoping Sums and Products",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Patterns",
-        "Products"
+        "Sequential Operations",
+        "Fractions"
       ],
       "statement": "One half of the water is poured out of a full container. Then one third of the remainder is poured out. Continue the process: one fourth of the remainder for the third pouring, one fifth of the remainder for the fourth pouring, etc. After how many pourings does exactly one tenth of the original water remain?",
       "answerChoices": [
@@ -624,10 +620,10 @@
         "$9$",
         "$10$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     }
   ]
 }

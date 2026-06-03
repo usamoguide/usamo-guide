@@ -8,9 +8,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
-        "Arithmetic"
+        "Arithmetic",
+        "Addition"
       ],
       "statement": "$777=$",
       "answerChoices": [
@@ -31,10 +32,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
-        "Order of Operations",
-        "Fractions"
+        "Arithmetic",
+        "Order of Operations"
       ],
       "statement": "$\\frac{16+8}{4-2}=$",
       "answerChoices": [
@@ -55,10 +56,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
         "Large Numbers",
-        "Word to Number Conversion"
+        "Multiplication"
       ],
       "statement": "Two hundred thousand times two hundred thousand equals",
       "answerChoices": [
@@ -77,12 +78,12 @@
       "name": "Problem 4 (1991 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Linear Equations",
       "tags": [
-        "Algebraic Manipulation",
-        "Differences"
+        "Algebra",
+        "Simplification"
       ],
       "statement": "If $991+993+995+997+999=5000-N$ then $N=$",
       "answerChoices": [
@@ -103,18 +104,18 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "No Category",
       "tags": [
         "Tiling",
         "Parity"
       ],
-      "statement": "A \"domino\" is made up of two small squares: [See figure in original PDF]. Which of the \"checkerboards\" illustrated below CANNOT be covered exactly and completely by a whole number of non-overlapping dominoes?",
+      "statement": "A \"domino\" is made up of two small squares: Which of the \"checkerboards\" illustrated below CANNOT be covered exactly and completely by a whole number of non-overlapping dominoes? [See figure in original PDF]",
       "answerChoices": [
-        "$3 \\times 4$",
-        "$3 \\times 5$",
-        "$4 \\times 4$",
-        "$4 \\times 5$",
-        "$6 \\times 3$"
+        "$3\\times4$",
+        "$3\\times5$",
+        "$4\\times4$",
+        "$4\\times5$",
+        "$6\\times3$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -127,12 +128,12 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "No Category",
       "tags": [
         "Arrays",
-        "Min-Max"
+        "Minimax"
       ],
-      "statement": "Which number in the array below is both the largest in its column and the smallest in its row? [See figure in original PDF]",
+      "statement": "Which number in the array below is both the largest in its column and the smallest in its row? (Columns go up and down, rows go right and left.) [See figure in original PDF]",
       "answerChoices": [
         "$1$",
         "$6$",
@@ -149,9 +150,9 @@
       "name": "Problem 7 (1991 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
         "Estimation",
         "Factoring"
@@ -175,7 +176,7 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Extremal Principle",
       "tags": [
         "Quotients",
         "Negative Numbers"
@@ -199,10 +200,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Inclusion-Exclusion",
+      "categorization": "Inclusion-Exclusion Principle",
       "tags": [
         "Divisibility",
-        "Venn Diagrams"
+        "Counting"
       ],
       "statement": "How many whole numbers from $1$ through $46$ are divisible by either $3$ or $5$ or both?",
       "answerChoices": [
@@ -225,8 +226,8 @@
       "isStarred": false,
       "categorization": "Coordinate Geometry Basics",
       "tags": [
-        "Area of Parallelogram",
-        "Coordinates"
+        "Area",
+        "Parallelogram"
       ],
       "statement": "The area in square units of the region enclosed by parallelogram $ABCD$ is [See figure in original PDF]",
       "answerChoices": [
@@ -247,10 +248,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
-        "Combinations",
-        "Sum Constraints"
+        "Combinatorics",
+        "Sums"
       ],
       "statement": "There are several sets of three different numbers whose sum is $15$ which can be chosen from $\\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$. How many of these sets contain a $5$?",
       "answerChoices": [
@@ -271,10 +272,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Linear Equations",
       "tags": [
-        "Proportions",
-        "Averages"
+        "Averages",
+        "Algebra"
       ],
       "statement": "If $\\frac{2+3+4}{3}=\\frac{1990+1991+1992}{N}$ then $N=$",
       "answerChoices": [
@@ -295,12 +296,12 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Prime Factorization",
       "tags": [
         "Trailing Zeros",
-        "Prime Factorization"
+        "Exponents"
       ],
-      "statement": "How many zeros are at the end of the product $25 \\times 25 \\times 25 \\times 25 \\times 25 \\times 25 \\times 25 \\times 8 \\times 8$?",
+      "statement": "How many zeros are at the end of the product $25\\times25\\times25\\times25\\times25\\times25\\times25\\times8\\times8$?",
       "answerChoices": [
         "$3$",
         "$6$",
@@ -319,10 +320,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Extremal Principle",
       "tags": [
-        "Optimization",
-        "Worst-Case Scenario"
+        "Worst-Case Scenario",
+        "Logic"
       ],
       "statement": "Several students are competing in a series of three races. A student earns $5$ points for winning a race, $3$ points for finishing second and $1$ point for finishing third. There are no ties. What is the smallest number of points that a student must earn in the three races to be guaranteed of earning more points than any other student?",
       "answerChoices": [
@@ -343,7 +344,7 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Surface Area",
         "3D Geometry"
@@ -367,7 +368,7 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
         "Spatial Reasoning",
         "Folding"
@@ -391,9 +392,33 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Arithmetic Sequences",
       "tags": [
-        "Histograms",
+        "Optimization",
+        "Series"
+      ],
+      "statement": "An auditorium with $20$ rows of seats has $10$ seats in the first row. Each successive row has one more seat than the previous row. If students taking an exam are permitted to sit in any row, but not next to another student in that row, then the maximum number of students that can be seated for an exam is",
+      "answerChoices": [
+        "$150$",
+        "$180$",
+        "$200$",
+        "$400$",
+        "$460$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1991-18",
+      "name": "Problem 18 (1991 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Data Interpretation",
         "Percentages"
       ],
       "statement": "The vertical axis indicates the number of employees, but the scale was accidentally omitted from this graph. What percent of the employees at the Gauss company have worked there for $5$ years or more? [See figure in original PDF]",
@@ -409,41 +434,16 @@
       }
     },
     {
-      "uniqueId": "ajhsme-1991-18",
-      "name": "Problem 18 (1991 AJHSME)",
-      "url": null,
-      "source": "AJHSME",
-      "difficulty": "Normal",
-      "isStarred": false,
-      "categorization": "Arithmetic Sequences",
-      "tags": [
-        "Sum of Sequence",
-        "Parity",
-        "Optimization"
-      ],
-      "statement": "An auditorium with $20$ rows of seats has $10$ seats in the first row. Each successive row has one more seat than the previous row. If students taking an exam are permitted to sit in any row, but not next to another student in that row, then the maximum number of students that can be seated for an exam is",
-      "answerChoices": [
-        "$150$",
-        "$180$",
-        "$200$",
-        "$400$",
-        "$460$"
-      ],
-      "solutionMetadata": {
-        "kind": "none"
-      }
-    },
-    {
       "uniqueId": "ajhsme-1991-19",
       "name": "Problem 19 (1991 AJHSME)",
       "url": null,
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Extremal Principle",
       "tags": [
         "Averages",
-        "Extremal Values"
+        "Optimization"
       ],
       "statement": "The average (arithmetic mean) of $10$ different positive whole numbers is $10$. The largest possible value of any of these numbers is",
       "answerChoices": [
@@ -464,10 +464,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "No Category",
       "tags": [
         "Cryptarithm",
-        "Digit Addition"
+        "Logic"
       ],
       "statement": "In the addition problem, each digit has been replaced by a letter. If different letters represent different digits then $C=$ [See figure in original PDF]",
       "answerChoices": [
@@ -488,10 +488,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Proportional Reasoning",
       "tags": [
-        "Linear Relationships",
-        "Rates"
+        "Rates",
+        "Linear Relationship"
       ],
       "statement": "For every $3^{\\circ}$ rise in temperature, the volume of a certain gas expands by $4$ cubic centimeters. If the volume of the gas is $24$ cubic centimeters when the temperature is $32^{\\circ}$ what was the volume of the gas in cubic centimeters when the temperature was $20^{\\circ}$?",
       "answerChoices": [
@@ -534,13 +534,12 @@
       "name": "Problem 23 (1991 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Hard",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Inclusion-Exclusion",
+      "categorization": "Inclusion-Exclusion Principle",
       "tags": [
-        "Set Theory",
         "Venn Diagrams",
-        "Word Problems"
+        "Set Theory"
       ],
       "statement": "The Pythagoras High School band has $100$ female and $80$ male members. The Pythagoras High School orchestra has $80$ female and $100$ male members. There are $60$ females who are members in both band and orchestra. Altogether, there are $230$ students who are in either band or orchestra or both. The number of males in the band who are NOT in the orchestra is",
       "answerChoices": [
@@ -561,11 +560,10 @@
       "source": "AJHSME",
       "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Systematic Casework",
       "tags": [
-        "Volume",
         "3D Geometry",
-        "Dissection"
+        "Volume"
       ],
       "statement": "A cube of edge $3$ cm is cut into $N$ smaller cubes, not all the same size. If the edge of each of the smaller cubes is a whole number of centimeters, then $N=$",
       "answerChoices": [
@@ -589,7 +587,7 @@
       "categorization": "Geometric Sequences",
       "tags": [
         "Fractals",
-        "Area Scaling"
+        "Area"
       ],
       "statement": "An equilateral triangle is originally painted black. Each time the triangle is changed, the middle fourth of each black triangle turns white. After five changes, what fractional part of the original area of the black triangle remains black? [See figure in original PDF]",
       "answerChoices": [

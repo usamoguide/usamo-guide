@@ -8,8 +8,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": ["Fractions", "Evaluating Expressions"],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Fractions",
+        "Substitution"
+      ],
       "statement": "For $x=7$ which of the following is the smallest?",
       "answerChoices": [
         "$\\frac{6}{x}$",
@@ -29,8 +32,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
-      "tags": ["Custom Operations", "Fractions"],
+      "categorization": "Defined Operations",
+      "tags": [
+        "Custom Operations",
+        "Arithmetic"
+      ],
       "statement": "If $\\frac{a/b}{c/d} = a \\cdot d - b \\cdot c$, what is the value of $\\frac{3/4}{1/2}$?",
       "answerChoices": [
         "$-2$",
@@ -50,9 +56,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": ["Fractions", "Order of Operations"],
-      "statement": "What is the value of $$\\frac{\\frac{3}{8} + \\frac{7}{8}}{\\frac{4}{5}}$$?",
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Fraction Arithmetic"
+      ],
+      "statement": "What is the value of $\\frac{\\frac{3}{8}+\\frac{7}{8}}{\\frac{4}{5}}$?",
       "answerChoices": [
         "$1$",
         "$\\frac{25}{16}$",
@@ -69,10 +77,13 @@
       "name": "Problem 4 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
       "categorization": "Counting Fundamentals",
-      "tags": ["Counting Triangles", "Visual Puzzles"],
+      "tags": [
+        "Geometry Counting",
+        "Triangles"
+      ],
       "statement": "How many triangles are in this figure? (Some triangles may overlap other triangles.) [See figure in original PDF]",
       "answerChoices": [
         "$9$",
@@ -92,8 +103,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": ["Decimals", "Repeating Decimals"],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Repeating Decimals",
+        "Comparing Numbers"
+      ],
       "statement": "Which of the following numbers is largest?",
       "answerChoices": [
         "$9.12344$",
@@ -113,8 +127,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": ["Area", "Pick's Theorem", "Polygons"],
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": [
+        "Pick's Theorem",
+        "Area"
+      ],
       "statement": "Dots are spaced one unit apart, horizontally and vertically. The number of square units enclosed by the polygon is [See figure in original PDF]",
       "answerChoices": [
         "$5$",
@@ -134,15 +151,18 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": ["Multiplication", "Decimals", "Exponents"],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Decimal Operations",
+        "Exponentiation"
+      ],
       "statement": "What is the value of $100 \\times 19.98 \\times 1.998 \\times 1000$?",
       "answerChoices": [
-        "$(1.998)^{2}$",
-        "$(19.98)^{2}$",
-        "$(199.8)^{2}$",
-        "$(1998)^{2}$",
-        "$(19980)^{2}$"
+        "$(1.998)^2$",
+        "$(19.98)^2$",
+        "$(199.8)^2$",
+        "$(1998)^2$",
+        "$(19980)^2$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -155,8 +175,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": ["Rates", "Linear Relationships"],
+      "categorization": "Rates and Kinematics",
+      "tags": [
+        "Linear Depreciation",
+        "Word Problem"
+      ],
       "statement": "A child's wading pool contains $200$ gallons of water. If water evaporates at the rate of $0.5$ gallons per day and no other water is added or removed, how many gallons of water will be in the pool after $30$ days?",
       "answerChoices": [
         "$140$",
@@ -176,8 +199,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": ["Percentages", "Discounts"],
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Percentages",
+        "Discounts"
+      ],
       "statement": "For a sale, a store owner reduces the price of a $10$ dollar scarf by $20\\%$. Later the price is lowered again, this time by one-half the reduced price. The price is now",
       "answerChoices": [
         "$2.00$ dollars",
@@ -197,8 +223,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
-      "tags": ["Logic", "Fractions", "Digit Manipulation"],
+      "categorization": "Systematic Casework",
+      "tags": [
+        "Diophantine Equations",
+        "Fractions"
+      ],
       "statement": "Each of the letters $W$, $X$, $Y$, and $Z$ represents a different integer in the set $\\{1, 2, 3, 4\\}$, but not necessarily in that order. If $\\frac{W}{X} - \\frac{Y}{Z} = 1$, then the sum of $W$ and $Y$ is",
       "answerChoices": [
         "$3$",
@@ -218,8 +247,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": ["Logic", "Family Structures"],
+      "categorization": "Word Problem Translation",
+      "tags": [
+        "Family Relations",
+        "Logic"
+      ],
       "statement": "Harry has $3$ sisters and $5$ brothers. His sister Harriet has $X$ sisters and $Y$ brothers. What is the product of $X$ and $Y$?",
       "answerChoices": [
         "$8$",
@@ -237,11 +269,14 @@
       "name": "Problem 12 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
-      "tags": ["Series", "Pattern Recognition", "Simplification"],
-      "statement": "What is the value of $2(1 - \\frac{1}{2}) + 3(1 - \\frac{1}{3}) + 4(1 - \\frac{1}{4}) + \\dots + 10(1 - \\frac{1}{10})$?",
+      "tags": [
+        "Telescoping",
+        "Algebraic Simplification"
+      ],
+      "statement": "What is the value of $2(1-\\frac{1}{2})+3(1-\\frac{1}{3})+4(1-\\frac{1}{4})+\\dots+10(1-\\frac{1}{10})$?",
       "answerChoices": [
         "$45$",
         "$49$",
@@ -258,10 +293,13 @@
       "name": "Problem 13 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": ["Area Ratio", "Tangram", "Visual Puzzles"],
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": [
+        "Ratios",
+        "Geometry"
+      ],
       "statement": "What is the ratio of the area of the shaded square to the area of the large square? (The figure is drawn to scale) [See figure in original PDF]",
       "answerChoices": [
         "$\\frac{1}{6}$",
@@ -279,11 +317,15 @@
       "name": "Problem 14 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": ["Percentages", "Sets", "Venn Diagrams"],
-      "statement": "At Annville Junior High School, $30\\%$ of the students in the Math Club are in the Science Club, and $80\\%$ of the students in the Science Club are in the Math Club. There are $15$ students in the Science Club. How many students are in the Math Club?",
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Percentages",
+        "Set Theory",
+        "Overlapping Sets"
+      ],
+      "statement": "An Annville Junior High School, $30\\%$ of the students in the Math Club are in the Science Club, and $80\\%$ of the students in the Science Club are in the Math Club. There are $15$ students in the Science Club. How many students are in the Math Club?",
       "answerChoices": [
         "$12$",
         "$15$",
@@ -303,8 +345,11 @@
       "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Geometric Sequences",
-      "tags": ["Exponential Growth", "Estimation"],
-      "statement": "Problems 15, 16, and 17 all refer to the following:\n\nIn the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles.\n\nEstimate the population of Nisos in the year $2050$.",
+      "tags": [
+        "Exponential Growth",
+        "Word Problem"
+      ],
+      "statement": "In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles. Estimate the population of Nisos in the year $2050$.",
       "answerChoices": [
         "$600$",
         "$800$",
@@ -321,11 +366,14 @@
       "name": "Problem 16 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Geometric Sequences",
-      "tags": ["Exponential Growth", "Estimation"],
-      "statement": "Problems 15, 16, and 17 all refer to the following:\n\nIn the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles.\n\nEstimate the year in which the population of Nisos will be approximately $6,000$.",
+      "tags": [
+        "Exponential Growth",
+        "Word Problem"
+      ],
+      "statement": "In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles. Estimate the year in which the population of Nisos will be approximately $6,000$.",
       "answerChoices": [
         "$2050$",
         "$2075$",
@@ -345,8 +393,11 @@
       "difficulty": "Normal",
       "isStarred": false,
       "categorization": "Geometric Sequences",
-      "tags": ["Exponential Growth", "Carrying Capacity"],
-      "statement": "Problems 15, 16, and 17 all refer to the following:\n\nIn the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles.\n\nIn how many years, approximately, from $1998$ will the population of Nisos be as much as Queen Irene has proclaimed that the islands can support?",
+      "tags": [
+        "Exponential Growth",
+        "Optimization"
+      ],
+      "statement": "In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200$, but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24,900$ square miles. In how many years, approximately, from $1998$ will the population of Nisos be as much as Queen Irene has proclaimed that the islands can support?",
       "answerChoices": [
         "$50$ yrs.",
         "$75$ yrs.",
@@ -363,17 +414,20 @@
       "name": "Problem 18 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": ["Spatial Reasoning", "Paper Folding"],
+      "categorization": "Counting Fundamentals",
+      "tags": [
+        "Spatial Reasoning",
+        "Paper Folding"
+      ],
       "statement": "As indicated by the diagram below, a rectangular piece of paper is folded bottom to top, then left to right, and finally, a hole is punched at $X$. What does the paper look like when unfolded? [See figure in original PDF]",
       "answerChoices": [
-        "[See figure A in original PDF]",
-        "[See figure B in original PDF]",
-        "[See figure C in original PDF]",
-        "[See figure D in original PDF]",
-        "[See figure E in original PDF]"
+        "[See figure in original PDF]",
+        "[See figure in original PDF]",
+        "[See figure in original PDF]",
+        "[See figure in original PDF]",
+        "[See figure in original PDF]"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -387,14 +441,17 @@
       "difficulty": "Normal",
       "isStarred": false,
       "categorization": "Introduction to Probability",
-      "tags": ["Probability", "Comparison", "Sample Space"],
+      "tags": [
+        "Combinatorics",
+        "Discrete Probability"
+      ],
       "statement": "Tamika selects two different numbers at random from the set $\\{8, 9, 10\\}$ and adds them. Carlos takes two different numbers at random from the set $\\{3, 5, 6\\}$ and multiplies them. What is the probability that Tamika's result is greater than Carlos' result?",
       "answerChoices": [
         "$\\frac{4}{9}$",
         "$\\frac{5}{9}$",
         "$\\frac{1}{2}$",
         "$\\frac{1}{3}$",
-        "\\text{[Missing]}"
+        "$\\frac{2}{9}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -407,8 +464,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": ["Area", "Paper Folding", "Perimeter"],
+      "categorization": "Special Quadrilaterals",
+      "tags": [
+        "Area and Perimeter",
+        "Paper Folding"
+      ],
       "statement": "Let $PQRS$ be a square piece of paper. $P$ is folded onto $R$ and then $Q$ is folded onto $S$. The area of the resulting figure is $9$ square inches. Find the perimeter of square $PQRS$.",
       "answerChoices": [
         "$9$",
@@ -428,8 +488,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
-      "tags": ["3D Geometry", "Cubes", "Counting Shapes"],
+      "categorization": "Counting Fundamentals",
+      "tags": [
+        "3D Geometry",
+        "Complementary Counting"
+      ],
       "statement": "A $4 \\times 4 \\times 4$ cubical box contains $64$ identical small cubes that exactly fill the box. How many of these small cubes touch a side or the bottom of the box?",
       "answerChoices": [
         "$48$",
@@ -447,11 +510,14 @@
       "name": "Problem 22 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Hard",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic Sequences",
-      "tags": ["Sequence Rules", "Pattern Recognition", "Cycles"],
-      "statement": "Terri produces a sequence of positive integers by following three rules. She starts with a positive integer, then applies the appropriate rule to the result, and continues in this fashion.\nRule 1: If the integer is less than $10$, multiply it by $9$.\nRule 2: If the integer is even and greater than $9$, divide it by $2$.\nRule 3: If the integer is odd and greater than $9$, subtract $5$ from it.\nFind the $98^{\\text{th}}$ term of the sequence that begins $98$, $49$, $\\dots$",
+      "categorization": "Units Digit and Periodicity",
+      "tags": [
+        "Sequence Periodicity",
+        "Algorithmic Rules"
+      ],
+      "statement": "Terri produces a sequence of positive integers by following three rules. She starts with a positive integer, then applies the appropriate rule to the result, and continues in this fashion. Rule 1: If the integer is less than $10$, multiply it by $9$. Rule 2: If the integer is even and greater than $9$, divide it by $2$. Rule 3: If the integer is odd and greater than $9$, subtract $5$ from it. Find the $98^{\\text{th}}$ term of the sequence that begins $98, 49, \\dots$",
       "answerChoices": [
         "$6$",
         "$11$",
@@ -468,10 +534,13 @@
       "name": "Problem 23 (1998 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Hard",
+      "difficulty": "Normal",
       "isStarred": false,
       "categorization": "Geometric Sequences",
-      "tags": ["Fractals", "Area", "Iterative Processes"],
+      "tags": [
+        "Fractals",
+        "Area Ratios"
+      ],
       "statement": "If the pattern in the diagram continues, what fraction of the interior would be shaded in the eighth triangle? [See figure in original PDF]",
       "answerChoices": [
         "$\\frac{3}{8}$",
@@ -492,8 +561,11 @@
       "difficulty": "Hard",
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
-      "tags": ["Sequence Continuation", "Modular Arithmetic", "Grid Patterns"],
-      "statement": "A rectangular board of $8$ columns has squares numbered beginning in the upper left corner and moving left to right so row one is numbered $1$ through $8$, row two is $9$ through $16$, and so on. A student shades square $1$, then skips one square and shades square $3$, skips two squares and shades square $6$, skips $3$ squares and shades square $10$, and continues in this way until there is at least one shaded square in each column. What is the number of the shaded square that first achieves this result? [See figure in original PDF]",
+      "tags": [
+        "Triangular Numbers",
+        "Modulo Arithmetic"
+      ],
+      "statement": "A rectangular board of $8$ columns has squared numbered beginning in the upper left corner and moving left to right so row one is numbered $1$ through $8$, row two is $9$ through $16$, and so on. A student shades square $1$, then skips one square and shades square $3$, skips two squares and shades square $6$, skips $3$ squares and shades square $10$, and continues in this way until there is at least one shaded square in each column. What is the number of the shaded square that first achieves this result? [See figure in original PDF]",
       "answerChoices": [
         "$36$",
         "$64$",
@@ -512,9 +584,12 @@
       "source": "AJHSME",
       "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Word Problems",
-      "tags": ["Working Backwards", "Money", "Systems of Equations"],
-      "statement": "Three generous friends, each with some money, redistribute the money as follows: Amy gives enough money to Jan and Toy to double each amount they have. Jan then gives enough to Amy and Toy to double their amounts. Finally, Toy gives enough to Amy and Jan to double their amounts. If Toy had $36$ dollars at the beginning and $36$ dollars at the end, what is the total amount that all three friends have?",
+      "categorization": "Systems of Equations",
+      "tags": [
+        "Working Backwards",
+        "Word Problem"
+      ],
+      "statement": "Three generous friends, each with some money, redistribute the money as follow: Amy gives enough money to Jan and Toy to double each amount has. Jan then gives enough to Amy and Toy to double their amounts. Finally, Toy gives enough to Amy and Jan to double their amounts. If Toy had $36$ dollars at the beginning and $36$ dollars at the end, what is the total amount that all three friends have?",
       "answerChoices": [
         "$108$",
         "$180$",

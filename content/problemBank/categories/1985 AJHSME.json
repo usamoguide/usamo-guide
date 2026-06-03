@@ -8,12 +8,12 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
+        "Fraction Multiplication",
         "Cancellation"
       ],
-      "statement": "$$\\frac{3 \\times 5}{9 \\times 11} \\times \\frac{7 \\times 9 \\times 11}{3 \\times 5 \\times 7} =$$",
+      "statement": "$\\frac{3\\times5}{9\\times11}\\times\\frac{7\\times9\\times11}{3\\times5\\times7}=$",
       "answerChoices": [
         "$1$",
         "$0$",
@@ -34,10 +34,10 @@
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Sum of Consecutive Integers",
+        "Arithmetic Series",
         "Addition"
       ],
-      "statement": "$90 + 91 + 92 + 93 + 94 + 95 + 96 + 97 + 98 + 99 =$",
+      "statement": "$90+91+92+93+94+95+96+97+98+99=$",
       "answerChoices": [
         "$845$",
         "$945$",
@@ -58,10 +58,10 @@
       "isStarred": false,
       "categorization": "Exponent Rules",
       "tags": [
-        "Powers of 10",
-        "Scientific Notation"
+        "Exponent Rules",
+        "Powers of 10"
       ],
-      "statement": "$$\\frac{10^7}{5 \\times 10^4} =$$",
+      "statement": "$\\frac{10^{7}}{5\\times10^{4}}=$",
       "answerChoices": [
         "$.002$",
         "$.2$",
@@ -80,10 +80,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Area",
-        "Polygons"
+        "Rectilinear Polygons"
       ],
       "statement": "The area of polygon $ABCDEF$, in square units, is [See figure in original PDF]",
       "answerChoices": [
@@ -104,7 +104,7 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Bar Graphs",
         "Fractions"
@@ -128,10 +128,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
-        "Proportions",
-        "Ratios"
+        "Proportions"
       ],
       "statement": "A ream of paper containing $500$ sheets is $5\\text{ cm}$ thick. Approximately how many sheets of this type of paper would there be in a stack $7.5\\text{ cm}$ high?",
       "answerChoices": [
@@ -154,8 +153,7 @@
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Patterns",
-        "Sequences"
+        "Pattern Recognition"
       ],
       "statement": "A \"stair-step\" figure is made up of alternating black and white squares in each row. Rows $1$ through $4$ are shown. All rows begin and end with a white square. The number of black squares in the $37$th row is [See figure in original PDF]",
       "answerChoices": [
@@ -176,17 +174,17 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
         "Substitution",
-        "Ordering"
+        "Negative Numbers"
       ],
-      "statement": "If $a = -2$, the largest number in the set $\\{-3a, 4a, \\frac{24}{a}, a^2, 1\\}$ is",
+      "statement": "If $a=-2$, the largest number in the set $\\{-3a, 4a, \\frac{24}{a}, a^{2}, 1\\}$ is",
       "answerChoices": [
         "$-3a$",
         "$4a$",
         "$\\frac{24}{a}$",
-        "$a^2$",
+        "$a^{2}$",
         "$1$"
       ],
       "solutionMetadata": {
@@ -200,16 +198,16 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Telescoping Sums and Products",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Cancellation"
+        "Telescoping Products",
+        "Fractions"
       ],
-      "statement": "The product of the $9$ factors $(1 - \\frac{1}{2})(1 - \\frac{1}{3}) \\dots (1 - \\frac{1}{10}) =$",
+      "statement": "The product of the $9$ factors $(1-\\frac{1}{2})(1-\\frac{1}{3})\\dots(1-\\frac{1}{10})=$",
       "answerChoices": [
         "$\\frac{1}{10}$",
-        "$\\frac{1}{5}$",
         "$\\frac{1}{9}$",
+        "$\\frac{1}{5}$",
         "$\\frac{1}{2}$",
         "$\\frac{10}{11}$"
       ],
@@ -224,11 +222,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Number Line",
-        "Averages"
+        "Midpoint",
+        "Fractions"
       ],
       "statement": "The fraction halfway between $\\frac{1}{5}$ and $\\frac{1}{3}$ (on the number line) is",
       "answerChoices": [
@@ -247,12 +244,12 @@
       "name": "Problem 11 (1985 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
         "3D Geometry",
-        "Nets"
+        "Folding"
       ],
       "statement": "A piece of paper containing six joined squares labeled as shown in the diagram is folded along the edges of the squares to form a cube. The label of the face opposite the face labeled $X$ is: [See figure in original PDF]",
       "answerChoices": [
@@ -271,9 +268,9 @@
       "name": "Problem 12 (1985 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
         "Perimeter",
         "Area",
@@ -281,11 +278,11 @@
       ],
       "statement": "A square and a triangle have equal perimeters. The lengths of the three sides of the triangle are $6.2\\text{ cm}$, $8.3\\text{ cm}$, and $9.5\\text{ cm}$. The area of the square is",
       "answerChoices": [
-        "$24\\text{ cm}^2$",
-        "$36\\text{ cm}^2$",
-        "$48\\text{ cm}^2$",
-        "$64\\text{ cm}^2$",
-        "$144\\text{ cm}^2$"
+        "$24\\text{ cm}^{2}$",
+        "$36\\text{ cm}^{2}$",
+        "$48\\text{ cm}^{2}$",
+        "$64\\text{ cm}^{2}$",
+        "$144\\text{ cm}^{2}$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -296,9 +293,9 @@
       "name": "Problem 13 (1985 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
         "Distance, Rate, Time"
       ],
@@ -321,17 +318,17 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percentages"
       ],
       "statement": "The difference between a $6.5\\%$ sales tax and a $6\\%$ sales tax on an item priced at $\\$20$ before tax is",
       "answerChoices": [
-        "$\\$0.01$",
-        "$\\$0.10$",
-        "$\\$0.50$",
-        "$\\$1$",
-        "$\\$10$"
+        "$\\$ .01$",
+        "$\\$ .10$",
+        "$\\$ .50$",
+        "$\\$ 1$",
+        "$\\$ 10$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -346,8 +343,7 @@
       "isStarred": false,
       "categorization": "Counting Fundamentals",
       "tags": [
-        "Digit Counting",
-        "Casework"
+        "Digit Counting"
       ],
       "statement": "How many whole numbers between $100$ and $400$ contain the digit $2$?",
       "answerChoices": [
@@ -368,11 +364,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
         "Ratios"
       ],
-      "statement": "The ratio of boys to girls in Mr. Brown's math class is $2: 3$. If there are $30$ students in the class, how many more girls than boys are in the class?",
+      "statement": "The ratio of boys to girls in Mr. Brown's math class is $2:3$. If there are $30$ students in the class, how many more girls than boys are in the class?",
       "answerChoices": [
         "$1$",
         "$3$",
@@ -391,10 +387,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Averages",
-        "Sums"
+        "Averages"
       ],
       "statement": "If your average score on your first six mathematics tests was $84$ and your average score on your first seven mathematics tests was $85$, then your score on the seventh test was",
       "answerChoices": [
@@ -415,10 +410,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Inequalities Foundations",
+      "categorization": "Inequalities",
       "tags": [
-        "Bounding",
-        "Word Problems"
+        "Bounds",
+        "Division"
       ],
       "statement": "Nine copies of a certain pamphlet cost less than $\\$10.00$ while ten copies of the same pamphlet (at the same price) cost more than $\\$11.00$. How much does one copy of this pamphlet cost?",
       "answerChoices": [
@@ -439,9 +434,9 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Percentages",
+        "Percent Increase",
         "Perimeter"
       ],
       "statement": "If the length and width of a rectangle are each increased by $10\\%$, then the perimeter of the rectangle is increased by",
@@ -463,10 +458,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
-        "Calendars",
-        "Modular Arithmetic"
+        "Calendar Math",
+        "Modulo 7"
       ],
       "statement": "In a certain year, January had exactly four Tuesdays and four Saturdays. On what day did January $1$ fall that year?",
       "answerChoices": [
@@ -487,7 +482,7 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Compound Interest",
         "Percentages"
@@ -513,8 +508,8 @@
       "isStarred": false,
       "categorization": "Introduction to Probability",
       "tags": [
-        "Counting",
-        "Probability"
+        "Probability",
+        "Counting"
       ],
       "statement": "Assume every $7$-digit whole number is a possible telephone number except those which begin with $0$ or $1$. What fraction of telephone numbers begin with $9$ and end with $0$?",
       "answerChoices": [
@@ -535,9 +530,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Dimensional Analysis"
+        "Dimensional Analysis",
+        "Rates"
       ],
       "statement": "King Middle School has $1200$ students. Each student takes $5$ classes a day. Each teacher teaches $4$ classes. Each class has $30$ students and $1$ teacher. How many teachers are there at King Middle School?",
       "answerChoices": [
@@ -556,14 +552,14 @@
       "name": "Problem 24 (1985 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Systematic Casework",
       "tags": [
         "Magic Figures",
-        "Extremal Principle"
+        "Optimization"
       ],
-      "statement": "In a magic triangle, each of the six whole numbers $10$ to $15$ is placed in one of the circles so that the sum, $S$, of the three numbers on each side of the triangle is the same. The largest possible value for $S$ is [See figure in original PDF]",
+      "statement": "In a magic triangle, each of the six whole numbers $10-15$ is placed in one of the circles so that the sum, $S$, of the three numbers on each side of the triangle is the same. The largest possible value for $S$ is [See figure in original PDF]",
       "answerChoices": [
         "$36$",
         "$37$",
@@ -580,12 +576,12 @@
       "name": "Problem 25 (1985 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "No Category",
       "tags": [
         "Logic",
-        "Wason Selection Task"
+        "Contrapositive"
       ],
       "statement": "Five cards are lying on a table as shown. Each card has a letter on one side and a whole number on the other side. Jane said, \"If a vowel is on one side of any card, then an even number is on the other side.\" Mary showed Jane was wrong by turning over one card. Which card did Mary turn over? [See figure in original PDF]",
       "answerChoices": [

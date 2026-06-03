@@ -5,30 +5,62 @@ const SOURCE_FILE = './content/problemBank/bank.json';
 const UNMAPPED_FILE = './unmapped_problems.json';
 
 const categoryMap = {
+  // ── Arithmetic ──
+  "Fraction, Decimal, Percent Conversions": "content/1_Foundations/Fraction_Decimal_Percent.problems.json",
+  "Proportional Reasoning": "content/1_Foundations/Proportional_Reasoning.problems.json",
+  "Rates and Kinematics": "content/1_Foundations/Kinematics_Rates.problems.json",
+  "Estimation and Bounding": "content/1_Foundations/Estimation_Bounding.problems.json",
+  "Absolute Value and Integer Operations": "content/1_Foundations/Absolute_Value_Integers.problems.json",
+
+  // ── Data ──
+  "Mean, Median, Mode, and Harmonic Mean": "content/1_Foundations/Mean_Median_Mode_Harmonic.problems.json",
+  "Chart and Graph Interpretation": "content/1_Foundations/Chart_Graph_Interpretation.problems.json",
+  "Venn Diagrams and Sets": "content/1_Foundations/Venn_Diagrams_Sets.problems.json",
+
+  // ── Algebra ──
+  "Word Problem Translation": "content/1_Foundations/Word_Problem_Translation.problems.json",
+  "Linear Equations": "content/1_Foundations/Linear_Equations_Inequalities.problems.json",
+  "Systems of Equations": "content/1_Foundations/Systems_of_Equations.problems.json",
+  "Defined Operations": "content/1_Foundations/Defined_Operations.problems.json",
   "Arithmetic Sequences": "content/1_Foundations/Arithmetic_Sequences.problems.json",
   "Exponent Rules": "content/1_Foundations/Exponent_Rules.problems.json",
-  "Geometry Basics": "content/1_Foundations/Geometry_Basics.problems.json",
-  "Word Problems": "content/1_Foundations/Word_Problems.problems.json",
-  "Algebra Basics": "content/1_Foundations/Algebra_Basics.problems.json",
-  "Telescoping Sums and Products": "content/1_Foundations/Telescoping.problems.json",
-  "Counting Fundamentals": "content/1_Foundations/Counting_Fundamentals.problems.json",
-  "Mean, Median, Mode, and Harmonic Mean": "content/1_Foundations/Mean_Median_Mode_Harmonic.problems.json",
-  "Inequalities Foundations": "content/1_Foundations/Inequalities_Foundations.json",
-  "Introduction to Probability": "content/1_Foundations/Intro_Probability.problems.json",
-  "Linear Diophantine Equations": "content/1_Foundations/Linear_Diophantine_Equations.json",
   "Geometric Sequences": "content/1_Foundations/Geometric_Sequences.problems.json",
-  "Systems of Equations": "content/1_Foundations/Systems_of_Equations.problems.json",
-  "Inclusion-Exclusion": "content/1_Foundations/Inclusion_Exclusion.problems.json",
-  "Coordinate Geometry Basics": "content/1_Foundations/Coordinate_Geometry_Basics.problems.json",
-  "Triangle Area Formulas": "content/1_Foundations/Triangle_Area_Formulas.problems.json",
+  "Inequalities": "content/1_Foundations/Linear_Equations_Inequalities.problems.json",
+
+  // ── Number Theory ──
+  "Primes and Composites": "content/1_Foundations/Primes_Composites.problems.json",
+  "Divisibility Rules": "content/1_Foundations/Divisibility_Rules.problems.json",
+  "Prime Factorization": "content/1_Foundations/Prime_Factorization.problems.json",
+  "GCD and LCM": "content/1_Foundations/GCD_LCM.problems.json",
+  "Divisor Counting Formulas": "content/1_Foundations/Divisor_Counting_Formulas.problems.json",
+  "Base Number Systems": "content/1_Foundations/Base_Number_Systems.problems.json",
+  "Introduction to Modular Arithmetic": "content/1_Foundations/Modular_Arithmetic_Intro.problems.json",
+  "Units Digit and Periodicity": "content/1_Foundations/Units_Digit_Periodicity.problems.json",
+  "Linear Diophantine Equations": "content/1_Foundations/Linear_Equations_Inequalities.problems.json",
+
+  // ── Combinatorics ──
+  "Counting Fundamentals": "content/1_Foundations/Counting_Fundamentals.problems.json",
+  "Systematic Casework": "content/1_Foundations/Systematic_Casework.problems.json",
+  "Permutations and Combinations": "content/1_Foundations/Permutations_Combinations.problems.json",
+  "Inclusion-Exclusion Principle": "content/1_Foundations/Inclusion_Exclusion.problems.json",
   "Pigeonhole Principle": "content/1_Foundations/Pigeonhole_Principles.problems.json",
+  "Extremal Principle": "content/1_Foundations/Extremal_Principle.problems.json",
+  "Introduction to Probability": "content/1_Foundations/Intro_Probability.problems.json",
+  "Introduction to Geometric Probability": "content/1_Foundations/Geometric_Probability_Intro.problems.json",
+
+  // ── Geometry ──
+  "Triangle Fundamentals": "content/1_Foundations/Triangle_Fundamentals.problems.json",
   "Triangle Angle Sum": "content/1_Foundations/Triangle_Angle_Sum.problems.json",
-  "Right Triangles and Pythagorean Triples": "content/1_Foundations/Right_Triangles.problems.json",
+  "Triangle Area Formulas": "content/1_Foundations/Triangle_Area_Formulas.problems.json",
+  "Similarity Basics": "content/1_Foundations/Similarity_Basics.problems.json",
+  "Coordinate Geometry Basics": "content/1_Foundations/Coordinate_Geometry_Basics.problems.json",
   "Special Quadrilaterals": "content/1_Foundations/Special_Quadrilaterals.problems.json",
-  "Stars and Bars": "content/1_Foundations/Stars_and_Bars.problems.json",
-  "Special Triangles": "content/1_Foundations/Special_Triangles.problems.json",
-  "Special Right Triangles": "content/1_Foundations/Special_Right_Triangles.problems.json",
-  "Triangle Similarity": "content/1_Foundations/Similarity_Basics.problems.json"
+  "Circle Angles": "content/1_Foundations/Circle_Angles.problems.json",
+  "Composite Figures and Shaded Areas": "content/1_Foundations/Composite_Figures_Shaded_Areas.problems.json",
+  "Angle Chasing and Parallel Lines": "content/1_Foundations/Angle_Chasing_Parallel_Lines.problems.json",
+
+  // ── Legacy / catch-all ──
+  "No Category": null,
 };
 
 const main = () => {

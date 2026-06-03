@@ -27,98 +27,62 @@ CATEGORIZATION FIELD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Each problem gets exactly one "categorization" value chosen from this list:
  
-Arithmetic and Number Theory Basics
-
-Linear Diophantine Equations
-
-Chicken McNugget Theorem
-
-Algebra Basics
-
-Exponent Rules
-
-Quadratic Identities
-
-Quadratic Formula and Discriminant
-
+Fraction, Decimal, Percent Conversions
+Proportional Reasoning
+Rates and Kinematics
+Estimation and Bounding
+Absolute Value and Integer Operations
+Word Problem Translation
+Linear Equations
+Inequalities
 Systems of Equations
-
-Substitution Techniques
-
-Simon's Favorite Factoring Trick
-
-Cubic Factorizations
-
-Vieta's Formulas
-
-Polynomial Manipulations
-
-Mean, Median, Mode, and Harmonic Mean
-
+Defined Operations
 Arithmetic Sequences
-
-Geometric Sequences
-
-Telescoping Sums and Products
-
-AM-GM Inequality
-
-Cauchy-Schwarz Inequality
-
-Inequalities Foundations
-
-Counting Fundamentals
-
-Pascal's Triangle and Binomial Theorem
-
-Inclusion-Exclusion
-
-Pigeonhole Principle
-
-Stars and Bars
-
-Geometry Basics
-
-Triangle Angle Sum
-
-Triangle Area Formulas
-
-Special Triangles
-
-Right Triangles and Pythagorean Triples
-
-Special Right Triangles
-
-Medians and the Centroid
-
-Angle Bisectors
-
-Altitudes and the Orthocenter
-
-Triangle Similarity
-
-Basic Proportionality (Thales)
-
-Law of Sines
-
-Law of Cosines
-
-Inscribed and Central Angles
-
+Exponent Rules
+Polynomial Factoring and Identities
+Extremal Principle
+Quadratic Formula 
+Substitution Techniques 
+Geometric Sequences 
+Angle Chasing and Parallel Lines
+Triangle Fundamentals
+Right Triangles
+Triangle Congruence and Similarity
 Special Quadrilaterals
-
+Circle Angles
+Composite Figures and Shaded Areas
 Coordinate Geometry Basics
-
-Line Equations
-
-Word Problems
-
+Triangle Angle Sum 
+Triangle Area Formulas
+Special Triangles 
+Special Right Triangles 
+Similarity Basics 
+Proportionality (Thales' Theorem) 
+Line Equations 
+Primes and Composites
+Prime Factorization
+Divisibility Rules
+GCD and LCM
+Divisor Counting Formulas
+Introduction to Modular Arithmetic
+Units Digit and Periodicity
+Base Number Systems
+Linear Diophantine Equations
+Counting Fundamentals
+Permutations and Combinations
+Systematic Casework
+Complementary Counting
 Introduction to Probability
- 
+Introduction to Geometric Probability
+Inclusion-Exclusion Principle
+Stars and Bars
+Pascal's Triangle and Binomial Theorem 
+Pigeonhole Principle 
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 TAGS FIELD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Each problem gets 1–3 free-form tags describing the specific technique or concept needed to solve it. Be specific and concise. Examples: "Prime Factorization", "Area of a Triangle", "Setting Up a Proportion", "Casework", "Complementary Counting", "Digit Manipulation". Do not add tags just to fill space.
+Each problem gets 1–3 free-form tags describing the specific technique or concept needed to solve it. Be specific and concise. Examples: "Prime Factorization", "Area of a Triangle", "Setting Up a Proportion", "Digit Manipulation". Do not add tags just to fill space.
  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 DIFFICULTY SCALE
@@ -202,3 +166,5 @@ RULES
 - All math must be LaTeX formatted. Never use raw symbols like x, *, /, × outside of LaTeX.
 - Do not include any keys or fields not shown above.
 - Do not wrap the output in markdown backticks.
+
+Please note that if you truly believe none of the categories are appropriate for the question, please replace the category with "No Category"

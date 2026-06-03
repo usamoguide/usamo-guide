@@ -8,7 +8,7 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Divisor Counting Formulas",
       "tags": [
         "Factors",
         "Multiples"
@@ -32,8 +32,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Absolute Value and Integer Operations",
       "tags": [
+        "Arithmetic Operations",
         "Order of Operations"
       ],
       "statement": "Jose, Thuy, and Kareem each start with the number $10$. Jose subtracts $1$ from the number $10$, doubles his answer, and then adds $2$. Thuy doubles the number $10$, subtracts $1$ from her answer, and then adds $2$. Kareem subtracts $1$ from the number $10$, adds $2$ to his number, and then doubles the result. Who gets the largest final answer?",
@@ -53,60 +54,12 @@
       "name": "Problem 3 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Factoring",
-        "Sum of Sequence"
-      ],
-      "statement": "$$\\frac{2+4+6+\\cdot\\cdot\\cdot+34}{3+6+9+\\cdot\\cdot\\cdot+51}=$$",
-      "answerChoices": [
-        "$\\frac{1}{3}$",
-        "$\\frac{2}{3}$",
-        "$\\frac{3}{2}$",
-        "$\\frac{17}{3}$",
-        "$\\frac{34}{3}$"
-      ],
-      "solutionMetadata": {
-        "kind": "none"
-      }
-    },
-    {
-      "uniqueId": "ajhsme-1996-4",
-      "name": "Problem 4 (1996 AJHSME)",
-      "url": null,
-      "source": "AJHSME",
-      "difficulty": "Very Easy",
-      "isStarred": false,
-      "categorization": "Algebra Basics",
-      "tags": [
-        "Number Line",
-        "Signs"
-      ],
-      "statement": "The letters $P$, $Q$, $R$, $S$, and $T$ represent numbers located on the number line as shown. [See figure in original PDF]\nWhich of the following expressions represents a negative number?",
-      "answerChoices": [
-        "$P-Q$",
-        "$P\\cdot Q$",
-        "$\\frac{S}{Q}\\cdot P$",
-        "$\\frac{R}{P\\cdot Q}$",
-        "$\\frac{S+T}{R}$"
-      ],
-      "solutionMetadata": {
-        "kind": "none"
-      }
-    },
-    {
-      "uniqueId": "ajhsme-1996-5",
-      "name": "Problem 5 (1996 AJHSME)",
-      "url": null,
-      "source": "AJHSME",
-      "difficulty": "Very Easy",
-      "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
-      "tags": [
         "Grid",
-        "Corner Sum"
+        "Summation"
       ],
       "statement": "The $64$ whole numbers from $1$ through $64$ are written, one per square, on a checkerboard (an $8$ by $8$ array of $64$ squares). The first $8$ numbers are written in order across the first row, the next $8$ across the second row, and so on. After all $64$ numbers are written, the sum of the numbers in the four corners will be",
       "answerChoices": [
@@ -121,17 +74,66 @@
       }
     },
     {
+      "uniqueId": "ajhsme-1996-4",
+      "name": "Problem 4 (1996 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Factoring",
+        "Sum of Sequences"
+      ],
+      "statement": "$$\\frac{2+4+6+\\cdot\\cdot\\cdot+34}{3+6+9+\\cdot\\cdot\\cdot+51}=$$",
+      "answerChoices": [
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "$\\frac{17}{3}$",
+        "$\\frac{34}{3}$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1996-5",
+      "name": "Problem 5 (1996 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Absolute Value and Integer Operations",
+      "tags": [
+        "Number Line",
+        "Signs"
+      ],
+      "statement": "The letters $P$, $Q$, $R$, $S$, and $T$ represent numbers located on the number line as shown. [See figure in original PDF] Which of the following expressions represents a negative number?",
+      "answerChoices": [
+        "$P-Q$",
+        "$P\\cdot Q$",
+        "$\\frac{S}{Q}\\cdot P$",
+        "$\\frac{R}{P\\cdot Q}$",
+        "$\\frac{S+T}{R}$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
       "uniqueId": "ajhsme-1996-6",
       "name": "Problem 6 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Extremal Principle",
       "tags": [
-        "Minimization"
+        "Optimization",
+        "Arithmetic Operations"
       ],
-      "statement": "What is the smallest result that can be obtained from the following process?\nChoose three different numbers from the set $\\{3, 5, 7, 11, 13, 17\\}$.\nAdd two of these numbers.\nMultiply their sum by the third number.",
+      "statement": "What is the smallest result that can be obtained from the following process?\n* Choose three different numbers from the set $\\{3, 5, 7, 11, 13, 17\\}$.\n* Add two of these numbers.\n* Multiply their sum by the third number.",
       "answerChoices": [
         "$15$",
         "$30$",
@@ -150,10 +152,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Exponent Rules",
       "tags": [
         "Exponential Growth",
-        "Setting up an equation"
+        "Equations"
       ],
       "statement": "Brent has goldfish that quadruple (become four times as many) every month, and Gretel has goldfish that double every month. If Brent has $4$ goldfish at the same time that Gretel has $128$ goldfish, then in how many months from that time will they have the same number of goldfish?",
       "answerChoices": [
@@ -174,10 +176,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
-        "Distances",
-        "Collinear Points"
+        "Distance",
+        "Geometry"
       ],
       "statement": "Points $A$ and $B$ are $10$ units apart. Points $B$ and $C$ are $4$ units apart. Points $C$ and $D$ are $3$ units apart. If $A$ and $D$ are as close as possible, then the number of units between them is",
       "answerChoices": [
@@ -198,10 +200,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Linear Equations",
       "tags": [
         "Reciprocals",
-        "Linear Equations"
+        "Algebraic Translation"
       ],
       "statement": "If $5$ times a number is $2$, then $100$ times the reciprocal of the number is",
       "answerChoices": [
@@ -220,12 +222,12 @@
       "name": "Problem 10 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
         "Fractions",
-        "Proportions"
+        "Capacity"
       ],
       "statement": "When Walter drove up to the gasoline pump, he noticed that his gasoline tank was $\\frac{1}{8}$ full. He purchased $7.5$ gallons of gasoline for $\\$10$. With this additional gasoline, his gasoline tank was then $\\frac{5}{8}$ full. The number of gallons of gasoline his tank holds when it is full is",
       "answerChoices": [
@@ -246,18 +248,18 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
         "Decimals",
         "Comparing Expressions"
       ],
-      "statement": "Let $x$ be the number $0.0000...00001$, where there are $1996$ zeros after the decimal point. Which of the following expressions represents the largest number?",
+      "statement": "Let $x$ be the number $$0.0000\\dots00001,$$ where there are $1996$ zeros after the decimal point. Which of the following expressions represents the largest number?",
       "answerChoices": [
         "$3+x$",
         "$3-x$",
         "$3\\cdot x$",
-        "$\\frac{3}{x}$",
-        "$\\frac{x}{3}$"
+        "$3/x$",
+        "$x/3$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -270,12 +272,12 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Average",
-        "Sum of Sequence"
+        "Averages",
+        "Summation"
       ],
-      "statement": "What number should be removed from the list $1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11$ so that the average of the remaining numbers is $6.1$?",
+      "statement": "What number should be removed from the list $$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11$$ so that the average of the remaining numbers is $6.1$?",
       "answerChoices": [
         "$4$",
         "$5$",
@@ -296,8 +298,8 @@
       "isStarred": false,
       "categorization": "Geometric Sequences",
       "tags": [
-        "Percents",
-        "Growth"
+        "Percent Increase",
+        "Exponential Growth"
       ],
       "statement": "In the fall of $1996$, a total of $800$ students participated in an annual school clean-up day. The organizers of the event expect that in each of the years $1997$, $1998$, and $1999$, participation will increase by $50\\%$ over the previous year. The number of participants the organizers will expect in the fall of $1999$ is",
       "answerChoices": [
@@ -316,14 +318,14 @@
       "name": "Problem 14 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Systematic Casework",
       "tags": [
-        "Cross Sum",
-        "Digit Placement"
+        "Number Placement",
+        "Intersection"
       ],
-      "statement": "Six different digits from the set $\\{1,2,3,4,5,6,7,8,9\\}$ are placed in the squares in the figure shown so that the sum of the entries in the vertical column is $23$ and the sum of the entries in the horizontal row is $12$. The sum of the six digits used is [See figure in original PDF]",
+      "statement": "Six different digits from the set $$\\{1,2,3,4,5,6,7,8,9\\}$$ are placed in the squares in the figure shown so that the sum of the entries in the vertical column is $23$ and the sum of the entries in the horizontal row is $12$. The sum of the six digits used is [See figure in original PDF]",
       "answerChoices": [
         "$27$",
         "$29$",
@@ -340,11 +342,11 @@
       "name": "Problem 15 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Introduction to Modular Arithmetic",
       "tags": [
-        "Modular Arithmetic",
+        "Remainders",
         "Units Digit"
       ],
       "statement": "The remainder when the product $1492 \\cdot 1776 \\cdot 1812 \\cdot 1996$ is divided by $5$ is",
@@ -368,8 +370,8 @@
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Sum of Sequence",
-        "Pattern Recognition"
+        "Alternating Sum",
+        "Grouping"
       ],
       "statement": "$1-2-3+4+5-6-7+8+9-10-11+\\cdot\\cdot\\cdot+1992+1993-1994-1995+1996=$",
       "answerChoices": [
@@ -392,8 +394,8 @@
       "isStarred": false,
       "categorization": "Coordinate Geometry Basics",
       "tags": [
-        "Area of a Triangle",
-        "Square Area"
+        "Area",
+        "Coordinates"
       ],
       "statement": "Figure $OPQR$ is a square. Point $O$ is the origin, and point $Q$ has coordinates $(2, 2)$. What are the coordinates for $T$ so that the area of triangle $PQT$ equals the area of square $OPQR$? [See figure in original PDF]",
       "answerChoices": [
@@ -414,18 +416,18 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percents",
         "Sequential Changes"
       ],
       "statement": "Ana's monthly salary was $\\$2000$ in May. In June she received a $20\\%$ raise. In July she received a $20\\%$ pay cut. After the two changes in June and July, Ana's monthly salary was",
       "answerChoices": [
-        "$1920$ dollars",
-        "$1980$ dollars",
-        "$2000$ dollars",
-        "$2020$ dollars",
-        "$2040$ dollars"
+        "$\\$1920$",
+        "$\\$1980$",
+        "$\\$2000$",
+        "$\\$2020$",
+        "$\\$2040$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -438,11 +440,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Percents",
         "Weighted Average",
-        "Pie Chart"
+        "Pie Charts"
       ],
       "statement": "The pie charts below indicate the percent of students who prefer golf, bowling, or tennis at East Junior High School and West Middle School. The total number of students at East is $2000$ and at West, $2500$. In the two schools combined, the percent of students who prefer tennis is [See figure in original PDF]",
       "answerChoices": [
@@ -461,12 +462,12 @@
       "name": "Problem 20 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Algebra Basics",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
-        "Functions",
-        "Periodic Sequence"
+        "Iterated Functions",
+        "Cycles"
       ],
       "statement": "Suppose there is a special key on a calculator that replaces the number currently displayed with the number given by the formula $\\frac{1}{1-x}$. For example, if the calculator is displaying $2$ and the special key is pressed, then the calculator will display $-1$ since $\\frac{1}{1-2}=-1$. Now suppose that the calculator is displaying $5$. After the special key is pressed $100$ times in a row, the calculator will display",
       "answerChoices": [
@@ -487,12 +488,12 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Permutations and Combinations",
       "tags": [
         "Parity",
-        "Combinations"
+        "Subsets"
       ],
-      "statement": "How many subsets containing three different numbers can be selected from the set $\\{89, 95, 99, 132, 166, 173\\}$ so that the sum of the three numbers is even?",
+      "statement": "How many subsets containing three different numbers can be selected from the set $$\\left\\{89, 95, 99, 132, 166, 173\\right\\}$$ so that the sum of the three numbers is even?",
       "answerChoices": [
         "$6$",
         "$8$",
@@ -509,20 +510,21 @@
       "name": "Problem 22 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Triangle Area Formulas",
       "tags": [
         "Pick's Theorem",
-        "Area on a Grid"
+        "Shoelace Formula",
+        "Area on Grid"
       ],
       "statement": "The horizontal and vertical distances between adjacent points equal $1$ unit. The area of triangle $ABC$ is [See figure in original PDF]",
       "answerChoices": [
-        "$\\frac{1}{4}$",
-        "$\\frac{1}{2}$",
-        "$\\frac{3}{4}$",
+        "$1/4$",
+        "$1/2$",
+        "$3/4$",
         "$1$",
-        "$\\frac{5}{4}$"
+        "$5/4$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -533,19 +535,20 @@
       "name": "Problem 23 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Linear Equations",
       "tags": [
-        "System of Equations"
+        "System of Equations",
+        "Word Problem"
       ],
       "statement": "The manager of a company planned to distribute a $\\$50$ bonus to each employee from the company fund, but the fund contained $\\$5$ less than what was needed. Instead the manager gave each employee a $\\$45$ bonus and kept the remaining $\\$95$ in the company fund. The amount of money in the company fund before any bonuses were paid was",
       "answerChoices": [
-        "$945$ dollars",
-        "$950$ dollars",
-        "$955$ dollars",
-        "$990$ dollars",
-        "$995$ dollars"
+        "$\\$945$",
+        "$\\$950$",
+        "$\\$955$",
+        "$\\$990$",
+        "$\\$995$"
       ],
       "solutionMetadata": {
         "kind": "none"
@@ -560,7 +563,8 @@
       "isStarred": false,
       "categorization": "Triangle Angle Sum",
       "tags": [
-        "Angle Bisectors"
+        "Angle Bisectors",
+        "Incenter"
       ],
       "statement": "The measure of angle $ABC$ is $50^{\\circ}$. $\\overline{AD}$ bisects angle $BAC$, and $\\overline{DC}$ bisects angle $BCA$. The measure of angle $ADC$ is [See figure in original PDF]",
       "answerChoices": [
@@ -579,20 +583,20 @@
       "name": "Problem 25 (1996 AJHSME)",
       "url": null,
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Introduction to Probability",
+      "categorization": "Introduction to Geometric Probability",
       "tags": [
-        "Geometric Probability",
-        "Area"
+        "Circles",
+        "Radius"
       ],
       "statement": "A point is chosen at random from within a circular region. What is the probability that the point is closer to the center of the region than it is to the boundary of the region?",
       "answerChoices": [
-        "$\\frac{1}{4}$",
-        "$\\frac{1}{3}$",
-        "$\\frac{1}{2}$",
-        "$\\frac{2}{3}$",
-        "$\\frac{3}{4}$"
+        "$1/4$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$",
+        "$3/4$"
       ],
       "solutionMetadata": {
         "kind": "none"

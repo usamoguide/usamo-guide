@@ -8,12 +8,12 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Coin Values",
+        "Money",
         "Percentages"
       ],
-      "statement": "Walter has exactly one penny, one nickel, one dime and one quarter in his pocket. What percent of one dollar is in his pocket?",
+      "statement": "Walter has exactly $1$ penny, $1$ nickel, $1$ dime and $1$ quarter in his pocket. What percent of $1$ dollar is in his pocket?",
       "answerChoices": [
         "$4\\%$",
         "$25\\%$",
@@ -21,10 +21,10 @@
         "$41\\%$",
         "$59\\%$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1995-2",
@@ -33,7 +33,7 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
         "Age Problem",
         "Linear Equations"
@@ -46,10 +46,10 @@
         "$16$",
         "$22$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-3",
@@ -58,22 +58,23 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fraction Operations"
+        "Fractions",
+        "Multiplication and Division"
       ],
       "statement": "Which of the following operations has the same effect on a number as multiplying by $\\frac{3}{4}$ and then dividing by $\\frac{3}{5}$?",
       "answerChoices": [
         "dividing by $\\frac{4}{3}$",
         "dividing by $\\frac{9}{20}$",
         "multiplying by $\\frac{9}{20}$",
-        "dividing by $\\frac{3}{4}$",
+        "dividing by $\\frac{5}{4}$",
         "multiplying by $\\frac{5}{4}$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1995-4",
@@ -82,10 +83,9 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Arithmetic Operations",
-        "Sequential Steps"
+        "Arithmetic Operations"
       ],
       "statement": "A teacher tells the class, \"Think of a number, add $1$ to it, and double the result. Give the answer to your partner. Partner, subtract $1$ from the number you are given and double the result to get your answer.\" Ben thinks of $6$, and gives his answer to Sue. What should Sue's answer be?",
       "answerChoices": [
@@ -95,22 +95,22 @@
         "$27$",
         "$30$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-5",
       "name": "Problem 5 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_5",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
-        "Fractions",
-        "Estimation"
+        "Mixed Numbers",
+        "Bounding"
       ],
       "statement": "Find the smallest whole number that is larger than the sum $2\\frac{1}{2}+3\\frac{1}{3}+4\\frac{1}{4}+5\\frac{1}{5}$.",
       "answerChoices": [
@@ -120,22 +120,22 @@
         "$17$",
         "$18$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-6",
       "name": "Problem 6 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_6",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Special Quadrilaterals",
       "tags": [
-        "Perimeter",
-        "Squares"
+        "Squares",
+        "Perimeter"
       ],
       "statement": "Figures I, II, and III are squares. The perimeter of I is $12$ and the perimeter of II is $24$. The perimeter of III is [See figure in original PDF]",
       "answerChoices": [
@@ -145,10 +145,10 @@
         "$72$",
         "$81$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-7",
@@ -157,12 +157,12 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Fractions",
         "Word Problem"
       ],
-      "statement": "At Clover View Junior High, one half of the students go home on the school bus. One fourth go home by automobile. One tenth go home on their bicycles. The rest walk home. What fractional part of the students walk home?",
+      "statement": "At Clover View Junior High, $\\frac{1}{2}$ of the students go home on the school bus. $\\frac{1}{4}$ go home by automobile. $\\frac{1}{10}$ go home on their bicycles. The rest walk home. What fractional part of the students walk home?",
       "answerChoices": [
         "$\\frac{1}{16}$",
         "$\\frac{3}{20}$",
@@ -170,24 +170,24 @@
         "$\\frac{17}{20}$",
         "$\\frac{9}{10}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-8",
       "name": "Problem 8 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_8",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Proportional Reasoning",
       "tags": [
-        "Proportions",
-        "Unit Conversion"
+        "Currency Conversion",
+        "Ratios"
       ],
-      "statement": "An American traveling in Italy wishes to exchange American money (dollars) for Italian money (lire). If $3000 \\text{ lire} = \\$1.60$, how much lire will the traveler receive in exchange for $\\$1.00$?",
+      "statement": "An American traveling in Italy wishes to exchange American money (dollars) for Italian money (lire). If $3000$ lire $= \\$1.60$, how much lire will the traveler receive in exchange for $\\$1.00$?",
       "answerChoices": [
         "$180$",
         "$480$",
@@ -195,10 +195,10 @@
         "$1875$",
         "$4875$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1995-9",
@@ -207,10 +207,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Circles",
-        "Area of a Rectangle"
+        "Rectangles",
+        "Area"
       ],
       "statement": "Three congruent circles with centers $P$, $Q$, and $R$ are tangent to the sides of rectangle $ABCD$ as shown. The circle centered at $Q$ has diameter $4$ and passes through points $P$ and $R$. The area of the rectangle is [See figure in original PDF]",
       "answerChoices": [
@@ -220,10 +221,10 @@
         "$64$",
         "$128$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-10",
@@ -232,10 +233,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percentages",
-        "Discounts"
+        "Discounts",
+        "Weighted Average"
       ],
       "statement": "A jacket and a shirt originally sold for $\\$80$ and $\\$40$, respectively. During a sale Chris bought the $\\$80$ jacket at a $40\\%$ discount and the $\\$40$ shirt at a $55\\%$ discount. The total amount saved was what percent of the total of the original prices?",
       "answerChoices": [
@@ -245,10 +247,10 @@
         "$79\\frac{1}{6}\\%$",
         "$95\\%$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1995-11",
@@ -257,10 +259,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
-        "Rates",
-        "Distance and Time"
+        "Speed",
+        "Relative Motion",
+        "Perimeter"
       ],
       "statement": "Jane can walk any distance in half the time it takes Hector to walk the same distance. They set off in opposite directions around the outside of the $18$-block area as shown. When they meet for the first time, they will be closest to [See figure in original PDF]",
       "answerChoices": [
@@ -270,22 +273,22 @@
         "$D$",
         "$E$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1995-12",
       "name": "Problem 12 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_12",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Divisibility Rules",
       "tags": [
-        "Number Properties",
-        "Calendars"
+        "Factors",
+        "Dates"
       ],
       "statement": "A \"lucky\" year is one in which at least one date, when written in the form month/day/year, has the following property: \"The product of the month times the day equals the last two digits of the year\". For example, $1956$ is a lucky year because it has the date $7/8/56$ and $7 \\times 8 = 56$. Which of the following is NOT a lucky year?",
       "answerChoices": [
@@ -295,22 +298,23 @@
         "$1993$",
         "$1994$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1995-13",
       "name": "Problem 13 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_13",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Angle Chasing and Parallel Lines",
       "tags": [
-        "Angle Chasing",
-        "Right Triangles"
+        "Right Triangles",
+        "Isosceles Triangles",
+        "Angle Sum"
       ],
       "statement": "In the figure, $\\angle A$, $\\angle B$ and $\\angle C$ are right angles. If $\\angle AEB=40^{\\circ}$ and $\\angle BED=\\angle BDE$, then $\\angle CDE=$ [See figure in original PDF]",
       "answerChoices": [
@@ -320,10 +324,10 @@
         "$90^{\\circ}$",
         "$95^{\\circ}$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1995-14",
@@ -332,10 +336,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percentages",
-        "Equations"
+        "Algebraic Setup"
       ],
       "statement": "A team won $40$ of its first $50$ games. How many of the remaining $40$ games must this team win so it will have won exactly $70\\%$ of its games for the season?",
       "answerChoices": [
@@ -345,10 +349,10 @@
         "$30$",
         "$35$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-15",
@@ -357,7 +361,7 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Units Digit and Periodicity",
       "tags": [
         "Repeating Decimals",
         "Modular Arithmetic"
@@ -370,24 +374,24 @@
         "$7$",
         "$8$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-16",
       "name": "Problem 16 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_16",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Rates",
-        "Proportions"
+        "Ratios",
+        "Unit Rates"
       ],
-      "statement": "Students from three middle schools worked on a summer project. Seven students from Allen school worked for $3$ days. Four students from Balboa school worked for $5$ days. Five students from Carver school worked for $9$ days. The total amount paid for the students' work was $\\$774$. Assuming each student received the same amount for a day's work, how much did the students from Balboa school earn altogether?",
+      "statement": "Students from three middle schools worked on a summer project.\n* Seven students from Allen school worked for $3$ days.\n* Four students from Balboa school worked for $5$ days.\n* Five students from Carver school worked for $9$ days.\nThe total amount paid for the students' work was $\\$774$. Assuming each student received the same amount for a day's work, how much did the students from Balboa school earn altogether?",
       "answerChoices": [
         "$\\$9.00$",
         "$\\$48.38$",
@@ -395,10 +399,10 @@
         "$\\$193.50$",
         "$\\$258.00$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-17",
@@ -407,12 +411,12 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Weighted Averages",
+        "Weighted Average",
         "Percentages"
       ],
-      "statement": "The table below gives the percent of students in each grade at Annville and Cleona elementary schools: \nAnnville: $16\\%$ (K), $15\\%$ (1), $15\\%$ (2), $14\\%$ (3), $13\\%$ (4), $16\\%$ (5), $11\\%$ (6)\nCleona: $12\\%$ (K), $15\\%$ (1), $14\\%$ (2), $13\\%$ (3), $15\\%$ (4), $14\\%$ (5), $17\\%$ (6)\nAnnville has $100$ students and Cleona has $200$ students. In the two schools combined, what percent of the students are in grade $6$?",
+      "statement": "The table below gives the percent of students in each grade at Annville and Cleona elementary schools:\nAnnville: $16\\%$ (K), $15\\%$ ($1$), $15\\%$ ($2$), $14\\%$ ($3$), $13\\%$ ($4$), $16\\%$ ($5$), $11\\%$ ($6$)\nCleona: $12\\%$ (K), $15\\%$ ($1$), $14\\%$ ($2$), $13\\%$ ($3$), $15\\%$ ($4$), $14\\%$ ($5$), $17\\%$ ($6$)\nAnnville has $100$ students and Cleona has $200$ students. In the two schools combined, what percent of the students are in grade $6$?",
       "answerChoices": [
         "$12\\%$",
         "$13\\%$",
@@ -420,10 +424,10 @@
         "$15\\%$",
         "$28\\%$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1995-18",
@@ -432,10 +436,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Area",
-        "Squares"
+        "Squares",
+        "Fractions"
       ],
       "statement": "The area of each of the four congruent L-shaped regions of this $100$-inch by $100$-inch square is $\\frac{3}{16}$ of the total area. How many inches long is the side of the center square? [See figure in original PDF]",
       "answerChoices": [
@@ -445,10 +450,10 @@
         "$62$",
         "$75$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-19",
@@ -457,10 +462,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "No Category",
       "tags": [
         "Statistics",
-        "Median"
+        "Median",
+        "Bar Chart"
       ],
       "statement": "The graph shows the distribution of the number of children in the families of the students in Ms. Jordan's English class. The median number of children in the family for this distribution is [See figure in original PDF]",
       "answerChoices": [
@@ -470,10 +476,10 @@
         "$4$",
         "$5$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1995-20",
@@ -495,10 +501,10 @@
         "$\\frac{17}{36}$",
         "$\\frac{1}{2}$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-21",
@@ -507,10 +513,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Systematic Casework",
       "tags": [
         "3D Geometry",
-        "Spatial Reasoning"
+        "Spatial Reasoning",
+        "Logic"
       ],
       "statement": "A plastic snap-together cube has a protruding snap on one side and receptacle holes on the other five sides as shown. What is the smallest number of these cubes that can be snapped together so that only receptacle holes are showing? [See figure in original PDF]",
       "answerChoices": [
@@ -520,10 +527,10 @@
         "$6$",
         "$8$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-22",
@@ -532,9 +539,10 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Prime Factorization",
       "tags": [
-        "Prime Factorization"
+        "Factors",
+        "Number Theory"
       ],
       "statement": "The number $6545$ can be written as a product of a pair of positive two-digit numbers. What is the sum of this pair of numbers?",
       "answerChoices": [
@@ -544,22 +552,23 @@
         "$174$",
         "$222$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1995-23",
       "name": "Problem 23 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_23",
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Permutations and Combinations",
       "tags": [
+        "Counting",
         "Combinatorics",
-        "Digit Restrictions"
+        "Digits"
       ],
       "statement": "How many four-digit whole numbers are there such that the leftmost digit is odd, the second digit is even, and all four digits are different?",
       "answerChoices": [
@@ -569,24 +578,25 @@
         "$2025$",
         "$2500$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1995-24",
       "name": "Problem 24 (1995 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1995_AJHSME_Problems/Problem_24",
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Special Quadrilaterals",
       "tags": [
-        "Area of a Parallelogram",
+        "Parallelograms",
+        "Area",
         "Similar Triangles"
       ],
-      "statement": "In parallelogram $ABCD$, $DE$ is the altitude to the base $AB$ and $DF$ is the altitude to the base $BC$. (Note: Both pictures represent the same parallelogram.) If $DC=12$, $EB=4$, and $DE=6$, then $DF=$ [See figure in original PDF]",
+      "statement": "In parallelogram $ABCD$, $\\overline{DE}$ is the altitude to the base $\\overline{AB}$ and $\\overline{DF}$ is the altitude to the base $\\overline{BC}$. [Note: Both pictures represent the same parallelogram.] If $DC=12$, $EB=4$, and $DE=6$, then $DF=$ [See figure in original PDF]",
       "answerChoices": [
         "$6.4$",
         "$7$",
@@ -594,10 +604,10 @@
         "$8$",
         "$10$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1995-25",
@@ -606,10 +616,11 @@
       "source": "AJHSME",
       "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Rates and Kinematics",
       "tags": [
-        "Distance and Time",
-        "Rates"
+        "Time and Distance",
+        "Relative Motion",
+        "Schedules"
       ],
       "statement": "Buses from Dallas to Houston leave every hour on the hour. Buses from Houston to Dallas leave every hour on the half hour. The trip from one city to the other takes $5$ hours. Assuming the buses travel on the same highway, how many Dallas-bound buses does a Houston-bound bus pass in the highway (not in the station)?",
       "answerChoices": [
@@ -619,10 +630,10 @@
         "$10$",
         "$11$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     }
   ]
 }

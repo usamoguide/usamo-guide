@@ -1,603 +1,603 @@
 {
-    "exam": "1986 AJHSME",
-    "problems": [
-        {
-            "uniqueId": "ajhsme-1986-1",
-            "name": "Problem 1 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Rates",
-                "Unit Conversion"
-            ],
-            "statement": "In July $1861$, $366$ inches of rain fell in Cherrapunji, India. What was the average rainfall in inches per hour during that month?",
-            "answerChoices": [
-                "$\\frac{366}{31 \\times 24}$",
-                "$\\frac{366 \\times 31}{24}$",
-                "$\\frac{366 \\times 24}{31}$",
-                "$\\frac{31 \\times 24}{366}$",
-                "$366 \\times 31 \\times 24$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-2",
-            "name": "Problem 2 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Reciprocals",
-                "Comparing Fractions"
-            ],
-            "statement": "Which of the following numbers has the largest reciprocal?",
-            "answerChoices": [
-                "$\\frac{1}{3}$",
-                "$\\frac{2}{5}$",
-                "$1$",
-                "$5$",
-                "$1986$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-3",
-            "name": "Problem 3 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Negative Numbers",
-                "Optimization"
-            ],
-            "statement": "The smallest sum one could get by adding three different numbers from the set $\\{7, 25, -1, 12, -3\\}$ is",
-            "answerChoices": [
-                "$-3$",
-                "$-1$",
-                "$3$",
-                "$8$",
-                "$21$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-4",
-            "name": "Problem 4 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Estimation",
-                "Decimals"
-            ],
-            "statement": "The product $(1.8)(40.3 + 0.07)$ is closest to",
-            "answerChoices": [
-                "$7$",
-                "$42$",
-                "$74$",
-                "$84$",
-                "$737$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-5",
-            "name": "Problem 5 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Time Calculation",
-                "Unit Conversion"
-            ],
-            "statement": "A contest began at noon one day and ended $1000$ minutes later. At what time did the contest end?",
-            "answerChoices": [
-                "$10:00$ p.m.",
-                "midnight",
-                "$4:40$ a.m.",
-                "$6:40$ a.m.",
-                "$2:40$ a.m."
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-6",
-            "name": "Problem 6 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Complex Fractions"
-            ],
-            "statement": "The value of $\\frac{2}{1 - \\frac{2}{3}}$ is",
-            "answerChoices": [
-                "$-3$",
-                "$-\\frac{4}{3}$",
-                "$\\frac{2}{3}$",
-                "$2$",
-                "$6$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-7",
-            "name": "Problem 7 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Square Roots",
-                "Estimating Irrationals"
-            ],
-            "statement": "How many whole numbers are between $\\sqrt{8}$ and $\\sqrt{80}$?",
-            "answerChoices": [
-                "$5$",
-                "$6$",
-                "$7$",
-                "$8$",
-                "$9$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-8",
-            "name": "Problem 8 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Digit Manipulation",
-                "Cryptarithmetic"
-            ],
-            "statement": "In the product $B2 \\times 7B = 6396$, $B$ is a digit. The value of $B$ is",
-            "answerChoices": [
-                "$3$",
-                "$5$",
-                "$6$",
-                "$7$",
-                "$8$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-9",
-            "name": "Problem 9 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Counting Fundamentals",
-            "tags": [
-                "Path Counting",
-                "Directed Graphs"
-            ],
-            "statement": "Using only the paths and the directions shown, how many different routes are there from $M$ to $N$? [See figure in original PDF]",
-            "answerChoices": [
-                "$2$",
-                "$3$",
-                "$4$",
-                "$5$",
-                "$6$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-10",
-            "name": "Problem 10 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Linear Measurement",
-                "Symmetry"
-            ],
-            "statement": "A picture $3$ feet across is hung in the center of a wall that is $19$ feet wide. How many feet from the end of the wall is the nearest edge of the picture?",
-            "answerChoices": [
-                "$1 \\frac{1}{2}$",
-                "$8$",
-                "$9 \\frac{1}{2}$",
-                "$16$",
-                "$22$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-11",
-            "name": "Problem 11 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Custom Operations"
-            ],
-            "statement": "If $A * B$ means $\\frac{A + B}{2}$, then $(3 * 5) * 8$ is",
-            "answerChoices": [
-                "$6$",
-                "$8$",
-                "$12$",
-                "$16$",
-                "$30$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-12",
-            "name": "Problem 12 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Data Interpretation",
-                "Percentages"
-            ],
-            "statement": "The table displays the grade distribution of the $30$ students in a mathematics class on the last two tests. For example, exactly one student received a \"D\" on Test $1$ and a \"C\" on Test $2$. What percent of the students received the same grade on both tests? [See table in original PDF]",
-            "answerChoices": [
-                "$12\\%$",
-                "$25\\%$",
-                "$33 \\frac{1}{3}\\%$",
-                "$40\\%$",
-                "$50\\%$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-13",
-            "name": "Problem 13 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Geometry Basics",
-            "tags": [
-                "Perimeter",
-                "Rectilinear Polygons"
-            ],
-            "statement": "Given that all angles shown are right angles, the perimeter of the polygon shown is [See figure in original PDF]",
-            "answerChoices": [
-                "$14$",
-                "$20$",
-                "$28$",
-                "$48$",
-                "cannot be determined"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-14",
-            "name": "Problem 14 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Optimization",
-                "Fractions"
-            ],
-            "statement": "If $200 \\leq a \\leq 400$ and $600 \\leq b \\leq 1200$, then the largest value of the quotient $\\frac{b}{a}$ is",
-            "answerChoices": [
-                "$\\frac{3}{2}$",
-                "$3$",
-                "$6$",
-                "$300$",
-                "$600$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-15",
-            "name": "Problem 15 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Very Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Percent Discount",
-                "Sequential Discounts"
-            ],
-            "statement": "Sale prices at the Ajax Outlet Store are $50\\%$ below original prices. On Saturdays an additional discount of $20\\%$ off the sale price is given. What is the Saturday price of a coat whose original price is $\\$180$?",
-            "answerChoices": [
-                "$\\$54$",
-                "$\\$72$",
-                "$\\$90$",
-                "$\\$108$",
-                "$\\$110$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-16",
-            "name": "Problem 16 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Data Interpretation",
-                "Percentages"
-            ],
-            "statement": "A bar graph shows the number of hamburgers sold by a fast food chain each season. However, the bar indicating the number sold during the winter is covered by a smudge. If exactly $25\\%$ of the chain's hamburgers are sold in the fall, how many million hamburgers are sold in the winter? [See graph in original PDF]",
-            "answerChoices": [
-                "$2.5$",
-                "$3$",
-                "$3.5$",
-                "$4$",
-                "$4.5$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-17",
-            "name": "Problem 17 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Parity",
-                "Polynomial Expressions"
-            ],
-            "statement": "Let $o$ be an odd whole number and let $n$ be any whole number. Which of the following statements about the whole number $(o^2 + no)$ is always true?",
-            "answerChoices": [
-                "it is always odd",
-                "it is always even",
-                "it is even only if $n$ is even",
-                "it is odd only if $n$ is odd",
-                "it is odd only if $n$ is even"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-18",
-            "name": "Problem 18 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Fencing Problem",
-                "Spacing Posts"
-            ],
-            "statement": "A rectangular grazing area is to be fenced off on three sides using part of a $100$ meter rock wall as the fourth side. Fence posts are to be placed every $12$ meters along the fence including the two posts where the fence meets the rock wall. What is the fewest number of posts required to fence an area $36$ m by $60$ m?",
-            "answerChoices": [
-                "$11$",
-                "$12$",
-                "$13$",
-                "$14$",
-                "$16$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-19",
-            "name": "Problem 19 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Average Rate",
-                "Miles Per Gallon"
-            ],
-            "statement": "At the beginning of a trip, the mileage odometer read $56200$ miles. During the trip, the driver filled his tank again with $12$ gallons of gasoline when the odometer read $56560$. At the end of the trip, the driver filled the tank again with $20$ gallons of gasoline. The odometer read $57060$. To the nearest tenth, what was the car's average miles-per-gallon for the entire trip? (Note: The first fill-up of $6$ gallons was to start the trip full).",
-            "answerChoices": [
-                "$22.5$",
-                "$22.6$",
-                "$24.0$",
-                "$26.9$",
-                "$27.5$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-20",
-            "name": "Problem 20 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Estimation",
-                "Exponents"
-            ],
-            "statement": "The value of the expression $\\frac{(304)^5}{(29.7)(399)^4}$ is closest to",
-            "answerChoices": [
-                "$0.003$",
-                "$0.03$",
-                "$0.3$",
-                "$3$",
-                "$30$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-21",
-            "name": "Problem 21 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Normal",
-            "isStarred": false,
-            "categorization": "Geometry Basics",
-            "tags": [
-                "Nets of Cubes",
-                "Spatial Visualization"
-            ],
-            "statement": "Suppose one of the eight lettered identical squares is included with the four squares in the T-shaped figure outlined. How many of the resulting figures can be folded into a topless cubical box? [See figure in original PDF]",
-            "answerChoices": [
-                "$2$",
-                "$3$",
-                "$4$",
-                "$5$",
-                "$6$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-22",
-            "name": "Problem 22 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Arithmetic and Number Theory Basics",
-            "tags": [
-                "Logical Reasoning",
-                "Implications"
-            ],
-            "statement": "Alan, Beth, Carlos, and Diana were discussing their possible grades in mathematics class. Alan said, \"If I get an A, then Beth will get an A.\" Beth said, \"If I get an A, then Carlos will get an A.\" Carlos said, \"If I get an A, then Diana will get an A.\" All of these statements were true, but only two of the students received an A. Which two received A's?",
-            "answerChoices": [
-                "Alan, Beth",
-                "Beth, Carlos",
-                "Carlos, Diana",
-                "Alan, Diana",
-                "Beth, Diana"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-23",
-            "name": "Problem 23 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Geometry Basics",
-            "tags": [
-                "Area of a Circle",
-                "Ratios"
-            ],
-            "statement": "The large circle has diameter $\\overline{AC}$. The two small circles have their centers on $\\overline{AC}$ and just touch at $O$, the center of the large circle. If each small circle has radius $1$, what is the value of the ratio of the area of the shaded region to the area of one of the small circles? [See figure in original PDF]",
-            "answerChoices": [
-                "between $\\frac{1}{2}$ and $1$",
-                "$1$",
-                "between $1$ and $\\frac{3}{2}$",
-                "between $\\frac{3}{2}$ and $2$",
-                "cannot be determined"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-24",
-            "name": "Problem 24 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Introduction to Probability",
-            "tags": [
-                "Probability",
-                "Independent Events"
-            ],
-            "statement": "The $600$ students at King Middle School are divided into three groups of equal size for lunch. Each group has lunch at a different time. A computer randomly assigns each student to one of the three lunch groups. The probability that the three friends, Al, Bob, and Carol, will be assigned to the same lunch group is approximately:",
-            "answerChoices": [
-                "$\\frac{1}{27}$",
-                "$\\frac{1}{9}$",
-                "$\\frac{1}{8}$",
-                "$\\frac{1}{6}$",
-                "$\\frac{1}{3}$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        },
-        {
-            "uniqueId": "ajhsme-1986-25",
-            "name": "Problem 25 (1986 AJHSME)",
-            "url": null,
-            "source": "AJHSME",
-            "difficulty": "Easy",
-            "isStarred": false,
-            "categorization": "Mean, Median, Mode, and Harmonic Mean",
-            "tags": [
-                "Arithmetic Mean",
-                "Arithmetic Sequences"
-            ],
-            "statement": "Which of the following sets of whole numbers has the largest average?",
-            "answerChoices": [
-                "multiples of $2$ between $1$ and $101$",
-                "multiples of $3$ between $1$ and $101$",
-                "multiples of $4$ between $1$ and $101$",
-                "multiples of $5$ between $1$ and $101$",
-                "multiples of $6$ between $1$ and $101$"
-            ],
-            "solutionMetadata": {
-                "kind": "none"
-            }
-        }
-    ]
+  "exam": "1986 AJHSME",
+  "problems": [
+    {
+      "uniqueId": "ajhsme-1986-1",
+      "name": "Problem 1 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Rates and Kinematics",
+      "tags": [
+        "Unit Conversion",
+        "Average Rate"
+      ],
+      "statement": "In July $1861$, $366$ inches of rain fell in Cherrapunji, India. What was the average rainfall in inches per hour during that month?",
+      "answerChoices": [
+        "$\\frac{366}{31 \\times 24}$",
+        "$\\frac{366 \\times 31}{24}$",
+        "$\\frac{366 \\times 24}{31}$",
+        "$\\frac{31 \\times 24}{366}$",
+        "$366 \\times 31 \\times 24$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-2",
+      "name": "Problem 2 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Reciprocals",
+        "Fractions"
+      ],
+      "statement": "Which of the following numbers has the largest reciprocal?",
+      "answerChoices": [
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{5}$",
+        "$1$",
+        "$5$",
+        "$1986$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-3",
+      "name": "Problem 3 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Absolute Value and Integer Operations",
+      "tags": [
+        "Addition",
+        "Negative Numbers"
+      ],
+      "statement": "The smallest sum one could get by adding three different numbers from the set $\\{7, 25, -1, 12, -3\\}$ is",
+      "answerChoices": [
+        "$-3$",
+        "$-1$",
+        "$3$",
+        "$5$",
+        "$21$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-4",
+      "name": "Problem 4 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Estimation and Bounding",
+      "tags": [
+        "Estimation",
+        "Decimals"
+      ],
+      "statement": "The product $(1.8)(40.3 + 0.07)$ is closest to",
+      "answerChoices": [
+        "$7$",
+        "$42$",
+        "$74$",
+        "$84$",
+        "$737$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-5",
+      "name": "Problem 5 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Introduction to Modular Arithmetic",
+      "tags": [
+        "Time Calculation"
+      ],
+      "statement": "A contest began at noon one day and ended $1000$ minutes later. At what time did the contest end?",
+      "answerChoices": [
+        "$10:00$ p.m.",
+        "midnight",
+        "$2:30$ a.m.",
+        "$4:40$ a.m.",
+        "$6:40$ a.m."
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-6",
+      "name": "Problem 6 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Fractions",
+        "Arithmetic"
+      ],
+      "statement": "$\\frac{2}{1 - \\frac{2}{3}} =$",
+      "answerChoices": [
+        "$-3$",
+        "$-\\frac{4}{3}$",
+        "$\\frac{2}{3}$",
+        "$2$",
+        "$6$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-7",
+      "name": "Problem 7 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Estimation and Bounding",
+      "tags": [
+        "Square Roots",
+        "Inequalities"
+      ],
+      "statement": "How many whole numbers are between $\\sqrt{8}$ and $\\sqrt{80}$?",
+      "answerChoices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-8",
+      "name": "Problem 8 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Units Digit and Periodicity",
+      "tags": [
+        "Cryptarithm",
+        "Units Digit"
+      ],
+      "statement": "In the product $B2 \\times 7B = 6396$, $B$ is a digit. The value of $B$ is",
+      "answerChoices": [
+        "$3$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-9",
+      "name": "Problem 9 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Counting Fundamentals",
+      "tags": [
+        "Path Counting",
+        "Directed Graphs"
+      ],
+      "statement": "Using only the paths and the directions shown, how many different routes are there from $M$ to $N$? [See figure in original PDF]",
+      "answerChoices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-10",
+      "name": "Problem 10 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Word Problem Translation",
+      "tags": [
+        "Spatial Reasoning",
+        "Lengths"
+      ],
+      "statement": "A picture $3$ feet across is hung in the center of a wall that is $19$ feet wide. How many feet from the end of the wall is the nearest edge of the picture?",
+      "answerChoices": [
+        "$1 \\frac{1}{2}$",
+        "$8$",
+        "$9 \\frac{1}{2}$",
+        "$16$",
+        "$22$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-11",
+      "name": "Problem 11 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "categorization": "Defined Operations",
+      "tags": [
+        "Custom Operations"
+      ],
+      "statement": "If $A * B$ means $\\frac{A+B}{2}$ then $(3 * 5) * 8$ is",
+      "answerChoices": [
+        "$6$",
+        "$8$",
+        "$12$",
+        "$16$",
+        "$30$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-12",
+      "name": "Problem 12 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Percentages",
+        "Table Reading"
+      ],
+      "statement": "The table displays the grade distribution of the $30$ students in a mathematics class on the last two tests. For example, exactly one student received a \"D\" on Test $1$ and a \"C\" on Test $2$. What percent of the students received the same grade on both tests? [See figure in original PDF]",
+      "answerChoices": [
+        "$12\\%$",
+        "$25\\%$",
+        "$33 \\frac{1}{3}\\%$",
+        "$40\\%$",
+        "$50\\%$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-13",
+      "name": "Problem 13 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": [
+        "Perimeter",
+        "Polygons"
+      ],
+      "statement": "Given that all angles shown are marked as right angles, the perimeter of the polygon shown is [See figure in original PDF]",
+      "answerChoices": [
+        "$14$",
+        "$20$",
+        "$28$",
+        "$48$",
+        "cannot be determined from the information given"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-14",
+      "name": "Problem 14 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Estimation and Bounding",
+      "tags": [
+        "Inequalities",
+        "Fractions"
+      ],
+      "statement": "If $200 \\leq a \\leq 400$ and $600 \\leq b \\leq 1200$, then the largest value of the quotient $\\frac{b}{a}$ is",
+      "answerChoices": [
+        "$\\frac{3}{2}$",
+        "$3$",
+        "$6$",
+        "$300$",
+        "$600$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-15",
+      "name": "Problem 15 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Percentages",
+        "Discounts"
+      ],
+      "statement": "Sale prices at the Ajax Outlet Store are $50\\%$ below original prices. On Saturdays an additional discount of $20\\%$ off the sale price is given. What is the Saturday price of a coat whose original price is $\\$180$?",
+      "answerChoices": [
+        "$\\$54$",
+        "$\\$72$",
+        "$\\$90$",
+        "$\\$108$",
+        "$\\$110$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-16",
+      "name": "Problem 16 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Fraction, Decimal, Percent Conversions",
+      "tags": [
+        "Bar Graphs",
+        "Percentages"
+      ],
+      "statement": "A bar graph shows the number of hamburgers sold by a fast food chain each season. However, the bar indicating the number sold during the winter is covered by a smudge. If exactly $25\\%$ of the chain's hamburgers are sold in the fall, how many million hamburgers are sold in the winter? [See figure in original PDF]",
+      "answerChoices": [
+        "$2.5$",
+        "$3$",
+        "$3.5$",
+        "$4$",
+        "$4.5$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-17",
+      "name": "Problem 17 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "categorization": "Divisibility Rules",
+      "tags": [
+        "Parity",
+        "Odd and Even Numbers"
+      ],
+      "statement": "Let $o$ be an odd whole number and let $n$ be any whole number. Which of the following statements about the whole number $(o^{2}+no)$ is always true?",
+      "answerChoices": [
+        "it is always odd",
+        "it is always even",
+        "it is even only if $n$ is even",
+        "it is odd only if $n$ is odd",
+        "it is odd"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-18",
+      "name": "Problem 18 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Word Problem Translation",
+      "tags": [
+        "Perimeter",
+        "Fence Posts Problem"
+      ],
+      "statement": "A rectangular grazing area is to be fenced off on three sides using part of a $100$ meter rock wall as the fourth side. Fence posts are to be placed every $12$ meters along the fence including the two posts where the fence meets the rock wall. What is the fewest number of posts required to fence an area $36$ m by $60$ m?",
+      "answerChoices": [
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$",
+        "$16$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-19",
+      "name": "Problem 19 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Rates and Kinematics",
+      "tags": [
+        "Averages",
+        "Real-world math"
+      ],
+      "statement": "At the beginning of a trip, the mileage odometer read $56200$ miles. The driver filled the gas tank with $6$ gallons of gasoline. During the trip, the driver filled his tank again with $12$ gallons of gasoline when the odometer read $56560$. At the end of the trip, the driver filled the tank again with $20$ gallons of gasoline. The odometer read $57060$. To the nearest tenth, what was the car's average miles-per-gallon for the entire trip?",
+      "answerChoices": [
+        "$22.5$",
+        "$22.6$",
+        "$24.0$",
+        "$26.9$",
+        "$27.5$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-20",
+      "name": "Problem 20 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Estimation and Bounding",
+      "tags": [
+        "Estimation",
+        "Exponents"
+      ],
+      "statement": "The value of the expression $\\frac{304^{5}}{29.7 \\times 399^{4}}$ is closest to",
+      "answerChoices": [
+        "$0.003$",
+        "$0.03$",
+        "$0.3$",
+        "$3$",
+        "$30$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-21",
+      "name": "Problem 21 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "No Category",
+      "tags": [
+        "3D Geometry",
+        "Nets"
+      ],
+      "statement": "Suppose one of the eight lettered identical squares is included with the four squares in the T-shaped figure outlined. How many of the resulting figures can be folded into a topless cubical box? [See figure in original PDF]",
+      "answerChoices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-22",
+      "name": "Problem 22 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Systematic Casework",
+      "tags": [
+        "Logic",
+        "Deduction"
+      ],
+      "statement": "Alan, Beth, Carlos, and Diana were discussing their possible grades in mathematics class this grading period. Alan said, \"If I get an A, then Beth will get an A.\" Beth said, \"If I get an A, then Carlos will get an A.\" Carlos said, \"If I get an A, then Diana will get an A.\" All of these statements were true, but only two of the students received an A. Which two received A's?",
+      "answerChoices": [
+        "Alan, Beth",
+        "Beth, Carlos",
+        "Carlos, Diana",
+        "Alan, Diana",
+        "Beth, Diana"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-23",
+      "name": "Problem 23 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Composite Figures and Shaded Areas",
+      "tags": [
+        "Area Ratio",
+        "Circles"
+      ],
+      "statement": "The large circle has diameter $\\overline{AC}$. The two small circles have their centers on $\\overline{AC}$ and just touch at $O$, the center of the large circle. If each small circle has radius $1$, what is the value of the ratio of the area of the shaded region to the area of one of the small circles? [See figure in original PDF]",
+      "answerChoices": [
+        "between $\\frac{1}{2}$ and $1$",
+        "$1$",
+        "between $1$ and $\\frac{3}{2}$",
+        "between $\\frac{3}{2}$ and $2$",
+        "cannot be determined from the information given"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-24",
+      "name": "Problem 24 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Introduction to Probability",
+      "tags": [
+        "Probability",
+        "Independent Events"
+      ],
+      "statement": "The $600$ students at King Middle School are divided into three groups of equal size for lunch. Each group has lunch at a different time. A computer randomly assigns each student to one of the three lunch groups. The probability that the three friends, Al, Bob, and Carol, will be assigned to the same lunch group is approximately:",
+      "answerChoices": [
+        "$\\frac{1}{27}$",
+        "$\\frac{1}{9}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{3}$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "ajhsme-1986-25",
+      "name": "Problem 25 (1986 AJHSME)",
+      "url": null,
+      "source": "AJHSME",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "categorization": "Arithmetic Sequences",
+      "tags": [
+        "Averages",
+        "Sequences"
+      ],
+      "statement": "Which of the following sets of whole numbers has the largest average?",
+      "answerChoices": [
+        "multiples of $2$ between $1$ and $101$",
+        "multiples of $3$ between $1$ and $101$",
+        "multiples of $4$ between $1$ and $101$",
+        "multiples of $5$ between $1$ and $101$",
+        "multiples of $6$ between $1$ and $101$"
+      ],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
 }

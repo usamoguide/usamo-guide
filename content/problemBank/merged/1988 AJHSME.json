@@ -8,10 +8,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Reading a Scale",
-        "Decimals"
+        "Decimals",
+        "Number Line",
+        "Scale Reading"
       ],
       "statement": "The diagram shows part of a scale of a measuring device. The arrow indicates an approximate reading of [See figure in original PDF]",
       "answerChoices": [
@@ -21,10 +22,10 @@
         "$10.3$",
         "$10.6$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1988-2",
@@ -33,9 +34,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Decimal Multiplication",
+        "Multiplication",
+        "Decimals",
         "Fractions"
       ],
       "statement": "The product $8 \\times .25 \\times 2 \\times .125 =$",
@@ -46,10 +48,10 @@
         "$1$",
         "$2$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-3",
@@ -58,10 +60,10 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Fractions",
-        "Simplifying Fractions",
+        "Fraction Addition",
+        "Simplification",
         "Decimals"
       ],
       "statement": "$\\frac{1}{10} + \\frac{2}{20} + \\frac{3}{30} =$",
@@ -72,10 +74,10 @@
         "$.3$",
         "$.6$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1988-4",
@@ -84,10 +86,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
         "Pattern Recognition",
-        "Counting"
+        "Counting",
+        "Sequences"
       ],
       "statement": "The figure consists of alternating light and dark squares. The number of dark squares exceeds the number of light squares by [See figure in original PDF]",
       "answerChoices": [
@@ -97,47 +100,49 @@
         "$10$",
         "$11$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1988-5",
       "name": "Problem 5 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_5",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Angle Chasing and Parallel Lines",
       "tags": [
-        "Angle Measurement",
-        "Protractor"
+        "Angles",
+        "Protractor",
+        "Right Angles"
       ],
       "statement": "If $\\angle CBD$ is a right angle, then this protractor indicates that the measure of $\\angle ABC$ is approximately [See figure in original PDF]",
       "answerChoices": [
-        "$20^{\\circ}$",
-        "$40^{\\circ}$",
-        "$50^{\\circ}$",
-        "$70^{\\circ}$",
-        "$120^{\\circ}$"
+        "$20^\\circ$",
+        "$40^\\circ$",
+        "$50^\\circ$",
+        "$70^\\circ$",
+        "$120^\\circ$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-6",
       "name": "Problem 6 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_6",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Exponent Rules",
       "tags": [
         "Decimals",
-        "Exponents"
+        "Exponents",
+        "Simplification"
       ],
       "statement": "$\\frac{(.2)^3}{(.02)^2} =$",
       "answerChoices": [
@@ -147,10 +152,10 @@
         "$15$",
         "$20$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1988-7",
@@ -159,10 +164,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
         "Estimation",
-        "Decimals"
+        "Arithmetic",
+        "Rounding"
       ],
       "statement": "$2.46 \\times 8.163 \\times (5.17 + 4.829)$ is closest to:",
       "answerChoices": [
@@ -172,22 +178,22 @@
         "$400$",
         "$500$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1988-8",
       "name": "Problem 8 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_8",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Decimals",
-        "Decimal Placement"
+        "Decimal Placement",
+        "Multiplication"
       ],
       "statement": "Betty used a calculator to find the product $0.075 \\times 2.56$. She forgot to enter the decimal points. The calculator showed $19200$. If Betty had entered the decimal points correctly, the answer would have been",
       "answerChoices": [
@@ -197,10 +203,10 @@
         "$19.2$",
         "$192$"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1988-9",
@@ -209,10 +215,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Triangle Fundamentals",
       "tags": [
         "Isosceles Triangles",
-        "Grid Geometry"
+        "Coordinate Geometry",
+        "Length Measurement"
       ],
       "statement": "An isosceles triangle is a triangle with two sides of equal length. How many of the five triangles on the square grid below are isosceles? [See figure in original PDF]",
       "answerChoices": [
@@ -222,10 +229,10 @@
         "$4$",
         "$5$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1988-10",
@@ -234,10 +241,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Introduction to Modular Arithmetic",
       "tags": [
-        "Modulo Arithmetic",
-        "Calendars"
+        "Days of the Week",
+        "Modulo 7",
+        "Periodicity"
       ],
       "statement": "Chris' birthday is on a Thursday this year. What day of the week will it be $60$ days after her birthday?",
       "answerChoices": [
@@ -247,10 +255,10 @@
         "Friday",
         "Saturday"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1988-11",
@@ -259,10 +267,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
         "Square Roots",
-        "Estimation"
+        "Perfect Squares",
+        "Inequalities"
       ],
       "statement": "$\\sqrt{164}$ is",
       "answerChoices": [
@@ -272,10 +281,10 @@
         "between $11$ and $12$",
         "between $12$ and $13$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1988-12",
@@ -284,10 +293,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Large Numbers",
-        "Division"
+        "Division",
+        "Scientific Notation",
+        "Large Numbers"
       ],
       "statement": "Suppose the estimated $20$ billion dollar cost to send a person to the planet Mars is shared equally by the $250$ million people in the U.S. Then each person's share is",
       "answerChoices": [
@@ -297,10 +307,10 @@
         "$100$ dollars",
         "$125$ dollars"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-13",
@@ -309,11 +319,11 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Estimation and Bounding",
       "tags": [
         "Circumference",
-        "Circles",
-        "Estimation"
+        "Pi",
+        "Geometry"
       ],
       "statement": "If rose bushes are spaced about $1$ foot apart, approximately how many bushes are needed to surround a circular patio whose radius is $12$ feet?",
       "answerChoices": [
@@ -323,24 +333,25 @@
         "$75$",
         "$450$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1988-14",
       "name": "Problem 14 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_14",
       "source": "AJHSME",
-      "difficulty": "Very Easy",
+      "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Extremal Principle",
       "tags": [
         "Factors",
-        "Maximization"
+        "Maximization",
+        "Integers"
       ],
-      "statement": "$\\diamond$ and $\\Delta$ are whole numbers and $\\diamond \\times \\Delta = 36$. The largest possible value of $\\diamond + \\Delta$ is",
+      "statement": "$\\Diamond$ and $\\Delta$ are whole numbers and $\\Diamond \\times \\Delta = 36$. The largest possible value of $\\Diamond + \\Delta$ is",
       "answerChoices": [
         "$12$",
         "$13$",
@@ -348,10 +359,10 @@
         "$20$",
         "$37$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1988-15",
@@ -360,10 +371,11 @@
       "source": "AJHSME",
       "difficulty": "Very Easy",
       "isStarred": false,
-      "categorization": "Arithmetic and Number Theory Basics",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Fractions",
-        "Reciprocals"
+        "Reciprocal",
+        "Addition"
       ],
       "statement": "The reciprocal of $(\\frac{1}{2} + \\frac{1}{3})$ is",
       "answerChoices": [
@@ -373,10 +385,10 @@
         "$\\frac{5}{2}$",
         "$5$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-16",
@@ -385,11 +397,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
+        "Combinatorics",
         "Grid Placement",
-        "Maximum",
-        "Pigeonhole Principle"
+        "Optimization"
       ],
       "statement": "Placing no more than one $X$ in each small square, what is the greatest number of $X$'s that can be put on the grid shown without getting three $X$'s in a row vertically, horizontally, or diagonally? [See figure in original PDF]",
       "answerChoices": [
@@ -399,23 +411,23 @@
         "$5$",
         "$6$"
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1988-17",
       "name": "Problem 17 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_17",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "Composite Figures and Shaded Areas",
       "tags": [
         "Area",
         "Rectangles",
-        "Overlap"
+        "Inclusion-Exclusion Principle"
       ],
       "statement": "The shaded region formed by the two intersecting perpendicular rectangles, in square units, is [See figure in original PDF]",
       "answerChoices": [
@@ -425,10 +437,10 @@
         "$46$",
         "unable to be determined from the information given"
       ],
-      "answer": "B",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "B"
     },
     {
       "uniqueId": "ajhsme-1988-18",
@@ -437,9 +449,10 @@
       "source": "AJHSME",
       "difficulty": "Easy",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Weighted Average"
+        "Weighted Average",
+        "Mean"
       ],
       "statement": "The average weight of $6$ boys is $150$ pounds and the average weight of $4$ girls is $120$ pounds. The average weight of the $10$ children is",
       "answerChoices": [
@@ -449,10 +462,10 @@
         "$140$ pounds",
         "$141$ pounds"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-19",
@@ -463,8 +476,8 @@
       "isStarred": false,
       "categorization": "Arithmetic Sequences",
       "tags": [
-        "Nth Term",
-        "Arithmetic Progressions"
+        "Sequences",
+        "Nth Term Formula"
       ],
       "statement": "What is the $100^{\\text{th}}$ number in the arithmetic sequence: $1, 5, 9, 13, 17, 21, 25, \\dots$",
       "answerChoices": [
@@ -474,22 +487,23 @@
         "$403$",
         "$405$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1988-20",
       "name": "Problem 20 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_20",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
         "Percentages",
-        "Proportions"
+        "Proportions",
+        "Algebra"
       ],
       "statement": "The glass gauge on a cylindrical coffee maker shows that there are $45$ cups left when the coffee maker is $36\\%$ full. How many cups of coffee does it hold when it is full? [See figure in original PDF]",
       "answerChoices": [
@@ -499,10 +513,10 @@
         "$130$",
         "$262$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-21",
@@ -511,11 +525,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Mean, Median, Mode, and Harmonic Mean",
+      "categorization": "Systematic Casework",
       "tags": [
         "Mean",
         "Median",
-        "Casework"
+        "Algebraic Equations"
       ],
       "statement": "A fifth number, $n$, is added to the set $\\{3, 6, 9, 10\\}$ to make the mean of the set of five numbers equal to its median. The number of possible values of $n$ is",
       "answerChoices": [
@@ -525,22 +539,23 @@
         "$4$",
         "more than $4$"
       ],
-      "answer": "C",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "C"
     },
     {
       "uniqueId": "ajhsme-1988-22",
       "name": "Problem 22 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_22",
       "source": "AJHSME",
-      "difficulty": "Easy",
+      "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Fraction, Decimal, Percent Conversions",
       "tags": [
-        "Percentages",
-        "Successive Discounts"
+        "Percent Change",
+        "Compound Percentages",
+        "Business Math"
       ],
       "statement": "Tom's Hat Shoppe increased all original prices by $25\\%$. Now the shoppe is having a sale where all prices are $20\\%$ off these increased prices. Which statement best describes the sale price of an item?",
       "answerChoices": [
@@ -550,10 +565,10 @@
         "The sale price is lower than the original price.",
         "The sale price is the same as the original price."
       ],
-      "answer": "E",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "E"
     },
     {
       "uniqueId": "ajhsme-1988-23",
@@ -562,10 +577,11 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Word Problems",
+      "categorization": "Word Problem Translation",
       "tags": [
-        "Profit and Loss",
-        "Rates"
+        "Profit",
+        "Unit Price",
+        "Algebra"
       ],
       "statement": "Maria buys computer disks at a price of $4$ for $5$ dollars and sells them at a price of $3$ for $5$ dollars. How many computer disks must she sell in order to make a profit of $100$ dollars?",
       "answerChoices": [
@@ -575,35 +591,36 @@
         "$240$",
         "$1200$"
       ],
-      "answer": "D",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "D"
     },
     {
       "uniqueId": "ajhsme-1988-24",
       "name": "Problem 24 (1988 AJHSME)",
       "url": "https://artofproblemsolving.com/wiki/index.php?title=1988_AJHSME_Problems/Problem_24",
       "source": "AJHSME",
-      "difficulty": "Normal",
+      "difficulty": "Hard",
       "isStarred": false,
-      "categorization": "Geometry Basics",
+      "categorization": "No Category",
       "tags": [
         "Spatial Reasoning",
-        "Rotations"
+        "Transformations",
+        "Geometry"
       ],
       "statement": "The square in the first diagram \"rolls\" clockwise around the fixed regular hexagon until it reaches the bottom. In which position will the solid triangle be in diagram $4$? [See figure in original PDF]",
       "answerChoices": [
-        "[Diagram A]",
-        "[Diagram B]",
-        "[Diagram C]",
-        "[Diagram D]",
-        "[Diagram E]"
+        "Position A",
+        "Position B",
+        "Position C",
+        "Position D",
+        "Position E"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     },
     {
       "uniqueId": "ajhsme-1988-25",
@@ -612,13 +629,13 @@
       "source": "AJHSME",
       "difficulty": "Normal",
       "isStarred": false,
-      "categorization": "Counting Fundamentals",
+      "categorization": "Systematic Casework",
       "tags": [
         "Palindromes",
-        "Time",
-        "Casework"
+        "Counting",
+        "Time"
       ],
-      "statement": "A palindrome is a whole number that reads the same forwards and backwards. If one neglects the colon, certain times displayed on a digital watch are palindromes. Three examples are: $1:01, 4:44$, and $12:21$. How many times during a $12$-hour period will be palindromes?",
+      "statement": "A palindrome is a whole number that reads the same forwards and backwards. If one neglects the colon, certain times displayed on a digital watch are palindromes. Three examples are: $1:01$, $12:21$. How many times during a $12$-hour period will be palindromes?",
       "answerChoices": [
         "$57$",
         "$60$",
@@ -626,10 +643,10 @@
         "$90$",
         "$93$"
       ],
-      "answer": "A",
       "solutionMetadata": {
         "kind": "none"
-      }
+      },
+      "answer": "A"
     }
   ]
 }
