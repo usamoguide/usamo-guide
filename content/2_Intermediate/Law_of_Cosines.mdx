@@ -1,70 +1,184 @@
 ---
 id: law-of-cosines
 title: Law of Cosines
-author: apan
+author: Siddhant Arora
 description: Generalized Pythagorean theorem for any triangle.
-prerequisites: []
+prerequisites: [trig-unit-circle]
 ---
 
-## Overview
+## Bash and Effectiveness
 
-Use the Law of Cosines when a triangle is not a right triangle and you need a
-missing side or angle.
+The Law of Cosines is like the bigger, better brother to the Law of Sines. It is used quite often in computational contests (*well, at least more than Law of Sines*) and is key to bashing an unknown side in terms of a variable, finding a length directly, or finding the cosine of an angle. You can then use this derived length in whatever tools you need (*e.g. similar triangles, pythagorean theorem, etc.*).
 
-## Key Ideas
+## Formula & Derivation
 
-- $a^2 = b^2 + c^2 - 2bc\cos A$ (and similarly for $b^2$ and $c^2$).
-- $\cos A = \frac{b^2 + c^2 - a^2}{2bc}$.
-- If $A=90^\circ$, the formula reduces to the Pythagorean theorem.
+Let's lay out some notation first. In any triangle $\triangle ABC$, we label each **side with the lowercase letter of the angle it sits across from**, so side $a$ is opposite angle $A$, side $b$ is opposite $B$, and side $c$ is opposite $C$.
+ 
+<svg viewBox="0 0 400 300" role="img" aria-label="Triangle ABC with sides a, b, c opposite angles A, B, C" style={{ width: '100%', maxWidth: '420px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
+  <polygon points="60,240 180,60 340,240" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" />
+  <text x="42" y="252" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A</text>
+  <text x="174" y="48" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B</text>
+  <text x="348" y="252" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">C</text>
+  <text x="98" y="152" fill="#ffffff" fontFamily="Georgia, serif" fontSize="15" fontStyle="italic">c</text>
+  <text x="270" y="152" fill="#ffffff" fontFamily="Georgia, serif" fontSize="15" fontStyle="italic">a</text>
+  <text x="196" y="262" fill="#ffffff" fontFamily="Georgia, serif" fontSize="15" fontStyle="italic">b</text>
+</svg>
+ 
+*Each side is named after the angle it faces.*
+ 
+The Law of Cosines states:
+ 
+$$
+c^2 = a^2 + b^2 - 2ab\cos C
+$$
+ 
+There's nothing special about $C$; by symmetry, you get one version at each angle:
+ 
+$$
+a^2 = b^2 + c^2 - 2bc\cos A \qquad\qquad b^2 = a^2 + c^2 - 2ac\cos B
+$$
+ 
+And if it's the *angle* you want rather than a side, just solve for the cosine:
+ 
+$$
+\cos C = \frac{a^2 + b^2 - c^2}{2ab}
+$$
+ 
+> **Why "generalized Pythagorean theorem"?** Set $C = 90^\circ$. Then $\cos C = 0$, the last term cancels to 0, and you're left with $c^2 = a^2 + b^2$. The $-2ab\cos C$ term is indeed the *correction* for the angle not being right. And note: if $C$ is obtuse then $\cos C < 0$, so the term *adds* to $c$, which is basically what you'd expect from opening the angle wider.
+ 
+### Derivation
+ 
+The trick is the one that we have stressed many times: **drop an altitude** and split one annoying triangle into two right triangles, where trigonometry and Pythagoras actually apply.
+ 
+Drop a perpendicular from $B$ onto side $b = CA$, call the foot $H$.
+ 
+<svg viewBox="0 0 400 300" role="img" aria-label="Triangle ABC with an altitude h dropped from B to foot H on side b, splitting it into two right triangles" style={{ width: '100%', maxWidth: '420px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
+  <polygon points="60,240 180,60 340,240" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" />
+  <line x1="180" y1="60" x2="180" y2="240" stroke="#ffffff" strokeWidth="1.2" strokeDasharray="5 4" />
+  <path d="M 180 228 L 192 228 L 192 240" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+  <path d="M 312 240 A 28 28 0 0 1 321.4 219.1" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+  <text x="42" y="252" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A</text>
+  <text x="174" y="48" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B</text>
+  <text x="348" y="252" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">C</text>
+  <text x="170" y="259" fill="#ffffff" fontFamily="Georgia, serif" fontSize="13" fontStyle="italic">H</text>
+  <text x="158" y="152" fill="#ffffff" fontFamily="Georgia, serif" fontSize="15" fontStyle="italic">h</text>
+  <text x="84" y="259" fill="#ffffff" fontFamily="Georgia, serif" fontSize="11">b − a cos C</text>
+  <text x="236" y="259" fill="#ffffff" fontFamily="Georgia, serif" fontSize="11">a cos C</text>
+</svg>
+ 
+*The altitude $h$ splits $\triangle ABC$ into two right triangles, $\triangle BHC$ and $\triangle BHA$.*
+ 
+Look at the right triangle $\triangle BHC$. Its hypotenuse is $a$, and the angle at $C$ is our angle $C$, so from trigonometry:
+ 
+$$h = a\sin C \qquad\qquad CH = a\cos C$$
+ 
+Since the full base $CA$ has length $b$, the leftover segment is:
+ 
+$$AH = b - a\cos C$$
+ 
+Now apply the Pythagorean theorem to the *other* right triangle, $\triangle BHA$ — its legs are $AH$ and $h$, and its hypotenuse is $c$:
+ 
+$$c^2 = AH^2 + h^2 = (b - a\cos C)^2 + (a\sin C)^2$$
+ 
+Expand:
+ 
+$$c^2 = b^2 - 2ab\cos C + a^2\cos^2 C + a^2\sin^2 C$$
+ 
+Group the two $a^2$ terms and cancel them with $\sin^2 C + \cos^2 C = 1$:
+ 
+$$c^2 = a^2\left(\sin^2 C + \cos^2 C\right) + b^2 - 2ab\cos C = a^2 + b^2 - 2ab\cos C \qquad \blacksquare$$
+ 
+*(If $C$ is obtuse, $H$ lands **outside** segment $CA$ and $\cos C$ comes out negative, so the formula still holds.)*
 
-## Core Skills
+## Techniques
 
-### Choose the Correct Opposite Side
+The Law of Cosines is useful in a variety of ways, one obvious case being finding a missing side length given two side lengths and a known angle between them. However, there is quite some nuance in how it's used at more advanced levels of competition. For instance:
 
-Always match $a$ with $A$, $b$ with $B$, and $c$ with $C$. The side opposite to
-the angle is the one being solved for in $a^2=b^2+c^2-2bc\cos A$.
+- You may get a side length in terms of a variable and use that new side length as new information to solve further. If this is unclear, consider the examples we present, and as always, practice!
+- Solve for the cosine of the angle. You may have similar triangles, and knowing the cosine of that angle can be used in other triangles where that angle is also present.
+- Noticing congruent, complementary, or supplementary angles and using how their cosines relate to the cosine of the original angle (e.g. $\cos(180^\circ - \theta) = -\cos\theta$).
 
-### Find a Side from Two Sides and an Angle
+> Always match $a$ with $A$, $b$ with $B$, and $c$ with $C$. The side opposite to the angle is the one being solved for in $a^2=b^2+c^2-2bc\cos A$.
 
-When two sides and their included angle are known, compute the third side
-directly using the first form.
+## Elementary Examples
 
-### Find an Angle from Three Sides
+### Example 1: Solving for a side
 
-Use $\cos A = (b^2+c^2-a^2)/(2bc)$, then take $\arccos$ to get $A$.
+> **Find the missing side.** In $\triangle ABC$, two sides of length $8$ and $5$ meet at a $60^\circ$ angle at vertex $C$. Find the length of the third side $c = AB$.
+
+<svg viewBox="0 0 360 320" role="img" aria-label="Triangle ABC with sides 8 and 5 meeting at a 60 degree angle at C, opposite the unknown side c" style={{ width: '100%', maxWidth: '380px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
+  <polygon points="80,280 260,280 224,30.6" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" />
+  <path d="M 110 280 A 30 30 0 0 0 95 254" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+  <text x="66" y="296" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">C</text>
+  <text x="264" y="296" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B</text>
+  <text x="218" y="22" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A</text>
+  <text x="104" y="268" fill="#ffffff" fontFamily="Georgia, serif" fontSize="12">60°</text>
+  <text x="164" y="298" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">5</text>
+  <text x="128" y="147" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">8</text>
+  <text x="254" y="156" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">c</text>
+</svg>
+
+The $60^\circ$ angle is *enclosed* by the two known sides, sitting opposite the unknown side $c$ — exactly the configuration the Law of Cosines handles:
+
+$$c^2 = 8^2 + 5^2 - 2(8)(5)\cos 60^\circ = 64 + 25 - 80\cdot\tfrac{1}{2} = 89 - 40 = 49.$$
+
+Hence $c = \sqrt{49} = 7$.
+
+### Example 2: Cosine of an angle in terms of a variable
+
+> **Express the angle.** In $\triangle ABC$, the side $BC$ has unknown length $x$, while $AB = 3$ and $AC = 5$. Write $\cos B$ as a function of $x$.
+
+<svg viewBox="0 0 380 230" role="img" aria-label="Triangle ABC with AB equals 3, AC equals 5, and BC equals x, with the angle at B marked" style={{ width: '100%', maxWidth: '400px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
+  <polygon points="60,195 312,195 130,90.3" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" />
+  <path d="M 92 195 A 32 32 0 0 0 77.8 168.4" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+  <text x="46" y="212" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B</text>
+  <text x="316" y="212" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">C</text>
+  <text x="123" y="80" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A</text>
+  <text x="72" y="138" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">3</text>
+  <text x="182" y="213" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">x</text>
+  <text x="228" y="129" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">5</text>
+</svg>
+
+We want the angle at $B$. It is enclosed by the sides $AB = 3$ and $BC = x$, and it sits opposite the side $AC = 5$. Solving the Law of Cosines for the cosine gives what we want:
+
+$$\cos B = \frac{AB^2 + BC^2 - AC^2}{2\cdot AB\cdot BC} = \frac{3^2 + x^2 - 5^2}{2(3)(x)} = \frac{x^2 - 16}{6x}.$$
 
 ## Worked Example
 
-A triangle has sides $a=7$, $b=8$, $c=9$. Find $\cos A$.
+> **2026 AIME I · Problem 5.** Points $A$ and $B$ lie in a plane with $AB = 1$. Rotate $A$ counterclockwise about $B$ through an acute angle $\theta$ to land at $A'$; then rotate $B$ clockwise about $A'$ through the same angle $\theta$ to land at $B'$. Given that $AB' = \tfrac{4}{3}$, write $\cos\theta = \tfrac{m}{n}$ in lowest terms and find $m+n$.
 
-$\cos A = \frac{8^2 + 9^2 - 7^2}{2\cdot 8\cdot 9} = \frac{64+81-49}{144} = 2/3$.
+<svg viewBox="0 0 420 300" role="img" aria-label="Parallelogram BAA'B' with diagonals BA' and AB' meeting at center O, rotation angle theta marked at B" style={{ width: '100%', maxWidth: '440px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
+  <polygon points="110,240 350,240 303,98 63,98" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" />
+  <line x1="110" y1="240" x2="303" y2="98" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5 4" />
+  <line x1="350" y1="240" x2="63" y2="98" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5 4" />
+  <path d="M 148 240 A 38 38 0 0 0 140.6 217.5" fill="none" stroke="#ffffff" strokeWidth="1.3" />
+  <circle cx="206.5" cy="169" r="2.5" fill="#ffffff" />
+  <text x="94" y="257" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B</text>
+  <text x="356" y="257" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A</text>
+  <text x="306" y="90" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">A'</text>
+  <text x="40" y="90" fill="#ffffff" fontFamily="Georgia, serif" fontSize="16" fontStyle="italic">B'</text>
+  <text x="214" y="184" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">O</text>
+  <text x="129" y="234" fill="#ffffff" fontFamily="Georgia, serif" fontSize="15" fontStyle="italic">θ</text>
+  <text x="223" y="261" fill="#ffffff" fontFamily="Georgia, serif" fontSize="14" fontStyle="italic">1</text>
+  <text x="158" y="219" fill="#ffffff" fontFamily="Georgia, serif" fontSize="13" fontStyle="italic">1/2</text>
+  <text x="264" y="219" fill="#ffffff" fontFamily="Georgia, serif" fontSize="13" fontStyle="italic">2/3</text>
+</svg>
 
-## More Examples
+*Solid: the parallelogram $BAA'B'$. Dashed: its diagonals, meeting at the midpoint $O$.*
 
-### Example 1: Find a Side
+Rotation preserves distance to its center, so $BA' = BA = 1$, and then $A'B' = A'B = 1$. Hence three of the four connecting segments equal $1$, with $AB' = \tfrac{4}{3}$ given.
 
-A triangle has sides $b=6$, $c=10$, and included angle $A=60^\circ$. Find $a$.
+Because the two rotations turn $\vec{BA}$ into $\vec{B'A'}$, the points form a **parallelogram** $BAA'B'$ whose diagonals are $BA' = 1$ and $AB' = \tfrac{4}{3}$. Diagonals bisect each other at $O$, so
 
-$a^2 = 6^2 + 10^2 - 2\cdot 6\cdot 10\cdot \cos 60^\circ = 36+100-60=76$,
-so $a=\sqrt{76}$.
+$$BO = \tfrac{1}{2}, \qquad AO = \tfrac{2}{3}.$$
 
-### Example 2: Detect an Obtuse Angle
+The rotation angle is exactly $\angle ABA' = \theta$, which is the angle at $B$ in $\triangle ABO$ (since $O$ lies on $BA'$). That triangle has sides $AB = 1$ and $BO = \tfrac{1}{2}$ enclosing $\theta$, opposite the side $AO = \tfrac{2}{3}$. Apply the Law of Cosines:
 
-A triangle has sides $a=9$, $b=5$, $c=7$. Is $\angle A$ obtuse?
+$$AO^2 = AB^2 + BO^2 - 2\,(AB)(BO)\cos\theta$$
 
-Compute $b^2 + c^2 - a^2 = 25 + 49 - 81 = -7$, so $\cos A < 0$ and $A$ is obtuse.
+$$\left(\tfrac{2}{3}\right)^2 = 1^2 + \left(\tfrac{1}{2}\right)^2 - 2(1)\!\left(\tfrac{1}{2}\right)\cos\theta \;\;\Longrightarrow\;\; \tfrac{4}{9} = \tfrac{5}{4} - \cos\theta.$$
 
-## Strategy Checklist
-
-- Identify the included angle when two sides are known.
-- Use the cosine form to check for obtuse or acute angles.
-- Reduce to Pythagorean theorem when $A=90^\circ$.
-
-## Common Pitfalls
-
-- Using the wrong opposite side for angle $A$.
-- Dropping the minus sign on $2bc\cos A$.
-- Forgetting to square all side lengths in the equation.
+Therefore $\cos\theta = \tfrac{5}{4} - \tfrac{4}{9} = \tfrac{45 - 16}{36} = \tfrac{29}{36}$, giving $m + n = 29 + 36 = \boxed{65}$.
 
 ## Practice Problems
 

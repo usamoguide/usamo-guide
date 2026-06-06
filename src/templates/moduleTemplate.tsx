@@ -21,7 +21,7 @@ export default function Template(props): JSX.Element {
   const module = React.useMemo(() => graphqlToModuleInfo(xdm), [xdm]);
   const isLoaded = useIsUserDataLoaded();
   const currentUser = useCurrentUser();
-  const isDevelopmentSection = module.section !== 'foundations';
+  const isDevelopmentSection = module.section === 'advanced' || module.section === 'usamo';
   const [isAccessModalDismissed, setIsAccessModalDismissed] = React.useState(false);
   const [isDevModalDismissed, setIsDevModalDismissed] = React.useState(false);
   const isContentLocked = !currentUser;

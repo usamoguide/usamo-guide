@@ -2,7 +2,7 @@
 id: divisibility-rules
 title: Divisibility Rules
 author: Lefteris Demosthenous
-description: Memorizing and combining rules for 2, 3, 4, 5, 6, 8, 9, 10, and 11.
+description: Memorizing and combining rules for 2, 3, 4, 5, 6, 7, 8, 9, 10, and 11.
 prerequisites: []
 ---
 
@@ -25,6 +25,7 @@ Recognizing these patterns quickly can be a huge advantage in competitive math.
 - **By 4**: last two digits form a number divisible by 4.
 - **By 5**: last digit is 0 or 5.
 - **By 6**: divisible by both 2 and 3.
+- **By 7**: difference between units digit doubled and remaining number is divisible by 7.
 - **By 8**: last three digits form a number divisible by 8.
 - **By 9**: digit sum is divisible by 9.
 - **By 10**: last digit is 0.
@@ -56,6 +57,15 @@ Last digit is $0$, so it is divisible by $2$.
 Digit sum:
 2+4+3+0=9.
 Since $9$ is divisible by $3$, the number is divisible by $6$.
+
+### Digit Sums/Differences
+
+For divisibility rules such as $7$, $8$, and $11$, the sum/difference of digits may be equal to $0$. If this is the case, the rule is satisfied, as $0$ in this case is a multiple of the number. 
+
+Example:
+Is $189$ divisible by $7$?
+A number is divisible by $7$ if the difference between the units digit doubled and the rest of the number is divisible by $7$. 
+Last digit is $9$, the rest of the number is $18$, and doubling the last digit is $18$, $18 - 18 = 0$, so it is divisible by $7$.
 
 ### The Alternating Sum for 11
 
@@ -118,7 +128,7 @@ Compute the alternating sum:
 5−3+7−6+8=11.
 Since $11$ is divisible by $11$, the number is divisible by $11$.
 
-## Example #6: AMC 8 Style Logic
+## Example 6: AMC 8 Style Logic
 
 A number is divisible by both $2$ and $9$. Which of the following must also be true?
 
@@ -131,6 +141,21 @@ number is also divisible by $2$, it must be divisible by $6$.
 However, divisibility by $18$ requires divisibility by both $2$ and $9$,
 which are already given.
 Thus the number must be divisible by all three.
+
+## Example 7: Divisibility by 7
+
+Is $9,023$ divisible by $7$?
+
+Double the last digit ($3$) and subtract it from the remaining number ($902$):
+
+$902 - 6 = 896$
+
+Apply the rule again, doubling the last digit ($6$) and subtracting it from the remaining number ($89$):
+
+$89 - 12 = 77$
+
+$77$ is a multiple of $7$ ($7 * 11$), so $9,023$ is also a multiple of $7$.
+
 
 ## Strategy Checklist
 - Memorize the common divisibility rules.

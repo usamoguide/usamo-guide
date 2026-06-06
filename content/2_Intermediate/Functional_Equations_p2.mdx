@@ -1,0 +1,488 @@
+---
+id: functional-equations-p2
+title: Functional Equations (Part 2)
+author: USAMO Guide Team
+description: Learn the main strategies for solving intermediate functional equations, including substitution, injectivity, surjectivity, fixed points, and guessing forms.
+prerequisites: []
+---
+
+## Iteration
+
+Some functional equations involve repeated application of the function, such as
+
+$$
+f(f(x)),
+$$
+
+$$
+f(f(f(x))),
+$$
+
+or even longer chains.
+
+This is called iteration.
+
+### Example
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(f(x))=x+2
+> $$
+>
+> and
+>
+> $$
+> f(x+2)=f(x)+2
+> $$
+>
+> for all real numbers $x$.
+
+The first equation says that applying $f$ twice increases the input by $2$.
+
+If we guess that $f$ is linear, say
+
+$$
+f(x)=ax+b,
+$$
+
+then
+
+$$
+f(f(x))=a(ax+b)+b=a^2x+ab+b.
+$$
+
+We need
+
+$$
+a^2x+ab+b=x+2.
+$$
+
+As such
+
+$$
+a^2=1.
+$$
+
+If $a=1$, then
+
+$$
+f(x)=x+b.
+$$
+
+Then
+
+$$
+f(f(x))=x+2b,
+$$
+
+so $b=1$.
+
+This gives
+
+$$
+f(x)=x+1.
+$$
+
+If $a=-1$, then
+
+$$
+f(x)=-x+b.
+$$
+
+Then
+
+$$
+f(f(x))=x,
+$$
+
+which does not work.
+
+So the natural linear solution is
+
+$$
+f(x)=x+1.
+$$
+
+Substitution confirms that it satisfies both equations.
+
+## Symmetry
+
+Many functional equations contain two variables and remain similar after
+swapping them.
+
+For example, if an equation holds for all $x$ and $y$, then it also holds after
+exchanging $x$ and $y$.
+
+### Example
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x+y)=f(x)+f(y)
+> $$
+>
+> and
+>
+> $$
+> f(xy)=f(x)f(y)
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+Set $y=0$ in the first equation:
+
+$$
+f(x)=f(x)+f(0),
+$$
+
+so
+
+$$
+f(0)=0.
+$$
+
+Set $y=1$ in the second equation:
+
+$$
+f(x)=f(x)f(1).
+$$
+
+If there exists some $x$ with $f(x)\neq 0$, then
+
+$$
+f(1)=1.
+$$
+
+Now set $x=y=1$ in the first equation:
+
+$$
+f(2)=f(1)+f(1)=2.
+$$
+
+Also by repeated addition,
+
+$$
+f(n)=n
+$$
+
+for all positive integers $n$.
+
+This example shows how combining equations and simple substitutions can build
+information in increments.
+
+A full classification over the real numbers requires more care, but contest
+problems often include enough restrictions to force the intended solution.
+
+## Guess and Verify
+
+In many intermediate problems, the solution is a simple function such as:
+
+$$
+f(x)=x,
+$$
+
+$$
+f(x)=x+c,
+$$
+
+$$
+f(x)=cx,
+$$
+
+or
+
+$$
+f(x)=ax+b.
+$$
+
+It is often useful to guess a possible form, substitute it into the equation,
+and then prove that no other functions work.
+
+### Example
+
+> Find all linear functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x+y)=f(x)+f(y)+3
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+Assume
+
+$$
+f(x)=ax+b.
+$$
+
+Then
+
+$$
+f(x+y)=a(x+y)+b=ax+ay+b.
+$$
+
+On the other hand,
+
+$$
+f(x)+f(y)+3=(ax+b)+(ay+b)+3=ax+ay+2b+3.
+$$
+
+Thus
+
+$$
+b=2b+3.
+$$
+
+So
+
+$$
+b=-3.
+$$
+
+There is no restriction on $a$, so all linear solutions are
+
+$$
+f(x)=ax-3.
+$$
+
+Substitution confirms that all such functions work.
+
+## Worked Examples
+
+### Example 1
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x+y)=f(x)+y
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+Set $x=0$:
+
+$$
+f(y)=f(0)+y.
+$$
+
+Let
+
+$$
+c=f(0).
+$$
+
+Then
+
+$$
+f(y)=y+c.
+$$
+
+So the only possible functions are
+
+$$
+f(x)=x+c.
+$$
+
+Substituting back:
+
+$$
+f(x+y)=x+y+c
+$$
+
+and
+
+$$
+f(x)+y=x+c+y.
+$$
+
+They are equal, so every function
+
+$$
+f(x)=x+c
+$$
+
+works.
+
+### Example 2
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x+y)=f(x)+f(y)
+> $$
+>
+> and $f(1)=3$, assuming $f$ is linear.
+
+Since $f$ is linear, write
+
+$$
+f(x)=ax+b.
+$$
+
+Set $x=0$ in the functional equation:
+
+$$
+f(y)=f(0)+f(y),
+$$
+
+so
+
+$$
+f(0)=0.
+$$
+
+So
+
+$$
+b=0.
+$$
+
+Since
+
+$$
+f(1)=3,
+$$
+
+we get
+
+$$
+a=3.
+$$
+
+Therefore,
+
+$$
+f(x)=3x.
+$$
+
+Substitution confirms that this function works.
+
+### Example 3
+
+> Find all functions $f:\mathbb R\to\mathbb R$ satisfying
+>
+> $$
+> f(f(x))=x
+> $$
+>
+> and
+>
+> $$
+> f(x)+x=0
+> $$
+>
+> for all real numbers $x$.
+
+The second equation gives
+
+$$
+f(x)=-x.
+$$
+
+Now check the first equation:
+
+$$
+f(f(x))=f(-x)=x.
+$$
+
+So
+
+$$
+f(x)=-x
+$$
+
+works.
+
+### Example 4
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(xf(y)+x)=xy+f(x)
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+Set $x=1$:
+
+$$
+f(f(y)+1)=y+f(1).
+$$
+
+This tells us that $f$ takes every value of the form $y + f(1)$, which is
+every real number. So $f$ is surjective.
+
+It also tells us that $f$ is injective, if $f(a)=f(b)$, then $f(a)+1=f(b)+1$,
+so $f(f(a)+1)=f(f(b)+1)$, giving $a+f(1)=b+f(1)$, hence $a=b$.
+
+Now set $y=0$:
+
+$$
+f(xf(0)+x)=f(x).
+$$
+
+Since $f$ is injective, we can remove $f$ from both sides:
+
+$$
+xf(0)+x=x.
+$$
+
+For all $x \neq 0$, this gives $f(0)=0$.
+
+Set $x=1$ again, $f(f(y)+1)=y+f(1)$. Setting $y=0$: $f(f(0)+1)=f(1)$, so
+$f(1)=f(1)$, which is consistent.
+
+Now guess $f(x)=x$. Then $f(xf(y)+x)=xy+x$ and $xy+f(x)=xy+x$. These match,
+so $f(x)=x$ is a solution.
+
+To confirm uniqueness, from $x=1$ we have $f(f(y)+1)=y+f(1)$. Setting
+$y=-f(1)$ gives $f(f(-f(1))+1)=0$, so $f(-f(1))+1=0$ (since $f$ is injective
+and $f(0)=0$), meaning $f(-f(1))=-1$. Continuing with specific substitutions,
+one can show $f(1)=1$, then $f(n)=n$ for all integers, extend to rationals, and
+use monotonicity (which follows from the original equation) to conclude
+$f(x)=x$ for all real $x$.
+
+This example combines multiple techniques, one substitution gives surjectivity
+and injectivity, another uses injectivity to remove $f$ and find $f(0)$, and
+guess and verify is used to complete it.
+
+## Key Contest Insight
+
+Functional equations are usually solved by building information gradually.
+
+A typical solution does not usually come from only one substitution. Instead, you
+collect facts such as:
+
+- the value of $f(0)$,
+- whether $f$ is injective,
+- whether $f$ is surjective,
+- how $f$ behaves at special inputs,
+- and whether the equation suggests a linear or constant form.
+
+Once a candidate function is found, always substitute it back into the original
+equation to verify that it works.
+
+## Strategy Tips
+
+- Start with simple substitutions such as $0$, $1$, $x=y$, and $y=-x$.
+- Check whether the domain allows your substitution.
+- Try to find $f(0)$ and $f(1)$ early.
+- If you see $f(A)=f(B)$, consider proving injectivity.
+- If every value can be written as $f(x)$, use surjectivity.
+- If the equation contains $f(f(x))$, think about iteration.
+- If a simple function seems likely, guess it, test it, and then prove it is
+  forced.
+- Always verify all proposed solutions.
+
+## Common Pitfalls
+
+- Substituting values that are not in the domain.
+- Assuming the function is continuous or linear when this is not stated.
+- Proving that a function is possible but forgetting to prove uniqueness.
+- Forgetting to substitute the final answer back into the original equation.
+- Cancelling or applying injectivity before it has been proved.
+- Ignoring constant solutions.
+
+## Practice Problems
+
+<Problems problems="practice" />

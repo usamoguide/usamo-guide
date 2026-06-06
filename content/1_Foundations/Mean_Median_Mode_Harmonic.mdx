@@ -18,7 +18,7 @@ mean is inappropriate and when the harmonic mean is required.
 
 - Mean is sensitive to outliers; median is not.
 - Mode captures frequency, not magnitude.
-- Harmonic mean is suited to rates and reciprocals.
+- Harmonic mean is suited to rates and reciprocals, especially equal rates/distances.
 - For weighted data, use weighted mean: $\bar{x} = \frac{\sum w_ix_i}{\sum w_i}$.
 - Median depends on ordering, not arithmetic.
 
@@ -29,7 +29,7 @@ Let the data be $a_1,\ldots,a_n$.
 - Mean: $\frac{a_1+\cdots+a_n}{n}$.
 - Median: middle value (or average of two middle values if $n$ is even) of a sorted list.
 - Mode: most frequent value(s).
-- Harmonic mean: $\frac{n}{\sum \frac{1}{a_i}}$ (for positive values).
+- Harmonic mean: $\frac{n}{\sum \frac{1}{a_i}}$ (for positive values). Can be calculated as the reciprocal of the mean of the reciprocals.
 
 ## Worked Example
 
@@ -39,6 +39,18 @@ What is the overall average speed?
 Let each leg be 60 miles. Time out: $60/40 = 1.5$ hours. Time back: $60/60 = 1$ hour.
 Total distance is 120 miles, total time is 2.5 hours, so average speed is
 $120/2.5 = 48$ mph. This is the harmonic mean of 40 and 60.
+
+Note that the harmonic mean is necessary for this problem as opposed to the arithmetic mean, as the mean of 40 mph and 60 mph is 50 mph. Since the same distance is being covered at both speeds, the time spent going at 60 mph is less, decreasing the real average from the arithmetic mean.
+
+## Worked Example 2
+
+Two students solve problems at rates of 12 problems/hour and 20 problems/hour respectively. If they each solve the same number of problems, what is their combined average rate, in problems per hour?
+
+This problem needs an average rate of two students working at different paces and spending different times, so it requires harmonic mean.
+To justify, let the total number of problems solved be $\operatorname{lcm}(12, 20) = 60$
+If each student solves 60, total problems solved is 120. The first student spends 5 hours and the second spends 3, so they spend 8 hours in total. $120/8 = 15$ problems, which is the harmonic mean of 12 and 20.
+
+The harmonic mean of two positive values $a$ and $b$ can be quickly calculated as $\frac{2ab}{a+b}$
 
 ## More Examples
 

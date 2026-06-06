@@ -15,7 +15,7 @@ import rehypeSnippets from '../mdx-plugins/rehype-snippets';
 import remarkToC from '../mdx-plugins/remark-toc';
 import preprocessAsyBlocks from '../mdx-plugins/preprocess-asy';
 import getGatsbyImage from './wrapped-gatsby-img-plugin';
-import { xdm } from './xdm';
+import { compile } from 'xdm';
 
 // todo: migrate to resolver for even better development performance
 
@@ -40,7 +40,7 @@ export async function createXdmNode({ id, node, content }, api) {
   });
 
   try {
-    compiledResult = await xdm.compile(
+    compiledResult = await compile(
       preprocessAsyBlocks(
         content.replace(/<!--/g, '{/* ').replace(/-->/g, '*/}')
       ),

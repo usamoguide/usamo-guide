@@ -23,7 +23,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'fractions_percentages_proportions_p1',
         'fractions_percentages_proportions_p2',
         'kinematics-and-rates',
-        'estimation-bounding',
         'absolute-value-integers_p1',
         'absolute-value-integers_p2',
       ],
@@ -73,8 +72,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'circle-angles',
         'composite-figures-shaded-areas',
         'coordinate-geometry-basics',
-
-        // shifted
         'triangle-angle-sum',
         'triangle-area-formulas',
         'special-triangles',
@@ -97,8 +94,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'units-digit-periodicity',
         'base-number-systems',
         'miscellaneous-number-theory',
-
-        // shifted
         'linear-diophantine-equations',
       ],
     },
@@ -116,8 +111,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'stars-and-bars',
         'geometric-counting',
         'recursion-basics',
-
-        // shifted
         'pascals-triangle-binomial-theorem',
         'pigeonhole-principles',
       ],
@@ -129,7 +122,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       name: 'Advanced Algebra',
       description: 'Quadratics, systems, and polynomial identities for AMC 10/12.',
       items: [
-        'advanced-algebra',
         'higher-power-factorizations',
         'sophie-germain-identity',
         'newton-sums',
@@ -138,7 +130,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'sum-formulas-powers',
         'function-basics-p1',
         'function-basics-p2',
-        // promoted from foundations
         'vieta-formulas',
         'vieta-jumping',
         'polynomial-manipulations',
@@ -149,7 +140,10 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
     {
       name: 'Functional Equations',
       description: 'Standard substitutions and symmetry-based approaches.',
-      items: ['functional-equations'],
+      items: [
+        'functional-equations-p1',
+        'functional-equations-p2',
+      ],
     },
     {
       name: 'Counting & Casework',
@@ -170,10 +164,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       description: 'Modular arithmetic, CRT, and divisibility techniques.',
       items: [
         'modular-arithmetic',
-        'number-theory-intermediate',
         'chinese-remainder-theorem',
         'euler-totient-theorem',
-        // promoted from foundations
         'chicken-mcnugget',
       ],
     },
@@ -188,10 +180,11 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'tangent-circles',
         'arc-and-chord',
         'descartes-theorem',
-        // promoted from foundations
         'triangle-medians-centroid',
         'angle-bisectors',
         'altitudes-orthocenter',
+        'law-of-sines',
+        'law-of-cosines',
       ],
     },
     {
@@ -207,12 +200,9 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       name: 'Inequalities',
       description: 'Algebraic and geometric inequality techniques.',
       items: [
-        'inequalities',
-
-        // promoted from foundations
+        'inequalities-foundations',
         'amgm-inequality',
         'cauchy-schwarz',
-        'inequalities-foundations',
       ],
     },
     {
@@ -229,12 +219,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'trig-product-sum',
         'trig-equations',
         'trig-inverse-functions',
-        'trig-triangle-laws',
-        'trig-patterns',
-
-        // promoted from foundations
-        'law-of-sines',
-        'law-of-cosines',
       ],
     },
     {
@@ -243,12 +227,9 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       items: [
         'complex-basics',
         'complex-algebra',
-        'complex-conjugates',
         'complex-plane',
         'complex-polar-form',
-        'complex-geometry',
         'roots-of-unity',
-        'roots-of-unity-advanced',
         'complex-trigonometry',
       ],
     },

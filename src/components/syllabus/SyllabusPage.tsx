@@ -171,7 +171,7 @@ export default function SyllabusPage({
                 {SECTION_DESCRIPTION[division]}
               </p>
 
-              {!isFoundations && (
+              {(division === 'advanced' || division === 'usamo') && (
                 <div className="mx-auto mb-8 max-w-4xl rounded-2xl border border-[#F0C2FF44] bg-[#171228]/76 px-6 py-4 text-center shadow-sm">
                   <p className="text-sm font-semibold text-[#F0C2FF] sm:text-base">
                     This section is currently under development. The content you see here is filler for now.

@@ -1,113 +1,400 @@
 ---
 id: advanced-counting
-title: Advanced Counting and Casework
-author: USAMO Guide Team
-description: Stars and bars, inclusion-exclusion, and structured casework.
-prerequisites: ["counting-fundamentals"]
+title: Advanced Counting
+author: Wonwoo Choi
+description: Inclusion-exclusion, bijections, derangements, Catalan numbers, Burnside's lemma, and recursive counting that are all advanced counting techniques on the AMC 12 
+prerequisites: [counting-fundamentals, stars-and-bars, inclusion-exclusion]
 ---
 
-## Overview
+## Introduction
 
-Intermediate counting problems demand structure. Learn to avoid overcounting by
-using systematic cases and complementary counting.
+Previously at the introductiory level of the AMC 8/10, just applying the formula itself is more prominent than the AMC 12 or early AIME level. 
+However, harder problems are designed so that the method of direct counting is either impossible or significantly tedious. Therefore in this module, we will seek to explain many
+ways of restructuring an advanced counting problem to become solvable. 
 
-This module adds high-yield techniques: stars and bars with constraints,
-inclusion-exclusion, derangements, and bijective counting.
+In the level of the AMC 12, a similar theme is that most hard counting problems have several representative patterns, transform the objects you are counting so they
+correspond to something simpler (bijection), count a large set and subtract
+the bad cases (inclusion-exclusion), or use symmetry to collapse the count
+(Burnside's Lemma), or using recurrences.
 
-## Key Ideas
+This module covers the core techniques, strategies, and the classical structures that appear, to give an understanding of advanced casework. 
 
-- Stars and bars counts nonnegative solutions to $x_1+\cdots+x_k=n$.
-- Inclusion-exclusion fixes overlaps: $|A\cup B|=|A|+|B|-|A\cap B|$.
-- Symmetry reduces cases by grouping equivalent configurations.
-- Word rearrangements with repeats use $\frac{n!}{n_1!n_2!\cdots}$.
-- Derangements: $!n = n!\sum_{k=0}^n \frac{(-1)^k}{k!}$.
+---
 
-## Core Skills
+First, we recap some basic counting techniques. 
 
-### Translate to Stars and Bars
+## Inclusion-Exclusion
 
-Turn constraints into $x_1+\cdots+x_k=n$ and adjust for lower bounds.
+### Principle 
 
-### Use Inclusion-Exclusion
+For $n$ finite sets $A_1, A_2, \ldots, A_n$:
 
-Count all possibilities, subtract those violating each constraint, then add back overlaps that were subtracted multiple times.
+$$
+\lvert A_1 \cup \cdots \cup A_n \rvert
+=
+\sum_i \lvert A_i \rvert
+-
+\sum_{i<j} \lvert A_i \cap A_j \rvert
++
+\sum_{i<j<k} \lvert A_i \cap A_j \cap A_k \rvert
+-
+\cdots
++
+(-1)^{n+1}\lvert A_1 \cap \cdots \cap A_n \rvert
+$$
 
-### Build Bijections
+Equivalently, to count elements satisfying at least one of $n$ properties, we alternate between adding and subtracting the sizes of all intersections.
 
-Create a one-to-one mapping to a set with a known count (e.g., binomial coefficients or lattice paths) to avoid overcounting.
+Hence, to count elements satisfying none of $n$ properties, otherwise known as the complement, we use
 
-## Worked Example
+$$
+\lvert A_1^c \cap \cdots \cap A_n^c \rvert
+=
+\lvert U \rvert
+-
+\sum_i \lvert A_i \rvert
++
+\sum_{i<j} \lvert A_i \cap A_j \rvert
+-
+\cdots
+$$
 
-How many nonnegative solutions to $x+y+z=10$ with $x\ge2$?
+Furthermore, an element in exactly $k$ of the sets gets counted $\binom{k}{1}$ times in the first sum, subtracted $\binom{k}{2}$ times in the second, added $\binom{k}{3}$ times in the third, and so on. The total contribution is
 
-Let $x'=x-2$. Then $x'+y+z=8$ with nonnegative variables. The answer is
-$\binom{8+3-1}{3-1}=\binom{10}{2}=45$.
+$$
+\binom{k}{1}
+-
+\binom{k}{2}
++
+\binom{k}{3}
+-
+\cdots
+=
+1-(1-1)^k
+=
+1
+$$
 
-## Word Rearrangements
+for $k \geq 1$, and $0$ for $k=0$. So every element in at least one set is counted exactly once. Therefore, this explains why inclusion-exclusion works.
 
-If a word has $n$ letters with repeats $n_1,n_2,\ldots$, the number of distinct
-arrangements is $\frac{n!}{n_1!n_2!\cdots}$. Example: BANANA has
-$\frac{6!}{3!2!1!}=60$ arrangements.
+### Derangements
 
-## Stars and Bars with Constraints
+Another important technique that one should ensure to know is how to solve problems using derangements. 
+A derangement of $\lbrace 1, 2, \ldots, n \rbrace$ is a permutation where no element appears in its original position, or in other words, a permutation with no fixed points.
 
-To solve $x_1+\cdots+x_k=n$ with $x_i\ge m_i$, pre-allocate the minimum: let
-$y_i=x_i-m_i$, then count nonnegative solutions to $y_1+\cdots+y_k=n-\sum m_i$.
+Let $A_i$ be the set of permutations where element $i$ is fixed. By
+the principle of inclusion-exclusion:
 
-If you also have upper bounds, use inclusion-exclusion on the violated boxes.
+$$
+D_n
+=
+n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}
+=
+n!\left(1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \cdots + \frac{(-1)^n}{n!}\right).
+$$
 
-## Inclusion-Exclusion (PIE)
+The values of derangements are hence $D_0=1$, $D_1=0$, $D_2=1$, $D_3=2$, $D_4=9$, $D_5=44$, $D_6=265$.
 
-For sets $A_1,\ldots,A_n$:
+The recurrence $D_n = (n-1)(D_{n-1}+D_{n-2})$ is often more useful in problems, as it directly comes from casework. Element $1$ goes
+to some position $k \ne 1$, and then either element $k$ goes to position $1$
+($D_{n-2}$ arrangements) or it does not ($D_{n-1}$).
 
-$$|\cup A_i| = \sum |A_i| - \sum |A_i\cap A_j| + \sum |A_i\cap A_j\cap A_k| - \cdots.$$
+As $n \to \infty$, $D_n/n! \to 1/e \approx 0.368$. Something that is not necessary to know but is useful information is that for any large $n$, about $36.8\%$ of all permutations are derangements.
 
-When we add the sizes of all sets, elements in multiple sets get counted more
-than once. This problem is fixed by PIE through subtracting pairwise overlaps,
-adding back triple overlapss, then subtracting again for quadrule overlaps, and
-so on.
+---
 
-This is helpful for counting objects that satisfy at least one of several
-conditions, which brings us to derangements.
+## Bijections and Double Counting
 
-## Derangements
+### Bijections
 
-A derangement is a permutation with no fixed points. The count is
+A bijection between two sets $A$ and $B$ means that they have a one-to-one correspondence. Every element of $A$ maps to exactly one element of $B$ and vice versa.
+Hence if a bijection exists, $|A| = |B|$.
 
-$$!n = n!\left(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+\cdots+\frac{(-1)^n}{n!}\right).$$
+The important idea of bijections is that to count a complicated set $A$, we find a simpler set $B$ you already know how to count, and exhibit a bijection $A \to B$.
 
-The probability of a derangement approaches $1/e$ as $n$ grows.
+The Stars and Bars formula $\binom{n+k-1}{k-1}$ that is used for distributing $n$ identical objects into $k$ bins is itself a bijection between solutions to
+$x_1 + \cdots + x_k = n$ and $(k-1)$-element subsets of $\lbrace 1, \ldots, n+k-1 \rbrace$.
 
-## Bijections
+### Double Counting
 
-If you can map objects in set $A$ to objects in set $B$ one-to-one and onto,
-then $|A|=|B|$. Bijections often turn hard counting into binomial coefficients.
+Double counting means counting the same quantity in two different ways and
+equating the results accordingly. This often proves combinatorial identities or gives important information for a question that counting alone would not give.
 
-## Pigeonhole Principle
+**Example.** Prove $\displaystyle\sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}$.
 
-If $n$ objects are placed into $m$ boxes, some box has at least
-$\lceil n/m \rceil$ objects. Use it to force collisions or equal sums.
+We can think of this situation as the number of ways to choose $n$ people from a group of $n$ men and
+$n$ women. This gives $\binom{2n}{n}$. Alternatively, we choose $k$ men and
+$n-k$ women for each $k$, giving
 
-## Strategy Checklist
+$$
+\sum_{k=0}^n \binom{n}{k}\binom{n}{n-k}
+=
+\sum_{k=0}^n \binom{n}{k}^2.
+$$
 
-- Decide if order matters and if repetition is allowed.
-- Use stars and bars for integer solutions.
-- Apply inclusion-exclusion for overlapping cases.
-- Check for symmetry or bijections to reduce work.
+Since these are equal, we prove Vandermonde's identity in the symmetric case.
 
-## Common Pitfalls
+There are many other standard ways to do this.
 
-- Overcounting when cases overlap.
-- Forgetting to enforce lower or upper bounds.
-- Using permutations when combinations are needed.
+---
 
-## Example: PIE with Divisibility
+## Catalan Numbers
 
-How many integers from 1 to 100 are divisible by 2, 3, or 5?
+Catalan numbers are natural numbers that appear in many counting problems involving recursive or non-crossing structures.
 
-$|A_2|=50$, $|A_3|=33$, $|A_5|=20$, $|A_2\cap A_3|=16$, $|A_2\cap A_5|=10$,
-$|A_3\cap A_5|=6$, $|A_2\cap A_3\cap A_5|=3$. So the answer is
-$50+33+20-16-10-6+3=74$.
+The $n$th Catalan number is
+
+$$
+C_n=\frac{1}{n+1}\binom{2n}{n}.
+$$
+
+The first few values are
+
+$$
+C_0=1,\ C_1=1,\ C_2=2,\ C_3=5,\ C_4=14,\ C_5=42.
+$$
+
+Some common appearances of Catalan numbers are:
+
+- The number of sequences of $n$ steps right and $n$ steps up from $(0,0)$ to $(n,n)$ that never go above the diagonal $y=x$ is $C_n$.
+
+- The number of ways to fully parenthesize a product of $n+1$ factors is $C_n$.
+
+- The number of ways to triangulate a convex $(n+2)$-gon is $C_n$.
+
+- The number of ways to connect $2n$ points on a circle with $n$ non-crossing chords is $C_n$.
+
+More generally, the number of paths from $(0,0)$ to $(m,n)$ using unit right and up steps that never go above the diagonal $y=x$, meaning there are always at least as many right steps as up steps, is
+
+$$
+\frac{m-n+1}{m+1}\binom{m+n}{n}.
+$$
+
+One way to prove this is by reflection. Count all paths from $(0,0)$ to $(m,n)$, then subtract the bad paths that go above the diagonal. A bad path must touch the line $y=x+1$. Reflecting the part of the path up to its first touch of this line gives a bijection with paths from $(-1,1)$ to $(m,n)$.
+
+Thus,
+
+$$
+\begin{aligned}
+\text{good paths}
+&=
+\text{total paths}
+-
+\text{bad paths} \\
+&=
+\binom{m+n}{n}
+-
+\binom{m+n}{n-1} \\
+&=
+\frac{m-n+1}{m+1}\binom{m+n}{n}.
+\end{aligned}
+$$
+
+For the special case $m=n$, this becomes
+
+$$
+C_n=\frac{1}{n+1}\binom{2n}{n}.
+$$
+
+---
+## Solving Linear Recurrences
+
+Furthermore, linear recurrences with constant coefficients are another type of difficult competition problem.
+
+$$
+f(n)
+=
+c_1f(n-1)+c_2f(n-2)+\cdots+c_kf(n-k).
+$$
+
+The characteristic equation is
+
+$$
+x^k
+=
+c_1x^{k-1}
++
+\cdots
++
+c_k.
+$$
+
+If its roots are $r_1,\ldots,r_k$, then the general solution is
+
+$$
+f(n)
+=
+A_1r_1^n
++
+A_2r_2^n
++
+\cdots
++
+A_kr_k^n,
+$$
+
+where the constants $A_i$ are determined by conditions given in the question.
+
+For the Fibonacci recurrence $f(n)=f(n-1)+f(n-2)$, the roots are
+$\phi=(1+\sqrt5)/2$ and $\hat\phi=(1-\sqrt5)/2$, which gives Binet's formula:
+
+$$
+F_n
+=
+\frac{\phi^n-\hat\phi^n}{\sqrt5}.
+$$
+
+These are often for more complex problems, but it may be fruitful to know.
+
+---
+
+## Examples
+
+### Example 1: Inclusion-Exclusion 
+
+**Problem.** How many permutations of $AABBCC$ have no two adjacent identical
+letters?
+
+**Solution.** First, we calculate the total arrangements of $AABBCC$:
+
+$$
+\frac{6!}{2!2!2!}=90.
+$$
+
+Let $A_1$ be the arrangements with both A's adjacent, $A_2$ be the arrangements with both B's adjacent, and $A_3$ be the arrangements with both C's adjacent.
+
+For each $i$,
+
+$$
+|A_i|=\frac{5!}{2!2!}=30.
+$$
+
+If two pairs are adjacent, then there are
+
+$$
+\frac{4!}{2!}=12
+$$
+
+arrangements. Since there are $\binom{3}{2}=3$ choices for the two adjacent pairs, the total contribution is $36$.
+
+If all three pairs are adjacent, then there are
+
+$$
+3!=6
+$$
+
+arrangements.
+
+Thus, by inclusion-exclusion,
+
+$$
+|A_1 \cup A_2 \cup A_3|
+=
+3(30)-3(12)+6
+=
+90-36+6
+=
+60.
+$$
+
+Arrangements with no two adjacent identical letters are therefore
+
+$$
+90-60=\mathbf{30}.
+$$
+
+---
+
+### Example 2: Derangements
+
+**Problem.** Five students each write their name on a card, then the cards
+are shuffled and redistributed. What is the probability that no student
+receives their own card?
+
+**Solution.** We first find the total amount of permutations: $5!=120$. Hence, the number of derangements is
+
+$$
+\begin{aligned}
+D_5
+&=
+120\left(1-1+\frac{1}{2}-\frac{1}{6}+\frac{1}{24}-\frac{1}{120}\right) \\
+&=
+120\cdot\frac{44}{120} \\
+&=
+44.
+\end{aligned}
+$$
+
+Probability is therefore
+
+$$
+\frac{44}{120}=\mathbf{\frac{11}{30}}.
+$$
+
+---
+
+### Example 3: Catalan Numbers 
+
+**Problem.** How many sequences of $+1$ and $-1$ of length $10$ have all
+partial sums nonnegative? In other words, every prefix has at least as many $+1$s as $-1$s.
+
+**Solution.** This is equivalent to counting sequences of $5$
+steps right and $5$ steps up from $(0,0)$ to $(5,5)$ that stay below the diagonal.
+
+Thus, this is the number of paths from $(0,0)$ to $(n,n)$ staying below $y=x$, and the number of sequences of $n$ values $+1$ and $n$ values
+$-1$ with all partial sums nonnegative, starting from $0$, is the Catalan
+number
+
+$$
+C_n=\frac{1}{n+1}\binom{2n}{n}.
+$$
+
+For $n=5$:
+
+$$
+C_5
+=
+\frac{1}{6}\binom{10}{5}
+=
+\frac{252}{6}
+=
+\mathbf{42}.
+$$
+
+---
+
+### Example 4: Recursion 
+
+**Problem.** A frog starts at step $0$ of a staircase. At each jump, it
+can go up $1$ or $2$ steps. How many ways can it reach step $10$?
+
+**Solution.** Let $f(n)$ be the number of ways to reach step $n$.
+
+The recurrence is
+
+$$
+f(n)=f(n-1)+f(n-2),
+$$
+
+with $f(0)=1$ and $f(1)=1$.
+
+Then
+
+$$
+\begin{aligned}
+f(2)&=2, \\
+f(3)&=3, \\
+f(4)&=5, \\
+f(5)&=8, \\
+f(6)&=13, \\
+f(7)&=21, \\
+f(8)&=34, \\
+f(9)&=55, \\
+f(10)&=\mathbf{89}.
+\end{aligned}
+$$
+
+---
 
 ## Practice Problems
 

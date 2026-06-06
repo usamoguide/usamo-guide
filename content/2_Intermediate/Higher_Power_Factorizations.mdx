@@ -1,77 +1,463 @@
 ---
-id: higher-power-factorizations
-title: Higher-Power Factorizations
+id: higher-power-factorization
+title: Higher-Power Factorization and Symmetric Cubic Identities
 author: USAMO Guide Team
-description: Difference of powers and odd-power sums.
+description: Learn how to factor higher degree expressions and use cubic identities to simplify olympiad algebra problems.
 prerequisites: []
 ---
 
 ## Overview
 
-When you see $x^n \pm y^n$, check if it factors. The factorization patterns
-help simplify large expressions quickly.
+Many olympiad algebra problems involve expressions of degree three, four, or higher. These expressions initially can seem impossible to simplify.
 
-## Key Ideas
+However, many higher degree expressions possess hidden structure. By recognising
+standard factorisations and important identities, we can often transform a complicated expression into something much more manageable.
 
-- $x^n - y^n = (x-y)(x^{n-1} + x^{n-2}y + \cdots + y^{n-1})$.
-- If $n$ is odd, $x^n + y^n$ factors as $(x+y)(x^{n-1} - x^{n-2}y + \cdots + y^{n-1})$.
-- Even-power sums usually do not factor over the reals.
+These ideas appear a lot in AMC, AIME and olympiad algebra.
 
-## Core Skills
+## Motivation
 
-### Check Parity of $n$
+Suppose we wish to factor
 
-The sum $x^n+y^n$ only factors over the reals when $n$ is odd. The difference
-$x^n-y^n$ always factors.
+$$
+x^6-1.
+$$
 
-### Factor Out a Common Power
+Expanding is clearly not a sensible approach.
 
-If $x^n \pm y^n$ shares a common factor, pull it out first to simplify the
-remaining expression.
+Instead notice that
 
-### Use Repeated Factoring
+$$
+x^6-1=(x^3)^2-(1)^2.
+$$
 
-After applying a power factorization, check if the remaining factor is still
-factorable (for example, a difference of squares).
+This immediately becomes a difference of squares:
 
-## Worked Example
+$$
+x^6-1=(x^3-1)(x^3+1).
+$$
 
-Factor $a^5 + b^5$.
+Each factor can then be factored again using the cubic identities:
 
-Since $5$ is odd,
-$a^5 + b^5 = (a+b)(a^4 - a^3b + a^2b^2 - ab^3 + b^4)$.
+$$
+(x-1)(x^2+x+1)(x+1)(x^2-x+1).
+$$
 
-## More Examples
+Rather than performing tedious computations, we can use structure to split the expression apart.
 
-### Example 1: Difference of Powers
+This is the main idea of higher power factorisation.
 
-Factor $x^6 - y^6$.
+## Difference of Powers
 
-First, $x^6-y^6=(x^3-y^3)(x^3+y^3)$, then each cubic factors further.
+One of the most important factorisation formulas is
 
-### Example 2: Sum with Odd Power
+$$
+a^n-b^n.
+$$
 
-Factor $x^3 + 8y^3$.
+For every positive integer $n$,
 
-$x^3 + (2y)^3 = (x+2y)(x^2-2xy+4y^2)$.
+$$
+a^n-b^n
+=
+(a-b)
+(a^{n-1}+a^{n-2}b+\cdots+ab^{n-2}+b^{n-1}).
+$$
 
-### Example 3: Factor Out a Power
+The factor $(a-b)$ always appears.
 
-Factor $x^8 - x^4$.
+### Example
 
-$x^4(x^4-1)=x^4(x^2-1)(x^2+1)$.
+Factor
 
-## Strategy Checklist
+$$
+x^5-1.
+$$
 
-- Check whether the exponent is odd or even.
-- Factor out a common power first.
-- Look for repeated factoring opportunities.
+Applying the formula gives
+
+$$
+x^5-1
+=
+(x-1)
+(x^4+x^3+x^2+x+1).
+$$
+
+This factorisation appears frequently in number theory and polynomial problems.
+
+## Sum of Powers (Odd Exponent)
+
+When $n$ is odd, we also have a factorisation for $a^n + b^n$:
+
+$$
+a^n+b^n
+=
+(a+b)
+(a^{n-1}-a^{n-2}b+a^{n-3}b^2-\cdots+b^{n-1}).
+$$
+
+The signs in the second factor alternate.
+
+The sum of cubes ($n=3$) is the most common special case, but $n=5$ and $n=7$ also appear in olympiad problems.
+
+Note that when $n$ is even, $a^n + b^n$ does not factor over the integers in general.
+
+## Difference of Squares
+
+The most fundamental factorisation is
+
+$$
+a^2-b^2
+=
+(a-b)(a+b).
+$$
+
+Many higher power factorisations begin by repeatedly applying this identity.
+
+### Example
+
+Factor
+
+$$
+x^8-y^8.
+$$
+
+Apply difference of squares repeatedly:
+
+$$
+x^8-y^8
+=
+(x^4-y^4)(x^4+y^4)
+$$
+
+and
+
+$$
+x^4-y^4
+=
+(x^2-y^2)(x^2+y^2)
+$$
+
+and
+
+$$
+x^2-y^2
+=
+(x-y)(x+y).
+$$
+
+As such
+
+$$
+x^8-y^8
+=
+(x-y)(x+y)(x^2+y^2)(x^4+y^4).
+$$
+
+## Difference and Sum of Cubes
+
+Two of the most useful factorisations are
+
+### Difference of Cubes
+
+$$
+a^3-b^3
+=
+(a-b)(a^2+ab+b^2).
+$$
+
+### Sum of Cubes
+
+$$
+a^3+b^3
+=
+(a+b)(a^2-ab+b^2).
+$$
+
+These are special cases of the difference and sum of powers formulas above, and they appear throughout olympiad algebra.
+
+### Example
+
+Factor
+
+$$
+x^3+8.
+$$
+
+Since
+
+$$
+8=2^3,
+$$
+
+we get
+
+$$
+x^3+8
+=
+(x+2)(x^2-2x+4).
+$$
+
+### Example
+
+Factor
+
+$$
+x^6-y^6.
+$$
+
+Using
+
+$$
+x^6-y^6=(x^3-y^3)(x^3+y^3),
+$$
+
+we get
+
+$$
+(x-y)(x^2+xy+y^2)
+(x+y)(x^2-xy+y^2).
+$$
+
+## Fourth Powers
+
+Expressions involving fourth powers often hide simpler structure.
+
+For example,
+
+$$
+a^4-b^4
+=
+(a^2-b^2)(a^2+b^2).
+$$
+
+Applying difference of squares again gives
+
+$$
+a^4-b^4
+=
+(a-b)(a+b)(a^2+b^2).
+$$
+
+This factorisation appears frequently in divisibility and polynomial problems.
+
+## The Symmetric Cubic Identity
+
+One of the most important olympiad identities is
+
+$$
+a^3+b^3+c^3-3abc
+=
+(a+b+c)
+(a^2+b^2+c^2-ab-bc-ca).
+$$
+
+This is known as the symmetric cubic identity.
+
+The second factor can also be written as
+
+$$
+\frac{1}{2}
+\left[
+(a-b)^2+(b-c)^2+(c-a)^2
+\right],
+$$
+
+which shows that for real numbers, the second factor is always non negative. This
+means the sign of $a^3+b^3+c^3-3abc$ is determined entirely by the sign of
+$a+b+c$ (when $a,b,c$ are real and not all equal).
+
+## Proof
+
+Consider
+
+$$
+(a+b+c)
+(a^2+b^2+c^2-ab-bc-ca).
+$$
+
+Expanding and collecting like terms leads to
+
+$$
+a^3+b^3+c^3-3abc.
+$$
+
+Although the expansion is somewhat lengthy, it is completely straightforward.
+
+The important fact to remember is the resulting identity rather than the
+expansion itself.
+
+## The Special Case $a+b+c=0$
+
+A particularly useful consequence occurs when
+
+$$
+a+b+c=0.
+$$
+
+Substituting into the symmetric cubic identity gives
+
+$$
+a^3+b^3+c^3-3abc=0.
+$$
+
+Therefore
+
+$$
+a^3+b^3+c^3
+=
+3abc.
+$$
+
+This is one of the most frequently used identities in olympiad algebra. Whenever
+a problem gives or implies that three quantities sum to zero, this identity
+should come to mind.
+
+## Worked Examples
+
+### Example 1
+
+> Given that $a+b+c=0$, evaluate
+>
+> $a^3+b^3+c^3$.
+
+Using the special case above,
+
+$$
+a^3+b^3+c^3
+=
+3abc.
+$$
+
+No expansion is required.
+
+### Example 2
+
+> Factor $x^3+y^3+z^3-3xyz$.
+
+Applying the symmetric cubic identity gives
+
+$$
+(x+y+z)
+(x^2+y^2+z^2-xy-yz-zx).
+$$
+
+### Example 3
+
+> Given $x+y+z=0$, simplify
+>
+> $x^3+y^3+z^3+5xyz$.
+
+Since
+
+$$
+x^3+y^3+z^3
+=
+3xyz,
+$$
+
+the expression becomes
+
+$$
+3xyz+5xyz
+=
+8xyz.
+$$
+
+### Example 4
+
+> Given $a+b+c=0$, simplify
+>
+> $$\frac{a^3+b^3+c^3}{abc}.$$
+
+Since $a+b+c=0$, we have $a^3+b^3+c^3 = 3abc$, so
+
+$$
+\frac{a^3+b^3+c^3}{abc}
+=
+\frac{3abc}{abc}
+=
+3
+$$
+
+### Example 5
+
+> Show that $n^5 - n$ is divisible by $30$ for all integers $n$.
+
+Factor using difference of powers:
+
+$$
+n^5 - n = n(n^4 - 1) = n(n^2 - 1)(n^2 + 1).
+$$
+
+Continuing:
+
+$$
+= n(n-1)(n+1)(n^2+1).
+$$
+
+Among any three consecutive integers $n-1, n, n+1$, one is divisible by $2$
+and one by $3$, so $n^5 - n$ is divisible by $6$.
+
+For divisibility by $5$, check all residues modulo $5$. If $n \equiv 0$
+then $n \equiv 0$. If $n \equiv 1$ then $n-1 \equiv 0$. If $n \equiv 4$ then
+$n+1 \equiv 0$. If $n \equiv 2$ then $n^2+1 \equiv 0$. If $n \equiv 3$ then
+$n^2+1 \equiv 0$.
+
+In every case, one of the factors is divisible by $5$. Since $\gcd(5,6)=1$,
+we conclude $30 \mid n^5 - n$.
+
+## Key Contest Insight
+
+When working with high degree expressions, avoid expanding immediately.
+
+Instead look for:
+
+- difference of squares,
+- sum or difference of cubes (or higher odd powers),
+- repeated factorisations,
+- factors of the form $a+b+c$,
+- and opportunities to apply
+  $a^3+b^3+c^3-3abc$.
+
+Many olympiad problems are designed so that recognising the correct identity is
+the hardest step.
+
+## Strategy Tips
+
+- Always search for common factorisation patterns before expanding.
+- If an expression contains $a+b+c$, check whether the symmetric cubic
+  identity may apply.
+- Repeatedly factor differences of squares whenever possible.
+- Look for opportunities to rewrite exponents:
+
+$$
+x^8-y^8=(x^4)^2-(y^4)^2.
+$$
+
+- If you are given $a+b+c=0$, consider
+
+$$
+a^3+b^3+c^3=3abc.
+$$
 
 ## Common Pitfalls
 
-- Applying the sum formula when $n$ is even.
-- Forgetting the alternating signs in the odd-power sum factor.
-- Stopping after one factorization when more is possible.
+- Expanding large expressions unnecessarily.
+- Forgetting the sign in the sum of cubes formula.
+- Applying the symmetric cubic identity incorrectly.
+- Missing repeated applications of difference of squares.
+- Forgetting that
+
+$$
+a^3+b^3+c^3=3abc
+$$
+
+requires the condition
+
+$$
+a+b+c=0.
+$$
 
 ## Practice Problems
 

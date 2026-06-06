@@ -78,6 +78,7 @@ const resolvedModuleIDToSectionMap: Record<string, SectionID> = {
 };
 
 let gitAvailable: boolean | null = null;
+let unshallowAttempted = false;
 
 function hasGitRepo() {
   if (gitAvailable !== null) return gitAvailable;
@@ -88,6 +89,21 @@ function hasGitRepo() {
     gitAvailable = false;
   }
   return gitAvailable;
+}
+
+function isShallowGitRepo() {
+  if (!hasGitRepo()) return false;
+  try {
+    const output = execSync('git rev-parse --is-shallow-repository', {
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .toString()
+      .trim()
+      .toLowerCase();
+    return output === 'true';
+  } catch {
+    return false;
+  }
 }
 
 function getGitAuthorTime(filePath: string) {
@@ -106,7 +122,8 @@ function getGitAuthorTime(filePath: string) {
 }
 
 // Questionable hack to get full commit history so that timestamps work
-if (hasGitRepo()) {
+if (!unshallowAttempted && hasGitRepo() && isShallowGitRepo()) {
+  unshallowAttempted = true;
   try {
     execSync('git fetch --unshallow');
   } catch (e) {

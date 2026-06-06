@@ -357,12 +357,12 @@ export default function DashboardPage(props: PageProps) {
                   } as React.CSSProperties}
                   to={
                     lastViewedModuleURL ||
-                    '/foundations/fraction-decimal-percent'
+                    '/foundations/fractions_percentages_proportions_p1'
                   }
                 >
                   {lastViewedModuleURL
                     ? `Continue: ${moduleInfoById[lastViewedModuleID]?.title}`
-                    : 'Continue: Fraction, Decimal, Percent Conversions!'}
+                    : 'Start: Fractions, Proportions and Percentage Conversions!'}
                 </Link>
               </div>
             </div>

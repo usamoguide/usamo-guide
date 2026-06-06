@@ -10,13 +10,12 @@ const rehypeSnippets = require('../mdx-plugins/rehype-snippets');
 const remarkSlug = require('remark-slug');
 const remarkAutolinkHeadings = require('remark-autolink-headings');
 const { getOptions } = require('loader-utils');
-const { xdm } = require('./xdm');
+const { compile } = require('xdm');
 const preprocessAsyBlocks = require('../mdx-plugins/preprocess-asy');
 
 module.exports = function (code) {
   const callback = this.async();
-  xdm
-    .compile(
+  compile(
       {
         contents: preprocessAsyBlocks(
           code.replace(/<!--/g, '{/* ').replace(/-->/g, '*/}')

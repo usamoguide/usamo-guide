@@ -1,15 +1,34 @@
 ---
 id: kinematics-and-rates
 title: Kinematics and Rates
-author: Macquel Ko 
-description: Proportions, Distance-rate fomrula
+author: Macquel Ko, Siddhant Arora
+description: Solving tricky problems involving rate, proportions, and distance-rate formula
 ---
 
 ## Overview
 
-This section will provide knowledge on how to use the distance-rate formula and manipulate rates to solve for unknowns. 
+*If 100 machines produce 100 donuts in 100 seconds, how long would it take 5 machines to produce 5 donutes?*
+
+Take a look at the *riddle* above. As you probably already knew, the answer is **not** 5 seconds, it is indeed 100 seconds.
+
+Throughout this module, we will explore some more ~~challenging~~ variants of such problems involving rates. These problems do appear quite often on the AMCs, but not so much on the AIME. This section will provide knowledge on how to use the distance-rate formula and manipulate rates to solve for unknowns. 
 
 ## Key Ideas
+
+All one really needs to solve such problems is what fraction of a task can a person, object, whatever complete of the given task in 1 unit of time. 
+
+>Suppose Person X can complete $Y\%$ of a task in $Z$ hours.
+
+Then we can derive the following:
+
+1) Person $X$ can complete $\frac{Y}{Z}\%$ of the task in $1$ hour.
+2) Person $X$ can complete $100\%$ of the task in $\frac{100Z}{Y}$ hours.
+
+Also, Person $X$ can complete $\frac{Y}{100Z}$ of the task in $1$ hour.
+
+For instance, if Bob takes $5$ hours to do $20\%$ of a task, he can finish the task in $\frac{100\cdot5}{20}$ hours, i.e, $25$ hours. He does $\frac{1}{25}$ of the task in an hour. 
+
+We will use this simple concept to easily solve more complex applications later on. Additionally, consider:
 
 - $d = rt$ where d is distance, r is the rate, and t is time. This formula is at the heart of rate-based problems in the AMC and AIME.
 
@@ -17,7 +36,7 @@ This section will provide knowledge on how to use the distance-rate formula and 
 $ts = d$
 where s is speed, t is time, and d is distance. You could also interpret distance as other metrics, for example, items produced.
 
-- to understand this better, we can imagine the quantities here as being linked to their respective units of measurement.
+- To understand this better, we can imagine the quantities here as being linked to their respective units of measurement.
 For example, if $d$ is measured in miles and $t$ is measured in hours, then $r$ will be measured in miles per hour (mph).
 Now the distance-rate formula is intuitive, because miles per hour times hours gives miles. This is literally the 
 distance-rate formula.
@@ -26,7 +45,24 @@ distance-rate formula.
 if you are given 
 the rate and the distance, you can use the relation $\frac{d}{r} = t$ to create an equation for t.
 
-- most of the rate problems in the AMC and the AIME involve speed as the rate.
+- Most of the rate problems in the AMC and the AIME involve speed as the rate.
+
+## Combining Rates
+
+To combine rates, we will utilize the above derivation on the fraction of a task that can be complete in a unit of time.
+
+1) Person $A$ completes $\dfrac{1}{a}$ of a task in an hour
+2) Person $B$ completes $\dfrac{1}{b}$ of a task in an hour
+3) Intuitively, to find the fraction of the task they complete in an hour, we add the rates! Hence, $A$ and $B$, working together, complete $\dfrac{1}{a} + \dfrac{1}{b}$ of the task in an hour.
+4) Also, they complete $N(\dfrac{1}{a} + \dfrac{1}{b})$ of the task in $N$ hours. Hence, to complete the whole task, it takes $\dfrac{1}{\dfrac{1}{a} + \dfrac{1}{b}}$ hours!
+
+We can generalize the above to many people instead of only two, all we have to do is add.
+
+> Alice can paint $30\%$ of a fence in $5$ hours. Bob can paint $70\%$ of the same fence in $3$ hours. How long does it take for both of them, working together from the start, to completely finish painting the fence?
+
+From the above, we can find that Alice can complete $\dfrac{3}{50}$ of the fence in an hour and Bob can complete $\dfrac{7}{30}$ of the fence in an hour.
+
+ Together, they paint $\dfrac{3}{50}+\dfrac{7}{30} = \dfrac{22}{75}$ of the fence in an hour. Hence, it takes the reciprocal of that, i.e, $\boxed{\dfrac{75}{22}}$ hours.
 
 ## Worked Example
 
@@ -56,8 +92,7 @@ $$3d - 105 = 525$$
 $$3d = 630$$
 $$d = 210$$
 
-ANSWER:
-$$210$$
+$$\boxed{210} miles$$
 
 > ### Example 2 (2008 AIME, Problem #3)
 > Ed and Sue bike at equal and constant rates. Similarly, they jog at equal and constant rates, and they swim at equal and constant rates. 
@@ -106,7 +141,7 @@ $$
 Only the second option consists entirely of whole number values, so we conclude that $$s = 5$$, $$j = 8$$, and $$b = 15$$. The sum of the squares of these rates is
 $$s^2 + j^2 + b^2 = 25 + 64 + 225 = 314.$$
 
-**ANSWER:** $$314.$$ ✷
+$$\boxed{314}$$
 
 ### (2007 AIME II, Problem #4)
 > The workers in a factory produce widgets and whoosits. For each product,
@@ -151,17 +186,7 @@ $$150 + 2m = 1050,$$
 
 so that $$2m = 900$$. Hence, we conclude that $$m = 450$$.
 
-**ANSWER:** $$450.$$
-
-
-## Common Pitfalls
-
-- misremembering the distance-rate formula.
-
-- incorrectly translating the units (for example, forgetting to convert hours to minutes when calculating mph).
-
-- misinterpreting relative motion, remember if two objects are traveling towards eachother, add their speeds together to find the point
-where they collide, and if they are moving together, subtract to find the closing distance.
+$$\boxed{450}$$
 
 ## Practice Problems
 

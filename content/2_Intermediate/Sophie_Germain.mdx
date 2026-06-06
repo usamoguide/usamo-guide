@@ -2,139 +2,296 @@
 id: sophie-germain-identity
 title: Sophie Germain Identity
 author: USAMO Guide Team
-description: Factoring $x^4 + 4y^4$ using a hidden difference of squares.
+description: Learn one of the most useful quartic factorisations in olympiad algebra and how to recognise when to apply it.
 prerequisites: []
 ---
 
 ## Overview
 
-Sophie Germain is the standard way to factor a sum of two fourth powers when
-one coefficient is $4$. It mostly appears in AIME and is usually an intermediate step
+Many olympiad problems involve expressions that appear impossible to factor at first glance. One particularly important example is an expression of the form
 
-## Key Ideas
+$$
+a^4 + 4b^4.
+$$
 
-- $x^4 + 4y^4 = (x^2 - 2xy + 2y^2)(x^2 + 2xy + 2y^2)$.
-- Think of it as $(x^2 + 2y^2)^2 - (2xy)^2$.
-- It often appears in AIME-level factoring.
+Although this does not resemble any standard factorisation, it can be factored using the Sophie Germain Identity.
 
-## Core Skills
+This identity appears frequently in olympiad algebra, number theory, and Diophantine equations. Recognising it can turn a difficult looking quartic
+expression into a far more simple factorisation.
 
-### Confirm the Coefficient
+## Motivation
 
-The identity applies only when the coefficient of $y^4$ is $4$. Factor out
-constants first to match this pattern. This can be useful to perform cancellations and to avoid messy calculations which can cost valuable time
+Consider the expression
 
-### Use Difference of Squares
+$$
+x^4 + 4.
+$$
 
-Recognize $x^4+4y^4$ as $(x^2)^2+(2y^2)^2$. Then $x^4+4y^4=(x^2)^2+(2y^2)^2+4x^2y^2-(4xy)^2=(x^2+2y^2-4xy)(x^2+2y^2+4xy)$
+Initially it is not obvious how to factor it.
 
-### Look for Substitutions
+It is not a difference of squares, not a sum or difference of cubes, and common
+factorisation techniques do not seem to apply.
 
-If the expression is not in the exact form, set $x$ or $y$ as a binomial
-to create the pattern. This will help us to use sophie Germain Identity
+However, if we rewrite the constant term as
 
-## Worked Example
+$$
+4 = 4(1^4),
+$$
 
-### Basic Factoring
+then the expression becomes
 
-Factor $a^4 + 4$.
+$$
+x^4 + 4(1^4),
+$$
 
-Write $a^4 + 4 = a^4 + 4\cdot 1^4$ and apply the identity:
-$(a^2 - 2a + 2)(a^2 + 2a + 2)$.
+which is of the form
 
+$$
+a^4 + 4b^4.
+$$
 
-### Factor a Constant
+This suggests that a special factorisation may exist.
 
-Factor $16x^4 + 4y^4$.
+## The Identity
 
-Factor out $4$ first to match the Sophie Germain pattern, then apply the
-identity.
+For all real numbers $a$ and $b$,
 
-### Binomial Substitution
+$$
+a^4 + 4b^4
+=
+(a^2 - 2ab + 2b^2)
+(a^2 + 2ab + 2b^2).
+$$
 
-Factor $(x^2+1)^2 + 4x^2$.
+This factorisation is named after the French mathematician Sophie Germain.
 
-Treat it as $a^4+4b^4$ with $a=x^2+1$ and $b=x$.
+## Proof
 
-### Integer Check
+The identity looks unusual at first, but it follows naturally from the
+difference of squares.
 
-Factor $81 + 4y^4$.
+Start with
 
-Write $81 = 3^4$ and apply the identity with $x=3$.
+$$
+a^4 + 4b^4.
+$$
 
-### Is it Prime?
+Add and subtract $4a^2b^2$:
 
-Your job is to find all positive integers $n$ such that the expression $n^4+4$ is prime!
+$$
+a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2.
+$$
 
-We can directly apply the Sophie Germain identity here:
-$(n^2-2n+2)(n^2+2n+2)$.
+The first three terms form a perfect square:
 
-Now, notice that if $n>1$, then it follows that both factors must be greater than $1$, and thus the expression is COMPOSITE.
-From here, checking $n=1$ gives $5$, which is indeed prime!
+$$
+(a^2 + 2b^2)^2 - (2ab)^2.
+$$
 
-### Is it Composite?
+Now apply the difference of squares formula:
 
-Your job is to prove that $n^4+4n^2+16$ is COMPOSITE for all positive integers $n$.
+$$
+(x^2-y^2)=(x-y)(x+y).
+$$
 
-First, we simply rewrite the expression in a similar way to that of Sophie Germain
-$(n^2+4)^2-(2n)^2$.
+This gives
 
-Next, we can simply factor using the difference of squares:
-$(n^2-2n+4)(n^2+2n+4)$.
+$$
+(a^2 + 2b^2 - 2ab)
+(a^2 + 2b^2 + 2ab),
+$$
 
-### Diophantine Equation with Sophie-Germain flavor!
+which can be rearranged as
 
-Your goal is to find ALL integer solutions to the expression: $x^4+4y^4=17$.
+$$
+(a^2 - 2ab + 2b^2)
+(a^2 + 2ab + 2b^2).
+$$
 
-Again, we can simply apply the Sophie Germain identity directly:
-$(x^2-2xy+2y^2)(x^2+2xy+2y^2)=17$.
+This proves the identity.
 
-It's just number theory from here, so since $17$ is prime, ONE of the factors must equal $1$. After testing small values
-, we get that no such integer solutions exist.
+## Recognising the Pattern
 
-### Representation of a Prime
+The most important skill is recognising when the identity can be applied.
 
-Your goal is to prove that if an odd prime $p$ can be written in the following form:
-$p=n^4+4m^4$, then it must be that $p=5$.
+Look for expressions that resemble
 
-We begin by tackling via Sophie Germain as shown below:
-$(n^2-2nm+2m^2)(n^2+2nm+2m^2)$.
+$$
+a^4 + 4b^4.
+$$
 
-Now, notice that because $p$ is prime, ONE of the factors factor must equal $1$, which then FORCES
-$n=m=1$ and gives $p=5$.
+Common examples include:
 
-### Is it a perfect square?
+$$
+x^4 + 4
+$$
 
-Your goal is to determine ALL positive integers $n$ such that the expression $n^4+4$ is a perfect
-square.
+$$
+4x^4 + y^4
+$$
 
-We begin, like usual, using Sophie Germain, from which we get:
-$(n^2-2n+2)(n^2+2n+2)$.
+$$
+81n^4 + 64
+$$
 
-From here, it's just Number Theory. Observe that the factors differ by $4n$ and are ALMOST consecutive, so they cannot
-possibly combine to form a perfect square. If we check some small cases, we will not be able to find any solutions. Note: As an exercise, rigorously prove that they cannot form a perfect square by considering consecutive squares and bounds!
+In each case, try to rewrite the expression in the form
 
-### Factor...:
+$$
+a^4 + 4b^4.
+$$
 
-Your goal is to simply factor $(x^2+2)^4+4x^4$.
+Once you see the pattern, the factorisation becomes easier.
 
-We can treat it as $a^4+4b^4$ with $a=x^2+2$ and $b=x$.
+## Worked Examples
 
-Applying the identity gives the following intimidating but correct expression:
-$((x^2+2)^2-2x(x^2+2)+2x^2)((x^2+2)^2+2x(x^2+2)+2x^2)$.
+### Example 1
 
+> Factor $x^4 + 4$.
 
-## Strategy Checklist
+Rewrite as
 
-- Check that the coefficient of $y^4$ is $4$ (or can be made $4$).
-- Use the difference of squares view for speed.
-- Substitute when the expression is a binomial square.
+$$
+x^4 + 4(1^4).
+$$
+
+Applying Sophie Germain with $a=x$ and $b=1$ gives
+
+$$
+x^4 + 4
+=
+(x^2 - 2x + 2)
+(x^2 + 2x + 2).
+$$
+
+### Example 2
+
+> Factor $81n^4 + 64$.
+
+Observe that
+
+$$
+81n^4=(3n)^4
+$$
+
+and
+
+$$
+64=4(2^4).
+$$
+
+Therefore
+
+$$
+81n^4+64
+=
+(3n)^4+4(2^4).
+$$
+
+Applying the identity with $a = 3n$ and $b = 2$:
+
+$$
+=
+(9n^2-12n+8)
+(9n^2+12n+8).
+$$
+
+### Example 3
+
+> Factor $4x^4 + y^4$.
+
+Rewrite as
+
+$$
+y^4 + 4x^4,
+$$
+
+which is in the form $a^4 + 4b^4$ with $a = y$ and $b = x$.
+
+Applying the identity:
+
+$$
+4x^4 + y^4
+=
+(y^2 - 2xy + 2x^2)
+(y^2 + 2xy + 2x^2).
+$$
+
+## Applications
+
+The Sophie Germain Identity is also useful in other cases beyond simple factorisation.
+
+### Divisibility Problems
+
+Factoring a quartic expression often contains less obvious divisibility properties.
+
+For example,
+
+$$
+n^4+4
+=
+(n^2-2n+2)
+(n^2+2n+2).
+$$
+
+Any divisor of either factor is automatically a divisor of the original
+expression.
+
+### Diophantine Equations
+
+Many olympiad problems involving integer solutions can be simplified by
+factoring quartic expressions.
+
+Instead of solving
+
+$$
+a^4+4b^4=k,
+$$
+
+directly, it is often easier to look at
+
+$$
+(a^2-2ab+2b^2)
+(a^2+2ab+2b^2)=k.
+$$
+
+This converts the problem into one involving products of integers.
+
+### Number Theory
+
+The identity played an important role in Sophie Germain's work on Fermat's Last Theorem and remains a useful tool in modern olympiad number
+theory.
+
+## Key Contest Insight
+
+When you see
+
+$$
+a^4+4b^4,
+$$
+
+or something that can be rewritten into that form, your first instinct should
+be to try Sophie Germain.
+
+Many contest problems are designed so that recognising the identity is the main
+difficulty. Once the factorisation is found, the remainder of the problem is
+often straightforward.
+
+## Strategy Tips
+
+- Always look for hidden fourth powers.
+- Rewrite constants whenever possible.
+- Try adding and subtracting terms to create a difference of squares.
+- Check whether a quartic expression resembles $a^4+4b^4$.
+- In number theory problems, factor first before attempting modular arithmetic
+  or considering cases.
 
 ## Common Pitfalls
 
-- Forgetting the coefficient $4$ is essential.
-- Mistaking it for a difference of squares without the middle step.
-- Applying the identity to $x^4+y^4$ without scaling.
+- Forgetting the coefficient $4$ in the identity.
+- Applying the identity to expressions that are not of the form
+  $a^4+4b^4$.
+- Expanding incorrectly after substitution.
+- Missing opportunities to rewrite constants as fourth powers.
 
 ## Practice Problems
 

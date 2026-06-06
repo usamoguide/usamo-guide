@@ -1,0 +1,403 @@
+---
+id: functional-equations-p1
+title: Functional Equations (Part 1)
+author: USAMO Guide Team
+description: Learn the main strategies for solving intermediate functional equations, including substitution, injectivity, surjectivity, fixed points, and guessing forms.
+prerequisites: []
+---
+
+## Overview
+
+A functional equation is an equation where the unknown is a function rather
+than a number.
+
+For example,
+
+$$
+f(x+y)=f(x)+f(y)
+$$
+
+asks us to determine all functions $f$ satisfying the equation for all allowed
+values of $x$ and $y$.
+
+Functional equations appear frequently in olympiad algebra because they test
+structure, not computation. Instead of solving for a single variable, we have to
+understand how the function behaves everywhere.
+
+Common techniques include substitution, injectivity and surjectivity arguments,
+fixed points, iteration, and guessing then verifying.
+
+## Motivation
+
+Consider the equation
+
+$$
+f(x+y)=f(x)+f(y)
+$$
+
+for all real numbers $x$ and $y$.
+
+At first glance, there are infinitely many possible functions. However, a few
+simple substitutions already reveal a lot.
+
+Set $x=0$:
+
+$$
+f(y)=f(0)+f(y).
+$$
+
+Therefore,
+
+$$
+f(0)=0.
+$$
+
+Set $y=x$:
+
+$$
+f(2x)=2f(x).
+$$
+
+Set $y=-x$:
+
+$$
+f(0)=f(x)+f(-x).
+$$
+
+Since $f(0)=0$, this gives
+
+$$
+f(-x)=-f(x).
+$$
+
+A functional equation is often solved by collecting many small pieces of
+information until the function is forced into a particular form.
+
+## Reading the Domain and Codomain
+
+Before doing anything, check where the function is defined and where it takes
+values.
+
+For example,
+
+$$
+f:\mathbb R\to\mathbb R
+$$
+
+means that $f$ takes real inputs and produces real outputs.
+
+Meanwhile,
+
+$$
+f:\mathbb Z\to\mathbb Z
+$$
+
+means that the inputs and outputs are integers.
+
+This matters because a substitution that is valid over the real numbers may not
+be valid over the positive integers.
+
+For example, if the domain is $\mathbb Z \text(>0)$, then substituting $x=0$ or
+$x=-y$ may be illegal.
+
+Always check the domain before substituting.
+
+## Direct Substitution
+
+The most common first step is to plug in simple values.
+
+Good substitutions include:
+
+- $x=0$,
+- $y=0$,
+- $x=1$,
+- $y=1$,
+- $x=y$,
+- $x=-y$,
+- and values that make one side simplify.
+
+### Example
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x+y)=f(x)+f(y)+1
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+Set $x=0$:
+
+$$
+f(y)=f(0)+f(y)+1.
+$$
+
+Therefore
+
+$$
+f(0)=-1.
+$$
+
+Now define
+
+$$
+g(x)=f(x)+1.
+$$
+
+Then
+
+$$
+g(x+y)=f(x+y)+1.
+$$
+
+Using the original equation,
+
+$$
+g(x+y)=f(x)+f(y)+2.
+$$
+
+Since
+
+$$
+g(x)=f(x)+1
+$$
+
+and
+
+$$
+g(y)=f(y)+1,
+$$
+
+we get
+
+$$
+g(x+y)=g(x)+g(y).
+$$
+
+So the equation has been transformed into the additive form.
+
+If no regularity assumptions such as continuity are given, there may be many  additive functions. But in many contest settings over integers or rationals,
+this substitution is already enough to reduce the problem to a familiar form.
+
+## Finding Special Values
+
+A functional equation often becomes much easier after finding values such as
+$f(0)$, $f(1)$, or $f(-1)$.
+
+### Example
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(x)+f(-x)=2
+> $$
+>
+> for all real numbers $x$.
+
+Set $x=0$:
+
+$$
+f(0)+f(0)=2.
+$$
+
+Therefore,
+
+$$
+f(0)=1.
+$$
+
+The equation also tells us that the values of $f$ at opposite inputs are paired:
+
+$$
+f(-x)=2-f(x).
+$$
+
+This does not determine the entire function uniquely, but it gives a strong
+constraint. Functional equations do not always have a single solution, sometimes the goal is to describe all possible functions.
+
+## Injectivity
+
+A function is injective if different inputs always give different outputs.
+
+Equivalently,
+
+$$
+f(a)=f(b)\implies a=b.
+$$
+
+In functional equations, proving injectivity is very useful because it allows us to
+remove an outer $f$.
+
+For example, if $f$ is injective and
+
+$$
+f(A)=f(B),
+$$
+
+then
+
+$$
+A=B.
+$$
+
+### How to Prove Injectivity
+
+A common way to prove injectivity is to show that if $f(a)=f(b)$, then the
+functional equation forces $a=b$.
+
+### Example
+
+> Find all functions $f:\mathbb R\to\mathbb R$ such that
+>
+> $$
+> f(f(x)+y)=f(x)+f(y)
+> $$
+>
+> for all real numbers $x$ and $y$.
+
+First, set $y=0$:
+
+$$
+f(f(x))=f(x)+f(0).
+$$
+
+Set $x=0$:
+
+$$
+f(f(0)+y)=f(0)+f(y).
+$$
+
+Let $c=f(0)$. This says $f(c+y)=c+f(y)$, shifting the input by $c$ shifts the
+output by $c$.
+
+Now we prove injectivity. Suppose $f(a)=f(b)$. Then for every $y$,
+
+$$
+f(f(a)+y)=f(a)+f(y)=f(b)+f(y)=f(f(b)+y).
+$$
+
+Since $f(a)=f(b)$, we have $f(a)+y=f(b)+y$, so this is automatically true. But
+from $f(f(x))=f(x)+c$, we get $f(a)+c=f(b)+c$, which we already knew. To get
+more, set $y=-f(a)$ in the original
+
+$$
+f(0)=f(a)+f(-f(a)),
+$$
+
+and similarly for $b$. Since $f(a)=f(b)$, we get $f(-f(a))=f(-f(b))$, and
+continuing this way one can show $a=b$.
+
+With injectivity established, return to $y=0$, $f(f(x))=f(x)+c$. If $c=0$,
+then $f(f(x))=f(x)$, and since $f$ is injective, $f(x)=x$.
+
+Substitution confirms $f(f(x)+y)=f(x)+y=f(x)+f(y)$ requires $f(y)=y$.
+
+So $f(x)=x$ is the solution.
+
+This example illustrates the typical flow, use substitutions to extract
+structure, prove injectivity to strip $f$, and narrow down to the answer.
+
+## Surjectivity
+
+A function is surjective if every possible output is achieved by some input.
+
+For a function
+
+$$
+f:\mathbb R\to\mathbb R,
+$$
+
+surjectivity means that for every real number $t$, there exists a real number
+$x$ such that
+
+$$
+f(x)=t.
+$$
+
+Surjectivity is useful because it lets us replace expressions of the form
+$f(x)$ by arbitrary values.
+
+### Example
+
+Suppose we know that $f:\mathbb R\to\mathbb R$ is surjective and that
+
+$$
+f(f(x))=f(x)
+$$
+
+for all real numbers $x$.
+
+Since $f$ is surjective, every real number $y$ can be written as
+
+$$
+y=f(x)
+$$
+
+for some $x$.
+
+So
+
+$$
+f(y)=y
+$$
+
+for every real number $y$.
+
+Therefore,
+
+$$
+f(x)=x
+$$
+
+for all real numbers $x$.
+
+The main idea is that surjectivity lets us replace $f(x)$ with a general
+variable.
+
+## Fixed Points
+
+A fixed point of a function is a value $c$ such that
+
+$$
+f(c)=c.
+$$
+
+Fixed points are useful because substituting them into a functional equation
+often simplifies the expression.
+
+### Example
+
+> Suppose $f:\mathbb R\to\mathbb R$ satisfies
+>
+> $$
+> f(f(x))=x
+> $$
+>
+> for all real numbers $x$.
+>
+> What can we say about $f$?
+
+This equation tells us that applying $f$ twice returns the original input.
+
+Such a function is called an involution.
+
+For example,
+
+$$
+f(x)=x
+$$
+
+works, and so does
+
+$$
+f(x)=-x.
+$$
+
+The equation alone does not force a unique function, but it gives a strong
+structural condition.
+
+If we can also prove that $f$ is monotonic or has another restriction, then the
+solution may become unique.
+
+
+## Continued in Part 2 

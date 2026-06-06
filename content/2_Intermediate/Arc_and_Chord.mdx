@@ -1,72 +1,267 @@
 ---
 id: arc-and-chord
 title: Arc and Chord Relations
-author: USAMO Guide Team
+author: Lefteris Demosthenous
 description: Chord length and arc length from central angle.
 prerequisites: [circle-angles]
 ---
 
 ## Overview
 
-Arc and chord formulas are useful for circle measurement problems, especially
-with central angles.
+Arcs and chords are closely connected in circle geometry. A central angle determines both the arc it intercepts and the chord connecting the endpoints of that arc.
 
-## Core Skills
+Many AMC geometry problems can be solved by moving freely between angles, arcs, and chords. In particular, equal chords correspond to equal arcs, and larger arcs correspond to longer chords.
 
-### Convert Degrees to Radians
+Note: The little triangle over the names of segments notates an arc. For example, with arcs AB and CD,
 
-Use $\theta$ in radians for arc length; convert early to avoid mistakes.
+$$
+\widehat{AB}=\widehat{CD},
+$$
 
-### Relate Chords and Central Angles
 
-Use $c=2r\sin(\theta/2)$ to connect lengths to angles.
+## Definitions and Key Ideas
 
-### Use Symmetry
+A chord is a segment whose endpoints lie on a circle.
 
-Equal chords subtend equal central angles and equal arcs.
+An arc is a portion of the circle between two points on the circle.
 
-## Key Ideas
+If a central angle intercepts an arc of measure $\theta^\circ$, then the arc itself also has measure $\theta^\circ$.
 
-- Arc length: $s = r\theta$ (radians).
-- Chord length: $c = 2r\sin(\theta/2)$.
+For example, if
+
+$$
+\angle AOB=80^\circ,
+$$
+
+where $O$ is the center of the circle, then arc $AB$ also measures
+
+$$
+80^\circ.
+$$
+
+The central angle, intercepted arc, and corresponding chord are all related.
+
+## Fundamental Relationships
+
+### Equal Chords and Equal Arcs
+
+One of the most important facts in circle geometry is:
+
+* Equal chords subtend equal arcs.
+* Equal arcs subtend equal chords.
+* Equal chords subtend equal central angles.
+
+Thus if
+
+$$
+AB=CD,
+$$
+
+then
+
+$$
+\widehat{AB}=\widehat{CD},
+$$
+
+and the corresponding central angles are equal.
+
+### Larger Arcs Correspond to Larger Chords
+
+If one arc has greater measure than another, then its corresponding chord is longer.
+
+For example, if
+
+$$
+m(\widehat{AB})>m(\widehat{CD}),
+$$
+
+then
+
+$$
+AB>CD.
+$$
+
+This fact is often useful in comparison problems.
+
+### Diameter and Semicircles
+
+A diameter divides a circle into two semicircles.
+
+Since a full circle measures
+
+$$
+360^\circ,
+$$
+
+each semicircle measures
+
+$$
+180^\circ.
+$$
+
+Any chord whose endpoints are opposite ends of a diameter is the longest possible chord in the circle.
+
+## Arc Length
+
+Arc measure and arc length are different ideas.
+
+* Arc measure is measured in degrees.
+* Arc length is measured in units of distance.
+
+If a circle has radius $r$ and central angle $\theta$ measured in radians, then the arc length is
+
+$$
+s=r\theta.
+$$
+
+When using this formula, always convert degrees to radians first.
+
+For example,
+
+$$
+60^\circ=\frac{\pi}{3}.
+$$
+
+## Chords and Symmetry
+
+Many circle problems become easier by looking for symmetry.
+
+If a radius is drawn perpendicular to a chord, then it bisects the chord.
+
+Conversely, if a radius bisects a chord, then it is perpendicular to the chord.
+
+This gives a useful theorem:
+
+A radius perpendicular to a chord cuts the chord into two equal pieces.
+
+This fact frequently appears in AMC 8 and AMC 10 geometry problems.
 
 ## Worked Example
 
 A circle has radius $10$ and central angle $60^\circ$. Find the chord length.
 
-$\theta=\pi/3$, so $c = 2\cdot 10\sin(\pi/6) = 10$.
+Since the central angle is $60^\circ$, the corresponding triangle formed by the two radii and the chord has side lengths
+
+$$
+10,\quad10,\quad10.
+$$
+
+Therefore the triangle is equilateral, and the chord length is
+
+$$
+\boxed{10}.
+$$
 
 ## More Examples
 
 ### Example 1: Arc Length
 
-Find the arc length when $r=6$ and $\theta=150^\circ$.
+Find the arc length when
 
-$\theta=5\pi/6$, so $s=r\theta=5\pi$.
+$$
+r=6
+$$
 
-### Example 2: Central Angle from Chord
+and
 
-If $r=5$ and chord length is $5$, find the central angle.
+$$
+\theta=150^\circ.
+$$
 
-$5=2\cdot 5\sin(\theta/2)$ gives $\sin(\theta/2)=1/2$, so $\theta=60^\circ$.
+Convert to radians:
 
-### Example 3: Equal Chords
+$$
+150^\circ=\frac{5\pi}{6}.
+$$
 
-If two chords have equal length, what can you conclude about their arcs?
+Then
 
-They subtend equal arcs and equal central angles.
+$$
+s=r\theta=6\left(\frac{5\pi}{6}\right)=5\pi.
+$$
+
+### Example 2: Equal Chords
+
+A circle contains two chords of equal length. What can you conclude about the corresponding arcs?
+
+Equal chords subtend equal arcs.
+
+Therefore the arcs have equal measure.
+
+### Example 3: Comparing Chords
+
+Chord $AB$ subtends a central angle of $120^\circ$ while chord $CD$ subtends a central angle of $80^\circ$.
+
+Which chord is longer?
+
+Since
+
+$$
+120^\circ>80^\circ,
+$$
+
+arc $AB$ is larger than arc $CD$.
+
+Therefore
+
+$$
+AB>CD.
+$$
+
+### Example 4: Perpendicular Radius
+
+A radius is drawn perpendicular to a chord of length $12$.
+
+Find the length of each half of the chord.
+
+A radius perpendicular to a chord bisects the chord.
+
+Thus each half has length
+
+$$
+\frac{12}{2}=6.
+$$
+
+### Example 5: Semicircle
+
+A circle has radius $8$.
+
+Find the length of a semicircular arc.
+
+A semicircle corresponds to
+
+$$
+180^\circ=\pi \text{ radians}.
+$$
+
+Therefore
+
+$$
+s=r\theta=8\pi.
+$$
+
+Thus the arc length is
+
+$$
+\boxed{8\pi}.
+$$
 
 ## Strategy Checklist
 
-- Convert to radians for arc length.
-- Use $c=2r\sin(\theta/2)$ for chord problems.
-- Apply symmetry for equal chords.
+* Determine whether the problem is asking about arc measure or arc length.
+* Convert degrees to radians before using $s=r\theta$.
+* Look for equal chords and equal arcs.
+* Compare arc measures when comparing chord lengths.
+* Search for symmetry involving radii and chords.
+* Remember that diameters create semicircles.
 
 ## Common Pitfalls
 
-- Using degrees in the arc length formula.
-- Mixing up arc length and chord length.
-- Forgetting the half-angle in the chord formula.
+* Confusing arc measure with arc length.
+* Using degrees directly in the formula $s=r\theta$.
+* Assuming equal arcs imply equal lengths in different circles.
+* Forgetting that a diameter is the longest chord.
+* Missing the fact that a radius perpendicular to a chord bisects the chord.
 
 ## Practice Problems
 

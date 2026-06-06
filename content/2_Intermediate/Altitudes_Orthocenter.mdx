@@ -1,46 +1,468 @@
 ---
 id: altitudes-orthocenter
 title: Altitudes and the Orthocenter
-author: USAMO Guide Team
+author: Ava Berenji
 description: Altitude facts and area relationships.
 prerequisites: []
 ---
 
+# Altitudes and the Orthocenter
+
+
 ## Overview
 
-Altitudes are perpendicular lines from vertices to opposite sides. The three
-altitudes meet at the orthocenter. Altitude lengths connect directly to area,
-so they are a fast way to solve for heights.
+Altitudes are perpendicular segments drawn from a vertex to the opposite side (or its extension). They play a central role in triangle geometry because they connect directly to area and often create right triangles, similar triangles, cyclic quadrilaterals, and useful length relationships.
 
-## Key Ideas
+The three altitudes of a triangle intersect at a single point called the orthocenter. The location of the orthocenter depends entirely on the type of triangle.
 
-- Area $A = \frac{1}{2}ah_a$, so $h_a = \frac{2A}{a}$.
+## Definitions and Key Ideas
+
+An *altitude* of a triangle is a line through a vertex perpendicular to the opposite side (or its extension).
+
+It can be proven that the three altitudes of a triangle intersect at one point; this is called the *orthocenter.*
+
+- In a triangle, area $K = \frac{1}{2}ah_a$ (etc.), so $h_a=\frac{2K}{a}, h_b=\frac{2K}{b},  h_c=\frac{2K}{c}.$
+- In a triangle, $\frac{h_a}{h_b}=\frac{b}{a},$ and similarly for any pair of altitudes.
+- Multiple equal angles and similar triangles are produced by the altitudes, found via angle chasing and cyclic quadrilaterals.
+- Quadrilaterals such as $A H_C H H_B$ and $B H_C H_B C$ are cyclic.
+
+- In a right triangle, the following properties hold:
+$$
+CD^2=AD\cdot DB,
+$$
+
+$$
+AC^2=AB\cdot AD,
+$$
+
+$$
+BC^2=AB\cdot DB.
+$$
+
 - In an acute triangle, the orthocenter is inside the triangle.
 - In a right triangle, the orthocenter is the right-angle vertex.
 - In an obtuse triangle, the orthocenter lies outside the triangle.
 
-## Core Skills
 
-### Use Area to Find Heights
+## Properties
+Let $\triangle ABC$ have side lengths $a, b, c$ opposite vertices $A,B,C,$ with corresponding altitudes $h_a, h_b, h_c.$ Let the feet of the altitudes be $H_A, H_B, H_C.$
 
-If you know the area and a base, compute the corresponding altitude with
-$h = 2A/b$.
+### Relationship to Area
+Because any side may be chosen as a base for a triangle, the area $K$ satisfies
 
-### Recognize Orthocenter Location
+$$K=\frac12 ah_a=\frac12 bh_b=\frac12 ch_c.$$
 
-The triangle type determines where the orthocenter is: inside for acute,
-on a vertex for right, and outside for obtuse.
+*Corollary 1:* $h_a=\frac{2K}{a}, h_b=\frac{2K}{b},  h_c=\frac{2K}{c}$
 
-### Combine with Similarity
+*Corollary 2:* $ah_a=bh_b=ch_c=2K,$ and so
 
-Dropping an altitude often creates similar right triangles that unlock ratios
-and lengths.
+$$\frac{h_a}{h_b}=\frac{b}{a},$$
+
+and similarly for any pair of altitudes.
+
+### Equal Angles and Similar Triangles
+
+Dropping altitudes creates equal $90^\circ$ angles, giving rise to numerous similar triangles by AA similarity. Below is a visualization of many pairs of equal angles:
+
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 420 350" width="380" height="320">
+
+    {/* Triangle */}
+    <line x1="210" y1="35" x2="70" y2="285" stroke="white" strokeWidth="2" />
+    <line x1="210" y1="35" x2="350" y2="285" stroke="white" strokeWidth="2" />
+    <line x1="70" y1="285" x2="350" y2="285" stroke="white" strokeWidth="2" />
+
+    {/* Altitudes */}
+    {/* AH_A */}
+    <line
+      x1="210"
+      y1="35"
+      x2="210"
+      y2="285"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeDasharray="5 5"
+    />
+
+    {/* BH_B */}
+    <line
+      x1="70"
+      y1="285"
+      x2="280"
+      y2="160"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeDasharray="5 5"
+    />
+
+    {/* CH_C */}
+    <line
+      x1="350"
+      y1="285"
+      x2="140"
+      y2="160"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeDasharray="5 5"
+    />
+
+    {/* Orthocenter */}
+    <circle cx="210" cy="201.7" r="5" fill="white" />
+
+    {/* Feet of altitudes */}
+    <circle cx="210" cy="285" r="4" fill="white" />
+    <circle cx="280" cy="160" r="4" fill="white" />
+    <circle cx="140" cy="160" r="4" fill="white" />
+
+    {/* Vertices */}
+    <circle cx="210" cy="35" r="5" fill="white" />
+    <circle cx="70" cy="285" r="5" fill="white" />
+    <circle cx="350" cy="285" r="5" fill="white" />
+
+    {/* Right angle boxes */}
+    {/* At H_A */}
+    <path
+      d="M 210 270 L 225 270 L 225 285"
+      fill="none"
+      stroke="white"
+      strokeWidth="2"
+    />
+
+    {/* At H_B */}
+    <g transform="translate(280 160) rotate(60.75)">
+      <path
+        d="M -15 0 L -15 15 L 0 15"
+        fill="none"
+        stroke="white"
+        strokeWidth="2"
+      />
+    </g>
+
+    {/* At H_C */}
+    <g transform="translate(140 160) rotate(-60.75)">
+      <path
+        d="M 15 0 L 15 15 L 0 15"
+        fill="none"
+        stroke="white"
+        strokeWidth="2"
+      />
+    </g>
+
+    {/* --- PAIR 1: RED (1 Arc) --- */}
+    {/* Angle H_A-A-C (Vertex A) */}
+    <path d="M 210 60 A 25 25 0 0 0 222.2 56.8" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+    
+    {/* Angle C-B-H_B (Vertex B) */}
+    <path d="M 95 285 A 25 25 0 0 0 91.5 272.2" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+
+
+    {/* --- PAIR 2: BLUE (2 Arcs) --- */}
+    {/* Angle H_B-B-A (Vertex B) */}
+    <path d="M 91.5 272.2 A 25 25 0 0 0 82.2 263.2" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 95.8 269.6 A 30 30 0 0 0 84.7 258.9" fill="none" stroke="#3399FF" strokeWidth="2" />
+
+    {/* Angle A-C-H_C (Vertex C) */}
+    <path d="M 337.8 263.2 A 25 25 0 0 0 328.5 272.2" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 335.3 258.9 A 30 30 0 0 0 324.2 269.6" fill="none" stroke="#3399FF" strokeWidth="2" />
+
+
+    {/* --- PAIR 3: GREEN (3 Arcs) --- */}
+    {/* Angle H_C-C-B (Vertex C) */}
+    <path d="M 328.5 272.2 A 25 25 0 0 0 325 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 324.2 269.6 A 30 30 0 0 0 320 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 319.9 267.1 A 35 35 0 0 0 315 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+
+    {/* Angle B-A-H_A (Vertex A) */}
+    <path d="M 197.8 56.8 A 25 25 0 0 0 210 60" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 195.3 61.2 A 30 30 0 0 0 210 65" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 192.9 65.5 A 35 35 0 0 0 210 70" fill="none" stroke="#00CC66" strokeWidth="2" />
+
+
+    {/* Side labels */}
+    <text x="210" y="330" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">a</text>
+    <text x="330" y="140" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">b</text>
+    <text x="89" y="140" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">c</text>
+
+    {/* Altitude labels */}
+    <text x="224" y="140" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">
+      h<tspan dy="5" fontSize="12">a</tspan>
+    </text>
+    <text x="120" y="236" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">
+      h<tspan dy="5" fontSize="12">b</tspan>
+    </text>
+    <text x="289" y="245" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">
+      h<tspan dy="5" fontSize="12">c</tspan>
+    </text>
+
+    {/* Vertex labels */}
+    <text x="210" y="15" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">A</text>
+    <text x="50" y="295" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">B</text>
+    <text x="370" y="295" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">C</text>
+
+    {/* Foot labels */}
+    <text x="210" y="305" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">
+      H<tspan dy="5" fontSize="12">A</tspan>
+    </text>
+    <text x="292" y="160" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">
+      H<tspan dy="5" fontSize="12">B</tspan>
+    </text>
+    <text x="105" y="160" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">
+      H<tspan dy="5" fontSize="12">C</tspan>
+    </text>
+
+    {/* Orthocenter label */}
+    <text x="225" y="202" textAnchor="start" dominantBaseline="middle" fill="white" fontSize="18" fontFamily="serif">H</text>
+
+  </svg>
+
+  {/* Legend / Equation System */}
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1.5rem', fontFamily: 'serif', fontSize: '18px' }}>
+    <div style={{ color: '#FF4D4D', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#FF4D4D', marginRight: '8px', display: 'inline-block' }}></span>
+      ∠H<sub>A</sub>AC = ∠CBH<sub>B</sub> &nbsp;(= 90° - C)
+    </div>
+    <div style={{ color: '#3399FF', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#3399FF', marginRight: '8px', display: 'inline-block' }}></span>
+      ∠H<sub>B</sub>BA = ∠ACH<sub>C</sub> &nbsp;(= 90° - A)
+    </div>
+    <div style={{ color: '#00CC66', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#00CC66', marginRight: '8px', display: 'inline-block' }}></span>
+      ∠H<sub>C</sub>CB = ∠BAH<sub>A</sub> &nbsp;(= 90° - B)
+    </div>
+  </div>
+</div>
+
+For instance, $\triangle AH_AC \sim \triangle BH_BC,$ which is an alternative way to prove Corollary 2. Let $H$ be the orthocenter of $ABC.$  Then
+
+$$\triangle AH_A C \sim \triangle BH_B C \sim \triangle AH_B H \sim \triangle BH_A H$$
+
+and similarly for other pairs of vertices, such as $A, C$ and $B,C.$
+
+
+### Right Triangle Altitudes
+
+
+Dropping an altitude often creates similar triangles, and one especially important case occurs in a right triangle. Suppose $ABC$ is a right triangle with right angle at $C$, and altitude $CD$ is drawn from $C$ to hypotenuse $AB$.
+
+Then
+
+$$
+\triangle ABC \sim \triangle ACD \sim \triangle CBD.
+$$
+
+This leads to several useful relationships:
+
+$$
+CD^2=AD\cdot DB,
+$$
+
+$$
+AC^2=AB\cdot AD,
+$$
+
+$$
+BC^2=AB\cdot DB.
+$$
+
+These formulas appear regularly in AMC geometry problems.
+
+*Connection:* These relationships can also be proven using Power of a Point. Considering the first equation, reflect $C$ across hypotenuse $AB$ to point $C',$ to yield a cyclic quadrilateral $AC' B C.$ Then $(CD)(C'D) = (AD)(DB),$ and the proof follows from how $C'D=CD.$ Similarly, reflect $D$ across $AC$ to $D'$ and consider cyclic quadrilateral $AD'CD.$ It will have diameter $AC,$ so we know $BC$ is a tangent to its circumcircle, since $BC \perp AC.$ Then use the tangent/secant statement of PoAP to obtain $BC^2 = BD \cdot BA.$ The proof of the second statement is similar.
+
+### Angle Chasing and Cyclic Quadrilaterals
+
+We'll use $\angle A$ to refer to the largest angle $\angle BAC,$ and so on. It holds that
+
+$$\angle H_C H H_B = \angle B H C = 180 - \angle A,$$
+
+and likewise for the other two vertices.
+
+
+*Proof:* Use $180 - \angle H_B H C$ or $360 - (\angle A + \angle A H_C C + \angle A H_B H).$ Or, use the fact that $A H_C H H_B$ is cyclic!
+
+
+Notice that $A H_C H H_B$ is cyclic, and so is $CH_B H H_A $ and $B H_A H H_C,$ since opposite angles sum to $180^\circ.$ Let's only angle chase on $A H_C H H_B$ and
+generalize by symmetry. Angles that subtend the same arc are equal, so $\angle H_C H_B H = \angle H_C A H = 90 - \angle B,$ and $\angle H H_C H_B = \angle HA H_B = 90 -
+\angle C.$ Similarly, $\angle A H H_B = \angle A H_C H_B = \angle C,$ and $\angle A H H_C = \angle A H_B H_C = \angle B.$
+
+*Note:* The quadrilaterals $BH_C H_B C, A H_C H_A C, A H_B H_A B$ are also cyclic, since opposite angles formed by a diagonal and side are equal. Circumcircles of two cyclic quadrilaterals have been drawn in the below diagram to help visualize this.
+
+
+If we continue to chase equal angles, we obtain the following diagram, where red angles $= 90 - \angle C,$ blue angles $= 90 - \angle A,$ and green angles $= 90 - \angle
+B.$
+
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 420 350" width="380" height="320">
+
+    {/* --- CYCLIC QUADRILATERAL CIRCUMCIRCLES --- */}
+    
+    
+    
+    {/* Quad 3: CH_B H H_A | Center: (280, 245.8), Radius: 82.26 */}
+    <circle cx="280.00" cy="245.80" r="82.26" fill="none" stroke="#F1C40F" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.8" />
+
+    
+    
+    {/* Quad 6: AB H_A H_B (Diameter AB) | Center: (140, 160), Radius: 140 */}
+    <circle cx="140.00" cy="160.00" r="140.00" fill="none" stroke="#3498DB" strokeWidth="1.5" opacity="0.7" />
+
+    {/* Main triangle */}
+    <line x1="210" y1="35" x2="70" y2="285" stroke="white" strokeWidth="2" />
+    <line x1="210" y1="35" x2="350" y2="285" stroke="white" strokeWidth="2" />
+    <line x1="70" y1="285" x2="350" y2="285" stroke="white" strokeWidth="2" />
+
+    {/* Altitudes */}
+    <line x1="210" y1="35" x2="210" y2="285" stroke="white" strokeWidth="1.5" strokeDasharray="5 5" />
+    <line x1="70" y1="285" x2="283.15" y2="165.63" stroke="white" strokeWidth="1.5" strokeDasharray="5 5" />
+    <line x1="350" y1="285" x2="136.85" y2="165.63" stroke="white" strokeWidth="1.5" strokeDasharray="5 5" />
+
+    {/* Orthic triangle */}
+    <line x1="210" y1="285" x2="283.15" y2="165.63" stroke="#BBBBBB" strokeWidth="2" />
+    <line x1="283.15" y1="165.63" x2="136.85" y2="165.63" stroke="#BBBBBB" strokeWidth="2" />
+    <line x1="136.85" y1="165.63" x2="210" y2="285" stroke="#BBBBBB" strokeWidth="2" />
+
+    {/* Right angle boxes */}
+    <path d="M 196 285 L 196 271 L 210 271" fill="none" stroke="white" strokeWidth="2" />
+    <path d="M 276.31 153.42 L 264.10 160.26 L 270.94 172.47" fill="none" stroke="white" strokeWidth="2" />
+    <path d="M 143.69 153.42 L 155.90 160.26 L 149.06 172.47" fill="none" stroke="white" strokeWidth="2" />
+
+    {/* --- PAIR 1: RED (1 Arc) -> 90° - C --- */}
+    <path d="M 210 60 A 25 25 0 0 0 222.2 56.8" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+    <path d="M 95 285 A 25 25 0 0 0 91.5 272.2" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+    <path d="M 270.60 186.10 A 24 24 0 0 1 262.22 177.37" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+    <path d="M 160.85 165.63 A 24 24 0 0 1 157.78 177.37" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+
+    {/* --- PAIR 2: BLUE (2 Arcs) -> 90° - A --- */}
+    <path d="M 91.5 272.2 A 25 25 0 0 0 82.2 263.2" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 95.8 269.6 A 30 30 0 0 0 84.7 258.9" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 337.8 263.2 A 25 25 0 0 0 328.5 272.2" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 335.3 258.9 A 30 30 0 0 0 324.2 269.6" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 223.15 265.63 A 24 24 0 0 0 210 261.00" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 226.44 260.79 A 30 30 0 0 0 210 255.00" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 196.85 265.63 A 24 24 0 0 1 210 261.00" fill="none" stroke="#3399FF" strokeWidth="2" />
+    <path d="M 193.56 260.79 A 30 30 0 0 1 210 255.00" fill="none" stroke="#3399FF" strokeWidth="2" />
+
+    {/* --- PAIR 3: GREEN (3 Arcs) -> 90° - B --- */}
+    <path d="M 328.5 272.2 A 25 25 0 0 0 325 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 324.2 269.6 A 30 30 0 0 0 320 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 319.9 267.1 A 35 35 0 0 0 315 285" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 197.8 56.8 A 25 25 0 0 0 210 60" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 195.3 61.2 A 30 30 0 0 0 210 65" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 192.9 65.5 A 35 35 0 0 0 210 70" fill="none" stroke="#00CC66" strokeWidth="2" />
+
+        {/* H_B: ∠H_C H_B H = 90° - B */}
+    <path d="M 259.15 165.63 A 24 24 0 0 0 262.22 177.37" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 253.15 165.63 A 30 30 0 0 0 256.99 180.30" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 248.15 165.63 A 35 35 0 0 0 252.63 182.75" fill="none" stroke="#00CC66" strokeWidth="2" />
+
+    {/* H_B: ∠H H_B H_A = 90° - B */}
+    <path d="M 270.60 186.10 A 24 24 0 0 1 262.22 177.37" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 267.46 191.22 A 30 30 0 0 1 256.99 180.30" fill="none" stroke="#00CC66" strokeWidth="2" />
+    <path d="M 264.84 195.49 A 35 35 0 0 1 252.63 182.75" fill="none" stroke="#00CC66" strokeWidth="2" />
+
+    {/* H_C: ∠H_B H_C H = 90° - C */}
+    <path d="M 160.85 165.63 A 24 24 0 0 1 157.78 177.37" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+
+    {/* H_C: ∠H H_C H_A = 90° - C */}
+    <path d="M 149.40 186.10 A 24 24 0 0 0 157.78 177.37" fill="none" stroke="#FF4D4D" strokeWidth="2" />
+
+    {/* Points */}
+    <circle cx="210" cy="35" r="5" fill="white" />
+    <circle cx="70" cy="285" r="5" fill="white" />
+    <circle cx="350" cy="285" r="5" fill="white" />
+    <circle cx="210" cy="285" r="4" fill="white" />
+    <circle cx="283.15" cy="165.63" r="4" fill="white" />
+    <circle cx="136.85" cy="165.63" r="4" fill="white" />
+    <circle cx="210" cy="206.60" r="5" fill="white" />
+
+    {/* Vertex labels */}
+    <text x="210" y="16" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">A</text>
+    <text x="52" y="295" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">B</text>
+    <text x="368" y="295" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">C</text>
+
+    {/* Foot labels */}
+    <text x="210" y="307" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">H<tspan dy="5" fontSize="12">A</tspan></text>
+    <text x="294" y="162" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">H<tspan dy="5" fontSize="12">B</tspan></text>
+    <text x="126" y="162" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">H<tspan dy="5" fontSize="12">C</tspan></text>
+
+    {/* Orthocenter label */}
+    <text x="224" y="207" textAnchor="start" dominantBaseline="middle" fill="white" fontSize="18" fontFamily="serif">H</text>
+
+    {/* Side labels */}
+    <text x="210" y="333" textAnchor="middle" fill="white" fontSize="18" fontFamily="serif">a</text>
+    <text x="332" y="142" textAnchor="start" fill="white" fontSize="18" fontFamily="serif">b</text>
+    <text x="88" y="142" textAnchor="end" fill="white" fontSize="18" fontFamily="serif">c</text>
+
+  </svg>
+
+  {/* Legend System */}
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1.5rem', fontFamily: 'serif', fontSize: '18px' }}>
+    <div style={{ color: '#FF4D4D', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#FF4D4D', marginRight: '8px', display: 'inline-block' }}></span>
+      A: ∠H<sub>A</sub>AC &nbsp;|&nbsp; B: ∠CBH<sub>B</sub> &nbsp;|&nbsp; H<sub>B</sub>: ∠H<sub>A</sub>H<sub>B</sub>H &nbsp;|&nbsp; H<sub>C</sub>: ∠H<sub>B</sub>H<sub>C</sub>H &nbsp;(= 90° − C)
+    </div>
+    <div style={{ color: '#3399FF', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#3399FF', marginRight: '8px', display: 'inline-block' }}></span>
+      B: ∠H<sub>B</sub>BA &nbsp;|&nbsp; C: ∠ACH<sub>C</sub> &nbsp;|&nbsp; H<sub>A</sub>: ∠H<sub>B</sub>H<sub>A</sub>H = ∠H<sub>C</sub>H<sub>A</sub>H &nbsp;(= 90° − A)
+    </div>
+    <div style={{ color: '#00CC66', display: 'flex', alignItems: 'center' }}>
+      <span style={{ width: '12px', height: '12px', backgroundColor: '#00CC66', marginRight: '8px', display: 'inline-block' }}></span>
+      C: ∠H<sub>C</sub>CB &nbsp;|&nbsp; A: ∠BAH<sub>A</sub> &nbsp;|&nbsp; H<sub>B</sub>: ∠H<sub>C</sub>H<sub>B</sub>H &nbsp;|&nbsp; H<sub>C</sub>: ∠H<sub>A</sub>H<sub>C</sub>H &nbsp;(= 90° − B)
+    </div>
+  </div>
+</div>
+
+Configurations involving the feet of altitudes and the orthocenter frequently lead to cyclic quadrilaterals and angle-chasing opportunities. Whenever you see multiple altitudes, look for right angles and consider whether four points lie on a common circle.
+
+Triangle $\triangle H_A H_B H_C$ is called the **orthic triangle** of $\triangle ABC,$ and the diagram reveals a really nice property: the altitudes of $\triangle ABC$ are the *angle bisectors* of the orthic triangle! Also, the interior angles of the orthic triangle are
+
+$$180-2\angle A, 180-2\angle B, 180-2\angle C,$$
+
+which indeed sum to $540 - 2(\angle A+\angle B+\angle C) = 180^\circ.$
+
+
+### Location
+Up until now, we have been considering an acute triangle. What happens if the triangle is right, or obtuse?
+
+- In an acute triangle, the orthocenter is inside the triangle.
+- In a right triangle, the orthocenter is the right-angle vertex.
+- In an obtuse triangle, the orthocenter lies outside the triangle.
+
+
+In an acute triangle, all three altitudes lie inside the triangle. Therefore, the orthocenter also lies inside the triangle.
+
+If $\angle C=90^\circ$, then side $AC$ is perpendicular to $BC$. Since each leg already serves as an altitude, the orthocenter is the right-angle vertex itself.
+
+When a triangle contains an angle greater than $90^\circ$, some altitudes intersect extensions of the sides rather than the sides themselves. As a result, the orthocenter lies outside the triangle.
+
+
 
 ## Worked Example
 
 Triangle $ABC$ has area $24$ and base $BC=8$. Find the altitude from $A$.
 
-$24 = \frac{1}{2}\cdot 8 \cdot h$, so $h=6$.
+Using
+
+$$
+A=\frac{1}{2}bh,
+$$
+
+we get
+
+$$
+24=\frac{1}{2}(8)h.
+$$
+
+Thus
+
+$$
+24=4h,
+$$
+
+so
+
+$$
+h=6.
+$$
 
 ## More Examples
 
@@ -48,26 +470,120 @@ $24 = \frac{1}{2}\cdot 8 \cdot h$, so $h=6$.
 
 In a right triangle $ABC$ with right angle at $C$, where is the orthocenter?
 
-The orthocenter is $C$.
+Since the legs are already altitudes, the orthocenter is
+
+$$
+\boxed{C}.
+$$
 
 ### Example 2: Area and Alternate Base
 
 Triangle $ABC$ has area $30$ and side $AC=10$. Find the altitude from $B$.
 
-$h_b = 2A/AC = 60/10 = 6$.
+Using
+
+$$
+A=\frac{1}{2}bh,
+$$
+
+we obtain
+
+$$
+30=\frac{1}{2}(10)h.
+$$
+
+Thus
+
+$$
+h=6.
+$$
+
+### Example 3: Orthocenter Location
+
+A triangle has angles
+
+$$
+40^\circ,\quad 50^\circ,\quad 90^\circ.
+$$
+
+Where is its orthocenter?
+
+Because the triangle is right, the orthocenter lies at the right-angle vertex.
+
+### Example 4: Altitude to the Hypotenuse
+
+In a right triangle, the altitude to the hypotenuse divides the hypotenuse into segments of lengths $4$ and $9$. Find the altitude.
+
+Using
+
+$$
+CD^2=AD\cdot DB,
+$$
+
+we get
+
+$$
+CD^2=(4)(9)=36.
+$$
+
+Therefore,
+
+$$
+CD=6.
+$$
+
+### Example 5: Triangle DIH
+
+Let $ABC$ be an acute triangle with orthocenter $H$. Let $D$ and $I$ be the feet of the altitudes from $A$ and $B$, respectively.
+
+Find $\angle DIH$.
+
+Since $I$ lies on altitude $BI$, we have
+
+$$
+BI\perp AC.
+$$
+
+Also, $HD$ lies on altitude $AD$, so
+
+$$
+HD\perp BC.
+$$
+
+Because $DI$ lies along the side connecting two feet of altitudes, angle chasing shows that $D$, $I$, $B$, and $H$ lie on a common circle.
+
+Therefore,
+
+$$
+\angle DIH=\angle DBH=90^\circ.
+$$
+
+Thus,
+
+$$
+\boxed{\angle DIH=90^\circ}.
+$$
 
 ## Strategy Checklist
 
-- Mark which segment is the base for the altitude you need.
-- Use $A=\tfrac{1}{2}bh$ before introducing extra variables.
-- Decide triangle type to place the orthocenter correctly.
-- If an altitude creates similar triangles, compare ratios first.
+* Mark which segment is the base for the altitude you need.
+* Use $A=\tfrac{1}{2}bh$ before introducing extra variables.
+* Decide whether the triangle is acute, right, or obtuse before placing the orthocenter.
+* Look for right triangles created by altitudes.
+* Check for similar triangles whenever an altitude is dropped.
+* In right triangles, remember the altitude-to-hypotenuse relationships.
+* When multiple altitudes appear, search for cyclic quadrilaterals.
 
 ## Common Pitfalls
 
-- Forgetting the factor of $1/2$ in area.
-- Confusing altitude with median.
-- Using the wrong base for the altitude.
+* Forgetting the factor of $\frac{1}{2}$ in the area formula.
+* Confusing an altitude with a median.
+* Using the wrong base for a given altitude.
+* Assuming the orthocenter is always inside the triangle.
+* Missing similar triangles created by an altitude.
+* Forgetting that an altitude may land on an extension of a side in an obtuse triangle.
+* Overlooking cyclic quadrilaterals formed by altitude feet and the orthocenter.
+
 
 ## Practice Problems
 
