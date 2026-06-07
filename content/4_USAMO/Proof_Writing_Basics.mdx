@@ -2,8 +2,8 @@
 
 id: proof-writing-basics
 title: Proof Writing Basics
-author: Nico Young and Lalith 
-description: Structure, clarity, and rigor for olympiad proofs.
+author: Nico Young, Lrdmtns and Lalith 
+description: Structure, Clarity, and Rigor for olympiad proofs.
 prerequisites: []
 ---
 
@@ -25,80 +25,25 @@ The main idea of proof writing is that everyone who reads the proof should be ab
 * Write in complete sentences and justify each step.
 * Identify and highlight the key invariant, idea, or construction early.
 
+### How much do I need to write? 
+
+Answer: Include enough that grader will know that you know the solution. Additionally, if you have extra time you should always try to add extra detail to whatever you have written.
+
+General advice:
+- If you're not sure a lemma you're using is not well known, it is safer to **write down a complete statement of a lemma and the outline of a proof of it**. 
+- **Be careful of the definition!** Wrong claims or typo's can be fixed quite easily by a grader, but if you write a definition wrong there's no way a grader can fix it. In particular, **include diagram a if you need**. For Geo specifically, a box of coloured pencils can go a long way in making your proof more readable, it also makes it less likely a marker will misinterpret your proof.
+
+
 ---
+### Proof by Contradiction
 
-## Core Concepts
+First, you claim the *opposite* of what the question is asking is true. After that prove that, that is impossible, and thus you have a contradiction! Proving the original statement correct.
 
-### Induction
-
-To prove a statement for all integers $n \ge 1$, establish a base case and then
-show that truth for $n = k$ implies truth for $n = k+1$. However we cannot use this for statements which requires the state of multiple variables such as a degree 2 or more recursive sequence (Where strong induction will be used).
+This works when the question is a simple "Yes or No" style of question, much like Euclid's famous proof that there are infinitely many primes.
 
 #### Example
 
-**Claim.**
-$$
-1^3 + 2^3 + \cdots + n^3 = (1 + 2 + \cdots + n)^2.
-$$
-
-**Proof.**
-
-**Base Case ($n = 1$):**
-$$
-1^3 = 1^2,
-$$
-so the statement holds.
-
-**Inductive Step:**
-Assume the identity holds for $n = k$, i.e.,
-$$
-1^3 + 2^3 + \cdots + k^3 = (1 + 2 + \cdots + k)^2.
-$$
-
-We must prove it holds for $n = k+1$:
-$$
-1^3 + 2^3 + \cdots + k^3 + (k+1)^3 = (1 + 2 + \cdots + k + (k+1))^2.
-$$
-
-Using the inductive hypothesis, it suffices to show:
-$$
-(1 + 2 + \cdots + k + (k+1))^2 - (1 + 2 + \cdots + k)^2 = (k+1)^3.
-$$
-
-Apply the difference of squares:
-$$
-A^2 - B^2 = (A - B)(A + B),
-$$
-where
-$$
-A = 1 + 2 + \cdots + k + (k+1), \quad B = 1 + 2 + \cdots + k.
-$$
-
-Then
-$$
-A - B = k+1, \quad A + B = 2(1 + 2 + \cdots + k) + (k+1).
-$$
-
-Using
-$$
-1 + 2 + \cdots + k = \frac{k(k+1)}{2},
-$$
-we compute:
-$$
-A + B = k(k+1) + (k+1) = (k+1)^2.
-$$
-
-Thus,
-$$
-A^2 - B^2 = (k+1)(k+1)^2 = (k+1)^3.
-$$
-
-This completes the inductive step.
-
-Therefore, the statement holds for all $n \ge 1$. $\square$
-
 ---
-
 ### Logical Chain
 
 Ensure your argument follows a clear logical progression:
@@ -149,6 +94,22 @@ Good structure is essential for clarity:
 
 ---
 
+### Claim-Proof Format
+
+A couple definitions are in order:
+
+* **Theorem**: A large idea within a proof.
+* **Lemma**: A somewhat large idea within a proof, smaller than a Theorem but still a large idea in of itself.
+* **Corollary**: A small almost "Freebie" idea. A key note is that you still need to prove these in an olympiad setting, even if it feels "Trivial".
+
+The main advantage of this type of formatting is that, when writing a long proof you have the abilty to "Call back" to certain idea without having to describe it. It also helps massively with readability and clarity, as previously mentioned.
+
+Regarding the "Claim" part in the "Claim-Proof" format, after you make a claim, which can be a Theorem, Lemma or Corollary, you should try to prove it immediately after. Furthermore, label everything so it can be referanced later. You don't need to give them any fancy names "Claim 3" or "Lemma 2" work fine.
+
+#### Example
+
+---
+
 ### Completeness Checklist
 
 Many otherwise strong solutions lose points due to missing cases. Always verify:
@@ -171,62 +132,8 @@ Many otherwise strong solutions lose points due to missing cases. Always verify:
 * Usage of circular reasoning
 
 ---
-## mathematical argument 
-In this section we talk about mathematical proofs; 
-you can't get a $7$ if you're mathematically wrong. 
 
-### "Find all" type problem is always two-part problem
-
-Some olympiad problems look like this: 
-"Find all $n$ such that the condition holds."
-If you think the answer set is $S$, then 
-we need to prove the following: 
-- For $n\in S$ prove that the condition holds. 
-- For $n\notin S$, prove that $n$ doesn't satisfy the condition. 
-
-Notice that we have to prove **both** of two statements; 
-we need to write it down even if it's trivial! 
-It is a common mistake to forget writing "this clearly works" 
-and losing $1$ point in a contest. 
-Thus, we recommend writing the solution in the following form: 
-1. Start by describing all the solutions you found, which looks like 
-	"The answer is $n\in \{1, 2, 4, 12\}$". 
-2. Show that these solutions you stated works. You **must** write this 
-	even if it's trivial, because it's the part of the problem. 
-3. Prove that those are the only ones that satisfy the condition. 
-	Again, you must write this part even if it's trivial, 
-	since it's a part of the problem. 
-
-Note that sometimes part 2 and 3 can be swapped, though **you must write both**. 
-By skipping the trivial part, the grader cannot tell whether you know it is trivial or whether you do not know the proof and therefore did not write it.
-
-### optimization problem is always two-part problem
-
-Optimization problem works similarly as above; 
-suppose a problem with: "find the minimum/maximum of $m$" 
-and you've got the answer $M$, then we need to prove that: 
-- There **exists** a situation where $m=M$. 
-- For **all** possible configurations we must have that 
-	$M$ is the minimum/maximum of $m$. 
-
-Thus, we recommend writing proofs as follows: 
-1. Describe your answer by writing "The answer is $m=\text{(something)}$"
-2. Show that the bound is achieved: "which is achieved when blah blah". 
-3. Show that we always have $m\le M$ (or $m\ge M$).
-
-### How much do I need to write? 
-
-Answer: Include enough that grader will know that you know the solution. 
-For a general advise: 
-- If you're not sure a lemma you're using is not well known, 
-	it is safer to **write down a complete statement of a lemma and 
-	the outline of a proof of it**. 
-- **Be careful of the definition!** Wrong claims or typo's can be 
-	fixed quite easily by a grader, but if you write a definition wrong 
-	there's no way a grader can fix it. In particular, 
-	**include diagram a if you need.**
-
-## style argument 
+## Style
 
 In this section we talk about styles of writing: 
 make the paper more readable. 
@@ -294,6 +201,7 @@ Here's a short section about writing in the contest.
 	you can insert text or copy-paste it anytime. 
 	In hand-written solution, you can't do this, 
 	thus leaving space will help you. 
+- If you have time, draft the writeup or small parts of the writeup so you can work on clarity and check if the logic is sound.
 
 ## Example
 
@@ -307,7 +215,7 @@ Case 1:
 
 Now let us assume that $p\ne29$. Then we observe that the Greatest Common divisor of $p$ and $29$ is 1.
 
- The key idea here is to use$\boxed{Fermat's\;Little\;Theorem}$ to get:
+ The key idea here is to use $\boxed{Fermat's\;Little\;Theorem}$ to get:
 $$
 29^{p-1} \equiv 1\:(mod\:p) \implies 29^p \equiv 29\:(mod\:p)
 $$

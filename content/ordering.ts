@@ -308,18 +308,14 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
   usamo: [
     {
       name: 'Proof Writing',
-      items: ['proof-writing-basics'],
+      items: ['proof-writing-basics','strategy-writeup'],
     },
     {
-      name: 'Induction and Extremal Principle',
-      items: ['induction-extremal'],
+      name: 'Olympiad Combinatorics',
+      items: ['induction-extremal','graph-theory-intro'],
     },
     {
-      name: 'Graph Theory (Intro)',
-      items: ['graph-theory-intro'],
-    },
-    {
-      name: 'Advanced Inequalities',
+      name: 'Olympiad Algebra',
       items: ['inequalities-olympiad'],
     },
     {
@@ -329,10 +325,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
     {
       name: 'Olympiad Geometry',
       items: ['olympiad-geometry'],
-    },
-    {
-      name: 'Strategy and Writeups',
-      items: ['strategy-writeup'],
     },
   ],
 };
