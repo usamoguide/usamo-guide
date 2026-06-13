@@ -25,17 +25,23 @@ In many inequalities, given conditions can make direct approaches cumbersome. In
 
 #### Example
 
-$$\text{Given } abc = 1,\ \text{prove that } a^2 + b^2 + c^2 \ge a + b + c.$$
+$$
+\text{Given } abc = 1,\ \text{prove that } a^2 + b^2 + c^2 \ge a + b + c.
+$$
 
 At first glance, this inequality may seem difficult to approach. A useful observation is that most classical inequalities (such as AM-GM or Cauchy-Schwarz) are naturally applied to *homogeneous* expressions.
 
 An expression is called *homogeneous* if all its terms have the same total degree. This property is powerful because it allows scaling: variables can be multiplied by a constant without changing the structure of the inequality.
 
 To homogenize, rewrite the inequality using the condition $abc = 1$:
-$$a^2 + b^2 + c^2 \ge a(abc)^{\frac{1}{3}} + b(abc)^{\frac{1}{3}} + c(abc)^{\frac{1}{3}}.$$
+$$
+a^2 + b^2 + c^2 \ge a(abc)^{\frac{1}{3}} + b(abc)^{\frac{1}{3}} + c(abc)^{\frac{1}{3}}.
+$$
 
 Now both sides have degree 2, and the inequality follows immediately from AM-GM:
-$$a^2 \ge a,\quad b^2 \ge b,\quad c^2 \ge c.$$
+$$
+a^2 \ge a,\quad b^2 \ge b,\quad c^2 \ge c.
+$$
 
 Summing yields the desired result. $\square$
 
@@ -46,13 +52,19 @@ While homogenization is effective, substitutions can often streamline the proces
 Common substitutions include:
 
 * If $abc = 1$, let
-  $$a = \frac{x}{y},\quad b = \frac{y}{z},\quad c = \frac{z}{x}.$$
+  $$
+  a = \frac{x}{y},\quad b = \frac{y}{z},\quad c = \frac{z}{x}.
+  $$
 
 * For expressions involving reciprocals, consider
-  $$a = \frac{1}{x},\quad b = \frac{1}{y},\quad c = \frac{1}{z}.$$
+  $$
+  a = \frac{1}{x},\quad b = \frac{1}{y},\quad c = \frac{1}{z}.
+  $$
 
 * In symmetric expressions, substitutions such as
-  $$a = xy,\quad b = yz,\quad c = zx$$
+  $$
+  a = xy,\quad b = yz,\quad c = zx
+  $$
   can simplify the structure and reveal hidden symmetry.
 
 Choosing the right substitution is often guided by experience and by examining the form of the inequality.
@@ -60,7 +72,9 @@ Choosing the right substitution is often guided by experience and by examining t
 ### Proof Techniques
 
 To prove an inequality of the form $A \ge C$, a common strategy is to construct a chain:
-$$A \ge B \ge D \ge C.$$
+$$
+A \ge B \ge D \ge C.
+$$
 
 Finding appropriate intermediate expressions is often the central challenge.
 

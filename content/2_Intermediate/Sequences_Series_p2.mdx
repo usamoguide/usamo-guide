@@ -9,7 +9,9 @@ prerequisites: ["algebraic-manipulations", "polynomials-fundamentals"]
 ## 9. Linear Recurrences
 
 If a sequence is defined by $x_n = A x_{n-1} + B x_{n-2}$, assume a geometric solution $x_n = r^n$. Substituting yields the **Characteristic Equation**:
-$$ r^2 - Ar - B = 0 $$
+$$
+r^2 - Ar - B = 0
+$$
 If this quadratic has distinct roots $r_1, r_2$, the formula is $x_n = C_1(r_1)^n + C_2(r_2)^n$.
 * **Repeated Roots:** If $(r-1)^2 = 0$, the roots repeat, and the solution takes the form $a_n = C_1 + C_2n$.
 * **Complex Roots:** Equations like $r^2 - 2r + 2 = 0$ yield $1 \pm i$. This indicates the sequence will oscillate.
@@ -57,15 +59,21 @@ Formula: $a_n = 2n^2 - n + 1$.
 Expand the expression inside the sum: $\sum_{k=1}^{40} (k^2 + 2k)$.
 Use the linearity of summation: $\sum_{k=1}^{40} k^2 + 2\sum_{k=1}^{40} k$.
 Apply the known power sum formulas with $n=40$:
-$$ \frac{40(41)(81)}{6} + 2 \left(\frac{40(41)}{2}\right) $$
-$$ 22140 + 1640 = 23780 $$
+$$
+\frac{40(41)(81)}{6} + 2 \left(\frac{40(41)}{2}\right)
+$$
+$$
+22140 + 1640 = 23780
+$$
 
 ### Example 3: Hidden Multiple Geometric Series
 **Problem:** Evaluate $\sum_{k=1}^{\infty} \frac{2^k + 3^k}{5^k}$.
 
 **Solution:**
 Split the fraction into two separate infinite geometric series:
-$$ \sum_{k=1}^{\infty} \left(\frac{2}{5}\right)^k + \sum_{k=1}^{\infty} \left(\frac{3}{5}\right)^k $$
+$$
+\sum_{k=1}^{\infty} \left(\frac{2}{5}\right)^k + \sum_{k=1}^{\infty} \left(\frac{3}{5}\right)^k
+$$
 For the first series: $a = \frac{2}{5}, r = \frac{2}{5} \implies S_1 = \frac{2/5}{1 - 2/5} = \frac{2}{3}$.
 For the second series: $a = \frac{3}{5}, r = \frac{3}{5} \implies S_2 = \frac{3/5}{1 - 3/5} = \frac{3}{2}$.
 Total sum: $\frac{2}{3} + \frac{3}{2} = \frac{13}{6}$.
@@ -76,41 +84,67 @@ Total sum: $\frac{2}{3} + \frac{3}{2} = \frac{13}{6}$.
 **Solution:**
 Set up partial fractions: $\frac{1}{k(k+2)} = \frac{1}{2} \left(\frac{1}{k} - \frac{1}{k+2}\right)$.
 Because the gap between denominators is $2$, two positive terms survive at the start and two negative terms survive at the end.
-$$ \frac{1}{2} \left( \frac{1}{1} + \frac{1}{2} - \frac{1}{100} - \frac{1}{101} \right) $$
-$$ \frac{1}{2} \left( \frac{3}{2} - \frac{201}{10100} \right) = \frac{14949}{20200} $$
+$$
+\frac{1}{2} \left( \frac{1}{1} + \frac{1}{2} - \frac{1}{100} - \frac{1}{101} \right)
+$$
+$$
+\frac{1}{2} \left( \frac{3}{2} - \frac{201}{10100} \right) = \frac{14949}{20200}
+$$
 
 ### Example 5: The Recursive Fixed Point Limit
 **Problem:** A sequence is defined by $a_1 = 3$ and $a_{n+1} = \frac{5a_n - 4}{a_n + 1}$. Assuming the sequence converges, find its limit.
 
 **Solution:**
 At infinity, both $a_n$ and $a_{n+1}$ become indistinguishable from the limit $L$.
-$$ L = \frac{5L - 4}{L + 1} $$
-$$ L^2 + L = 5L - 4 $$
-$$ L^2 - 4L + 4 = 0 $$
-$$ (L - 2)^2 = 0 \implies L = 2 $$
+$$
+L = \frac{5L - 4}{L + 1}
+$$
+$$
+L^2 + L = 5L - 4
+$$
+$$
+L^2 - 4L + 4 = 0
+$$
+$$
+(L - 2)^2 = 0 \implies L = 2
+$$
 
 ### Example 6: The Arithmetico-Geometric Series (AGS)
 **Problem:** Evaluate the infinite sum $S = \sum_{n=1}^\infty \frac{n}{2^n}$.
 
 **Solution:**
 Write out the first few terms to see the structure:
-$$ S = \frac{1}{2} + \frac{2}{4} + \frac{3}{8} + \frac{4}{16} + \dots $$
+$$
+S = \frac{1}{2} + \frac{2}{4} + \frac{3}{8} + \frac{4}{16} + \dots
+$$
 Multiply the entire sum by the common geometric ratio $r = 1/2$:
-$$ \frac{1}{2}S = \frac{1}{4} + \frac{2}{8} + \frac{3}{16} + \dots $$
+$$
+\frac{1}{2}S = \frac{1}{4} + \frac{2}{8} + \frac{3}{16} + \dots
+$$
 Subtract the shifted sum from the original sum. Notice how aligning the denominators causes the arithmetic numerator to drop to a constant $1$:
-$$ S - \frac{1}{2}S = \frac{1}{2} + \left(\frac{2}{4} - \frac{1}{4}\right) + \left(\frac{3}{8} - \frac{2}{8}\right) + \dots $$
-$$ \frac{1}{2}S = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \dots $$
+$$
+S - \frac{1}{2}S = \frac{1}{2} + \left(\frac{2}{4} - \frac{1}{4}\right) + \left(\frac{3}{8} - \frac{2}{8}\right) + \dots
+$$
+$$
+\frac{1}{2}S = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \dots
+$$
 The right side is now a pure geometric series summing to $1$.
-$$ \frac{1}{2}S = 1 \implies S = 2 $$
+$$
+\frac{1}{2}S = 1 \implies S = 2
+$$
 
 ### Example 7: Radical Telescoping
 **Problem:** Evaluate $\sum_{n=1}^{99} \frac{1}{\sqrt{n} + \sqrt{n+1}}$.
 
 **Solution:**
 Rationalize the denominator by multiplying by the conjugate $\sqrt{n+1} - \sqrt{n}$:
-$$ \frac{1}{\sqrt{n} + \sqrt{n+1}} \cdot \frac{\sqrt{n+1} - \sqrt{n}}{\sqrt{n+1} - \sqrt{n}} = \sqrt{n+1} - \sqrt{n} $$
+$$
+\frac{1}{\sqrt{n} + \sqrt{n+1}} \cdot \frac{\sqrt{n+1} - \sqrt{n}}{\sqrt{n+1} - \sqrt{n}} = \sqrt{n+1} - \sqrt{n}
+$$
 Now write out the telescoped sum:
-$$ (\sqrt{2} - \sqrt{1}) + (\sqrt{3} - \sqrt{2}) + \dots + (\sqrt{100} - \sqrt{99}) $$
+$$
+(\sqrt{2} - \sqrt{1}) + (\sqrt{3} - \sqrt{2}) + \dots + (\sqrt{100} - \sqrt{99})
+$$
 The middle collapses entirely, leaving only $\sqrt{100} - \sqrt{1} = 10 - 1 = 9$.
 
 ### Example 8: Solving a Linear Recurrence
@@ -118,7 +152,9 @@ The middle collapses entirely, leaving only $\sqrt{100} - \sqrt{1} = 10 - 1 = 9$
 
 **Solution:**
 Set up the characteristic equation:
-$$ r^2 - 5r + 6 = 0 $$
+$$
+r^2 - 5r + 6 = 0
+$$
 Factoring yields $(r-2)(r-3) = 0$, so the roots are $r_1 = 2$ and $r_2 = 3$. 
 General solution: $a_n = C_1(2)^n + C_2(3)^n$.
 Using initial conditions:
@@ -133,9 +169,13 @@ Explicit formula: $a_n = 3^n - 2^n$.
 Unlike standard partial fractions, this numerator looks troublesome. However, look for the derivative or a difference of squares in the numerator.
 Notice that $(k+1)^2 - k^2 = (k^2+2k+1) - k^2 = 2k+1$.
 Rewrite the fraction:
-$$ \frac{(k+1)^2 - k^2}{k^2(k+1)^2} = \frac{(k+1)^2}{k^2(k+1)^2} - \frac{k^2}{k^2(k+1)^2} = \frac{1}{k^2} - \frac{1}{(k+1)^2} $$
+$$
+\frac{(k+1)^2 - k^2}{k^2(k+1)^2} = \frac{(k+1)^2}{k^2(k+1)^2} - \frac{k^2}{k^2(k+1)^2} = \frac{1}{k^2} - \frac{1}{(k+1)^2}
+$$
 The fraction telescopes perfectly! 
-$$ \left(\frac{1}{1^2} - \frac{1}{2^2}\right) + \left(\frac{1}{2^2} - \frac{1}{3^2}\right) + \dots + \left(\frac{1}{100^2} - \frac{1}{101^2}\right) $$
+$$
+\left(\frac{1}{1^2} - \frac{1}{2^2}\right) + \left(\frac{1}{2^2} - \frac{1}{3^2}\right) + \dots + \left(\frac{1}{100^2} - \frac{1}{101^2}\right)
+$$
 The sum completely collapses to $1 - \frac{1}{101^2}$.
 
 ### Example 11: Summation by Pairing
@@ -146,7 +186,9 @@ While you could expand this into $101\sum k - \sum k^2$ and use power formulas, 
 Let the sum be $S = 1(100) + 2(99) + 3(98) + \dots + 99(2) + 100(1)$.
 Notice that term 1 equals term 100, term 2 equals term 99, etc. 
 This symmetric behavior implies you only need to evaluate the first 50 terms and double it:
-$$ S = 2 \sum_{k=1}^{50} k(101-k) $$
+$$
+S = 2 \sum_{k=1}^{50} k(101-k)
+$$
 This reduces the computational load and minimizes arithmetic errors during contests.
 
 ### Example 12: Sequence as a Polynomial Difference
@@ -154,7 +196,9 @@ This reduces the computational load and minimizes arithmetic errors during conte
 
 **Solution:**
 Evaluate the difference explicitly:
-$$ b_n = (n+1)^3 - n^3 = (n^3 + 3n^2 + 3n + 1) - n^3 = 3n^2 + 3n + 1 $$
+$$
+b_n = (n+1)^3 - n^3 = (n^3 + 3n^2 + 3n + 1) - n^3 = 3n^2 + 3n + 1
+$$
 The sequence $b_n$ is a quadratic polynomial. Taking the difference of any polynomial sequence lowers its degree by exactly 1.
 
 ### Example 13: The Synthesis
@@ -162,11 +206,17 @@ The sequence $b_n$ is a quadratic polynomial. Taking the difference of any polyn
 
 **Solution:**
 Generate a telescoping form by rewriting the numerator:
-$$ \frac{k}{(k+1)!} = \frac{(k+1) - 1}{(k+1)!} = \frac{k+1}{(k+1)!} - \frac{1}{(k+1)!} $$
+$$
+\frac{k}{(k+1)!} = \frac{(k+1) - 1}{(k+1)!} = \frac{k+1}{(k+1)!} - \frac{1}{(k+1)!}
+$$
 Simplify the left fraction by cancelling $(k+1)$:
-$$ \frac{1}{k!} - \frac{1}{(k+1)!} $$
+$$
+\frac{1}{k!} - \frac{1}{(k+1)!}
+$$
 We have successfully engineered a perfect telescoping series! Now write out the sum:
-$$ \left(\frac{1}{1!} - \frac{1}{2!}\right) + \left(\frac{1}{2!} - \frac{1}{3!}\right) + \dots + \left(\frac{1}{100!} - \frac{1}{101!}\right) $$
+$$
+\left(\frac{1}{1!} - \frac{1}{2!}\right) + \left(\frac{1}{2!} - \frac{1}{3!}\right) + \dots + \left(\frac{1}{100!} - \frac{1}{101!}\right)
+$$
 Every intermediate term cancels, leaving $1 - \frac{1}{101!}$.
 
 ## Practice Problems

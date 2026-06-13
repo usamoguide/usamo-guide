@@ -51,6 +51,7 @@ const ItemLink = ({
         className={`link-with-progress-container ${linkWithProgressColorClass}`}
       >
         <Link
+          prefetch={false}
           to={`${link.url}${
             typeof location !== 'undefined' ? location.search : ''
           }`}

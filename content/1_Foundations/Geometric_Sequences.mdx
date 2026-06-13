@@ -130,11 +130,15 @@ The product is shown through $a^3$, so $a$ can be found. Thus, we know that the 
 
 **Concept:** When $x \neq 0$ and $x \neq y$, the factorization
  
-$$x^n - y^n = (x - y)(x^{n-1} + x^{n-2}y + x^{n-3}y^2 + \cdots + xy^{n-2} + y^{n-1})$$
+$$
+x^n - y^n = (x - y)(x^{n-1} + x^{n-2}y + x^{n-3}y^2 + \cdots + xy^{n-2} + y^{n-1})
+$$
  
 is the same as the relationship found by summing the geometric series with first term $x^{n-1}$ and common ratio $y/x$:
  
-$$x^{n-1} + x^{n-2}y + x^{n-3}y^2 + \cdots + xy^{n-2} + y^{n-1} = \frac{x^{n-1}\!\left(\left(\frac{y}{x}\right)^n - 1\right)}{\frac{y}{x} - 1} = \frac{y^n - x^n}{y - x} = \frac{x^n - y^n}{x - y}.$$
+$$
+x^{n-1} + x^{n-2}y + x^{n-3}y^2 + \cdots + xy^{n-2} + y^{n-1} = \frac{x^{n-1}\!\left(\left(\frac{y}{x}\right)^n - 1\right)}{\frac{y}{x} - 1} = \frac{y^n - x^n}{y - x} = \frac{x^n - y^n}{x - y}.
+$$
 
 ## More Examples
 
@@ -272,11 +276,15 @@ The three terms are $\boxed{4, 10, 25}$.
  
 Solution: We first identify this as a geometric series. The first term is $a = 4$. To find the common ratio, we divide the second term by the first:
  
-$$r = \frac{-8/3}{4} = -\frac{2}{3}.$$
+$$
+r = \frac{-8/3}{4} = -\frac{2}{3}.
+$$
  
 Since $|r| = \frac{2}{3} < 1$, the series converges. Applying the infinite geometric series formula $S = \dfrac{a}{1 - r}$,
  
-$$S = \frac{4}{1 - \left(-\dfrac{2}{3}\right)} = \frac{4}{\dfrac{5}{3}} = 4 \cdot \frac{3}{5} = \boxed{\dfrac{12}{5}}.$$
+$$
+S = \frac{4}{1 - \left(-\dfrac{2}{3}\right)} = \frac{4}{\dfrac{5}{3}} = 4 \cdot \frac{3}{5} = \boxed{\dfrac{12}{5}}.
+$$
  
 ---
  
@@ -288,23 +296,33 @@ Solution: We could multiply out the numerator and wade through long division of 
 $\\$
 Writing $t^2 + t + 1$ as $1 + t + t^2$, we recognize it as a geometric series with first term $1$ and common ratio $t$, so we have
  
-$$1 + t + t^2 = \frac{1(t^3 - 1)}{t - 1} = \frac{t^3 - 1}{t - 1}.$$
+$$
+1 + t + t^2 = \frac{1(t^3 - 1)}{t - 1} = \frac{t^3 - 1}{t - 1}.
+$$
  
 You might also have recognized this relationship by noting that $t^2 + t + 1$ is a factor of $t^3 - 1$.
 $\\$
 Similarly, the series $1 + t^3 + t^6 + t^9 + t^{12}$ is geometric with first term $1$ and common ratio $t^3$, and the series $1 + t^5 + t^{10}$ is geometric with first term $1$ and common ratio $t^5$. So we have
  
-$$1 + t^3 + t^6 + t^9 + t^{12} = \frac{1\left((t^3)^5 - 1\right)}{t^3 - 1} = \frac{t^{15} - 1}{t^3 - 1},$$
+$$
+1 + t^3 + t^6 + t^9 + t^{12} = \frac{1\left((t^3)^5 - 1\right)}{t^3 - 1} = \frac{t^{15} - 1}{t^3 - 1},
+$$
  
-$$1 + t^5 + t^{10} = \frac{1\left((t^5)^3 - 1\right)}{t^5 - 1} = \frac{t^{15} - 1}{t^5 - 1}.$$
+$$
+1 + t^5 + t^{10} = \frac{1\left((t^5)^3 - 1\right)}{t^5 - 1} = \frac{t^{15} - 1}{t^5 - 1}.
+$$
  
 We see a lot of common factors among our new expressions, so we expect we can do a lot of cancellation:
  
-$$\frac{(t^2+t+1)(t^{12}+t^9+t^6+t^3+1)}{t^{10}+t^5+1} = \frac{\dfrac{t^3-1}{t-1} \cdot \dfrac{t^{15}-1}{t^3-1}}{\dfrac{t^{15}-1}{t^5-1}} = \frac{(t^3 - 1)(t^{15} - 1)(t^5 - 1)}{(t^{15} - 1)(t - 1)(t^3 - 1)}.$$
+$$
+\frac{(t^2+t+1)(t^{12}+t^9+t^6+t^3+1)}{t^{10}+t^5+1} = \frac{\dfrac{t^3-1}{t-1} \cdot \dfrac{t^{15}-1}{t^3-1}}{\dfrac{t^{15}-1}{t^5-1}} = \frac{(t^3 - 1)(t^{15} - 1)(t^5 - 1)}{(t^{15} - 1)(t - 1)(t^3 - 1)}.
+$$
  
 Cancelling $(t^3 - 1)$ and $(t^{15} - 1)$ from numerator and denominator,
  
-$$= \frac{t^5 - 1}{t - 1} = \frac{(t-1)(t^4 + t^3 + t^2 + t + 1)}{t - 1} = \boxed{t^4 + t^3 + t^2 + t + 1}.$$
+$$
+= \frac{t^5 - 1}{t - 1} = \frac{(t-1)(t^4 + t^3 + t^2 + t + 1)}{t - 1} = \boxed{t^4 + t^3 + t^2 + t + 1}.
+$$
 
 ## Common Pitfalls
 

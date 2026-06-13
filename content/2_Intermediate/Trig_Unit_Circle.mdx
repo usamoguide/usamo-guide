@@ -12,7 +12,9 @@ If right-triangle trigonometry is the vocabulary of trig, the **unit circle** is
 
 The **unit circle** is the circle of radius $1$ centered at the origin of the coordinate plane. Its equation is simply:
 
-$$x^2 + y^2 = 1$$
+$$
+x^2 + y^2 = 1
+$$
 
 Every point $(x, y)$ on this circle will turn out to encode a complete trigonometric story.
 
@@ -22,11 +24,15 @@ Before diving into the circle itself, we need to talk about how we *measure* ang
 
 One radian is the angle subtended at the center of a circle by an arc whose length equals the radius. Since the circumference of the unit circle is $2\pi$, a full revolution corresponds to exactly $2\pi$ radians. Hence:
 
-$$2\pi \text{ rad} = 360°$$
+$$
+2\pi \text{ rad} = 360°
+$$
 
 To convert between the two systems, let $d$ be an angle in degrees and $r$ its radian measure:
 
-$$r = \frac{\pi d}{180}, \qquad d = \frac{180r}{\pi}$$
+$$
+r = \frac{\pi d}{180}, \qquad d = \frac{180r}{\pi}
+$$
 
 Some conversions worth memorizing:
 
@@ -54,11 +60,15 @@ Pick any point $P = (x, y)$ on the unit circle and draw the segment from the ori
 
 Let $\theta$ be the angle at $O$, measured counterclockwise from the positive $x$-axis. Applying the standard SOH-CAH-TOA definitions:
 
-$$\cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}} = \frac{OA}{1} = x, \qquad \sin\theta = \frac{\text{opposite}}{\text{hypotenuse}} = \frac{AP}{1} = y$$
+$$
+\cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}} = \frac{OA}{1} = x, \qquad \sin\theta = \frac{\text{opposite}}{\text{hypotenuse}} = \frac{AP}{1} = y
+$$
 
 This yields the central fact:
 
-$$\boxed{(\cos\theta,\; \sin\theta) \text{ are precisely the } (x,y)\text{-coordinates of the point on the unit circle at angle } \theta.}$$
+$$
+\boxed{(\cos\theta,\; \sin\theta) \text{ are precisely the } (x,y)\text{-coordinates of the point on the unit circle at angle } \theta.}
+$$
 
 The power of this definition is that it works for *any* angle. When $\theta$ moves into the second quadrant, $x$ becomes negative, so $\cos\theta < 0$.
 
@@ -66,11 +76,15 @@ The power of this definition is that it works for *any* angle. When $\theta$ mov
 
 Since every point on the unit circle satisfies $x^2 + y^2 = 1$, substituting $x = \cos\theta$ and $y = \sin\theta$ gives immediately:
 
-$$\cos^2\theta + \sin^2\theta = 1$$
+$$
+\cos^2\theta + \sin^2\theta = 1
+$$
 
 This is the **Pythagorean Identity**, the single most useful trig identity. Dividing through by $\cos^2\theta$ or $\sin^2\theta$ yields two more:
 
-$$1 + \tan^2\theta = \sec^2\theta, \qquad \cot^2\theta + 1 = \csc^2\theta$$
+$$
+1 + \tan^2\theta = \sec^2\theta, \qquad \cot^2\theta + 1 = \csc^2\theta
+$$
 
 ## Signed Angles and the Four Quadrants
 
@@ -156,7 +170,9 @@ The **special angles** are those for which the coordinates can be computed exact
 
 Rather than memorizing this table as a list of facts, notice the pattern in the sine column for the first quadrant:
 
-$$\sin 0° = \frac{\sqrt{0}}{2}, \quad \sin 30° = \frac{\sqrt{1}}{2}, \quad \sin 45° = \frac{\sqrt{2}}{2}, \quad \sin 60° = \frac{\sqrt{3}}{2}, \quad \sin 90° = \frac{\sqrt{4}}{2}$$
+$$
+\sin 0° = \frac{\sqrt{0}}{2}, \quad \sin 30° = \frac{\sqrt{1}}{2}, \quad \sin 45° = \frac{\sqrt{2}}{2}, \quad \sin 60° = \frac{\sqrt{3}}{2}, \quad \sin 90° = \frac{\sqrt{4}}{2}
+$$
 
 The numerators run $\sqrt{0}, \sqrt{1}, \sqrt{2}, \sqrt{3}, \sqrt{4}$ in order. The cosine column runs the same sequence in reverse.
 
@@ -169,7 +185,9 @@ A right triangle $AOB$ with right angle at $A$ lies on the Cartesian plane such 
 
 When defining sine and cosine in terms of the unit circle, lengths can be negative. If $\overline{OA}$ extends along the negative $x$-axis, then $OA$ is negative; if $\overline{AB}$ extends below the $x$-axis, $AB$ is negative. Under this convention:
 
-$$\sin(\theta) = \frac{AB}{OB} = \frac{AB}{1} = AB, \qquad \cos(\theta) = \frac{OA}{OB} = \frac{OA}{1} = OA$$
+$$
+\sin(\theta) = \frac{AB}{OB} = \frac{AB}{1} = AB, \qquad \cos(\theta) = \frac{OA}{OB} = \frac{OA}{1} = OA
+$$
 
 The sine of an angle is the $y$-coordinate of its point on the unit circle; the cosine is the $x$-coordinate.
 
@@ -179,7 +197,9 @@ The sine of an angle is the $y$-coordinate of its point on the unit circle; the 
 
 Since the coordinates are $(\cos\theta, \sin\theta)$:
 
-$$\cos\frac{\pi}{4} = \frac{\sqrt{2}}{2}, \qquad \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}$$
+$$
+\cos\frac{\pi}{4} = \frac{\sqrt{2}}{2}, \qquad \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}
+$$
 
 So the point is $\left(\dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{2}}{2}\right)$. $\square$
 
@@ -187,11 +207,15 @@ So the point is $\left(\dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{2}}{2}\right)$. $\squar
 
 Since $x = \cos\theta$, we have $\cos^2\theta = \dfrac{1}{4}$. By the Pythagorean identity:
 
-$$\sin^2\theta = 1 - \cos^2\theta = 1 - \frac{1}{4} = \frac{3}{4}$$
+$$
+\sin^2\theta = 1 - \cos^2\theta = 1 - \frac{1}{4} = \frac{3}{4}
+$$
 
 Therefore:
 
-$$\tan^2\theta = \frac{\sin^2\theta}{\cos^2\theta} = \frac{3/4}{1/4} = 3 \qquad \square$$
+$$
+\tan^2\theta = \frac{\sin^2\theta}{\cos^2\theta} = \frac{3/4}{1/4} = 3 \qquad \square
+$$
 
 ## Allied Angles (Reduction Formulas)
 
@@ -213,7 +237,9 @@ That's it. You can derive any entry in the tables below on the fly.
 
 Place $\theta$ in Quadrant I, so the point is $(\cos\theta, \sin\theta)$. Rotating $90°$ counterclockwise maps $(x, y) \mapsto (-y, x)$, so the new point is $(-\sin\theta, \cos\theta)$. The $y$-coordinate of this new point is $\cos\theta$, and $90° + \theta$ lands in Quadrant II where sine is positive. Hence:
 
-$$\sin(90° + \theta) = \cos\theta$$
+$$
+\sin(90° + \theta) = \cos\theta
+$$
 
 Every formula below follows from the same rotation argument.
 
@@ -306,12 +332,18 @@ $90°$ shift → function swaps ($\csc \to \sec$). $90° + \theta$ lands in Q II
 
 The angle $130°$ lies in Quadrant II, so $\sin 130° > 0$ and $\cos 130° < 0$. To determine the sign of their sum, note that $130° = 180° - 50°$. Using the cofunction shift:
 
-$$\sin 130° = \sin(180° - 50°) = \sin 50°$$
-$$\cos 130° = -\cos 50°$$
+$$
+\sin 130° = \sin(180° - 50°) = \sin 50°
+$$
+$$
+\cos 130° = -\cos 50°
+$$
 
 So $R = \sin 50° - \cos 50°$. Since $50° > 45°$, we have $\sin 50° > \cos 50°$ (sine exceeds cosine for angles past $45°$ in the first quadrant), hence:
 
-$$R = \sin 50° - \cos 50° > 0$$
+$$
+R = \sin 50° - \cos 50° > 0
+$$
 
 $\boxed{R > 0}$
 

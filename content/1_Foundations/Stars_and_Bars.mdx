@@ -36,7 +36,9 @@ groups. Each arrangement corresponds to exactly one way to split $n$ objects
 into $k$ boxes. Hence, there are $n + k - 1$ total symbols (stars and bars), and we
 choose which $k-1$ of those positions are bars:
 
-$$\binom{n+k-1}{k-1} = \binom{n+k-1}{n}.$$
+$$
+\binom{n+k-1}{k-1} = \binom{n+k-1}{n}.
+$$
 
 Both forms are equal by symmetry as said in Binomial Theorem & Pascal's Triangle 1.  
 
@@ -52,7 +54,9 @@ $k-1$ bars gives us the same way as this. There is also the notation of H that s
 
 In some problems, there may be a condition in which where the Stars and Bars method may be used. $x_i \geq a_i$, substitute $y_i = x_i - a_i \geq 0$. The equation becomes
 
-$$y_1 + y_2 + \cdots + y_k = n - (a_1 + a_2 + \cdots + a_k),$$
+$$
+y_1 + y_2 + \cdots + y_k = n - (a_1 + a_2 + \cdots + a_k),
+$$
 
 and the non-negative formula applies to the $y_i$.
 
@@ -71,11 +75,15 @@ each child may receive zero or more books?
 
 This is the number of non-negative integer solutions to $x_1 + x_2 + x_3 = 8$.
 
-$$\binom{8 + 3 - 1}{3 - 1} = \binom{10}{2} = 45.$$
+$$
+\binom{8 + 3 - 1}{3 - 1} = \binom{10}{2} = 45.
+$$
 
 If instead each child must receive at least one book, 
 
-$$\binom{8-1}{3-1} = \binom{7}{2} = 21.$$
+$$
+\binom{8-1}{3-1} = \binom{7}{2} = 21.
+$$
  
 ## More Examples
 
@@ -91,7 +99,9 @@ How many ways can you write 12 as an ordered sum of 4 positive integers?
 
 Positive solutions to $x_1 + x_2 + x_3 + x_4 = 12$:
 
-$$\binom{12-1}{4-1} = \binom{11}{3} = 165.$$
+$$
+\binom{12-1}{4-1} = \binom{11}{3} = 165.
+$$
 
 ### Example 3: Lower Bound Shift
 
@@ -100,7 +110,9 @@ $x \geq 2$, $y \geq 3$, $z \geq 0$?
 
 Substitute $a = x - 2 \geq 0$ and $b = y - 3 \geq 0$:
 
-$$a + b + z = 15 - 2 - 3 = 10.$$
+$$
+a + b + z = 15 - 2 - 3 = 10.
+$$
 
 Thus, we obtain $$\binom{10 + 3 - 1}{3 - 1} = \binom{12}{2} = 66.$$
 
@@ -121,7 +133,9 @@ all remaining go elsewhere. Specifically, $5+5=10$ forces the third box to have
 
 No triple overlap (would need $\geq 15$ balls).
 
-$$|A_1 \cup A_2 \cup A_3| = 3(21) - 3(1) + 0 = 60.$$
+$$
+|A_1 \cup A_2 \cup A_3| = 3(21) - 3(1) + 0 = 60.
+$$
 
 Solutions with each box $\leq 4$: $66 - 60 = \boxed{6}$.
 

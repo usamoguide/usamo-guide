@@ -67,7 +67,9 @@ By Cauchy-Schwarz, it is at most $\sqrt{13\cdot 5} = \sqrt{65}$.
 Let $a,b,c$ be real numbers $>0$ that satisfy $a+b+c=6$. Your job is to find the MAXIMUM value of the following expression: $\sqrt{a+ab}+\sqrt{b+bc}+\sqrt{c+ca}$.
 
 First, we can rewrite the expression as $\sqrt{a(1+b)}+\sqrt{b(1+c)}+\sqrt{c(1+a)}$, and this is the key step as it allows for the next crucial step. We can exploit this expression via Cauchy Schwarz as follows:
-$$(\sqrt{a(1+b)}+\sqrt{b(1+c)}+\sqrt{c(1+a)})^2 \le (a+b+c)((1+a)+(1+b)+(1+c)).$$
+$$
+(\sqrt{a(1+b)}+\sqrt{b(1+c)}+\sqrt{c(1+a)})^2 \le (a+b+c)((1+a)+(1+b)+(1+c)).
+$$
 This then becomes $6(9)=54$, and thus we get that the maximum is $3\sqrt6$.
 
 ### Example 5: Integer Triples!
@@ -75,9 +77,13 @@ This then becomes $6(9)=54$, and thus we get that the maximum is $3\sqrt6$.
 You are given that positive integers $x,y,z$ satisfy the equation $x+y+z=12$. Your job is to find the MINIMUM value of the following expression: $\frac1x+\frac1y+\frac1z$.
 
 This problem is easier than the last one as we can directly apply Cauchy-Schwarz,
-$$(x+y+z)\left(\frac1x+\frac1y+\frac1z\right)\ge (1+1+1)^2=9.$$
+$$
+(x+y+z)\left(\frac1x+\frac1y+\frac1z\right)\ge (1+1+1)^2=9.
+$$
 Thus, we get:
-$$\frac1x+\frac1y+\frac1z \ge \frac{9}{12}=\frac34.$$
+$$
+\frac1x+\frac1y+\frac1z \ge \frac{9}{12}=\frac34.
+$$
 Notice that equality occurs at $x=y=z=4$. 
 
 ### Example 6: Squares!
@@ -85,7 +91,9 @@ Notice that equality occurs at $x=y=z=4$.
 Over all positive real numbers $a,b$ that satisfy $a^2+b^2=10$, your job is to find the MAXIMUM value of $a+2b$.
 
 Again, we can diredctly tackle this via Cauchy-Schwarz as follows,
-$$(a+2b)^2 \le (1^2+2^2)(a^2+b^2)=5\cdot10=50.$$
+$$
+(a+2b)^2 \le (1^2+2^2)(a^2+b^2)=5\cdot10=50.
+$$
 Thus, we get that the maximum value is $5\sqrt2$.
 
 ### Example 7: Symmetry
@@ -93,16 +101,22 @@ Thus, we get that the maximum value is $5\sqrt2$.
 You are given that there are positive reals $a,b,c$ that satisfy $ab+bc+ca=3$. Your job is to find the MINIMUM value of the following expression: $\frac{a+b+c}{ab+bc+ca}$.
 
 First off, notice that since the denominator is FIXED, all we need to do is minimize $a+b+c$. Then, by Cauchy-Schwarz, we have:
-$$(a+b+c)^2 \ge 3(ab+bc+ca)=9.$$
+$$
+(a+b+c)^2 \ge 3(ab+bc+ca)=9.
+$$
 And thus, $a+b+c\ge3$, so from here we get our answer quite easily:
-$$\frac{a+b+c}{ab+bc+ca}\ge\frac33=1.$$
+$$
+\frac{a+b+c}{ab+bc+ca}\ge\frac33=1.
+$$
 
 ### Example 8: Fractions!
 
 For all positive reals $x,y$ that satisfy $x+y=1$, your job is to find the minimum value of the following expression: $\frac1x+\frac4y$.
 
 We can use Titu's lemma here to get:
-$$\frac1x+\frac4y=\frac{1^2}{x}+\frac{2^2}{y}\ge\frac{(1+2)^2}{x+y}=9.$$
+$$
+\frac1x+\frac4y=\frac{1^2}{x}+\frac{2^2}{y}\ge\frac{(1+2)^2}{x+y}=9.
+$$
 And so, the minimum value is $9$. 
 
 ### Example 9: Square Root Sum
@@ -110,7 +124,9 @@ And so, the minimum value is $9$.
 For all positive reals $a,b,c$ that satisfy $a+b+c=1$. your job is to find the maximum value of the following expression $\sqrt{ab}+\sqrt{bc}+\sqrt{ca}$.
 
 First off, by Cauchy-Schwarz, we get that
-$$(\sqrt{ab}+\sqrt{bc}+\sqrt{ca})^2 \le (a+b+c)^2=1.$$
+$$
+(\sqrt{ab}+\sqrt{bc}+\sqrt{ca})^2 \le (a+b+c)^2=1.
+$$
 Thus the maximum value is $1$.
 
 ## Strategy Checklist

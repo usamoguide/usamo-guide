@@ -6,8 +6,6 @@ description: Translate counting into algebra using power series.
 prerequisites: ["counting-advanced", "advanced-algebra"]
 ---
 
-<!-- Based on generatingfunctionology: https://www2.math.upenn.edu/~wilf/gfologyLinked2.pdf-->
-
 ## Overview
 
 When solving combinatorial problems, it may be hard to brute-force or manipulate case-work by using words.
@@ -53,32 +51,19 @@ Represent numbers such as cost or amount in the power.
 
 ### Recurrence Formula (ADVANCED)
 
-<!-- Based on generatingfunctionology: https://www2.math.upenn.edu/~wilf/gfologyLinked2.pdf-->
 
 When given a recurrence formula that is to be solved by using generating functions, use the following method:
-1. Make sure that the values of the variable (e.g. $n$) such that the recurrence 
-  relation is true, is clearly described.
+1. Make sure that the values of the variable (e.g. $n$) such that the recurrence relation is true, is clearly described. 
 
-2. Give a name to the generating function that you will look for, and
-  write out that function in terms of the unknown sequence (e.g.,
-  call it $A(x)=\sum_{n \ge 0} a_nx^n$).
+2. Give a name to the generating function that you will look for, andwrite out that function in terms of the unknown sequence (e.g., call it $A(x)=\sum_{n > 0} a_nx^n$).
 
-3. Multiply both sides of the recurrence by $x^n$, and sum over all
-  values of $n$ for which the recurrence holds.
+3. Multiply both sides of the recurrence by $x^n$, and sum over all values of $n$ for which the recurrence holds.
 
-4. Express both sides of the resulting equation explicitly in terms of
-  your generating function $A(x)$.
+4. Express both sides of the resulting equation explicitly in terms of your generating function $A(x)$.
 
-5. Solve the resulting equation for the unknown generating function
-  $A(x)$.
+5. Solve the resulting equation for the unknown generating function $A(x)$.
 
-6. If you want an exact formula for the sequence that is defined by
-  the given recurrence relation, then attempt to get such a formula
-  by expanding $A(x)$ into a power series by any method you can
-  think of. In particular, if $A(x)$ is a rational function (quotient
-  of two polynomials), then success will result from expanding in
-  partial fractions and then handling each of the resulting terms
-  separately.
+6. If you want an exact formula for the sequence that is defined by the given recurrence relation, then attempt to get such a formula by expanding $A(x)$ into a power series by any method you can think of. In particular, if $A(x)$ is a rational function (quotient of two polynomials), then success will result from expanding in partial fractions and then handling each of the resulting terms separately.
 
 ## Worked Example
 
@@ -102,7 +87,7 @@ Use $(1+x+x^2)^3$ and extract the $x^4$ coefficient.
 
 Count partitions of $n$ into distinct parts.
 
-Use the generating function $\prod_{k\ge1}(1+x^k)$.
+Use the generating function $\prod_{k \ge 1}(1+x^k)$.
 
 ### Example 3: Counting Word Problem
 
@@ -111,7 +96,9 @@ She has exactly 2 dollars and doesn't want any change. In how many ways can she 
 
 Convert this problem into equations: let $x$ be the number of apples, $y$ be the number of bananas, $z$ be the number of oranges.
 Then $x, y, z \ge 0$. So constraints is $9x + 14y + 17z = 200$. So we wish to find the $x^{200}$ coefficient of 
-$$\sum^{\infty}_{i=0} (x^9+x^{14}+x^{17})^i$$
+$$
+\sum^{\infty}_{i=0} (x^9+x^{14}+x^{17})^i
+$$
 
 ### Example 4: Recurrence Extraction (ADVANCED)
 
@@ -120,51 +107,274 @@ Find the general term of $f_{n+1}=f_n+f_{n-1}$ where $n \ge 1, f_0 = 0, f_1 = 1$
 By using the above method, we let $F(x) = \sum_{n \ge 0} f_nx^n$
 By manipulating the given recurrence relation (multiply by $x^n$ and sum over $n \ge 1$),
 
-$$f_2x^1+f_3x^2+f_4x^3+\cdots = (f_1x^1+f_2x^2+f_3x^3+\cdots) + (f_0x^1+f_1x^2+f_2x^3+\cdots)$$
+$$
+f_2x^1+f_3x^2+f_4x^3+\cdots = (f_1x^1+f_2x^2+f_3x^3+\cdots) + (f_0x^1+f_1x^2+f_2x^3+\cdots)
+$$
 
 Remember that $f_0 = 0$ and $f_1 = 1$.
 
 Then, 
 
-$$\frac{F(x)-x}{x} = F(x) + xF(x)$$
+$$
+\frac{F(x)-x}{x} = F(x) + xF(x)
+$$
 
 By manipulating this, we get:
 
-$$F(x)=\frac{x}{1-x-x^2}$$
+$$
+F(x)=\frac{x}{1-x-x^2}
+$$
 
 By doing partial fractions, we can let this be:
 
-$$F(x)=\frac{x}{(\alpha x -1 )(\beta x - 1)} = \frac{1}{\alpha-\beta} (\frac{1}{\beta x - 1}-\frac{1}{\alpha x- 1})$$
+$$
+F(x)=\frac{x}{(\alpha x -1 )(\beta x - 1)} = \frac{1}{\alpha-\beta} (\frac{1}{\beta x - 1}-\frac{1}{\alpha x- 1})
+$$
 
-$$= \frac{1}{\alpha-\beta} (\frac{1}{\alpha x - 1}-\frac{1}{\beta x- 1})$$
+$$
+= \frac{1}{\alpha-\beta} (\frac{1}{\alpha x - 1}-\frac{1}{\beta x- 1})
+$$
 
 Where $\alpha = \frac{1+\sqrt{5}}{2}$ and $\beta = \frac{1-\sqrt{5}}{2}$ (Notice that $\alpha = \phi$, the golden ratio).
 Now, using the geometric series $\frac{1}{1-x} = 1+x+x^2+x^3+\cdots$.
 
-$$[x^n]\ F(x) = \frac{1}{\alpha-\beta} (\alpha^n - \beta^n)$$
+$$
+[x^n]\ F(x) = \frac{1}{\alpha-\beta} (\alpha^n - \beta^n)
+$$
 
 By substituting the values of $\alpha$ and $\beta$, 
 
-$$[x^n]\ F(x) = \frac{1}{\sqrt{5}} ((\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n)$$
+$$
+[x^n]\ F(x) = \frac{1}{\sqrt{5}} ((\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n)
+$$
 
 When comparing this to Binet's formula for Fibonacci numbers, this is equal to 
 
-$$f_n = \frac{1}{\sqrt{5}} ((\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n)$$
+$$
+f_n = \frac{1}{\sqrt{5}} ((\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n)
+$$
+
+### Example 5: Interesting Sum
+
+Your goal is to evaluate the following expression:
+
+$$
+S_n=\sum_{k=0}^{n} \binom{n-k}{k}2^k.
+$$
+
+First, we let
+
+$$
+F(x)=\sum_{n\ge0}S_nx^n.
+$$
+
+Then
+
+$$
+F(x)=\sum_{n\ge0}\sum_{k\ge0}\binom{n-k}{k}2^kx^n.
+$$
+
+Using
+
+$$
+\sum_{m\ge k}\binom{m}{k}x^m=\frac{x^k}{(1-x)^{k+1}},
+$$
+
+we get that
+
+$$
+F(x)=\frac{1}{1-x}\sum_{k\ge0}\left(\frac{2x^2}{1-x}\right)^k
+=\frac{1}{1-x-2x^2}.
+$$
+
+And factoring,
+$$
+1-x-2x^2=(1-2x)(1+x).
+$$
+
+Then, we see that partial fractions gives us the following:
+
+$$
+F(x)=\frac{2/3}{1-2x}+\frac{1/3}{1+x}.
+$$
+
+And consequently,
+
+$$
+S_n=\frac{2}{3}\cdot2^n+\frac{1}{3}(-1)^n
+=\frac{2^{n+1}+(-1)^n}{3}.
+$$
+
+### Example 6: Classic Gen. Functions Problem (remember this!)
+
+Let $a_n$ denote the number of ordered compositions of $n$ whose parts are only $1,2,$ or $4$. Your job is to find $a_n$.
+
+First, notice that each part contributes the following:
+
+$$
+x+x^2+x^4.
+$$
+
+Thus, we have that
+
+$$
+A(x)=1+(x+x^2+x^4)+(x+x^2+x^4)^2+\cdots
+=\frac{1}{1-x-x^2-x^4}.
+$$
+
+Next, we can multiply through to get:
+
+$$
+\left(1-x-x^2-x^4\right)A(x)=1.
+$$
+
+And comparing the coefficients gives us our answer:
+
+$$
+a_n=a_{n-1}+a_{n-2}+a_{n-4},\qquad n\ge4.
+$$
+
+### Example 7: Only Even-Sized Subsets (also very common! Remember this!)
+
+How many subsets of $\{1,2,\dots,n\}$ contain an even number of elements (solve using generating functions)?
+
+First, notice that the generating function is simply:
+
+$$
+(1+x)^n=\sum_{k=0}^{n}\binom{n}{k}x^k.
+$$
+
+Realize that the sum of the even coefficients is
+
+$$
+\frac{(1+1)^n+(1-1)^n}{2}.
+$$
+
+And consequently, we get
+
+$$
+\frac{2^n+0}{2}=2^{n-1}.
+$$
+
+Which makes the answer:
+
+$$
+2^{n-1}.
+$$
+
+### Example 8: More binomial expressions!
+
+Your job is to show that the following expression is true:
+
+$$
+\sum_{k=0}^{n}\binom{2k}{k}\binom{2n-2k}{n-k}=4^n.
+$$
+
+First, recall that
+
+$$
+\sum_{n\ge0}\binom{2n}{n}x^n=\frac{1}{\sqrt{1-4x}}.
+$$
+
+Then, squaring the expression, we get:
+
+$$
+\left(\sum_{n\ge0}\binom{2n}{n}x^n\right)^2
+=\frac{1}{1-4x}.
+$$
+
+Notice that the coefficient of $x^n$ on the left is simply
+
+$$
+\sum_{k=0}^{n}\binom{2k}{k}\binom{2n-2k}{n-k},
+$$
+
+while the coefficient on the right is
+
+$$
+4^n.
+$$
+
+Thus, we have:
+
+$$
+\sum_{k=0}^{n}\binom{2k}{k}\binom{2n-2k}{n-k}=4^n.
+$$
+
+### Example 9: Catalan Numbers (very famous and fun numbers with many applications!)
+
+Your goal is to find a generating function for the Catalan numbers $C_n$, which are defined by
+
+$$
+C_0=1,\qquad C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k} \quad (n\ge1).
+$$
+
+First, we let
+
+$$
+C(x)=\sum_{n\ge0}C_nx^n.
+$$
+
+Then, using the recurrence relation, we get that
+
+$$
+C(x)=1+xC(x)^2.
+$$
+
+Solving the quadratic equation,
+
+$$
+C(x)=\frac{1\pm\sqrt{1-4x}}{2x}.
+$$
+
+Since $C(0)=1$, we can simply choose the negative one
+
+Thus,
+
+$$
+C(x)=\frac{1-\sqrt{1-4x}}{2x}.
+$$
+
+### Example 10: Derangements 
+
+Let $d_n$ denote the number of permutations of $\{1,2,\dots,n\}$ with no fixed points.
+
+First, notice that the exponential generating function for all permutations is
+
+$$
+\sum_{n\ge0}n!\frac{x^n}{n!}=\frac{1}{1-x}.
+$$
+
+Next, notice that for each element, either it is fixed (contributing $x$) or not fixed (contributing $1$), so we can simply remove fixed points by multiplying by $e^{-x}$.
+
+Hence the exponential generating function for derangements is
+
+$$
+D(x)=\frac{e^{-x}}{1-x}.
+$$
+
+Therefore,
+
+$$
+D(x)=\sum_{n\ge0}d_n\frac{x^n}{n!}=\frac{e^{-x}}{1-x}.
+$$
 
 ## Strategy Checklist
 
 - Translate each constraint into a factor.
 - Use binomial series for $(1-x)^{-k}$.
-  - Use the geometric series $$
+  - Use the geometric series $1+x+x^2+\dots = \frac{1}{1-x}$.
 - Truncate when only a few coefficients are needed.
-- Convert the amount of an item into a power of $x$
+- Convert the amount of an item into a power of $x$.
 - Use the above 'method' to solve for the recurrence relation.
   1. Describe variables
   2. Name Generating Functions
   3. Sum over all $n$ that the relation holds
-  4. Express equation in generating function from Step 2
+  4. Express equation in generating functions from Step 2
   5. Solve equation
-  6. Expand generating function into power series to extract coefficient.
+  6. Expand generating function into power series to extract coefficients.
+
+(This module was based on generating functionology: https://www2.math.upenn.edu/~wilf/gfologyLinked2.pdf )
 
 ## Practice Problems
 

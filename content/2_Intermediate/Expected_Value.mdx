@@ -11,7 +11,9 @@ A *random variable* is defined as a number whose value is determined by a random
 
 Let $P(e)$ be the probability of event $e$ happening. If we have a random variable $X$ with outcomes $x_1, x_2, \ldots, x_n$ occurring with probabilities $p_1, p_2, \ldots, p_n$, then the expected value is the weighted average
 
-$$E[X] = x_1p_1+x_2p_2+\cdot\cdot\cdot+x_np_n.$$
+$$
+E[X] = x_1p_1+x_2p_2+\cdot\cdot\cdot+x_np_n.
+$$
 
 From this definition we clearly have:
 
@@ -26,7 +28,9 @@ There are also two other very important, but a bit less obvious, facts about exp
 ### A Simple Example
 In a dice roll, the possible outcomes are $1,2,3,4,5,6$ and the probability of each is $\frac{1}{6}$, so the expected value is
 
-$$\frac{1}{6}\cdot1+\frac{1}{6}\cdot2+\frac{1}{6}\cdot3+\frac{1}{6}\cdot4+\frac{1}{6}\cdot5+\frac{1}{6}\cdot6 = 3.5$$
+$$
+\frac{1}{6}\cdot1+\frac{1}{6}\cdot2+\frac{1}{6}\cdot3+\frac{1}{6}\cdot4+\frac{1}{6}\cdot5+\frac{1}{6}\cdot6 = 3.5
+$$
 The expected sum of two dice rolls is $3.5+3.5=7$.
 The expected product of two dice rolls is $3.5\times3.5=12.25$, as the dice rolls are independent.
 
@@ -224,11 +228,17 @@ In base 2, it has exactly $2n$ digits consisting of $n$ ones and $n$ zeros. (The
 The expected value of the first digit is clearly 1. The expected value of all subsequent digits is $\frac{n-1}{2n-1}$, since excluding the first digit there are $n-1$ ones and $2n-1$ zeros.
 
 Hence the expected value of one such number is
-$$2^{n-1} + (2^{n-2}+2^{n-3}+\cdots+2^1+2^0)\frac{n-1}{2n-1}$$
-$$=2^{n-1}+(2^{n-1}-1)\frac{n-1}{2n-1}$$
+$$
+2^{n-1} + (2^{n-2}+2^{n-3}+\cdots+2^1+2^0)\frac{n-1}{2n-1}
+$$
+$$
+=2^{n-1}+(2^{n-1}-1)\frac{n-1}{2n-1}
+$$
 
 There are $\binom{2n-1}{n-1}$ such numbers, so the sum of all such numbers is
-$$\binom{2n-1}{n-1}(2^{n-1}+(2^{n-1}-1)\frac{n-1}{2n-1})$$
+$$
+\binom{2n-1}{n-1}(2^{n-1}+(2^{n-1}-1)\frac{n-1}{2n-1})
+$$
 $$=\boxed{(2^{2n-1}-1)\tbinom{2n-2}{n}+2^{2n-1}\tbinom{2n-1}{n}}$$ -->
 
 

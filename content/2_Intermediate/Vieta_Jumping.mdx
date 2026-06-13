@@ -17,11 +17,15 @@ First we have a diophantine equation which is **symmetric** and we want to perfo
 
 One such example is shown below
 
-$$a^2 - (kb)\,a + (b^2 - k) = 0$$
+$$
+a^2 - (kb)\,a + (b^2 - k) = 0
+$$
 
 We know that any quadriatic equation has 2 roots. Hence we know there is another solution to the equation we constructed before. Let the equations subject be represented by $t$ where the roots of it are $a$ and $x$.
 
-$$t^2 - (kb)\,t + (b^2 - k) = 0$$
+$$
+t^2 - (kb)\,t + (b^2 - k) = 0
+$$
 
  Clearly $x$ is also a value that satisfies $f(x,b)=k$. A important step is to make sure that $x < a$, $x \in \mathbb{Z}$ and that $x>0$ which can be proven using simple inequalities(We find the value of $x$ via vieta's relations). Else we cannot perform a descent. 
  
@@ -55,7 +59,9 @@ Suppose for contradiction that $k$ is a fixed positive integer that is *not* a p
 
 Rewrite the equation as $a^2 + b^2 = k(ab + 1)$, then rearrange into a quadratic in $a$:
 
-$$a^2 - kb\,a + (b^2 - k) = 0$$
+$$
+a^2 - kb\,a + (b^2 - k) = 0
+$$
 
 The value $a$ is one root. Let $x$ be the other root. By Vieta's formulas:
 
@@ -70,7 +76,9 @@ Since $x$ is an integer satisfying the same quadratic, the pair $(x, b)$ satisfi
 
 **$x < a$:** Since $a \geq b \geq 1$:
 
-$$x = \frac{b^2 - k}{a}$$
+$$
+x = \frac{b^2 - k}{a}
+$$
 
 We need to show this is less than $a$. Note $k \geq 1$, so $b^2 - k \leq b^2 - 1 < b^2 \leq a^2$, giving $x = \frac{b^2-k}{a} < \frac{a^2}{a} = a$.
 
@@ -84,7 +92,9 @@ But then $(x, b)$ is a valid pair achieving the same $k$, with $x < a$ — contr
 
 Rearrange as a quadratic in $a$:
 
-$$a^2 - kb\,a + (b^2 + 1) = 0$$
+$$
+a^2 - kb\,a + (b^2 + 1) = 0
+$$
 
 The value $a$ is one root; let $x$ be the other. By Vieta's:
 
@@ -95,7 +105,9 @@ Since $xa = b^2 + 1 > 0$ and $a > 0$, we have $x > 0$.
 
 **$x < a$:** Since $a > b$:
 
-$$x = \frac{b^2 + 1}{a} < \frac{b^2 + 1}{b} = b + \frac{1}{b} \leq b + 1 \leq a$$
+$$
+x = \frac{b^2 + 1}{a} < \frac{b^2 + 1}{b} = b + \frac{1}{b} \leq b + 1 \leq a
+$$
 
 So $(x, b)$ is a valid pair with $x < a$, contradicting minimality — unless no such pair with $a > b$ exists. The descent terminates when $a = b$, which forces $k = 3$ as shown above. Therefore $k = 3$ for all valid pairs. $\blacksquare$
 

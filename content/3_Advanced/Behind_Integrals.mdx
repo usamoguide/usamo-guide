@@ -16,27 +16,37 @@ When you first learn integration, you might have been introduced to it as a math
  
 Take a look at the integration symbol:
  
-$$\int$$
+$$
+\int
+$$
  
 It looks like a stretched "S", and that's because it stands for **sum**. When you see bounds on the symbol:
  
-$$\int_a^b$$
+$$
+\int_a^b
+$$
  
 it means to add from lower bound $a$ to upper bound $b$. A integral with bounds is called a **definite integral**; one without is an **indefinite integral**.
  
 You will always see the term $dx$ inside the integral:
  
-$$\int_a^b f(x)\, dx$$
+$$
+\int_a^b f(x)\, dx
+$$
  
 The term $dx$ is called a **differential element**. Recall from differentiation:
  
-$$\frac{df}{dx} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+$$
+\frac{df}{dx} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+$$
  
 If we treat the derivative as a fraction (a useful intuition to keep), then $dx$ represents something infinitesimally small in the limit. An integral is nothing but a **summation of infinitely small things**.
  
 More formally, the definition of a definite integral is:
  
-$$\int_a^b f(x)\, dx = \lim_{n \to \infty} \sum_{k=0}^{n} f(x_k)\,\Delta x$$
+$$
+\int_a^b f(x)\, dx = \lim_{n \to \infty} \sum_{k=0}^{n} f(x_k)\,\Delta x
+$$
  
 where $\Delta x = \dfrac{b-a}{n}$ and $x_k = a + k\cdot\Delta x$.
  
@@ -54,11 +64,15 @@ Areas under the curve are **signed** — regions above the $x$-axis contribute p
 </Info>
 A classic physics example is the **energy stored in a spring**. By Hooke's Law, the restoring force is $\vec{F} = -k\vec{x}$. The infinitesimal work done stretching the spring by $dx$ is:
  
-$$dU = -F\,dx = kx\,dx$$
+$$
+dU = -F\,dx = kx\,dx
+$$
  
 Integrating from $x = 0$ to $x = x$, the total energy stored is:
  
-$$U = \int_0^x kx\,dx = \boxed{\frac{1}{2}kx^2}$$
+$$
+U = \int_0^x kx\,dx = \boxed{\frac{1}{2}kx^2}
+$$
  
 Graphically, this is just the area of the triangle under the linear graph of $F = kx$ — a satisfying geometric confirmation of the result.
  
@@ -66,11 +80,15 @@ Graphically, this is just the area of the triangle under the linear graph of $F 
  
 Another way to view integrals is as **accumulated change**. By definition, velocity is:
  
-$$v = \frac{dx}{dt}$$
+$$
+v = \frac{dx}{dt}
+$$
  
 To find the total displacement, we add together infinitely many infinitesimal displacements:
  
-$$x = \int dx = \int v\, dt$$
+$$
+x = \int dx = \int v\, dt
+$$
  
 If we know how velocity varies with time, $v(t)$, the integral tells us precisely how far the object has traveled over any interval.
  
@@ -82,11 +100,15 @@ Rather than discrete point charges, real problems often involve continuous charg
  
 For a single point charge $Q$ at distance $r$, the potential is $\phi = \dfrac{kQ}{r}$. By superposition, each infinitesimal segment contributes:
  
-$$d\phi = \frac{k\,dq}{r} = \frac{k\lambda\,dx}{\sqrt{x^2 + d^2}}$$
+$$
+d\phi = \frac{k\,dq}{r} = \frac{k\lambda\,dx}{\sqrt{x^2 + d^2}}
+$$
  
 Summing over the entire infinite line:
  
-$$\phi = \int_{-\infty}^{+\infty} \frac{k\lambda\,dx}{\sqrt{x^2 + d^2}}$$
+$$
+\phi = \int_{-\infty}^{+\infty} \frac{k\lambda\,dx}{\sqrt{x^2 + d^2}}
+$$
  
 which can be evaluated using a table of integrals.
  

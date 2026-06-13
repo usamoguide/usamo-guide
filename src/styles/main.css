@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Use self-hosted Inter font files from static/Font to avoid Google Fonts requests. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/Font/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/Font/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
 @import 'tailwindcss';
 @import './theme.css' layer(base);
 

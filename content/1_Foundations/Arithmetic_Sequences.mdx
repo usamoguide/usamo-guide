@@ -54,26 +54,38 @@ That is, the sum of a series is the sum of the first and last terms, multiplied 
  
 The sum of the first $n$ terms is equal to: 
  
-$$S_n = \frac{n}{2}(a_1 + a_n) = \frac{n}{2}(2a_1 + (n-1)d).$$
+$$
+S_n = \frac{n}{2}(a_1 + a_n) = \frac{n}{2}(2a_1 + (n-1)d).
+$$
 
 The second form is handy when you are not told the last term directly, since you can substitute $a_n = a_1 + (n-1)d$ and work entirely from $a_1$, $d$, and $n$. Both forms describe the same quantity, so use whatever matches the information the problem hands you.
 
 **Proof.** We want to show that $S_n = \frac{n}{2}(a_1 + a_n)$. Start by writing the sum out in full, then write the same sum a second time but with the terms reversed:
 
-$$S_n = a_1 + (a_1 + d) + (a_1 + 2d) + \cdots + (a_1 + (n-1)d)$$
-$$S_n = a_n + (a_n - d) + (a_n - 2d) + \cdots + (a_n - (n-1)d)$$
+$$
+S_n = a_1 + (a_1 + d) + (a_1 + 2d) + \cdots + (a_1 + (n-1)d)
+$$
+$$
+S_n = a_n + (a_n - d) + (a_n - 2d) + \cdots + (a_n - (n-1)d)
+$$
 
 Now add the two lines together, lining up the columns. In the first column we get $a_1 + a_n$. In the second column we get $(a_1 + d) + (a_n - d) = a_1 + a_n$, since the $+d$ and $-d$ cancel. The same cancellation happens in every column, so each of the $n$ columns sums to exactly $a_1 + a_n$. Adding all of them gives
 
-$$2S_n = n(a_1 + a_n).$$
+$$
+2S_n = n(a_1 + a_n).
+$$
 
 Dividing both sides by $2$ yields
 
-$$S_n = \frac{n}{2}(a_1 + a_n),$$
+$$
+S_n = \frac{n}{2}(a_1 + a_n),
+$$
 
 which is what we wanted. To get the second form, substitute $a_n = a_1 + (n-1)d$:
 
-$$S_n = \frac{n}{2}\big(a_1 + a_1 + (n-1)d\big) = \frac{n}{2}\big(2a_1 + (n-1)d\big). \qquad \blacksquare$$
+$$
+S_n = \frac{n}{2}\big(a_1 + a_1 + (n-1)d\big) = \frac{n}{2}\big(2a_1 + (n-1)d\big). \qquad \blacksquare
+$$
 
 This is also known as Gauss's trick. Notice that it is exactly the pairing idea from the story above, just written algebraically and made to work for any arithmetic sequence rather than only $1$ through $100$.
  
@@ -81,7 +93,9 @@ This is also known as Gauss's trick. Notice that it is exactly the pairing idea 
  
 Hence given $a_1$, $d$, and the last term $a_n$:
  
-$$n = \dfrac{a_n - a_1}{d} + 1.$$
+$$
+n = \dfrac{a_n - a_1}{d} + 1.
+$$
  
 Always solve for $n$ before applying the sum formula, as this can be a common source for errors off by one term. The intuition for the $+1$ is that $\frac{a_n - a_1}{d}$ counts the number of steps between the first and last terms, but a sequence with one step has two terms, a sequence with two steps has three terms, and so on.
  
@@ -90,14 +104,18 @@ Always solve for $n$ before applying the sum formula, as this can be a common so
 The average of an arithmetic sequence always equals the average of the first
 and last terms:
  
-$$\bar{a} = \dfrac{a_1 + a_n}{2}.$$
+$$
+\bar{a} = \dfrac{a_1 + a_n}{2}.
+$$
  
 For an odd number of terms, the middle term equals the mean. This makes
 the sum $S_n = n \cdot \bar{a}$ convenient to find when $n$ is known. The reason the average sits at the midpoint is that the terms are spread out evenly, so whatever lies above the center is balanced by an equal amount below it. This is also why the sum formula can be read as "average term times number of terms," which is the same statement as $S_n = n \cdot \bar{a}$.
  
 A useful equation is the sum of the first $n$ positive integers,
  
-$$1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.$$
+$$
+1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.
+$$
  
 This is the arithmetic sequence $a_1 = 1$, $d = 1$ with sum formula applied. It is worth memorizing on its own, since it appears constantly in counting problems, in the number of edges of a complete graph, and inside larger algebra manipulations.
  
@@ -122,7 +140,9 @@ More generally, the number of integers in $\{a, a+1, \ldots, b\}$ that are $\equ
  
 The number of cans per row, read from the top down, is $1, 3, 5, 7, \ldots$ This is an arithmetic sequence with $a_1 = 1$ and $d = 2$, so the total number of cans in $n$ rows is the sum of the first $n$ terms. We are told this sum is $100$, so we set up the sum formula:
  
-$$S_n = \frac{n}{2}\big(2a_1 + (n-1)d\big) = \frac{n}{2}\big(2 + 2(n-1)\big) = \frac{n}{2}(2n) = n^2.$$
+$$
+S_n = \frac{n}{2}\big(2a_1 + (n-1)d\big) = \frac{n}{2}\big(2 + 2(n-1)\big) = \frac{n}{2}(2n) = n^2.
+$$
  
 So the number of rows satisfies $n^2 = 100$, giving $n = \boxed{10}$.
  
@@ -133,15 +153,21 @@ There is a slicker way to see the same thing. The cans per row are the first $n$
  
 Be careful!. Do not overcount where rings overlap. A nice way to set this up is to add the full outside diameters first, then subtract the overlaps. The outside diameters run $20, 19, 18, \ldots, 3$, which is an arithmetic sequence with $a_1 = 20$, $d = -1$, and last term $3$. The number of rings is
  
-$$n = \dfrac{3 - 20}{-1} + 1 = 18.$$
+$$
+n = \dfrac{3 - 20}{-1} + 1 = 18.
+$$
  
 The sum of these outside diameters is
  
-$$S = \dfrac{n}{2}(a_1 + a_n) = \dfrac{18}{2}(20 + 3) = 9 \cdot 23 = 207.$$
+$$
+S = \dfrac{n}{2}(a_1 + a_n) = \dfrac{18}{2}(20 + 3) = 9 \cdot 23 = 207.
+$$
  
 But stacking the rings creates an overlap at each link. Since each ring is $1$ cm thick, two ring thicknesses ($2$ cm) of vertical space are shared wherever one ring hangs inside the next. There are $17$ such links between the $18$ rings, so we subtract $2 \cdot 17 = 34$:
  
-$$207 - 34 = \boxed{173}$$
+$$
+207 - 34 = \boxed{173}
+$$
 
 ## Practice Problems
 

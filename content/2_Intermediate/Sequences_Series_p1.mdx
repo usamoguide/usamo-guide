@@ -65,7 +65,9 @@ AMC questions frequently disguise these inside larger expressions. If a sequence
 
 ### Sequence as a Polynomial
 Taking differences always lowers the degree of a polynomial sequence by 1. For example, if a sequence is defined by $a_n = n^3$, taking the difference of consecutive terms yields:
-$$ a_{n+1} - a_n = (n+1)^3 - n^3 = 3n^2 + 3n + 1 $$
+$$
+a_{n+1} - a_n = (n+1)^3 - n^3 = 3n^2 + 3n + 1
+$$
 Notice how the cubic sequence produced a quadratic difference sequence!
 
 ---
@@ -78,7 +80,9 @@ Memorize the foundational power sums:
 ### Summation by Pairing
 A surprisingly common AMC trick is evaluating large sequences by pairing symmetric terms. Gauss famously evaluated $1 + 2 + \dots + 100$ by pairing $(1+100) + (2+99) + \dots$, giving 50 pairs of 101.
 This applies to harder versions as well:
-$$ \sum_{k=1}^{100} k(101-k) $$
+$$
+\sum_{k=1}^{100} k(101-k)
+$$
 By recognizing that term $k=1$ equals term $k=100$, you can exploit the sequence's symmetry to halve the computation time or reduce it into paired blocks.
 
 ---
@@ -89,16 +93,24 @@ While the infinite geometric series formula ($S = \frac{a}{1-r}$) is well known,
 **The Derivation Method:**
 Let $S = 1 + r + r^2 + \dots + r^n$.
 1. Multiply the entire sum by the common ratio $r$:
-   $$ rS = r + r^2 + \dots + r^{n+1} $$
+   $$
+   rS = r + r^2 + \dots + r^{n+1}
+   $$
 2. Subtract the second equation from the first. All the middle terms will perfectly cancel out:
-   $$ (1 - r)S = 1 - r^{n+1} $$
+   $$
+   (1 - r)S = 1 - r^{n+1}
+   $$
 3. Isolate $S$:
-   $$ S = \frac{1 - r^{n+1}}{1 - r} $$
+   $$
+   S = \frac{1 - r^{n+1}}{1 - r}
+   $$
 
 ### Recognizing Hidden Geometric Series
 A common AMC trap is disguising a geometric series using offset exponents or combined bases. For example, evaluate $\sum_{k=1}^{\infty} \frac{5^k}{3^{k+1}}$. 
 Isolate the index $k$ into a single fraction:
-$$ \frac{1}{3} \sum_{k=1}^{\infty} \left(\frac{5}{3}\right)^k $$
+$$
+\frac{1}{3} \sum_{k=1}^{\infty} \left(\frac{5}{3}\right)^k
+$$
 *(Because $5/3 > 1$, this specific series diverges to infinity, demonstrating why isolating the ratio is critical!)*
 
 ### The Arithmetico-Geometric Series (AGS)
@@ -117,7 +129,9 @@ Most students only know how to recognize telescoping series. The elite AMC/AIME 
 ### Non-Adjacent Telescoping (The Survival Trap)
 Not everything cancels perfectly. In the sum $\sum_{k=1}^{100} \left(\frac{1}{k} - \frac{1}{k+2}\right)$, many students incorrectly assume all middle terms vanish. 
 Write it out explicitly:
-$$ \left(\frac{1}{1} - \frac{1}{3}\right) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{5}\right) + \dots $$
+$$
+\left(\frac{1}{1} - \frac{1}{3}\right) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{5}\right) + \dots
+$$
 Notice that $\frac{1}{1}$ and $\frac{1}{2}$ survive at the beginning, while $-\frac{1}{101}$ and $-\frac{1}{102}$ survive at the end. 
 ### Bounding and Estimation
 To estimate $\sum_{k=1}^{100} \frac{1}{k^2}$ without exact computation, bound it using a telescoping series you *can* compute: $\frac{1}{k^2} < \frac{1}{k(k-1)}$. Then telescope the larger bound to prove the original sum is strictly bounded.

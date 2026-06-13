@@ -28,7 +28,9 @@ Consider the following combinatorial problem:
 
 Clearly, this is just $$k!$$. However, to demonstrate recursion, we will transform this problem. Let $$f(n)$$ denote the number of arrangements of $$n$$ numbers where $$1 \le n \le k$$. If we know $$f(k-1)$$, we can also find $$f(k)$$. Since $$f(k)$$ considers one more value than $$f(k-1)$$, there are $$k$$ places to insert that new value into each of the $$f(k-1)$$ arrangements. Hence:
 
-$$f(k) = k \cdot f(k-1).$$
+$$
+f(k) = k \cdot f(k-1).
+$$
 
 For our base case, we consider $$f(1)$$. Obviously, there is only one way to arrange $$1$$ value, so $$f(1) = 1$$. Writing out a couple more values using our transition, we see:
 
@@ -58,7 +60,9 @@ Hence, $$f(2) = 2$$. Now we come up with a transition statement. Observe that fo
 
 These two cases are disjoint (they differ in the final move) and cover every possibility, so:
 
-$$f(k) = f(k-1) + f(k-2).$$
+$$
+f(k) = f(k-1) + f(k-2).
+$$
 
 Applying this up to $$k = 5$$:
 
@@ -79,7 +83,9 @@ Base cases: $f(1) = 1$, $f(2) = 2$.
 
 Transition: $f(n) = f(n-1) + f(n-2)$ (last jump was 1 or 2).
 
-$$f(3)=3,\quad f(4)=5,\quad f(5)=8,\quad f(6)=\boxed{13}$$
+$$
+f(3)=3,\quad f(4)=5,\quad f(5)=8,\quad f(6)=\boxed{13}
+$$
 
 </Spoiler>
 
@@ -91,7 +97,9 @@ $$f(3)=3,\quad f(4)=5,\quad f(5)=8,\quad f(6)=\boxed{13}$$
 
 **Solution:** This is the Fibonacci sequence: $f(n) = f(n-1) + f(n-2)$.
 
-$$1, 1, 2, 3, 5, 8, 13, 21, \boxed{34}$$
+$$
+1, 1, 2, 3, 5, 8, 13, 21, \boxed{34}
+$$
 
 </Spoiler>
 
@@ -105,7 +113,9 @@ $$1, 1, 2, 3, 5, 8, 13, 21, \boxed{34}$$
 
 Transition: $f(n) = f(n-1) + f(n-2)$. Base cases: $f(1)=1$, $f(2)=2$.
 
-$$f(3)=3,\quad f(4)=5,\quad f(5)=\boxed{8}$$
+$$
+f(3)=3,\quad f(4)=5,\quad f(5)=\boxed{8}
+$$
 
 </Spoiler>
 
@@ -119,7 +129,9 @@ $$f(3)=3,\quad f(4)=5,\quad f(5)=\boxed{8}$$
 
 Base cases: $f(1)=1$, $f(2)=2$, $f(3)=4$.
 
-$$f(4)=7,\quad f(5)=13,\quad f(6)=24,\quad f(7)=\boxed{44}$$
+$$
+f(4)=7,\quad f(5)=13,\quad f(6)=24,\quad f(7)=\boxed{44}
+$$
 
 </Spoiler>
 
@@ -131,7 +143,9 @@ $$f(4)=7,\quad f(5)=13,\quad f(6)=24,\quad f(7)=\boxed{44}$$
 
 **Solution:** To return to 0 in 6 steps, the bug must take exactly 3 steps right and 3 left. The number of such paths is:
 
-$$\binom{6}{3} = \boxed{20}$$
+$$
+\binom{6}{3} = \boxed{20}
+$$
 
 This also follows from the recursion $f(n,k) = f(n-1,k-1)+f(n-1,k+1)$ with $f(0,0)=1$.
 
@@ -147,6 +161,8 @@ This also follows from the recursion $f(n,k) = f(n-1,k-1)+f(n-1,k+1)$ with $f(0,
 
 Transition: $f(n) = f(n-1)+f(n-2)$. Base cases: $f(1)=2$, $f(2)=3$.
 
-$$f(3)=5,\quad f(4)=8,\quad\ldots\quad f(8)=\boxed{55}$$
+$$
+f(3)=5,\quad f(4)=8,\quad\ldots\quad f(8)=\boxed{55}
+$$
 
 </Spoiler>

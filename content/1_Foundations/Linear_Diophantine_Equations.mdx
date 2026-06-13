@@ -17,8 +17,12 @@ Geometrically, the equation $ax + by = c$ represents a line in the Cartesian pla
 - **Existence of Solutions (Bézout's Identity):** The equation $ax + by = c$ has integer solutions if and only if the greatest common divisor $\gcd(a, b)$ divides $c$. If $\gcd(a, b) \nmid c$, no integer solutions exist.
 - **Finding a Base Solution:** If the numbers are small, guess and check. If they are large, use the Extended Euclidean Algorithm to work backward and find a base solution $(x_0, y_0)$.
 - **Generating the Infinite Solution Set:** Once you have one valid point $(x_0, y_0)$, you can find all other integer points on the line using the slope. The general solution is:
-  $$x = x_0 + \frac{b}{\gcd(a, b)} \cdot k$$
-  $$y = y_0 - \frac{a}{\gcd(a, b)} \cdot k$$
+  $$
+  x = x_0 + \frac{b}{\gcd(a, b)} \cdot k
+  $$
+  $$
+  y = y_0 - \frac{a}{\gcd(a, b)} \cdot k
+  $$
   where $k$ is any integer. Notice how as $x$ steps forward by the reduced $b$ coefficient, $y$ must step backward by the reduced $a$ coefficient to keep the sum balanced.
 
 ## Worked Examples
@@ -32,15 +36,21 @@ First, compute $\gcd(12, 15) = 3$. We check if $3 \mid 39$. Since $39 / 3 = 13$,
 
 **2. Simplify the equation:**
 Divide the entire equation by the GCD to make the coefficients coprime:
-$$4x + 5y = 13$$
+$$
+4x + 5y = 13
+$$
 
 **3. Find a base solution:**
 By inspection, $4(2) + 5(1) = 8 + 5 = 13$. So, $(x_0, y_0) = (2, 1)$ is a valid base solution. 
 
 **4. Write the general solution:**
 Using the simplified coefficients $a'=4$ and $b'=5$, we apply the general formula. As $x$ increases by $5$, $y$ must decrease by $4$:
-$$x = 2 + 5k$$
-$$y = 1 - 4k$$
+$$
+x = 2 + 5k
+$$
+$$
+y = 1 - 4k
+$$
 where $k \in \mathbb{Z}$.
 
 ### Example 2: Recognizing When No Solutions Exist
@@ -58,12 +68,16 @@ A farmer buys chickens for $3$ dollars each and pigs for $5$ dollars each. If he
 
 **1. Set up the equation:**
 Let $c$ be the number of chickens and $p$ be the number of pigs. 
-$$3c + 5p = 34$$
+$$
+3c + 5p = 34
+$$
 Because he is buying physical animals, we have a real-world constraint: $c \ge 0$ and $p \ge 0$.
 
 **2. Isolate one variable:**
 It is usually easiest to isolate the variable with the smaller coefficient.
-$$3c = 34 - 5p \implies c = \frac{34 - 5p}{3}$$
+$$
+3c = 34 - 5p \implies c = \frac{34 - 5p}{3}
+$$
 
 **3. Test valid inputs:**
 Since $c$ must be an integer, $34 - 5p$ must be a multiple of $3$. We test non-negative integers for $p$:

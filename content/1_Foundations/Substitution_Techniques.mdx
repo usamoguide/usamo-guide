@@ -27,15 +27,21 @@ Consider using substitution when, for instance:
 ### 1. Symmetric Substitution (Two Variables)
 
 An expression is **symmetric** in two variables when switching $x$ and $y$ does not change its value. It is often useful to make the substitution 
-$$s=x+y, p=xy.$$
+$$
+s=x+y, p=xy.
+$$
 
 A useful identity is 
 
-$$x^2+y^2 = (x+y)^2 - 2xy = s^2-2p.$$ 
+$$
+x^2+y^2 = (x+y)^2 - 2xy = s^2-2p.
+$$
 
 Also, 
 
-$$x^3+y^3=(x+y)(x^2-xy+y^2)=s(s^2-3p).$$
+$$
+x^3+y^3=(x+y)(x^2-xy+y^2)=s(s^2-3p).
+$$
 
 Some substitutions only become evident once the problem is factored or rewritten in a clever way. In fact, it is *always* possible to write any symmetric expression in terms of $s$ and $p.$
 
@@ -51,11 +57,15 @@ Consider making the substitution $t=x+1/x$ when the expression is unchanged when
 
 Each term $x^n+\frac{1}{x^n}$ can be expressed fully in terms of $t.$ Notice that $t^2 = \left(x+\frac{1}{x}\right)\left(x+\frac{1}{x}\right)=x^2+2+\frac{1}{x^2},$ so 
 
-$$x^2+\frac{1}{x^2} = t^2 - 2.$$
+$$
+x^2+\frac{1}{x^2} = t^2 - 2.
+$$
 
 Similarly, $\left(x^2+\frac{1}{x^2}\right)\left(x+\frac{1}{x}\right)=x^3+x+\frac{1}{x}+\frac{1}{x^3},$ so 
 
-$$x^3+\frac{1}{x^3}= t^3-3t.$$
+$$
+x^3+\frac{1}{x^3}= t^3-3t.
+$$
 
 For higher powers, this process continues. **Note:** This is a special case of symmetric substitution!
 
@@ -89,11 +99,15 @@ single variable to reduce complexity.
 
 *Solution:* Let $t=x+\frac{1}{x}.$ Notice that 
 
-$$x^2+\frac{1}{x^2} = \left(x+\frac{1}{x}\right)^2-2 = t^2-2.$$
+$$
+x^2+\frac{1}{x^2} = \left(x+\frac{1}{x}\right)^2-2 = t^2-2.
+$$
 
 Therefore, $t^2=9,$ so $t=3, -3.$ We discard $-3$ as $x>0.$ Next we apply the identity 
 
-$$x^3+\frac{1}{x^3}=t^3-3t,$$ 
+$$
+x^3+\frac{1}{x^3}=t^3-3t,
+$$
 
 obtaining a final answer of $3^3-3\cdot 3=18.$ 
 
@@ -103,28 +117,40 @@ obtaining a final answer of $3^3-3\cdot 3=18.$
 
 *Solution:* Let $t=x+\frac{1}{x}.$ Then $t=3,$ so we know that 
 
-$$x^2+\frac{1}{x^2} = t^2-2=7.$$ 
+$$
+x^2+\frac{1}{x^2} = t^2-2=7.
+$$
 
 Also,
 
 
-$$\left(x^2+\frac{1}{x^2}\right)\left(x^2+\frac{1}{x^2}\right)=x^4+2+\frac{1}{x^4},$$
+$$
+\left(x^2+\frac{1}{x^2}\right)\left(x^2+\frac{1}{x^2}\right)=x^4+2+\frac{1}{x^4},
+$$
 
 so
 
-$$x^4+\frac{1}{x^4} = 49-2 = 47.$$
+$$
+x^4+\frac{1}{x^4} = 49-2 = 47.
+$$
 
 Next,
 
-$$x^3+\frac{1}{x^3}=t^3-3t=18.$$
+$$
+x^3+\frac{1}{x^3}=t^3-3t=18.
+$$
 
 Finally, we have 
 
-$$\left(x^4+\frac{1}{x^4}\right)\left(x+\frac{1}{x}\right)=x^5+x^3+\frac{1}{x^3}+\frac{1}{x^5},$$ 
+$$
+\left(x^4+\frac{1}{x^4}\right)\left(x+\frac{1}{x}\right)=x^5+x^3+\frac{1}{x^3}+\frac{1}{x^5},
+$$
 
 so
 
-$$x^5+\frac{1}{x^5}=47 \cdot 3 - 18 = \boxed{123.}$$
+$$
+x^5+\frac{1}{x^5}=47 \cdot 3 - 18 = \boxed{123.}
+$$
 
 
 ### Example 3: Even Powers
@@ -139,17 +165,27 @@ $$x^5+\frac{1}{x^5}=47 \cdot 3 - 18 = \boxed{123.}$$
 
 *Solution:* These expressions are both symmetric, so we let $s=x+y$ and $p=xy.$ Then, notice that
 
-$$x^2+y^2=s^2-2p$$
+$$
+x^2+y^2=s^2-2p
+$$
 
-$$\frac{1}{x}+\frac{1}{y} = \frac{x+y}{xy} = \frac{s}{p}.$$
+$$
+\frac{1}{x}+\frac{1}{y} = \frac{x+y}{xy} = \frac{s}{p}.
+$$
 
 Thus $s^2-2p=8,$ and $s=p.$ Inputting, we have 
 
-$$s^2-2s-8=0$$
+$$
+s^2-2s-8=0
+$$
 
-$$(s-4)(s+2)=0$$
+$$
+(s-4)(s+2)=0
+$$
 
-$$s=4.$$
+$$
+s=4.
+$$
 
 Checking, $s=4$ and $p=4$ yields $x,y=2,$ which is indeed a solution.
 

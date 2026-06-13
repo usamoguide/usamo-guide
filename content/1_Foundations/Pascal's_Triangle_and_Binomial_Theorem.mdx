@@ -45,14 +45,18 @@ either the last item is included (choose $k-1$ from the rest) or it isn't
  
 ### Identity of Symmetry 
  
-$$\binom{n}{k} = \binom{n}{n-k}.$$
+$$
+\binom{n}{k} = \binom{n}{n-k}.
+$$
  
 Choosing $k$ items to include is the same as choosing $n-k$ items to exclude.
 On the triangle, row $n$ reads the same forwards and backwards, hence forming this equation. 
  
 ### Row Sum
  
-$$\sum_{k=0}^{n} \binom{n}{k} = 2^n.$$
+$$
+\sum_{k=0}^{n} \binom{n}{k} = 2^n.
+$$
  
 Every subset of an $n$-element set either includes or excludes each element, and hence 
 giving $2^n$ subsets total. Another way is to substitute $a=b=1$ into the binomial
@@ -60,7 +64,9 @@ theorem.
  
 ### Hockey Stick Identity
  
-$$\sum_{i=r}^{n} \binom{i}{r} = \binom{n+1}{r+1}.$$
+$$
+\sum_{i=r}^{n} \binom{i}{r} = \binom{n+1}{r+1}.
+$$
  
 On the triangle, if one starts at any $\binom{r}{r} = 1$ on the diagonal and sum
 diagonally downward, the result is the entry one step down and one step right.
@@ -68,7 +74,9 @@ People call it the "hockey stick identity" because the shape traced looks like a
  
 ### Binomial Theorem/Expansion 
  
-$$(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k.$$
+$$
+(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k.
+$$
  
 Each term $\binom{n}{k} a^{n-k} b^k$ comes from choosing which $k$ of the $n$
 factors contribute a $b$ (and the rest contribute an $a$). The coefficient of
@@ -92,7 +100,9 @@ Find the coefficient of $x^3$ in the expansion of $(2x + 3)^5$.
 By the binomial theorem, the general term is $\binom{5}{k}(2x)^{5-k}(3)^k$.
 We need $5 - k = 3$, so $k = 2$.
  
-$$\binom{5}{2}(2x)^3(3)^2 = 10 \cdot 8x^3 \cdot 9 = 720x^3.$$
+$$
+\binom{5}{2}(2x)^3(3)^2 = 10 \cdot 8x^3 \cdot 9 = 720x^3.
+$$
  
 Thus, coefficient of $x^3$ is $\boxed{720}$.
  
@@ -105,7 +115,9 @@ first, and then substitute. It would not be ideal to expand the full expression.
  
 Show that $\binom{8}{3} = \binom{7}{2} + \binom{7}{3}$.
  
-$$\binom{7}{2} + \binom{7}{3} = 21 + 35 = 56 = \binom{8}{3}. \checkmark$$
+$$
+\binom{7}{2} + \binom{7}{3} = 21 + 35 = 56 = \binom{8}{3}. \checkmark
+$$
  
 This is Pascal's identity with $n=8$, $k=3$. We know that it works because every 3-element
 subset of $\{1,\ldots,8\}$ either contains 8 (choose 2 from the remaining 7)
@@ -115,7 +127,9 @@ or does not (choose 3 from 7).
  
 Evaluate $\binom{100}{97}$.
  
-$$\binom{100}{97} = \binom{100}{3} = \frac{100 \cdot 99 \cdot 98}{3!} = 161700.$$
+$$
+\binom{100}{97} = \binom{100}{3} = \frac{100 \cdot 99 \cdot 98}{3!} = 161700.
+$$
  
 Always use symmetry to make the smaller number the bottom. This tip is very important for general problems in combinatorics. 
 ### Example 3: Row Sum
@@ -134,7 +148,9 @@ Evaluate $\binom{2}{2} + \binom{3}{2} + \binom{4}{2} + \binom{5}{2} + \binom{6}{
  
 By the hockey stick identity with $r=2$ and $n=6$:
  
-$$\sum_{i=2}^{6} \binom{i}{2} = \binom{7}{3} = 35.$$
+$$
+\sum_{i=2}^{6} \binom{i}{2} = \binom{7}{3} = 35.
+$$
  
 ### Example 5: Substitutions 
  
@@ -143,7 +159,9 @@ $\binom{n}{0} - \binom{n}{1} + \binom{n}{2} - \cdots = 0$ for $n \geq 1$.
  
 Substitute $a=1$, $b=-1$ into $(a+b)^n$:
  
-$$(1-1)^n = \sum_{k=0}^{n} \binom{n}{k} (-1)^k = 0. \checkmark$$
+$$
+(1-1)^n = \sum_{k=0}^{n} \binom{n}{k} (-1)^k = 0. \checkmark
+$$
 
  
 ## Strategy Checklist

@@ -28,11 +28,15 @@ To prove this, consider two sets $A = \{1,2,\ldots, p-1\}$ and $B = \{a\cdot 1, 
 
 Consider two elements $\epsilon_1,\epsilon_2 \in A$. For the sake of contradiction, suppose $a\cdot \epsilon_1$ and $a\cdot \epsilon_2$ are the same. Then,
 
-$$a\cdot \epsilon_1 - a\cdot \epsilon_2 \equiv a(\epsilon_1 - \epsilon_2) \equiv 0 \pmod p. $$
+$$
+a\cdot \epsilon_1 - a\cdot \epsilon_2 \equiv a(\epsilon_1 - \epsilon_2) \equiv 0 \pmod p.
+$$
 
 As $\gcd(a,p) = 1$, then $\epsilon_1 - \epsilon_2 \equiv 0 \pmod p$, and so $\epsilon_1 \equiv \epsilon_2 \pmod p$. But, $0 \leq \epsilon_1, \epsilon_2 \leq p-1$, impossible, unless $\epsilon_1 = \epsilon_2$. Hence, all elements of $B$ are distinct. Nicely enough, we can multiply the elements of $A$ and $B$, and upon taking the results modulo $p$, they must be equal:
 
-$$ \prod_A \equiv \prod_B \implies (p-1)! \equiv a^{p-1} \cdot (p-1)! \pmod p \implies (p-1)! \cdot \left(a^{p-1}-1\right) \equiv 0 \pmod p.$$
+$$
+\prod_A \equiv \prod_B \implies (p-1)! \equiv a^{p-1} \cdot (p-1)! \pmod p \implies (p-1)! \cdot \left(a^{p-1}-1\right) \equiv 0 \pmod p.
+$$
 
 Note that $p$ is relatively prime to all elements of $A$, and so $\gcd(p, (p-1)!) = 1$. So, $a^{p-1} \equiv 1 \pmod p$, as desired. $\blacksquare$
 
@@ -46,7 +50,9 @@ The power of orders is its minimality. To be more precise:
 
 Write $m = ord_p(a)$. To prove this, note that due to Divison Algorithm, we can write $k = mq+r$ for integers $m$, $q$, and $r$ where $0 \leq r < m. Notice, 
 
-$$ a^k\equiv 1\pmod p \implies \left(a^{m}\right)^q\cdot a^r \equiv 1 \pmod p \implies a^r \equiv 1 \pmod p.$$
+$$
+a^k\equiv 1\pmod p \implies \left(a^{m}\right)^q\cdot a^r \equiv 1 \pmod p \implies a^r \equiv 1 \pmod p.
+$$
 
 But, if $0 < r < m$ then we contradict the minimality of order. So, $r = 0$ and so $m \mid k$, as desired. $\blacksquare$
 
@@ -56,7 +62,9 @@ In conjunction with Fermat's Little Theorem, it is clear that $a^{p-1} \equiv 1 
 
 The converse also holds for a prime: there **exists** an integer $a$ such that $\text{ord}_p (a)=p-1$. In particular, the sequence
 
-$$a^1 \pmod p, \ \ a^2 \pmod p\ , \ \ldots\ \ , \ a^{p-1} \pmod p$$
+$$
+a^1 \pmod p, \ \ a^2 \pmod p\ , \ \ldots\ \ , \ a^{p-1} \pmod p
+$$
 
 cycles through all elements from $1$ to $p-1$.
 

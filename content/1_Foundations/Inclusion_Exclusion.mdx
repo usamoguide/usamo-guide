@@ -23,7 +23,9 @@ Hence, when one wants to count elements belonging to at least one of several set
  
 For any two finite sets $A$ and $B$,
  
-$$|A \cup B| = |A| + |B| - |A \cap B|.$$
+$$
+|A \cup B| = |A| + |B| - |A \cap B|.
+$$
  
 Elements only in $A$ are counted once. Elements only in $B$ are counted once. Elements in both are counted twice by $|A|+|B|$, so subtracting $|A \cap B|$
 makes the double-counted only 1. In a venn diagram, we draw two overlapping circles and verify each of the three regions is counted exactly once.
@@ -32,7 +34,9 @@ makes the double-counted only 1. In a venn diagram, we draw two overlapping circ
  
 For sets $A$, $B$, $C$,
  
-$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.$$
+$$
+|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.
+$$
  
 This process is the same for with the two-set formula but with one extra set. 
 
@@ -64,7 +68,9 @@ How many integers from 1 to 100 are divisible by 2 or 3?
 Let $A$ = multiples of 2 in $[1,100]$ and $B$ = multiples of 3 in $[1,100]$.
 The intersection $A \cap B$ is multiples of $\text{lcm}(2,3) = 6$.
  
-$$|A| = \left\lfloor \tfrac{100}{2} \right\rfloor = 50, \quad |B| = \left\lfloor \tfrac{100}{3} \right\rfloor = 33, \quad |A \cap B| = \left\lfloor \tfrac{100}{6} \right\rfloor = 16.$$
+$$
+|A| = \left\lfloor \tfrac{100}{2} \right\rfloor = 50, \quad |B| = \left\lfloor \tfrac{100}{3} \right\rfloor = 33, \quad |A \cap B| = \left\lfloor \tfrac{100}{6} \right\rfloor = 16.
+$$
  
 Hence, $$|A \cup B| = 50 + 33 - 16 = 67.$$
  
@@ -80,7 +86,9 @@ In a school of 200 students, 80 play chess, 60 play Go, and 50 play Scrabble.
 30 play chess and Go, 20 play chess and Scrabble, 15 play Go and Scrabble, and
 10 play all three. How many play at least one game?
  
-$$|C \cup G \cup S| = 80 + 60 + 50 - 30 - 20 - 15 + 10 = 135.$$
+$$
+|C \cup G \cup S| = 80 + 60 + 50 - 30 - 20 - 15 + 10 = 135.
+$$
 To find how many play none? $200 - 135 = 65$. It is important to always check which question is being asked.
 
 ### Example 2: Using Complement

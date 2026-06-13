@@ -1,0 +1,496 @@
+---
+id: triangle-types-properties
+title: Triangle Types & Properties
+author: USAMO GUIDE TEAM
+description: A complete guide to triangle classification by sides and angles, fundamental theorems (Angle Sum, Exterior Angle, Triangle Inequality), the relationship between sides and angles, special theorems for isosceles and equilateral triangles, and area formulas including Heron's Formula and area ratios.
+prerequisites: ["intro-to-geometry"]
+---
+
+## Overview
+
+A triangle is a polygon with three sides, three vertices, and three interior angles. It is the simplest closed polygon, and virtually all of polygon geometry builds on it. In this handout we classify triangles by both their sides and their angles, prove the key theorems that govern all triangles, and develop the tools needed to find their areas.
+
+## 1. Triangle Classification
+
+Triangles are classified in two independent ways, by the lengths of their sides, and by the measures of their angles. A triangle always belongs to exactly one category in each classification.
+
+### 1.1 Classification by Sides
+
+<svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <g transform="translate(30,20)">
+    <polygon points="100,10 190,165 10,165" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <line x1="58.0" y1="89.3" x2="52.0" y2="85.7" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="148.0" y1="85.7" x2="142.0" y2="89.3" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="100.0" y1="161.5" x2="100.0" y2="168.5" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="100" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Equilateral</text>
+    <text x="100" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">All sides equal</text>
+  </g>
+
+  <g transform="translate(240,20)">
+    <polygon points="100,10 185,165 15,165" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <line x1="60.6" y1="89.2" x2="54.4" y2="85.8" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="145.6" y1="85.8" x2="139.4" y2="89.2" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="100" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Isosceles</text>
+    <text x="100" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">Two sides equal</text>
+  </g>
+
+  <g transform="translate(440,20)">
+    <polygon points="80,10 190,165 20,165" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <line x1="53.3" y1="88.8" x2="46.7" y2="86.2" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="136.7" y1="83.8" x2="131.0" y2="87.9" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="139.0" y1="87.1" x2="133.3" y2="91.2" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="109.0" y1="168.5" x2="109.0" y2="161.5" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="105.0" y1="168.5" x2="105.0" y2="161.5" stroke="#ffffff" strokeWidth="1.1"/>
+    <line x1="101.0" y1="168.5" x2="101.0" y2="161.5" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="100" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Scalene</text>
+    <text x="100" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">No sides equal</text>
+  </g>
+</svg>
+
+**Equilateral Triangle** — All three sides are equal in length. As we will see later, this forces all three angles to be equal as well (each measuring 60°).
+
+**Isosceles Triangle** — Exactly two sides are equal. The equal sides are called **legs** and the unequal side is called the **base**. The angles opposite the two equal sides are called the **base angles**.
+
+**Scalene Triangle** — All three sides have different lengths, and consequently all three angles are different.
+
+### 1.2 Classification by Angles
+
+<svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <g transform="translate(30,20)">
+    <polygon points="100,15 185,168 15,168" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <path d="M 91.3,30.7 A 18,18 0 0,0 108.7,30.7" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+    <path d="M 25.7,148.8 A 22,22 0 0,1 37.0,168.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+    <path d="M 174.3,148.8 A 22,22 0 0,0 163.0,168.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="100" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Acute</text>
+    <text x="100" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">All angles {"<"} 90°</text>
+  </g>
+
+  <g transform="translate(240,20)">
+    <polygon points="20,168 20,28 185,168" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <rect x="20" y="148" width="18" height="18" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="100" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Right</text>
+    <text x="100" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">One angle = 90°</text>
+  </g>
+
+  <g transform="translate(430,20)">
+    <polygon points="30,168 200,168 80,30" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+    <path d="M 56.0,168.0 A 26,26 0 0,0 38.9,143.6" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+    <text x="115" y="195" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#ffffff">Obtuse</text>
+    <text x="115" y="211" textAnchor="middle" fontSize="11" fill="#ffffff">One angle {">"} 90°</text>
+  </g>
+</svg>
+
+**Acute Triangle** — All three interior angles are less than 90°.
+
+**Right Triangle** — Exactly one interior angle equals 90°. The side opposite the right angle is the **hypotenuse**, always the longest side. The other two sides are the **legs**.
+
+**Obtuse Triangle** — Exactly one interior angle is greater than 90°. A triangle can have at most one obtuse angle, because the three angles must sum to 180°.
+
+## 2. Fundamental Properties
+
+### 2.1 Angle Sum Theorem
+
+**Theorem:** The sum of the interior angles of any triangle is 180°.
+
+$$
+\angle A + \angle B + \angle C = 180°
+$$
+
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <line x1="30" y1="45" x2="390" y2="45" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="6,4"/>
+
+  <polygon points="210,45 60,175 360,175" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <text x="210" y="38" textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="45"  y="192" textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+  <text x="375" y="192" textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+
+  <path d="M 190.0,45.0 A 20,20 0 0,0 194.9,58.1" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <path d="M 225.1,58.1 A 20,20 0 0,0 230.0,45.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <path d="M 73.6,163.2 A 18,18 0 0,1 78.0,175.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <path d="M 342.0,175.0 A 18,18 0 0,1 346.4,163.2" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+
+  <text x="176" y="60" fontSize="12" fill="#ffffff" fontStyle="italic">β</text>
+  <text x="240" y="60" fontSize="12" fill="#ffffff" fontStyle="italic">γ</text>
+  <text x="92"  y="166" fontSize="12" fill="#ffffff" fontStyle="italic">β</text>
+  <text x="330" y="166" fontSize="12" fill="#ffffff" fontStyle="italic">γ</text>
+
+  <text x="234" y="42" fontSize="11" fill="#ffffff">← alternate interior angles →</text>
+  <text x="210" y="190" textAnchor="middle" fontSize="12" fill="#ffffff">α + β + γ = 180°</text>
+</svg>
+
+**Proof sketch:** Draw a line through vertex $A$ parallel to $BC$. The two angles formed on that line at $A$ are alternate interior angles with $\angle B$ and $\angle C$ respectively. The three angles together form a straight angle (180°) along the parallel line.
+
+**Corollary:** Each angle of an equilateral triangle is $\dfrac{180}{3} = 60°$.
+
+**Corollary:** The two acute angles of a right triangle are complementary: they sum to 90°.
+
+### 2.2 Exterior Angle Theorem
+
+An **exterior angle** of a triangle is formed by extending one side beyond a vertex. It is supplementary to its adjacent interior angle.
+
+**Theorem:** An exterior angle of a triangle equals the sum of the two non-adjacent (remote) interior angles.
+
+$$
+\angle ACD = \angle A + \angle B
+$$
+
+<svg viewBox="0 0 460 175" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <polygon points="60,150 360,150 200,30" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <line x1="360" y1="150" x2="430" y2="150" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5,3"/>
+
+  <text x="44"  y="165" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="194" y="22"  fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+  <text x="362" y="165" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+  <text x="425" y="165" fontSize="13" fill="#ffffff" fontStyle="italic">D</text>
+
+  <path d="M 80.0,150.0 A 20,20 0 0,0 75.2,137.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="90" y="142" fontSize="12" fill="#ffffff" fontStyle="italic">α</text>
+  <path d="M 186.3,41.7 A 18,18 0 0,0 214.4,40.8" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="196" y="62" fontSize="12" fill="#ffffff" fontStyle="italic">β</text>
+
+  <path d="M 342.4,136.8 A 22,22 0 0,1 382.0,150.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="388" y="138" fontSize="12" fill="#ffffff" fontWeight="bold">ext.</text>
+
+  <text x="230" y="172" textAnchor="middle" fontSize="12" fill="#ffffff">ext. ∠C = α + β</text>
+</svg>
+
+**Proof:** Since $\angle ACB + \text{exterior}\angle C = 180°$ (straight line) and $\angle A + \angle B + \angle ACB = 180°$ (Angle Sum), subtracting gives $\text{exterior}\angle C = \angle A + \angle B$.
+
+**Key implication:** An exterior angle is always greater than either of the two remote interior angles.
+
+### 2.3 Triangle Inequality Theorem
+
+**Theorem:** The sum of the lengths of any two sides of a triangle must be strictly greater than the length of the third side.
+
+$$
+a + b > c \qquad b + c > a \qquad a + c > b
+$$
+
+<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <polygon points="30,128 190,128 130,30" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+  <text x="64"  y="84"  textAnchor="end" fontSize="11" fill="#ffffff" fontStyle="italic">a</text>
+  <text x="170" y="84"  fontSize="11" fill="#ffffff" fontStyle="italic">b</text>
+  <text x="110" y="122" textAnchor="middle" fontSize="11" fill="#ffffff" fontStyle="italic">c</text>
+  <text x="110" y="150" textAnchor="middle" fontSize="12" fill="#ffffff" fontWeight="bold">✓ Valid</text>
+  <text x="110" y="167" textAnchor="middle" fontSize="11" fill="#ffffff">a + b {">"} c</text>
+
+  <line x1="250" y1="20" x2="250" y2="148" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="4,3"/>
+
+  <line x1="280" y1="98" x2="470" y2="98" stroke="#ffffff" strokeWidth="1.1"/>
+  <circle cx="280" cy="98" r="4" fill="#21203a" stroke="#ffffff" strokeWidth="1.1"/>
+  <circle cx="375" cy="98" r="4" fill="#21203a" stroke="#ffffff" strokeWidth="1.1"/>
+  <circle cx="470" cy="98" r="4" fill="#21203a" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="280" y="118" textAnchor="middle" fontSize="11" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="375" y="118" textAnchor="middle" fontSize="11" fill="#ffffff" fontStyle="italic">B</text>
+  <text x="470" y="118" textAnchor="middle" fontSize="11" fill="#ffffff" fontStyle="italic">C</text>
+  <text x="375" y="80"  textAnchor="middle" fontSize="11" fill="#ffffff">AB + BC = AC → collinear</text>
+  <text x="375" y="150" textAnchor="middle" fontSize="12" fill="#ffffff" fontWeight="bold">✗ Degenerate (not a triangle)</text>
+</svg>
+
+**Why it matters:** This theorem tells us which combinations of side lengths can actually form a triangle. If any one inequality fails, or becomes an equality, the three points are collinear and no triangle is formed.
+
+**Example:** Can sides of length 3, 5, and 9 form a triangle?
+
+Check: $3 + 5 = 8 < 9$. The inequality fails, so **no**, these lengths cannot form a triangle.
+
+**Example:** Can sides of length 6, 7, and 10 form a triangle?
+
+Check: $6 + 7 = 13 > 10$ ✓, $6 + 10 = 16 > 7$ ✓, $7 + 10 = 17 > 6$ ✓. All three hold, so **yes**.
+
+### 2.4 Relationship Between Sides and Angles
+
+In any triangle, the size of an angle is directly tied to the length of the side opposite it.
+
+<svg viewBox="0 0 440 210" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <text x="220" y="16" textAnchor="middle" fontSize="11" fill="#ffffff">α {"<"} γ {"<"} β  ⟺  c {"<"} b {"<"} a</text>
+
+  <polygon points="70,180 390,180 200,45" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <text x="200" y="38"  textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+  <text x="52"  y="196" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="396" y="196" fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+
+  <path d="M 90.0,180.0 A 20,20 0 0,0 83.9,165.6" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="98" y="172" fontSize="12" fill="#ffffff" fontStyle="italic">α (small)</text>
+  <path d="M 373.7,168.4 A 20,20 0 0,0 370.0,180.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="300" y="170" textAnchor="end" fontSize="12" fill="#ffffff" fontStyle="italic">β (large)</text>
+  <path d="M 188.9,56.5 A 16,16 0 0,0 213.0,54.3" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="225" y="72" fontSize="12" fill="#ffffff" fontStyle="italic">γ (medium)</text>
+
+  <text x="120" y="120" textAnchor="end" fontSize="12" fill="#ffffff" fontStyle="italic">b (medium)</text>
+  <text x="300" y="115" fontSize="12" fill="#ffffff" fontStyle="italic">a (largest)</text>
+  <text x="230" y="197" fontSize="12" fill="#ffffff" fontStyle="italic">c (smallest)</text>
+</svg>
+
+**Theorem — Longest Side ↔ Largest Angle:** In a triangle, the longest side lies opposite the largest angle, and the shortest side lies opposite the smallest angle. More precisely:
+
+$$
+a > b > c \iff \angle A > \angle B > \angle C
+$$
+
+where side $a$ is opposite $\angle A$, side $b$ is opposite $\angle B$, and side $c$ is opposite $\angle C$.
+
+This relationship is bijective: knowing the order of the sides immediately tells you the order of the angles, and vice versa.
+
+**Example:** In a triangle with $\angle A = 80°$, $\angle B = 60°$, $\angle C = 40°$, the longest side is $a$ (opposite 80°) and the shortest is $c$ (opposite 40°).
+
+## 3. Special Properties
+
+### 3.1 Isosceles Triangle Theorem
+
+**Theorem:** If two sides of a triangle are equal, then the angles opposite those sides are equal.
+
+$$
+AB = AC \implies \angle ABC = \angle ACB
+$$
+
+In other words, the **base angles** of an isosceles triangle are equal.
+
+<svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <polygon points="170,20 60,185 280,185" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <line x1="119.4" y1="103.1" x2="112.8" y2="98.6" stroke="#ffffff" strokeWidth="1.1"/>
+  <line x1="117.2" y1="106.4" x2="110.6" y2="101.9" stroke="#ffffff" strokeWidth="1.1"/>
+  <line x1="227.2" y1="98.6" x2="220.6" y2="103.1" stroke="#ffffff" strokeWidth="1.1"/>
+  <line x1="229.4" y1="101.9" x2="222.8" y2="106.4" stroke="#ffffff" strokeWidth="1.1"/>
+
+  <path d="M 71.1,168.4 A 20,20 0 0,1 80.0,185.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <path d="M 260.0,185.0 A 20,20 0 0,1 268.9,168.4" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <path d="M 161.1,33.3 A 16,16 0 0,0 178.9,33.3" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+
+  <text x="170" y="13"  textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="44"  y="200" fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+  <text x="282" y="200" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+  <text x="92"  y="176" fontSize="12" fill="#ffffff" fontStyle="italic">β</text>
+  <text x="248" y="176" textAnchor="end" fontSize="12" fill="#ffffff" fontStyle="italic">β</text>
+  <text x="170" y="54"  textAnchor="middle" fontSize="12" fill="#ffffff" fontStyle="italic">α</text>
+
+  <text x="170" y="207" textAnchor="middle" fontSize="12" fill="#ffffff">AB = AC  →  ∠B = ∠C</text>
+</svg>
+
+**Proof sketch:** Draw the angle bisector from $A$ to the midpoint $M$ of $BC$. By SAS congruence ($AB = AC$, $AM$ common, $\angle BAM = \angle CAM$), triangles $ABM$ and $ACM$ are congruent, so $\angle B = \angle C$.
+
+### 3.2 Converse of the Isosceles Triangle Theorem
+
+**Theorem:** If two angles of a triangle are equal, then the sides opposite those angles are equal.
+
+$$
+\angle B = \angle C \implies AB = AC
+$$
+
+This converse is just as important as the forward direction. Together, the theorem and its converse give a complete equivalence:
+
+$$
+AB = AC \iff \angle ABC = \angle ACB
+$$
+
+**Example:** A triangle has angles 50°, 65°, 65°. Which sides are equal?
+
+The two 65° angles are equal, so the sides opposite them are equal. The side opposite the 50° angle is the unique unequal side (the base).
+
+### 3.3 Equilateral Triangle Properties
+
+An equilateral triangle is the most symmetric of all triangles. Because all three sides are equal, the Isosceles Triangle Theorem forces all three angles to be equal, and since they sum to 180°, each must be 60°.
+
+<svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+
+  <polygon points="180,15 320,185 40,185" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <line x1="180" y1="15"  x2="180" y2="185" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5,3"/>
+  <line x1="320" y1="185" x2="110" y2="100" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5,3"/>
+  <line x1="40"  y1="185" x2="250" y2="100" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5,3"/>
+
+  <circle cx="180" cy="128" r="4" fill="#21203a" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="198" y="124" fontSize="11" fill="#ffffff">center</text>
+
+  <path d="M 168.6,28.9 A 18,18 0 0,0 191.4,28.9" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="198" y="44" fontSize="12" fill="#ffffff">60°</text>
+  <path d="M 54.0,168.0 A 22,22 0 0,1 62.0,185.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="78" y="180" fontSize="12" fill="#ffffff">60°</text>
+  <path d="M 298.0,185.0 A 22,22 0 0,1 306.0,168.0" fill="none" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="266" y="180" textAnchor="end" fontSize="12" fill="#ffffff">60°</text>
+
+  <text x="177" y="10"  textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="25"  y="200" fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+  <text x="322" y="200" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+
+  <text x="180" y="222" textAnchor="middle" fontSize="11" fill="#ffffff">The 3 medians, altitudes, and angle bisectors all coincide.</text>
+</svg>
+
+**Key properties of an equilateral triangle with side length $s$:**
+
+All three of the following special segments are identical for each vertex, and they all meet at the same center point:
+- the **median** from each vertex to the midpoint of the opposite side,
+- the **altitude** (perpendicular height) from each vertex,
+- the **angle bisector** from each vertex.
+
+The height of an equilateral triangle is:
+
+$$
+h = \frac{s\sqrt{3}}{2}
+$$
+
+**Proof:** Drop a perpendicular from any vertex to the opposite side. It bisects the base (by the Isosceles Triangle Theorem), creating a right triangle with hypotenuse $s$ and base $s/2$. By the Pythagorean theorem: $h = \sqrt{s^2 - (s/2)^2} = \dfrac{s\sqrt{3}}{2}$.
+
+## 4. Area Formulas
+
+### 4.1 Standard Formula
+
+The most fundamental area formula uses the base and the perpendicular height:
+
+$$
+A = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2}bh
+$$
+
+Any side can be chosen as the base; the corresponding height is the perpendicular distance from the opposite vertex to that base (or its extension for obtuse triangles).
+
+### 4.2 Heron's Formula
+
+When the three side lengths are known but the height is not, Heron's Formula gives the area directly.
+
+**Formula:** For a triangle with sides $a$, $b$, $c$, let $s$ be the **semi-perimeter**:
+
+$$
+s = \frac{a + b + c}{2}
+$$
+
+Then the area is:
+
+$$
+A = \sqrt{s(s-a)(s-b)(s-c)}
+$$
+
+<svg viewBox="0 0 400 205" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+  <text x="200" y="16" textAnchor="middle" fontSize="12" fill="#ffffff">s = (a+b+c)/2</text>
+
+  <polygon points="60,180 330,180 200,48" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <text x="200" y="40"  textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic">C</text>
+  <text x="44"  y="196" fontSize="14" fill="#ffffff" fontStyle="italic">A</text>
+  <text x="332" y="196" fontSize="14" fill="#ffffff" fontStyle="italic">B</text>
+
+  <text x="116" y="118" textAnchor="end" fontSize="14" fill="#ffffff" fontStyle="italic" fontWeight="bold">b</text>
+  <text x="284" y="118" fontSize="14" fill="#ffffff" fontStyle="italic" fontWeight="bold">c</text>
+  <text x="195" y="197" textAnchor="middle" fontSize="14" fill="#ffffff" fontStyle="italic" fontWeight="bold">a</text>
+</svg>
+
+**Example:** Find the area of a triangle with sides 5, 6, and 7.
+
+$$
+s = \frac{5 + 6 + 7}{2} = 9
+$$
+
+$$
+A = \sqrt{9(9-5)(9-6)(9-7)} = \sqrt{(9)(4)(3)(2)} = \sqrt{216} = 6\sqrt{6}
+$$
+
+**Special case for equilateral triangle** (all sides $= s$):
+
+$$
+A = \frac{\sqrt{3}}{4}s^2
+$$
+
+This follows directly from Heron's Formula with $a = b = c = s$, giving semi-perimeter $\dfrac{3s}{2}$.
+
+### 4.3 Trigonometric Area Formula
+
+When two sides and the included angle are known:
+
+$$
+A = \frac{1}{2}ab\sin C
+$$
+
+where $a$ and $b$ are two sides and $C$ is the angle between them.
+
+This is equivalent to the base-height formula, since $h = a\sin C$ expresses the height in terms of the included angle.
+
+### 4.4 Area Ratios in Triangles
+
+Several elegant results follow from combining the area formula with the properties above.
+
+**Triangles with the same base and height** have equal areas, regardless of the position of the apex along the line parallel to the base.
+
+**Triangles sharing a common height:** If two triangles share the same height $h$, their areas are in the ratio of their bases:
+
+$$
+\frac{A_1}{A_2} = \frac{b_1}{b_2}
+$$
+
+**Triangles sharing a common base:** If two triangles share the same base $b$, their areas are in the ratio of their heights:
+
+$$
+\frac{A_1}{A_2} = \frac{h_1}{h_2}
+$$
+
+**Median divides area in half:** A median connects a vertex to the midpoint of the opposite side. It divides the triangle into two smaller triangles of equal area, because both share the same height but have bases of equal length.
+
+<svg viewBox="0 0 380 200" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto",fontFamily:"Georgia, serif"}}>
+  <polygon points="80,170 300,170 200,25" fill="none" stroke="#ffffff" strokeWidth="1.1" strokeLinejoin="round"/>
+
+  <line x1="200" y1="25" x2="190" y2="170" stroke="#ffffff" strokeWidth="1.1" strokeDasharray="5,3"/>
+
+  <circle cx="190" cy="170" r="4" fill="#21203a" stroke="#ffffff" strokeWidth="1.1"/>
+  <text x="190" y="188" textAnchor="middle" fontSize="11" fill="#ffffff">M (midpoint)</text>
+
+  <text x="130" y="120" textAnchor="middle" fontSize="13" fill="#ffffff" fontWeight="bold">A₁</text>
+  <text x="250" y="120" textAnchor="middle" fontSize="13" fill="#ffffff" fontWeight="bold">A₂</text>
+  <text x="190" y="14" textAnchor="middle" fontSize="12" fill="#ffffff">A₁ = A₂</text>
+</svg>
+
+**Similar triangles:** If two triangles are similar with ratio of corresponding sides $k$, their areas are in ratio $k^2$:
+
+$$
+\frac{A_1}{A_2} = k^2 = \left(\frac{a_1}{a_2}\right)^2
+$$
+
+## Strategy Checklist
+
+- To classify a triangle by angles, find the largest angle first: if it is less than 90° → acute; equal to 90° → right; greater than 90° → obtuse.
+- To check if three lengths form a valid triangle, only the largest-side inequality needs testing: verify that the sum of the two shorter sides exceeds the longest side.
+- For the exterior angle, add the two remote interior angles, do not subtract from 180° (that gives the adjacent interior angle, not the exterior angle).
+- When finding the area with Heron's Formula, compute the semi-perimeter $s$ first and keep it factored, expanding before taking the square root is error-prone.
+- In ratio problems, identify whether triangles share a base or a height before setting up the ratio.
+
+## Common Pitfalls
+
+- Forgetting that angle classification uses strict inequalities: a right triangle is neither acute nor obtuse.
+- Assuming an isosceles triangle must have its unequal side at the bottom. The base can be any side, what matters is which side is unequal.
+- Using the Triangle Inequality in only one direction. All three inequalities must hold.
+- Confusing the Exterior Angle Theorem with the supplement relationship. The exterior angle equals the sum of the two remote interior angles, not 180° minus one of them.
+- Applying the equilateral area formula to non-equilateral triangles.
+- In Heron's Formula, computing $\sqrt{s \cdot (s-a) \cdot (s-b) \cdot (s-c)}$ but using the full perimeter instead of the semi-perimeter for $s$.
+
+## Practice Problems
+
+1. Classify the triangle with angles 45°, 45°, and 90° by both sides and angles. State all special properties it satisfies.
+
+2. Can a triangle have sides of length 4, 4, and 9? Justify your answer using the Triangle Inequality Theorem.
+
+3. In triangle $ABC$, $\angle A = 72°$ and $\angle B = 54°$. Find $\angle C$ and the exterior angle at $C$. Then order the sides from longest to shortest.
+
+4. Triangle $PQR$ is isosceles with $PQ = PR$. If $\angle QPR = 40°$, find $\angle PQR$ and $\angle PRQ$.
+
+5. Find the area of a triangle with sides 8, 15, and 17. First verify it is a right triangle, then compute the area using both the base-height formula and Heron's Formula, and confirm they agree.
+
+6. Two triangles share the same base of length 10 cm. The height of the first triangle is 6 cm and the height of the second is 9 cm. Find the ratio of their areas.
+
+7. (HARD) In triangle $ABC$, the median from $A$ meets $BC$ at $M$. A point $D$ lies on $AM$ such that $AD : DM = 2 : 1$. Find the ratio of the area of triangle $ABD$ to the area of triangle $ABC$.
+
+8. (CHALLENGE) Prove that in any triangle, the sum of any two sides is greater than twice the length of the median to the third side.
+
+<Problems problems="practice" />

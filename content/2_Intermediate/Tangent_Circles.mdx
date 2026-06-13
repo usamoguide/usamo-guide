@@ -28,11 +28,15 @@ Note whether tangency is external or internal.
 
 For externally tangent circles,
 
-$$d=r_1+r_2.$$
+$$
+d=r_1+r_2.
+$$
 
 For internally tangent circles,
 
-$$d=|r_1-r_2|.$$
+$$
+d=|r_1-r_2|.
+$$
 
 These formulas are often the first step in a solution.
 
@@ -42,7 +46,9 @@ Suppose circles with centers $O_1,O_2$ are tangent at $P$.
 
 Then
 
-$$O_1,P,O_2$$
+$$
+O_1,P,O_2
+$$
 
 are collinear.
 
@@ -114,27 +120,43 @@ It is usually a good idea to draw the radii from centers to points of tangency, 
 
 **Solution:** Notice that circle $C$ must be internally tangent to circle $O,$ and its radius is $\frac{2}{2}=1.$ First, we drop a radius from $D$ to $AB,$ which will be perpendicular to $AB.$ Let the foot be $X.$ Notice that $OD=2-r$ and $DC = 1+r.$ Then, 
 
-$$OX^2 + r^2 = (2-r)^2$$
+$$
+OX^2 + r^2 = (2-r)^2
+$$
 
-$$(1+OX)^2 + r^2 = (1+r)^2$$
+$$
+(1+OX)^2 + r^2 = (1+r)^2
+$$
 
 Expanding and simplifying, we obtain
 
-$$OX^2 = -4r+4$$
+$$
+OX^2 = -4r+4
+$$
 
-$$OX^2 + 2OX = 2r$$
+$$
+OX^2 + 2OX = 2r
+$$
 
 Therefore, $2OX = 2r+4r-4$ so 
 
-$$OX = 3r-2.$$
+$$
+OX = 3r-2.
+$$
 
 Inputting back, we obtain
 
-$$(3r-2)^2 = -4r+4$$
+$$
+(3r-2)^2 = -4r+4
+$$
 
-$$9r^2-12r+4=-4r+4$$
+$$
+9r^2-12r+4=-4r+4
+$$
 
-$$9r^2-8r=0$$
+$$
+9r^2-8r=0
+$$
 
 Therefore, $r=8/9.$
 
@@ -215,15 +237,21 @@ Let the centers be $O_1, O_2,$  the radii be $r_1,r_2,$ the tangent points be $A
 
 This creates right triangle $O_1XO_2,$ so 
 
-$$(r_1+r_2)^2=L^2+(r_1-r_2)^2.$$
+$$
+(r_1+r_2)^2=L^2+(r_1-r_2)^2.
+$$
 
 Therefore,
 
-$$L^2=(r_1+r_2)^2-(r_1-r_2)^2=4r_1r_2.$$
+$$
+L^2=(r_1+r_2)^2-(r_1-r_2)^2=4r_1r_2.
+$$
 
 and so
 
-$$\boxed{L=2\sqrt{r_1r_2}.}$$
+$$
+\boxed{L=2\sqrt{r_1r_2}.}
+$$
 
 
 
@@ -243,7 +271,9 @@ circle will transform into the larger one. This transformation is called a
 Algebraically, suppose a line through $P$ intersects the smaller circle again at $A$ and
 the larger circle again at $B.$ Then
 
-$$\frac{PA}{PB}=\frac{r_1}{r_2}.$$
+$$
+\frac{PA}{PB}=\frac{r_1}{r_2}.
+$$
 
 
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
@@ -393,7 +423,9 @@ tangent-circle configurations.
 If the radii are $r_1,r_2,r_3,$ then the centers form a triangle with side
 lengths
 
-$$r_1+r_2,\qquad r_2+r_3,\qquad r_3+r_1.$$
+$$
+r_1+r_2,\qquad r_2+r_3,\qquad r_3+r_1.
+$$
 
 Many geometry problems reduce to analyzing this triangle. For instance, using Heron's formula, Law of Cosines, coordinate geometry, etc.
 
@@ -470,15 +502,21 @@ As shown above, if there is a fourth circle externally or internally tangent to 
 
 The first thing to calculate is **curvature** $k_i.$ Curvature is *signed,* which changes depending on which configuration we have (i.e. whether a circle is internally/externally tangent). Follow the formula
 
-$$k = \pm \frac{1}{r},$$
+$$
+k = \pm \frac{1}{r},
+$$
 
 where $r$ is the radius. For four externally tangent circles, all curvatures are positive. When there is one enclosing circle, the three smaller circles have positive curvature, and the big outer circle has negative curvature. Then Descartes' Theorem states:
 
-$$(k_1+k_2+k_3+k_4)^2 = 2(k^2_1 + k^2_2+k^2_3+k^2_4).$$
+$$
+(k_1+k_2+k_3+k_4)^2 = 2(k^2_1 + k^2_2+k^2_3+k^2_4).
+$$
 
 If $k_4$ is unknown, solve to obtain
 
-$$k_4 = k_1+k_2+k_3 \pm 2 \sqrt{k_1k_2 + k_2k_3 + k_3k_1}.$$
+$$
+k_4 = k_1+k_2+k_3 \pm 2 \sqrt{k_1k_2 + k_2k_3 + k_3k_1}.
+$$
 
 **Remember to convert curvature back to radius at the end!** The larger of the two radii (smaller curvature) generally corresponds to the internally tangent configuration, and the smaller radius to the externally tangent configuration.
 
@@ -559,13 +597,19 @@ $$k_4 = k_1+k_2+k_3 \pm 2 \sqrt{k_1k_2 + k_2k_3 + k_3k_1}.$$
 
 If we replace one of the circles (say $k_3$) with a line, for instance three circles are internally tangent to a line, it can be viewed with a circle of infinite radius, in which case the curvature would be $0.$ Thus, we set $k_3=0$ and so the theorem becomes
 
-$$(k_1+k_2+k_4)^2 = 2(k_1^2+k_2^2+k_4^2)$$
+$$
+(k_1+k_2+k_4)^2 = 2(k_1^2+k_2^2+k_4^2)
+$$
 
-$$k_4 = k_1 + k_2 + 2 \sqrt{k_1 k_2}.$$
+$$
+k_4 = k_1 + k_2 + 2 \sqrt{k_1 k_2}.
+$$
 
 We can also square root both sides:
 
-$$\sqrt{k_4} = | \sqrt{k_1} \pm \sqrt{k_2} |.$$
+$$
+\sqrt{k_4} = | \sqrt{k_1} \pm \sqrt{k_2} |.
+$$
 
 
 

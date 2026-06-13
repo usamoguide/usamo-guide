@@ -70,23 +70,33 @@ Drop a perpendicular from $B$ onto side $b = CA$, call the foot $H$.
  
 Look at the right triangle $\triangle BHC$. Its hypotenuse is $a$, and the angle at $C$ is our angle $C$, so from trigonometry:
  
-$$h = a\sin C \qquad\qquad CH = a\cos C$$
+$$
+h = a\sin C \qquad\qquad CH = a\cos C
+$$
  
 Since the full base $CA$ has length $b$, the leftover segment is:
  
-$$AH = b - a\cos C$$
+$$
+AH = b - a\cos C
+$$
  
 Now apply the Pythagorean theorem to the *other* right triangle, $\triangle BHA$ — its legs are $AH$ and $h$, and its hypotenuse is $c$:
  
-$$c^2 = AH^2 + h^2 = (b - a\cos C)^2 + (a\sin C)^2$$
+$$
+c^2 = AH^2 + h^2 = (b - a\cos C)^2 + (a\sin C)^2
+$$
  
 Expand:
  
-$$c^2 = b^2 - 2ab\cos C + a^2\cos^2 C + a^2\sin^2 C$$
+$$
+c^2 = b^2 - 2ab\cos C + a^2\cos^2 C + a^2\sin^2 C
+$$
  
 Group the two $a^2$ terms and cancel them with $\sin^2 C + \cos^2 C = 1$:
  
-$$c^2 = a^2\left(\sin^2 C + \cos^2 C\right) + b^2 - 2ab\cos C = a^2 + b^2 - 2ab\cos C \qquad \blacksquare$$
+$$
+c^2 = a^2\left(\sin^2 C + \cos^2 C\right) + b^2 - 2ab\cos C = a^2 + b^2 - 2ab\cos C \qquad \blacksquare
+$$
  
 *(If $C$ is obtuse, $H$ lands **outside** segment $CA$ and $\cos C$ comes out negative, so the formula still holds.)*
 
@@ -120,7 +130,9 @@ The Law of Cosines is useful in a variety of ways, one obvious case being findin
 
 The $60^\circ$ angle is *enclosed* by the two known sides, sitting opposite the unknown side $c$ — exactly the configuration the Law of Cosines handles:
 
-$$c^2 = 8^2 + 5^2 - 2(8)(5)\cos 60^\circ = 64 + 25 - 80\cdot\tfrac{1}{2} = 89 - 40 = 49.$$
+$$
+c^2 = 8^2 + 5^2 - 2(8)(5)\cos 60^\circ = 64 + 25 - 80\cdot\tfrac{1}{2} = 89 - 40 = 49.
+$$
 
 Hence $c = \sqrt{49} = 7$.
 
@@ -141,7 +153,9 @@ Hence $c = \sqrt{49} = 7$.
 
 We want the angle at $B$. It is enclosed by the sides $AB = 3$ and $BC = x$, and it sits opposite the side $AC = 5$. Solving the Law of Cosines for the cosine gives what we want:
 
-$$\cos B = \frac{AB^2 + BC^2 - AC^2}{2\cdot AB\cdot BC} = \frac{3^2 + x^2 - 5^2}{2(3)(x)} = \frac{x^2 - 16}{6x}.$$
+$$
+\cos B = \frac{AB^2 + BC^2 - AC^2}{2\cdot AB\cdot BC} = \frac{3^2 + x^2 - 5^2}{2(3)(x)} = \frac{x^2 - 16}{6x}.
+$$
 
 ## Worked Example
 
@@ -170,13 +184,19 @@ Rotation preserves distance to its center, so $BA' = BA = 1$, and then $A'B' = A
 
 Because the two rotations turn $\vec{BA}$ into $\vec{B'A'}$, the points form a **parallelogram** $BAA'B'$ whose diagonals are $BA' = 1$ and $AB' = \tfrac{4}{3}$. Diagonals bisect each other at $O$, so
 
-$$BO = \tfrac{1}{2}, \qquad AO = \tfrac{2}{3}.$$
+$$
+BO = \tfrac{1}{2}, \qquad AO = \tfrac{2}{3}.
+$$
 
 The rotation angle is exactly $\angle ABA' = \theta$, which is the angle at $B$ in $\triangle ABO$ (since $O$ lies on $BA'$). That triangle has sides $AB = 1$ and $BO = \tfrac{1}{2}$ enclosing $\theta$, opposite the side $AO = \tfrac{2}{3}$. Apply the Law of Cosines:
 
-$$AO^2 = AB^2 + BO^2 - 2\,(AB)(BO)\cos\theta$$
+$$
+AO^2 = AB^2 + BO^2 - 2\,(AB)(BO)\cos\theta
+$$
 
-$$\left(\tfrac{2}{3}\right)^2 = 1^2 + \left(\tfrac{1}{2}\right)^2 - 2(1)\!\left(\tfrac{1}{2}\right)\cos\theta \;\;\Longrightarrow\;\; \tfrac{4}{9} = \tfrac{5}{4} - \cos\theta.$$
+$$
+\left(\tfrac{2}{3}\right)^2 = 1^2 + \left(\tfrac{1}{2}\right)^2 - 2(1)\!\left(\tfrac{1}{2}\right)\cos\theta \;\;\Longrightarrow\;\; \tfrac{4}{9} = \tfrac{5}{4} - \cos\theta.
+$$
 
 Therefore $\cos\theta = \tfrac{5}{4} - \tfrac{4}{9} = \tfrac{45 - 16}{36} = \tfrac{29}{36}$, giving $m + n = 29 + 36 = \boxed{65}$.
 

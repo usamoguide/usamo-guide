@@ -76,15 +76,21 @@ When discussing vectors, ordinary numerical quantities (i.e. real numbers) are r
 
 To help distinguish between these two types of quantities, vector variables will always be written in an upright bold font:
 
-$$\mathbf{u}, \quad \mathbf{v}, \quad \text{or} \quad \mathbf{w},$$
+$$
+\mathbf{u}, \quad \mathbf{v}, \quad \text{or} \quad \mathbf{w},
+$$
 
 while scalar variables will be written in the usual italic font:
 
-$$x, \quad y, \quad \text{or} \quad z.$$
+$$
+x, \quad y, \quad \text{or} \quad z.
+$$
 
 This is the most popular convention for distinguishing between vector and scalar variables, but other conventions are possible. For example, some books denote a vector variable using an arrow above the letter:
 
-$$\vec{u}, \quad \vec{v}, \quad \text{or} \quad \vec{w}.$$
+$$
+\vec{u}, \quad \vec{v}, \quad \text{or} \quad \vec{w}.
+$$
 
 This is also the most common way to indicate a vector variable when doing hand calculations, since it is difficult to make handwritten letters bold, and the reader is encouraged to adopt this practice.
 
@@ -92,13 +98,17 @@ This is also the most common way to indicate a vector variable when doing hand c
 
 The **magnitude** of a vector is a scalar, and corresponds to the length of any arrow that represents the vector. Different books write the magnitude of a vector $\mathbf{v}$ in different ways:
 
-$$|\mathbf{v}|, \quad \|\mathbf{v}\|, \quad \text{or} \quad v.$$
+$$
+|\mathbf{v}|, \quad \|\mathbf{v}\|, \quad \text{or} \quad v.
+$$
 
 Also, some books refer to the magnitude of a vector as its **length** or **norm** instead. We will consistently use the word "magnitude" and write $|\mathbf{v}|$ for the magnitude of a vector $\mathbf{v}$.
 
 The magnitude of a vector $\mathbf{v}$ is always either positive or zero:
 
-$$|\mathbf{v}| \geq 0$$
+$$
+|\mathbf{v}| \geq 0
+$$
 
 If $|\mathbf{v}| = 0$, then $\mathbf{v}$ is the **zero vector**, which has a magnitude of zero but no direction. We will use a bold zero $\mathbf{0}$ to denote the zero vector.
 
@@ -232,7 +242,9 @@ The **negation** of a vector $\mathbf{v}$, denoted $-\mathbf{v}$, is the vector 
 
 A vector and its negation are additive inverses, meaning that
 
-$$\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$$
+$$
+\mathbf{v} + (-\mathbf{v}) = \mathbf{0}
+$$
 
 for any vector $\mathbf{v}$.
 
@@ -240,7 +252,9 @@ Although this operation is referred to as negation, there isn't any sense in whi
 
 We can use negation to define subtraction for vectors. If $\mathbf{v}$ and $\mathbf{w}$ are vectors, the **difference** $\mathbf{w} - \mathbf{v}$ is defined by the formula
 
-$$\mathbf{w} - \mathbf{v} = \mathbf{w} + (-\mathbf{v}).$$
+$$
+\mathbf{w} - \mathbf{v} = \mathbf{w} + (-\mathbf{v}).
+$$
 
 If $\mathbf{v}$ and $\mathbf{w}$ are arranged to have the same beginning point, then the difference $\mathbf{w} - \mathbf{v}$ is the vector that points from the end of $\mathbf{v}$ to the end of $\mathbf{w}$.
 
@@ -274,7 +288,9 @@ There does not seem to be a good way of multiplying two vectors in general. Howe
 
 For a positive scalar $k$ and a vector $\mathbf{v}$, the product $k\mathbf{v}$ is a vector in the same direction as $\mathbf{v}$ whose magnitude has been scaled by a factor of $k$. Thus,
 
-$$|k\mathbf{v}| = k|\mathbf{v}|.$$
+$$
+|k\mathbf{v}| = k|\mathbf{v}|.
+$$
 
 <svg viewBox="0 0 420 240" role="img" aria-label="A vector v and several scalar multiples: one third v, one half v, three halves v, and 2v" style={{ width: '100%', maxWidth: '440px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -300,13 +316,17 @@ $$|k\mathbf{v}| = k|\mathbf{v}|.$$
 
 Multiplying a vector by a negative scalar both scales and negates the vector. Thus $(-1)\mathbf{v}$ is the same as $-\mathbf{v}$, and $(-k)\mathbf{v}$ is the same as $-(k\mathbf{v})$ for any scalar $k$. Note then that
 
-$$|k\mathbf{v}| = |k||\mathbf{v}|$$
+$$
+|k\mathbf{v}| = |k||\mathbf{v}|
+$$
 
 for any scalar $k$, where $|k|$ is the absolute value of $k$.
 
 Finally, multiplying a vector by the scalar $0$ results in the zero vector:
 
-$$0\mathbf{v} = \mathbf{0}$$
+$$
+0\mathbf{v} = \mathbf{0}
+$$
 
 **Properties of Scalar Multiplication**
 
@@ -321,7 +341,9 @@ Scalar multiplication has the following properties:
 
 A **linear combination** of two vectors $\mathbf{v}$ and $\mathbf{w}$ is any expression of the form
 
-$$a\mathbf{v} + b\mathbf{w},$$
+$$
+a\mathbf{v} + b\mathbf{w},
+$$
 
 where $a$ and $b$ are scalars.
 
@@ -371,11 +393,15 @@ A linear combination is the most general way of combining two vectors $\mathbf{v
 
 It is also possible to take a linear combination of more than two vectors. For example, if $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ are three vectors, a linear combination of them would have the form
 
-$$a\mathbf{u} + b\mathbf{v} + c\mathbf{w},$$
+$$
+a\mathbf{u} + b\mathbf{v} + c\mathbf{w},
+$$
 
 where $a$, $b$, and $c$ are scalars. More generally, if $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ are $n$ different vectors, then a linear combination of them has the form
 
-$$a_1\mathbf{v}_1 + a_2\mathbf{v}_2 + \cdots + a_n\mathbf{v}_n,$$
+$$
+a_1\mathbf{v}_1 + a_2\mathbf{v}_2 + \cdots + a_n\mathbf{v}_n,
+$$
 
 where $a_1, a_2, \ldots, a_n$ are $n$ scalars.
 
@@ -391,11 +417,15 @@ Express the vector $2(-3\mathbf{v} + 4\mathbf{w}) - 3(-5\mathbf{v})$ as a linear
 
 **Solution** Distributing the $2$ and $-3$ through gives
 
-$$-6\mathbf{v} + 8\mathbf{w} + 15\mathbf{v},$$
+$$
+-6\mathbf{v} + 8\mathbf{w} + 15\mathbf{v},
+$$
 
 and combining like terms yields the linear combination
 
-$$9\mathbf{v} + 8\mathbf{w}.$$
+$$
+9\mathbf{v} + 8\mathbf{w}.
+$$
 
 ### Example 2
 
@@ -435,33 +465,47 @@ In the figure, point $D$ is the midpoint of line segment $\overline{BC}$. Expres
 
 **Solution** Note first that the vector from $C$ to $B$ is equal to $\mathbf{u} + \mathbf{v}$. Since $D$ is the midpoint of $\overline{BC}$, the vector from $C$ to $D$ must be half of $\mathbf{u} + \mathbf{v}$. From the picture, we see that
 
-$$\mathbf{u} + \mathbf{w} = \frac{1}{2}(\mathbf{u} + \mathbf{v})$$
+$$
+\mathbf{u} + \mathbf{w} = \frac{1}{2}(\mathbf{u} + \mathbf{v})
+$$
 
 and therefore
 
-$$\mathbf{w} = -\frac{1}{2}\mathbf{u} + \frac{1}{2}\mathbf{v}.$$
+$$
+\mathbf{w} = -\frac{1}{2}\mathbf{u} + \frac{1}{2}\mathbf{v}.
+$$
 
 ### Example 3
 
 Solve the following equation for $\mathbf{v}$ in terms of $\mathbf{u}$:
 
-$$3\mathbf{u} + 2\mathbf{v} = 5\mathbf{u} - 4(\mathbf{u} - 2\mathbf{v}).$$
+$$
+3\mathbf{u} + 2\mathbf{v} = 5\mathbf{u} - 4(\mathbf{u} - 2\mathbf{v}).
+$$
 
 **Solution** Distributing the $-4$ on the right gives
 
-$$3\mathbf{u} + 2\mathbf{v} = 5\mathbf{u} - 4\mathbf{u} + 8\mathbf{v},$$
+$$
+3\mathbf{u} + 2\mathbf{v} = 5\mathbf{u} - 4\mathbf{u} + 8\mathbf{v},
+$$
 
 which simplifies to
 
-$$3\mathbf{u} + 2\mathbf{v} = \mathbf{u} + 8\mathbf{v}.$$
+$$
+3\mathbf{u} + 2\mathbf{v} = \mathbf{u} + 8\mathbf{v}.
+$$
 
 Subtracting both $8\mathbf{v}$ and $3\mathbf{u}$ from both sides gives
 
-$$-6\mathbf{v} = -2\mathbf{u}$$
+$$
+-6\mathbf{v} = -2\mathbf{u}
+$$
 
 and dividing through by $-6$ yields
 
-$$\mathbf{v} = \frac{1}{3}\mathbf{u}.$$
+$$
+\mathbf{v} = \frac{1}{3}\mathbf{u}.
+$$
 
 ---
 
@@ -526,7 +570,9 @@ We can take linear combinations of $\mathbf{i}$ and $\mathbf{j}$ to get other ve
 
 In fact, every vector $\mathbf{v}$ in $\mathbb{R}^2$ can be written as a linear combination of $\mathbf{i}$ and $\mathbf{j}$:
 
-$$\mathbf{v} = v_x\,\mathbf{i} + v_y\,\mathbf{j}$$
+$$
+\mathbf{v} = v_x\,\mathbf{i} + v_y\,\mathbf{j}
+$$
 
 The coefficients $v_x$ and $v_y$ in this linear combination are called the **components** of $\mathbf{v}$. These represent how far the vector stretches in the $x$ and $y$ directions. In particular, $v_x$ is the **horizontal component** of $\mathbf{v}$, and $v_y$ is the **vertical component** of $\mathbf{v}$.
 
@@ -564,35 +610,49 @@ Note that each component may be positive or negative. For example, $v_x$ is posi
 
 There is another common notation for linear combinations of $\mathbf{i}$ and $\mathbf{j}$. Given any scalars $a$ and $b$, we let
 
-$$\begin{bmatrix} a \\ b \end{bmatrix} = a\,\mathbf{i} + b\,\mathbf{j}.$$
+$$
+\begin{bmatrix} a \\ b \end{bmatrix} = a\,\mathbf{i} + b\,\mathbf{j}.
+$$
 
 That is, $\begin{bmatrix} a \\ b \end{bmatrix}$ is a vector whose components are $a$ and $b$. A vector written in this fashion is known as a **column vector**. This way of writing vectors is very popular within mathematics, but physicists usually prefer to write $\mathbf{i}$ and $\mathbf{j}$ explicitly.
 
 Of course, any vector $\mathbf{v}$ can be written as a column vector, with
 
-$$\mathbf{v} = \begin{bmatrix} v_x \\ v_y \end{bmatrix}$$
+$$
+\mathbf{v} = \begin{bmatrix} v_x \\ v_y \end{bmatrix}
+$$
 
 Note that the standard basis vectors $\mathbf{i}$ and $\mathbf{j}$ can themselves be written as column vectors. In particular, since $\mathbf{i} = 1\mathbf{i} + 0\mathbf{j}$ and $\mathbf{j} = 0\mathbf{i} + 1\mathbf{j}$, we have
 
-$$\mathbf{i} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \qquad \text{and} \qquad \mathbf{j} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$$
+$$
+\mathbf{i} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \qquad \text{and} \qquad \mathbf{j} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+$$
 
 ### Vector Operations
 
 The operations of vector addition and scalar multiplication are easy to compute using components. The formula for vector addition is
 
-$$\begin{bmatrix} a \\ b \end{bmatrix} + \begin{bmatrix} c \\ d \end{bmatrix} = \begin{bmatrix} a + c \\ b + d \end{bmatrix}$$
+$$
+\begin{bmatrix} a \\ b \end{bmatrix} + \begin{bmatrix} c \\ d \end{bmatrix} = \begin{bmatrix} a + c \\ b + d \end{bmatrix}
+$$
 
 That is, each component of the sum of two vectors is the sum of the corresponding components of the two vectors. For example,
 
-$$\begin{bmatrix} 1 \\ 5 \end{bmatrix} + \begin{bmatrix} 3 \\ 2 \end{bmatrix} = \begin{bmatrix} 4 \\ 7 \end{bmatrix}.$$
+$$
+\begin{bmatrix} 1 \\ 5 \end{bmatrix} + \begin{bmatrix} 3 \\ 2 \end{bmatrix} = \begin{bmatrix} 4 \\ 7 \end{bmatrix}.
+$$
 
 The formula for scalar multiplication is equally simple:
 
-$$k\begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} ka \\ kb \end{bmatrix}$$
+$$
+k\begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} ka \\ kb \end{bmatrix}
+$$
 
 That is, multiplying a vector by a scalar $k$ is the same as multiplying each component by $k$. For example,
 
-$$2\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 6 \\ 8 \end{bmatrix}.$$
+$$
+2\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 6 \\ 8 \end{bmatrix}.
+$$
 
 ### Magnitude and Direction
 
@@ -618,11 +678,15 @@ The direction of a vector $\mathbf{v}$ in $\mathbb{R}^2$ can be described by a s
 
 Given the direction $\theta$ and magnitude $|\mathbf{v}|$ for a vector, we can find the components of the vector using the formulas
 
-$$v_x = |\mathbf{v}|\cos\theta \qquad \text{and} \qquad v_y = |\mathbf{v}|\sin\theta$$
+$$
+v_x = |\mathbf{v}|\cos\theta \qquad \text{and} \qquad v_y = |\mathbf{v}|\sin\theta
+$$
 
 These formulas can be derived from a right triangle. Conversely, given the components of a vector, we can find the magnitude and direction using the formulas
 
-$$|\mathbf{v}| = \sqrt{v_x^2 + v_y^2} \qquad \text{and} \qquad \tan\theta = \frac{v_y}{v_x}$$
+$$
+|\mathbf{v}| = \sqrt{v_x^2 + v_y^2} \qquad \text{and} \qquad \tan\theta = \frac{v_y}{v_x}
+$$
 
 <svg viewBox="0 0 300 268" role="img" aria-label="Right triangle with hypotenuse labeled as the magnitude of v, horizontal leg as vx, vertical leg as vy, and base angle as theta" style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -659,7 +723,9 @@ Since the components of a vector determine both the magnitude and direction, two
 
 The equation
 
-$$\begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} c \\ d \end{bmatrix}$$
+$$
+\begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} c \\ d \end{bmatrix}
+$$
 
 holds if and only if $a = c$ and $b = d$.
 
@@ -714,11 +780,15 @@ Find the magnitude and direction of the vector $\mathbf{v} = \begin{bmatrix} -4 
 
 **Solution** From the formulas above, we have
 
-$$|\mathbf{v}| = \sqrt{(-4)^2 + (3)^2} = 5 \qquad \text{and} \qquad \tan\theta = -\frac{3}{4},$$
+$$
+|\mathbf{v}| = \sqrt{(-4)^2 + (3)^2} = 5 \qquad \text{and} \qquad \tan\theta = -\frac{3}{4},
+$$
 
 where $\theta$ is the direction of $\mathbf{v}$. Now,
 
-$$\tan^{-1}\!\left(-\frac{3}{4}\right) = -36.87°,$$
+$$
+\tan^{-1}\!\left(-\frac{3}{4}\right) = -36.87°,
+$$
 
 but this is not the right direction, since the vector would have to point down and to the right. Adding $180°$ gives the correct direction of $143.13°$.
 
@@ -726,19 +796,27 @@ but this is not the right direction, since the vector would have to point down a
 
 Solve for $x$:
 
-$$3\begin{bmatrix} x \\ 2 \end{bmatrix} - \begin{bmatrix} 4 \\ -6 \end{bmatrix} = x\begin{bmatrix} 2 \\ 3 \end{bmatrix}.$$
+$$
+3\begin{bmatrix} x \\ 2 \end{bmatrix} - \begin{bmatrix} 4 \\ -6 \end{bmatrix} = x\begin{bmatrix} 2 \\ 3 \end{bmatrix}.
+$$
 
 **Solution** Multiplying the left vector through by $3$ and the right vector through by $x$ gives the equation
 
-$$\begin{bmatrix} 3x \\ 6 \end{bmatrix} - \begin{bmatrix} 4 \\ -6 \end{bmatrix} = \begin{bmatrix} 2x \\ 3x \end{bmatrix}.$$
+$$
+\begin{bmatrix} 3x \\ 6 \end{bmatrix} - \begin{bmatrix} 4 \\ -6 \end{bmatrix} = \begin{bmatrix} 2x \\ 3x \end{bmatrix}.
+$$
 
 We can now subtract the two vectors on the left to get
 
-$$\begin{bmatrix} 3x - 4 \\ 12 \end{bmatrix} = \begin{bmatrix} 2x \\ 3x \end{bmatrix},$$
+$$
+\begin{bmatrix} 3x - 4 \\ 12 \end{bmatrix} = \begin{bmatrix} 2x \\ 3x \end{bmatrix},
+$$
 
 which is the same as the two scalar equations
 
-$$3x - 4 = 2x \qquad \text{and} \qquad 12 = 3x.$$
+$$
+3x - 4 = 2x \qquad \text{and} \qquad 12 = 3x.
+$$
 
 The solution to both of these equations is $x = 4$.
 
@@ -746,15 +824,21 @@ The solution to both of these equations is $x = 4$.
 
 Solve for $x$ and $y$:
 
-$$x\begin{bmatrix} 2 \\ 3 \end{bmatrix} + y\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 8 \\ 6 \end{bmatrix}.$$
+$$
+x\begin{bmatrix} 2 \\ 3 \end{bmatrix} + y\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 8 \\ 6 \end{bmatrix}.
+$$
 
 **Solution** Combining the vectors on the left together gives the equation
 
-$$\begin{bmatrix} 2x + 2y \\ 3x + y \end{bmatrix} = \begin{bmatrix} 8 \\ 6 \end{bmatrix},$$
+$$
+\begin{bmatrix} 2x + 2y \\ 3x + y \end{bmatrix} = \begin{bmatrix} 8 \\ 6 \end{bmatrix},
+$$
 
 which is the same as the system of equations
 
-$$2x + 2y = 8 \qquad \text{and} \qquad 3x + y = 6.$$
+$$
+2x + 2y = 8 \qquad \text{and} \qquad 3x + y = 6.
+$$
 
 The second equation tells us that $y = 6 - 3x$. Plugging this into the first equation and solving for $x$ yields $x = 1$, and it follows that $y = 3$.
 
@@ -768,7 +852,9 @@ A vector $\mathbf{u}$ is called a **unit vector** if its magnitude is equal to 1
 
 Given any nonzero vector $\mathbf{v}$, we can find a unit vector $\mathbf{u}$ in the same direction as $\mathbf{v}$ using the formula
 
-$$\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v}$$
+$$
+\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v}
+$$
 
 <svg viewBox="0 0 320 260" role="img" aria-label="Vector v and the shorter unit vector u in the same direction, labelled u equals one over magnitude v times v" style={{ width: '100%', maxWidth: '340px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -803,7 +889,9 @@ The vector $\mathbf{u}$ is sometimes called the **normalization** of $\mathbf{v}
 
 Any vector can be expressed as a scalar multiple of a unit vector. In particular, if $\mathbf{u}$ is a unit vector in the same direction as $\mathbf{v}$, then
 
-$$\mathbf{v} = |\mathbf{v}|\mathbf{u}$$
+$$
+\mathbf{v} = |\mathbf{v}|\mathbf{u}
+$$
 
 This formula is often useful for building vectors with a certain magnitude and direction. The idea is to first find a unit vector $\mathbf{u}$ in the appropriate direction, and then multiply by the appropriate magnitude to obtain the desired vector.
 
@@ -811,7 +899,9 @@ This formula is often useful for building vectors with a certain magnitude and d
 
 Given any point $(x, y)$ in the plane, the associated **radial vector** is the vector that stretches from the origin $(0, 0)$ to the given point. The components of the radial vector are the same as the coordinates of the point:
 
-$$\mathbf{r} = \begin{bmatrix} x \\ y \end{bmatrix}.$$
+$$
+\mathbf{r} = \begin{bmatrix} x \\ y \end{bmatrix}.
+$$
 
 <svg viewBox="0 0 300 260" role="img" aria-label="The point (3,2) in the xy-plane with its radial vector drawn from the origin" style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block', margin: '1.5rem auto' }} xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -842,7 +932,9 @@ $$\mathbf{r} = \begin{bmatrix} x \\ y \end{bmatrix}.$$
 
 Although we think of a point and its radial vector very differently, they are both described by the same pair of real numbers $x$, $y$. This makes it possible to regard points and vectors as the same thing. Indeed, from now on we will make **no distinction between a point in the plane and its radial vector**. Thus
 
-$$( x, y ) = \begin{bmatrix} x \\ y \end{bmatrix}$$
+$$
+( x, y ) = \begin{bmatrix} x \\ y \end{bmatrix}
+$$
 
 for any real numbers $x$ and $y$.
 
@@ -873,7 +965,9 @@ First observe that the magnitude of a point $\mathbf{p}$ is the same as the dist
 
 Indeed, the formula for magnitude is the same as the familiar distance formula:
 
-$$|(x, y)| = \sqrt{x^2 + y^2}.$$
+$$
+|(x, y)| = \sqrt{x^2 + y^2}.
+$$
 
 Next we consider the vector sum of two points. Given points $\mathbf{p}$ and $\mathbf{q}$, the sum $\mathbf{p} + \mathbf{q}$ is the fourth vertex of the parallelogram formed by the origin and the points $\mathbf{p}$ and $\mathbf{q}$. This rule for adding vectors is sometimes known as the **parallelogram law**.
 
@@ -983,7 +1077,9 @@ Note that all of the scalar multiples of a point $\mathbf{p}$ lie on a line, nam
 
 Certain linear combinations of $\mathbf{p}$ and $\mathbf{q}$ also have nice geometric interpretations. For example, the linear combination
 
-$$\frac{1}{2}\mathbf{p} + \frac{1}{2}\mathbf{q}$$
+$$
+\frac{1}{2}\mathbf{p} + \frac{1}{2}\mathbf{q}
+$$
 
 can be interpreted as the midpoint of the line segment between $\mathbf{p}$ and $\mathbf{q}$.
 
@@ -1053,11 +1149,15 @@ Find a unit vector that is parallel to the line $y = \frac{1}{2}x + 1$.
 
 **Solution** This line has slope $1/2$, so it is parallel to the vector $\mathbf{v} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$. Since
 
-$$|\mathbf{v}| = \sqrt{2^2 + 1^2} = \sqrt{5},$$
+$$
+|\mathbf{v}| = \sqrt{2^2 + 1^2} = \sqrt{5},
+$$
 
 the desired unit vector is
 
-$$\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v} = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 \\ 1 \end{bmatrix}.$$
+$$
+\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v} = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 \\ 1 \end{bmatrix}.
+$$
 
 ### Example 2
 
@@ -1065,11 +1165,15 @@ Find a vector in the same direction as $\begin{bmatrix} 3 \\ 4 \end{bmatrix}$ th
 
 **Solution** Let $\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$. Then $|\mathbf{v}| = \sqrt{3^2 + 4^2} = 5$, so
 
-$$\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v} = \frac{1}{5}\begin{bmatrix} 3 \\ 4 \end{bmatrix}$$
+$$
+\mathbf{u} = \frac{1}{|\mathbf{v}|}\mathbf{v} = \frac{1}{5}\begin{bmatrix} 3 \\ 4 \end{bmatrix}
+$$
 
 is a unit vector in the same direction as $\mathbf{v}$. Multiplying $\mathbf{u}$ by 3 gives the desired vector:
 
-$$3\mathbf{u} = \frac{3}{5}\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 9/5 \\ 12/5 \end{bmatrix}.$$
+$$
+3\mathbf{u} = \frac{3}{5}\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 9/5 \\ 12/5 \end{bmatrix}.
+$$
 
 ### Example 3
 
@@ -1126,11 +1230,15 @@ A rectangle in the plane has vertices at $(3, 2)$, $(9, 4)$, and $(2, 5)$. Find 
 
 **Solution** Let $\mathbf{v}$ be the vector that appears along both the top and bottom edges of the rectangle. Using the bottom edge, we have
 
-$$\mathbf{v} = (9, 4) - (3, 2) = (6, 2).$$
+$$
+\mathbf{v} = (9, 4) - (3, 2) = (6, 2).
+$$
 
 Then
 
-$$\mathbf{p} = (2, 5) + \mathbf{v} = (2, 5) + (6, 2) = (8, 7).$$
+$$
+\mathbf{p} = (2, 5) + \mathbf{v} = (2, 5) + (6, 2) = (8, 7).
+$$
 
 ### Example 4
 
@@ -1186,15 +1294,21 @@ Figure shows a square in the plane. Find the coordinates of the point $\mathbf{p
 
 **Solution** Let $\mathbf{v}$ and $\mathbf{w}$ be the vectors shown. Then
 
-$$\mathbf{v} = (6, 2) - (2, 1) = (4, 1).$$
+$$
+\mathbf{v} = (6, 2) - (2, 1) = (4, 1).
+$$
 
 The vector $\mathbf{w}$ has the same length as $\mathbf{v}$, but is turned $90°$ counterclockwise. We conclude that
 
-$$\mathbf{w} = (-1, 4),$$
+$$
+\mathbf{w} = (-1, 4),
+$$
 
 so
 
-$$\mathbf{p} = (6, 2) + \mathbf{w} = (6, 2) + (-1, 4) = (5, 6).$$
+$$
+\mathbf{p} = (6, 2) + \mathbf{w} = (6, 2) + (-1, 4) = (5, 6).
+$$
 
 ### Example 5
 
@@ -1253,15 +1367,21 @@ The direction of $\mathbf{v}$ is perpendicular to that of the line $y = 9 - 3x$.
 
 All that remains is to scale the vector $(3, 1)$ to have length 2. Since
 
-$$|(3, 1)| = \sqrt{3^2 + 1^2} = \sqrt{10},$$
+$$
+|(3, 1)| = \sqrt{3^2 + 1^2} = \sqrt{10},
+$$
 
 the vector $\frac{1}{\sqrt{10}}\begin{bmatrix} 3 \\ 1 \end{bmatrix}$ is a unit vector in the direction of $\mathbf{v}$. Since $|\mathbf{v}| = 2$, we conclude that
 
-$$\mathbf{v} = \frac{2}{\sqrt{10}}\begin{bmatrix} 3 \\ 1 \end{bmatrix}.$$
+$$
+\mathbf{v} = \frac{2}{\sqrt{10}}\begin{bmatrix} 3 \\ 1 \end{bmatrix}.
+$$
 
 Then
 
-$$\mathbf{p} = (2, 3) + \mathbf{v} = (2, 3) + \frac{2}{\sqrt{10}}\begin{bmatrix} 3 \\ 1 \end{bmatrix} = \left(2 + \frac{6}{\sqrt{10}},\ 3 + \frac{2}{\sqrt{10}}\right).$$
+$$
+\mathbf{p} = (2, 3) + \mathbf{v} = (2, 3) + \frac{2}{\sqrt{10}}\begin{bmatrix} 3 \\ 1 \end{bmatrix} = \left(2 + \frac{6}{\sqrt{10}},\ 3 + \frac{2}{\sqrt{10}}\right).
+$$
 
 ---
 

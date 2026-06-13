@@ -14,14 +14,18 @@ In this unit we will discuss two functions related to the divisors of a number:
 Let $n=p_1^{e_1}p_2^{e_2}\cdot\cdot\cdot p_k^{e_k}$ be the prime factorization of positive integer $n$.
 
 It's pretty easy to see that any divisor of $n$ will be of the form $n=p_1^{f_1}p_2^{f_2}\cdot\cdot\cdot p_k^{f_k}$, where $0\le f_i \le e_i$ for every $i$ from $1$ to $k$. Thus the number of divisors of $n$ should be
-$$ d(n) = (e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1) $$
+$$
+d(n) = (e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)
+$$
 since there are $e_i + 1$ possibilities for each $f_i$.
 
 The formula for $\sigma(n)$ is a bit more complicated:$$ \sigma(n) = (1 + p_1 + p_1^2 +\cdots p_1^{e_1})(1 + p_2 + p_2^2 + \cdots + p_2^{e_2}) \cdots (1 + p_k + p_k^2 + \cdots + p_k^{e_k})$$
 In this expression there will be $(e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)$ products formed by taking one number from each sum. Clearly, all of these products are divisors of $n$ and each divisor of $n$ is one of the products. Also, each product is unique (because prime factorizations are unique). Since the expression of the sum of all the products, we can conclude this equals the sum of the divisors of $n$.
 
 We can simplify the expression by using the formula for the sum of a geometric sequence:
-$$ \sigma(n) = \prod_{i=1}^{k}(1+p_i+p_i^2+\cdots+p_i^{e_i}) = \prod_{i=1}^{k}\frac{p_i^{e_i + 1}+1}{p_i+1} $$
+$$
+\sigma(n) = \prod_{i=1}^{k}(1+p_i+p_i^2+\cdots+p_i^{e_i}) = \prod_{i=1}^{k}\frac{p_i^{e_i + 1}+1}{p_i+1}
+$$
 Observe that $d(n)$ and $\sigma(n)$ are both **multiplicative**, meaning that if $gcd(m,n)=1$, then $d(mn) = d(m)d(n)$ and $\sigma(mn) = \sigma(m)\sigma(n)$.
 ## Worked Example #1
 For how many positive integers $n \le 1000$ is $d(n)$ odd?

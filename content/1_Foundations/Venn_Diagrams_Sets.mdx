@@ -46,15 +46,21 @@ Here are a couple of useful techniques that are nice to know for pattern recogni
 ### Inclusion-Exclusion
  
 For two sets,
-$$|A \cup B| = |A| + |B| - |A \cap B|,$$
+$$
+|A \cup B| = |A| + |B| - |A \cap B|,
+$$
 and for three,
-$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.$$
+$$
+|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.
+$$
 The pattern continues for more sets: add all single sets, subtract all pairwise intersections, add all triples, subtract all quadruples, and so on, alternating signs. This is also known as the **Principle of Inclusion-Exclusion** or **PIE**.
  
 ### Complementary Counting
  
 Often "at least one" is annoying to count directly, but "none" is easy. Since every element is either in $A \cup B$ or outside it,
-$$|A \cup B| = |U| - |\overline{A} \cap \overline{B}|.$$
+$$
+|A \cup B| = |U| - |\overline{A} \cap \overline{B}|.
+$$
 Whenever a problem gives you the "neither" count (or asks for it), use this!
  
 ### Watch the Wording
@@ -73,10 +79,14 @@ Like most concepts, Venn diagrams are best explained through example problems. C
 This is the inclusion-exclusion formula run *backwards*: we are handed the two totals and the "neither" count, and asked for the overlap.
  
 First, the number of students who voted in favor of **at least one** issue is everyone except the $29$ who opposed both:
-$$|A \cup B| = 198 - 29 = 169.$$
+$$
+|A \cup B| = 198 - 29 = 169.
+$$
  
 Now apply $|A \cup B| = |A| + |B| - |A \cap B|$ and solve for the overlap:
-$$|A \cap B| = |A| + |B| - |A \cup B| = 149 + 119 - 169 = \boxed{99}.$$
+$$
+|A \cap B| = |A| + |B| - |A \cup B| = 149 + 119 - 169 = \boxed{99}.
+$$
  
 It helps to see where every student lands. Once the overlap is $99$, the "only Issue 1" region is $149 - 99 = 50$ and the "only Issue 2" region is $119 - 99 = 20$. As a check, all four regions sum back to the total: $50 + 99 + 20 + 29 = 198$.
  

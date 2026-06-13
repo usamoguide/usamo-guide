@@ -32,7 +32,9 @@ between a polynomial and its translated version.
 Therefore, To find the polynomial with roots $r_1 + k, r_2 + k, \ldots, r_n + k$, replace every $x$ in $P(x)$ with $x - k$.
 
 ### Reverse Coefficients for Reciprocals
-$$P(x) \xrightarrow{\text{shift by } k} Q(x) = P(x - k).$$
+$$
+P(x) \xrightarrow{\text{shift by } k} Q(x) = P(x - k).
+$$
 
 If $P(x)=a_nx^n+\cdots+a_0$ and $a_0\ne 0$, then $x^nP(1/x)$ has roots $1/r$.
 $Q(r + k) = P((r+k) - k) = P(r) = 0$.
@@ -42,14 +44,18 @@ $Q(r + k) = P((r+k) - k) = P(r) = 0$.
 
 Similarly, If $P(x) = a_n x^n + \cdots + a_0$ with $a_0 \ne 0$, the polynomial with roots $1/r_1, \ldots, 1/r_n$ can be found by reversing the coefficients. 
 
-$$Q(x) = x^n P\!\left(\frac{1}{x}\right) = a_0 x^n + a_1 x^{n-1} + \cdots + a_n.$$
+$$
+Q(x) = x^n P\!\left(\frac{1}{x}\right) = a_0 x^n + a_1 x^{n-1} + \cdots + a_n.
+$$
 
 Further, creating the condition $a_0 \ne 0$ ensures none of the original roots is zero. If $a_0 = 0$, we factor out $x$ first. 
 
 ### Scaling Roots
 
 To get roots $k \cdot r_1, k \cdot r_2, \ldots$, replace $x$ with $x/k$, and hence obtaining 
-$$Q(x) = k^n \cdot P\!\left(\frac{x}{k}\right).$$
+$$
+Q(x) = k^n \cdot P\!\left(\frac{x}{k}\right).
+$$
 
 ### Polynomial Equations After Transformations/Manipultaions
 
@@ -57,7 +63,9 @@ Once the new polynomial $Q(x)$ is found, we can apply Vieta's formulas directly 
 
 For quick computations like $\sum 1/r_i$, it is often faster to use Vieta on the original directly, 
 
-$$\frac{1}{r} + \frac{1}{s} + \frac{1}{t} = \frac{rs + st + tr}{rst}.$$
+$$
+\frac{1}{r} + \frac{1}{s} + \frac{1}{t} = \frac{rs + st + tr}{rst}.
+$$
 
 Once the new polynomial is found, apply Vieta to compute sums and products.
 
@@ -72,7 +80,9 @@ Replace $x$ with $x - 1$:
 Replace $x$ by $x-1$:
 $(x-1)^2 - 5(x-1) + 6 = x^2 - 7x + 12$.
 So the new polynomial is $x^2 - 7x + 12$.
-$$(x-1)^2 - 5(x-1) + 6 = x^2 - 2x + 1 - 5x + 5 + 6 = x^2 - 7x + 12.$$
+$$
+(x-1)^2 - 5(x-1) + 6 = x^2 - 2x + 1 - 5x + 5 + 6 = x^2 - 7x + 12.
+$$
 
 Now, rechecking the computed values with Vieta's Formulas, we get the new sum $= (r+1)+(s+1) = 5+2 = 7$,
 new product $= (r+1)(s+1) = rs+(r+s)+1 = 6+5+1 = 12$.
@@ -86,7 +96,9 @@ If $x^2 - 2x - 3 = 0$ has roots $r, s$, find the polynomial with roots $r-2, s-2
 
 Replace $x$ with $x+2$:
 
-$$(x+2)^2 - 2(x+2) - 3 = x^2 + 4x + 4 - 2x - 4 - 3 = x^2 + 2x - 3.$$
+$$
+(x+2)^2 - 2(x+2) - 3 = x^2 + 4x + 4 - 2x - 4 - 3 = x^2 + 2x - 3.
+$$
 
 ### Example 2: Roots that are in reciprocal 
 
@@ -106,7 +118,9 @@ Replace $x$ by $x+2$: $(x+2)^2-2(x+2)-3 = x^2+2x-3$.
 Applying Vieta's formulas on the original polynomial, $rs+st+tr = 1/2$ and $rst = 5/2$.
 
 ### Example 2: Reciprocal Roots
-$$\frac{1}{r}+\frac{1}{s}+\frac{1}{t} = \frac{rs+st+tr}{rst} = \frac{1/2}{5/2} = \frac{1}{5}.$$
+$$
+\frac{1}{r}+\frac{1}{s}+\frac{1}{t} = \frac{rs+st+tr}{rst} = \frac{1/2}{5/2} = \frac{1}{5}.
+$$
 
 If $P(x)=x^2-3x+2$, find a polynomial with roots $1/r,1/s$.
 ### Example 4: Cubic Polynomials 
@@ -118,8 +132,12 @@ The cubic $x^3 - 6x^2 + 11x - 6 = 0$ has $r+s+t = 6$. Find the cubic with roots 
 First, we replace $x$ with $x+2$:
 
 If $r+s=4$, find $(r+1)+(s+1)$.
-$$(x+2)^3 - 6(x+2)^2 + 11(x+2) - 6$$
-$$= x^3+6x^2+12x+8 - 6x^2-24x-24 + 11x+22 - 6 = x^3 - x.$$
+$$
+(x+2)^3 - 6(x+2)^2 + 11(x+2) - 6
+$$
+$$
+= x^3+6x^2+12x+8 - 6x^2-24x-24 + 11x+22 - 6 = x^3 - x.
+$$
 
 The sum increases by $2$, so it is $6$.
 The new roots sum to $0$. Hence factoring: $x(x-1)(x+1)$ gives shifted roots of $0, 1, -1$, so we know that the original roots are $2, 3, 1$.

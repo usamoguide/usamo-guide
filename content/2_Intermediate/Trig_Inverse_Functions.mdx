@@ -22,21 +22,29 @@ We repair the above caveat using principal ranges, i.e, an interval where the fu
  
 For $sin$, we restrict to $[-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$, where the function covers its entire range without repetition. This gives the inverse sine, written $\arcsin$ (or $\sin^{-1}$):
  
-$$\: [-1, 1] \to \left[-\tfrac{\pi}{2}, \tfrac{\pi}{2}\right].$$
+$$
+\: [-1, 1] \to \left[-\tfrac{\pi}{2}, \tfrac{\pi}{2}\right].
+$$
  
 For cosine, $[-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$ would not work (cosine is symmetric there), so we use $[0, \pi]$.
  
-$$\arccos: [-1, 1] \to [0, \pi].$$
+$$
+\arccos: [-1, 1] \to [0, \pi].
+$$
  
 For tangent, which covers every real value on $(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$, we restrict to that open interval:
  
-$$\arctan: \mathbb{R} \to \left(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\right).$$
+$$
+\arctan: \mathbb{R} \to \left(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\right).
+$$
 
 ## Don't Get Trapped!
  
 It is tempting to think $\arcsin(\sin\theta) = \theta$ always. It does not. The output must land in the principal range, so if $\theta$ starts outside it, you must reduce. For example:
  
-$$\arcsin\left(\sin\tfrac{3\pi}{4}\right) = \tfrac{\pi}{4},$$
+$$
+\arcsin\left(\sin\tfrac{3\pi}{4}\right) = \tfrac{\pi}{4},
+$$
  
 because $\sin\tfrac{3\pi}{4} = \tfrac{\sqrt{2}}{2}$, and the angle in $[-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$ with that sine is $\tfrac{\pi}{4}$, not $\tfrac{3\pi}{4}$. Going the other way, $\sin(\arcsin x) = x$ always holds for $x \in [-1,1]$, because that composition does not leave the range.
  
@@ -44,38 +52,58 @@ because $\sin\tfrac{3\pi}{4} = \tfrac{\sqrt{2}}{2}$, and the angle in $[-\tfrac{
 
 Mixed compositions like $\cos(\arcsin x)$ look intimidating but are actually easy to deal with. Set $\theta = \arcsin x$, so $\sin\theta = x$ with $\theta \in [-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$. Recall the Pythagorean identity:
 
-$$\sin^{2}\theta + \cos^{2}\theta = 1$$
+$$
+\sin^{2}\theta + \cos^{2}\theta = 1
+$$
 
 Substitute $x$ for $\sin\theta$:
 
-$$x^2 + \cos^{2}\theta = 1$$
+$$
+x^2 + \cos^{2}\theta = 1
+$$
 
-$$\cos\theta = \sqrt{1 - x^2}$$
+$$
+\cos\theta = \sqrt{1 - x^2}
+$$
 
 We take the positive root because $\theta \in [-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$, cosine is never negative. Therefore:
 
-$$\cos(\arcsin x) = \sqrt{1 - x^2}$$
+$$
+\cos(\arcsin x) = \sqrt{1 - x^2}
+$$
 
 Similarly, for $\sin(\arccos x)$:
 Set $\theta = \arccos x$, so $\cos\theta = x$ with $\theta \in [0, \pi]$. Substitute into the identity:
 
-$$\sin^{2}\theta + x^2 = 1$$
+$$
+\sin^{2}\theta + x^2 = 1
+$$
 
-$$\sin\theta = \sqrt{1 - x^2}$$
+$$
+\sin\theta = \sqrt{1 - x^2}
+$$
 
 Here we take the positive root because $\theta \in [0, \pi]$, where sine is never negative. Therefore:
 
-$$\sin(\arccos x) = \sqrt{1 - x^2}$$
+$$
+\sin(\arccos x) = \sqrt{1 - x^2}
+$$
 
 For tangent compositions we use $\tan\theta = \dfrac{\sin\theta}{\cos\theta}$. To find $\cos(\arctan x)$, set $\theta = \arctan x$, so $\tan\theta = x$ with $\theta \in (-\tfrac{\pi}{2}, \tfrac{\pi}{2})$. Divide the Pythagorean identity by $\cos^{2}\theta$:
 
-$$\tan^{2}\theta + 1 = \frac{1}{\cos^{2}\theta}$$
+$$
+\tan^{2}\theta + 1 = \frac{1}{\cos^{2}\theta}
+$$
 
 Substitute $x$ for $\tan\theta$ and solve:
 
-$$x^2 + 1 = \frac{1}{\cos^{2}\theta}$$
+$$
+x^2 + 1 = \frac{1}{\cos^{2}\theta}
+$$
 
-$$\cos\theta = \frac{1}{\sqrt{1 + x^2}}$$
+$$
+\cos\theta = \frac{1}{\sqrt{1 + x^2}}
+$$
 
 The positive root holds because cosine is positive on $(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$. Then $\sin\theta = x\cos\theta$ gives the following results (you might want to memorize these!):
 
@@ -98,7 +126,9 @@ It is also worth mentioning
  
 where the correction term is
  
-$$k = \begin{cases} 0 & ab < 1 \\ 1 & ab > 1,\ a > 0 \\ -1 & ab > 1,\ a < 0. \end{cases}$$
+$$
+k = \begin{cases} 0 & ab < 1 \\ 1 & ab > 1,\ a > 0 \\ -1 & ab > 1,\ a < 0. \end{cases}
+$$
  
 We bring in $k\pi$ as when $ab > 1$ the sum leaves the arctan range, so the output is off by $\pi$. When $ab < 1$ with both terms positive, you can drop $k$.
  
@@ -106,7 +136,9 @@ We bring in $k\pi$ as when $ab > 1$ the sum leaves the arctan range, so the outp
  
 We use the above formula backwards to attain:
  
-$$\arctan\left(\frac{1}{n^2 + n + 1}\right) = \arctan(n + 1) - \arctan(n).$$
+$$
+\arctan\left(\frac{1}{n^2 + n + 1}\right) = \arctan(n + 1) - \arctan(n).
+$$
  
 This holds because, with $a = n+1$ and $b = -n$, we get $\frac{a + b}{1 - ab} = \frac{1}{1 + n(n+1)} = \frac{1}{n^2 + n + 1}$, and $ab = -n(n+1) < 1$, as desired.
  
@@ -114,15 +146,21 @@ This holds because, with $a = n+1$ and $b = -n$, we get $\frac{a + b}{1 - ab} = 
  
 Evaluate
  
-$$S = \sum_{n=1}^{\infty} \arctan\left(\frac{1}{n^2 + n + 1}\right).$$
+$$
+S = \sum_{n=1}^{\infty} \arctan\left(\frac{1}{n^2 + n + 1}\right).
+$$
  
 We use the identity we just showed:
  
-$$S_N = \sum_{n=1}^{N} \left[\arctan(n+1) - \arctan(n)\right] = \arctan(N+1) - \arctan(1).$$
+$$
+S_N = \sum_{n=1}^{N} \left[\arctan(n+1) - \arctan(n)\right] = \arctan(N+1) - \arctan(1).
+$$
  
 As $N \to \infty$, $\arctan(N+1) \to \tfrac{\pi}{2}$ and $\arctan(1) = \tfrac{\pi}{4}$, so
  
-$$S = \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}.$$
+$$
+S = \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}.
+$$
  
 ### Worked Examples
 
@@ -130,22 +168,32 @@ $$S = \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}.$$
 
 Every term here is a positive acute angle, so each $\arctan\frac{1}{k}$ is small. That means we can simply apply the addition formula!
 
-$$\arctan a + \arctan b = \arctan\left(\frac{a + b}{1 - ab}\right)$$
+$$
+\arctan a + \arctan b = \arctan\left(\frac{a + b}{1 - ab}\right)
+$$
 
 Combine the first two terms with $a = \frac{1}{3}$, $b = \frac{1}{4}$:
 
-$$\arctan\frac{1}{3} + \arctan\frac{1}{4} = \arctan\left(\frac{\frac{1}{3} + \frac{1}{4}}{1 - \frac{1}{12}}\right) = \arctan\left(\frac{\frac{7}{12}}{\frac{11}{12}}\right) = \arctan\frac{7}{11}.$$
+$$
+\arctan\frac{1}{3} + \arctan\frac{1}{4} = \arctan\left(\frac{\frac{1}{3} + \frac{1}{4}}{1 - \frac{1}{12}}\right) = \arctan\left(\frac{\frac{7}{12}}{\frac{11}{12}}\right) = \arctan\frac{7}{11}.
+$$
 
 Combine third term, $\arctan\frac{1}{5}$:
 
-$$\arctan\frac{7}{11} + \arctan\frac{1}{5} = \arctan\left(\frac{\frac{7}{11} + \frac{1}{5}}{1 - \frac{7}{55}}\right) = \arctan\left(\frac{\frac{46}{55}}{\frac{48}{55}}\right) = \arctan\frac{23}{24}.$$
+$$
+\arctan\frac{7}{11} + \arctan\frac{1}{5} = \arctan\left(\frac{\frac{7}{11} + \frac{1}{5}}{1 - \frac{7}{55}}\right) = \arctan\left(\frac{\frac{46}{55}}{\frac{48}{55}}\right) = \arctan\frac{23}{24}.
+$$
 
 
-$$\arctan\frac{23}{24} + \arctan\frac{1}{n} = \frac{\pi}{4}.$$
+$$
+\arctan\frac{23}{24} + \arctan\frac{1}{n} = \frac{\pi}{4}.
+$$
 
 Since $\arctan\frac{1}{n} = \frac{\pi}{4} - \arctan\frac{23}{24}$, take the tangent of both sides. Using $\tan\frac{\pi}{4} = 1$ and the subtraction formula:
 
-$$\frac{1}{n} = \tan\left(\frac{\pi}{4} - \arctan\frac{23}{24}\right) = \frac{1 - \frac{23}{24}}{1 + \frac{23}{24}} = \frac{\frac{1}{24}}{\frac{47}{24}} = \frac{1}{47}.$$
+$$
+\frac{1}{n} = \tan\left(\frac{\pi}{4} - \arctan\frac{23}{24}\right) = \frac{1 - \frac{23}{24}}{1 + \frac{23}{24}} = \frac{\frac{1}{24}}{\frac{47}{24}} = \frac{1}{47}.
+$$
 
 Therefore $n = \boxed{47}$.
 
@@ -153,33 +201,47 @@ Therefore $n = \boxed{47}$.
 
 The whole problem hinges on the domain of $\arcsin$. Its input must satisfy $-1 \le t \le 1$, so we need
 
-$$-1 \le \log_m(nx) \le 1.$$
+$$
+-1 \le \log_m(nx) \le 1.
+$$
 
 Undo the logarithm by raising each side to the power of m:
 
-$$m^{-1} \le nx \le m^{1}.$$
+$$
+m^{-1} \le nx \le m^{1}.
+$$
 
 Divide by $n$:
 
-$$\frac{1}{mn} \le x \le \frac{m}{n}.$$
+$$
+\frac{1}{mn} \le x \le \frac{m}{n}.
+$$
 
 This is the domain. Its length is the right end minus the left:
 
-$$\frac{m}{n} - \frac{1}{mn} = \frac{m^2 - 1}{mn}.$$
+$$
+\frac{m}{n} - \frac{1}{mn} = \frac{m^2 - 1}{mn}.
+$$
 
 Set that equal to $\frac{1}{2013}$:
 
-$$\frac{m^2 - 1}{mn} = \frac{1}{2013} \quad\Longrightarrow\quad n = \frac{2013(m^2 - 1)}{m}.$$
+$$
+\frac{m^2 - 1}{mn} = \frac{1}{2013} \quad\Longrightarrow\quad n = \frac{2013(m^2 - 1)}{m}.
+$$
 
 For $n$ to be an integer, $m$ must divide $2013(m^2 - 1)$. But $m$ shares no factor with $m^2 - 1$, so $m$ must divide $2013 = 3 \cdot 11 \cdot 61$.
 
 Now minimize the sum. Substitute the expression for $n$:
 
-$$m + n = m + \frac{2013(m^2 - 1)}{m} = 2014m - \frac{2013}{m}.$$
+$$
+m + n = m + \frac{2013(m^2 - 1)}{m} = 2014m - \frac{2013}{m}.
+$$
 
 This grows as $m$ grows, so we want the smallest divisor of $2013$ with $m > 1$, namely $m = 3$. Then
 
-$$n = \frac{2013(9 - 1)}{3} = \frac{2013 \cdot 8}{3} = 5368,$$
+$$
+n = \frac{2013(9 - 1)}{3} = \frac{2013 \cdot 8}{3} = 5368,
+$$
 
 giving $m + n = 5371$. The remainder when divided by $1000$ is $\boxed{371}$.
 
