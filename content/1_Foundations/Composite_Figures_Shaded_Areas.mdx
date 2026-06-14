@@ -1,53 +1,212 @@
 ---
 id: composite-figures-shaded-areas
 title: Composite Figures and Shaded Areas
-author: USAMO Guide Team
-description: Subtracting negative space from bounding shapes to find irregular areas.
+author: Siddhant Arora
+description: Subtracting negative space from bounding shapes to find irregular areas using addition, subtraction, and clever decomposition.
 prerequisites: []
 ---
 
-<IncompleteSection />
-
 ## Overview
 
-Many AMC 8 geometry problems ask for the area of a weird shape. The trick is
-almost always to embed the weird shape inside a simple one (like a rectangle or
-circle) and then subtract the parts you don't want. This "negative space"
-strategy is one of the most powerful tools in contest geometry.
+Area problems are some of the most fundamental geometry problems you will encounter, ranging from finding an expression for area in terms of variables, to maximizing area, to evaluating area of complex composite figures. The composite-figure variant is by far the most common on the AMC.
 
-## Key Ideas
+In this module we will look at how these problems can be broken down quite cleanly, and how previously learned area formulas can be reused as building blocks.
 
-- **Bounding shape strategy**: enclose the region in a rectangle, triangle, or
-  circle whose area you can compute easily.
-- **Subtraction**: Shaded area = area of bounding shape − area of unshaded
-  pieces.
-- **Addition**: sometimes the shaded region is a union of simple shapes. Add
-  their areas and subtract overlaps.
-- Draw auxiliary lines to decompose complex figures into triangles and
-  rectangles.
+### Warmup
 
-## Core Skills
+<svg viewBox="-1.5 -6 8 13" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",maxWidth:"360px",height:"auto",display:"block",margin:"0 auto",fontFamily:"Georgia, serif"}}>
+  <polygon points="0,0 5,0 2.5,-4.330" fill="none" stroke="#ffffff" strokeWidth="0.06" strokeLinejoin="round"/>
+  <polygon points="0,0 5,0 5,5 0,5" fill="none" stroke="#ffffff" strokeWidth="0.06" strokeLinejoin="round"/>
+  <text x="1.05" y="-2.35" fontSize="0.5" fill="#ffffff" fontStyle="italic" textAnchor="end">5</text>
+  <text x="3.95" y="-2.35" fontSize="0.5" fill="#ffffff" fontStyle="italic">5</text>
+  <text x="2.5" y="0.65" fontSize="0.5" fill="#ffffff" fontStyle="italic" textAnchor="middle">5</text>
+  <text x="-0.25" y="2.65" fontSize="0.5" fill="#ffffff" fontStyle="italic" textAnchor="end">5</text>
+  <text x="5.25" y="2.65" fontSize="0.5" fill="#ffffff" fontStyle="italic">5</text>
+  <text x="2.5" y="5.7" fontSize="0.5" fill="#ffffff" fontStyle="italic" textAnchor="middle">5</text>
+</svg>
 
-### Rectangle Minus Triangles
+> Find the area of the above composite figure.
 
-A common pattern: a quadrilateral inscribed in a rectangle. Find the rectangle's
-area and subtract the corner triangles.
+This should ~~hopefully~~ be quite easy. We simply sum the areas of the triangle and the square, since they share an edge but no interior:
 
-### Circle Minus Polygon (and Vice Versa)
+$$
+\begin{aligned}
+A_{\text{triangle}} &= \dfrac{s^2\sqrt{3}}{4} = \dfrac{25\sqrt{3}}{4} \\
+A_{\text{square}} &= s^2 = 25 \\
+A_{\text{total}} &= \boxed{\dfrac{25\sqrt{3}}{4}+25}
+\end{aligned}
+$$
 
-Compute the area of a circle segment by subtracting a triangle from a sector.
+<svg viewBox="-2 -2 14 16" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",maxWidth:"320px",height:"auto",display:"block",margin:"0 auto",fontFamily:"Georgia, serif"}}>
+  <path d="M 0,0 L 10,0 L 10,10 A 10,10 0 0,0 0,0 Z" fill="#ffffff" fillOpacity="0.18" stroke="none"/>
+  <rect x="0" y="0" width="10" height="10" fill="none" stroke="#ffffff" strokeWidth="0.12" strokeLinejoin="round"/>
+  <path d="M 0,0 A 10,10 0 0,1 10,10" fill="none" stroke="#ffffff" strokeWidth="0.12"/>
+  <text x="5" y="-0.6" fontSize="1" fill="#ffffff" fontStyle="italic" textAnchor="middle">10</text>
+  <text x="-0.5" y="5.3" fontSize="1" fill="#ffffff" fontStyle="italic" textAnchor="end">10</text>
+  <text x="2.6" y="7.4" fontSize="1" fill="#ffffff" fontStyle="italic" textAnchor="middle">r = 10</text>
+</svg>
 
-### Overlapping Regions
+> Find the area of the shaded region.
 
-When two shapes overlap, use inclusion-exclusion: $|A \cup B| = |A| + |B| - |A \cap B|$.
+Here the shaded region is not itself a familiar shape, but the bounding square is, and so is the piece we are excluding. We subtract the quarter circle from the square:
 
-## Worked Example
+$$
+\begin{aligned}
+A_{\text{square}} &= s^2 = 100 \\
+A_{\text{quarter circle}} &= \dfrac{\pi r^2}{4} = 25\pi \\
+A_{\text{shaded}} &= \boxed{100 - 25\pi}
+\end{aligned}
+$$
 
-A square of side 10 has a quarter-circle of radius 10 drawn in one corner. Find
-the area inside the square but outside the quarter-circle.
+## Techniques
 
-Square area = $100$. Quarter-circle area = $\frac{1}{4}\pi(10)^2 = 25\pi$.
-Shaded = $100 - 25\pi$.
+There are a bunch of ways to solve area problems, some of the most common ones being as follows:
+
+**Addition.** When the figure naturally splits into shapes that share only edges, sum their areas, just like the warmup!
+
+**Subtraction.** When the shaded region is what remains after removing a familiar shape from a larger familiar shape, compute the bounding area and subtract. The second warmup follows this pattern.
+
+**Inclusion-exclusion.** When two regions overlap, double-counting the intersection is a common trap, instead:
+
+$$
+|A \cup B| = |A| + |B| - |A \cap B|
+$$
+
+Use this whenever the picture has overlapping circles, overlapping sectors, or regions that two different shapes both claim.
+
+A fourth, more flexible tool is **decomposition by auxiliary lines**. Drawing a radius, an altitude, or a diagonal often reveals that the figure is just a few right triangles, sectors, or rectangles glued together. Coordinates can serve the same role: place the figure on axes and the regions usually fall out as standard shapes.
+
+The skill being developed is not memorizing these as separate methods. It is recognizing, from the picture alone, which combination of bounding shape and negative space will produce the cleanest computation. The strategies should blend together in any non-trivial problem!
+
+## Worked Examples
+
+### Example 1 (2006 AMC 10B, Problem 8)
+
+> **2006 AMC 10B · Problem 8:** A square of area 40 is inscribed in a semicircle as shown. What is the area of the semicircle?
+
+<svg viewBox="-3 -3.2 6 4" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",maxWidth:"360px",height:"auto",display:"block",margin:"0 auto",fontFamily:"Georgia, serif"}}>
+  <line x1="-2.236" y1="0" x2="-1" y2="0" stroke="#ffffff" strokeWidth="0.04" strokeDasharray="0.12,0.08"/>
+  <line x1="1" y1="0" x2="2.236" y2="0" stroke="#ffffff" strokeWidth="0.04" strokeDasharray="0.12,0.08"/>
+  <line x1="-1" y1="0" x2="1" y2="0" stroke="#ffffff" strokeWidth="0.04"/>
+  <path d="M -2.236,0 A 2.236,2.236 0 0,1 2.236,0" fill="none" stroke="#ffffff" strokeWidth="0.04"/>
+  <rect x="-1" y="-2" width="2" height="2" fill="none" stroke="#ffffff" strokeWidth="0.04" strokeLinejoin="round"/>
+</svg>
+
+The square has two bottom corners on the diameter and two top corners on the arc. Place the center of the semicircle at the origin with the diameter along the $x$-axis. Let the square have side $s$, with bottom corners at $\left(-\tfrac{s}{2}, 0\right)$ and $\left(\tfrac{s}{2}, 0\right)$, and top corners at $\left(\pm\tfrac{s}{2}, s\right)$.
+
+Since the top corners lie on the semicircle of radius $r$:
+
+$$
+\left(\tfrac{s}{2}\right)^2 + s^2 = r^2 \implies r^2 = \tfrac{5s^2}{4}
+$$
+
+We know $s^2 = 40$, so $r^2 = 50$, and the area of the semicircle is:
+
+$$
+A = \tfrac{1}{2}\pi r^2 = \boxed{25\pi}
+$$
+
+Here, we used the decomposition trick by just placing the figure on axes and writing the constraint that two corners lie on the circle. Nothing else needed!
+
+### Example 2 (2019 AMC 10B, Problem 20)
+
+> Line segment $\overline{AD}$ is trisected by points $B$ and $C$ so that $AB = BC = CD = 2$. Three semicircles of radius $1$, $\overset{\frown}{AEB}$, $\overset{\frown}{BFC}$, and $\overset{\frown}{CGD}$, have their diameters on $\overline{AD}$, lie in the same halfplane determined by line $AD$, and are tangent to line $EG$ at $E$, $F$, and $G$ respectively. A circle of radius $2$ has its center on $F$. The area of the region inside the circle but outside the three semicircles, shaded in the figure, can be expressed in the form
+> $$\dfrac{a}{b}\cdot\pi - \sqrt{c} + d,$$
+> where $a, b, c, d$ are positive integers and $a, b$ are relatively prime. What is $a + b + c + d$?
+
+<svg viewBox="-3.6 -3.0 7.2 5.4" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",maxWidth:"460px",height:"auto",display:"block",margin:"0 auto 1.5rem",fontFamily:"Georgia, serif"}}>
+  <defs>
+    <mask id="semimask" maskUnits="userSpaceOnUse" x="-3.6" y="-3.0" width="7.2" height="5.4">
+      <rect x="-3.6" y="-3.0" width="7.2" height="5.4" fill="#ffffff"/>
+      <path d="M -3,1 A 1,1 0 0,1 -1,1 Z M -1,1 A 1,1 0 0,1 1,1 Z M 1,1 A 1,1 0 0,1 3,1 Z" fill="#000000"/>
+    </mask>
+  </defs>
+  <circle cx="0" cy="0" r="2" fill="#ffffff" fillOpacity="0.18" stroke="none" mask="url(#semimask)"/>
+  <circle cx="0" cy="0" r="2" fill="none" stroke="#ffffff" strokeWidth="0.04"/>
+  <line x1="-3" y1="1" x2="3" y2="1" stroke="#ffffff" strokeWidth="0.04"/>
+  <path d="M -3,1 A 1,1 0 0,1 -1,1" fill="none" stroke="#ffffff" strokeWidth="0.04"/>
+  <path d="M -1,1 A 1,1 0 0,1 1,1" fill="none" stroke="#ffffff" strokeWidth="0.04"/>
+  <path d="M 1,1 A 1,1 0 0,1 3,1" fill="none" stroke="#ffffff" strokeWidth="0.04"/>
+  <circle cx="-3" cy="1" r="0.06" fill="#ffffff"/>
+  <circle cx="-1" cy="1" r="0.06" fill="#ffffff"/>
+  <circle cx="1" cy="1" r="0.06" fill="#ffffff"/>
+  <circle cx="3" cy="1" r="0.06" fill="#ffffff"/>
+  <circle cx="-2" cy="0" r="0.06" fill="#ffffff"/>
+  <circle cx="0" cy="0" r="0.06" fill="#ffffff"/>
+  <circle cx="2" cy="0" r="0.06" fill="#ffffff"/>
+  <text x="-3" y="1.5" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">A</text>
+  <text x="-1" y="1.5" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">B</text>
+  <text x="1" y="1.5" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">C</text>
+  <text x="3" y="1.5" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">D</text>
+  <text x="-2" y="-0.22" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">E</text>
+  <text x="0.18" y="-0.22" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="start">F</text>
+  <text x="2" y="-0.22" fontSize="0.28" fill="#ffffff" fontStyle="italic" textAnchor="middle">G</text>
+</svg>
+
+**Setup.** Let $R = 2$ be the radius of the big circle (centered at $F$) and $r = 1$ the radius of each semicircle. Note that the middle semicircle is tangent to the big circle at its topmost point $F$, so it lies entirely inside. The two outer semicircles, however, poke a bit outside the big circle.
+ 
+We proceed by computing the total area of the three semicircles that lies *inside* the big circle, then subtract from $\pi R^2 = 4\pi$.
+ 
+**Approximate count.** Treating each outer semicircle as if exactly half of it lies inside the big circle gives a rough estimate:
+ 
+$$
+\tfrac{\pi}{4} + \tfrac{\pi}{4} + \tfrac{\pi}{2} = \pi
+$$
+ 
+The two $\tfrac{\pi}{4}$ terms correspond to the half of each outer semicircle nearer to $F$, and the $\tfrac{\pi}{2}$ is the full middle semicircle. This count is *almost* right, but it overestimated because a small sliver near each tangent point ($E$ and $G$) is counted as inside when it's actually outside the big circle. We need to subtract that sliver!
+ 
+Focus on the left tangent point $E$. The sliver is bounded by a vertical segment (the diameter of the outer semicircle dropping from $E$), a horizontal segment along line $AD$, and the big circle's arc connecting them. It is a right triangle with a circular bite taken out:
+ 
+$$
+A_{\text{sliver}} = A_{\triangle} - A_{\text{segment}}
+$$
+ 
+The right triangle has one leg equal to $r = 1$ and another leg equal to $R - \sqrt{R^2 - r^2} = 2 - \sqrt{3}$.  The horizontal leg comes from the right triangle formed by $F$, the foot, and the big circle's intersection with $AD$: hypotenuse $R = 2$, one leg $r = 1$, so the other leg is $\sqrt{3}$, and $\sqrt{3}$ subtracted from $R = 2$ gives the leg of *our* triangle. Thus:
+ 
+$$
+A_{\triangle} = \tfrac{1}{2}(1)(2 - \sqrt{3}) = \tfrac{2 - \sqrt{3}}{2}
+$$
+ 
+We also need to take care of the circular segment of the big circle. The central angle at $F$ is $30^\circ$, since the right triangle just described is a $30$-$60$-$90$. The sector has area $\tfrac{30^\circ}{360^\circ} \cdot \pi R^2 = \tfrac{\pi}{3}$, and the triangle inside the sector has legs $R = 2$ and $r = 1$ at right angles (one along $EF$, the other perpendicular down to $AD$), giving area $\tfrac{1}{2}(2)(1) = 1$. So:
+ 
+$$
+A_{\text{segment}} = \tfrac{\pi}{3} - 1
+$$
+ 
+Therefore:
+ 
+$$
+A_{\text{sliver}} = \tfrac{2 - \sqrt{3}}{2} - \left(\tfrac{\pi}{3} - 1\right) = \tfrac{4 - \sqrt{3}}{2} - \tfrac{\pi}{3}
+$$
+ 
+Now we correct our above estimate! There are two slivers (one per outer semicircle), so we subtract $2 A_{\text{sliver}} = 4 - \sqrt{3} - \tfrac{2\pi}{3}$ from our approximate count $\pi$:
+ 
+$$
+A_{\text{semis inside}} = \pi - \left(4 - \sqrt{3} - \tfrac{2\pi}{3}\right) = \tfrac{5\pi}{3} + \sqrt{3} - 4
+$$
+ 
+**Shaded area.**
+ 
+$$
+A_{\text{shaded}} = 4\pi - \left(\tfrac{5\pi}{3} + \sqrt{3} - 4\right) = \tfrac{7\pi}{3} - \sqrt{3} + 4
+$$
+ 
+
+ 
+$$
+a + b + c + d = \boxed{17}
+$$
+
+## Strategies
+
+- Draw all important radii. This cannlot be stresed enough!
+- Look for clever bounding shapes to make your life easier.
+- When circles meet circles, set up coordinates and solve for the intersection points directly. The intersection chord and the central triangle usually expose a $30-60-90$ or $45-45-90$ right triangle.
+- Symmetric figures can usually be cut in half. Compute one piece, then double to save time!
+
+## Conclusions
+
+The above examples were quite tricky (especially the second one!). Now that you've gotten some insight into how sophisticated these problems they get, they can also be broken down quite easily. Developing the intuition to bound shapes, find clever manipulations, etc. all comes with time, so keep at it!
 
 ## Practice Problems
 

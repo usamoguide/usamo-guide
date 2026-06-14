@@ -58,6 +58,42 @@ Find the maximum of $5\sin x + 12\cos x$.
 
 $R=13$, so the maximum is $13$.
 
+### Example 4:Fun Trig Optimization!
+
+Your goal is to find the maximum value of the following expression: $\sin x+\cos x+\sin x\cos x$.
+
+First, we let $u=\sin x+\cos x$. Then $u^2=1+2\sin x\cos x$, so $\sin x\cos x=\frac{u^2-1}{2}$. The expression becomes $u+\frac{u^2-1}{2}$ with $-\sqrt{2}\le u\le\sqrt{2}$. Since $u+\frac{u^2-1}{2}$ is increasing on this interval, the maximum occurs at $u=\sqrt{2}$ and equals $\sqrt{2}+\frac{1}{2}$.
+
+### Example 5: Interesting Trig Telescoping Product!
+
+Your job is to evaluate the following expression: $\prod_{k=1}^{n}\left(1+\tan^2\frac{\pi}{2^{k+2}}\right)$.
+
+We can use $1+\tan^2\theta=\sec^2\theta$ and $\prod_{k=1}^{n}\cos\frac{x}{2^k}=\frac{\sin x}{2^n\sin(x/2^n)}$, and so the product simplifies to $2^{2n+1}\sin^2\left(\frac{\pi}{2^{n+2}}\right)$.
+
+### Example 6: Trigonometric Equation!
+
+Your goal is to solve $\sin x+\sin3x+\sin5x=0$.
+
+We can use $\sin x+\sin5x=2\sin3x\cos2x$, from which we obtain $\sin3x(1+2\cos2x)=0$, which gives $x=\frac{k\pi}{3}$ for all integers $k$.
+
+### Example 7: Interesting Trig Expression
+
+Your job is to evaluate the following expression: $\sin20^\circ\sin40^\circ\sin80^\circ$.
+
+We can use product-to-sum identities, which gives us: $\sin20^\circ\sin40^\circ\sin80^\circ=\frac{\sqrt{3}}{8}$.
+
+### Example 8: Law of Sines
+
+In triangle $ABC$, $A=30^\circ$, $B=45^\circ$, and $a+b=1$. Your job is to find $c$.
+
+By the Law of Sines, $c=\frac{2\sqrt{3}+2-\sqrt{6}-\sqrt{2}}{2}$.
+
+### Example 9: Product Identity
+
+Your job is to find $\prod_{k=1}^{4}\cos\left(\frac{2^k\pi}{31}\right)$.
+
+Using $\sin(2^n x)=2^n\sin x\prod_{j=0}^{n-1}\cos(2^j x)$ and $\sin\left(\frac{32\pi}{31}\right)=-\sin\left(\frac{\pi}{31}\right)$, the product equals $-\frac{1}{32\cos(\pi/31)}$.
+
 ## Strategy Checklist
 
 - Identify whether the problem is algebraic or geometric.

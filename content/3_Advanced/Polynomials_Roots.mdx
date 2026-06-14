@@ -75,7 +75,7 @@ If $r$ and $s$ are roots of $x^2-5x+6=0$, compute $r^2+s^2$.
 
 We have $r+s=5$ and $rs=6$. Then $r^2+s^2=(r+s)^2-2rs=25-12=13$.
 
-## More Examples
+## More Examples (Warmup)
 
 ### Example 1: Polynomial from Roots
 
@@ -94,6 +94,45 @@ $\frac{r+s}{rs}=4/3$.
 If $p(x)=x^3-4x^2-x+4$, show that $x=1$ is a root and factor $p(x)$.
 
 $p(1)=0$, so $(x-1)$ is a factor. Then $p(x)=(x-1)(x^2-3x-4)$.
+
+### Example 4: Shifting Roots! (important concept, must remember!)
+
+Let $P(x)=x^4-8x^3+22x^2-24x+9$ have roots $r_1,r_2,r_3,r_4$. We will define $s_i=r_i-2$. Your job is to find the $\sum s_i^5$.
+
+$P(x+2)=x^4-2x^2+1=(x^2-1)^2$, so the shifted roots are simply $1,1,-1,-1$. Hence $1^5+1^5+(-1)^5+(-1)^5=0$.
+
+### Example 5: Newton Sums (VERY IMPORTANT!)
+
+Let $r_1,r_2,r_3,r_4$ be the roots of $x^4-3x^3+5x^2-7x+11=0$. Your job is to find $\sum r_i^5$.
+
+We can use Newton sums to get: $p_1=3$, $p_2=-1$, $p_3=3$, $p_4=-9$, and $p_5=3p_4-5p_3+7p_2-11p_1=-82$. Thus $\sum r_i^5=-82$.
+
+### Example 6: Generalized Vieta (as a little exercise, prove that generalization!)
+
+Let $r_1,r_2,r_3,r_4$ be the roots of $x^4+2x^3-5x^2+7x-3$. Your job is to compute $\sum_{i\ne j}\frac{r_i}{r_j}$.
+
+$\sum_{i\ne j}\frac{r_i}{r_j}=\left(\sum r_i\right)\left(\sum\frac1{r_i}\right)-4$. By Vieta, we have that $\sum r_i=-2$ and $\sum \frac1{r_i}=\frac{\sigma_3}{\sigma_4}=\frac73$, giving us $-\frac{26}{3}$.
+
+### Example 7: A New Polynomial (harder version of example 4)
+
+Let $P(x)=x^3-6x^2+9x-1$ have roots $r_1,r_2,r_3$. Your job is to find the polynomial whose roots are $r_i+\frac1{r_i}$.
+
+Let $t=r+\frac1r$. We can eliminate $r$ from $r^2-tr+1=0$ and $r^3-6r^2+9r-1=0$ to get $t^3-15t^2+66t-89=0$. Thus, the polynomial is $x^3-15x^2+66x-89$.
+
+### Example 8: Reciprocal Symmetric Sums (very common!)
+
+Let $r_1,r_2,r_3,r_4$ be the roots of $x^4-7x^3+17x^2-17x+6=0$. Your job is to compute the following: $\sum \frac1{r_i^2}$.
+
+By Vieta, $\sum \frac1{r_i}=\frac{17}{6}$ and $\sum_{i<j}\frac1{r_ir_j}=\frac{17}{6}$. Hence, we get:
+$\sum \frac1{r_i^2}=\left(\frac{17}{6}\right)^2-2\left(\frac{17}{6}\right)=\frac{85}{36}$.
+
+### Example 9: Polynomial + Roots of Unity!
+
+Let $r_1,r_2,r_3,r_4,r_5$ be the roots of $x^5-5x^4+10x^3-10x^2+5x-2=0$. Your job is to find $\sum \frac1{(r_i-1)^2}$.
+
+Since $x^5-5x^4+10x^3-10x^2+5x-2=(x-1)^5-1$, we have $(r_i-1)^5=1$. If we let $\zeta_i=r_i-1$; then $\frac1{\zeta_i^2}=\zeta_i^3$, so the sum simply equals $\sum \zeta_i^3=0$.
+
+## More Examples (Hard):
 
 ## Strategy Checklist
 

@@ -58,6 +58,126 @@ If $a+b+c=1$, find the minimum of $a^2+b^2+c^2$.
 
 It is $1/3$ at $a=b=c=1/3$.
 
+### Example 4: uvw Principle (very important! Must know for Tejs' Theorem in Level 4!)
+
+Let $a,b,c>0$ and $a+b+c=3$. Your goal is show that the following expression is true:
+
+$$
+\frac1a+\frac1b+\frac1c \ge a^2+b^2+c^2+3.
+$$
+
+First, by the uvw principle, we can set $b=c=x$ and $a=3-2x$. Therefore, the inequality thus reduces to
+
+$$
+\frac{(x-1)^2(2x+1)(2x^2+2x+3)}{x(3-2x)} \ge 0,
+$$
+
+and the conclusion from here is immediate.
+
+### Example 5: Engel and Cauchy
+
+Your job is to show that
+
+$$
+\frac{(a+b)^2}{b+c}
++\frac{(b+c)^2}{c+a}
++\frac{(c+a)^2}{a+b}
+\ge
+2(a+b+c).
+$$
+
+We can simply expand the numerators and apply Engel form to the quadratic terms. Then, we can apply cauchy or nesbitt's inequalty to finish the problem!
+
+### Example 6: Ravi Substitution (very important! Must know!)
+
+Let $x,y,z$ be the side lengths of a triangle. Your goal is to show that
+
+$$
+\frac{x^2}{y+z-x}
++\frac{y^2}{z+x-y}
++\frac{z^2}{x+y-z}
+\ge
+x+y+z.
+$$
+
+We can use Ravi's substitution here:
+
+$$
+x=v+w,\quad y=w+u,\quad z=u+v.
+$$
+
+Thus, the inequality becomes:
+
+$$
+\sum \frac{(v+w)^2}{2u} \ge 2(u+v+w),
+$$
+
+and the conclusion simply follows from the Engel form.
+
+### Example 7: Hölder and Power Mean (EXTREMELY IMPORTANT!)
+
+Your job is to show that:
+
+$$
+(a+b+c)^4 \le 27(a^4+b^4+c^4).
+$$
+
+We can first apply Hölder's inequality:
+
+$$
+(a+b+c)^4
+\le
+(a^4+b^4+c^4)(1+1+1)^3.
+$$
+
+Now, since $(1+1+1)^3=27$, the result follows.
+
+### Example 8: Jensen's Inequality (ALSO EXTREMELY IMPORTANT!)
+
+Let $a,b,c>0$ with $a+b+c=1$. Your goal is to show that:
+
+$$
+\ln(1+a)+\ln(1+b)+\ln(1+c)
+\le
+3\ln\left(\frac43\right).
+$$
+
+First, notice that since $\ln(1+x)$ is concave, Jensen gives
+
+$$
+\frac{\sum \ln(1+a)}3
+\le
+\ln\left(1+\frac13\right).
+$$
+
+And multiplying this by $3$ gives the result
+
+### Example 9: Muirhead (ALSO ALSO EXTREMELY IMPORTANT!)
+
+Your goal is to show that:
+
+$$
+a^4+b^4+c^4+abc(a+b+c)
+\ge
+\sum_{\mathrm{sym}} a^3b.
+$$
+
+First, notice that since $(4,0,0)\succ(3,1,0)$, Muirhead gives
+
+$$
+3(a^4+b^4+c^4)
+\ge
+\sum_{\mathrm{sym}} a^3b.
+$$
+
+Then, we can combine it with
+
+$$
+3(a^4+b^4+c^4)\ge 4abc(a+b+c),
+$$
+
+and the result follows nicely :)
+
 ## Strategy Checklist
 
 - Homogenize if needed.
