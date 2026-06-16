@@ -1,0 +1,128 @@
+---
+id: special-right-triangles
+Title: Special Right Triangles
+author: Macquel Ko
+description: 
+prerequisites: ["optional-prereq-id"]
+---
+
+## Overview
+
+Right triangles are triangles which contain one right angle. Right triangles will only ever have 1 right angle because the sum of the angles
+in a triangle will always add up to 180 degrees.
+
+Right angle triangles are very common in AMC10/12 and early AIME problems. However, there are 2 unique right triangles
+which have special rules which can help you cut time and reduce confusion. 
+
+These 2 triangles are the 30-60-90 triangle, and the 45-45-90 triangle.
+
+## Key Ideas
+
+### 30-60-90 Triangles
+
+30-60-90 triangles are triangles with the angles 30°, 60°, and 90°. (or $\frac{\pi}{6}$, $\frac{\pi}{3}$, and $\frac{\pi}{2}$, respectively).
+
+ 30-60-90 triangles have an interesting property. Let $\Delta ABC$ be a 30-60-90 triangle 
+with $\angle A = 30^\circ$, $\angle B = 60^\circ$, and $\angle C = 90^\circ$, 
+and let a,b, and c be the side lengths corresponding to each angle, respectively. Then by the Law of Sines, we have
+
+$\frac{b}{\sin60^{\circ}} = \frac{a}{\sin30^{\circ}}$
+
+simplifying the fractions, we get 
+
+$b = \sqrt{3} a$
+
+now, we can solve for c in terms of a
+
+$\frac{\sqrt{3} a}{\frac{\sqrt{3}}{2}} = \frac{c}{1}$
+
+which gives 
+
+$c = 2a$
+
+This means, that the ratio of the sides $a:b:c$, is always equal to $1:\sqrt{3}:2$. 
+
+Or in other words,
+if x is the length of the side opposite of the 30 degree angle, then the length of the side opposite of the
+60 degree angle is $\sqrt{3} x$. Additionally, the length of the hypotenuse is exactly 2x.
+
+This special property of the 30-60-90 right triangle can be used to find the sides of a triangle given only 1 side.
+
+### Example 1
+
+Given triangle $\triangle ABC$, with $\angle A = 30^{\circ}$, $\angle B = 60^{\circ}$, and $\angle C = 90^{\circ}$,
+and corresponding sides a, b, and c. Suppose a = 12, find c.
+
+Draw a diagram if you need to.
+
+ here we are given the length of the side opposite of the 30° angle, so since the triangle
+ is a 30-60-90 triangle, we know that hypotenuse is 2 times the length of the side opposite of the
+30° angle. 
+
+We can use the ratio then to form an equation
+
+$c = 2a$
+
+and we get our answer, 24.
+
+### 45-45-90 Triangles
+
+Let $\triangle ABC$ be a triangle with $\angle A = 45^{\circ}$, $\angle B = 90^{\circ}$, and $\angle C = 45^{\circ}$, with side lengths
+a, b, and c, respectively.
+
+then, using the Law of Sines, we have
+
+$\frac{a}{\frac{\sqrt{2}}{2}} = \frac{b}{1}$
+
+simplifying gives
+
+$b = \sqrt{2} a$
+
+additionally, since $\triangle ABC$ is an isosceles triangle, a = c, and the relationship also follows for c.
+This means that for a 45-45-90 triangle, the ratio of sides $a : b : c$ will always be $1 : \sqrt{2} : 1$
+
+In other words, if we let x be the lengths of the sides opposite of the 45° angles, 
+then the length of the hypotenuse is $\sqrt{2}x$.
+
+This relation is much easier to remember since 45-45-90 triangles are isosceles.
+
+### Example 2
+
+let $\triangle ABC$ be a triangle with angles $\angle A = 45^{\circ}$, $\angle B = 90^{\circ}$, and $\angle C = 45^{\circ}$, and sides
+a, b, and c, respectively. If a = $6\sqrt{2}$, 
+find b and c.
+
+draw a diagram if needed.
+
+ Firstly, we know that this triangle is isosceles, therefore c is equal to $6 \sqrt{2}$ aswell. 
+
+Next, since we know that the ratio of the leg to the hypotenuse in a 45-45-90 triangle is $1 : \sqrt{2}$,
+we can form an equation
+
+$c = \sqrt{2} a$
+
+plugging in a = $6 \sqrt{2}$
+
+we get c = 12.
+
+## Common Pitfalls
+
+- incorrectly setting “x”. 
+
+ For example, if you are dealing with a 30-60-90 triangle 
+ where the hypotenuse length is known, 
+ then make sure you set the length equal to 2x to find the length of the legs, NOT x.
+
+- applying these rules to triangles not mentioned
+
+not all triangles follow patterns like these, 
+make sure that the angles match before you begin applying
+the rules you see here.
+
+- forgetting the ratios
+
+self explanatory, forgetting the ratio will result in an incorrect equation and thus a wrong answer.
+
+## Practice Problems
+
+<Problems problems="practice" />
