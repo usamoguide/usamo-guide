@@ -1,16 +1,24 @@
 ---
 id: divisor-functions
-title: Divisor Functions
-author: USAMO Guide Team
-description: Calculating the number of and sum of positive integer divisors of a number
+title: Integer Functions
+author: Siddhant Arora
+description: Integer functions such as the number of factors, sum of factors, and Euler's totient function
 prerequisites: [divisibility-primes]
 ---
 
 ## Introduction
-In this unit we will discuss two functions related to the divisors of a number:
-* $d(n)$ is equal to the number of positive divisors of $n$ (including $1$ and $n$)
-* $\sigma(n)$ is equal to the sum of the positive divisors of $n$ (including $1$ and $n$)
-## Formulas for $d(n)$ and $\sigma(n)$
+In this unit we will discuss several functions related to the divisors of a number, including:
+1) $d(n)$ is equal to the number of positive divisors of $n$ (including $1$ and $n$)
+2) $\sigma(n)$ is equal to the sum of the positive divisors of $n$ (including $1$ and $n$)
+3) $\varphi(n)$ (pronounced *totient*) denotes the number of positive integers, upto $n$, that are relatively prime to $n$
+
+## Why Divisor Functions
+
+Divisor functions provide efficient ways to compute useful properties of an integer, many of which are frequently tested upon in competitions. Functions like Euler's totient function (#3 above) also have elegant connections to Number Theory that give rise to theorems like Fermat's Little Theorem.
+
+Most of the time, these functions provide quick ways to find specific properties of a number that may initially seem very bashy.
+
+## Formulas 
 Let $n=p_1^{e_1}p_2^{e_2}\cdot\cdot\cdot p_k^{e_k}$ be the prime factorization of positive integer $n$.
 
 It's pretty easy to see that any divisor of $n$ will be of the form $n=p_1^{f_1}p_2^{f_2}\cdot\cdot\cdot p_k^{f_k}$, where $0\le f_i \le e_i$ for every $i$ from $1$ to $k$. Thus the number of divisors of $n$ should be
@@ -19,24 +27,91 @@ d(n) = (e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)
 $$
 since there are $e_i + 1$ possibilities for each $f_i$.
 
-The formula for $\sigma(n)$ is a bit more complicated:$$ \sigma(n) = (1 + p_1 + p_1^2 +\cdots p_1^{e_1})(1 + p_2 + p_2^2 + \cdots + p_2^{e_2}) \cdots (1 + p_k + p_k^2 + \cdots + p_k^{e_k})$$
+The formula for $\sigma(n)$ is a bit more complicated: 
+
+$$ 
+\sigma(n) = (1 + p_1 + p_1^2 +\cdots p_1^{e_1})(1 + p_2 + p_2^2 + \cdots + p_2^{e_2}) \cdots (1 + p_k + p_k^2 + \cdots + p_k^{e_k})
+$$
+
+
 In this expression there will be $(e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)$ products formed by taking one number from each sum. Clearly, all of these products are divisors of $n$ and each divisor of $n$ is one of the products. Also, each product is unique (because prime factorizations are unique). Since the expression of the sum of all the products, we can conclude this equals the sum of the divisors of $n$.
 
 We can simplify the expression by using the formula for the sum of a geometric sequence:
 $$
-\sigma(n) = \prod_{i=1}^{k}(1+p_i+p_i^2+\cdots+p_i^{e_i}) = \prod_{i=1}^{k}\frac{p_i^{e_i + 1}+1}{p_i+1}
+\sigma(n) = \prod_{i=1}^{k}(1+p_i+p_i^2+\cdots+p_i^{e_i}) = \prod_{i=1}^{k}\frac{p_i^{e_i + 1}-1}{p_i-1}
 $$
 Observe that $d(n)$ and $\sigma(n)$ are both **multiplicative**, meaning that if $gcd(m,n)=1$, then $d(mn) = d(m)d(n)$ and $\sigma(mn) = \sigma(m)\sigma(n)$.
-## Worked Example #1
-For how many positive integers $n \le 1000$ is $d(n)$ odd?
-> ### Solution
-> Looking at the formula $d(n) = (e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)$, we see that for $d(n)$ to be odd, each $e_i + 1$ term must be odd. In other, all of the exponents of $n$ must be even, which is equivalent to saying that $n$ is a perfect square. So the answer is $\boxed{31}$, since there are that many perfect squares under 1000.
->
-> > In other words, $d(n)$ is odd if and only if $n$ is a perfect square, which is a useful fact
-## Worked Example #2
-Find the smallest number with exactly 14 positive divisors.
-> ### Solution
-> Using the formula for $d(n)$, we see that any number with exactly 14 positive divisors must be of the form $p^{13}$ or $p^6\cdot q$, where $p,q$ are primes. It's easy to see that the smallest number of either form is $2^6\cdot 3=\boxed{192}$.
+
+Euler's totient theorem, ($\varphi$, also known as *phi*) outputs the number of positive integers, $m$, upto $n$ that are relatively prime to $n$, i.e, $\gcd(m, n) = 1$. The formula is as follows:
+
+$$
+\varphi(n) = n(1 - \dfrac{1}{p_1})(1 - \dfrac{1}{p_2}) \dots(1 - \dfrac{1}{p_k})
+$$
+
+The proof for this is quite intuitive, the fraction: $1 - \dfrac{1}{p_i}$ multiplied by $n$ gives the number of positive integers upto $n$ which do *not* have the prime $p_i$ in their prime factorization. Multiplying this value over all primes, $p_i$, in the prime factorization of $n$ accumulates to give the value of the number of positive integrs upto $n$ which share no prime factors with $n$.
+
+## Techniques
+
+Frequently, you may run across problems asking for some manipulation of the divisor's of a number, these tools provide the most effective way to solve those problems. Simply prime factorize the number, and proceed by using the above formulas.
+
+We can also use these formulas to find simple expressions for values such as the product of all factors of an integer: $\prod(n) = n^{\frac{d(n)}{2}}$
+
+Let all factors of an integer $n$ be in the set $S = 1, ..., n$. Pair each divisor, $d$, with its complement, i.e, $\dfrac{n}{d}$. Since $d \mid n$ exactly when $\dfrac{n}{d} \mid n$, this pairing maps $S$ to itself, and each pair has product
+
+$$
+d \cdot \frac{n}{d} = n
+$$
+
+There are $d(n)$ divisors in total, so they split into $\dfrac{d(n)}{2}$ such pairs. Multiplying the products of all pairs together gives
+
+$$
+\prod(n) = \prod_{d \mid n} d = n^{\frac{d(n)}{2}}
+$$
+
+When $n$ is a perfect square, $\sqrt{n}$ is a divisor that pairs with itself, so $d(n)$ is odd and the exponent $\dfrac{d(n)}{2}$ is not an integer. The formula still holds: writing $n^{\frac{d(n)}{2}} = n^{\frac{d(n)-1}{2}} \cdot \sqrt{n}$, the first term accounts for the $\dfrac{d(n)-1}{2}$ genuine pairs and the $\sqrt{n}$ accounts for the self-paired divisor.
+
+Euler's Totient Function also has various uses in number theory, specifically, Fermat's Little Theorem which states:
+
+$a^{p-1} \equiv 1 ($mod $p)$
+
+where $p$ is a prime and $p$ does not divide $a$. The proof for this is beyond the scope of the module, but you may reference [this](https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem).
+
+## Examples
+> For how many positive integers $n \le 1000$ is $d(n)$ odd?
+### Solution
+Looking at the formula $d(n) = (e_1 + 1)(e_2 + 1)\cdot\cdot\cdot(e_k+1)$, we see that for $d(n)$ to be odd, each $e_i + 1$ term must be odd. In other, all of the exponents of $n$ must be even, which is equivalent to saying that $n$ is a perfect square. So the answer is $\boxed{31}$, since there are that many perfect squares under $1000$.
+
+
+In other words, $d(n)$ is odd if and only if $n$ is a perfect square, which is a useful fact.
+
+> Find the smallest number with exactly 14 positive divisors.
+### Solution
+Using the formula for $d(n)$, we see that any number with exactly 14 positive divisors must be of the form $p^{13}$ or $p^6\cdot q$, where $p,q$ are primes. It's easy to see that the smallest number of either form is $2^6\cdot 3=\boxed{192}$.
+
+>**2021 Fall AMC 12B · Problem 12** For $n$ a positive integer, let $f(n)$ be the quotient obtained when the sum of all positive divisors of $n$ is divided by $n.$ For example, $f(14) = \dfrac{1 + 2 + 7 + 14}{14} = \dfrac{12}{7}$. What is $f(768) - f(384)$?
+
+> $\textbf{(A)}\ \dfrac{1}{768} \qquad\textbf{(B)}\ \dfrac{1}{192} \qquad\textbf{(C)}\ 1 \qquad\textbf{(D)}\ \dfrac{4}{3} \qquad\textbf{(E)}\ \dfrac{8}{3}$
+### Solution
+Notice that $f(n) = \dfrac{\sigma(n)}{n}$, so we can apply the formula for $\sigma(n)$ directly after prime factorizing. The prime factorizations are $768 = 2^8 \cdot 3$ and $384 = 2^7 \cdot 3$.
+
+Using $\sigma(n) = \prod_{i=1}^{k}\dfrac{p_i^{e_i + 1}-1}{p_i-1}$, we get
+
+$$
+\sigma(768) = \frac{2^9 - 1}{2 - 1} \cdot \frac{3^2 - 1}{3 - 1} = 511 \cdot 4 = 2044
+$$
+
+$$
+\sigma(384) = \frac{2^8 - 1}{2 - 1} \cdot \frac{3^2 - 1}{3 - 1} = 255 \cdot 4 = 1020
+$$
+
+Therefore
+
+$$
+f(768) - f(384) = \frac{2044}{768} - \frac{1020}{384} = \frac{511}{192} - \frac{510}{192} = \boxed{\frac{1}{192}}
+$$
+
+so the answer is $\textbf{(B)}$.
+
 
 ## Practice Problems
 

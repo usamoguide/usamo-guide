@@ -1,0 +1,367 @@
+---
+id: splitting-objects-into-groups
+title: Splitting Objects into Groups
+author: Neronvain
+description: Learn how to split objects into groups, including cases with distinct objects, identical objects, labelled groups, and unlabelled groups.
+prerequisites: []
+---
+
+## Overview
+
+Many counting problems ask us to split objects into groups.
+
+For example:
+
+- Divide $10$ students into two teams of $5$
+- Split $12$ people into groups of sizes $3,4,5$
+- Separate objects into groups where the groups may or may not be labelled
+- Divide objects with repeated types into smaller collections
+
+The main challenge is deciding whether the groups are labelled.
+
+If the groups have names, such as Team A and Team B, then the groups are
+labelled.
+
+If the groups have no names, then the groups are unlabelled, and we have to avoid
+counting the same grouping multiple times.
+
+## Motivation
+
+Suppose $8$ students are split into two teams of $4$.
+
+If the teams are called Red Team and Blue Team, then choosing the Red Team
+automatically determines the Blue Team.
+
+The number of ways is
+
+$$
+\binom{8}{4}.
+$$
+
+However, if the two teams are not named, then choosing one group of $4$ first
+and the other group second counts every split twice.
+
+So the number of unlabelled splits is
+
+$$
+\frac{1}{2}\binom{8}{4}.
+$$
+
+This difference between labelled and unlabelled groups is one of the most common
+sources of mistakes in combinatorics.
+
+## Labelled Groups
+
+Suppose we have $n$ distinct objects and want to split them into labelled groups
+of sizes
+
+$$
+n_1,n_2,\ldots,n_k,
+$$
+
+where
+
+$$
+n_1+n_2+\cdots+n_k=n.
+$$
+
+The number of ways is
+
+$$
+\frac{n!}{n_1!n_2!\cdots n_k!}.
+$$
+
+This is because we choose which objects go into the first group, then the second
+group, and so on.
+
+### Example 1
+
+> How many ways are there to split $10$ students into three labelled groups of
+> sizes $2,3,5$?
+
+The groups are labelled, so the answer is
+
+$$
+\frac{10!}{2!3!5!}.
+$$
+
+Equivalently, we can choose:
+
+$$
+\binom{10}{2}
+$$
+
+students for the first group, then
+
+$$
+\binom{8}{3}
+$$
+
+students for the second group, and the remaining $5$ students form the third
+group.
+
+As such, the answer is
+
+$$
+\binom{10}{2}\binom{8}{3}
+=
+\frac{10!}{2!3!5!}.
+$$
+
+## Unlabelled Groups of Different Sizes
+
+If the group sizes are all different, then the sizes themselves identify the
+groups.
+
+For example, if we split $9$ people into groups of sizes $2,3,4$, then the
+group of size $2$ cannot be confused with the group of size $3$.
+
+So the number of ways is still
+
+$$
+\frac{9!}{2!3!4!}.
+$$
+
+No extra division is needed.
+
+### Example 2
+
+> How many ways are there to split $9$ students into unlabelled groups of sizes
+> $2,3,4$?
+
+Since the group sizes are different, the answer is
+
+$$
+\frac{9!}{2!3!4!}.
+$$
+
+## Unlabelled Groups of Equal Sizes
+
+If some groups have the same size and are unlabelled, then we must divide by
+the number of ways to reorder those equal sized groups.
+
+### Example 3
+
+> How many ways are there to split $8$ students into two unlabelled groups of
+> $4$?
+
+First choose $4$ students for one group:
+
+$$
+\binom{8}{4}.
+$$
+
+But this counts each split twice, because choosing the first group or choosing
+its complement gives the same final split.
+
+So the answer is
+
+$$
+\frac{1}{2}\binom{8}{4}=35.
+$$
+
+### Example 4
+
+> How many ways are there to split $12$ students into three unlabelled groups of
+> $4$?
+
+If the groups were labelled, the answer would be
+
+$$
+\frac{12!}{4!4!4!}.
+$$
+
+But the three groups are unlabelled, so we divide by
+
+$$
+3!.
+$$
+
+So the answer is
+
+$$
+\frac{12!}{4!4!4!3!}.
+$$
+
+## Mixed Group Sizes
+
+Sometimes only some groups have equal sizes.
+
+### Example 5
+
+> How many ways are there to split $11$ students into unlabelled groups of
+> sizes $2,2,3,4$?
+
+If the groups were labelled, the answer would be
+
+$$
+\frac{11!}{2!2!3!4!}.
+$$
+
+The two groups of size $2$ are indistinguishable, so we divide by
+
+$$
+2!.
+$$
+
+The groups of size $3$ and $4$ are unique by size, so no further division is
+needed.
+
+So the answer is
+
+$$
+\frac{11!}{2!2!3!4!2!}.
+$$
+
+## Identical Objects and Groups
+
+If the objects are identical and the groups are unlabelled, the problem becomes
+a partition problem.
+
+For example, splitting $7$ identical balls into $3$ unlabelled nonempty groups
+means finding unordered positive integer triples whose sum is $7$.
+
+The possible group sizes are
+
+$$
+1,1,5
+$$
+
+$$
+1,2,4
+$$
+
+$$
+1,3,3
+$$
+
+$$
+2,2,3.
+$$
+
+So there are $4$ ways.
+
+Unlike labelled distribution, there is no simple single formula for every
+unlabelled identical object grouping problem. These are often handled using
+casework.
+
+## Mixtures of Object Types
+
+Some problems involve repeated types of objects.
+
+For example, suppose we have:
+- $3$ red balls
+- $2$ blue balls
+- $1$ green ball
+
+If we want to split them into groups, we must track how many objects of each
+type go into each group.
+
+These problems are usually solved by:
+
+1. Deciding the possible type counts in each group
+2. Counting valid cases
+3. Dividing by symmetries if the groups are unlabelled
+
+The key is to avoid treating identical objects as distinct.
+
+## Worked Examples
+
+### Example 6
+
+> How many ways are there to split $6$ students into three unlabelled pairs?
+
+If the pairs were labelled, the answer would be
+
+$$
+\frac{6!}{2!2!2!}.
+$$
+
+But the three pairs are unlabelled, so divide by
+
+$$
+3!.
+$$
+
+The answer is
+
+$$
+\frac{6!}{2!2!2!3!}=15.
+$$
+
+### Example 7
+
+> How many ways are there to split $10$ students into two unlabelled groups of
+> $3$ and one group of $4$?
+
+If the groups were labelled, the answer would be
+
+$$
+\frac{10!}{3!3!4!}.
+$$
+
+The two groups of size $3$ are indistinguishable, so divide by
+
+$$
+2!.
+$$
+
+So the answer is
+
+$$
+\frac{10!}{3!3!4!2!}.
+$$
+
+### Example 8
+
+> How many ways are there to split $5$ identical balls into two unlabelled non empty groups?
+
+We need unordered positive pairs adding to $5$.
+
+The possibilities are
+
+$$
+1+4
+$$
+
+and
+
+$$
+2+3.
+$$
+
+So there are $2$ ways.
+
+## Key Contest Insight
+
+When splitting into groups, first decide whether the groups are labelled.
+
+If the groups are labelled, choose objects for each group directly.
+
+If the groups are unlabelled, count as though they were labelled and then divide
+by the number of ways to permute identical groups.
+
+The most common mistake is forgetting to divide when groups of the same size are
+unlabelled.
+
+## Strategy Tips
+- Decide whether the objects are distinct or identical
+- Decide whether the groups are labelled or unlabelled
+- For distinct objects and labelled groups, use factorial division
+- For unlabelled equal sized groups, divide by the factorial of the number of
+  identical groups
+- If group sizes are all different, no extra division is needed
+- For identical objects into unlabelled groups, use casework or partitions
+- Always check whether two counted outcomes are actually the same grouping
+
+## Common Pitfalls
+- Treating unlabelled groups as labelled
+- Dividing by too much when group sizes are different
+- Forgetting to divide by $3!$ when forming three identical groups
+- Treating identical objects as distinct
+- Confusing grouping with distribution to named people
+- Missing cases when identical objects are split into unlabelled groups
+
+## Practice Problems
+
+<Problems problems="practice" />

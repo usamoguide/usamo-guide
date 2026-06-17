@@ -70,6 +70,69 @@ Applying this up to $$k = 5$$:
 2) $$f(4) = f(3) + f(2) = 5$$
 3) $$f(5) = f(4) + f(3) = \boxed{8}$$
 
+## Dynamic Programming
+
+Look again at the staircase example. To get $$f(5)$$ we used $$f(4)$$ and $$f(3)$$, but computing $$f(4)$$ also needed $$f(3)$$. If we restarted the breakdown every time we met a smaller state, the same values would get recomputed over and over, and the work would pile up fast. The fix is to write each value down once and reuse it.
+
+This is the idea behind **dynamic programming**, a common technique used in *competitive programming*. Rather than starting at $$f(5)$$ and breaking it down, we start from the base cases and build upward (bottom-up), recording each result:
+
+$$
+f(1) = 1, \quad f(2) = 2, \quad f(3) = 3, \quad f(4) = 5, \quad f(5) = 8.
+$$
+
+Every entry depends only on entries already written, so a single left-to-right pass finishes the count. On a contest this is usually all that recursion means in practice. You find the base cases, find the transition, then fill in a line of numbers until you reach the one you want.
+
+Recursion and dynamic programming are two views of the same idea. The transition describes how states relate to each other, and dynamic programming is the bookkeeping that turns that relationship into numbers without wasted effort.
+
+One more tool comes for free. If a state is forbidden, say a step you are not allowed to land on, set its value to $$0$$ and keep filling as usual. Arrangements that would have passed through it contribute nothing, and every other count stays correct.
+
+## Choosing a Good State
+
+Writing the transition and base cases is usually the easy part. The real skill is choosing the **state**, meaning deciding what information $$f$$ should depend on. A useful state has two properties:
+
+1) It carries everything you need to keep counting. Once you know the state, the number of ways to finish should not depend on how you got there.
+2) It stays small. Fewer parameters means fewer values to track and less room for error.
+
+In every example so far a single number was enough: the step you are on, the height of the staircase, the count of values arranged. Some problems need more.
+
+## A Two-Dimensional Example
+
+> Starting at the bottom-left corner of a $$4 \times 3$$ grid of unit squares, how many paths reach the top-right corner if every move goes one unit right or one unit up?
+
+One number cannot say where you are on a grid, since a position needs two coordinates. So let $$f(i, j)$$ be the number of paths from the start to the point $$i$$ units right and $$j$$ units up. To arrive at $$(i, j)$$, the last move came either from the left, from $$(i-1, j)$$, or from below, from $$(i, j-1)$$. These cases are disjoint and cover everything, so:
+
+$$
+f(i, j) = f(i-1, j) + f(i, j-1).
+$$
+
+The base case is the starting corner, $$f(0, 0) = 1$$. Every point on the bottom edge or the left edge has exactly one path, reached by walking straight along that edge, so $$f(i, 0) = f(0, j) = 1$$.
+
+Filling the grid from the bottom-left upward, with rows for $$j = 3$$ down to $$0$$ and columns for $$i = 0$$ to $$4$$, gives:
+
+$$
+\begin{array}{ccccc}
+1 & 4 & 10 & 20 & 35 \\
+1 & 3 & 6 & 10 & 15 \\
+1 & 2 & 3 & 4 & 5 \\
+1 & 1 & 1 & 1 & 1
+\end{array}
+$$
+
+The top-right entry is $$\boxed{35}$$. As a check, a path uses $$4$$ rights and $$3$$ ups in some order, and choosing which $$3$$ of the $$7$$ moves are ups gives $$\binom{7}{3} = 35$$, matching the table. Grid path questions like this one appear regularly on the AMC 8 and AMC 10!
+
+This is the same transition as the staircase, now spread across two directions. Whenever a problem tracks a position on a grid, an amount of two separate resources, or any pair of quantities that change independently, a two-parameter state $$f(i, j)$$ is usually the right place to start. Don't be afraid by having multi-dimensional recursion states!
+
+## Recognizing These Problems
+
+On the AMC, a few signals suggest recursion or dynamic programming will work:
+
+1) The problem builds up step by step, like climbing stairs or extending a sequence one term at a time.
+2) A local constraint limits how consecutive choices interact, such as no two adjacent letters being equal.
+3) You are counting paths, tilings, or arrangements on a grid or a line.
+4) The answer for size $$n$$ looks like it should depend on the answer for size $$n-1$$ (and maybe $$n-2$$).
+
+When you notice these, define a state, ask what the last move could have been, and turn that into a transition.
+
 ## Practice Problems
 
 <Problems problems="practice" />
@@ -163,6 +226,46 @@ Transition: $f(n) = f(n-1)+f(n-2)$. Base cases: $f(1)=2$, $f(2)=3$.
 
 $$
 f(3)=5,\quad f(4)=8,\quad\ldots\quad f(8)=\boxed{55}
+$$
+
+</Spoiler>
+
+---
+
+**Problem 7.** On a $3 \times 3$ grid of unit squares, how many paths go from the bottom-left corner to the top-right corner using only unit moves right and up, if the lattice point $(1, 2)$ is blocked and cannot be visited?
+
+<Spoiler>
+
+**Solution:** Let $f(i,j)$ = paths to the point $(i,j)$, with $f(i,j) = f(i-1,j)+f(i,j-1)$. Set the blocked point to $0$ and fill the table. The edges are all $1$.
+
+Filling from the bottom-left upward (rows $j=3$ down to $0$, columns $i=0$ to $3$):
+
+$$
+\begin{array}{cccc}
+1 & 1 & 4 & 11 \\
+1 & 0 & 3 & 7 \\
+1 & 2 & 3 & 4 \\
+1 & 1 & 1 & 1
+\end{array}
+$$
+
+The top-right entry is $\boxed{11}$. (Check: all $\binom{6}{3}=20$ paths, minus the $\binom{3}{1}\binom{3}{1}=9$ that pass through $(1,2)$, gives $20-9=11$.)
+
+</Spoiler>
+
+---
+
+**Problem 8.** A staircase has 8 steps, but step 5 is cracked and cannot be landed on. You may still pass over it with a 2-step. Climbing 1 or 2 steps at a time, how many ways can you reach step 8?
+
+<Spoiler>
+
+**Solution:** Let $f(n)$ = ways to reach step $n$, with $f(n) = f(n-1)+f(n-2)$. Step 5 is forbidden, so set $f(5)=0$ and keep going.
+
+$$
+f(1)=1,\quad f(2)=2,\quad f(3)=3,\quad f(4)=5,\quad f(5)=0,
+$$
+$$
+f(6)=f(5)+f(4)=5,\quad f(7)=f(6)+f(5)=5,\quad f(8)=f(7)+f(6)=\boxed{10}
 $$
 
 </Spoiler>

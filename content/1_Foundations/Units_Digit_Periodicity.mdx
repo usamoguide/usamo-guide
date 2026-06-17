@@ -1,53 +1,638 @@
 ---
 id: units-digit-periodicity
 title: Units Digit Periodicity
-author: USAMO Guide Team
-description: Finding the last digit of large exponential expressions by identifying 4-step cycles.
-prerequisites: [modular-arithmetic-intro]
+author: Neronvain
+description: Learn how repeating units digit cycles make it easy to find the last digit of large powers and expressions.
+prerequisites: ["modular-arithmetic"]
 ---
-
-<IncompleteSection />
 
 ## Overview
 
-What is the units digit of $7^{2025}$? You could try multiplying, but there is a
-much faster way: the units digits of powers cycle with a predictable period
-(almost always dividing 4). This module teaches you to find and exploit that
-cycle.
+Many contest problems ask for the units digit, or last digit, of a very large number.
 
-## Key Ideas
+For example:
 
-- The units digit of $a^n$ depends only on the units digit of $a$ and the value
-  of $n$ modulo the cycle length.
-- Every base has a units-digit cycle of length 1, 2, or 4:
-  - Cycle 1: digits 0, 1, 5, 6 (always the same).
-  - Cycle 2: digits 4, 9.
-  - Cycle 4: digits 2, 3, 7, 8.
-- To find the units digit of $a^n$: identify the cycle, then compute
-  $n \mod \text{(cycle length)}$.
+$$
+7^{2026}
+$$
 
-## Core Skills
+is far too large to work out directly. However, its units digit is easy to find
+because powers of $7$ have a repeating last-digit pattern.
 
-### Building the Cycle Table
+Units digit periodicity is the idea that powers of any integer eventually repeat
+in their units digits. This is really modular arithmetic modulo $10$.
 
-List $a^1, a^2, a^3, a^4$ and read off units digits until the pattern repeats.
+Instead of studying the entire number, we only study its remainder modulo $10$.
 
-### Using Modular Reduction on the Exponent
+## Motivation
 
-$7^{2025}$: the cycle is $7, 9, 3, 1$ (length 4). $2025 \mod 4 = 1$, so the
-units digit is 7.
+Consider the powers of $7$:
 
-### Products and Sums of Large Powers
+$$
+7^1=7
+$$
 
-Compute each units digit separately, then add or multiply and take the units
-digit of the result.
+$$
+7^2=49
+$$
 
-## Worked Example
+$$
+7^3=343
+$$
 
-Find the units digit of $3^{100}$.
+$$
+7^4=2401.
+$$
 
-Cycle of 3: $3, 9, 7, 1$ (length 4). $100 \mod 4 = 0$, so we use the 4th
-position: units digit is 1.
+The units digits are
+
+$$
+7,9,3,1.
+$$
+
+Now multiply by another $7$:
+
+$$
+7^5
+$$
+
+has the same units digit as
+
+$$
+7^1.
+$$
+
+So the pattern repeats:
+
+$$
+7,9,3,1,7,9,3,1,\ldots
+$$
+
+This means we do not need to compute $7^{2026}$. We only need to know where
+$2026$ falls in the repeating cycle.
+
+Since the cycle length is $4$ and
+
+$$
+2026\equiv 2 \pmod 4,
+$$
+
+the units digit is the second digit in the cycle:
+
+$$
+9.
+$$
+
+## Units Digits and Modulo $10$
+
+The units digit of an integer is its remainder when divided by $10$.
+
+For example,
+
+$$
+347\equiv 7 \pmod{10},
+$$
+
+so the units digit of $347$ is $7$.
+
+As such finding the units digit of a number is the same as finding the number modulo $10$.
+
+For powers, this means
+
+$$
+a^n \pmod{10}
+$$
+
+determines the units digit of $a^n$.
+
+## Reducing the Base
+
+When finding the units digit of a power, only the units digit of the base
+matters.
+
+For example,
+
+$$
+137^{2026}
+$$
+
+has the same units digit as
+
+$$
+7^{2026},
+$$
+
+because
+
+$$
+137\equiv 7 \pmod{10}.
+$$
+
+So before doing anything else, reduce the base modulo $10$.
+
+## Why Cycles Appear
+
+There are only ten possible units digits:
+
+$$
+0,1,2,3,4,5,6,7,8,9.
+$$
+
+When we repeatedly multiply by the same base and only keep track of the units
+digit, we have to eventually repeat a digit.
+
+Once a digit repeats in the same position of the multiplication process, the
+cycle continues forever.
+
+For units digit problems, these cycles are usually very short.
+
+## Common Units Digit Cycles
+
+The following cycles are worth knowing.
+
+### Powers Ending in $0$
+
+If a number ends in $0$, then every positive power also ends in $0$:
+
+$$
+0,0,0,\ldots
+$$
+
+### Powers Ending in $1$
+
+If a number ends in $1$, then every positive power also ends in $1$:
+
+$$
+1,1,1,\ldots
+$$
+
+### Powers Ending in $2$
+
+The units digits cycle as
+
+$$
+2,4,8,6.
+$$
+
+### Powers Ending in $3$
+
+The units digits cycle as
+
+$$
+3,9,7,1.
+$$
+
+### Powers Ending in $4$
+
+The units digits cycle as
+
+$$
+4,6.
+$$
+
+### Powers Ending in $5$
+
+If a number ends in $5$, then every positive power also ends in $5$:
+
+$$
+5,5,5,\ldots
+$$
+
+### Powers Ending in $6$
+
+If a number ends in $6$, then every positive power also ends in $6$:
+
+$$
+6,6,6,\ldots
+$$
+
+### Powers Ending in $7$
+
+The units digits cycle as
+
+$$
+7,9,3,1.
+$$
+
+### Powers Ending in $8$
+
+The units digits cycle as
+
+$$
+8,4,2,6.
+$$
+
+### Powers Ending in $9$
+
+The units digits cycle as
+
+$$
+9,1.
+$$
+
+## Using the Cycle Length
+
+Once we know the cycle, we reduce the exponent modulo the cycle length.
+
+For example, the powers of $3$ have units digit cycle
+
+$$
+3,9,7,1.
+$$
+
+This cycle has length $4$.
+
+To find the units digit of
+
+$$
+3^{100},
+$$
+
+we compute
+
+$$
+100\equiv 0 \pmod 4.
+$$
+
+A remainder of $0$ means we use the last digit in the cycle, not the first.
+
+Therefore, the units digit is
+
+$$
+1.
+$$
+
+This is a common source of mistakes.
+
+## Worked Examples
+
+### Example 1
+
+> Find the units digit of
+>
+> $$
+> 7^{2026}.
+> $$
+
+The powers of $7$ have units digit cycle
+
+$$
+7,9,3,1.
+$$
+
+The cycle length is $4$.
+
+Now
+
+$$
+2026\equiv 2 \pmod 4.
+$$
+
+So we take the second digit in the cycle.
+
+Therefore, the units digit is
+
+$$
+9.
+$$
+
+### Example 2
+
+> Find the units digit of
+>
+> $$
+> 23^{81}.
+> $$
+
+First reduce the base:
+
+$$
+23\equiv 3 \pmod{10}.
+$$
+
+So we need the units digit of
+
+$$
+3^{81}.
+$$
+
+The powers of $3$ have cycle
+
+$$
+3,9,7,1.
+$$
+
+The cycle length is $4$, and
+
+$$
+81\equiv 1 \pmod 4.
+$$
+
+So we take the first digit in the cycle.
+
+Therefore, the units digit is
+
+$$
+3.
+$$
+
+### Example 3
+
+> Find the units digit of
+>
+> $$
+> 2^{123}+7^{456}.
+> $$
+
+First, find the units digit of
+
+$$
+2^{123}.
+$$
+
+The powers of $2$ cycle as
+
+$$
+2,4,8,6.
+$$
+
+Since
+
+$$
+123\equiv 3 \pmod 4,
+$$
+
+the units digit of $2^{123}$ is
+
+$$
+8.
+$$
+
+Now find the units digit of
+
+$$
+7^{456}.
+$$
+
+The powers of $7$ cycle as
+
+$$
+7,9,3,1.
+$$
+
+Since
+
+$$
+456\equiv 0 \pmod 4,
+$$
+
+the units digit of $7^{456}$ is
+
+$$
+1.
+$$
+
+Therefore, the units digit of the sum is the units digit of
+
+$$
+8+1=9.
+$$
+
+So the final units digit is
+
+$$
+9.
+$$
+
+### Example 4
+
+> Find the units digit of
+>
+> $$
+> 17^{83}23^{49}.
+> $$
+
+First reduce the bases:
+
+$$
+17\equiv 7 \pmod{10}
+$$
+
+and
+
+$$
+23\equiv 3 \pmod{10}.
+$$
+
+So we need the units digit of
+
+$$
+7^{83}3^{49}.
+$$
+
+For $7^{83}$, the cycle is
+
+$$
+7,9,3,1.
+$$
+
+Since
+
+$$
+83\equiv 3 \pmod 4,
+$$
+
+the units digit of $7^{83}$ is
+
+$$
+3.
+$$
+
+For $3^{49}$, the cycle is
+
+$$
+3,9,7,1.
+$$
+
+Since
+
+$$
+49\equiv 1 \pmod 4,
+$$
+
+the units digit of $3^{49}$ is
+
+$$
+3.
+$$
+
+Thus the units digit of the product is the units digit of
+
+$$
+3(3)=9.
+$$
+
+So the units digit is
+
+$$
+9.
+$$
+
+### Example 5
+
+> Find the units digit of
+>
+> $$
+> 3^{3^{100}}.
+> $$
+
+The powers of $3$ have cycle
+
+$$
+3,9,7,1,
+$$
+
+with cycle length $4$.
+
+So we need to know the exponent
+
+$$
+3^{100}
+$$
+
+modulo $4$.
+
+Since
+
+$$
+3\equiv -1 \pmod 4,
+$$
+
+we have
+
+$$
+3^{100}\equiv (-1)^{100}\equiv 1 \pmod 4.
+$$
+
+Therefore, the exponent leaves remainder $1$ modulo $4$.
+
+So
+
+$$
+3^{3^{100}}
+$$
+
+has the same units digit as the first term in the cycle for powers of $3$.
+
+Thereofre the units digit is
+
+$$
+3.
+$$
+
+## Expressions With Sums and Products
+
+When an expression contains several large powers, find the units digit of each
+part separately.
+
+For sums, add the resulting units digits and reduce modulo $10$.
+
+For products, multiply the resulting units digits and reduce modulo $10$.
+
+For example, if one term has units digit $8$ and another has units digit $7$,
+then their product has units digit equal to the units digit of
+
+$$
+8(7)=56,
+$$
+
+which is
+
+$$
+6.
+$$
+
+## Higher Powers in the Exponent
+
+Sometimes the exponent itself is large, such as in
+
+$$
+2^{5^{100}}.
+$$
+
+In such problems, first find the cycle length of the base.
+
+The powers of $2$ have cycle length $4$:
+
+$$
+2,4,8,6.
+$$
+
+So we need the exponent modulo $4$.
+
+Then compute
+
+$$
+5^{100}\pmod 4.
+$$
+
+Since
+
+$$
+5\equiv 1 \pmod 4,
+$$
+
+we get
+
+$$
+5^{100}\equiv 1 \pmod 4.
+$$
+
+Therefore, the exponent corresponds to the first position in the cycle, so the
+units digit of
+
+$$
+2^{5^{100}}
+$$
+
+is
+
+$$
+2.
+$$
+
+## Key Contest Insight
+
+Units digit problems are modular arithmetic problems modulo $10$.
+
+The main steps are:
+- Reduce the base modulo $10$
+- Identify the repeating cycle
+- Reduce the exponent modulo the cycle length
+- Choose the correct position in the cycle
+- Combine units digits carefully for sums or products
+
+The most important detail is how to handle exponent remainders. If the exponent
+is divisible by the cycle length, use the last digit of the cycle.
+
+## Strategy Tips
+- Reduce the base to its units digit first
+- Memorise the short cycles for digits $0$ through $9$
+- For cycles of length $4$, reduce the exponent modulo $4$
+- For cycles of length $2$, reduce the exponent modulo $2$
+- If the exponent is itself large, reduce it modulo the cycle length
+- For a remainder of $0$, use the final term of the cycle
+- Treat sums and products by combining units digits at the end
+
+## Common Pitfalls
+- Using the first term of a cycle when the exponent is divisible by the cycle
+  length
+- Forgetting to reduce the base modulo $10$
+- Trying to compute the full power instead of using the cycle
+- Mixing up the cycles for $3$ and $7$
+- Forgetting to reduce the exponent modulo the cycle length
+- In expressions with several terms, combining the bases before finding their
+  units digits
 
 ## Practice Problems
 

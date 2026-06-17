@@ -1,0 +1,442 @@
+---
+id: arrangements-rank-and-sums
+title: Arrangements, Rank, and Sum of Arrangements
+author: Neronvain
+description: Learn how to count arrangements, find lexicographic ranks, and compute sums of numbers formed by arranging digits.
+prerequisites: []
+---
+
+## Overview
+
+Arrangement problems ask us to place objects in order.
+
+Common examples include:
+
+- Arranging letters to form words
+- Arranging digits to form numbers
+- Finding the rank of a word in dictionary order
+- Finding the sum of all numbers formed from a set of digits
+
+These problems combine permutations, repeated objects, and positional thinking.
+
+The main idea is to count arrangements systematically rather than listing them.
+
+## Arranging Distinct Objects
+
+If $n$ objects are all distinct, then the number of arrangements is $n!$.
+
+### Example 1
+
+> How many ways are there to arrange the letters in $MATH$?
+
+The four letters are distinct.
+
+So the number of arrangements is
+
+$$
+4!=24.
+$$
+
+## Arranging Objects With Repetition
+
+If some objects are repeated, then arranging them as if they were distinct
+overcounts.
+
+Suppose there are $n$ total objects, with repeated groups of sizes
+
+$$
+a_1,a_2,\ldots,a_k.
+$$
+
+Then the number of distinct arrangements is
+
+$$
+\frac{n!}{a_1!a_2!\cdots a_k!}.
+$$
+
+### Example 2
+
+> How many distinct arrangements are there of the letters in $LEVEL$?
+
+The word $LEVEL$ has $5$ letters.
+
+The letter $L$ appears twice, and the letter $E$ appears twice.
+
+So the number of distinct arrangements is
+
+$$
+\frac{5!}{2!2!}=30.
+$$
+
+## Restrictions in Arrangements
+
+Many arrangement problems include restrictions.
+
+Common restrictions include:
+- Certain objects must be together
+- Certain objects must not be together
+- Vowels and consonants must alternate
+- Digits cannot start with $0$
+- Repeated objects are present
+
+The usual strategy is to count the unrestricted arrangements first, then impose
+the restrictions carefully.
+
+## Objects Together
+
+If several objects must stay together, treat them as a block.
+
+### Example 3
+
+> How many ways are there to arrange the letters $A,B,C,D,E$ if $A$ and $B$ must be together?
+
+Treat $A$ and $B$ as one block.
+
+Then we arrange the block together with $C,D,E$, giving $4$ objects:
+
+$$
+4!.
+$$
+
+Inside the block, $A$ and $B$ can be arranged in
+
+$$
+2!
+$$
+
+ways.
+
+So the total number of arrangements is
+
+$$
+4!2!=48.
+$$
+
+## Objects Not Together
+
+If certain objects must not be together, it is often easier to use complement
+counting.
+
+### Example 4
+
+> How many ways are there to arrange the letters $A,B,C,D,E$ if $A$ and $B$ must not be together?
+
+There are
+
+$$
+5!
+$$
+
+total arrangements.
+
+From Example 3, the number where $A$ and $B$ are together is
+
+$$
+4!2!.
+$$
+
+Therefore, the number where they are not together is
+
+$$
+5!-4!2!=120-48=72.
+$$
+
+## Lexicographic Rank
+
+The lexicographic rank of a word is its position when all arrangements are
+listed in dictionary order.
+
+Usually, ranks start from $1$.
+
+To find the rank of a word:
+1. Look at the first position
+2. Count how many valid arrangements begin with a smaller possible letter
+3. Fix the actual first letter
+4. Repeat for the next position
+5. Add $1$ for the word itself
+
+## Worked Rank Example
+
+### Example 5
+
+> Find the rank of $MATH$ among all arrangements of the letters $A,H,M,T$ in alphabetical order.
+
+The letters in alphabetical order are
+
+$$
+A,H,M,T.
+$$
+
+We want the rank of
+
+$$
+MATH.
+$$
+
+First consider the first letter.
+
+Letters smaller than $M$ are
+
+$$
+A
+$$
+
+and
+
+$$
+H.
+$$
+
+If the first letter is $A$, the remaining $3$ letters can be arranged in
+
+$$
+3!
+$$
+
+ways.
+
+If the first letter is $H$, the remaining $3$ letters can also be arranged in
+
+$$
+3!
+$$
+
+ways.
+
+So the number of words before $MATH$ with smaller first letter is
+
+$$
+2(3!)=12.
+$$
+
+Now fix the first letter as $M$.
+
+The second letter is $A$. There is no remaining letter smaller than $A$, so no
+new words are counted here.
+
+Now fix
+
+$$
+MA.
+$$
+
+The remaining letters are
+
+$$
+H,T.
+$$
+
+The third letter in $MATH$ is $T$. There is one smaller remaining letter,
+namely $H$.
+
+If the third letter were $H$, the last letter would be forced. This gives
+
+$$
+1
+$$
+
+word before $MATH$.
+
+So the total number of words before $MATH$ is
+
+$$
+12+1=13.
+$$
+
+Therefore, the rank of $MATH$ is
+
+$$
+14.
+$$
+
+## Rank With Repeated Letters
+
+When letters repeat, the same method works, but each count must account for
+repetition.
+
+### Example 6
+
+> How many arrangements of $LEVEL$ begin with a letter before $V$?
+
+The letters before $V$ that appear in $LEVEL$ are
+
+$$
+E
+$$
+
+and
+
+$$
+L.
+$$
+
+If the first letter is $E$, the remaining letters are
+
+$$
+L,V,E,L.
+$$
+
+There are $4$ letters, with $L$ repeated twice, so the number of arrangements is
+
+$$
+\frac{4!}{2!}=12.
+$$
+
+If the first letter is $L$, the remaining letters are
+
+$$
+E,V,E,L.
+$$
+
+There are $4$ letters, with $E$ repeated twice, so the number of arrangements is
+
+$$
+\frac{4!}{2!}=12.
+$$
+
+So the total number of arrangements beginning with a letter before $V$ is
+
+$$
+24.
+$$
+
+## Sum of All Arrangements of Digits
+
+Some problems ask for the sum of all numbers formed by arranging given digits.
+
+The key idea is positional contribution.
+
+If all digits are distinct and none is zero, then each digit appears equally
+often in each position.
+
+### Example 7
+
+> Find the sum of all three digit numbers formed using the digits $1,2,3$, with each digit used exactly once.
+
+There are
+
+$$
+3!=6
+$$
+
+numbers.
+
+Each digit appears in each position
+
+$$
+2!
+$$
+
+times.
+
+The sum of the digits is
+
+$$
+1+2+3=6.
+$$
+
+So the contribution to the hundreds place is
+
+$$
+6(2!)100.
+$$
+
+The contribution to the tens place is
+
+$$
+6(2!)10.
+$$
+
+The contribution to the units place is
+
+$$
+6(2!)1.
+$$
+
+So the total sum is
+
+$$
+6(2!)(100+10+1).
+$$
+
+Since
+
+$$
+2!=2,
+$$
+
+the sum is
+
+$$
+6(2)(111)=1332.
+$$
+
+## Arrangements With Leading Zero
+
+When arranging digits, leading zero is a common issue.
+
+A string like
+
+$$
+0123
+$$
+
+is not a four digit number.
+
+So if zero is included, handle the first digit separately or subtract invalid
+arrangements.
+
+### Example 8
+
+> How many four digit numbers can be formed using the digits $0,1,2,3$, each exactly once?
+
+There are $4!$ arrangements of the four digits.
+
+But those beginning with $0$ are not four digit numbers.
+
+If $0$ is first, the remaining digits can be arranged in
+
+$$
+3!
+$$
+
+ways.
+
+So the number of valid four digit numbers is
+
+$$
+4!-3!=24-6=18.
+$$
+
+## Key Contest Insight
+
+Arrangement problems are about positions.
+
+Rank problems count how many arrangements come before a given arrangement.
+
+Sum problems count how much each digit contributes to each position.
+
+When the objects are repeated, always divide by the factorials of repeated
+counts.
+
+## Strategy Tips
+- For distinct objects, start with $n!$
+- For repeated objects, divide by the factorials of repeated counts
+- For 'together' restrictions, use blocks
+- For 'not together' restrictions, consider complement counting
+- For rank, count arrangements before the target one position by position
+- For sums of arrangements, use positional contribution
+- Be careful with leading zero
+
+## Common Pitfalls
+
+- Forgetting to divide for repeated letters
+- Treating repeated letters as distinct
+- Forgetting to add $1$ when computing rank
+- Counting rank in the wrong alphabetical order
+- Allowing leading zero in a number
+- Trying to list all arrangements instead of using positional contribution
+
+## Practice Problems
+
+<Problems problems="practice" />

@@ -1,0 +1,404 @@
+---
+id: distributing-objects
+title: Distributing Objects
+author: Neronvain
+description: Learn how to distribute distinct and identical objects among people, including stars and bars, restrictions, and mixed distribution problems.
+prerequisites: []
+---
+
+## Overview
+
+Distribution problems ask us to place objects into boxes, give objects to people, or assign items to recipients.
+The main questions are:
+- Are the objects distinct or identical?
+- Are the recipients distinct?
+- Can someone receive nothing?
+- Are there lower or upper bounds?
+
+The answers determine which counting method we use.
+
+## Motivation
+
+Suppose we want to distribute $5$ identical sweets among $3$ children.
+
+If the children are named Alice, Ben, and Chloe, then an outcome is determined
+by three nonnegative integers:
+
+$$
+x_1+x_2+x_3=5.
+$$
+
+Here, $x_1$ is the number of sweets Alice receives, $x_2$ is the number Ben
+receives, and $x_3$ is the number Chloe receives.
+
+This is different from splitting sweets into unlabelled groups. The children
+are distinct, so
+
+$$
+(5,0,0)
+$$
+
+and
+
+$$
+(0,5,0)
+$$
+
+are different outcomes.
+
+This is the setting where stars and bars becomes useful.
+
+## Distinct Objects to Distinct People
+
+Suppose there are $n$ distinct objects and $r$ distinct people.
+
+If each object can go to any person, then each object has $r$ choices.
+
+So the number of distributions is
+
+$$
+r^n.
+$$
+
+### Example 1
+
+> How many ways are there to distribute $6$ distinct books among $3$ students?
+
+Each book can go to any of the $3$ students.
+
+Therefore, the number of ways is
+
+$$
+3^6.
+$$
+
+## Distinct Objects With No Empty Recipient
+
+If every person must receive at least one distinct object, the problem is more
+subtle.
+
+For small cases, we often use casework or inclusion exclusion.
+
+### Example 2
+
+> How many ways are there to distribute $4$ distinct books among $2$ students
+> so that each student receives at least one book?
+
+Without restriction, each book has $2$ choices, so there are
+
+$$
+2^4=16
+$$
+
+ways.
+
+Now subtract the cases where one student gets no books.
+
+There are $2$ such bad cases:
+- All books go to the first student
+- All books go to the second student
+
+So the answer is
+
+$$
+16-2=14.
+$$
+
+## Identical Objects to Distinct People
+
+Suppose we want to distribute $n$ identical objects among $r$ distinct people,
+and people are allowed to receive nothing.
+
+This is the number of nonnegative integer solutions to
+
+$$
+x_1+x_2+\cdots+x_r=n.
+$$
+
+By stars and bars, the number of solutions is
+
+$$
+\binom{n+r-1}{r-1}.
+$$
+
+### Why Stars and Bars Works
+
+Imagine $n$ stars representing the objects.
+
+We need to divide them into $r$ groups, one for each person. This requires
+$r-1$ dividers.
+
+So we arrange
+
+$$
+n
+$$
+
+stars and
+
+$$
+r-1
+$$
+
+bars in a row.
+
+The total number of symbols is
+
+$$
+n+r-1.
+$$
+
+Choosing the positions of the bars determines the distribution, so the number
+of distributions is
+
+$$
+\binom{n+r-1}{r-1}.
+$$
+
+## At Least One Each
+
+If each of the $r$ people must receive at least one identical object, then we
+need positive integer solutions to
+
+$$
+x_1+x_2+\cdots+x_r=n.
+$$
+
+Give each person one object first. This uses $r$ objects.
+
+Now distribute the remaining
+
+$$
+n-r
+$$
+
+objects freely among the $r$ people.
+
+The number of ways is
+
+$$
+\binom{n-1}{r-1}.
+$$
+
+### Example 3
+
+> How many ways are there to distribute $10$ identical sweets among $4$
+> children if each child must receive at least one sweet?
+
+We need positive integer solutions to
+
+$$
+x_1+x_2+x_3+x_4=10.
+$$
+
+By stars and bars, the answer is
+
+$$
+\binom{10-1}{4-1}
+=
+\binom{9}{3}
+=
+84.
+$$
+
+## Upper Bounds
+
+Sometimes each person can receive at most a certain number of objects.
+
+These problems often require casework or complementary counting.
+
+### Example 4
+
+> How many ways are there to distribute $8$ identical sweets among $3$ children if no child receives more than $4$ sweets?
+
+First ignore the upper bound.
+
+The number of nonnegative solutions to
+
+$$
+x_1+x_2+x_3=8
+$$
+
+is
+
+$$
+\binom{10}{2}=45.
+$$
+
+Now subtract distributions where some child receives at least $5$ sweets.
+
+Suppose
+
+$$
+x_1\ge 5.
+$$
+
+Let
+
+$$
+y_1=x_1-5.
+$$
+
+Then
+
+$$
+y_1+x_2+x_3=3.
+$$
+
+The number of solutions is
+
+$$
+\binom{5}{2}=10.
+$$
+
+The same applies to each of the $3$ children, so we subtract
+
+$$
+3(10)=30.
+$$
+
+No two children can both receive at least $5$ sweets, since that would require
+at least $10$ sweets.
+
+So the answer is
+
+$$
+45-30=15.
+$$
+
+## Mixtures of Object Types
+
+Some problems involve multiple types of identical objects.
+
+For example, suppose we distribute $5$ identical red balls and $3$ identical blue balls among $2$ children.
+
+We can distribute the red balls independently of the blue balls.
+
+The red balls can be distributed in
+
+$$
+\binom{5+2-1}{2-1}=6
+$$
+
+ways.
+
+The blue balls can be distributed in
+
+$$
+\binom{3+2-1}{2-1}=4
+$$
+
+ways.
+
+Therefore, the total number of distributions is
+
+$$
+6(4)=24.
+$$
+
+## Worked Examples
+
+### Example 5
+
+> How many ways are there to distribute $7$ identical balls among $3$ labelled
+> boxes?
+
+We need nonnegative integer solutions to
+
+$$
+x_1+x_2+x_3=7.
+$$
+
+By stars and bars, the answer is
+
+$$
+\binom{7+3-1}{3-1}
+=
+\binom{9}{2}
+=
+36.
+$$
+
+### Example 6
+
+> How many ways are there to distribute $7$ identical balls among $3$ labelled
+> boxes if each box must contain at least one ball?
+
+We need positive integer solutions to
+
+$$
+x_1+x_2+x_3=7.
+$$
+
+The answer is
+
+$$
+\binom{7-1}{3-1}
+=
+\binom{6}{2}
+=
+15.
+$$
+
+### Example 7
+
+> How many ways are there to distribute $5$ distinct books among $3$ students if
+> one particular student must receive exactly $2$ books?
+
+Choose the $2$ books for that student:
+
+$$
+\binom{5}{2}.
+$$
+
+Each of the remaining $3$ books can go to either of the other two students, so
+there are
+
+$$
+2^3
+$$
+
+ways.
+
+So the answer is
+
+$$
+\binom{5}{2}2^3=10(8)=80.
+$$
+
+## Key Contest Insight
+
+Distribution problems depend heavily on whether the objects and recipients are
+distinct.
+
+If the objects are distinct and the recipients aredistinct, think about choices
+for each object.
+
+If the objects are identical and the recipients are distinct, think about
+integer solutions and stars and bars.
+
+If there are restrictions, first count without the restriction, then subtract
+the invalid cases when possible.
+
+## Strategy Tips
+- Identify whether the objects are distinct or identical
+- Identify whether the recipients are distinct
+- For distinct objects to distinct people, use choices for each object
+- For identical objects to distinct people, use stars and bars
+- For 'at least one each', give one object to each person first
+- For upper bounds, use complementary counting or casework
+- For multiple independent object types, count each type separately and multiply
+
+## Common Pitfalls
+
+- Confusing distribution to labelled people with splitting into unlabelled
+  groups
+- Using stars and bars for distinct objects
+- Forgetting that people may be allowed to receive nothing
+- Forgetting to handle the 'at least one' condition
+- Ignoring upper bounds
+- Multiplying independent counts when the choices are not actually independent
+
+## Practice Problems
+
+<Problems problems="practice" />

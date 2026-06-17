@@ -1,70 +1,355 @@
 ---
 id: permutations-combinations
-title: Permutations and Combinations
-author: USAMO Guide Team
-description: Differentiating between ordered arrangements and unordered group selections.
-prerequisites: [counting-fundamentals]
+title: Using nCr and nPr
+author: Neronvain
+description: Learn the foundations of permutations and combinations, including when to use nPr, when to use nCr, and how to avoid common counting mistakes
+prerequisites: []
 ---
-
-<IncompleteSection />
 
 ## Overview
 
-Does order matter? That single question determines whether you use a permutation
-or a combination. Permutations count arrangements where the sequence matters
-(president, VP, treasurer). Combinations count selections where it does not
-(choose a committee of 3). Mastering this distinction is critical for AMC 8
-combinatorics.
+Permutations and combinations are the basic tools of counting.
 
-## Key Ideas
+Many contest problems ask us to count the number of ways to choose, arrange, or
+assign objects. The main difficulty is usually deciding whether order matters.
 
-- **Permutation**: an ordered arrangement. $P(n, r) = \frac{n!}{(n-r)!}$.
-- **Combination**: an unordered selection. $\binom{n}{r} = \frac{n!}{r!(n-r)!}$.
-- If rearranging the chosen items creates a "different" outcome, use
-  permutations. If not, use combinations.
-- $\binom{n}{r} = \binom{n}{n-r}$ (choosing what to include = choosing what to
-  exclude).
+If order matters, we usually use permutations.
+If order does not matter, we usually use combinations.
 
-## Core Skills
+This module introduces the two most important counting expressions:
 
-### Identifying Order
+$$
+{}^nP_r
+$$
 
-"How many 3-letter codes?" → order matters → permutation.
-"How many 3-person committees?" → order doesn't matter → combination.
+and
 
-### Computing Small Binomial Coefficients
+$$
+\binom{n}{r}.
+$$
 
-$\binom{5}{2} = \frac{5 \times 4}{2 \times 1} = 10$. Cancel before multiplying.
+These are often written as $nPr$ and $nCr$.
 
-### Permutations with Repetition
+## Motivation
 
-If some items are identical, divide by the factorial of each group of repeats:
-arrangements of MISSISSIPPI = $\frac{11!}{4! \cdot 4! \cdot 2!}$.
+Suppose there are $5$ students:
 
-### Circular Arrangements
+$$
+A,B,C,D,E.
+$$
 
-When objects are arranged around a circle, rotations are considered the same.
-Fix one object in place and permute the rest, giving $(n-1)!$ circular
-arrangements for $n$ distinct objects.
+If we want to choose $2$ students for a committee, then the order does not
+matter. Choosing $A$ and $B$ is the same as choosing $B$ and $A$.
 
-### Digit Arrangements with Restrictions
+So this is a combination problem.
 
-For digit problems, handle leading-zero restrictions first. A common pattern is:
+However, if we want to choose a president and vice-president, then order does
+matter. Choosing $A$ as president and $B$ as vice-president is different from
+choosing $B$ as president and $A$ as vice-president.
 
-1. Count all valid first-digit choices.
-2. Count choices for remaining positions.
-3. Multiply using the rule of product.
+So this is a permutation problem.
 
-This avoids overcounting invalid numbers that start with 0.
+The first question in almost every counting problem should be:
 
-## Worked Example
+> Does order matter?
 
-How many ways can you choose 3 books from a shelf of 7?
+## Factorials
 
-$\binom{7}{3} = \frac{7 \times 6 \times 5}{3 \times 2 \times 1} = 35$.
+For a positive integer $n$, define
 
-If order mattered, the answer would instead be
-$P(7,3) = 7 \cdot 6 \cdot 5 = 210$.
+$$
+n!=n(n-1)(n-2)\cdots 2(1).
+$$
+
+For example,
+
+$$
+5!=5(4)(3)(2)(1)=120.
+$$
+
+We also define
+
+$$
+0!=1.
+$$
+
+This may seem strange at first, but it makes many counting formulas work
+cleanly.
+
+Factorials appear whenever we arrange distinct objects.
+
+For example, the number of ways to arrange $5$ distinct books in a row is
+
+$$
+5!.
+$$
+
+## Permutations
+
+A permutation is an ordered selection.
+
+The number of ways to choose and arrange $r$ objects from $n$ distinct objects
+is
+
+$$
+{}^nP_r=\frac{n!}{(n-r)!}.
+$$
+
+This formula appears because we have:
+- $n$ choices for the first position
+- $n-1$ choices for the second position
+- $n-2$ choices for the third position and so on
+
+As such
+
+$$
+{}^nP_r=n(n-1)(n-2)\cdots(n-r+1).
+$$
+
+### Example 1
+
+> How many ways are there to choose a president, vice-president, and secretary
+> from $8$ students?
+
+The roles are distinct, so order matters.
+
+We need to arrange $3$ students chosen from $8$:
+
+$$
+{}^8P_3=8(7)(6)=336.
+$$
+
+So there are $336$ possible choices.
+
+## Combinations
+
+A combination is an unordered selection.
+
+The number of ways to choose $r$ objects from $n$ distinct objects is
+
+$$
+\binom{n}{r}
+=
+\frac{n!}{r!(n-r)!}.
+$$
+
+This counts selections where order does not matter.
+
+### Example 2
+
+> How many ways are there to choose $3$ students from $8$ students for a
+> committee?
+
+The committee has no roles, so order does not matter.
+
+Therefore the answer is
+
+$$
+\binom{8}{3}
+=
+\frac{8!}{3!5!}
+=
+56.
+$$
+
+So there are $56$ possible committees.
+
+## Relationship Between Permutations and Combinations
+
+Permutations and combinations are closely related.
+
+First choose $r$ objects from $n$ objects:
+
+$$
+\binom{n}{r}.
+$$
+
+Then arrange those $r$ chosen objects:
+
+$$
+r!.
+$$
+
+Therefore,
+
+$$
+{}^nP_r=\binom{n}{r}r!.
+$$
+
+This identity is useful because many problems can be solved by thinking:
+
+> First choose the objects, then arrange them.
+
+## Choosing Then Arranging
+
+A very common counting strategy is:
+1. Choose the objects involved
+2. Arrange the chosen objects
+
+### Example 3
+
+> How many $4$-letter arrangements can be made from the letters
+> $A,B,C,D,E,F$ if no letter is repeated?
+
+First choose the $4$ letters:
+
+$$
+\binom{6}{4}.
+$$
+
+Then arrange them:
+
+$$
+4!.
+$$
+
+So the number of arrangements is
+
+$$
+\binom{6}{4}4!=15(24)=360.
+$$
+
+This is the same as
+
+$$
+{}^6P_4=6(5)(4)(3)=360.
+$$
+
+## When Repetition Is Allowed
+
+If repetition is allowed, the formulas change.
+
+For example, the number of $4$-digit strings using digits $0$ through $9$, where
+repetition is allowed, is
+
+$$
+10^4.
+$$
+
+This is because each of the $4$ positions has $10$ choices.
+
+If the first digit cannot be $0$, then there are:
+
+- $9$ choices for the first digit
+- $10$ choices for each of the remaining three digits
+
+So the number of $4$-digit positive integers allowing repeated digits is
+
+$$
+9(10)(10)(10)=9000.
+$$
+
+## Worked Examples
+
+### Example 4
+
+> How many ways are there to arrange $5$ people in a row?
+
+All $5$ people are distinct, and order matters.
+
+The answer is
+
+$$
+5!=120.
+$$
+
+### Example 5
+
+> How many ways are there to choose $4$ cards from a standard $52$ card deck?
+
+The order in which the cards are chosen does not matter.
+
+So the answer is
+
+$$
+\binom{52}{4}.
+$$
+
+### Example 6
+
+> How many ways are there to choose and arrange $4$ runners from $10$ runners
+> into first, second, third, and fourth place?
+
+The positions are distinct, so order matters.
+
+The answer is
+
+$$
+{}^{10}P_4
+=
+10(9)(8)(7)
+=
+5040.
+$$
+
+### Example 7
+
+> A club has $12$ members. How many ways are there to choose $3$ members for a
+> committee and then choose one of those committee members as chair?
+
+First choose the committee:
+
+$$
+\binom{12}{3}.
+$$
+
+Then choose the chair from the $3$ committee members:
+
+$$
+3.
+$$
+
+So the total number of ways is
+
+$$
+\binom{12}{3}3.
+$$
+
+Since
+
+$$
+\binom{12}{3}=220,
+$$
+
+the answer is
+
+$$
+220(3)=660.
+$$
+
+## Key Contest Insight
+
+The most important decision is whether order matters.
+
+If order matters, use permutations or arrange objects directly.
+
+If order does not matter, use combinations.
+
+If a problem involves both choosing and assigning roles, separate the process
+into steps:
+- Choose the objects
+- Then arrange or assign them
+
+This helps prevent overcounting.
+
+## Strategy Tips
+- Ask whether order matters
+- Use factorials for arranging distinct objects
+- Use $nPr$ for ordered selections without repetition
+- Use $nCr$ for unordered selections
+- If repetition is allowed, count choices position by position
+- Break complicated problems into smaller choices
+- Be careful not to count the same outcome multiple times
+
+## Common Pitfalls
+
+- Using $nPr$ when order does not matter
+- Using $nCr$ when order does matter
+- Forgetting that repeated objects require different handling
+- Treating a committee as ordered when it is unordered
+- Forgetting restrictions such as no leading zero
+- Multiplying choices without checking whether earlier choices affect later
+  choices
 
 ## Practice Problems
 

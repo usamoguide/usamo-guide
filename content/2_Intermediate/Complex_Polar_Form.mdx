@@ -1,202 +1,393 @@
 ---
 id: complex-polar-form
-title: Polar Form and De Moivre
-author: USAMO Guide Team
-description: Use $re^{i\theta}$ for powers and products.
+title: Polar Form and De Moivre's Theorem
+author: Neal Shandilya
+description: A training module on polar form, rotations, De Moivre's theorem, and complex bashing techniques.
 prerequisites: [complex-basics]
 ---
 
-## Overview
+# Polar Form and De Moivre's Theorem
 
-Polar form turns multiplication into angle addition and scaling. It is the
-fastest path for high powers.
+## 1. Motivation
 
-## Core Skills
+Rectangular form is powerful but clumsy for multiplication. Compare:
 
-### Convert to Polar Form
+$$\left(\frac{\sqrt{3}}{2}+\frac{1}{2}i\right)^{12}$$
 
-Compute $r=|z|$ and $\theta=\arg z$ so $z=r(\cos\theta+i\sin\theta)$.
+Expanding this directly requires twelve rounds of FOIL. In polar form, it is $\left(e^{i\pi/6}\right)^{12} = e^{2\pi i} = 1$. Done in one line.
 
-### Multiply and Divide
+The central insight: **multiplication in polar form is rotation and scaling.**
 
-Multiply magnitudes and add arguments; divide magnitudes and subtract
-arguments.
+<FigureBox image="/images/complex-plane-angle.png" alt="Complex plane showing modulus r and argument theta for a point z" title="The Complex Plane in Polar Coordinates">
+  A point $z = a + bi$ sits at distance $r = |z|$ from the origin. The angle from the positive real axis, measured counterclockwise, is $\theta = \arg(z)$. These two quantities, the modulus and argument, completely determine $z$.
+</FigureBox>
 
-### Reduce Angles
+---
 
-Always reduce angles modulo $2\pi$ to keep arguments in a standard range.
+## 2. Polar Form
 
-## Key Ideas
+For any nonzero $z = a + bi$, define:
 
-- $z = r(\cos\theta + i\sin\theta) = re^{i\theta}$.
-- De Moivre: $z^n = r^n(\cos n\theta + i\sin n\theta)$.
-- Multiply by adding arguments and multiplying magnitudes.
+$$|z| = r = \sqrt{a^2 + b^2}, \qquad \arg(z) = \theta \text{ where } \tan\theta = \frac{b}{a}$$
 
-## Worked Example
+The **principal argument** $\text{Arg}(z) \in (-\pi, \pi]$ is the canonical choice. The full argument is $\theta + 2\pi k$ for any integer $k$.
 
-Compute $(1+i)^{10}$.
+Two equivalent notations for polar form:
 
-$1+i = \sqrt{2}e^{i\pi/4}$. Then
-$(1+i)^{10} = (\sqrt{2})^{10} e^{i\cdot 10\pi/4} = 2^5 e^{i\pi/2} = 32i$.
+$$z = r(\cos\theta + i\sin\theta) \qquad \text{(trigonometric form)}$$
 
-## More Examples
-## Example 1: Power
+$$z = re^{i\theta} \qquad \text{(exponential form, via Euler's formula)}$$
 
-Compute $(2e^{i\pi/3})^4$.
+**Euler's formula:** $e^{i\theta} = \cos\theta + i\sin\theta$. This follows from the Taylor series of $e^x$, $\cos x$, and $\sin x$.
 
-$2^4e^{i4\pi/3}=16\left(\cos\frac{4\pi}{3}+i\sin\frac{4\pi}{3}\right)$.
+**Worked conversions.**
 
-## Example 2: Product
+| Rectangular | $r$ | $\theta$ | Polar |
+|---|---|---|---|
+| $1 + i$ | $\sqrt{2}$ | $\pi/4$ | $\sqrt{2}\,e^{i\pi/4}$ |
+| $-1 + \sqrt{3}i$ | $2$ | $2\pi/3$ | $2e^{2i\pi/3}$ |
+| $-i$ | $1$ | $-\pi/2$ | $e^{-i\pi/2}$ |
+| $-3$ | $3$ | $\pi$ | $3e^{i\pi}$ |
 
-If $z_1=3e^{i\pi/6}$ and $z_2=2e^{i\pi/4}$, find $z_1z_2$.
+---
 
-$6e^{i(\pi/6+\pi/4)}=6e^{i5\pi/12}$.
+## 3. Geometry of Multiplication
 
-## Example 3: Division
+For $z_1 = r_1 e^{i\alpha}$ and $z_2 = r_2 e^{i\beta}$:
 
-Compute $\frac{4e^{i\pi/2}}{2e^{i\pi/3}}$.
+$$z_1 z_2 = r_1 r_2\, e^{i(\alpha + \beta)}$$
 
-$2e^{i(\pi/2-\pi/3)}=2e^{i\pi/6}$.
+**Magnitudes multiply. Arguments add.**
 
-## Example 4: Interesting 5th roots
+<FigureBox image="/images/complex-multiplication-rotation.png" alt="Diagram showing z1 and z2 being multiplied: the resulting vector has combined angle and product of lengths" title="Multiplication as Rotation and Scaling">
+  Multiplying $z_1$ by $z_2$ rotates $z_1$ counterclockwise by $\arg(z_2)$ and scales it by $|z_2|$. When $|z_2| = 1$, this is a **pure rotation** with no change in length.
+</FigureBox>
 
-Take the expression $z_k=\left(2\mathrm{cis}\frac{\pi}{6}\right)^{1/5}$ represent the five fifth roots of $2\mathrm{cis}\frac{\pi}{6}$.
+The rule for division is the natural inverse:
 
-Your goal is to compute $\prod_{k=0}^{4}z_k^2$.
+$$\frac{z_1}{z_2} = \frac{r_1}{r_2}\,e^{i(\alpha - \beta)}$$
 
-To start off, the product of all fifth roots just equals the original complex number itself:
+Dividing by $z_2$ rotates **clockwise** by $\arg(z_2)$ and scales by $1/|z_2|$.
 
-$\prod_{k=0}^{4}z_k=2\mathrm{cis}\frac{\pi}{6}$.
+**Key principle:** Multiplying any complex number by a unit complex number $e^{i\theta}$ rotates it by $\theta$ about the origin. To rotate a point $z$ about a center $c$ by angle $\theta$, compute:
 
-Consequently, it follows that
+$$z' = e^{i\theta}(z - c) + c$$
 
-$\prod_{k=0}^{4}z_k^2=\left(2\mathrm{cis}\frac{\pi}{6}\right)^2=4\mathrm{cis}\frac{\pi}{3}$.
+---
 
-## Example 5: When does it become imaginary? (It is advised to fully understand and remember this type of problem/solution!)
+## 4. Rotations
 
-Assume that $z=\sqrt3+i$.
+### Rotating by $90^\circ$
 
-Your job is to find the smallest positive integer $n$ such that the following expression is purely imaginary: $z^n$ .
+Multiplication by $i = e^{i\pi/2}$ rotates counterclockwise by $90^\circ$. In coordinates, $(a + bi) \cdot i = -b + ai$: the old imaginary part becomes the new real part (negated), and the old real part becomes the new imaginary part.
 
-After that, we can simply turn it to polar form:
+### Rotating by $180^\circ$
 
-$z=2\mathrm{cis}\frac{\pi}{6}$.
+Multiplication by $-1 = e^{i\pi}$ maps $z \mapsto -z$, a $180^\circ$ rotation about the origin.
 
-Next,
+### Rotating by an arbitrary angle $\theta$
 
-$z^n=2^n\mathrm{cis}\frac{n\pi}{6}$.
+Multiply by $e^{i\theta} = \cos\theta + i\sin\theta$.
 
-Now, observe that for $z^n$ to be purely imaginary,
+**Example.** Rotate $z = 3 + i$ by $\pi/3$ about the origin.
 
-$\cos\frac{n\pi}{6}=0$.
+$$z' = e^{i\pi/3}(3+i) = \left(\frac{1}{2}+\frac{\sqrt{3}}{2}i\right)(3+i) = \frac{3-\sqrt{3}}{2} + \frac{3\sqrt{3}+1}{2}i$$
 
-As a result, we have that
+**Shortcut.** To check that triangle $ABC$ is equilateral, verify:
 
-$\frac{n\pi}{6}=\frac{\pi}{2}+k\pi$.
+$$(C - A) = e^{\pm i\pi/3}(B - A)$$
 
-So, we get our answer:
+This converts an equilateral triangle condition into a single complex multiplication.
 
-$n=3+6k$.
+<FigureBox image="/images/rotation-problem.png" alt="Equilateral triangle on the complex plane with vertices A, B, C labeled as complex numbers" title="Rotation Characterization of Equilateral Triangles">
+  The triangle $ABC$ is equilateral if and only if $C - A = e^{i\pi/3}(B-A)$ or $C - A = e^{-i\pi/3}(B-A)$. Two orientations, one formula.
+</FigureBox>
 
-The smallest positive integer is $\boxed{3}$.
+---
 
-## Example 6: Symmetry!
+## 5. De Moivre's Theorem
 
-Let $z=\mathrm{cis}\theta$.
+**Theorem.** For any integer $n$:
 
-Given that $z^4+z^{-4}=0$, you must find ALL possible values of $\theta$ for $0<\theta<\pi$.
+$$(\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)$$
 
-We can first approach this problem by utilizing De Moivre, which results in:
+**Proof.** Write $\cos\theta + i\sin\theta = e^{i\theta}$ via Euler's formula. The exponential law gives $(e^{i\theta})^n = e^{in\theta}$, and another application of Euler's formula yields $e^{in\theta} = \cos(n\theta) + i\sin(n\theta)$. For negative $n$, observe $(e^{i\theta})^{-1} = e^{-i\theta}$, so the same argument applies.
 
-$z^4=\mathrm{cis}(4\theta)$ and $z^{-4}=\mathrm{cis}(-4\theta)$.
+**Trig identities from De Moivre.** Expand $(\cos\theta + i\sin\theta)^3$ via binomial theorem and match real and imaginary parts:
 
-Then, combining them gives
+$$\cos(3\theta) = \cos^3\theta - 3\cos\theta\sin^2\theta, \qquad \sin(3\theta) = 3\cos^2\theta\sin\theta - \sin^3\theta$$
 
-$z^4+z^{-4}=2\cos(4\theta)$.
+This method generates all multiple-angle formulas mechanically.
 
-And consequently,
+<FigureBox image="/images/demoivre-powers.png" alt="Sequence of unit complex numbers e^(i theta), e^(2i theta), e^(3i theta) equally spaced around the unit circle" title="Powers of a Unit Complex Number">
+  Repeated multiplication by $e^{i\theta}$ steps around the unit circle in equal angular increments. After $n$ steps, you land at $e^{in\theta}$: this is De Moivre's theorem made visual.
+</FigureBox>
 
-$2\cos(4\theta)=0$,
+---
 
-which means
+## 6. De Moivre Bashing
 
-$\cos(4\theta)=0$.
+### Computing powers quickly
 
-So we have:
+Write the number in polar form, apply De Moivre, convert back.
 
-$4\theta=\frac{\pi}{2}+k\pi$.
+**Example.** Compute $(1+i)^{20}$.
 
-And from here we can easily obtain our answers:
+$$1 + i = \sqrt{2}\,e^{i\pi/4}$$
 
-$\theta=\frac{\pi}{8}+\frac{k\pi}{4}$.
+$$(1+i)^{20} = \left(\sqrt{2}\right)^{20} e^{i \cdot 20\pi/4} = 2^{10} e^{5\pi i} = 1024 \cdot e^{i\pi} = -1024$$
 
-The values in $(0,\pi)$ are
+### Extracting trig identities
 
-$\frac{\pi}{8},\frac{3\pi}{8},\frac{5\pi}{8},\frac{7\pi}{8}$.
+To find $\cos^5\theta$ in terms of multiple angles, write $\cos\theta = \frac{e^{i\theta}+e^{-i\theta}}{2}$ and expand:
 
-## Example 7: Binomial Expressions! (This you also need to fully understand and remember as this trick is very useful!)
+$$\cos^5\theta = \frac{1}{32}\left(e^{5i\theta} + 5e^{3i\theta} + 10e^{i\theta} + 10e^{-i\theta} + 5e^{-3i\theta} + e^{-5i\theta}\right)$$
 
-Your job is to compute $(1+i)^{12}$.
+$$= \frac{1}{16}\left(\cos 5\theta + 5\cos 3\theta + 10\cos\theta\right)$$
 
-At first, the expression looks daunting, but we can tackle it using the techniques we learned in this module. First, we turn $1+i$ into polar form:
+This technique, expressing a power of cosine as a linear combination of cosines of multiples, appears frequently on the AIME.
 
-$1+i=\sqrt2\mathrm{cis}\frac{\pi}{4}$.
+### Finding real and imaginary parts
 
-Then, we can do the following:
+**Example.** Find $\text{Re}\left[(2+2i)^8\right]$.
 
-$(1+i)^{12}=(\sqrt2)^{12}\mathrm{cis}\left(12\cdot\frac{\pi}{4}\right)$.
+$(2+2i) = 2\sqrt{2}\,e^{i\pi/4}$, so $(2+2i)^8 = (2\sqrt{2})^8 e^{2\pi i} = 2^{12} = 4096$. Real part is $4096$.
 
-Simplifying the expression, we get,
+### Detecting roots of unity
 
-$=64\mathrm{cis}(3\pi)$.
+If $\omega = e^{2\pi i/n}$, then $\omega^n = 1$ and $1 + \omega + \omega^2 + \cdots + \omega^{n-1} = 0$. This identity is the key to the roots-of-unity filter technique.
 
-Because $\cos3\pi=-1$ and $\sin3\pi=0$, we get our answer:
+---
 
-$(1+i)^{12}=-64$.
+## 7. Roots of Complex Numbers
 
-Note: Can you interpret this problem geometrically? Think out of the box!
+To solve $z^n = w$ where $w = \rho e^{i\phi}$:
 
-## Example 8: Roots of Unity + Polar Form!
+$$z = \rho^{1/n}\, e^{i(\phi + 2\pi k)/n}, \qquad k = 0, 1, \ldots, n-1$$
 
-Let $\omega=\mathrm{cis}\frac{2\pi}{9}$.
+There are exactly $n$ roots, evenly spaced at angles $2\pi/n$ apart on a circle of radius $\rho^{1/n}$.
 
-Your job is to compute the following expression: $(\omega+\omega^8)^2+(\omega^2+\omega^7)^2+(\omega^4+\omega^5)^2$.
+<FigureBox image="/images/roots-of-unity-circle.png" alt="The 6th roots of unity plotted as 6 equally spaced points on the unit circle" title="The nth Roots of Unity">
+  The $n$th roots of unity form a regular $n$-gon inscribed in the unit circle. Their sum is always zero. This symmetry is exploited constantly in problems.
+</FigureBox>
 
-First off, because $\omega^8=\omega^{-1}$, $\omega^7=\omega^{-2}$, and $\omega^5=\omega^{-4}$, we can use
+<FigureBox image="/images/root-extraction-geometry.png" alt="Cube roots of w = 8e^(i pi/3), shown as three equally spaced points on a circle of radius 2" title="Extracting Cube Roots Geometrically">
+  To find the cube roots of $w = 8e^{i\pi/3}$: take the cube root of the modulus to get radius $2$, divide the argument by $3$ to get the first root at angle $\pi/9$, then add $2\pi/3$ twice to get the other two. All three roots lie on a circle of radius $2$.
+</FigureBox>
 
-$\omega^k+\omega^{-k}=2\cos\left(\frac{2\pi k}{9}\right)$.
+**Key fact.** The roots of $z^n = 1$ are $e^{2\pi i k/n}$ for $k = 0, \ldots, n-1$. These are the vertices of a regular $n$-gon centered at the origin with one vertex at $1$.
 
-From here, the expression simply becomes
+---
 
-$4\cos^2\frac{2\pi}{9}+4\cos^2\frac{4\pi}{9}+4\cos^2\frac{8\pi}{9}$.
+## 8. Common Olympiad Techniques
 
-And using
+<FigureBox image="/images/complex-bashing-techniques.png" alt="Flowchart of when to use polar vs rectangular vs rotation approach for a complex number problem" title="Choosing the Right Technique">
+  The right technique depends on the structure of the problem. Multiplication, powers, and angles call for polar form. Sums and real-part extraction call for rectangular. Geometric arguments about angles and distances call for modulus-argument reasoning.
+</FigureBox>
 
-$\cos^2x=\frac{1+\cos(2x)}{2}$,
+**Technique 1: Convert to polar immediately.** Any problem involving products, quotients, or powers of complex numbers should be converted to polar form before doing any algebra.
 
-this just simplifies to
+**Technique 2: Rotate instead of coordinate-bashing.** When a problem asks about a geometric transformation, represent it as multiplication by $e^{i\theta}$ rather than using rotation matrices or coordinates.
 
-$2\left(3+\cos\frac{2\pi}{9}+\cos\frac{4\pi}{9}+\cos\frac{8\pi}{9}\right)$.
+**Technique 3: Use unit complex numbers for angles.** If $|z| = 1$, then $z = e^{i\theta}$ for some $\theta$, and $\bar{z} = e^{-i\theta} = z^{-1}$. This simplifies conjugate expressions dramatically.
 
-Then, using the following identity
+**Technique 4: Exploit symmetry.** If $f(z)$ is symmetric under rotation by $2\pi/n$, the answer likely involves $n$th roots of unity. Summing over all rotations and using $\sum_{k=0}^{n-1}\omega^{jk} = 0$ for $j \not\equiv 0\pmod{n}$ filters out all but the symmetric terms.
 
-$\cos\frac{2\pi}{9}+\cos\frac{4\pi}{9}+\cos\frac{8\pi}{9}=0$,
+**Technique 5: Use conjugates cleverly.** $z + \bar{z} = 2\,\text{Re}(z)$ and $z\bar{z} = |z|^2$. When you see a real-part extraction in a sum, write the sum twice with $z$ and $\bar{z}$ and add.
 
-we get that the final value is $6$.
+**Technique 6: Recognize regular polygons.** Points $z_0, z_0\omega, z_0\omega^2, \ldots, z_0\omega^{n-1}$ (for $\omega = e^{2\pi i/n}$) form a regular $n$-gon. Any time you see equally spaced angles, the roots of unity polynomial $z^n - c = 0$ is probably lurking.
 
+**Technique 7: Convert geometry into multiplication.** Collinearity, perpendicularity, concyclicity, and angle bisectors all have clean complex-number characterizations. Three points $A, B, C$ are collinear iff $\frac{C-A}{B-A} \in \mathbb{R}$. They are concyclic iff $\frac{(C-A)(D-B)}{(C-B)(D-A)} \in \mathbb{R}$.
 
-## Strategy Checklist
+**Technique 8: Use arguments to prove collinearity and cyclicity.** $\arg\!\left(\frac{z_2 - z_1}{z_3 - z_1}\right) = 0$ or $\pi$ means $z_1, z_2, z_3$ are collinear. Four points are concyclic iff $\arg\!\left(\frac{z_3 - z_1}{z_3 - z_2}\right) \equiv \arg\!\left(\frac{z_4 - z_1}{z_4 - z_2}\right) \pmod{\pi}$, i.e., the inscribed angles subtended by chord $z_1 z_2$ from $z_3$ and $z_4$ agree modulo $\pi$. This is equivalent to Technique 7's cross-ratio condition.
 
-- Convert to polar form before powering.
-- Add or subtract arguments correctly.
-- Reduce angles to a standard range.
+---
 
-## Common Pitfalls
+## 9. Worked AIME-Style Problems
 
-- Using degrees in one step and radians in another.
-- Forgetting to reduce angles modulo $2\pi$.
-- Mixing up magnitude and argument operations.
+**Problem 1.** Compute $(1 - i\sqrt{3})^{10}$.
 
-## Practice Problems
+*Solution.* Note $1 - i\sqrt{3} = 2e^{-i\pi/3}$. Then $(1-i\sqrt{3})^{10} = 2^{10}e^{-10i\pi/3} = 1024\,e^{-4i\pi/3} = 1024\!\left(-\frac{1}{2} + \frac{\sqrt{3}}{2}i\right) = -512 + 512\sqrt{3}i$.
 
-<Problems problems="practice" />
+**Problem 2.** Find all $z$ with $|z| = 1$ and $z^6 + z^4 + z^2 + 1 = 0$.
+
+*Solution.* Factor: $z^6+z^4+z^2+1 = (z^2+1)(z^4+1)$. Roots of $z^2 = -1$: $z = \pm i$. Roots of $z^4 = -1 = e^{i\pi}$: $z = e^{i\pi/4}, e^{3i\pi/4}, e^{5i\pi/4}, e^{7i\pi/4}$. All six roots lie on the unit circle.
+
+**Problem 3.** The vertices of a regular hexagon are the roots of $z^6 = 64$. Find the sum of the squares of the side lengths.
+
+*Solution.* The vertices are $2e^{i\pi k/3}$ for $k = 0,\ldots,5$. Compute $|1-e^{i\pi/3}|^2 = (1-1/2)^2 + (\sqrt{3}/2)^2 = 1/4 + 3/4 = 1$. So each side has length $|2||1 - e^{i\pi/3}| = 2$, and the sum of squares is $6 \cdot 4 = \boxed{24}$.
+
+**Problem 4.** Let $\omega = e^{2\pi i/7}$. Compute $|\omega + \omega^2 + \omega^4|^2$.
+
+*Solution.* Let $S = \omega + \omega^2 + \omega^4$ and $\bar{S} = \omega^6 + \omega^5 + \omega^3$. Since $1+\omega+\omega^2+\cdots+\omega^6=0$, we have $S+\bar{S}=-1$. Now compute
+
+$$
+S\bar{S}=(\omega+\omega^2+\omega^4)(\omega^6+\omega^5+\omega^3).
+$$
+
+Reducing exponents modulo $7$, this becomes
+
+$$
+(1+\omega^6+\omega^4)+(\omega+1+\omega^5)+(\omega^3+\omega^2+1)
+=3+(\omega+\omega^2+\cdots+\omega^6)=3-1=2.
+$$
+
+Therefore $|S|^2=S\bar{S}=\boxed{2}$.
+
+**Problem 5.** Find $\sum_{k=1}^{12} \cos\!\left(\frac{2\pi k}{13}\right)\cos\!\left(\frac{4\pi k}{13}\right)$.
+
+*Solution.* Use the product-to-sum identity to get $\frac{1}{2}\sum_{k=1}^{12}\cos\!\left(\frac{6\pi k}{13}\right) + \frac{1}{2}\sum_{k=1}^{12}\cos\!\left(\frac{2\pi k}{13}\right)$. Each sum equals $\text{Re}\!\left(\sum_{k=1}^{12}\omega^{3k}\right)$ or $\text{Re}\!\left(\sum_{k=1}^{12}\omega^k\right)$ for $\omega = e^{2\pi i/13}$. Since neither exponent is divisible by 13, both geometric sums equal $-1$. Answer: $-1$.
+
+---
+
+## 10. Proof Problems
+
+**Problem 1.** Let $A$, $B$, $C$ be the vertices of an equilateral triangle in the complex plane. Prove that $A^2 + B^2 + C^2 = AB + BC + CA$.
+
+*Solution.* The expression
+
+$$A^2+B^2+C^2-AB-BC-CA$$
+
+is unchanged if the same complex number is added to $A$, $B$, and $C$, because all translation terms cancel. Therefore we may translate the triangle so its centroid is at the origin, giving $A+B+C=0$. Expanding $(A+B+C)^2=0$ yields
+
+$$A^2+B^2+C^2+2(AB+BC+CA)=0.$$
+
+It remains to show $AB+BC+CA=0$.
+
+An equilateral triangle is invariant under $120^\circ$ rotation about its centroid. With the centroid at the origin and after labeling the vertices in counterclockwise order, we may write $B=\omega A$ and $C=\omega^2A$ where $\omega = e^{2\pi i/3}$. Then:
+$$AB + BC + CA = \omega A^2 + \omega^3 A^2 + \omega^2 A^2 = A^2(1 + \omega + \omega^2) = 0,$$
+since $1 + \omega + \omega^2 = 0$ for any primitive cube root of unity. Hence $A^2 + B^2 + C^2 = -2(AB+BC+CA) = 0$ as well. $\square$
+
+**Problem 2.** Show that if $|z_1| = |z_2| = |z_3| = 1$ and $z_1 + z_2 + z_3 = 0$, then $z_1, z_2, z_3$ form an equilateral triangle.
+
+*Solution.* Since $|z_k|=1$, the squared distance is $|z_j - z_k|^2 = 2 - (z_j\bar{z}_k + \bar{z}_jz_k)$. Set $a_{12} = z_1\bar{z}_2 + \bar{z}_1z_2$, $a_{13} = z_1\bar{z}_3 + \bar{z}_1z_3$, $a_{23} = z_2\bar{z}_3 + \bar{z}_2z_3$.
+
+Multiply $z_1+z_2+z_3 = 0$ by $\bar{z}_1$ to get $1 + z_2\bar{z}_1 + z_3\bar{z}_1 = 0$; adding its conjugate gives $2 + a_{12} + a_{13} = 0$. The analogous equations from multiplying by $\bar{z}_2$ and $\bar{z}_3$ yield $2 + a_{12} + a_{23} = 0$ and $2 + a_{13} + a_{23} = 0$. Solving this linear system gives $a_{12} = a_{13} = a_{23} = -1$. Therefore $|z_j - z_k|^2 = 3$ for all pairs, and the triangle is equilateral. $\square$
+
+**Problem 3.** Distinct points $P, Q, R$ lie on the unit circle. Prove that $P, Q, R$ are the vertices of an equilateral triangle if and only if $P^3 = Q^3 = R^3$.
+
+*Solution.* $(\Rightarrow)$ The circumcenter of any triangle inscribed in the unit circle is the origin. For an equilateral triangle, the circumcenter coincides with the centroid, so the centroid is at the origin. The triangle is therefore invariant under $120^\circ$ rotation about the origin, meaning $\{P,Q,R\} = \{P, e^{2\pi i/3}P, e^{4\pi i/3}P\}$. In either orientation, $Q^3 = e^{\pm 2\pi i}P^3 = P^3$ and $R^3 = e^{\pm 4\pi i}P^3 = P^3$. $(\Leftarrow)$ If $P^3 = Q^3 = R^3 = c$ with $|c|=1$, then $P$, $Q$, $R$ are three distinct cube roots of $c$. The cube roots of any $c$ on the unit circle are equally spaced at $120^\circ$, forming an equilateral triangle. $\square$
+
+---
+
+## 11. Common Mistakes
+
+**Forgetting multiple arguments.** The argument of $z$ is $\theta + 2\pi k$, not just $\theta$. When taking $n$th roots, each value of $k$ from $0$ to $n-1$ gives a distinct root. Missing any of them loses points.
+
+**Losing roots.** $z^n = w$ has exactly $n$ roots. If you find fewer, you dropped some. Always list all $n$.
+
+**Misapplying principal argument.** $\text{Arg}(z_1 z_2) = \text{Arg}(z_1) + \text{Arg}(z_2)$ only holds modulo $2\pi$; the principal argument of a product may differ from the sum of principal arguments by $\pm 2\pi$.
+
+**Confusing modulus and argument.** $|z_1 z_2| = |z_1||z_2|$ (multiply), but $\arg(z_1 z_2) = \arg(z_1) + \arg(z_2)$ (add). Swapping these is a fatal error.
+
+**Incorrect angle arithmetic.** When computing $e^{i\theta} \cdot e^{i\phi} = e^{i(\theta+\phi)}$, be careful about angle reduction modulo $2\pi$. The form $re^{i\theta}$ is not unique unless you fix a range for $\theta$.
+
+**Forgetting conjugates on the unit circle.** If $|z| = 1$, then $\bar{z} = 1/z$, not just $\overline{a+bi} = a - bi$. Using this saves enormous computation.
+
+---
+
+## 12. Practice Problems
+
+**Easy**
+
+1. Compute $(1 + i\sqrt{3})^6$.
+2. Find all complex numbers $z$ with $z^4 = -16$.
+3. If $\omega = e^{i\pi/5}$, simplify $\omega^3 \cdot \omega^7$.
+
+**Medium**
+
+4. Let $z = \frac{1+i}{1-i}$. Compute $z^{100}$.
+5. Find $\sum_{k=0}^{5}\left(\cos\frac{\pi k}{3} + i\sin\frac{\pi k}{3}\right)$.
+6. The complex number $z$ satisfies $|z|=2$ and $\arg(z) = \pi/4$. Find all $w$ with $w^3 = z$.
+7. Compute $|\,(2+2i)^{10} - (2-2i)^{10}\,|$.
+
+**Hard**
+
+8. Let $\omega = e^{2\pi i/9}$. Compute $(\omega + \omega^8)(\omega^2 + \omega^7)(\omega^3+\omega^6)(\omega^4+\omega^5)$.
+9. Prove that the product of all distances from $1$ to the other $n$th roots of unity equals $n$.
+10. Find all $z$ on the unit circle such that $z^n + \bar{z}^n$ is an integer for every positive integer $n$.
+
+---
+
+## 13. Hints
+
+1. Convert to polar form: $1 + i\sqrt{3} = 2e^{i\pi/3}$.
+2. Write $-16 = 16e^{i\pi}$ and apply the root formula.
+3. Add exponents and reduce modulo $2\pi$.
+4. First simplify $\frac{1+i}{1-i}$ by multiplying numerator and denominator by $1+i$.
+5. Recognize this as a sum of 6th roots of unity.
+6. Take the cube root of the modulus; divide the argument by $3$; add $2\pi k/3$ for $k=0,1,2$.
+7. Write both in polar form; note $2+2i = 2\sqrt{2}\,e^{i\pi/4}$.
+8. Consider the polynomial with roots $\omega^k + \omega^{9-k}$ and use Vieta's or the minimal polynomial of $2\cos(2\pi/9)$.
+9. Factor $z^n - 1 = \prod_{k=0}^{n-1}(z - \omega^k)$ and set $z = 1$ after canceling the $k=0$ factor.
+10. Write $z = e^{i\theta}$; then $z^n + \bar{z}^n = 2\cos(n\theta)$. Consider when $2\cos(n\theta) \in \mathbb{Z}$ for all $n$.
+
+---
+
+## 14. Solutions
+
+**1.** $(1+i\sqrt{3})^6 = (2e^{i\pi/3})^6 = 64e^{2\pi i} = 64$.
+
+**2.** $-16 = 16e^{i\pi}$. Roots: $2e^{i(\pi + 2\pi k)/4}$ for $k=0,1,2,3$. These are $\sqrt{2}(1+i), \sqrt{2}(-1+i), \sqrt{2}(-1-i), \sqrt{2}(1-i)$.
+
+**3.** $\omega^{3+7} = \omega^{10} = e^{i\cdot 10\pi/5} = e^{2\pi i} = 1$.
+
+**4.** $\frac{1+i}{1-i} = \frac{(1+i)^2}{2} = i$. Then $i^{100} = (i^4)^{25} = 1$.
+
+**5.** The terms are $e^{i\pi k/3}$ for $k=0,\ldots,5$, i.e., all 6th roots of unity. Their sum is $0$.
+
+**6.** $z = 2e^{i\pi/4}$, so $w = 2^{1/3}e^{i(\pi/12 + 2\pi k/3)}$ for $k=0,1,2$.
+
+**7.** $(2+2i)^{10} = (2\sqrt{2})^{10}e^{10i\pi/4} = 2^{15}e^{5i\pi/2} = 2^{15}i$. Similarly $(2-2i)^{10} = -2^{15}i$. Difference: $2^{16}i$, absolute value $\mathbf{65536}$.
+
+**8.** Since $\omega^9 = 1$, each factor satisfies $\omega^k + \omega^{9-k} = 2\cos(2\pi k/9)$. Note the third factor: $\omega^3 + \omega^6 = 2\cos(2\pi/3) = -1$. So the full product equals $2\cos(2\pi/9) \cdot 2\cos(4\pi/9) \cdot (-1) \cdot 2\cos(8\pi/9) = -8\cos(2\pi/9)\cos(4\pi/9)\cos(8\pi/9)$. The three values $2\cos(2\pi/9), 2\cos(4\pi/9), 2\cos(8\pi/9)$ are roots of $x^3 - 3x + 1 = 0$; by Vieta's formulas their product is $-1$, so $\cos(2\pi/9)\cos(4\pi/9)\cos(8\pi/9) = -1/8$. The answer is $-8 \cdot (-1/8) = \mathbf{1}$.
+
+**9.** From $z^n - 1 = \prod_{k=0}^{n-1}(z-\omega^k)$, cancel the $k=0$ factor to get $\prod_{k=1}^{n-1}(z-\omega^k) = z^{n-1}+\cdots+1$. Set $z=1$: $\prod_{k=1}^{n-1}(1-\omega^k) = n$. Taking absolute values gives the desired product of distances.
+
+**10.** Write $z=e^{i\theta}$. The condition becomes
+
+$$z^n+\bar z^n=e^{in\theta}+e^{-in\theta}=2\cos(n\theta)\in\mathbb{Z}$$
+
+for every positive integer $n$. Taking $n=1$ already forces $2\cos\theta\in\mathbb{Z}$. Since $\cos\theta\in[-1,1]$, this gives
+
+$$2\cos\theta\in\{-2,-1,0,1,2\}.$$
+
+Thus
+
+$$\theta\in\{0,\pm\pi/3,\pm\pi/2,\pm2\pi/3,\pi\}.$$
+
+These values are also sufficient. If $x=2\cos\theta$ is an integer, then the recurrence
+
+$$2\cos(n\theta)=x\cdot 2\cos((n-1)\theta)-2\cos((n-2)\theta)$$
+
+shows by induction that $2\cos(n\theta)$ is an integer for all positive integers $n$. Therefore
+
+$$z\in\{1,e^{\pm i\pi/3},\pm i,e^{\pm 2i\pi/3},-1\}.$$
+
+These are exactly the sixth roots of unity together with $\pm i$.
+
+---
+
+## 15. Summary
+
+<FigureBox image="/images/demoivre-checklist.png" alt="Decision tree checklist for polar form, De Moivre, and rotation techniques in problems" title="Polar Form and De Moivre Decision Checklist">
+  Use this checklist when encountering any complex number problem in a contest. The key question is always: does the structure of the problem favor angle addition (polar) or direct manipulation (rectangular)?
+</FigureBox>
+
+**Use polar form when:** the problem involves products, quotients, or powers of complex numbers; a geometric transformation is described; angles or rotations appear explicitly; or all given quantities lie on a circle.
+
+**Use De Moivre when:** a high power of a complex number is requested; a trigonometric identity for $\cos(n\theta)$ or $\sin(n\theta)$ is needed; or a sum of the form $\sum \cos(k\theta)$ must be computed.
+
+**Use rotations when:** the problem mentions equilateral triangles, squares, or regular polygons; a geometric locus is described as an orbit under rotation; or the phrase "rotate by angle $\theta$" appears.
+
+**Switch away from rectangular when:** you see $a^2 + b^2$ (this is $|z|^2$), or $\cos\theta + i\sin\theta$ (this is $e^{i\theta}$), or you are multiplying two complex numbers and care about the angle of the result.
+
+**Common contest patterns:**
+- Equilateral triangle: $C - A = e^{\pm i\pi/3}(B-A)$
+- Square: $C - B = i(B-A)$
+- Regular $n$-gon: vertices are $c + re^{2\pi ik/n}$
+- Roots of unity filter: $\sum_{k=0}^{n-1}\omega^{jk} = [n \mid j] \cdot n$
+- Sum of all $n$th roots: always zero for $n \geq 2$
+- Product of all distances from one root to the others: equals $n$
+
+

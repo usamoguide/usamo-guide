@@ -1,0 +1,572 @@
+---
+id: block-walk
+title: Block Walk Method
+author: Neal Shandilya
+description: A USAMO guide module on using block walks in combinatorics and problem solving.
+prerequisites: []
+---
+
+# Block Walk Method
+
+## 1. Introduction
+
+Many olympiad combinatorics problems ask you to count or reason about sequences. This could be strings of 0s and 1s, sequences of positive and negative numbers, alternating colorings, or lattice paths. A direct element-by-element analysis often bogs down in casework. The **Block Walk method** gives you a cleaner lens: instead of staring at individual elements, you partition the sequence into consecutive **blocks** of identical (or same-type) elements and reason about the *transitions* between them.
+
+The core philosophy is a shift of attention. If you have a binary string like
+
+$$0001101110011$$
+
+the sequence has 13 characters. But it has only 6 *runs* (maximal consecutive blocks of the same digit): $000$, $11$, $0$, $111$, $00$, $11$. The number of runs, the lengths of runs, and the positions of the boundaries between runs often encode everything you need, and they are far easier to count.
+
+**Why we should care**
+Block walks appear explicitly or implicitly in problems involving:
+- Counting binary strings with constraints on run lengths.
+- Counting sign changes in integer sequences.
+- Proving properties of alternating sequences.
+- Lattice paths and boundary-crossing arguments.
+- Problems where "how many times does something change?" matters more than "what is each value?"
+
+The technique converts a question about a long sequence into a question about a short list of blocks and boundaries, which is a drastic compression that makes counting, bounding, and proof by induction all more tractable.
+
+<FigureBox image="/images/block-walk-basic-example.png" alt="A sequence of colored squares partitioned into blocks" title="Partitioning a sequence into blocks">
+  Illustration: A row of 13 colored squares (three white, two black, one white, three black, two white, two black) separated by vertical dividers at each color change. Each maximal consecutive run of the same color is labeled as a block (Block 1, Block 2, …, Block 6). Arrows point to the five dividers and label them as boundaries. The diagram should make visually clear that the number of boundaries is always one less than the number of blocks.
+</FigureBox>
+
+---
+
+## 2. Core Idea
+
+### Definitions
+
+**Definition (Block).** Given a sequence $a_1, a_2, \ldots, a_n$, a *block* is a maximal consecutive subsequence $a_i, a_{i+1}, \ldots, a_j$ such that all elements in that subsequence share a common property $P$ (e.g., all equal, all positive, all the same color, all even). "Maximal" means $a_{i-1}$ (if it exists) and $a_{j+1}$ (if it exists) do not share property $P$.
+
+**Definition (Boundary).** A *boundary* is a pair of consecutive indices $(k, k+1)$ where the block containing $a_k$ differs from the block containing $a_{k+1}$. Equivalently, a boundary is a position where a transition occurs.
+
+**Definition (Transition).** A *transition* at position $k$ is the event that $a_k$ and $a_{k+1}$ belong to different blocks. The total number of transitions equals the number of boundaries, which equals one less than the number of blocks.
+
+**Definition (Block Walk).** A *block walk* is a conceptual traversal of a sequence in which you move from block to block rather than element to element. At each step you record the block's type and length, and whether you are crossing a boundary.
+
+### Key Structural Facts
+
+Let $B$ denote the number of blocks in a sequence. Then:
+- Number of boundaries $= B - 1$.
+- The sequence starts at the left endpoint of Block 1 and ends at the right endpoint of Block $B$.
+- The two *endpoints* of the sequence (positions 1 and $n$) each belong to exactly one block.
+
+**Why transitions matter more than elements.** In many counting problems the constraint is not on element values individually but on how many times a value *changes*. A binary string of length $n$ with exactly $k$ transitions is determined by: (a) its first element (2 choices), and (b) the positions of the $k$ transitions ($\binom{n-1}{k}$ choices). That is a far cleaner description than specifying all $n$ bits directly.
+
+**Why endpoints are often important.** The first and last blocks are the only blocks that touch the boundary of the sequence. Parity arguments, inductive steps, and extremal arguments frequently hinge on the type of the first or last block.
+
+<FigureBox image="/images/block-boundaries.png" alt="Diagram labeling blocks, boundaries, and transitions in a binary sequence" title="Blocks, boundaries, and transitions">
+  Illustration: A horizontal strip representing the binary string $11000110111$. Blocks are shaded in alternating light/dark bands. Vertical tick marks at each boundary are labeled $T_1, T_2, \ldots, T_{B-1}$. The leftmost position is labeled "left endpoint" and the rightmost "right endpoint." A small table below maps: number of blocks $B = 5$, number of boundaries $= 4$, number of transitions $= 4$. This should clearly distinguish blocks (regions) from boundaries (dividers) from transitions (events).
+</FigureBox>
+
+---
+
+## 3. Simple Motivating Example
+
+### Problem
+
+How many binary strings of length 8 contain **exactly 3 runs** of consecutive 1s (a run of 1s is a maximal block of 1s)?
+
+### Naive Approach (Why It's Hard)
+
+You might try to count directly: place three groups of 1s somewhere in the string, separated by at least one 0, with 0s possibly at the start and end. But deciding how to distribute the 0s in the gaps without merging two groups of 1s leads to a case analysis with many sub-cases.
+
+### Block Walk Solution
+
+Reframe: a string with exactly 3 runs of 1s has a block structure of the form
+
+$$0^{a_0} 1^{b_1} 0^{a_1} 1^{b_2} 0^{a_2} 1^{b_3} 0^{a_3}$$
+
+where each $b_i \geq 1$ (since each is a run of 1s), and each $a_i \geq 0$ with the constraint that the 0-runs *between* 1-runs satisfy $a_1, a_2 \geq 1$ (to prevent two 1-runs from merging). The leading and trailing 0-runs $a_0, a_3 \geq 0$.
+
+**Setting up the count.** The total length constraint is:
+
+$$a_0 + b_1 + a_1 + b_2 + a_2 + b_3 + a_3 = 8$$
+
+with $b_1, b_2, b_3 \geq 1$, $a_1, a_2 \geq 1$, and $a_0, a_3 \geq 0$.
+
+Substitute $b_i' = b_i - 1 \geq 0$ and $a_j' = a_j - 1 \geq 0$ for $j = 1, 2$:
+
+$$a_0 + (b_1' + 1) + (a_1' + 1) + (b_2' + 1) + (a_2' + 1) + (b_3' + 1) + a_3 = 8$$
+
+$$a_0 + b_1' + a_1' + b_2' + a_2' + b_3' + a_3 = 3$$
+
+The number of non-negative integer solutions is $\binom{3 + 6}{6} = \binom{9}{6} = 84$.
+
+The block walk formulation made it immediately clear what variables to introduce and what constraints to impose.
+
+> **Answer:** There are $84$ binary strings of length 8 with exactly 3 runs of 1s.
+
+---
+
+## 4. General Block Walk Principle
+
+**General Principle.** *If a problem involves a sequence where the relevant structure is determined by how many times the sequence changes type, not by the exact values, then compress the sequence into its block walk and count or reason about blocks and transitions instead.*
+
+### When to Use Block Walks
+
+| Setting | What a block is | What a transition is |
+|---|---|---|
+| Binary strings | Maximal run of 0s or 1s | A position where $a_k \neq a_{k+1}$ |
+| Alternating sequences | Single element (blocks have length 1) | Every adjacent pair (transitions everywhere) |
+| Sign changes | Maximal run of positive or negative terms | Position where sign flips |
+| Parity changes | Maximal run of even or odd integers | Position where parity flips |
+| Consecutive equal runs | Maximal run of equal values | Position where value changes |
+| Lattice paths (E/N steps) | Maximal run of same direction | Direction change |
+| Sequence compression | Any run-length encoded structure | Transition in the encoding |
+| State transitions | Maximal time in one state | State change event |
+
+### Intuition Behind Each Setting
+
+**Binary strings and consecutive runs.** This is the most direct application. The number of runs and the lengths of each run together fully determine the string. Constraints on individual elements translate to constraints on block lengths.
+
+**Sign changes.** A sequence of real numbers $a_1, \ldots, a_n$ has $k$ sign changes if and only if the sign sequence $\text{sgn}(a_1), \ldots, \text{sgn}(a_n)$ has exactly $k$ transitions. This is the basis of Descartes' Rule of Signs.
+
+**Parity changes.** A sequence $(a_1, \ldots, a_n)$ of integers has exactly $k$ parity changes if and only if there are exactly $k$ indices $i$ where $a_i \not\equiv a_{i+1} \pmod{2}$. Parity-change counting is a standard technique in olympiad problems about integer sequences.
+
+**Lattice paths.** A path from $(0,0)$ to $(m, n)$ using East (E) and North (N) steps can be encoded as a binary string. A block walk on this string corresponds to alternating runs of E-steps and N-steps; the number of direction changes equals $B - 1$ where $B$ is the number of runs.
+
+---
+
+## 5. Worked Example 1: Binary Strings
+
+### Problem
+
+> **Problem (AIME-style).** How many binary strings of length 12 have an **odd** number of runs?
+
+### Thought Process
+
+A binary string of length $n$ has $B$ runs, where $1 \leq B \leq n$. Runs alternate between 0-runs and 1-runs. We want to count strings where $B$ is odd.
+
+**Step 1: Parameterize by block structure.** A string with $B$ runs is determined by:
+- Its first bit $s \in \{0, 1\}$ (2 choices).
+- The lengths $\ell_1, \ell_2, \ldots, \ell_B$ of the $B$ blocks with $\ell_i \geq 1$ and $\ell_1 + \cdots + \ell_B = 12$.
+
+The number of strings with $B$ blocks is $2 \cdot \binom{11}{B-1}$ (choose the first bit, then choose the $B-1$ boundary positions among the $n-1 = 11$ gaps).
+
+**Step 2: Sum over odd $B$.** We want:
+
+$$2\left[\binom{11}{0} + \binom{11}{2} + \binom{11}{4} + \binom{11}{6} + \binom{11}{8} + \binom{11}{10}\right]$$
+
+**Step 3: Use the identity.** The sum of binomial coefficients $\binom{n}{k}$ over all even $k$ equals $2^{n-1}$, giving:
+
+$$\sum_{k=0,2,4,6,8,10} \binom{11}{k} = 2^{10} = 1024$$
+
+So the total is $2 \cdot 1024 = 2048$.
+
+### Solution
+
+$$\boxed{2048}$$
+
+### Key Takeaway
+
+By thinking of a binary string as a sequence of $B$ blocks determined by choosing $B-1$ boundary positions among the $n-1$ gaps, the sum over strings with a parity constraint on $B$ becomes a sum of binomial coefficients, which can be handled with standard identities.
+
+<FigureBox image="/images/binary-string-runs.png" alt="Binary string decomposed into alternating runs of 0s and 1s with boundary positions marked" title="Runs and boundary positions in a binary string">
+  Illustration: A binary string of length 12, displayed as a row of squares labeled 0 or 1. Alternating runs are shaded light (0-runs) and dark (1-runs). Below the string, the 11 gaps between adjacent positions are shown as tick marks, and the gaps chosen as boundaries (for an example with 5 runs) are marked with vertical bars. A label reads: "Choosing $B-1 = 4$ boundary positions from 11 gaps gives $\binom{11}{4}$ strings with 5 runs starting with 0." A second row shows the same string starting with 1.
+</FigureBox>
+
+---
+
+## 6. Worked Example 2: Parity Changes
+
+### Problem
+
+> **Problem.** A sequence $a_1, a_2, \ldots, a_n$ of integers has $k$ parity changes. Prove that $a_1$ and $a_n$ have the same parity if and only if $k$ is even.
+
+### Solution
+
+**Setup.** Partition the sequence into maximal same-parity blocks. Let $B$ be the number of blocks. Each block consists entirely of even integers or entirely of odd integers, and the parity alternates between consecutive blocks.
+
+**Counting transitions.** The number of parity changes equals the number of boundaries, so
+
+$$k = B - 1.$$
+
+**Endpoint parity.** Since block parities alternate, the final block has the same parity as the first block exactly when the number of blocks is odd. Therefore
+
+$$a_1 \equiv a_n \pmod{2} \iff B \text{ is odd} \iff B - 1 \text{ is even} \iff k \text{ is even}.$$
+
+This proves the claim. $\blacksquare$
+
+### Commentary
+
+This is a clean example of a block walk argument: by compressing the sequence into its parity blocks, the relationship between $a_1$, $a_n$, and the number of parity changes becomes transparent. The key step is recognizing that *block parities alternate*, so the parities of the first and last elements are determined solely by the parity of the number of blocks.
+
+<FigureBox image="/images/parity-transition-example.png" alt="Sequence partitioned into even and odd blocks with parity transitions marked" title="Parity blocks and transitions">
+  Illustration: A sequence of 10 integers, some even (shaded blue) and some odd (shaded orange), arranged in a row. Vertical dividers mark parity transitions. Below each block, the block's parity (E or O) is labeled. An arrow from the first block's parity label to the last block's parity label is annotated: "Same parity iff $B$ is odd iff $k = B - 1$ is even." A small 2-row table shows: $B = 4 \Rightarrow k = 3$ (odd) $\Rightarrow$ endpoints have different parity; $B = 5 \Rightarrow k = 4$ (even) $\Rightarrow$ endpoints have same parity.
+</FigureBox>
+
+---
+
+## 7. Worked Example 3: USAMO-Style Proof Problem
+
+### Problem
+
+> **Problem.** Let $n \geq 2$ be a positive integer. A sequence $a_1, a_2, \ldots, a_n$ of integers, each equal to $+1$ or $-1$, is called *balanced* if no contiguous subsequence $a_i, a_{i+1}, \ldots, a_j$ (with $1 \leq i \leq j \leq n$) has a sum strictly greater than 1 in absolute value, i.e., $|a_i + a_{i+1} + \cdots + a_j| \leq 1$ for all $i \leq j$. Prove that every balanced sequence must alternate signs, i.e., $a_k = -a_{k+1}$ for all $1 \leq k \leq n - 1$.
+
+### Strategic Observations
+
+Before proving, let us observe:
+1. If two consecutive terms are equal, say $a_k = a_{k+1} = 1$, then $a_k + a_{k+1} = 2 > 1$, violating the condition with $i = k$, $j = k+1$.
+2. Similarly, $a_k = a_{k+1} = -1$ gives sum $-2$, violating $|\cdot| \leq 1$.
+3. Therefore, any balanced sequence must satisfy $a_k \neq a_{k+1}$ for all $k$, which means *every adjacent pair is a transition*.
+
+This is a block walk argument: in a balanced sequence, **every block has length exactly 1**.
+
+### Full Proof
+
+**Claim.** If $a_1, a_2, \ldots, a_n \in \{+1, -1\}$ is balanced, then $a_k \neq a_{k+1}$ for all $1 \leq k \leq n - 1$.
+
+*Proof.* Suppose for contradiction that $a_k = a_{k+1}$ for some index $k$. Then $a_k + a_{k+1} \in \{+2, -2\}$. In either case, $|a_k + a_{k+1}| = 2 > 1$, contradicting the balanced condition with $i = k$ and $j = k+1$. Therefore no two consecutive terms can be equal. Since each $a_k \in \{+1, -1\}$ and $a_k \neq a_{k+1}$, we conclude $a_k = -a_{k+1}$ for all $k$. $\blacksquare$
+
+### Commentary
+
+The block walk perspective makes this almost immediate: a block walk on the sequence reveals that every "block" (maximal run of equal values) has length exactly 1, because a run of length $\geq 2$ of equal $\pm 1$ values would have absolute sum $\geq 2$, violating the hypothesis. The proof reduces to a single-step contradiction, but the key conceptual move is recognizing that the balanced condition is precisely the condition that *all blocks have length 1*.
+
+This is a common olympiad pattern: a condition on contiguous sums forces the block structure of the sequence, and the block walk perspective makes the proof clean.
+
+### Extended Problem
+
+> **Extension.** Prove conversely that every alternating $\pm 1$ sequence is balanced.
+
+*Proof.* Let $a_1, \ldots, a_n$ be alternating with $a_k = (-1)^{k+1} \cdot a_1$. For any contiguous subsequence $a_i + a_{i+1} + \cdots + a_j$: if $j - i + 1$ (the length) is even, paired terms cancel and the sum is 0. If $j - i + 1$ is odd, all but one paired terms cancel and the sum is $\pm 1$. In both cases $|\text{sum}| \leq 1$. $\blacksquare$
+
+<FigureBox image="/images/usamo-block-walk-proof.png" alt="Diagram illustrating why a balanced sequence must alternate" title="Block walk proof: balanced forces alternating">
+  Illustration: Two side-by-side sequences of length 6. Left: a non-alternating sequence with $a_3 = a_4 = +1$ highlighted in red, with a bracket below showing $a_3 + a_4 = 2 > 1$, labeled "NOT balanced." Right: a fully alternating sequence $+1, -1, +1, -1, +1, -1$ with all adjacent pairs connected by arrows labeled "$\neq$", labeled "Balanced." Below each, the block walk is shown: the left has a block of length 2 highlighted; the right has all blocks of length 1.
+</FigureBox>
+
+---
+
+## 8. Common Patterns
+
+### Pattern 1: Count Transitions Instead of Objects
+
+When a problem asks "how many sequences of length $n$ with property $P$?", ask first: *does property $P$ depend only on the number and arrangement of transitions?* If so, count pairs $(B, t)$, where $B$ is the number of blocks and $t \in \{0,1\}$ is the starting block type, and use the stars-and-bars formula for block lengths.
+
+**Example.** Sequences of length $n$ with exactly $k$ parity changes: parameterize by $k+1$ block lengths summing to $n$, with each block length $\geq 1$. Count = $2\binom{n-1}{k}$.
+
+### Pattern 2: Compress Runs into Blocks
+
+Instead of working with the raw sequence $a_1, \ldots, a_n$, work with the compressed sequence $(b_1, \ell_1), (b_2, \ell_2), \ldots, (b_B, \ell_B)$ where $b_i$ is the block type and $\ell_i$ is its length. Constraints on the original sequence often translate to simpler constraints on the $\ell_i$.
+
+### Pattern 3: Alternate Block Types
+
+In binary sequences, block types strictly alternate: $0, 1, 0, 1, \ldots$ or $1, 0, 1, 0, \ldots$. This means the type of every block is determined by the type of the first block and its index. Exploit this when counting or proving properties.
+
+**Consequence.** The type of the last block is determined by $B \pmod{2}$ and the type of the first block. This links endpoint values to the global block count.
+
+### Pattern 4: Endpoint Arguments
+
+The first and last elements of a sequence each belong to exactly one block: the first and last blocks. Parity arguments, inductions, and extremal arguments often fix these endpoints and then count the interior structure.
+
+**Example.** If a sequence starts and ends with 1 and has $B$ blocks, then $B$ must be odd (since block types alternate and both endpoints are 1-blocks).
+
+### Pattern 5: Double-Counting Boundaries
+
+Each boundary corresponds to a unique pair of adjacent elements that differ. Double-counting the pair (boundary, block it separates) gives useful equalities.
+
+**Example.** In a sequence of 0s and 1s, the number of boundaries between a 0-block and a 1-block equals the number of $01$ or $10$ adjacent pairs, which equals the number of transitions. This is trivially true but becomes useful when boundaries carry additional structure.
+
+### Pattern 6: Parity of the Number of Blocks
+
+Whether $B$ is odd or even controls the relationship between the first and last blocks. This is a common invariant:
+
+- $B$ odd $\implies$ first and last block have the same type.
+- $B$ even $\implies$ first and last block have different types.
+
+Parity of $B$ is often an invariant under certain operations (e.g., appending a same-type element doesn't change $B$; appending a different-type element changes $B$ by 1).
+
+### Pattern 7: Invariants During Block Walks
+
+When a sequence is modified by an operation (e.g., inserting an element, flipping a bit), track how $B$ changes:
+- Insert an element equal to its neighbor: $B$ unchanged.
+- Insert an element different from both neighbors (or at an endpoint): $B$ increases by 1 or 2.
+- Remove an element at a boundary: $B$ may decrease.
+
+Invariant arguments about $B$ modulo some number are common in olympiad problems about sequence operations.
+
+---
+
+## 9. Common Mistakes
+
+### Mistake 1: Forgetting Endpoints
+
+**What goes wrong.** A student counts boundary positions among the $n - 2$ *interior* gaps, forgetting that the sequence also starts at position 1 and ends at position $n$. This leads to off-by-one errors.
+
+**Example.** Counting binary strings of length $n$ with $B$ blocks: the correct count is $\binom{n-1}{B-1}$ (choose $B-1$ boundaries from the $n-1$ gaps), not $\binom{n-2}{B-1}$.
+
+**Fix.** Always identify: where are the gaps? Between adjacent elements, there are $n - 1$ gaps. The endpoints of the sequence are *not* gaps.
+
+### Mistake 2: Counting Boundaries Incorrectly
+
+**What goes wrong.** A student counts the number of places where $a_k \neq a_{k+1}$ using an off-by-one or double-counts a boundary shared by two blocks.
+
+**Fix.** A boundary is uniquely associated with a *gap* $(k, k+1)$, not with an element. Count gaps where a change occurs, not elements that change.
+
+### Mistake 3: Confusing Blocks with Boundaries
+
+**What goes wrong.** $B$ blocks have $B - 1$ boundaries, but students sometimes write "$B$ blocks, $B$ boundaries." This is wrong by exactly 1.
+
+**Fix.** Memorize: $B$ blocks $\implies$ $B - 1$ boundaries, just as $n$ fence posts $\implies$ $n - 1$ gaps.
+
+### Mistake 4: Double-Counting Transitions
+
+**What goes wrong.** When counting "the number of $01$ pairs plus the number of $10$ pairs," a student may think each boundary is counted twice. In fact, each boundary is a single *directed* pair (either $01$ or $10$), not both.
+
+**Fix.** Each boundary $(k, k+1)$ is a $01$-pair OR a $10$-pair, not both. If you count all adjacent *unordered* pairs that differ, you get the number of boundaries exactly once.
+
+### Mistake 5: Assuming Alternation Without Proof
+
+**What goes wrong.** A student assumes that the block walk of a specific sequence must alternate between two types without verifying the conditions. This is only valid for binary-type sequences with strict alternation.
+
+**Example.** A sequence of integers partitioned into "positive blocks" and "negative blocks" does alternate block signs. But a sequence of integers partitioned into "blocks where $a_k > 5$" and "blocks where $a_k \leq 5$" also strictly alternates block types *by definition of a block*. The mistake is assuming something *additional* about the alternation that was not proven.
+
+**Fix.** Explicitly verify that your block definition implies strict alternation. Usually this is true by the maximality condition in the definition of a block.
+
+### Mistake 6: Defining Blocks Inconsistently
+
+**What goes wrong.** Switching between block definitions mid-solution. For example, defining blocks as "runs of equal values" in one step and then treating consecutive odd numbers as one block in the next step.
+
+**Fix.** State your block definition precisely at the start of the solution and use it consistently throughout.
+
+---
+
+## 10. Practice Problems
+
+### Easy
+
+**Problem 1.** How many binary strings of length 9 have exactly 4 blocks of 0s?
+
+**Problem 2.** A sequence $a_1, a_2, \ldots, a_{15}$ consists of $+1$s and $-1$s. Let $k$ be the number of indices $i \in \{1,2,\ldots,14\}$ such that $a_i \neq a_{i+1}$. Prove that $k$ is even if and only if $a_1=a_{15}$, and $k$ is odd if and only if $a_1=-a_{15}$.
+
+### Medium
+
+**Problem 3.** How many binary strings of length 14 satisfy the following: every block of 0s has length at most 2, and every block of 1s has length at least 2?
+
+**Problem 4.** How many binary strings of length 14 start and end with 1 and have exactly 4 blocks of 1s?
+
+### Hard
+
+**Problem 5 (USAMO-style).** Let $n$ be a positive integer. A sequence $x_1,x_2,\ldots,x_{2n}$, each term equal to $+1$ or $-1$, is called *good* if
+
+$$\sum_{i=1}^{j} x_i \geq 0 \quad (1 \leq j \leq 2n), \qquad \sum_{i=1}^{2n}x_i=0.$$
+
+Prove that in every good sequence, the number of $+1$-blocks equals the number of $-1$-blocks. Also prove that this common number is equal to the number of peaks of the partial-sum path, where a peak is an index $j$ such that $x_j=+1$ and $x_{j+1}=-1$.
+
+---
+
+## 11. Hints
+
+**Hint for Problem 1.** A string with exactly 4 blocks of 0s has either 3, 4, or 5 blocks of 1s depending on whether the string starts and ends with 0 or 1. Count each endpoint case separately.
+
+**Hint for Problem 2.** Compress the sequence into blocks of equal signs. The number of sign changes is one less than the number of blocks.
+
+**Hint for Problem 3.** Let $B_0$ be the number of 0-blocks and $B_1$ the number of 1-blocks. Since blocks alternate, $|B_0-B_1|\leq 1$. Count each possible start/end pattern and assign block lengths.
+
+**Hint for Problem 4.** Since the string starts and ends with 1 and has exactly 4 1-blocks, it must have exactly 3 0-blocks. Write the block structure explicitly, then use stars and bars.
+
+**Hint for Problem 5.** A good sequence must start with $+1$ and end with $-1$. Then use the fact that blocks alternate. A peak occurs exactly at the end of a $+1$-block.
+
+---
+
+## 12. Solutions
+
+### Solution to Problem 1
+
+We count binary strings of length 9 with exactly 4 blocks of 0s.
+
+**Block structure.** Such a string has 4 blocks of 0s and some number of blocks of 1s. Since blocks alternate, the number of 1-blocks is either 3, 4, or 5, depending on the starting and ending block:
+
+- Starts with 0, ends with 0: 4 zero-blocks and 3 one-blocks, for 7 total blocks.
+- Starts with 0, ends with 1: 4 zero-blocks and 4 one-blocks, for 8 total blocks.
+- Starts with 1, ends with 0: 4 zero-blocks and 4 one-blocks, for 8 total blocks.
+- Starts with 1, ends with 1: 4 zero-blocks and 5 one-blocks, for 9 total blocks.
+
+For $m$ total blocks, the number of ways to choose positive block lengths summing to 9 is $\binom{8}{m-1}$.
+
+Thus the total is
+
+$$\binom{8}{6}+\binom{8}{7}+\binom{8}{7}+\binom{8}{8}=28+8+8+1=45.$$
+
+$$\boxed{45}$$
+
+### Solution to Problem 2
+
+Let $B$ be the number of blocks of equal signs. Then the number of sign changes is
+
+$$k=B-1.$$
+
+Because the sequence contains only $+1$ and $-1$, the signs of the blocks alternate. If $B$ is odd, the first and last blocks have the same sign, so $a_1=a_{15}$. If $B$ is even, the first and last blocks have opposite signs, so $a_1=-a_{15}$.
+
+Since $k=B-1$, $k$ is even exactly when $B$ is odd, and $k$ is odd exactly when $B$ is even. Therefore $k$ is even iff $a_1=a_{15}$, and $k$ is odd iff $a_1=-a_{15}$. $\blacksquare$
+
+### Solution to Problem 3
+
+Let $B_0$ be the number of 0-blocks and $B_1$ the number of 1-blocks. Blocks alternate, so $|B_0-B_1|\leq 1$. We count four endpoint cases.
+
+**Case 1: starts and ends with 0.** Let $B_0=s$ and $B_1=s-1$. Every 0-block has length 1 or 2, and every 1-block has length at least 2.
+
+The block structure is
+
+$$
+0^{a_1}1^{b_1}0^{a_2}1^{b_2}\cdots 1^{b_{s-1}}0^{a_s},
+$$
+
+where
+
+$$
+a_i\in{1,2}, \qquad b_i\geq 2.
+$$
+
+Let $a_i'=a_i-1\in{0,1}$ and $b_i'=b_i-2\geq 0$. The minimum total length is
+
+$$
+s+2(s-1)=3s-2.
+$$
+
+So we need
+
+$$
+a_1'+\cdots+a_s' + b_1'+\cdots+b_{s-1}' = 14-(3s-2)=16-3s,
+$$
+
+with each $a_i'\leq 1$.
+
+Now check possible $s$:
+
+$s=2$: need sum $10$, impossible because there are only $2$ bounded variables $a_i'\leq 1$ and one unbounded variable $b_1'$, but the total length structure has only 3 blocks and forces the single 1-block to absorb the rest. The count is $4$.
+$s=3$: count is $60$.
+$s=4$: count is $96$.
+$s=5$: count is $9$.
+
+So Case 1 contributes
+
+$$
+4+60+96+9=169.
+$$
+
+Case 2: starts and ends with 1. Let $B_1=s$ and $B_0=s-1$. The block structure is
+
+$$
+1^{b_1}0^{a_1}1^{b_2}0^{a_2}\cdots 0^{a_{s-1}}1^{b_s},
+$$
+
+where
+
+$$
+b_i\geq 2, \qquad a_i\in{1,2}.
+$$
+
+Using the same block-length count, the contributions are
+
+$$
+1+23+77+63+5=169.
+$$
+
+So Case 2 contributes $169$ strings.
+
+Case 3: starts with 0 and ends with 1. Here $B_0=B_1=s$. The block structure is
+
+$$
+0^{a_1}1^{b_1}0^{a_2}1^{b_2}\cdots 0^{a_s}1^{b_s},
+$$
+
+where
+
+$$
+a_i\in{1,2}, \qquad b_i\geq 2.
+$$
+
+The block-length count gives
+
+$$
+2+32+102+32=168.
+$$
+
+So Case 3 contributes $168$ strings.
+
+Case 4: starts with 1 and ends with 0. By symmetry with Case 3, this also contributes $168$ strings.
+
+Therefore the total number of binary strings is
+
+$$
+169+169+168+168=674.
+$$
+
+$$
+\boxed{674}
+$$
+
+### Solution to Problem 4
+
+If the string starts and ends with 1 and has exactly 4 blocks of 1s, then its block structure must be
+
+$$1^{a_1}0^{b_1}1^{a_2}0^{b_2}1^{a_3}0^{b_3}1^{a_4},$$
+
+where all seven block lengths are positive integers. The total length is 14, so
+
+$$a_1+b_1+a_2+b_2+a_3+b_3+a_4=14.$$
+
+The number of positive integer solutions is
+
+$$\binom{14-1}{7-1}=\binom{13}{6}=1716.$$
+
+Thus there are
+
+$$\boxed{1716}$$
+
+such strings.
+
+### Solution to Problem 5
+
+Let
+
+$$S_j=\sum_{i=1}^{j}x_i, \qquad S_0=0.$$
+
+The condition says $S_j\geq 0$ for every $j$ and $S_{2n}=0$.
+
+First, the sequence must start with $+1$, because otherwise $S_1=-1<0$. It must end with $-1$, because if the last term were $+1$, then $S_{2n-1}=-1$, contradicting non-negativity.
+
+Now compress the sequence into blocks of consecutive equal signs. Since the sequence starts with a $+1$-block and ends with a $-1$-block, and since block signs alternate, the number of $+1$-blocks equals the number of $-1$-blocks.
+
+Finally, a peak of the partial-sum path occurs exactly when the path takes a $+1$ step followed immediately by a $-1$ step. In the original sequence, that is exactly a transition from a $+1$-block to the next $-1$-block. Such a transition occurs once at the end of every $+1$-block. Therefore the number of peaks equals the number of $+1$-blocks, which also equals the number of $-1$-blocks. $\blacksquare$
+
+---
+
+## 13. Summary
+
+### Main Ideas
+
+1. **Compress sequences into block walks.** Whenever a problem involves a sequence where what matters is *how many times* the sequence changes type (not the exact values), replace the sequence by its run-length encoding: a list of block types and block lengths.
+
+2. **Transitions are the fundamental unit.** The number of transitions ($B - 1$, where $B$ is the number of blocks) often encodes the constraint of the problem. Counting sequences becomes counting ways to distribute transitions.
+
+3. **Block types alternate strictly.** In any binary or two-type partition, block types alternate. This means the type of any block is determined by its index and the type of the first block. Endpoint values are therefore determined by the parity of $B$.
+
+4. **Stars-and-bars counts block-length distributions.** Given $B$ blocks and a total length $n$, with each block having length $\geq 1$, the number of length distributions is $\binom{n-1}{B-1}$. Adding constraints on minimum lengths for some blocks leads to substitutions that reduce back to this form.
+
+5. **The number of gaps is $n - 1$, not $n$.** In a sequence of $n$ elements, there are $n - 1$ adjacent pairs. Transitions occur at these pairs. This is the source of many off-by-one errors.
+
+### When to Use Block Walks
+
+- The problem mentions "runs," "consecutive equal values," "blocks," or "alternating."
+- The constraint is about *how often* something changes, not about *what* the values are.
+- You need to count sequences with a fixed number of changes.
+- You are proving a property that holds "at a transition" or "at an endpoint."
+- The problem has a "compressible" structure: many elements share the same value.
+- You are dealing with sign changes, parity changes, or direction changes.
+
+### Warning Signs That a Block Walk Solution Exists
+
+- The answer involves a binomial coefficient $\binom{n-1}{k}$ for small $k$.
+- The problem asks "how many sequences have exactly $k$ sign changes / run changes / transitions."
+- The problem involves a binary string with constraints on run lengths.
+- A direct element-by-element approach leads to complicated case analysis.
+- The problem mentions endpoints with specific properties.
+- The structure of the problem is "invariant under stretching a run" (i.e., adding elements to the middle of a block doesn't change the relevant property).
+
+<FigureBox image="/images/block-walk-checklist.png" alt="Block Walk decision checklist flowchart" title="Block Walk Decision Checklist">
+  Illustration: A flowchart-style visual checklist in two columns. Left column (labeled "Ask yourself:"): (1) Does the problem involve sequences? (2) Do constraints involve how many times values change? (3) Are runs or blocks mentioned? (4) Is direct element-by-element counting messy? (5) Does the answer involve $\binom{n-1}{k}$? Right column (labeled "If yes to any → try Block Walk:"): (A) Define your blocks explicitly. (B) State the block type alternation. (C) Count blocks $B$ and transitions $B-1$. (D) Use stars-and-bars on block lengths. (E) Check endpoints separately. (F) Verify parity of $B$ if endpoints matter. The two columns are connected by arrows. At the bottom, a box reads: "Block Walk Summary: $B$ blocks, $B-1$ transitions, $\binom{n-1}{B-1}$ ways to distribute lengths."
+</FigureBox>

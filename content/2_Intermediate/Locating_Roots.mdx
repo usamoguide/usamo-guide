@@ -1,0 +1,905 @@
+---
+id: locating-roots
+title: Locating Roots
+author: Neronvain
+description: Learn how to determine where the roots of a quadratic equation lie using the discriminant, endpoint signs, and the vertex.
+prerequisites: []
+---
+
+## Overview
+
+In many algebra problems, we are not asked to find the exact roots of a
+quadratic equation. Instead, we are asked to determine where the roots lie.
+
+For example, a problem might ask:
+- Are both roots greater than a certain number?
+- Are both roots less than a certain number?
+- Is exactly one root inside a given interval?
+- Do both roots lie between two numbers?
+
+These questions are called root-location problems.
+
+They are especially common when a quadratic contains a parameter. Instead of
+solving for the roots directly, we write inequalities that force the roots to
+lie in the desired region.
+
+## Motivation
+
+Consider a quadratic function
+
+$$
+f(x)=Ax^2+Bx+C,
+$$
+
+where $A\neq 0$.
+
+The roots of the quadratic equation
+
+$$
+Ax^2+Bx+C=0
+$$
+
+are the points where the graph of $f(x)$ intersects the $x$-axis.
+
+So locating the roots is really a graph question:
+
+> Where does the parabola cross the $x$-axis?
+
+For example, if we want exactly one root between $0$ and $3$, we want the graph
+to cross the $x$-axis once inside that interval and once outside it.
+
+Rather than drawing a new graph every time, we can use a few standard
+conditions involving:
+- The discriminant
+- The value of the function at endpoints
+- The vertex of the parabola
+
+## Important Notation
+
+Throughout this module, let
+
+$$
+f(x)=Ax^2+Bx+C,
+$$
+
+where $A\neq 0$.
+
+Let the roots be
+
+$$
+\alpha
+\quad\text{and}\quad
+\beta.
+$$
+
+The discriminant is
+
+$$
+\Delta=B^2-4AC.
+$$
+
+The $x$-coordinate of the vertex is
+
+$$
+h=-\frac{B}{2A}.
+$$
+
+The sign of $A$ tells us whether the parabola opens upwards or downwards.
+- If $A > 0$, the parabola opens upwards
+- If $A < 0$, the parabola opens downwards
+
+The expression $Af(k)$ is useful because it compares the sign of the value
+$f(k)$ with the direction of the parabola.
+
+## Why the Discriminant Matters
+
+A quadratic has real roots if and only if
+
+$$
+\Delta\ge 0.
+$$
+
+If
+
+$$
+\Delta<0,
+$$
+
+then the graph does not cross the $x$-axis at all, so it makes no sense to ask
+whether the real roots are greater than or less than some number.
+
+Therefore, whenever we want both roots to be located somewhere, we usually need
+
+$$
+\Delta\ge 0.
+$$
+
+In some cases, this condition is automatic from the other inequalities, but it
+is still useful to understand why it appears.
+
+## Case 1: Both Roots Greater Than $k$
+
+Suppose we want
+
+$$
+\alpha>k
+\quad\text{and}\quad
+\beta>k.
+$$
+
+Then both roots lie to the right of $k$.
+
+The required conditions are:
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k)>0,
+$$
+
+and
+
+$$
+-\frac{B}{2A}>k.
+$$
+
+### Why These Conditions Work
+
+First, we need real roots, so
+
+$$
+\Delta\ge 0.
+$$
+
+Next, if both roots are to the right of $k$, then the point $x=k$ lies outside
+the root interval. At such a point, the graph has the same sign as the leading
+coefficient. This is captured by
+
+$$
+Af(k)>0.
+$$
+
+Finally, the vertex lies halfway between the two roots, so if both roots are
+greater than $k$, the vertex must also lie to the right of $k$:
+
+$$
+-\frac{B}{2A}>k.
+$$
+
+## Case 2: Both Roots Less Than $k$
+
+Suppose we want
+
+$$
+\alpha<k
+\quad\text{and}\quad
+\beta<k.
+$$
+
+Then both roots lie to the left of $k$.
+
+The required conditions are:
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k)>0,
+$$
+
+and
+
+$$
+-\frac{B}{2A}<k.
+$$
+
+This is very similar to the previous case. The only difference is that the
+vertex must now lie to the left of $k$.
+
+## Case 3: One Root on Each Side of $k$
+
+Suppose we want one root less than $k$ and the other root greater than $k$:
+
+$$
+\alpha<k<\beta.
+$$
+
+The required condition is
+
+$$
+Af(k)<0.
+$$
+
+### Why Only One Condition?
+
+If $A>0$, the parabola opens upwards. Between the two roots, the graph lies
+below the $x$-axis, so $f(k)<0$.
+
+If $A<0$, the parabola opens downwards. Between the two roots, the graph lies
+above the $x$-axis, so $f(k)>0$.
+
+In both cases, $A$ and $f(k)$ have opposite signs, so
+
+$$
+Af(k)<0.
+$$
+
+This condition already forces the graph to cross the $x$-axis on both sides of
+$k$, so we do not need to separately write
+
+$$
+\Delta\ge 0.
+$$
+
+## Two-Point Root Location
+
+Now suppose we have two real numbers
+
+$$
+k_1<k_2.
+$$
+
+Many problems ask us to describe where the roots lie relative to the interval
+
+$$
+(k_1,k_2).
+$$
+
+There are three especially important cases:
+- Both roots lie inside the interval
+- Exactly one root lies inside the interval
+- One root lies to the left of the interval and the other lies to the right
+
+## Case 4: Both Roots Between $k_1$ and $k_2$
+
+Suppose we want
+
+$$
+k_1<\alpha,\beta<k_2.
+$$
+
+That means both roots lie inside the interval.
+
+The required conditions are:
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k_1)>0,
+$$
+
+$$
+Af(k_2)>0,
+$$
+
+and
+
+$$
+k_1<-\frac{B}{2A}<k_2.
+$$
+
+### Why These Conditions Work
+
+We need real roots, so
+
+$$
+\Delta\ge 0.
+$$
+
+The endpoints $k_1$ and $k_2$ must both lie outside the root interval. Therefore
+the graph at both endpoints must have the same sign as the leading coefficient:
+
+$$
+Af(k_1)>0
+$$
+
+and
+
+$$
+Af(k_2)>0.
+$$
+
+Finally, the vertex lies halfway between the two roots. If both roots are inside
+the interval, the vertex must also be inside the interval:
+
+$$
+k_1<-\frac{B}{2A}<k_2.
+$$
+
+All four conditions are needed. If the vertex condition is missing, it is
+possible for both roots to lie outside the interval while still having the
+correct endpoint signs.
+
+## Case 5: Exactly One Root Between $k_1$ and $k_2$
+
+Suppose we want exactly one root in the interval
+
+$$
+(k_1,k_2).
+$$
+
+The required condition is
+
+$$
+f(k_1)f(k_2)<0.
+$$
+
+### Why This Works
+
+If
+
+$$
+f(k_1)f(k_2)<0,
+$$
+
+then $f(k_1)$ and $f(k_2)$ have opposite signs.
+
+Since a quadratic function is continuous, the graph must cross the $x$-axis
+somewhere between $k_1$ and $k_2$.
+
+A quadratic has at most two real roots. If the signs at the two endpoints are
+opposite, the number of crossings inside the interval is odd. Therefore, there
+is exactly one root in the interval.
+
+This is often the simplest root-location case.
+
+## Case 6: One Root on Each Side of the Interval
+
+Say we want
+
+$$
+\alpha<k_1<k_2<\beta.
+$$
+
+That means the entire interval lies between the two roots.
+
+The required conditions are:
+
+$$
+Af(k_1)<0
+$$
+
+and
+
+$$
+Af(k_2)<0.
+$$
+
+### Why These Conditions Work
+
+If $A>0$, the parabola opens upwards and is negative between its two roots.
+As such, if both $f(k_1)$ and $f(k_2)$ are negative, both points lie between the
+roots.
+
+If $A<0$, the parabola opens downwards and is positive between its two roots.
+As such, if both $f(k_1)$ and $f(k_2)$ are positive, both points again lie between
+the roots.
+
+Both situations are captured by
+
+$$
+Af(k_1)<0
+$$
+
+and
+
+$$
+Af(k_2)<0.
+$$
+
+This guarantees one root to the left of $k_1$ and the other root to the right of
+$k_2$.
+
+## Summary of Conditions
+
+Let
+
+$$
+f(x)=Ax^2+Bx+C
+$$
+
+with $A\neq 0$, discriminant
+
+$$
+\Delta=B^2-4AC,
+$$
+
+and vertex $x$-coordinate
+
+$$
+h=-\frac{B}{2A}.
+$$
+
+### One-Point Cases
+
+Suppose $h=-\frac{B}{2A}$.
+
+#### Both roots greater than $k$
+
+If both roots are greater than $k$, use the conditions
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k)>0,
+$$
+
+and
+
+$$
+h>k.
+$$
+
+#### Both roots less than $k$
+
+If both roots are less than $k$, use the conditions
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k)>0,
+$$
+
+and
+
+$$
+h<k.
+$$
+
+#### One root on each side of $k$
+
+If one root is less than $k$ and the other root is greater than $k$, use the
+condition
+
+$$
+Af(k)<0.
+$$
+
+This condition already guarantees that the parabola crosses the $x$-axis on
+both sides of $k$.
+
+### Two-Point Cases
+
+Assume
+
+$$
+k_1<k_2.
+$$
+
+#### Both roots in $(k_1,k_2)$
+
+If both roots lie inside the interval $(k_1,k_2)$, use the conditions
+
+$$
+\Delta\ge 0,
+$$
+
+$$
+Af(k_1)>0,
+$$
+
+$$
+Af(k_2)>0,
+$$
+
+and
+
+$$
+k_1<h<k_2.
+$$
+
+#### Exactly one root in $(k_1,k_2)$
+
+If exactly one root lies inside the interval $(k_1,k_2)$, use the condition
+
+$$
+f(k_1)f(k_2)<0.
+$$
+
+This means the function has opposite signs at the two endpoints.
+
+#### One root left of $k_1$, one root right of $k_2$
+
+If one root lies to the left of $k_1$ and the other lies to the right of $k_2$,
+use the conditions
+
+$$
+Af(k_1)<0
+$$
+
+and
+
+$$
+Af(k_2)<0.
+$$
+
+This means both endpoints lie between the two roots.
+
+## Worked Examples
+
+### Example 1
+
+> Find all real values of $t$ such that both roots of
+>
+> $$
+> x^2-2tx+t+3=0
+> $$
+>
+> are greater than $1$.
+
+Let
+
+$$
+f(x)=x^2-2tx+t+3.
+$$
+
+Here,
+
+$$
+A=1,
+\qquad
+B=-2t,
+\qquad
+C=t+3.
+$$
+
+We want both roots to be greater than $1$, so we use Case 1 with $k=1$.
+
+First,
+
+$$
+\Delta=(-2t)^2-4(1)(t+3)
+=
+4t^2-4t-12.
+$$
+
+We need
+
+$$
+4t^2-4t-12\ge 0.
+$$
+
+Dividing by $4$ gives
+
+$$
+t^2-t-3\ge 0.
+$$
+
+Thus
+
+$$
+t\le \frac{1-\sqrt{13}}{2}
+\quad\text{or}\quad
+t\ge \frac{1+\sqrt{13}}{2}.
+$$
+
+Next,
+
+$$
+f(1)=1-2t+t+3=4-t.
+$$
+
+Since $A=1$, the condition
+
+$$
+Af(1)>0
+$$
+
+becomes
+
+$$
+4-t>0,
+$$
+
+so
+
+$$
+t<4.
+$$
+
+Finally, the vertex has $x$-coordinate
+
+$$
+h=-\frac{B}{2A}=t.
+$$
+
+We need
+
+$$
+t>1.
+$$
+
+Combining all three conditions gives
+
+$$
+\frac{1+\sqrt{13}}{2}\le t<4.
+$$
+
+### Example 2
+
+> Find all real values of $c$ such that both roots of
+>
+> $$
+> x^2-5x+c=0
+> $$
+>
+> lie in the interval $(1,4)$.
+
+Let
+
+$$
+f(x)=x^2-5x+c.
+$$
+
+Here,
+
+$$
+A=1,
+\qquad
+B=-5.
+$$
+
+The vertex is
+
+$$
+h=-\frac{B}{2A}=\frac{5}{2}.
+$$
+
+Since
+
+$$
+1<\frac{5}{2}<4,
+$$
+
+the vertex condition is already satisfied.
+
+Now compute the discriminant:
+
+$$
+\Delta=25-4c.
+$$
+
+We need
+
+$$
+25-4c\ge 0,
+$$
+
+so
+
+$$
+c\le \frac{25}{4}.
+$$
+
+Next,
+
+$$
+f(1)=1-5+c=c-4
+$$
+
+and
+
+$$
+f(4)=16-20+c=c-4.
+$$
+
+Since $A=1$, we need
+
+$$
+f(1)>0
+$$
+
+and
+
+$$
+f(4)>0.
+$$
+
+As such
+
+$$
+c-4>0,
+$$
+
+so
+
+$$
+c>4.
+$$
+
+Combining the conditions gives
+
+$$
+4<c\le \frac{25}{4}.
+$$
+
+### Example 3
+
+> Find all real values of $c$ such that exactly one root of
+>
+> $$
+> x^2-5x+c=0
+> $$
+>
+> lies in the interval $(1,4)$.
+
+Let
+
+$$
+f(x)=x^2-5x+c.
+$$
+
+For exactly one root in $(1,4)$, use Case 5:
+
+$$
+f(1)f(4)<0.
+$$
+
+But
+
+$$
+f(1)=c-4
+$$
+
+and
+
+$$
+f(4)=c-4.
+$$
+
+As such
+
+$$
+f(1)f(4)=(c-4)^2.
+$$
+
+This can never be negative.
+
+Therefore, there are no real values of $c$ for which exactly one root lies in
+$(1,4)$.
+
+This makes sense because the quadratic
+
+$$
+x^2-5x+c
+$$
+
+has axis of symmetry
+
+$$
+x=\frac{5}{2},
+$$
+
+which is exactly in the middle of the interval. Its roots are symmetric around
+the centre of the interval, so they enter or leave the interval together.
+
+### Example 4
+
+> Find all real values of $c$ such that one root of
+>
+> $$
+> x^2-5x+c=0
+> $$
+>
+> lies to the left of $1$ and the other lies to the right of $4$.
+
+We want
+
+$$
+\alpha<1<4<\beta.
+$$
+
+So we use Case 6:
+
+$$
+Af(1)<0
+$$
+
+and
+
+$$
+Af(4)<0.
+$$
+
+Since $A=1$, this becomes
+
+$$
+f(1)<0
+$$
+
+and
+
+$$
+f(4)<0.
+$$
+
+Now
+
+$$
+f(1)=c-4
+$$
+
+and
+
+$$
+f(4)=c-4.
+$$
+
+Therefore we need
+
+$$
+c-4<0.
+$$
+
+So
+
+$$
+c<4.
+$$
+
+Therefore, for every
+
+$$
+c<4,
+$$
+
+one root lies to the left of $1$ and the other lies to the right of $4$.
+
+## At Least One Root in an Interval
+
+Sometimes a problem asks for at least one root in
+
+$$
+(k_1,k_2).
+$$
+
+This is not a single new case. It is the union of two possibilities:
+- Exactly one root lies in the interval
+- Both roots lie in the interval
+
+So you should combine Case 5 and Case 4.
+
+In contest problems, it is often easier to solve these two cases separately and
+then take the union of the answer sets.
+
+## Key Contest Insight
+
+Root-location problems are graph problems disguised as algebra problems.
+
+The conditions are not random inequalities. Each one has a geometric meaning:
+- $\Delta\ge 0$ ensures real roots exist.
+- $Af(k)>0$ means $k$ lies outside the interval between the roots.
+- $Af(k)<0$ means $k$ lies between the roots.
+- $-\frac{B}{2A}$ gives the horizontal position of the vertex.
+
+Once these ideas are clear, the cases become much easier to remember.
+
+## Strategy Tips
+- Start by writing down $f(x)$, $A$, $B$, $C$, and $\Delta$
+- Compute the vertex coordinate $h=-\frac{B}{2A}$
+- Decide which root-location case matches the problem
+- Write the required inequalities carefully
+- Solve all inequalities and take their common solution
+- Be careful with strict intervals such as $(k_1,k_2)$
+- If the problem says 'at least one root', split it into cases
+
+## Common Pitfalls
+- Forgetting to check the discriminant when both roots are required
+- Using $f(k)>0$ instead of $Af(k)>0$ when the parabola may open downwards
+- Forgetting that the vertex lies midway between the two roots
+- Combining endpoint conditions incorrectly
+- Treating 'exactly one root in an interval' the same as 'both roots in an interval'
+- Ignoring whether the interval is open or closed
+
+## Practice Problems
+
+<Problems problems="practice" />

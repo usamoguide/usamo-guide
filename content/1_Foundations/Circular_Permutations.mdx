@@ -1,0 +1,365 @@
+---
+id: circular-permutations
+title: Circular Permutations
+author: Neronvain
+description: Learn how to count circular arrangements by handling rotational symmetry, reflection symmetry, and common seating restrictions.
+prerequisites: []
+---
+
+## Overview
+
+Circular permutation problems involve arranging objects around a circle.
+
+Circular arrangements are different from linear arrangements because rotations
+do not create new arrangements.
+
+For example, if everyone at a round table shifts one seat clockwise, the seating
+is considered the same.
+
+This symmetry is the main idea behind circular permutations.
+
+## Motivation
+
+Suppose $4$ people sit around a round table.
+
+In a row, they can be arranged in
+
+$$
+4!
+$$
+
+ways.
+
+But around a circle, rotations are considered the same.
+
+For example,
+
+$$
+A,B,C,D
+$$
+
+around a table is the same circular arrangement as
+
+$$
+B,C,D,A.
+$$
+
+Each circular arrangement has been counted $4$ times in the linear count.
+
+So the number of circular arrangements is
+
+$$
+\frac{4!}{4}=3!.
+$$
+
+In general, the number of ways to arrange $n$ distinct objects around a circle
+is
+
+$$
+(n-1)!.
+$$
+
+## Fixing One Object
+
+The easiest way to count circular arrangements is to fix one object in place.
+
+Once one object is fixed, the rotational symmetry is removed.
+
+Then arrange the remaining
+
+$$
+n-1
+$$
+
+objects around it.
+
+This gives
+
+$$
+(n-1)!.
+$$
+
+### Example 1
+
+> How many ways are there to seat $6$ people around a round table?
+
+Fix one person.
+
+Arrange the remaining $5$ people:
+
+$$
+5!=120.
+$$
+
+So there are $120$ circular arrangements.
+
+## Clockwise and Anticlockwise Arrangements
+
+For ordinary round-table seating, clockwise and anticlockwise arrangements are
+usually considered different.
+
+However, for necklaces or bracelets, flipping the object over may produce the
+same arrangement.
+
+This depends on the problem statement.
+
+If reflections are considered the same, then for $n>2$ distinct objects, the
+number of circular arrangements is
+
+$$
+\frac{(n-1)!}{2}.
+$$
+
+Only divide by $2$ when the problem clearly says that mirror images are the
+same, or when the object can physically be flipped.
+
+## People Sitting Together
+
+If certain people must sit together, treat them as a block.
+
+### Example 2
+
+> How many ways are there to seat $6$ people around a round table if Alice and Ben must sit together?
+
+Treat Alice and Ben as one block.
+
+Now there are $5$ circular units:
+- The Alice Ben block,
+- The other $4$ people.
+
+The number of circular arrangements of these $5$ units is
+
+$$
+(5-1)!=4!.
+$$
+
+Inside the block, Alice and Ben can be arranged in
+
+$$
+2!
+$$
+
+ways.
+
+So the total number of arrangements is
+
+$$
+4!2!=48.
+$$
+
+## People Not Sitting Together
+
+If two people must not sit together, it is often easiest to use complement
+counting.
+
+### Example 3
+
+> How many ways are there to seat $6$ people around a round table if Alice and
+> Ben must not sit together?
+
+First count all circular arrangements:
+
+$$
+(6-1)!=5!=120.
+$$
+
+Now subtract arrangements where Alice and Ben sit together.
+
+From Example 2, that number is
+
+$$
+4!2!=48.
+$$
+
+So the number of arrangements where Alice and Ben are not together is
+
+$$
+120-48=72.
+$$
+
+## Alternating Around a Circle
+
+Some problems ask for alternating arrangements, such as boys and girls around a
+circle.
+
+The standard method is:
+1. Arrange one group around the circle
+2. Place the other group in the gaps
+
+### Example 4
+
+> How many ways are there to seat $4$ boys and $4$ girls around a round table
+> so that boys and girls alternate?
+
+First arrange the $4$ boys around the circle:
+
+$$
+(4-1)!=3!.
+$$
+
+This creates $4$ gaps between the boys.
+
+Now arrange the $4$ girls in those gaps:
+
+$$
+4!.
+$$
+
+Therefore, the total number of arrangements is
+
+$$
+3!4!=144.
+$$
+
+## Circular Arrangements With Repeated Objects
+
+If objects are repeated, circular arrangements become more delicate.
+
+For basic contest problems, repeated circular arrangements are usually handled
+using casework or by first fixing a position and then accounting for repeated
+objects.
+
+### Example 5
+
+> How many ways are there to arrange the letters $A,A,B,C$ around a circle?
+
+Fix $B$ in one position to remove rotational symmetry.
+
+Now arrange
+
+$$
+A,A,C
+$$
+
+in the remaining $3$ positions.
+
+Since the two $A$'s are identical, the number of arrangements is
+
+$$
+\frac{3!}{2!}=3.
+$$
+
+So there are $3$ circular arrangements.
+
+## Necklace-Type Problems
+
+If objects are arranged on a necklace, then rotations and reflections are often
+both considered the same.
+
+For example, the clockwise arrangement
+
+$$
+A,B,C,D
+$$
+
+may be considered the same as
+
+$$
+A,D,C,B
+$$
+
+because the necklace can be flipped over.
+
+For $n$ distinct objects on a necklace, the number of arrangements is
+
+$$
+\frac{(n-1)!}{2}
+$$
+
+for $n>2$.
+
+Always read the problem carefully to decide whether reflection symmetry should
+be counted.
+
+## Worked Examples
+
+### Example 6
+
+> How many ways are there to arrange $7$ people around a circular table?
+
+Fix one person.
+
+Arrange the remaining $6$:
+
+$$
+6!=720.
+$$
+
+### Example 7
+
+> How many ways are there to arrange $7$ people around a circular table if
+> three particular people must sit together?
+
+Treat the three people as one block.
+
+Then we have $5$ circular units, the block and the other $4$ people.
+
+These can be arranged in
+
+$$
+(5-1)!=4!
+$$
+
+ways.
+
+Inside the block, the three people can be arranged in
+
+$$
+3!
+$$
+
+ways.
+
+So the answer is
+
+$$
+4!3!=144.
+$$
+
+### Example 8
+
+> How many ways are there to arrange $5$ distinct beads on a necklace?
+
+Since this is a necklace, rotations and reflections are considered the same.
+
+The number of arrangements is
+
+$$
+\frac{(5-1)!}{2}
+=
+12.
+$$
+
+## Key Contest Insight
+
+Circular permutations are about removing rotational symmetry.
+
+For round table seating, fix one object and arrange the rest.
+
+For necklaces or bracelets, check whether reflections are also considered the
+same.
+
+Most circular restriction problems then become ordinary arrangement problems
+after the rotational symmetry is handled.
+
+## Strategy Tips
+- For $n$ distinct objects around a circle, use $(n-1)!$
+- Fix one object to remove rotational symmetry
+- For people sitting together, use a block
+- For people not sitting together, use complement counting
+- For alternating arrangements, place one group first, then fill the gaps
+- For necklaces, divide by $2$ if mirror images are considered the same
+- Read the problem carefully to decide whether clockwise and anticlockwise arrangements are distinct.
+
+## Common Pitfalls
+
+- Using $n!$ instead of $(n-1)!$ for circular arrangements
+- Dividing by $2$ for round-table seating when reflections are not the same
+- Forgetting internal arrangements inside a block
+- Miscounting the number of gaps in alternating arrangements
+- Treating necklaces and circular tables the same
+- Forgetting repeated objects in circular arrangements
+
+## Practice Problems
+
+<Problems problems="practice" />

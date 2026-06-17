@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { BlindModeProvider } from '../context/BlindModeContext';
 import { useAnalyticsEffect } from '../hooks/useAnalyticsEffect';
 import { useUpdateStreakEffect } from '../hooks/useUpdateStreakEffect';
@@ -30,7 +29,6 @@ const Layout = ({
           style={{ backgroundImage: "url(/images/math-doodles.png)" }}
         />
         <div ref={pageContentRef} className="relative z-10">
-          <SpeedInsights />
           {children}
         </div>
       </div>
