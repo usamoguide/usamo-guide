@@ -9,7 +9,10 @@ prerequisites: []
 
 ## Overview
 On this page, we introduce how to write proofs clearly. 
-This article is based on a handout by Evan Chen on proof-writing and mathematical English: https://web.evanchen.cc/handouts/english/english.pdf
+This article is based on a handout by Evan Chen on proof-writing and mathematical English: https://web.evanchen.cc/handouts/english/english.pdf 
+
+In proof writing, there's two aspects that make proofs good, 
+and it's **mathmatical** aspect and **stylistic** argument. 
 
 ### Why learn proof writing?
 The common question that is asked frequently is 
@@ -19,158 +22,14 @@ Isn't it okay as long as I can get a 7?"*
 Evan Chen has a nice answer to this question: 
 see https://web.evanchen.cc/faq-contest.html#C-24
 
-The main idea of proof writing is that everyone who reads the proof should be able to understand why that statement is true. And understanding the 'why' aspect is crucial. without that I can claim anything is true. If proof writing is not there, I can  do ridiculous things. For example, I can say that $x>x$. It seems ridiculous and that is what will happen without proof writing. In fact, you cannot get a 7 without a proper written proof*. Some tips while writing proofs are:
+To be short, learning how to write proofs in the right way is good for both training and during contests. 
+- If you have a nice readable proof, grader will not be confused. Also, it's easier for you to check if the proof is right, during the contest. 
+- You will be writing each step separately, so you will easily know that what are we doing at each part. This is good for reviewing problems you solved for a while ago. 
 
-* Clearly state what you are proving and define all variables.
-* Write in complete sentences and justify each step.
-* Identify and highlight the key invariant, idea, or construction early.
-
----
-
-## Core Concepts
-
-### Induction
-
-To prove a statement for all integers $n \ge 1$, establish a base case and then
-show that truth for $n = k$ implies truth for $n = k+1$. However we cannot use this for statements which requires the state of multiple variables such as a degree 2 or more recursive sequence (Where strong induction will be used).
-
-#### Example
-
-**Claim.**
-$$
-1^3 + 2^3 + \cdots + n^3 = (1 + 2 + \cdots + n)^2.
-$$
-
-**Proof.**
-
-**Base Case ($n = 1$):**
-$$
-1^3 = 1^2,
-$$
-so the statement holds.
-
-**Inductive Step:**
-Assume the identity holds for $n = k$, i.e.,
-$$
-1^3 + 2^3 + \cdots + k^3 = (1 + 2 + \cdots + k)^2.
-$$
-
-We must prove it holds for $n = k+1$:
-$$
-1^3 + 2^3 + \cdots + k^3 + (k+1)^3 = (1 + 2 + \cdots + k + (k+1))^2.
-$$
-
-Using the inductive hypothesis, it suffices to show:
-$$
-(1 + 2 + \cdots + k + (k+1))^2 - (1 + 2 + \cdots + k)^2 = (k+1)^3.
-$$
-
-Apply the difference of squares:
-$$
-A^2 - B^2 = (A - B)(A + B),
-$$
-where
-$$
-A = 1 + 2 + \cdots + k + (k+1), \quad B = 1 + 2 + \cdots + k.
-$$
-
-Then
-$$
-A - B = k+1, \quad A + B = 2(1 + 2 + \cdots + k) + (k+1).
-$$
-
-Using
-$$
-1 + 2 + \cdots + k = \frac{k(k+1)}{2},
-$$
-we compute:
-$$
-A + B = k(k+1) + (k+1) = (k+1)^2.
-$$
-
-Thus,
-$$
-A^2 - B^2 = (k+1)(k+1)^2 = (k+1)^3.
-$$
-
-This completes the inductive step.
-
-Therefore, the statement holds for all $n \ge 1$. $\square$
+In particular, if you learn proof writings, you'll get better at short answer types, too. 
 
 ---
 
-### Logical Chain
-
-Ensure your argument follows a clear logical progression:
-$$
-X \implies Y \implies Z.
-$$
-
-Avoid gaps in reasoning—every implication must be justified. Avoid circular proofs, where you justify a statement with the statement itself. 
-
-#### Example
-
-**Claim.**
-$$
-a^2 + b^2 = c^2
-$$
-
-**Proof.**
-$$
-\sin(x)^2 + \cos(x)^2 = 1
-$$
-Now let the hypotenuse be  represented by c, the opposite by b and the adjacent by a. Then:
-
-$$
-\sin(x) = \frac{b}{c}\quad\cos(x) = \frac{a}{c} \implies (\frac{b}{c})^2+(\frac{a}{c})^2=1
-$$
-Hence,
-$$
-(\frac{b}{c})^2+(\frac{a}{c})^2=\frac{b^2}{c^2}+\frac{a^2}{c^2}=1
-$$
-$$
-\frac{b^2}{c^2}+\frac{a^2}{c^2}=1 \implies \boxed {a^2+b^2=c^2}
-$$
-Holds for all $a,b,c \in \mathbb{R}$
-
-**Note:** This example is of a cirular proof and the proof is wrong
-
----
-
-### Structure
-
-Good structure is essential for clarity:
-
-* Begin by stating what you are proving.
-* Present the main idea early.
-* Use a **Claim–Proof** format when appropriate.
-* Center important computations and separate them from text.
-* Guide the reader through your reasoning.
-
----
-
-### Completeness Checklist
-
-Many otherwise strong solutions lose points due to missing cases. Always verify:
-
-* Did I prove **all parts** of the problem?
-* Did I prove **both directions** (if required)?
-
-  * Especially for “find all” problems.
-* Are all conditions of the theorems I used satisfied?
-* Did I address edge cases (e.g., parallel lines in geometry)?
-* Did I explicitly justify equalities and constructions?
-
----
-
-## Common Pitfalls
-
-* Failing to prove all required cases
-* Using unjustified or illogical steps
-* Poor structure or unclear organization
-* Usage of circular reasoning
-
----
 ## mathematical argument 
 In this section we talk about mathematical proofs; 
 you can't get a $7$ if you're mathematically wrong. 
@@ -199,6 +58,7 @@ Thus, we recommend writing the solution in the following form:
 
 Note that sometimes part 2 and 3 can be swapped, though **you must write both**. 
 By skipping the trivial part, the grader cannot tell whether you know it is trivial or whether you do not know the proof and therefore did not write it.
+(And this is a common mistake that some people get $7-\epsilon$ with this). 
 
 ### optimization problem is always two-part problem
 
@@ -225,6 +85,16 @@ For a general advise:
 	fixed quite easily by a grader, but if you write a definition wrong 
 	there's no way a grader can fix it. In particular, 
 	**include diagram a if you need.**
+
+### Common Pitfalls
+
+* Failing to prove all required cases.
+* Using unjustified or illogical steps.
+* Usage of circular reasoning.
+* etc.... 
+Note that this is quite similar to a common pitfalls on short answer types as well. But if your proof writing is nice enough, you'll often realize these mistakes quite easily anyways.
+
+---
 
 ## style argument 
 
@@ -278,10 +148,14 @@ $$
 	consider writing an example. 
 	If you're unsure that the explanation you gave was incomplete, 
 	include more information. There's no reason not to. 
-- It's useful to add sentences like 
-	"The key idea is $X$" or "important claim is $Y$". 
+- Don't hesitate writing things! Although you will NOT need to write the motivation or behind the scenes for the problem, it's useful to add sentences like "The key idea is $X$" or "important claim is $Y$". You can even write the picture of orangutan and get a $7$. Proof writing are more free than you really think. 
 
 In general, be kind to the readers. 
+
+### Advice 
+As always, experience is your best teacher. 
+You'll get more good at writings as you get used to it. 
+Read others solutions, and your writings naturally get better ;)
 
 ### During a contest
 
@@ -293,41 +167,47 @@ Here's a short section about writing in the contest.
 - **Leave more space!** In practice with computer-written solution, 
 	you can insert text or copy-paste it anytime. 
 	In hand-written solution, you can't do this, 
-	thus leaving space will help you. 
+	thus leaving space will help you 
+	(Unless you have only limited papers).
+	It will be more readable anyways. 
+
+
 
 ## Example
 
-**Question.**
+### Completeness Checklist
+
+Many otherwise strong solutions lose points due to missing cases. Always verify:
+
+* Did I prove **all parts** of the problem?
+* Did I prove **both directions** (if required)?
+
+  * Especially for “find all” problems.
+* Are all conditions of the theorems I used satisfied?
+* Did I address edge cases (e.g., parallel lines in geometry)?
+* Did I explicitly justify equalities and constructions?
+
+---
+
+## Example problems 
+
+We won't 
+
+**Example 1.**
 How many prime numbers $p$ are there such that $29^p+1$ is a multiple of p?
 
-**Answer.**
-There are $3$ such prime numbers
+Try to write the solution by yourself before reading! 
 
-Case 1:
+**Solution.**
+The answer is $3$, namely $p\in \{2, 3, 5\}$. 
+These clearly works. 
+Assume $p\neq 29$. 
 
-Now let us assume that $p\ne29$. Then we observe that the Greatest Common divisor of $p$ and $29$ is 1.
+Then by Fermat's little theorem, we have 
+$$p\mid 29^p+1=29^1+1=30$$ 
+so we are done. 
 
- The key idea here is to use$\boxed{Fermat's\;Little\;Theorem}$ to get:
-$$
-29^{p-1} \equiv 1\:(mod\:p) \implies 29^p \equiv 29\:(mod\:p)
-$$
-Hence we need:
-$$
-29^p+1\equiv30\equiv0\:(mod\:p) \implies p\mid30
-$$
-$p=2,3\:and\:5$ satisfies the condition which is of 3 primes in total.
 
-Case 2:
-
-For $p=29$, we know that
-$$
-p\mid29^p
-$$
-Thus
-$$
-p\nmid 29^p+1
-$$
-And we are done
 ## Practice Problems
 
 <Problems problems="practice" />
