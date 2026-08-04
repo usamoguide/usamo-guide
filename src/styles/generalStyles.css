@@ -303,7 +303,7 @@ html.transitioning-color-scheme * {
 
 
 .markdown kbd {
-  @apply inline-block rounded-sm border px-1 py-0.5 align-middle font-mono text-xs font-normal shadow-sm;
+  @apply inline-block rounded-sm border px-1 py-0.5 align-middle font-mono text-xs font-normal;
   border-color: var(--border-strong);
 }
 

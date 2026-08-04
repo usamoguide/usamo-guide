@@ -149,8 +149,7 @@ export default function ContactUsPage(props: PageProps) {
         data-page-tone="dark"
         className="min-h-screen"
         style={{
-          background:
-            '#0A0818',
+          background: 'var(--bg-page)',
         }}
       >
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />

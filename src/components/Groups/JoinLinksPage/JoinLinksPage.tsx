@@ -41,7 +41,7 @@ const JoinLinksPage = () => {
         image={null}
         pathname={window.location.pathname}
       />
-      <div className="dark:bg-dark-surface min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-[var(--bg-page)]">
         <TopNavigationBar />
         <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
           <Breadcrumbs

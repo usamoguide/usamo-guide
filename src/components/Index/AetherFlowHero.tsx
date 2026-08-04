@@ -44,7 +44,7 @@ export default function AetherFlowHero(): JSX.Element {
     <div
       data-page-tone="dark"
       className="relative flex min-h-screen w-full flex-col overflow-hidden pt-20"
-      style={{ backgroundColor: '#0A0818' }}
+      style={{ backgroundColor: 'var(--bg-page)' }}
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 scale-105 blur-[10px]"
@@ -128,8 +128,7 @@ export default function AetherFlowHero(): JSX.Element {
             style={
               {
                 border: '1px solid rgba(240, 194, 255, 0.34)',
-                background:
-                  '#EFE3FF',
+                background: '#EFE3FF',
                 boxShadow: 'none',
                 '--pme-color': '#2C1842',
                 '--pme-hover-color': '#201C36',

@@ -7,8 +7,7 @@ import classNames from 'classnames';
 import { CalendarCheck } from 'lucide-react';
 import React, { useState } from 'react';
 
-const MIDNIGHT = '#201C36';
-const MIDNIGHT_DEEP = '#14112A';
+const PAGE_BG = 'var(--bg-page)';
 const VANILLA = '#F4EDEA';
 const MAUVE = '#F0C2FF';
 const PURPLE = '#70428A';
@@ -75,15 +74,14 @@ const ActiveCardsHome = () => {
     <div
       className="relative overflow-x-hidden transition-colors duration-500"
       style={{
-        background: `${MIDNIGHT_DEEP}`,
+        background: PAGE_BG,
         color: VANILLA,
       }}
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-32 blur-3xl"
         style={{
-          background:
-            'transparent',
+          background: 'transparent',
         }}
       />
       <div className="h-16 md:h-20 2xl:h-36"></div>
@@ -112,9 +110,7 @@ const ActiveCardsHome = () => {
                   'group relative cursor-pointer p-1 transition-all duration-300',
                   id === 0 ? 'rounded-t-xl' : '',
                   id === projects.length - 1 ? 'rounded-b-xl' : '',
-                  activeCard === id
-                    ? ''
-                    : ''
+                  activeCard === id ? '' : ''
                 )}
                 style={{
                   background:
@@ -134,9 +130,7 @@ const ActiveCardsHome = () => {
                     <div
                       className={classNames(
                         'flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl',
-                        project.imageSrc
-                          ? 'bg-transparent p-0'
-                          : 'p-2',
+                        project.imageSrc ? 'bg-transparent p-0' : 'p-2',
                         !project.imageSrc && project.color
                       )}
                     >
@@ -179,8 +173,7 @@ const ActiveCardsHome = () => {
                   'relative h-full w-full max-w-full overflow-hidden rounded-2xl p-12 backdrop-blur-sm md:p-10'
                 )}
                 style={{
-                  background:
-                    'rgba(43, 30, 57, 0.92)',
+                  background: 'rgba(43, 30, 57, 0.92)',
                 }}
               >
                 <div className="relative z-10 max-w-2xl">

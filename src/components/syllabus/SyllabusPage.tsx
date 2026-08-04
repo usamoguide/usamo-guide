@@ -20,11 +20,12 @@ import SEO from '../seo';
 import TopNavigationBar from '../TopNavigationBar/TopNavigationBar';
 import ModuleLink from './ModuleLink';
 
+/* All sections share the one page background; see --bg-page in src/styles/theme.css. */
 const HeroAccentColor: { [key in SectionID]: string } = {
-  foundations: 'bg-[#0F0916]',
-  intermediate: 'bg-[#100A19]',
-  advanced: 'bg-[#0E0815]',
-  usamo: 'bg-[#0C0713]',
+  foundations: 'bg-[var(--bg-page)]',
+  intermediate: 'bg-[var(--bg-page)]',
+  advanced: 'bg-[var(--bg-page)]',
+  usamo: 'bg-[var(--bg-page)]',
 };
 
 const SECTION_DESCRIPTION: { [key in SectionID]: React.ReactNode } = {
@@ -129,7 +130,7 @@ export default function SyllabusPage({
         image={null}
         pathname={path}
       />
-      <div className="relative min-h-screen overflow-hidden bg-[#090611]">
+      <div className="relative min-h-screen overflow-hidden bg-[var(--bg-page)]">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 opacity-20">
             <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
@@ -190,8 +191,7 @@ export default function SyllabusPage({
                   style={
                     {
                       border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background:
-                        '#6D3B9F',
+                      background: '#6D3B9F',
                       boxShadow: 'none',
                       '--pme-color': '#F4EDEA',
                       '--pme-hover-color': '#201C36',
@@ -209,8 +209,7 @@ export default function SyllabusPage({
                   style={
                     {
                       border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background:
-                        '#EFE3FF',
+                      background: '#EFE3FF',
                       boxShadow: 'none',
                       '--pme-color': '#2C1842',
                       '--pme-hover-color': '#201C36',

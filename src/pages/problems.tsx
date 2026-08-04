@@ -27,19 +27,17 @@ const indexName = `${process.env.GATSBY_ALGOLIA_INDEX_NAME ?? 'dev'}_problems`;
 
 // Style constants aligned with homepage
 const VANILLA = '#F4EDEA';
-const PLUM_DEEP = '#1B1427';
+const PAGE_BG = 'var(--bg-page)';
 const PLUM_MID = '#2A1C37';
 const pageBackgroundClasses = 'min-h-screen transition-colors duration-500';
 const heroCardClasses =
   'relative overflow-hidden rounded-3xl p-8 transition-all duration-500';
 const toolbarCardClasses = 'mb-5 rounded-2xl p-4';
 const heroCardStyle: React.CSSProperties = {
-  background:
-    'rgba(48, 32, 67, 0.91)',
+  background: 'rgba(48, 32, 67, 0.91)',
 };
 const toolbarCardStyle: React.CSSProperties = {
-  background:
-    'rgba(43, 30, 57, 0.92)',
+  background: 'rgba(43, 30, 57, 0.92)',
 };
 
 type DataProps = {
@@ -113,7 +111,7 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
         className={`problems-page ui-page ${pageBackgroundClasses}`}
         style={
           {
-            background: `${PLUM_DEEP}`,
+            background: PAGE_BG,
             color: VANILLA,
             '--select-bg': '#0D0D0D',
             '--select-menu-bg': '#0D0D0D',
@@ -185,8 +183,7 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
                         style={
                           {
                             border: '1px solid rgba(240, 194, 255, 0.34)',
-                            background:
-                              '#6D3B9F',
+                            background: '#6D3B9F',
                             '--pme-color': '#F4EDEA',
                             '--pme-hover-color': '#201C36',
                             '--pme-wipe-bg': '#F0C2FF',
@@ -216,8 +213,7 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
                         style={
                           {
                             border: '1px solid rgba(240, 194, 255, 0.34)',
-                            background:
-                              '#EFE3FF',
+                            background: '#EFE3FF',
                             '--pme-color': '#2C1842',
                             '--pme-hover-color': '#201C36',
                             '--pme-wipe-bg': '#F0C2FF',

@@ -26,8 +26,7 @@ import {
 
 const VANILLA = '#F4EDEA';
 const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.72)';
-const MIDNIGHT_GRADIENT =
-  '#0A0818';
+const PAGE_BG = 'var(--bg-page)';
 
 export default function DashboardPage(props: PageProps) {
   const { modules, problems } = props.data as any;
@@ -302,7 +301,7 @@ export default function DashboardPage(props: PageProps) {
         className="ui-page min-h-screen px-0"
         style={
           {
-            backgroundImage: MIDNIGHT_GRADIENT,
+            background: PAGE_BG,
             color: VANILLA,
           } as React.CSSProperties
         }
@@ -323,8 +322,7 @@ export default function DashboardPage(props: PageProps) {
                       <div
                         className="w-full rounded-2xl px-5 py-5 text-center"
                         style={{
-                          background:
-                            'rgba(242, 216, 244, 0.9)',
+                          background: 'rgba(242, 216, 244, 0.9)',
                           color: '#120F24',
                         }}
                       >
@@ -347,8 +345,7 @@ export default function DashboardPage(props: PageProps) {
                               style={
                                 {
                                   border: '1px solid rgba(240, 194, 255, 0.34)',
-                                  background:
-                                    '#6D3B9F',
+                                  background: '#6D3B9F',
                                   '--pme-color': '#F4EDEA',
                                   '--pme-hover-color': '#201C36',
                                   '--pme-wipe-bg': '#F0C2FF',
@@ -415,8 +412,7 @@ export default function DashboardPage(props: PageProps) {
                   style={
                     {
                       border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background:
-                        '#6D3B9F',
+                      background: '#6D3B9F',
                       '--pme-color': '#F4EDEA',
                       '--pme-hover-color': '#201C36',
                       '--pme-wipe-bg': '#F0C2FF',

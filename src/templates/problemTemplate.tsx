@@ -110,8 +110,7 @@ function answersMatch(user: string, correct: string): boolean {
   return false;
 }
 
-const MIDNIGHT = '#120F24';
-const MIDNIGHT_DEEP = '#0A0818';
+const PAGE_BG = 'var(--bg-page)';
 const VANILLA = '#F4EDEA';
 const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.74)';
 const MAUVE = '#F0C2FF';
@@ -526,7 +525,7 @@ export default function ProblemTemplate(
         data-page-tone="dark"
         className="ui-page relative min-h-screen overflow-hidden"
         style={{
-          background: `${MIDNIGHT_DEEP}`,
+          background: PAGE_BG,
           color: VANILLA,
         }}
       >
@@ -547,8 +546,7 @@ export default function ProblemTemplate(
           <header
             className="mb-8 rounded-2xl pb-6"
             style={{
-              background:
-                'rgba(43, 30, 57, 0.92)',
+              background: 'rgba(43, 30, 57, 0.92)',
             }}
           >
             <div className="px-5 pt-5 sm:px-6 sm:pt-6">
@@ -656,8 +654,7 @@ export default function ProblemTemplate(
                     className="rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                     style={{
                       border: `1px solid ${BORDER_STRONG}`,
-                      background:
-                        '#6D3B9F',
+                      background: '#6D3B9F',
                       color: VANILLA,
                     }}
                   >
@@ -710,8 +707,7 @@ export default function ProblemTemplate(
             <section
               className="mb-10 rounded-2xl p-5"
               style={{
-                background:
-                  'rgba(43, 30, 57, 0.92)',
+                background: 'rgba(43, 30, 57, 0.92)',
               }}
               aria-label="Suggest tags"
             >
@@ -750,8 +746,7 @@ export default function ProblemTemplate(
                     style={
                       {
                         border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background:
-                          '#6D3B9F',
+                        background: '#6D3B9F',
                         '--pme-color': '#F4EDEA',
                         '--pme-hover-color': '#201C36',
                         '--pme-wipe-bg': '#F0C2FF',
@@ -815,8 +810,7 @@ export default function ProblemTemplate(
                   style={
                     {
                       border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background:
-                        '#6D3B9F',
+                      background: '#6D3B9F',
                       '--pme-color': '#F4EDEA',
                       '--pme-hover-color': '#201C36',
                       '--pme-wipe-bg': '#F0C2FF',
@@ -854,8 +848,7 @@ export default function ProblemTemplate(
                       className="flex cursor-pointer items-start gap-2 rounded-2xl px-3 py-2"
                       style={{
                         border: '1px solid rgba(229, 194, 255, 0.12)',
-                        background:
-                          'rgba(43, 30, 57, 0.92)',
+                        background: 'rgba(43, 30, 57, 0.92)',
                       }}
                     >
                       <input
@@ -909,8 +902,7 @@ export default function ProblemTemplate(
                 style={
                   {
                     border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background:
-                      '#6D3B9F',
+                    background: '#6D3B9F',
                     '--pme-color': '#F4EDEA',
                     '--pme-hover-color': '#201C36',
                     '--pme-wipe-bg': '#F0C2FF',
@@ -936,8 +928,7 @@ export default function ProblemTemplate(
                   style={
                     {
                       border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background:
-                        '#6D3B9F',
+                      background: '#6D3B9F',
                       '--pme-color': '#F4EDEA',
                       '--pme-hover-color': '#201C36',
                       '--pme-wipe-bg': '#F0C2FF',
@@ -950,8 +941,7 @@ export default function ProblemTemplate(
                   <div
                     className="mt-6 rounded-2xl p-4"
                     style={{
-                      background:
-                        'rgba(43, 30, 57, 0.92)',
+                      background: 'rgba(43, 30, 57, 0.92)',
                     }}
                   >
                     <ProblemStatementMarkdown>

@@ -15,7 +15,7 @@ export default function GroupPage(props) {
     <Layout>
       <SEO title={group.groupData?.name} image={null} pathname={props.path} />
       <TopNavigationBar />
-      <div className="dark:bg-dark-surface min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-[var(--bg-page)]">
         <GroupPageHeader group={group.groupData!} />
         <Link
           to="leaderboard"

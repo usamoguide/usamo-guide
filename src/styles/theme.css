@@ -109,7 +109,7 @@
     --disabled-text: rgba(32, 28, 54, 0.45);
 
 
-    --shadow: 0 1px 2px rgba(32, 28, 54, 0.10);
+    --shadow: none;
   }
 
 
@@ -121,7 +121,9 @@
 
   /* DARK MODE (main target) */
   html.dark {
-    --bg-page: #201C36;
+    /* Single source of truth for every page background. Pages must not
+       hardcode their own base color -- use var(--bg-page). */
+    --bg-page: #0A0818;
     --bg-surface: #2A2547;
     --bg-surface-alt: #3D3564;
     --bg-muted: #2E294E;
@@ -210,6 +212,6 @@
     --disabled-text: rgba(244, 237, 234, 0.45);
 
 
-    --shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    --shadow: none;
   }
 }

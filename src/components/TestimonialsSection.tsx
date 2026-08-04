@@ -1,8 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import React from 'react';
 
-const MIDNIGHT = '#201C36';
-const MIDNIGHT_DEEP = '#14112A';
+const PAGE_BG = 'var(--bg-page)';
 const VANILLA = '#F4EDEA';
 const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.78)';
 
@@ -112,7 +111,7 @@ const TestimonialsSection = () => {
     <div
       className="relative overflow-hidden py-16 font-sans transition-colors duration-500 md:py-24"
       style={{
-        background: `${MIDNIGHT_DEEP}`,
+        background: PAGE_BG,
         color: VANILLA,
       }}
     >

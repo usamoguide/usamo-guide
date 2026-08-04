@@ -330,8 +330,7 @@ export default function OtherUsefulResourcesPage(props: PageProps) {
         data-page-tone="dark"
         className="min-h-screen text-[#F4EDEA]"
         style={{
-          background:
-            '#0A0818',
+          background: 'var(--bg-page)',
         }}
       >
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />

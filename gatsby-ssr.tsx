@@ -1,25 +1,16 @@
 import * as React from 'react';
 import { wrapRootElement as wrap } from './root-wrapper';
-import { themeKey } from './src/context/UserDataContext/UserDataContext';
 
 export const wrapRootElement = wrap;
 
 // https://joshwcomeau.com/gatsby/dark-mode/
 const MagicScriptTag = () => {
-  // Note: see also src/context/UserDataContext/UserDataContext.ts if any of the below code needs to be changed.
+  // Dark mode is forced globally (see src/context/DarkModeProvider.tsx), so apply
+  // the class before first paint -- otherwise the light --bg-page shows for a
+  // frame on browsers whose system preference is light.
   const codeToRunOnClient = `
   (function(){
-    var dark = false;
-    var pref = window.localStorage.getItem('${themeKey}');
-    if (typeof pref === 'string' && pref === '"dark"') dark = true;
-    else if (typeof pref !== 'string' || (typeof pref === 'string' && pref === '"system"')) {
-      const mql = window.matchMedia('(prefers-color-scheme: dark)');
-      const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-      if (hasMediaQueryPreference) {
-        dark = mql.matches;
-      }
-    }
-    if (dark) document.documentElement.classList.add('dark');
+    document.documentElement.classList.add('dark');
   })()
   `;
   // eslint-disable-next-line react/no-danger

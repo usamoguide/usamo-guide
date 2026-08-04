@@ -29,8 +29,8 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
  *   - “Browse Topics” button background
  * - Remove glow around “Browse Topics” (no GlowingRing wrapper, no shadow)
  */
-const MIDNIGHT = '#120F24';
-const MIDNIGHT_DEEP = '#0A0818';
+/* Every page shares one base background; see --bg-page in src/styles/theme.css. */
+const PAGE_BG = 'var(--bg-page)';
 
 const VANILLA = '#F4EDEA';
 const MAUVE = '#F0C2FF';
@@ -105,8 +105,7 @@ export default function IndexPage({ path }): JSX.Element {
   const sectionSubtitleClasses =
     'mx-auto max-w-3xl text-center text-lg font-medium leading-relaxed md:text-xl 2xl:text-2xl';
   const infoCardStyle: React.CSSProperties = {
-    background:
-      'rgba(43, 30, 57, 0.92)',
+    background: 'rgba(43, 30, 57, 0.92)',
     color: TEXT_PRIMARY,
   };
 
@@ -127,7 +126,7 @@ export default function IndexPage({ path }): JSX.Element {
       {/* Wave transition: dark base */}
       <div
         className="pointer-events-none overflow-hidden leading-[0]"
-        style={{ backgroundColor: MIDNIGHT }}
+        style={{ backgroundColor: PAGE_BG }}
       >
         <svg
           viewBox="0 0 1200 80"
@@ -137,7 +136,7 @@ export default function IndexPage({ path }): JSX.Element {
         >
           <path
             d="M0,80 C300,80 400,0 600,0 C800,0 900,80 1200,80 L1200,0 L0,0 Z"
-            fill={MIDNIGHT}
+            style={{ fill: PAGE_BG }}
           />
         </svg>
       </div>
@@ -146,7 +145,7 @@ export default function IndexPage({ path }): JSX.Element {
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `${MIDNIGHT_DEEP}`,
+          background: PAGE_BG,
           color: TEXT_PRIMARY,
         }}
       >
@@ -290,7 +289,7 @@ export default function IndexPage({ path }): JSX.Element {
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `${MIDNIGHT_DEEP}`,
+          background: PAGE_BG,
           color: TEXT_PRIMARY,
         }}
       >
@@ -342,8 +341,7 @@ export default function IndexPage({ path }): JSX.Element {
                     style={
                       {
                         border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background:
-                          '#6D3B9F',
+                        background: '#6D3B9F',
                         '--pme-color': '#F4EDEA',
                         '--pme-hover-color': '#201C36',
                         '--pme-wipe-bg': '#F0C2FF',
@@ -374,7 +372,7 @@ export default function IndexPage({ path }): JSX.Element {
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `${MIDNIGHT_DEEP}`,
+          background: PAGE_BG,
           color: TEXT_PRIMARY,
         }}
       >
@@ -671,7 +669,7 @@ export default function IndexPage({ path }): JSX.Element {
       {/*End FAQ*/}
 
       {/* Footer: dark bg + vanilla text */}
-      <div style={{ background: MIDNIGHT }}>
+      <div style={{ background: PAGE_BG }}>
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 py-12">
           <p
             className="text-center text-base leading-6"
