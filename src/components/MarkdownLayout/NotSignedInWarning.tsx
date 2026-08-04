@@ -16,36 +16,46 @@ export default function NotSignedInWarning() {
     return (
       <>
         <div
- className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+          className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
           style={{
             background:
-              'linear-gradient(135deg, rgba(244, 237, 234, 0.92) 0%, rgba(240, 194, 255, 0.84) 100%)',
+              'rgba(242, 216, 244, 0.9)',
           }}
         >
           <div className="px-4 py-5 sm:p-6">
             <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6 lg:justify-between">
               <div className="max-w-2xl text-center lg:text-left">
-                <h3 className="text-lg leading-6 font-medium" style={{ color: '#120F24' }}>
+                <h3
+                  className="text-lg leading-6 font-medium"
+                  style={{ color: '#120F24' }}
+                >
                   You're not signed in!
                 </h3>
-                <div className="mt-2 text-sm leading-6" style={{ color: 'rgba(18, 15, 36, 0.8)' }}>
+                <div
+                  className="mt-2 text-sm leading-6"
+                  style={{ color: 'rgba(18, 15, 36, 0.8)' }}
+                >
                   <p>
-                    Track progress, unlock problem sets, and sync across devices.
+                    Track progress, unlock problem sets, and sync across
+                    devices.
                   </p>
                 </div>
                 <div className="mt-5">
                   <button
                     type="button"
                     onClick={() => signIn()}
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm font-bold leading-tight focus:outline-hidden"
-                    style={{
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                      boxShadow: 'none',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties}
+                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold focus:outline-hidden"
+                    style={
+                      {
+                        border: '1px solid rgba(240, 194, 255, 0.34)',
+                        background:
+                          '#6D3B9F',
+                        boxShadow: 'none',
+                        '--pme-color': '#F4EDEA',
+                        '--pme-hover-color': '#201C36',
+                        '--pme-wipe-bg': '#F0C2FF',
+                      } as React.CSSProperties
+                    }
                   >
                     Save Progress
                   </button>

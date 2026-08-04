@@ -2,8 +2,8 @@ import { graphql, Link, PageProps } from 'gatsby';
 import * as React from 'react';
 import DifficultyBox from '../components/DifficultyBox';
 import Layout from '../components/layout';
-import ProblemStatementMarkdown from '../components/ProblemPage/ProblemStatementMarkdown';
 import ProblemStatusCheckbox from '../components/markdown/ProblemsList/ProblemStatusCheckbox';
+import ProblemStatementMarkdown from '../components/ProblemPage/ProblemStatementMarkdown';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
 import { ConfettiProvider } from '../context/ConfettiContext';
@@ -13,11 +13,7 @@ import {
   useUpdateUserData,
 } from '../context/UserDataContext/UserDataContext';
 import { supabase } from '../lib/supabaseClient';
-import {
-  probSources,
-  ProblemDifficulty,
-  ProblemInfo,
-} from '../models/problem';
+import { ProblemDifficulty, ProblemInfo, probSources } from '../models/problem';
 
 type ProblemTemplateData = {
   allProblemInfo: {
@@ -175,15 +171,16 @@ export default function ProblemTemplate(
     string | null
   >(null);
   const [isSubmittingTags, setIsSubmittingTags] = React.useState(false);
-  const [difficultyAverage, setDifficultyAverage] = React.useState<number | null>(
-    null
-  );
+  const [difficultyAverage, setDifficultyAverage] = React.useState<
+    number | null
+  >(null);
   const [difficultyVoteCount, setDifficultyVoteCount] = React.useState(0);
   const [difficultyValue, setDifficultyValue] = React.useState('5');
-  const [difficultyMessage, setDifficultyMessage] = React.useState<string | null>(
-    null
-  );
-  const [isSubmittingDifficulty, setIsSubmittingDifficulty] = React.useState(false);
+  const [difficultyMessage, setDifficultyMessage] = React.useState<
+    string | null
+  >(null);
+  const [isSubmittingDifficulty, setIsSubmittingDifficulty] =
+    React.useState(false);
   const currentUser = useCurrentUser();
   const isUserDataLoaded = useIsUserDataLoaded();
   const updateUserData = useUpdateUserData();
@@ -194,7 +191,8 @@ export default function ProblemTemplate(
 
       updateUserData(prevUserData => {
         if (kind === 'tag') {
-          const taggedProblemIds = prevUserData.problemTaggingStats.taggedProblemIds;
+          const taggedProblemIds =
+            prevUserData.problemTaggingStats.taggedProblemIds;
           if (taggedProblemIds.includes(problem.uniqueId)) {
             return { localStorageUpdate: {}, remoteUpdate: {} };
           }
@@ -210,7 +208,8 @@ export default function ProblemTemplate(
           };
         }
 
-        const ratedProblemIds = prevUserData.problemDifficultyStats.ratedProblemIds;
+        const ratedProblemIds =
+          prevUserData.problemDifficultyStats.ratedProblemIds;
         if (ratedProblemIds.includes(problem.uniqueId)) {
           return { localStorageUpdate: {}, remoteUpdate: {} };
         }
@@ -280,7 +279,8 @@ export default function ProblemTemplate(
         return;
       }
 
-      const average = ratings.reduce((sum, value) => sum + value, 0) / ratings.length;
+      const average =
+        ratings.reduce((sum, value) => sum + value, 0) / ratings.length;
       setDifficultyAverage(Number(average.toFixed(1)));
       setDifficultyVoteCount(ratings.length);
     };
@@ -300,7 +300,9 @@ export default function ProblemTemplate(
         <div className="ui-page min-h-screen">
           <TopNavigationBar />
           <main className="mx-auto max-w-3xl px-4 py-16">
-            <p className="text-gray-600 dark:text-gray-400">Problem not found.</p>
+            <p className="text-gray-600 dark:text-gray-400">
+              Problem not found.
+            </p>
             <Link to="/problems/" className="mt-4 inline-block text-blue-600">
               All problems
             </Link>
@@ -387,9 +389,7 @@ export default function ProblemTemplate(
 
       if (approvalReadError) throw approvalReadError;
 
-      setApprovedTags(
-        (approvalRows ?? []).map(row => row.tag).filter(Boolean)
-      );
+      setApprovedTags((approvalRows ?? []).map(row => row.tag).filter(Boolean));
       setTagInput('');
 
       if (newlyApproved.length > 0) {
@@ -428,14 +428,16 @@ export default function ProblemTemplate(
         data: { user },
       } = await supabase.auth.getUser();
 
-      const { error } = await supabase.from('problem_difficulty_ratings').upsert(
-        {
-          problem_id: problem.uniqueId,
-          user_id: user?.id ?? null,
-          rating,
-        },
-        { onConflict: 'problem_id,user_id' }
-      );
+      const { error } = await supabase
+        .from('problem_difficulty_ratings')
+        .upsert(
+          {
+            problem_id: problem.uniqueId,
+            user_id: user?.id ?? null,
+            rating,
+          },
+          { onConflict: 'problem_id,user_id' }
+        );
 
       if (error) throw error;
       recordUserContribution('difficulty');
@@ -452,7 +454,8 @@ export default function ProblemTemplate(
         .filter(value => !Number.isNaN(value));
 
       if (ratings.length > 0) {
-        const average = ratings.reduce((sum, value) => sum + value, 0) / ratings.length;
+        const average =
+          ratings.reduce((sum, value) => sum + value, 0) / ratings.length;
         setDifficultyAverage(Number(average.toFixed(1)));
         setDifficultyVoteCount(ratings.length);
       }
@@ -523,11 +526,10 @@ export default function ProblemTemplate(
         data-page-tone="dark"
         className="ui-page relative min-h-screen overflow-hidden"
         style={{
-          background: `linear-gradient(180deg, ${MIDNIGHT} 0%, ${MIDNIGHT_DEEP} 100%)`,
+          background: `${MIDNIGHT_DEEP}`,
           color: VANILLA,
         }}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_16%,rgba(191,128,255,0.10),transparent_36%),radial-gradient(circle_at_18%_84%,rgba(112,66,138,0.12),transparent_36%),linear-gradient(180deg,rgba(10,8,24,0.22),rgba(12,10,28,0.56)_70%,rgba(6,5,16,0.85))]" />
         <TopNavigationBar />
         <main className="relative mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
           <nav className="mb-6 text-sm" style={{ color: TEXT_SECONDARY }}>
@@ -545,121 +547,143 @@ export default function ProblemTemplate(
           <header
             className="mb-8 rounded-2xl pb-6 shadow-lg"
             style={{
- :'1px solid rgba(229, 194, 255, 0.12)',
-              background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+              background:
+                'rgba(43, 30, 57, 0.92)',
             }}
           >
             <div className="px-5 pt-5 sm:px-6 sm:pt-6">
-            <h1 className="text-2xl font-bold sm:text-3xl" style={{ color: VANILLA }}>
-              {node.name}
-            </h1>
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
-              <span className="font-medium" style={{ color: MAUVE }}>
-                {sourceTooltip ? (
-                  <span title={sourceTooltip}>{node.source}</span>
-                ) : (
-                  node.source
-                )}
-              </span>
-              {node.author ? (
-                <>
-                  <span style={{ color: TEXT_SECONDARY }}>·</span>
-                  <span style={{ color: TEXT_SECONDARY }}>
-                    {node.author}
-                  </span>
-                </>
-              ) : null}
-              <DifficultyBox
-                difficulty={(node.difficulty ?? 'N/A') as ProblemDifficulty}
-              />
-            </div>
-            {node.module?.frontmatter?.id && node.module.fields?.division ? (
-              <p className="mt-3 text-sm" style={{ color: TEXT_SECONDARY }}>
-                From module{' '}
-                <Link
-                  className="hover:underline"
-                  style={{ color: MAUVE }}
-                  to={`/${node.module.fields.division}/${node.module.frontmatter.id}/`}
-                >
-                  {node.module.frontmatter.title}
-                </Link>
-              </p>
-            ) : null}
-            <div className="mt-4">
-              <ConfettiProvider>
-                <ProblemStatusCheckbox problem={problem} size="large" />
-              </ConfettiProvider>
-            </div>
- <div className="mt-5 rounded-2xl px-4 py-4 shadow-lg"
-              style={{
-                background: 'rgba(14, 11, 31, 0.72)',
-              }}
-            >
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="text-sm font-semibold" style={{ color: VANILLA }}>
-                  Community difficulty
+              <h1
+                className="text-2xl font-bold sm:text-3xl"
+                style={{ color: VANILLA }}
+              >
+                {node.name}
+              </h1>
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
+                <span className="font-medium" style={{ color: MAUVE }}>
+                  {sourceTooltip ? (
+                    <span title={sourceTooltip}>{node.source}</span>
+                  ) : (
+                    node.source
+                  )}
                 </span>
-                <span className="rounded-full px-3 py-1 text-sm font-medium" style={{ color: MAUVE }}>
-                  {difficultyAverage === null
-                    ? 'No ratings yet'
-                    : `${difficultyAverage.toFixed(1)} / 10`}
-                </span>
-                <span className="text-sm" style={{ color: TEXT_SECONDARY }}>
-                  {difficultyVoteCount === 0
-                    ? 'Be the first to rate this problem.'
-                    : `${difficultyVoteCount} ${difficultyVoteCount === 1 ? 'vote' : 'votes'}`}
-                </span>
+                {node.author ? (
+                  <>
+                    <span style={{ color: TEXT_SECONDARY }}>·</span>
+                    <span style={{ color: TEXT_SECONDARY }}>{node.author}</span>
+                  </>
+                ) : null}
+                <DifficultyBox
+                  difficulty={(node.difficulty ?? 'N/A') as ProblemDifficulty}
+                />
               </div>
-              <form className="mt-4 flex flex-wrap items-center gap-3" onSubmit={handleDifficultySubmit}>
-                <label className="text-sm font-medium" style={{ color: TEXT_SECONDARY }}>
-                  Your rating
-                </label>
-                <select
-                  value={difficultyValue}
-                  onChange={event => setDifficultyValue(event.target.value)}
-                  className="rounded-md px-3 py-2 text-sm"
-                  style={{
-                    borderColor: BORDER_STRONG,
-                    background: 'rgba(14, 11, 31, 0.72)',
-                    color: VANILLA,
-                  }}
-                >
-                  {DIFFICULTY_OPTIONS.map(option => (
-                    <option key={option} value={option} style={{ color: '#0A0818' }}>
-                      {option.toFixed(1)}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  type="submit"
-                  disabled={isSubmittingDifficulty}
-                  className="rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
-                  style={{
-                    border: `1px solid ${BORDER_STRONG}`,
-                    background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                    color: VANILLA,
-                  }}
-                >
-                  {isSubmittingDifficulty ? 'Saving…' : 'Submit rating'}
-                </button>
-              </form>
-              {difficultyMessage ? (
-                <p className="mt-3 text-sm" style={{ color: MAUVE }}>
-                  {difficultyMessage}
+              {node.module?.frontmatter?.id && node.module.fields?.division ? (
+                <p className="mt-3 text-sm" style={{ color: TEXT_SECONDARY }}>
+                  From module{' '}
+                  <Link
+                    className="hover:underline"
+                    style={{ color: MAUVE }}
+                    to={`/${node.module.fields.division}/${node.module.frontmatter.id}/`}
+                  >
+                    {node.module.frontmatter.title}
+                  </Link>
                 </p>
               ) : null}
-              <details className="mt-4">
-                <summary
-                  className="cursor-pointer text-sm font-medium"
-                  style={{ color: MAUVE }}
-                >
-                  Understand the scale
-                </summary>
-                <div className="mt-3 whitespace-pre-wrap text-sm leading-6" style={{ color: TEXT_SECONDARY }}>
-                  {DIFFICULTY_SCALE_TEXT}
+              <div className="mt-4">
+                <ConfettiProvider>
+                  <ProblemStatusCheckbox problem={problem} size="large" />
+                </ConfettiProvider>
+              </div>
+              <div
+                className="mt-5 rounded-2xl px-4 py-4 shadow-lg"
+                style={{
+                  background: 'rgba(14, 11, 31, 0.72)',
+                }}
+              >
+                <div className="flex flex-wrap items-center gap-3">
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: VANILLA }}
+                  >
+                    Community difficulty
+                  </span>
+                  <span
+                    className="rounded-full px-3 py-1 text-sm font-medium"
+                    style={{ color: MAUVE }}
+                  >
+                    {difficultyAverage === null
+                      ? 'No ratings yet'
+                      : `${difficultyAverage.toFixed(1)} / 10`}
+                  </span>
+                  <span className="text-sm" style={{ color: TEXT_SECONDARY }}>
+                    {difficultyVoteCount === 0
+                      ? 'Be the first to rate this problem.'
+                      : `${difficultyVoteCount} ${difficultyVoteCount === 1 ? 'vote' : 'votes'}`}
+                  </span>
                 </div>
-              </details>
-            </div>
+                <form
+                  className="mt-4 flex flex-wrap items-center gap-3"
+                  onSubmit={handleDifficultySubmit}
+                >
+                  <label
+                    className="text-sm font-medium"
+                    style={{ color: TEXT_SECONDARY }}
+                  >
+                    Your rating
+                  </label>
+                  <select
+                    value={difficultyValue}
+                    onChange={event => setDifficultyValue(event.target.value)}
+                    className="rounded-md px-3 py-2 text-sm"
+                    style={{
+                      borderColor: BORDER_STRONG,
+                      background: 'rgba(14, 11, 31, 0.72)',
+                      color: VANILLA,
+                    }}
+                  >
+                    {DIFFICULTY_OPTIONS.map(option => (
+                      <option
+                        key={option}
+                        value={option}
+                        style={{ color: '#0A0818' }}
+                      >
+                        {option.toFixed(1)}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="submit"
+                    disabled={isSubmittingDifficulty}
+                    className="rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
+                    style={{
+                      border: `1px solid ${BORDER_STRONG}`,
+                      background:
+                        '#6D3B9F',
+                      color: VANILLA,
+                    }}
+                  >
+                    {isSubmittingDifficulty ? 'Saving…' : 'Submit rating'}
+                  </button>
+                </form>
+                {difficultyMessage ? (
+                  <p className="mt-3 text-sm" style={{ color: MAUVE }}>
+                    {difficultyMessage}
+                  </p>
+                ) : null}
+                <details className="mt-4">
+                  <summary
+                    className="cursor-pointer text-sm font-medium"
+                    style={{ color: MAUVE }}
+                  >
+                    Understand the scale
+                  </summary>
+                  <div
+                    className="mt-3 text-sm leading-6 whitespace-pre-wrap"
+                    style={{ color: TEXT_SECONDARY }}
+                  >
+                    {DIFFICULTY_SCALE_TEXT}
+                  </div>
+                </details>
+              </div>
             </div>
           </header>
 
@@ -683,19 +707,27 @@ export default function ProblemTemplate(
           ) : null}
 
           {visibleTags.length === 0 ? (
-            <section className="mb-10 rounded-2xl p-5 shadow-lg" style={{
- :'1px solid rgba(229, 194, 255, 0.12)',
-              background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
-            }} aria-label="Suggest tags">
+            <section
+              className="mb-10 rounded-2xl p-5 shadow-lg"
+              style={{
+                background:
+                  'rgba(43, 30, 57, 0.92)',
+              }}
+              aria-label="Suggest tags"
+            >
               <h2 className="text-lg font-semibold" style={{ color: VANILLA }}>
                 Suggest tags for this problem
               </h2>
               <p className="mt-2 text-sm" style={{ color: TEXT_SECONDARY }}>
-                This problem does not have any tags yet. Add a few useful tags and
-                once enough people agree, they will be added here automatically.
+                This problem does not have any tags yet. Add a few useful tags
+                and once enough people agree, they will be added here
+                automatically.
               </p>
               <form className="mt-4" onSubmit={handleTagSubmission}>
-                <label className="mb-2 block text-sm font-medium" style={{ color: TEXT_SECONDARY }}>
+                <label
+                  className="mb-2 block text-sm font-medium"
+                  style={{ color: TEXT_SECONDARY }}
+                >
                   Suggested tags
                 </label>
                 <input
@@ -714,14 +746,17 @@ export default function ProblemTemplate(
                   <button
                     type="submit"
                     disabled={isSubmittingTags}
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm font-bold leading-tight disabled:cursor-not-allowed disabled:opacity-70"
-                    style={{
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties}
+                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold disabled:cursor-not-allowed disabled:opacity-70"
+                    style={
+                      {
+                        border: '1px solid rgba(240, 194, 255, 0.34)',
+                        background:
+                          '#6D3B9F',
+                        '--pme-color': '#F4EDEA',
+                        '--pme-hover-color': '#201C36',
+                        '--pme-wipe-bg': '#F0C2FF',
+                      } as React.CSSProperties
+                    }
                   >
                     {isSubmittingTags ? 'Submitting…' : 'Submit tags'}
                   </button>
@@ -743,14 +778,13 @@ export default function ProblemTemplate(
             >
               Problem
             </h2>
-            <ProblemStatementMarkdown>{node.statement ?? ''}</ProblemStatementMarkdown>
+            <ProblemStatementMarkdown>
+              {node.statement ?? ''}
+            </ProblemStatementMarkdown>
           </section>
 
           {problem.interaction.type === 'integer' && (
-            <section
-              className="mb-10"
-              aria-label="Submit numeric answer"
-            >
+            <section className="mb-10" aria-label="Submit numeric answer">
               <label
                 className="mb-2 block text-sm font-medium"
                 style={{ color: TEXT_SECONDARY }}
@@ -777,14 +811,17 @@ export default function ProblemTemplate(
                 <button
                   type="button"
                   onClick={runCheck}
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm font-bold leading-tight"
-                  style={{
-                    border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                    '--pme-color': '#F4EDEA',
-                    '--pme-hover-color': '#201C36',
-                    '--pme-wipe-bg': '#F0C2FF',
-                  } as React.CSSProperties}
+                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold"
+                  style={
+                    {
+                      border: '1px solid rgba(240, 194, 255, 0.34)',
+                      background:
+                        '#6D3B9F',
+                      '--pme-color': '#F4EDEA',
+                      '--pme-hover-color': '#201C36',
+                      '--pme-wipe-bg': '#F0C2FF',
+                    } as React.CSSProperties
+                  }
                 >
                   Check
                 </button>
@@ -804,7 +841,10 @@ export default function ProblemTemplate(
 
           {problem.interaction.type === 'mcq' && (
             <section className="mb-10" aria-label="Multiple choice">
-              <p className="mb-3 text-sm font-medium" style={{ color: TEXT_SECONDARY }}>
+              <p
+                className="mb-3 text-sm font-medium"
+                style={{ color: TEXT_SECONDARY }}
+              >
                 Select an answer
               </p>
               <ul className="space-y-2">
@@ -814,7 +854,8 @@ export default function ProblemTemplate(
                       className="flex cursor-pointer items-start gap-2 rounded-2xl px-3 py-2 shadow-lg"
                       style={{
                         border: '1px solid rgba(229, 194, 255, 0.12)',
-                        background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+                        background:
+                          'rgba(43, 30, 57, 0.92)',
                       }}
                     >
                       <input
@@ -827,9 +868,7 @@ export default function ProblemTemplate(
                         }}
                         className="mt-1"
                       />
-                      <span style={{ color: VANILLA }}>
-                        {choice}
-                      </span>
+                      <span style={{ color: VANILLA }}>{choice}</span>
                     </label>
                   </li>
                 ))}
@@ -866,14 +905,17 @@ export default function ProblemTemplate(
                 href={problem.solutionReveal.url}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm font-bold leading-tight"
-                style={{
-                  border: '1px solid rgba(240, 194, 255, 0.34)',
-                  background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                  '--pme-color': '#F4EDEA',
-                  '--pme-hover-color': '#201C36',
-                  '--pme-wipe-bg': '#F0C2FF',
-                } as React.CSSProperties}
+                className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold"
+                style={
+                  {
+                    border: '1px solid rgba(240, 194, 255, 0.34)',
+                    background:
+                      '#6D3B9F',
+                    '--pme-color': '#F4EDEA',
+                    '--pme-hover-color': '#201C36',
+                    '--pme-wipe-bg': '#F0C2FF',
+                  } as React.CSSProperties
+                }
               >
                 Show me the solution
                 <svg
@@ -890,14 +932,17 @@ export default function ProblemTemplate(
                 <button
                   type="button"
                   onClick={() => setSolutionOpen(o => !o)}
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm font-bold leading-tight"
-                  style={{
-                    border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                    '--pme-color': '#F4EDEA',
-                    '--pme-hover-color': '#201C36',
-                    '--pme-wipe-bg': '#F0C2FF',
-                  } as React.CSSProperties}
+                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold"
+                  style={
+                    {
+                      border: '1px solid rgba(240, 194, 255, 0.34)',
+                      background:
+                        '#6D3B9F',
+                      '--pme-color': '#F4EDEA',
+                      '--pme-hover-color': '#201C36',
+                      '--pme-wipe-bg': '#F0C2FF',
+                    } as React.CSSProperties
+                  }
                 >
                   {solutionOpen ? 'Hide solution' : 'Show me the solution'}
                 </button>
@@ -905,8 +950,8 @@ export default function ProblemTemplate(
                   <div
                     className="mt-6 rounded-2xl p-4 shadow-lg"
                     style={{
- :'1px solid rgba(229, 194, 255, 0.12)',
-                      background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+                      background:
+                        'rgba(43, 30, 57, 0.92)',
                     }}
                   >
                     <ProblemStatementMarkdown>
@@ -923,7 +968,11 @@ export default function ProblemTemplate(
           </section>
 
           <p className="text-sm" style={{ color: TEXT_SECONDARY }}>
-            <Link to="/problems/" className="hover:underline" style={{ color: MAUVE }}>
+            <Link
+              to="/problems/"
+              className="hover:underline"
+              style={{ color: MAUVE }}
+            >
               ← Back to all problems
             </Link>
           </p>

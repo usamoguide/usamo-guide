@@ -106,9 +106,9 @@ const MarkCompleteButton = ({
               id={menuId}
               className={`inline-flex w-full justify-center rounded-full pr-4 shadow-sm ${
                 state === 'Not Started' ? 'pl-4' : 'pl-3'
-              } py-2 text-sm leading-5 font-mono font-bold focus:outline-hidden`}
+              } py-2 font-mono text-sm leading-5 font-bold focus:outline-hidden`}
               style={{
-                background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
+                background: '#6D3B9F',
                 border: '1px solid rgba(240, 194, 255, 0.34)',
                 color: '#F4EDEA',
               }}
@@ -145,7 +145,8 @@ const MarkCompleteButton = ({
                   : 'origin-top-right'
               } absolute right-0 z-10 mt-2 w-36 rounded-xl shadow-lg focus:outline-hidden`}
               style={{
-                background: 'linear-gradient(180deg, rgba(54,37,72,0.97) 0%, rgba(31,22,42,0.99) 100%)',
+                background:
+                  'rgba(43, 30, 57, 0.98)',
               }}
             >
               <div className="py-1">
@@ -155,7 +156,7 @@ const MarkCompleteButton = ({
                       <button
                         onClick={() => onChange(option)}
                         className={classNames(
-                          'flex w-full items-center px-3 py-2 text-left text-sm font-mono',
+                          'flex w-full items-center px-3 py-2 text-left font-mono text-sm',
                           active
                             ? 'bg-white/10 text-[#F4EDEA]'
                             : 'text-[rgba(244,237,234,0.8)]'

@@ -118,7 +118,7 @@ const MemberCard = ({
   return (
     <li
       key={member.name}
- className="group pointer-events-none relative flex justify-center rounded-t-lg pt-8 pb-2 hover:pointer-events-auto hover:bg-white dark:hover:bg-gray-800"
+      className="group pointer-events-none relative flex justify-center rounded-t-lg pt-8 pb-2 hover:pointer-events-auto hover:bg-white dark:hover:bg-gray-800"
     >
       <div className="flex flex-col items-center gap-2">
         <div className="pointer-events-auto relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full lg:h-24 lg:w-24">
@@ -141,7 +141,7 @@ const MemberCard = ({
         </p>
 
         {/* Pop-out component */}
- <div className="absolute -top-[-100%] z-20 box-content hidden w-full rounded-b-lg bg-white group-hover:block dark:bg-gray-800">
+        <div className="absolute -top-[-100%] z-20 box-content hidden w-full rounded-b-lg bg-white group-hover:block dark:bg-gray-800">
           <div className="flex flex-col gap-3 px-5 pb-5">
             <ul className="flex justify-center gap-3">
               {Object.keys(socialMedia)

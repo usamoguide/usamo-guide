@@ -19,7 +19,7 @@ export default function RadioList({
 }) {
   return (
     <RadioGroup value={value} onChange={onChange}>
- <div className="-space-y-px rounded-md bg-[rgba(18,15,36,0.60)]">
+      <div className="-space-y-px rounded-md bg-[rgba(18,15,36,0.60)]">
         {options.map((option, idx) => (
           <RadioGroup.Option
             key={option}
@@ -59,9 +59,7 @@ export default function RadioList({
                     as="span"
                     className={classNames(
                       'block text-sm font-medium',
-                      checked
-                        ? 'text-[#F0C2FF]'
-                        : 'text-[#F4EDEA]'
+                      checked ? 'text-[#F0C2FF]' : 'text-[#F4EDEA]'
                     )}
                   >
                     {labelMap[option]}

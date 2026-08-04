@@ -63,7 +63,7 @@ const ScrollProgressButton = (): JSX.Element | null => {
         transform: `scale(${isVisible ? 1 : 0.8})`,
         transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-out',
         pointerEvents: pointerEvents as any,
-        background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
+        background: '#6D3B9F',
         border: '1px solid rgba(240, 194, 255, 0.34)',
       }}
       aria-label="Back to top"

@@ -1,25 +1,22 @@
 import { useLocation } from '@gatsbyjs/reach-router';
 import classNames from 'classnames';
 import { Link, navigate } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import * as React from 'react';
+import ActiveCardsHome from '../components/activeCardsHome';
+import AetherFlowHero from '../components/Index/AetherFlowHero';
 import { Feature } from '../components/Index/Feature';
 import { ProblemsetsFeature } from '../components/Index/features/ProblemsetsFeature';
 import { ProgressTrackingFeature } from '../components/Index/features/ProgressTrackingFeature';
 import { ResourcesFeature } from '../components/Index/features/ResourcesFeature';
-import AetherFlowHero from '../components/Index/AetherFlowHero';
-import ActiveCardsHome from '../components/activeCardsHome';
-import TestimonialsSection from '../components/TestimonialsSection';
+import LightRays from '../components/Index/LightRays';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import LightRays from '../components/Index/LightRays';
 import {
   useCurrentUser,
   useIsUserDataLoaded,
 } from '../context/UserDataContext/UserDataContext';
-
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 /**
  * Index-only DARK palette:
@@ -35,19 +32,14 @@ import {
 const MIDNIGHT = '#120F24';
 const MIDNIGHT_DEEP = '#0A0818';
 
-
 const VANILLA = '#F4EDEA';
 const MAUVE = '#F0C2FF';
-
-
 
 const TEXT_PRIMARY = VANILLA;
 const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.78)';
 const TEXT_MUTED = 'rgba(244, 237, 234, 0.62)';
 
-
 const containerClasses = 'max-w-(--breakpoint-xl) mx-auto px-4 sm:px-6 lg:px-8';
-
 
 function RevealSection({
   children,
@@ -74,12 +66,10 @@ function RevealSection({
   );
 }
 
-
 export default function IndexPage({ path }): JSX.Element {
   const currentUser = useCurrentUser();
   const loading = useIsUserDataLoaded();
   const location = useLocation();
-
 
   React.useEffect(() => {
     try {
@@ -89,17 +79,14 @@ export default function IndexPage({ path }): JSX.Element {
     }
   }, [currentUser, loading, location]);
 
-
   React.useEffect(() => {
     const htmlStyle = document.documentElement.style;
     const bodyStyle = document.body.style;
     const prevHtmlOverscrollY = htmlStyle.overscrollBehaviorY;
     const prevBodyOverscrollY = bodyStyle.overscrollBehaviorY;
 
-
     htmlStyle.overscrollBehaviorY = 'none';
     bodyStyle.overscrollBehaviorY = 'none';
-
 
     return () => {
       htmlStyle.overscrollBehaviorY = prevHtmlOverscrollY;
@@ -107,35 +94,31 @@ export default function IndexPage({ path }): JSX.Element {
     };
   }, []);
 
-
   const linkStyle: React.CSSProperties = {
     color: MAUVE,
     textDecoration: 'none',
     fontWeight: 700,
   };
 
-
   const sectionHeadingClasses =
     'mx-auto flex max-w-4xl flex-col items-center text-center text-4xl font-bold tracking-tight md:text-5xl 2xl:text-6xl';
   const sectionSubtitleClasses =
     'mx-auto max-w-3xl text-center text-lg font-medium leading-relaxed md:text-xl 2xl:text-2xl';
   const infoCardStyle: React.CSSProperties = {
-    background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+    background:
+      'rgba(43, 30, 57, 0.92)',
     color: TEXT_PRIMARY,
   };
-
 
   return (
     <Layout>
       <SEO title={null} image={null} pathname={path} />
 
-
       <div className="fixed top-0 z-50 w-full">
         <div className="backdrop-blur-lg">
-            <TopNavigationBar hidePromoBar />
+          <TopNavigationBar hidePromoBar />
         </div>
       </div>
-
 
       {/* Begin Hero */}
       <AetherFlowHero />
@@ -143,13 +126,13 @@ export default function IndexPage({ path }): JSX.Element {
 
       {/* Wave transition: dark base */}
       <div
-        className="overflow-hidden leading-[0] pointer-events-none"
+        className="pointer-events-none overflow-hidden leading-[0]"
         style={{ backgroundColor: MIDNIGHT }}
       >
         <svg
           viewBox="0 0 1200 80"
           preserveAspectRatio="none"
-          className="w-full h-16 md:h-20 block"
+          className="block h-16 w-full md:h-20"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -159,17 +142,15 @@ export default function IndexPage({ path }): JSX.Element {
         </svg>
       </div>
 
-
       {/* Below hero: keep dark background but page-owned text stays vanilla/purple */}
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `linear-gradient(180deg, ${MIDNIGHT} 0%, ${MIDNIGHT_DEEP} 100%)`,
+          background: `${MIDNIGHT_DEEP}`,
           color: TEXT_PRIMARY,
         }}
       >
         <div className="h-6 sm:h-10 md:h-16 2xl:h-24"></div>
-
 
         <RevealSection className="px-6 sm:px-8 lg:px-10">
           <div className="mx-auto grid w-full max-w-6xl items-center justify-center gap-8 pb-3 md:grid-cols-[auto_auto] md:gap-x-10 md:pl-8 lg:gap-x-14 lg:pl-10">
@@ -181,11 +162,11 @@ export default function IndexPage({ path }): JSX.Element {
                 Learn Contest Math
               </h2>
               <p
-                className="mx-auto mt-4 max-w-2xl text-center text-lg font-medium leading-relaxed md:text-xl 2xl:text-2xl"
+                className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed font-medium md:text-xl 2xl:text-2xl"
                 style={{ color: TEXT_SECONDARY }}
               >
-                Carefully designed for math contest students - available to everyone,
-                for free.
+                Carefully designed for math contest students - available to
+                everyone, for free.
               </p>
             </div>
             <div className="flex justify-center">
@@ -199,10 +180,7 @@ export default function IndexPage({ path }): JSX.Element {
         </RevealSection>
 
         <div className={containerClasses}>
-
-
           <div className="h-12 md:h-20 2xl:h-36"></div>
-
 
           {/* Imported components may still have their own colors internally */}
           <RevealSection delay={100}>
@@ -211,14 +189,14 @@ export default function IndexPage({ path }): JSX.Element {
                 iconSrc="/images/feature-resources.png"
                 iconFallbackSrc="https://i.ibb.co/TD2gjPwB/feature-resources.png"
                 iconAlt="Resources icon"
-                iconClasses="from-black to-black"
+                iconClasses="bg-black"
                 title="Curated Resources"
                 blobClasses="[background-color:rgb(99,84,139)] hidden xl:block"
                 feature={<ResourcesFeature />}
                 fade="none"
               >
-                Learn new topics from a vetted list of high-quality resources. If one
-                resource doesn't click, look at another!
+                Learn new topics from a vetted list of high-quality resources.
+                If one resource doesn't click, look at another!
                 <span className="mt-3 block">
                   <Link to="/foundations" style={linkStyle}>
                     Explore Foundations Resources
@@ -226,19 +204,18 @@ export default function IndexPage({ path }): JSX.Element {
                 </span>
               </Feature>
 
-
               <Feature
                 iconSrc="/images/feature-problemsets.png"
                 iconFallbackSrc="https://i.ibb.co/S7mV5P3x/feature-problemsets.png"
                 iconAlt="Problemsets icon"
-                iconClasses="from-black to-black"
+                iconClasses="bg-black"
                 title="Extensive Problemsets"
-                blobClasses="from-black to-black"
+                blobClasses="bg-black"
                 feature={<ProblemsetsFeature />}
                 fade="none"
               >
-                Practice each topic with extensive problemsets and solutions covering a
-                wide range of difficulties.
+                Practice each topic with extensive problemsets and solutions
+                covering a wide range of difficulties.
                 <span className="mt-3 block">
                   <Link to="/problems" style={linkStyle}>
                     Go to Problems Page
@@ -248,9 +225,7 @@ export default function IndexPage({ path }): JSX.Element {
             </div>
           </RevealSection>
 
-
           <div className="h-6 md:h-10 2xl:h-24"></div>
-
 
           <RevealSection delay={150}>
             <div className="grid gap-6 lg:grid-cols-2">
@@ -258,14 +233,14 @@ export default function IndexPage({ path }): JSX.Element {
                 iconSrc="/images/feature-progress.png"
                 iconFallbackSrc="https://i.ibb.co/hJbCbhn9/feature-progress.png"
                 iconAlt="Progress tracking icon"
-                iconClasses="from-black to-black"
+                iconClasses="bg-black"
                 title="Progress Tracking"
                 blobClasses="[background-color:rgb(99,84,139)]"
                 feature={<ProgressTrackingFeature />}
                 fade="none"
               >
-                Use our progress-tracking tools to track your progress in the Guide and
-                stay motivated.
+                Use our progress-tracking tools to track your progress in the
+                Guide and stay motivated.
                 <span className="mt-3 block">
                   <Link to="/dashboard" style={linkStyle}>
                     Open Dashboard
@@ -273,25 +248,20 @@ export default function IndexPage({ path }): JSX.Element {
                 </span>
               </Feature>
 
-
               <Feature
                 iconSrc="/images/feature-community.png"
                 iconFallbackSrc="https://i.ibb.co/gLmZWq6n/feature-community.png"
                 iconAlt="Community help icon"
-                iconClasses="from-black to-black"
+                iconClasses="bg-black"
                 title="Help when you need it"
                 blobClasses="bg-green-200 dark:bg-green-800"
-                feature={
-                  <div className="">
-                  </div>
-                }
+                feature={<div className=""></div>}
                 fade="none"
               >
                 <span className="mb-4 block md:mb-8">
-                  Ask questions, share solutions, and learn from other contest students
-                  in our Discord community.
+                  Ask questions, share solutions, and learn from other contest
+                  students in our Discord community.
                 </span>
-
 
                 <a
                   href="https://discord.gg/X2zx6u53XH"
@@ -305,24 +275,22 @@ export default function IndexPage({ path }): JSX.Element {
             </div>
           </RevealSection>
 
-
           <div className="h-16 md:h-20 2xl:h-36"></div>
         </div>
       </div>
-      <ActiveCardsHome/>
-         {/* Section divider — glowing line */}
+      <ActiveCardsHome />
+      {/* Section divider */}
       <div
         className="pointer-events-none mx-auto w-2/3"
         style={{
           height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(197, 139, 255, 0.7), rgba(140, 80, 220, 0.9), rgba(197, 139, 255, 0.7), transparent)',
-          boxShadow: '0 0 18px 6px rgba(140, 80, 220, 0.35)',
+          background: 'rgba(197, 139, 255, 0.45)',
         }}
       />
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `linear-gradient(180deg, ${MIDNIGHT_DEEP} 0%, ${MIDNIGHT_DEEP} 100%)`,
+          background: `${MIDNIGHT_DEEP}`,
           color: TEXT_PRIMARY,
         }}
       >
@@ -370,20 +338,23 @@ export default function IndexPage({ path }): JSX.Element {
                     href="https://docs.google.com/document/d/1AUNOq6OlVcSZN_gUPfvyhimlh9hA4GNvNaLdzyflX_8/edit?usp=sharing"
                     target="_blank"
                     rel="noreferrer"
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-7 py-3 font-mono text-base font-bold leading-tight"
-                    style={{
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties}
+                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-7 py-3 font-mono text-base leading-tight font-bold"
+                    style={
+                      {
+                        border: '1px solid rgba(240, 194, 255, 0.34)',
+                        background:
+                          '#6D3B9F',
+                        '--pme-color': '#F4EDEA',
+                        '--pme-hover-color': '#201C36',
+                        '--pme-wipe-bg': '#F0C2FF',
+                      } as React.CSSProperties
+                    }
                   >
                     Get Involved
                   </a>
                 </div>
                 <div className="lg:col-span-5">
-                  <div className="overflow-hidden rounded-2xl ui-card-dark">
+                  <div className="ui-card-dark overflow-hidden rounded-2xl">
                     <img
                       src="/images/builders.png"
                       alt="USAMO Guide team collaboration"
@@ -399,179 +370,317 @@ export default function IndexPage({ path }): JSX.Element {
         </div>
       </div>
 
-
       {/* Begin FAQ */}
       <div
         className="relative transition-colors duration-500"
         style={{
-          background: `linear-gradient(180deg, ${MIDNIGHT} 0%, ${MIDNIGHT_DEEP} 100%)`,
+          background: `${MIDNIGHT_DEEP}`,
           color: TEXT_PRIMARY,
         }}
       >
-
         <div className="relative z-10 mx-auto max-w-(--breakpoint-xl) px-4 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-20 lg:px-8 lg:pt-20 lg:pb-28">
           <RevealSection>
-          <h2 className={sectionHeadingClasses} style={{ color: TEXT_PRIMARY }}>
-            Frequently asked questions
-          </h2>
-          <p className={sectionSubtitleClasses} style={{ color: TEXT_SECONDARY }}>
-            The essentials about how to use the Guide, get help, and contribute.
-          </p>
+            <h2
+              className={sectionHeadingClasses}
+              style={{ color: TEXT_PRIMARY }}
+            >
+              Frequently asked questions
+            </h2>
+            <p
+              className={sectionSubtitleClasses}
+              style={{ color: TEXT_SECONDARY }}
+            >
+              The essentials about how to use the Guide, get help, and
+              contribute.
+            </p>
           </RevealSection>
           <div className="pt-10 md:pt-16">
             <RevealSection delay={100}>
-            <dl className="mx-auto grid max-w-6xl gap-8 text-center md:grid-cols-2 md:gap-8">
-              <div>
-                <div className="rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    What are AMC, AIME, and USAMO?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      The American Mathematics Competitions (AMC) are the foundation of the U.S. math competition pipeline. The AMC 8 is a 25-question competition for middle school students, while the AMC 10/12 are 25-question contests for high school. Top scorers on the AMC 10/12 qualify for the American Invitational Mathematics Examination (AIME), a 15-question proof-based competition. The very top AIME scorers then qualify for the USA Mathematical Olympiad (USAMO) or USA Junior Mathematical Olympiad (USAJMO), representing the pinnacle of American high school mathematics. For official contest information, dates, and registration, visit the{' '}
-                      <a
-                        href="https://www.maa.org/math-competitions"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={linkStyle}
+              <dl className="mx-auto grid max-w-6xl gap-8 text-center md:grid-cols-2 md:gap-8">
+                <div>
+                  <div
+                    className="rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      What are AMC, AIME, and USAMO?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        MAA competitions page
-                      </a>
-                      .
-                    </p>
-                  </dd>
-                </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    Is this an official syllabus?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      No. The USAMO Guide is a community-curated, crowdsourced roadmap created to help learners systematically prepare for the AMC, AIME, and USAMO. It reflects common contest topics, problem-solving techniques, and curriculum design best practices—but it does not represent an official syllabus or endorsement from the MAA. The content is continuously updated based on community feedback and contributions, making it a living resource rather than a static document.
-                    </p>
-                  </dd>
-                </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    How do I report a problem or ask a question?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      We value your feedback! If you encounter any issue while using the guide—whether it's a website bug, typo, broken link, unclear explanation, or confusing problem—please let us know. Click the "Contact Us" button at the top of the page or email us at{' '}
-                      <a
-                        href="mailto:contact@usamoguide.com"
-                        style={linkStyle}
+                        The American Mathematics Competitions (AMC) are the
+                        foundation of the U.S. math competition pipeline. The
+                        AMC 8 is a 25-question competition for middle school
+                        students, while the AMC 10/12 are 25-question contests
+                        for high school. Top scorers on the AMC 10/12 qualify
+                        for the American Invitational Mathematics Examination
+                        (AIME), a 15-question proof-based competition. The very
+                        top AIME scorers then qualify for the USA Mathematical
+                        Olympiad (USAMO) or USA Junior Mathematical Olympiad
+                        (USAJMO), representing the pinnacle of American high
+                        school mathematics. For official contest information,
+                        dates, and registration, visit the{' '}
+                        <a
+                          href="https://www.maa.org/math-competitions"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={linkStyle}
+                        >
+                          MAA competitions page
+                        </a>
+                        .
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      Is this an official syllabus?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        contact@usamoguide.com
-                      </a>
-                      . For technical contributions or bug reports, you can also open an issue on our{' '}
-                      <a
-                        href="https://github.com/usamoguide/usamo-guide"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={linkStyle}
+                        No. The USAMO Guide is a community-curated, crowdsourced
+                        roadmap created to help learners systematically prepare
+                        for the AMC, AIME, and USAMO. It reflects common contest
+                        topics, problem-solving techniques, and curriculum
+                        design best practices—but it does not represent an
+                        official syllabus or endorsement from the MAA. The
+                        content is continuously updated based on community
+                        feedback and contributions, making it a living resource
+                        rather than a static document.
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      How do I report a problem or ask a question?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        GitHub repository
-                      </a>
-                      .
-                    </p>
-                  </dd>
-                </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    I'm looking for classes, club curriculum, or live instruction...
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      USAMO Guide provides structured self-paced learning material. For live instruction, check out Art of Problem Solving (AoPS) online classes, which offer comprehensive courses taught by experienced competition coaches. You can also join USAMO Guide study groups to learn alongside peers with structured accountability, or participate in our weekly mock contests to practice under realistic competition conditions.
-                    </p>
-                  </dd>
-                </div>
-              </div>
-              <div className="mt-6 md:mt-0">
-                <div className="rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    Is this guide only for USAMO qualifiers?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      Absolutely not! USAMO Guide is designed for the entire journey from AMC 8 through USAMO/USAJMO. Whether you're a middle schooler preparing for your first AMC 8, a high schooler working toward AIME qualification, or an advanced student aiming for USAMO, this guide has structured content at the right difficulty level for you. Each section starts with foundational concepts and progressively builds to olympiad-level problem-solving, so you can learn at your own pace.
-                    </p>
-                  </dd>
-                </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    How can I get help?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      We have multiple ways to help! If you get stuck on a problem or concept, ask questions in our{' '}
-                      <a
-                        href="https://discord.gg/X2zx6u53XH"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={linkStyle}
+                        We value your feedback! If you encounter any issue while
+                        using the guide—whether it's a website bug, typo, broken
+                        link, unclear explanation, or confusing problem—please
+                        let us know. Click the "Contact Us" button at the top of
+                        the page or email us at{' '}
+                        <a
+                          href="mailto:contact@usamoguide.com"
+                          style={linkStyle}
+                        >
+                          contact@usamoguide.com
+                        </a>
+                        . For technical contributions or bug reports, you can
+                        also open an issue on our{' '}
+                        <a
+                          href="https://github.com/usamoguide/usamo-guide"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={linkStyle}
+                        >
+                          GitHub repository
+                        </a>
+                        .
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      I'm looking for classes, club curriculum, or live
+                      instruction...
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        Discord community
-                      </a>
-                      {' '}where community members and mentors actively engage. You can also join a study group to learn with peers, connect with a mentor for personalized guidance, or reach out via the Contact Us button for specific questions about the guide itself.
-                    </p>
-                  </dd>
+                        USAMO Guide provides structured self-paced learning
+                        material. For live instruction, check out Art of Problem
+                        Solving (AoPS) online classes, which offer comprehensive
+                        courses taught by experienced competition coaches. You
+                        can also join USAMO Guide study groups to learn
+                        alongside peers with structured accountability, or
+                        participate in our weekly mock contests to practice
+                        under realistic competition conditions.
+                      </p>
+                    </dd>
+                  </div>
                 </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    How can I contribute?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      Contributions are essential to making USAMO Guide better for everyone! You can contribute in many ways: suggest edits to explanations, add new problems, fix typos, improve visualizations, or help with code improvements. Visit our{' '}
-                      <a
-                        href="https://github.com/usamoguide/usamo-guide"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={linkStyle}
+                <div className="mt-6 md:mt-0">
+                  <div
+                    className="rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      Is this guide only for USAMO qualifiers?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        GitHub repository
-                      </a>
-                      {' '}to find detailed contribution guidelines, view open issues, and submit pull requests. All contributions are appreciated and help build a stronger resource for the community!
-                    </p>
-                  </dd>
-                </div>
-                <div className="mt-6 rounded-2xl p-6 text-left shadow-lg" style={infoCardStyle}>
-                  <dt className="text-lg leading-6 font-medium" style={{ color: TEXT_PRIMARY }}>
-                    Is this open source?
-                  </dt>
-                  <dd className="mt-2">
-                    <p className="text-base leading-6" style={{ color: TEXT_SECONDARY }}>
-                      Yes! USAMO Guide is fully open source. The entire codebase, content, and infrastructure are freely available on our{' '}
-                      <a
-                        href="https://github.com/usamoguide/usamo-guide"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={linkStyle}
+                        Absolutely not! USAMO Guide is designed for the entire
+                        journey from AMC 8 through USAMO/USAJMO. Whether you're
+                        a middle schooler preparing for your first AMC 8, a high
+                        schooler working toward AIME qualification, or an
+                        advanced student aiming for USAMO, this guide has
+                        structured content at the right difficulty level for
+                        you. Each section starts with foundational concepts and
+                        progressively builds to olympiad-level problem-solving,
+                        so you can learn at your own pace.
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      How can I get help?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
                       >
-                        GitHub Repository
-                      </a>
-                      . This means you can fork it, use it for your own projects, contribute improvements, or learn from how it's built. We believe in transparency and community collaboration, so everything is open for inspection and contribution.
-                    </p>
-                  </dd>
+                        We have multiple ways to help! If you get stuck on a
+                        problem or concept, ask questions in our{' '}
+                        <a
+                          href="https://discord.gg/X2zx6u53XH"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={linkStyle}
+                        >
+                          Discord community
+                        </a>{' '}
+                        where community members and mentors actively engage. You
+                        can also join a study group to learn with peers, connect
+                        with a mentor for personalized guidance, or reach out
+                        via the Contact Us button for specific questions about
+                        the guide itself.
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      How can I contribute?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
+                      >
+                        Contributions are essential to making USAMO Guide better
+                        for everyone! You can contribute in many ways: suggest
+                        edits to explanations, add new problems, fix typos,
+                        improve visualizations, or help with code improvements.
+                        Visit our{' '}
+                        <a
+                          href="https://github.com/usamoguide/usamo-guide"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={linkStyle}
+                        >
+                          GitHub repository
+                        </a>{' '}
+                        to find detailed contribution guidelines, view open
+                        issues, and submit pull requests. All contributions are
+                        appreciated and help build a stronger resource for the
+                        community!
+                      </p>
+                    </dd>
+                  </div>
+                  <div
+                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    style={infoCardStyle}
+                  >
+                    <dt
+                      className="text-lg leading-6 font-medium"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
+                      Is this open source?
+                    </dt>
+                    <dd className="mt-2">
+                      <p
+                        className="text-base leading-6"
+                        style={{ color: TEXT_SECONDARY }}
+                      >
+                        Yes! USAMO Guide is fully open source. The entire
+                        codebase, content, and infrastructure are freely
+                        available on our{' '}
+                        <a
+                          href="https://github.com/usamoguide/usamo-guide"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={linkStyle}
+                        >
+                          GitHub Repository
+                        </a>
+                        . This means you can fork it, use it for your own
+                        projects, contribute improvements, or learn from how
+                        it's built. We believe in transparency and community
+                        collaboration, so everything is open for inspection and
+                        contribution.
+                      </p>
+                    </dd>
+                  </div>
                 </div>
-              </div>
-            </dl>
+              </dl>
             </RevealSection>
           </div>
         </div>
       </div>
       {/*End FAQ*/}
 
-      
       {/* Footer: dark bg + vanilla text */}
       <div style={{ background: MIDNIGHT }}>
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 py-12">
-          <p className="text-center text-base leading-6" style={{ color: TEXT_MUTED }}>
+          <p
+            className="text-center text-base leading-6"
+            style={{ color: TEXT_MUTED }}
+          >
             &copy; {new Date().getFullYear()} USAMO Guide.
             <br />
-            No part of this website may be reproduced or commercialized in any manner without prior written permission.{' '}
+            No part of this website may be reproduced or commercialized in any
+            manner without prior written permission.{' '}
             <Link to="https://usamoguide.com/license.txt" style={linkStyle}>
               License
             </Link>

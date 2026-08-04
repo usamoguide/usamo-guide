@@ -61,14 +61,15 @@ function ProblemHit({ hit }: ProblemHitProps) {
       }}
       className="group relative cursor-pointer overflow-hidden rounded-2xl p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(101,86,141,0.28)]"
       style={{
-        background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+        background:
+          'rgba(43, 30, 57, 0.92)',
       }}
     >
       <div
         className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            'linear-gradient(180deg, rgba(101, 86, 141, 0.16) 0%, rgba(101, 86, 141, 0.05) 32%, transparent 100%)',
+            'transparent',
         }}
       />
       <div className="relative flex w-full flex-row justify-between">
@@ -123,39 +124,39 @@ function ProblemHit({ hit }: ProblemHitProps) {
           className="text-sm text-[#D2D4C8] hover:text-[#F0C2FF]"
         >
           View Solution
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="mb-1 ml-0.5 inline h-4 w-4"
-            >
-              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-            </svg>
-          </a>
-        )}
+          <svg
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="mb-1 ml-0.5 inline h-4 w-4"
+          >
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+          </svg>
+        </a>
+      )}
       {!hideModules && !isBlindMode && (
         <>
-          <p className="mt-2 text-sm text-[#D2D4C8]">
-            Appears In:
-          </p>
+          <p className="mt-2 text-sm text-[#D2D4C8]">Appears In:</p>
           <ul className="ml-6 list-disc">
-            {problemModules.map(({ id: moduleID, title: moduleLabel, section }) => (
-              <li key={moduleID}>
-                {section ? (
-                  <Link
-                    onClick={e => e.stopPropagation()}
-                    to={`/${section}/${moduleID}/#problem-${hit.objectID}`}
-                    className="text-sm text-[#8BC2FF] hover:text-[#B8DCFF]"
-                  >
-                    {moduleLabel}
-                  </Link>
-                ) : (
-                  <span className="text-sm text-[#D2D4C8]">
-                    {moduleLabel}
-                  </span>
-                )}
-              </li>
-            ))}
+            {problemModules.map(
+              ({ id: moduleID, title: moduleLabel, section }) => (
+                <li key={moduleID}>
+                  {section ? (
+                    <Link
+                      onClick={e => e.stopPropagation()}
+                      to={`/${section}/${moduleID}/#problem-${hit.objectID}`}
+                      className="text-sm text-[#8BC2FF] hover:text-[#B8DCFF]"
+                    >
+                      {moduleLabel}
+                    </Link>
+                  ) : (
+                    <span className="text-sm text-[#D2D4C8]">
+                      {moduleLabel}
+                    </span>
+                  )}
+                </li>
+              )
+            )}
           </ul>
         </>
       )}

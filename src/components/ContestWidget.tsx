@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const ContestWidget = () => (
   <div
-    className="rounded-2xl p-6 shadow-lg animate-in zoom-in-95"
+    className="animate-in zoom-in-95 rounded-2xl p-6 shadow-lg"
     style={{
-      background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+      background:
+        'rgba(43, 30, 57, 0.92)',
     }}
   >
     <img
@@ -15,4 +16,4 @@ const ContestWidget = () => (
   </div>
 );
 
-export default ContestWidget
+export default ContestWidget;

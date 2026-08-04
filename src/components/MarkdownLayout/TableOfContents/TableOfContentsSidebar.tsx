@@ -24,7 +24,7 @@ const TableOfContentsSidebar = ({
   const links = genLinksFromTOCHeadings(tableOfContents, getLinkStyles);
 
   return (
- <div className="mx-auto w-full max-w-sm rounded-2xl bg-white/95 p-6 shadow-sm dark:bg-gray-800/90">
+    <div className="mx-auto w-full max-w-sm rounded-2xl bg-white/95 p-6 shadow-sm dark:bg-gray-800/90">
       <LinksToEdit className="group mb-4 inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700" />
       {tableOfContents.length > 1 && (
         <>

@@ -30,13 +30,16 @@ const VANILLA = '#F4EDEA';
 const PLUM_DEEP = '#1B1427';
 const PLUM_MID = '#2A1C37';
 const pageBackgroundClasses = 'min-h-screen transition-colors duration-500';
-const heroCardClasses = 'relative overflow-hidden rounded-3xl p-8 transition-all duration-500';
+const heroCardClasses =
+  'relative overflow-hidden rounded-3xl p-8 transition-all duration-500';
 const toolbarCardClasses = 'mb-5 rounded-2xl p-4 shadow-lg';
 const heroCardStyle: React.CSSProperties = {
-  background: 'linear-gradient(180deg, rgba(60, 40, 82, 0.9) 0%, rgba(37, 24, 52, 0.92) 100%)',
+  background:
+    'rgba(48, 32, 67, 0.91)',
 };
 const toolbarCardStyle: React.CSSProperties = {
-  background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+  background:
+    'rgba(43, 30, 57, 0.92)',
 };
 
 type DataProps = {
@@ -108,18 +111,20 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
 
       <div
         className={`problems-page ui-page ${pageBackgroundClasses}`}
-        style={{
-          background: `linear-gradient(180deg, #0D0D0D 0%, ${PLUM_DEEP} 38%, ${PLUM_MID} 72%, #15111D 100%)`,
-          color: VANILLA,
-          '--select-bg': '#0D0D0D',
-          '--select-menu-bg': '#0D0D0D',
-          '--select-border': 'rgba(240, 194, 255, 0.26)',
-          '--select-text': '#F4EDEA',
-          '--select-option-hover': 'rgba(240, 194, 255, 0.16)',
-          '--select-option-selected': 'rgba(240, 194, 255, 0.24)',
-          '--accent-soft': 'rgba(101, 86, 141, 0.22)',
-          '--accent-soft-strong': 'rgba(101, 86, 141, 0.34)',
-        } as React.CSSProperties}
+        style={
+          {
+            background: `${PLUM_DEEP}`,
+            color: VANILLA,
+            '--select-bg': '#0D0D0D',
+            '--select-menu-bg': '#0D0D0D',
+            '--select-border': 'rgba(240, 194, 255, 0.26)',
+            '--select-text': '#F4EDEA',
+            '--select-option-hover': 'rgba(240, 194, 255, 0.16)',
+            '--select-option-selected': 'rgba(240, 194, 255, 0.24)',
+            '--accent-soft': 'rgba(101, 86, 141, 0.22)',
+            '--accent-soft-strong': 'rgba(101, 86, 141, 0.34)',
+          } as React.CSSProperties
+        }
       >
         <TopNavigationBar />
 
@@ -129,21 +134,24 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
           future={{ preserveSharedStateOnUnmount: true }}
         >
           <div className="grid grid-cols-12 gap-x-6 px-6 pb-6 lg:px-9">
-            <aside className="col-span-12 pt-6 sm:col-span-4 md:col-span-3 lg:col-span-2 xl:col-span-2 hidden sm:block">
+            <aside className="col-span-12 hidden pt-6 sm:col-span-4 sm:block md:col-span-3 lg:col-span-2 xl:col-span-2">
               <div className="mb-4">
                 <BlindModeToggle />
               </div>
               <TagsRefinementList />
             </aside>
             <main className="col-span-12 sm:col-span-8 md:col-span-9 lg:col-span-10 xl:col-span-10">
-              <div className={`${heroCardClasses} ui-card-dark`} >
+              <div className={`${heroCardClasses} ui-card-dark`}>
                 <img
                   src="https://i.ibb.co/GQqCH4T2/fox-2.png"
                   aria-hidden="true"
                   className="pointer-events-none absolute bottom-0 left-8 h-[92%] w-auto object-contain object-bottom select-none"
                 />
                 <div className="relative mx-auto mb-6 max-w-3xl">
-                  <h1 className="mb-6 text-center text-3xl font-bold sm:text-5xl" style={{ color: VANILLA }}>
+                  <h1
+                    className="mb-6 text-center text-3xl font-bold sm:text-5xl"
+                    style={{ color: VANILLA }}
+                  >
                     Problems
                   </h1>
                   <div className="mx-auto max-w-md">
@@ -160,80 +168,96 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
                   style={toolbarCardStyle}
                 >
                   <div className="grid grid-cols-1 items-center gap-x-5 gap-y-3 sm:grid-cols-2 lg:grid-cols-6">
-                  {selectionMetadata.map(props => (
-                    <div
-                      className="tw-forms-disable-all-descendants col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-2"
-                      key={props.attribute}
-                    >
-                      <Selection {...props} />
+                    {selectionMetadata.map(props => (
+                      <div
+                        className="tw-forms-disable-all-descendants col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-2"
+                        key={props.attribute}
+                      >
+                        <Selection {...props} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mb-5 pt-4">
+                    <div className="flex flex-wrap justify-center gap-3">
+                      <button
+                        onClick={() => sendShuffle(shuffle + 1)}
+                        className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
+                        style={
+                          {
+                            border: '1px solid rgba(240, 194, 255, 0.34)',
+                            background:
+                              '#6D3B9F',
+                            '--pme-color': '#F4EDEA',
+                            '--pme-hover-color': '#201C36',
+                            '--pme-wipe-bg': '#F0C2FF',
+                          } as React.CSSProperties
+                        }
+                        title={'Shuffle problems'}
+                      >
+                        <svg
+                          className={'mr-2 h-5 w-5 text-gray-200'}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                          />
+                        </svg>
+                        Shuffle
+                      </button>
+                      <button
+                        onClick={() => sendRandom(random + 1)}
+                        className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
+                        style={
+                          {
+                            border: '1px solid rgba(240, 194, 255, 0.34)',
+                            background:
+                              '#EFE3FF',
+                            '--pme-color': '#2C1842',
+                            '--pme-hover-color': '#201C36',
+                            '--pme-wipe-bg': '#F0C2FF',
+                          } as React.CSSProperties
+                        }
+                        title={'Go to a random unsolved problem'}
+                      >
+                        <svg
+                          className={'mr-2 h-5 w-5 text-[#2C1842]'}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="2"
+                            ry="2"
+                          />
+                          <circle cx="8" cy="8" r="1" />
+                          <circle cx="16" cy="8" r="1" />
+                          <circle cx="8" cy="16" r="1" />
+                          <circle cx="16" cy="16" r="1" />
+                          <circle cx="12" cy="12" r="1" />
+                        </svg>
+                        Random
+                      </button>
                     </div>
-                  ))}
+                  </div>
                 </div>
-                <div className="mb-5 pt-4">
-                  <div className="flex flex-wrap justify-center gap-3">
-                    <button
-                      onClick={() => sendShuffle(shuffle + 1)}
-                      className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm font-bold leading-tight"
-                      style={{
-                        border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                        '--pme-color': '#F4EDEA',
-                        '--pme-hover-color': '#201C36',
-                        '--pme-wipe-bg': '#F0C2FF',
-                      } as React.CSSProperties}
-                      title={'Shuffle problems'}
-                    >
-                    <svg
-                      className={'mr-2 h-5 w-5 text-gray-200'}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                      />
-                    </svg>
-                    Shuffle
-                  </button>
-                  <button
-                    onClick={() => sendRandom(random + 1)}
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm font-bold leading-tight"
-                    style={{
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: 'linear-gradient(135deg, #FFF8FF 0%, #F3E7FF 38%, #D7B2FF 100%)',
-                      '--pme-color': '#2C1842',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties}
-                    title={'Go to a random unsolved problem'}
-                  >
-                    <svg
-                      className={'mr-2 h-5 w-5 text-[#2C1842]'}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <circle cx="8" cy="8" r="1" />
-                      <circle cx="16" cy="8" r="1" />
-                      <circle cx="8" cy="16" r="1" />
-                      <circle cx="16" cy="16" r="1" />
-                      <circle cx="12" cy="12" r="1" />
-                    </svg>
-                    Random
-                  </button>
-                </div>
-                </div>
-              </div>
               </div>
               <ProblemHits shuffle={shuffle} random={random} />
               <div className="mt-3 flex flex-wrap justify-center">
-                <Pagination showLast={true} className="problems-pagination pr-4" />
+                <Pagination
+                  showLast={true}
+                  className="problems-pagination pr-4"
+                />
                 <HitsPerPage
                   items={[
                     { label: '24 hits per page', value: 24, default: true },

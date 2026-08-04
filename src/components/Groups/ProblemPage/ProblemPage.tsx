@@ -1,7 +1,5 @@
 import dayjs from 'dayjs';
-import { Link, navigate } from 'gatsby';
 import React from 'react';
-import toast from 'react-hot-toast';
 import { useActiveGroup } from '../../../hooks/groups/useActiveGroup';
 import { usePost } from '../../../hooks/groups/usePost';
 import { usePostActions } from '../../../hooks/groups/usePostActions';
@@ -48,8 +46,11 @@ export default function ProblemPage(props) {
         pathname={props.path}
       />
       <TopNavigationBar />
-      <div className="relative overflow-hidden bg-gradient-to-b from-white via-orange-50 to-orange-100 dark:from-black dark:via-[#1a0d00] dark:to-[#0b0a12] transition-colors duration-500">
-        <div className="pointer-events-none absolute inset-0 bg-repeat bg-center opacity-20" style={{ backgroundImage: "url('/images/starbg.png')" }} />
+      <div className="relative overflow-hidden bg-orange-50 transition-colors duration-500 dark:bg-[#0b0a12]">
+        <div
+          className="pointer-events-none absolute inset-0 bg-center bg-repeat opacity-20"
+          style={{ backgroundImage: "url('/images/starbg.png')" }}
+        />
         <nav className="relative z-10 mt-6 mb-4 flex" aria-label="Breadcrumb">
           <Breadcrumbs
             className="mx-auto w-full max-w-(--breakpoint-xl) px-4 pt-3 pb-4 sm:px-6 lg:px-8"
@@ -59,19 +60,19 @@ export default function ProblemPage(props) {
         </nav>
       </div>
       <main
-        className="relative flex-1 overflow-y-auto focus:outline-hidden bg-transparent"
+        className="relative flex-1 overflow-y-auto bg-transparent focus:outline-hidden"
         tabIndex={-1}
       >
         <div className="pb-8 xl:pb-10">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 xl:grid xl:max-w-(--breakpoint-xl) xl:grid-cols-3">
             <div className="xl:col-span-2 xl:pr-8">
- <div className="rounded-2xl bg-white/90 p-6 shadow-xl dark:bg-slate-900/75">
+              <div className="rounded-2xl bg-white/90 p-6 shadow-xl dark:bg-slate-900/75">
                 <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl dark:text-white">
                       Problem: {problem.name}
                     </h1>
-                    <p className="mt-2 text-base text-orange-700 dark:text-orange-300 font-medium">
+                    <p className="mt-2 text-base font-medium text-orange-700 dark:text-orange-300">
                       {post.name}
                     </p>
                   </div>
@@ -82,79 +83,79 @@ export default function ProblemPage(props) {
                 <div className="py-6 xl:pt-8 xl:pb-12">
                   <SafeMarkdownRenderer>{problem.body}</SafeMarkdownRenderer>
 
-                {problem.hints.length > 0 && (
-                  <>
-                    <div className="h-10" />
-
-                    <div>
-                      {problem.hints.map(hint => (
-                        <Spoiler
-                          title={'Hint: ' + hint.name || 'Hint'}
-                          key={hint.id}
-                        >
-                          <div className="pb-4">
-                            <SafeMarkdownRenderer>
-                              {hint.body}
-                            </SafeMarkdownRenderer>
-                          </div>
-                        </Spoiler>
-                      ))}
-                    </div>
-                  </>
-                )}
-
-                {problem.solution &&
-                  ((problem.solutionReleaseMode == 'due-date' &&
-                    post.dueTimestamp) ||
-                    problem.solutionReleaseMode == 'now' ||
-                    problem.solutionReleaseMode == 'custom') && (
+                  {problem.hints.length > 0 && (
                     <>
                       <div className="h-10" />
+
                       <div>
-                        <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
-                          Solution
-                        </h2>
+                        {problem.hints.map(hint => (
+                          <Spoiler
+                            title={'Hint: ' + hint.name || 'Hint'}
+                            key={hint.id}
+                          >
+                            <div className="pb-4">
+                              <SafeMarkdownRenderer>
+                                {hint.body}
+                              </SafeMarkdownRenderer>
+                            </div>
+                          </Spoiler>
+                        ))}
                       </div>
-                      <div className="h-2" />
-                      {problem.solutionReleaseMode == 'now' ||
-                      (problem.solutionReleaseMode == 'due-date' &&
-                        post.dueTimestamp &&
-                        new Date(post.dueTimestamp).getTime() < Date.now()) ||
-                      (problem.solutionReleaseMode == 'custom' &&
-                        customReleaseTimestamp &&
-                        new Date(customReleaseTimestamp).getTime() <
-                          Date.now()) ? (
-                        <Spoiler title={'Show Solution'}>
-                          <div className="pb-4">
-                            <SafeMarkdownRenderer>
-                              {problem.solution}
-                            </SafeMarkdownRenderer>
-                          </div>
-                        </Spoiler>
-                      ) : (
-                        ((problem.solutionReleaseMode == 'due-date' &&
-                          post.dueTimestamp) ||
-                          problem.solutionReleaseMode == 'custom') && (
-                          <p className="text-gray-600 italic dark:text-gray-400">
-                            The problem solution will be released on{' '}
-                            {problem &&
-                              dayjs(
-                                new Date(releaseDisplayTimestamp!)
-                              ).format('MMMM DD h:mma')}
-                            .
-                          </p>
-                        )
-                      )}
                     </>
                   )}
+
+                  {problem.solution &&
+                    ((problem.solutionReleaseMode == 'due-date' &&
+                      post.dueTimestamp) ||
+                      problem.solutionReleaseMode == 'now' ||
+                      problem.solutionReleaseMode == 'custom') && (
+                      <>
+                        <div className="h-10" />
+                        <div>
+                          <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
+                            Solution
+                          </h2>
+                        </div>
+                        <div className="h-2" />
+                        {problem.solutionReleaseMode == 'now' ||
+                        (problem.solutionReleaseMode == 'due-date' &&
+                          post.dueTimestamp &&
+                          new Date(post.dueTimestamp).getTime() < Date.now()) ||
+                        (problem.solutionReleaseMode == 'custom' &&
+                          customReleaseTimestamp &&
+                          new Date(customReleaseTimestamp).getTime() <
+                            Date.now()) ? (
+                          <Spoiler title={'Show Solution'}>
+                            <div className="pb-4">
+                              <SafeMarkdownRenderer>
+                                {problem.solution}
+                              </SafeMarkdownRenderer>
+                            </div>
+                          </Spoiler>
+                        ) : (
+                          ((problem.solutionReleaseMode == 'due-date' &&
+                            post.dueTimestamp) ||
+                            problem.solutionReleaseMode == 'custom') && (
+                            <p className="text-gray-600 italic dark:text-gray-400">
+                              The problem solution will be released on{' '}
+                              {problem &&
+                                dayjs(
+                                  new Date(releaseDisplayTimestamp!)
+                                ).format('MMMM DD h:mma')}
+                              .
+                            </p>
+                          )
+                        )}
+                      </>
+                    )}
+                </div>
+                <ProblemSubmission problem={problem} />
               </div>
-              <ProblemSubmission problem={problem} />
+              <aside className="hidden xl:block xl:pl-8">
+                <ProblemSidebar post={post} problem={problem} />
+              </aside>
             </div>
-            <aside className="hidden xl:block xl:pl-8">
-              <ProblemSidebar post={post} problem={problem} />
-            </aside>
           </div>
-        </div>
         </div>
       </main>
     </Layout>

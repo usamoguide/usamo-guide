@@ -44,9 +44,7 @@ const Spoiler = ({
   }
 
   return (
-    <div
- className={`mb-4 rounded-md bg-gray-50 dark:bg-gray-800/50`}
-    >
+    <div className={`mb-4 rounded-md bg-gray-50 dark:bg-gray-800/50`}>
       <p
         className="flex items-start p-4"
         onClick={e => {

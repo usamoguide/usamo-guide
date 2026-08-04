@@ -89,13 +89,8 @@ export default function Template(props): JSX.Element {
 
       <div
         data-page-tone="dark"
-        className="relative overflow-hidden bg-gradient-to-b from-[#0D0A1D] via-[#090713] to-[#05040D]"
+        className="relative overflow-hidden bg-[#090713]"
       >
-
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_16%,rgba(191,128,255,0.07),transparent_34%),radial-gradient(circle_at_18%_84%,rgba(112,66,138,0.09),transparent_34%),linear-gradient(180deg,rgba(7,6,18,0.48),rgba(8,7,18,0.82)_70%,rgba(4,3,10,0.96))]" />
-
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(3,2,8,0.42),rgba(3,2,8,0.08)_22%,rgba(3,2,8,0.08)_78%,rgba(3,2,8,0.42))]" />
-
         <div className="pointer-events-none absolute inset-0">
           <svg className="h-full w-full opacity-[0.04] dark:opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
             <defs>

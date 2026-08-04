@@ -1,7 +1,6 @@
 import { PageProps } from 'gatsby';
 import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
-import Card from '../components/Dashboard/DashboardCard';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
@@ -29,8 +28,10 @@ const Field = ({
           type="text"
           id={id}
           className={
-            'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:outline-none focus:ring-1 focus:ring-[#70428A]' +
-            (errorMsg ? ' border-red-400 focus:border-red-400 focus:ring-red-400' : '')
+            'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none' +
+            (errorMsg
+              ? ' border-red-400 focus:border-red-400 focus:ring-red-400'
+              : '')
           }
           value={value}
           onChange={onChange}
@@ -51,11 +52,7 @@ const Field = ({
           </div>
         )}
       </div>
-      {errorMsg && (
-        <p className="mt-2 text-sm text-red-400">
-          {errorMsg}
-        </p>
-      )}
+      {errorMsg && <p className="mt-2 text-sm text-red-400">{errorMsg}</p>}
     </div>
   );
 };
@@ -151,7 +148,10 @@ export default function ContactUsPage(props: PageProps) {
       <div
         data-page-tone="dark"
         className="min-h-screen"
-        style={{ background: 'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)' }}
+        style={{
+          background:
+            '#0A0818',
+        }}
       >
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
         <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -160,8 +160,8 @@ export default function ContactUsPage(props: PageProps) {
               Contact Us
             </h1>
             <p className="mt-2 text-sm text-[rgba(244,237,234,0.65)]">
-              Contact us about anything: suggestions, bugs, assistance, and more!
-              This will be submitted as a public{' '}
+              Contact us about anything: suggestions, bugs, assistance, and
+              more! This will be submitted as a public{' '}
               <a
                 href="https://github.com/usamoguide/usamo-guide/issues"
                 target="_blank"
@@ -173,7 +173,7 @@ export default function ContactUsPage(props: PageProps) {
               .
             </p>
           </div>
- <div className="rounded-xl bg-[rgba(18,15,36,0.75)] shadow-lg">
+          <div className="rounded-xl bg-[rgba(18,15,36,0.75)] shadow-lg">
             <form className="px-4 py-5 sm:p-6" onSubmit={handleSubmit}>
               {showSuccess && (
                 <div className="rounded-md bg-green-50 p-4 dark:bg-green-800">
@@ -197,8 +197,8 @@ export default function ContactUsPage(props: PageProps) {
                       </h3>
                       <div className="mt-2 text-sm leading-5 text-green-400">
                         <p>
-                          Your message has been submitted as an issue in our GitHub
-                          repository. You can track the issue here:{' '}
+                          Your message has been submitted as an issue in our
+                          GitHub repository. You can track the issue here:{' '}
                           <a
                             href={issueLink}
                             target="_blank"
@@ -258,9 +258,10 @@ export default function ContactUsPage(props: PageProps) {
                       Topic
                     </legend>
                     <div className="text-sm text-[rgba(244,237,234,0.65)]">
-                      The USAMO Guide is a community project and is not affiliated
-                      with the MAA, AMC, AIME, USAMO, or AoPS. If your question is
-                      about those organizations, please contact them directly.
+                      The USAMO Guide is a community project and is not
+                      affiliated with the MAA, AMC, AIME, USAMO, or AoPS. If
+                      your question is about those organizations, please contact
+                      them directly.
                     </div>
                     <div className="space-y-3">
                       {topics.map((t, idx) => (
@@ -271,7 +272,7 @@ export default function ContactUsPage(props: PageProps) {
                                 id={`contact_topic_${idx}`}
                                 type="radio"
                                 name="type"
-                                className="form-radio h-4 w-4 accent-[#70428A] bg-[rgba(18,15,36,0.80)] border-[rgba(240,194,255,0.30)]"
+                                className="form-radio h-4 w-4 border-[rgba(240,194,255,0.30)] bg-[rgba(18,15,36,0.80)] accent-[#70428A]"
                                 checked={topic === t[0]}
                                 onChange={() => setTopic(t[0])}
                               />
@@ -308,8 +309,8 @@ export default function ContactUsPage(props: PageProps) {
                               )}
                               {topic === t[0] && t[0].startsWith('Unclear') && (
                                 <div>
-                                  You may get a faster response by reaching out on
-                                  the{' '}
+                                  You may get a faster response by reaching out
+                                  on the{' '}
                                   <a
                                     className="text-blue-600 hover:underline dark:text-blue-300"
                                     href="https://artofproblemsolving.com/community"
@@ -321,12 +322,14 @@ export default function ContactUsPage(props: PageProps) {
                                   instead.
                                 </div>
                               )}
-                              {topic === t[0] && t[0].includes('Website Bug') && (
-                                <div>
-                                  If you are reporting a loss of user data, please
-                                  include steps to reproduce and your browser info.
-                                </div>
-                              )}
+                              {topic === t[0] &&
+                                t[0].includes('Website Bug') && (
+                                  <div>
+                                    If you are reporting a loss of user data,
+                                    please include steps to reproduce and your
+                                    browser info.
+                                  </div>
+                                )}
                             </div>
                           </div>
                         </div>
@@ -355,7 +358,7 @@ export default function ContactUsPage(props: PageProps) {
                         id="contact_message"
                         rows={5}
                         className={
-                          'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:outline-none focus:ring-1 focus:ring-[#70428A] ' +
+                          'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none ' +
                           (showErrors && message.length < 10
                             ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
                             : '')
@@ -389,7 +392,7 @@ export default function ContactUsPage(props: PageProps) {
                     <button
                       type="submit"
                       disabled={!submitEnabled}
-                      className="rounded-lg bg-[#70428A] px-5 py-2 text-sm font-semibold text-[#F4EDEA] hover:bg-[#8A52AA] transition-colors disabled:opacity-50"
+                      className="rounded-lg bg-[#70428A] px-5 py-2 text-sm font-semibold text-[#F4EDEA] transition-colors hover:bg-[#8A52AA] disabled:opacity-50"
                     >
                       Contact Us
                     </button>

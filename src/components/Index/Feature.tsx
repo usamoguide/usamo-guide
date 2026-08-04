@@ -35,24 +35,24 @@ export const Feature = ({
   return (
     <div
       className={classNames(
-        'relative overflow-hidden rounded-2xl p-5 sm:p-6 md:p-8 h-full shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(99,84,139,0.4)]',
+        'relative h-full overflow-hidden rounded-2xl p-5 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(99,84,139,0.4)] sm:p-6 md:p-8',
         className
       )}
       style={{
-        background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+        background:
+          'rgba(43, 30, 57, 0.92)',
       }}
     >
-
       <div
         className={classNames(
-          'relative text-center md:text-left h-full',
+          'relative h-full text-center md:text-left',
           featurePosition === 'left' ? 'sm:pr-1' : 'sm:pl-1'
         )}
       >
         <div>
           <div
             className={classNames(
-              'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br text-white md:mx-0',
+              'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white md:mx-0',
               iconClasses
             )}
           >
@@ -69,10 +69,16 @@ export const Feature = ({
             />
           </div>
         </div>
-        <h3 className="text-xl font-bold md:text-3xl" style={{ color: '#F4EDEA' }}>
+        <h3
+          className="text-xl font-bold md:text-3xl"
+          style={{ color: '#F4EDEA' }}
+        >
           {title}
         </h3>
-        <p className="mt-2 md:mt-4 md:text-lg" style={{ color: 'rgba(244, 237, 234, 0.78)' }}>
+        <p
+          className="mt-2 md:mt-4 md:text-lg"
+          style={{ color: 'rgba(244, 237, 234, 0.78)' }}
+        >
           {children}
         </p>
 
@@ -88,16 +94,6 @@ export const Feature = ({
           />
         </div>
 
-        {fade !== 'none' && (
-          <div
-            className={classNames(
-              'pointer-events-none absolute inset-x-0 bottom-0 z-20 h-16 bg-linear-to-t from-white dark:from-gray-900 to-transparent',
-              featurePosition === 'left'
-                ? 'from-white dark:from-gray-900'
-                : 'from-white dark:from-gray-900'
-            )}
-          />
-        )}
       </div>
     </div>
   );

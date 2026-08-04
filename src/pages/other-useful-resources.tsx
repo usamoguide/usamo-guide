@@ -54,7 +54,8 @@ const RESOURCES: TopicResources[] = [
           'High-quality olympiad notes with clear combinatorial arguments and examples.',
         imageSrc:
           'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1280&q=80',
-        imageAlt: 'Open book and notes representing advanced combinatorics study.',
+        imageAlt:
+          'Open book and notes representing advanced combinatorics study.',
       },
       {
         name: 'Brilliant - Combinatorics Wiki',
@@ -173,8 +174,7 @@ const RESOURCES: TopicResources[] = [
       {
         name: 'Brilliant - Number Theory Wiki',
         href: 'https://brilliant.org/wiki/number-theory/',
-        description:
-          'Useful concept summaries for quick recall and revision.',
+        description: 'Useful concept summaries for quick recall and revision.',
         imageSrc:
           'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1280&q=80',
         imageAlt: 'Study setup with number theory references and notes.',
@@ -237,25 +237,23 @@ function ResourceCard({
   const imageSrc = link.imageSrc ?? fallbackImageSrc;
   const imageAlt = link.imageAlt ?? fallbackImageAlt;
 
-
   return (
- <article className="overflow-hidden rounded-2xl bg-[rgba(18,15,36,0.70)] shadow-sm backdrop-blur-sm">
+    <article className="overflow-hidden rounded-2xl bg-[rgba(18,15,36,0.70)] shadow-sm backdrop-blur-sm">
       <div
         className={`grid items-start lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}
       >
-        <div className="relative h-56 sm:h-64 lg:h-80 xl:h-[360px] max-h-[380px]">
+        <div className="relative h-56 max-h-[380px] sm:h-64 lg:h-80 xl:h-[360px]">
           <img
             src={imageSrc}
             alt={imageAlt}
             className="h-full w-full object-cover object-center"
             loading="lazy"
           />
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/20 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-black/25" />
           <div className="absolute right-3 bottom-3 rounded-md bg-[rgba(10,8,24,0.70)] px-2.5 py-1 text-xs font-medium tracking-wide text-[#F0C2FF] uppercase">
             {topic}
           </div>
         </div>
-
 
         <div className="flex flex-col justify-center px-5 py-6 sm:px-7">
           <h3 className="text-2xl font-black tracking-tight text-[#F4EDEA]">
@@ -269,7 +267,7 @@ function ResourceCard({
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center rounded-full border border-[rgba(240,194,255,0.30)] bg-[#70428A] px-4 py-2 text-sm font-semibold text-[#F4EDEA] transition hover:bg-[#8A52AA] shadow-[0_0_15px_rgba(176,139,208,0.20)]"
+              className="inline-flex items-center rounded-full border border-[rgba(240,194,255,0.30)] bg-[#70428A] px-4 py-2 text-sm font-semibold text-[#F4EDEA] shadow-[0_0_15px_rgba(176,139,208,0.20)] transition hover:bg-[#8A52AA]"
             >
               Visit resource {'->'}
             </a>
@@ -280,7 +278,6 @@ function ResourceCard({
   );
 }
 
-
 function TopicSection({
   topic,
   icon: Icon,
@@ -290,8 +287,8 @@ function TopicSection({
   links,
 }: TopicResources) {
   return (
- <section className="rounded-3xl bg-[rgba(10,8,24,0.35)] p-4 shadow-[0_0_30px_rgba(176,139,208,0.10)] sm:p-5 lg:p-6">
- <div className="mb-5 rounded-2xl bg-[rgba(18,15,36,0.80)] px-5 py-5 sm:px-6">
+    <section className="rounded-3xl bg-[rgba(10,8,24,0.35)] p-4 shadow-[0_0_30px_rgba(176,139,208,0.10)] sm:p-5 lg:p-6">
+      <div className="mb-5 rounded-2xl bg-[rgba(18,15,36,0.80)] px-5 py-5 sm:px-6">
         <div className="flex items-start gap-3">
           <div className="rounded-lg bg-[rgba(112,66,138,0.35)] p-2 text-[#F0C2FF]">
             <Icon className="h-5 w-5" aria-hidden="true" />
@@ -306,7 +303,6 @@ function TopicSection({
           </div>
         </div>
       </div>
-
 
       <div className="space-y-5">
         {links.map((link, index) => (
@@ -324,24 +320,24 @@ function TopicSection({
   );
 }
 
-
 // And update the header section:
 export default function OtherUsefulResourcesPage(props: PageProps) {
   return (
     <Layout>
       <SEO title="Other Useful Resources" pathname={props.path} />
 
-
       <div
         data-page-tone="dark"
         className="min-h-screen text-[#F4EDEA]"
-        style={{ background: 'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)' }}
+        style={{
+          background:
+            '#0A0818',
+        }}
       >
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
 
-
         <main className="mx-auto max-w-screen-2xl px-4 py-10 sm:px-6 lg:px-8">
- <header className="rounded-2xl bg-[rgba(18,15,36,0.80)] px-6 py-14 text-center shadow-[0_0_25px_rgba(176,139,208,0.15)] backdrop-blur-sm sm:px-10 sm:py-20">
+          <header className="rounded-2xl bg-[rgba(18,15,36,0.80)] px-6 py-14 text-center shadow-[0_0_25px_rgba(176,139,208,0.15)] backdrop-blur-sm sm:px-10 sm:py-20">
             <p className="text-sm font-semibold tracking-wide text-[#F0C2FF] uppercase">
               Community-curated links
             </p>
@@ -354,7 +350,6 @@ export default function OtherUsefulResourcesPage(props: PageProps) {
               extra explanations, alternate problem sets, or deeper dives.
             </p>
           </header>
-
 
           <div className="mt-8 space-y-8">
             {RESOURCES.map(topic => (

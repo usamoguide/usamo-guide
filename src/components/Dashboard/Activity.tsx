@@ -45,7 +45,9 @@ export function ActivityHeatmap({
   }, [activityCount, startDate, normalizedEndDate]);
 
   const activeDateKey = activeDate?.getTime();
-  const activeDateCount = activeDateKey ? activityCount[activeDateKey] ?? 0 : 0;
+  const activeDateCount = activeDateKey
+    ? (activityCount[activeDateKey] ?? 0)
+    : 0;
   const activeDateProblemsSolved =
     (activeDateKey && problemActivities[activeDateKey]?.length) ?? 0;
   const activeDateModulesCompleted =
@@ -55,12 +57,13 @@ export function ActivityHeatmap({
       <div
         className="px-4 py-5 shadow-lg transition sm:rounded-2xl sm:p-6"
         style={{
-          background: 'linear-gradient(180deg, rgba(54, 37, 72, 0.9) 0%, rgba(31, 22, 42, 0.94) 100%)',
+          background:
+            'rgba(43, 30, 57, 0.92)',
         }}
       >
         <div className="grid gap-y-4 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0">
           <div className="col-span-2">
-            <div className="overflow-x-auto pt-2 pb-3 px-1">
+            <div className="overflow-x-auto px-1 pt-2 pb-3">
               <CalendarHeatmap
                 startDate={startDate}
                 endDate={normalizedEndDate}
@@ -116,14 +119,20 @@ export function ActivityHeatmap({
                 )}
               </div>
             ) : (
-              <p className="mt-3 text-sm" style={{ color: 'rgba(244, 237, 234, 0.72)' }}>
+              <p
+                className="mt-3 text-sm"
+                style={{ color: 'rgba(244, 237, 234, 0.72)' }}
+              >
                 Hover over a square to view more details!
               </p>
             )}
           </div>
         </div>
 
-        <p className="mt-3 text-sm" style={{ color: 'rgba(244, 237, 234, 0.72)' }}>
+        <p
+          className="mt-3 text-sm"
+          style={{ color: 'rgba(244, 237, 234, 0.72)' }}
+        >
           Note that activity calculations are very much in development and will
           change in the near future.
         </p>

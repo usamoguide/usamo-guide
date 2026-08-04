@@ -5,7 +5,6 @@ import ActiveItems, { ActiveItem } from '../components/Dashboard/ActiveItems';
 import Activity from '../components/Dashboard/Activity';
 import DailyStreak from '../components/Dashboard/DailyStreak';
 import Card from '../components/Dashboard/DashboardCard';
-import WelcomeBackBanner from '../components/Dashboard/WelcomeBackBanner';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
@@ -28,7 +27,7 @@ import {
 const VANILLA = '#F4EDEA';
 const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.72)';
 const MIDNIGHT_GRADIENT =
-  'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)';
+  '#0A0818';
 
 export default function DashboardPage(props: PageProps) {
   const { modules, problems } = props.data as any;
@@ -152,26 +151,40 @@ export default function DashboardPage(props: PageProps) {
       notStarted: number;
     }
   ) => {
-    const percentComplete = total === 0 ? 0 : Math.round((counts.completed / total) * 100);
-    const segment = (value: number) => (total === 0 ? 0 : (value / total) * 100);
+    const percentComplete =
+      total === 0 ? 0 : Math.round((counts.completed / total) * 100);
+    const segment = (value: number) =>
+      total === 0 ? 0 : (value / total) * 100;
 
     return (
       <Card>
         <div className="px-4 py-5 sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h3 className="text-lg leading-6 font-medium" style={{ color: VANILLA }}>
+              <h3
+                className="text-lg leading-6 font-medium"
+                style={{ color: VANILLA }}
+              >
                 {title}
               </h3>
               <p className="mt-1 text-sm" style={{ color: TEXT_SECONDARY }}>
                 {total} total
               </p>
             </div>
-            <div className="rounded-lg px-4 py-3 text-center" style={{ background: 'rgba(244, 237, 234, 0.10)' }}>
-              <div className="text-2xl font-semibold" style={{ color: VANILLA }}>
+            <div
+              className="rounded-lg px-4 py-3 text-center"
+              style={{ background: 'rgba(244, 237, 234, 0.10)' }}
+            >
+              <div
+                className="text-2xl font-semibold"
+                style={{ color: VANILLA }}
+              >
                 {percentComplete}%
               </div>
-              <div className="text-xs font-medium uppercase" style={{ color: TEXT_SECONDARY }}>
+              <div
+                className="text-xs font-medium uppercase"
+                style={{ color: TEXT_SECONDARY }}
+              >
                 Complete
               </div>
             </div>
@@ -179,8 +192,14 @@ export default function DashboardPage(props: PageProps) {
 
           <div className="mt-4 space-y-3">
             <div className="flex items-center justify-between text-sm">
-              <span className="flex items-center gap-2" style={{ color: TEXT_SECONDARY }}>
-                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#70428A' }} />
+              <span
+                className="flex items-center gap-2"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                <span
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{ backgroundColor: '#70428A' }}
+                />
                 Completed
               </span>
               <span className="font-medium" style={{ color: VANILLA }}>
@@ -188,8 +207,14 @@ export default function DashboardPage(props: PageProps) {
               </span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="flex items-center gap-2" style={{ color: TEXT_SECONDARY }}>
-                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#E085FF' }} />
+              <span
+                className="flex items-center gap-2"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                <span
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{ backgroundColor: '#E085FF' }}
+                />
                 In progress
               </span>
               <span className="font-medium" style={{ color: VANILLA }}>
@@ -197,8 +222,14 @@ export default function DashboardPage(props: PageProps) {
               </span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="flex items-center gap-2" style={{ color: TEXT_SECONDARY }}>
-                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#F0C2FF' }} />
+              <span
+                className="flex items-center gap-2"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                <span
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{ backgroundColor: '#F0C2FF' }}
+                />
                 Skipped
               </span>
               <span className="font-medium" style={{ color: VANILLA }}>
@@ -206,8 +237,14 @@ export default function DashboardPage(props: PageProps) {
               </span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="flex items-center gap-2" style={{ color: TEXT_SECONDARY }}>
-                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: 'rgba(210, 212, 200, 0.6)' }} />
+              <span
+                className="flex items-center gap-2"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                <span
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{ backgroundColor: 'rgba(210, 212, 200, 0.6)' }}
+                />
                 Not started
               </span>
               <span className="font-medium" style={{ color: VANILLA }}>
@@ -217,17 +254,29 @@ export default function DashboardPage(props: PageProps) {
           </div>
 
           <div className="mt-5">
-            <div className="flex h-2 overflow-hidden rounded-full" style={{ background: 'rgba(244, 237, 234, 0.16)' }}>
+            <div
+              className="flex h-2 overflow-hidden rounded-full"
+              style={{ background: 'rgba(244, 237, 234, 0.16)' }}
+            >
               <div
-                style={{ width: `${segment(counts.completed)}%`, background: '#70428A' }}
+                style={{
+                  width: `${segment(counts.completed)}%`,
+                  background: '#70428A',
+                }}
                 className="h-2"
               />
               <div
-                style={{ width: `${segment(counts.inProgress)}%`, background: '#E085FF' }}
+                style={{
+                  width: `${segment(counts.inProgress)}%`,
+                  background: '#E085FF',
+                }}
                 className="h-2"
               />
               <div
-                style={{ width: `${segment(counts.skipped)}%`, background: '#F0C2FF' }}
+                style={{
+                  width: `${segment(counts.skipped)}%`,
+                  background: '#F0C2FF',
+                }}
                 className="h-2"
               />
               <div
@@ -251,10 +300,12 @@ export default function DashboardPage(props: PageProps) {
       <div
         data-page-tone="dark"
         className="ui-page min-h-screen px-0"
-        style={{
-          backgroundImage: MIDNIGHT_GRADIENT,
-          color: VANILLA,
-        } as React.CSSProperties}
+        style={
+          {
+            backgroundImage: MIDNIGHT_GRADIENT,
+            color: VANILLA,
+          } as React.CSSProperties
+        }
       >
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
 
@@ -270,10 +321,10 @@ export default function DashboardPage(props: PageProps) {
                       </>
                     ) : (
                       <div
- className="w-full rounded-2xl px-5 py-5 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                        className="w-full rounded-2xl px-5 py-5 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
                         style={{
                           background:
-                            'linear-gradient(135deg, rgba(244, 237, 234, 0.92) 0%, rgba(240, 194, 255, 0.84) 100%)',
+                            'rgba(242, 216, 244, 0.9)',
                           color: '#120F24',
                         }}
                       >
@@ -286,19 +337,23 @@ export default function DashboardPage(props: PageProps) {
                               className="mt-1 text-sm"
                               style={{ color: 'rgba(18, 15, 36, 0.8)' }}
                             >
-                              Track progress, unlock problem sets, and sync across devices.
+                              Track progress, unlock problem sets, and sync
+                              across devices.
                             </div>
                             <button
                               type="button"
                               onClick={() => signIn()}
-                              className="purple-motion-effect mt-4 inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm font-bold leading-tight"
-                              style={{
-                                border: '1px solid rgba(240, 194, 255, 0.34)',
-                                background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                                '--pme-color': '#F4EDEA',
-                                '--pme-hover-color': '#201C36',
-                                '--pme-wipe-bg': '#F0C2FF',
-                              } as React.CSSProperties}
+                              className="purple-motion-effect mt-4 inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold"
+                              style={
+                                {
+                                  border: '1px solid rgba(240, 194, 255, 0.34)',
+                                  background:
+                                    '#6D3B9F',
+                                  '--pme-color': '#F4EDEA',
+                                  '--pme-hover-color': '#201C36',
+                                  '--pme-wipe-bg': '#F0C2FF',
+                                } as React.CSSProperties
+                              }
                             >
                               Save Progress
                             </button>
@@ -318,13 +373,19 @@ export default function DashboardPage(props: PageProps) {
             <div className="mx-auto mb-8 max-w-screen-2xl px-4 sm:px-6 lg:px-4">
               <div className="grid gap-8 lg:grid-cols-3">
                 <section className="lg:col-span-2">
-                  <h1 className="text-3xl leading-tight font-bold" style={{ color: VANILLA }}>
+                  <h1
+                    className="text-3xl leading-tight font-bold"
+                    style={{ color: VANILLA }}
+                  >
                     Activity
                   </h1>
                   <Activity />
                 </section>
                 <section className="lg:col-span-1">
-                  <h2 className="text-2xl leading-tight font-bold" style={{ color: VANILLA }}>
+                  <h2
+                    className="text-2xl leading-tight font-bold"
+                    style={{ color: VANILLA }}
+                  >
                     Active items
                   </h2>
                   <div className="mt-4 space-y-6">
@@ -334,26 +395,33 @@ export default function DashboardPage(props: PageProps) {
                     {activeModules.length > 0 && (
                       <ActiveItems type="modules" items={activeModules} />
                     )}
-                    {activeProblems.length === 0 && activeModules.length === 0 && (
-                      <Card>
-                        <div className="px-4 py-5 text-sm sm:p-6" style={{ color: TEXT_SECONDARY }}>
-                          No active problems or modules yet.
-                        </div>
-                      </Card>
-                    )}
+                    {activeProblems.length === 0 &&
+                      activeModules.length === 0 && (
+                        <Card>
+                          <div
+                            className="px-4 py-5 text-sm sm:p-6"
+                            style={{ color: TEXT_SECONDARY }}
+                          >
+                            No active problems or modules yet.
+                          </div>
+                        </Card>
+                      )}
                   </div>
                 </section>
               </div>
               <div className="mt-6 flex">
                 <Link
-                  className="purple-motion-effect inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-mono text-base font-bold leading-tight"
-                  style={{
-                    border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background: 'linear-gradient(135deg, #5A2F87 0%, #C58BFF 100%)',
-                    '--pme-color': '#F4EDEA',
-                    '--pme-hover-color': '#201C36',
-                    '--pme-wipe-bg': '#F0C2FF',
-                  } as React.CSSProperties}
+                  className="purple-motion-effect inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-mono text-base leading-tight font-bold"
+                  style={
+                    {
+                      border: '1px solid rgba(240, 194, 255, 0.34)',
+                      background:
+                        '#6D3B9F',
+                      '--pme-color': '#F4EDEA',
+                      '--pme-hover-color': '#201C36',
+                      '--pme-wipe-bg': '#F0C2FF',
+                    } as React.CSSProperties
+                  }
                   to={
                     lastViewedModuleURL ||
                     '/foundations/fractions_percentages_proportions_p1'
@@ -367,13 +435,16 @@ export default function DashboardPage(props: PageProps) {
             </div>
             <header>
               <div className="mx-auto max-w-screen-2xl px-8">
-                <h1 className="text-3xl leading-tight font-bold" style={{ color: VANILLA }}>
+                <h1
+                  className="text-3xl leading-tight font-bold"
+                  style={{ color: VANILLA }}
+                >
                   Statistics
                 </h1>
               </div>
             </header>
             <div className="mx-auto max-w-screen-2xl">
-              <div className="space-y-8 py-4 px-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:px-8">
+              <div className="space-y-8 px-8 py-4 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:px-8">
                 <div className="space-y-8">
                   {renderStatsTile(
                     `Modules Progress - ${SECTION_LABELS[lastViewedSection]}`,

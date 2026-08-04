@@ -19,7 +19,7 @@ export default function AboutPage(props: PageProps) {
       <div
         data-page-tone="dark"
         className="min-h-screen"
-        style={{ background: 'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)' }}
+        style={{ background: '#0A0818' }}
       >
         <main className="mx-auto max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
           <header className="mb-8">

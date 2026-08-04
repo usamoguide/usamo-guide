@@ -30,7 +30,7 @@ const FigureBox: React.FC<FigureBoxProps> = ({
 
   return (
     <figure className={`my-8 flex justify-center px-4 ${className}`.trim()}>
- <div className="w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-lg shadow-gray-200/60">
+      <div className="w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-lg shadow-gray-200/60">
         {renderedImage && (
           <div
             className={
@@ -45,7 +45,7 @@ const FigureBox: React.FC<FigureBoxProps> = ({
         )}
         <div className="px-6 py-5 text-gray-700">
           {title && (
-            <div className="mb-2 text-center text-sm font-semibold uppercase tracking-wide text-gray-500">
+            <div className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase">
               {title}
             </div>
           )}

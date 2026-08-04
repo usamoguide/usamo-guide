@@ -23,7 +23,7 @@ const TestCaseResult = ({
     : 'text-transparent';
   return (
     <div
- className={`m-1 inline-block h-[60px] w-[70px] ${containerClasses} relative`}
+      className={`m-1 inline-block h-[60px] w-[70px] ${containerClasses} relative`}
       title={data ? data.verdict : 'Loading...'}
     >
       <div

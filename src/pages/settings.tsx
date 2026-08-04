@@ -67,7 +67,7 @@ export default function SettingsPage(props) {
       <div
         data-page-tone="dark"
         className="min-h-screen"
-        style={{ background: 'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)' }}
+        style={{ background: '#0A0818' }}
       >
         <TopNavigationBar />
 

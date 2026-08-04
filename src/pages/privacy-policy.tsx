@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
       <div
         data-page-tone="dark"
         className="min-h-screen"
-        style={{ background: 'linear-gradient(to bottom, #120F24 0%, #0E0B1F 48%, #0A0818 100%)' }}
+        style={{ background: '#0A0818' }}
       >
       <div className="mx-auto max-w-3xl px-4 pb-16 sm:px-6 lg:px-8">
         <h1 className="mt-8 text-4xl font-extrabold text-[#F4EDEA]">Privacy Policy</h1>

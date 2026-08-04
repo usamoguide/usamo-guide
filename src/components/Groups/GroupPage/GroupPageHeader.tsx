@@ -26,7 +26,7 @@ export default function GroupPageHeader(props: { group: GroupData }) {
   }, []);
 
   return (
-    <header className="bg-linear-to-r from-sky-800 to-cyan-600 py-6 sm:py-12">
+    <header className="bg-sky-800 py-6 sm:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-8 md:flex md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
           <h1 className="text-xl font-bold text-white sm:text-3xl">

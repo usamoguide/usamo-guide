@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useDarkMode } from '../../context/DarkModeContext';
+import { figureUrl } from '../../utils/problemFigures';
 import Asterisk from '../Tooltip/Asterisk';
-import CodeBlock from './CodeBlock/CodeBlock';
 import TextTooltip from '../Tooltip/TextTooltip';
-import FocusProblem from './FocusProblem';
+import CodeBlock from './CodeBlock/CodeBlock';
 import FigureBox from './FigureBox';
+import FocusProblem from './FocusProblem';
 import HTMLComponents from './HTMLComponents';
 import { IncompleteSection } from './IncompleteSection';
 import Info from './Info';
@@ -26,7 +27,6 @@ import { Resource, ResourcesList } from './ResourcesList';
 import Spoiler from './Spoiler';
 import Warning from './Warning';
 import YouTube from './YouTube';
-import { figureUrl } from '../../utils/problemFigures';
 
 const MATHDIV = props => {
   return (
@@ -77,7 +77,7 @@ const AsyDiagram = ({ code }: { code?: string }) => {
   }
 
   return (
- <div className="my-6 rounded-md bg-gray-50 dark:bg-gray-900/40">
+    <div className="my-6 rounded-md bg-gray-50 dark:bg-gray-900/40">
       <div className="border-b border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">
         Asymptote diagram source — not compiled yet (run{' '}
         <code>yarn compile:figures</code>)

@@ -1,5 +1,5 @@
-import React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import React from 'react';
 
 const MIDNIGHT = '#201C36';
 const MIDNIGHT_DEEP = '#14112A';
@@ -14,19 +14,22 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sohil Rathi",
-    role: "Author of OmegaLearn",
-    content: "The USAMO Guide is an incredible resource for competitive math. The way it structures problems by difficulty and topic is exactly what students need to progress efficiently."
+    name: 'Sohil Rathi',
+    role: 'Author of OmegaLearn',
+    content:
+      'The USAMO Guide is an incredible resource for competitive math. The way it structures problems by difficulty and topic is exactly what students need to progress efficiently.',
   },
   {
-    name: "Alexandar",
-    role: "YIMO Founder",
-    content: "A comprehensive and well-organized platform that brings together the best of competitive math education. The community-driven approach sets it apart from other resources."
+    name: 'Alexandar',
+    role: 'YIMO Founder',
+    content:
+      'A comprehensive and well-organized platform that brings together the best of competitive math education. The community-driven approach sets it apart from other resources.',
   },
   {
-    name: "Lalith",
-    role: "Community Member & Contributor",
-    content: "I started as a learner on this platform and the quality of explanations helped me level up. Now I'm thrilled to give back and contribute to help others on their journey."
+    name: 'Lalith',
+    role: 'Community Member & Contributor',
+    content:
+      "I started as a learner on this platform and the quality of explanations helped me level up. Now I'm thrilled to give back and contribute to help others on their journey.",
   },
 ];
 
@@ -59,13 +62,16 @@ const TestimonialsSection = () => {
     applyTransform();
   }, [applyTransform, normalizeOffset]);
 
-  const stepByOneCard = React.useCallback((direction: 'next' | 'back') => {
-    const fallback = 640 + 32;
-    const step = (firstCardRef.current?.offsetWidth ?? fallback) + 32;
-    offsetRef.current += direction === 'next' ? step : -step;
-    normalizeOffset();
-    applyTransform();
-  }, [applyTransform, normalizeOffset]);
+  const stepByOneCard = React.useCallback(
+    (direction: 'next' | 'back') => {
+      const fallback = 640 + 32;
+      const step = (firstCardRef.current?.offsetWidth ?? fallback) + 32;
+      offsetRef.current += direction === 'next' ? step : -step;
+      normalizeOffset();
+      applyTransform();
+    },
+    [applyTransform, normalizeOffset]
+  );
 
   React.useEffect(() => {
     measure();
@@ -104,9 +110,9 @@ const TestimonialsSection = () => {
 
   return (
     <div
-      className="relative overflow-hidden transition-colors duration-500 py-16 md:py-24 font-sans"
+      className="relative overflow-hidden py-16 font-sans transition-colors duration-500 md:py-24"
       style={{
-        background: `linear-gradient(180deg, ${MIDNIGHT} 0%, ${MIDNIGHT_DEEP} 100%)`,
+        background: `${MIDNIGHT_DEEP}`,
         color: VANILLA,
       }}
     >
@@ -114,38 +120,30 @@ const TestimonialsSection = () => {
         {/* Section Title */}
         <div className="mb-12 text-center">
           <div className="mb-2">
-            <h2 
-              className="text-4xl md:text-5xl 2xl:text-6xl font-black tracking-tight"
+            <h2
+              className="text-4xl font-black tracking-tight md:text-5xl 2xl:text-6xl"
               style={{ color: VANILLA }}
             >
               What Our Users
             </h2>
-            <p 
-              className="text-4xl md:text-5xl 2xl:text-6xl font-black italic tracking-tight mt-1"
+            <p
+              className="mt-1 text-4xl font-black tracking-tight italic md:text-5xl 2xl:text-6xl"
               style={{ color: 'rgba(240, 194, 255, 0.85)' }}
             >
               Are Saying
             </p>
           </div>
-          <p 
-            className="text-base md:text-lg mt-4"
+          <p
+            className="mt-4 text-base md:text-lg"
             style={{ color: TEXT_SECONDARY }}
           >
-            Stop juggling different resources. Get comprehensive math education and community support in one platform.
+            Stop juggling different resources. Get comprehensive math education
+            and community support in one platform.
           </p>
         </div>
 
         {/* Infinite marquee with centered card + side peeks */}
-        <div className="relative w-full mt-10">
-          <div
-            className="absolute inset-y-0 left-0 w-16 md:w-28 pointer-events-none z-20"
-            style={{ background: `linear-gradient(to right, ${MIDNIGHT_DEEP}, transparent)` }}
-          />
-          <div
-            className="absolute inset-y-0 right-0 w-16 md:w-28 pointer-events-none z-20"
-            style={{ background: `linear-gradient(to left, ${MIDNIGHT_DEEP}, transparent)` }}
-          />
-
+        <div className="relative mt-10 w-full">
           <div
             className="overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}
@@ -159,30 +157,44 @@ const TestimonialsSection = () => {
                 paddingRight: 'max(1rem, calc(50vw - 320px))',
               }}
             >
-              {[0, 1, 2].map((copyIndex) => (
-                <div key={copyIndex} ref={copyIndex === 0 ? firstSetRef : undefined} className="flex gap-8 pr-8">
+              {[0, 1, 2].map(copyIndex => (
+                <div
+                  key={copyIndex}
+                  ref={copyIndex === 0 ? firstSetRef : undefined}
+                  className="flex gap-8 pr-8"
+                >
                   {testimonials.map((testimonial, idx) => (
                     <div
                       key={`${copyIndex}-${idx}`}
-                      ref={copyIndex === 1 && idx === 0 ? firstCardRef : undefined}
-                      className="flex-shrink-0 w-[78vw] md:w-[66vw] lg:w-[640px] min-h-[180px] p-5 md:p-6 flex flex-col justify-between"
-                      style={{
-                      }}
+                      ref={
+                        copyIndex === 1 && idx === 0 ? firstCardRef : undefined
+                      }
+                      className="flex min-h-[180px] w-[78vw] flex-shrink-0 flex-col justify-between p-5 md:w-[66vw] md:p-6 lg:w-[640px]"
+                      style={{}}
                     >
-                      <p className="text-xl md:text-[1.9rem] leading-relaxed" style={{ color: TEXT_SECONDARY }}>
+                      <p
+                        className="text-xl leading-relaxed md:text-[1.9rem]"
+                        style={{ color: TEXT_SECONDARY }}
+                      >
                         “{testimonial.content}”
                       </p>
 
                       <div
-                        className="h-px w-full mt-4"
+                        className="mt-4 h-px w-full"
                         style={{ background: 'rgba(240, 240, 240, 0.06)' }}
                       />
 
                       <div className="mt-3">
-                        <p className="text-2xl md:text-3xl font-semibold tracking-tight" style={{ color: VANILLA }}>
+                        <p
+                          className="text-2xl font-semibold tracking-tight md:text-3xl"
+                          style={{ color: VANILLA }}
+                        >
                           {testimonial.name}
                         </p>
-                        <p className="text-base mt-1" style={{ color: 'rgba(240, 194, 255, 0.62)' }}>
+                        <p
+                          className="mt-1 text-base"
+                          style={{ color: 'rgba(240, 194, 255, 0.62)' }}
+                        >
                           {testimonial.role}
                         </p>
                       </div>
@@ -210,18 +222,20 @@ const TestimonialsSection = () => {
               style={{ borderColor: 'rgba(229, 194, 255, 0.28)' }}
               aria-label="Next testimonial"
             >
-              <ChevronRightIcon className="h-5 w-5" style={{ color: VANILLA }} />
+              <ChevronRightIcon
+                className="h-5 w-5"
+                style={{ color: VANILLA }}
+              />
             </button>
           </div>
         </div>
 
         {/* Ambient glow effect */}
-        <div 
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full blur-[120px] pointer-events-none -z-10"
+        <div
+          className="pointer-events-none absolute bottom-0 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full blur-[120px]"
           style={{ backgroundColor: 'rgba(112, 66, 138, 0.15)' }}
         />
       </div>
-
     </div>
   );
 };

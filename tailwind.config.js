@@ -7,8 +7,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        brand: ['Inter', 'sans-serif'],
-        mono: ['Inter', ...defaultTheme.fontFamily.mono],
+        brand: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',

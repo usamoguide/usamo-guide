@@ -17,14 +17,12 @@ export type ActiveItem = {
 };
 
 const statusClasses: { [key in ActiveItemStatus]: string } = {
- Skipped:'bg-[#2A2547] text-[#D2D4C8]',
- Ignored:'bg-[#3D3564] text-[#D2D4C8]',
-  Reading:
-'bg-[#F0C2FF33] text-[#F0C2FF]',
- Practicing:'bg-[#E085FF2E] text-[#F0C2FF]',
-  Solving:
-'bg-[#F0C2FF33] text-[#F0C2FF]',
- Reviewing:'bg-[#FF7CC833] text-[#FFB3D9]',
+  Skipped: 'bg-[#2A2547] text-[#D2D4C8]',
+  Ignored: 'bg-[#3D3564] text-[#D2D4C8]',
+  Reading: 'bg-[#F0C2FF33] text-[#F0C2FF]',
+  Practicing: 'bg-[#E085FF2E] text-[#F0C2FF]',
+  Solving: 'bg-[#F0C2FF33] text-[#F0C2FF]',
+  Reviewing: 'bg-[#FF7CC833] text-[#FFB3D9]',
 };
 
 export default function ActiveItems({
@@ -54,12 +52,7 @@ export default function ActiveItems({
     if (astatus != bstatus) return astatus - bstatus;
     const getLabel = x => {
       // put active modules in section order
-      const secs = [
-        'Foundations',
-        'Intermediate',
-        'Advanced',
-        'USAMO',
-      ];
+      const secs = ['Foundations', 'Intermediate', 'Advanced', 'USAMO'];
       for (let i = 0; i < secs.length; ++i) if (x.startsWith(secs[i])) return i;
       return 100;
     };
@@ -71,7 +64,10 @@ export default function ActiveItems({
   return (
     <DashboardCard>
       <div className="px-4 py-5 sm:p-6">
-        <h3 className="text-lg leading-6 font-medium" style={{ color: '#F4EDEA' }}>
+        <h3
+          className="text-lg leading-6 font-medium"
+          style={{ color: '#F4EDEA' }}
+        >
           Active {type === 'problems' ? 'Problems' : 'Modules'}
         </h3>
         <div className="mt-4" style={{ color: 'rgba(244, 237, 234, 0.72)' }}>
