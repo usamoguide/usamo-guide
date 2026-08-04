@@ -39,8 +39,7 @@ export const Feature = ({
         className
       )}
       style={{
-        background:
-          'rgba(43, 30, 57, 0.92)',
+        background: 'rgba(43, 30, 57, 0.92)',
       }}
     >
       <div
@@ -93,7 +92,6 @@ export const Feature = ({
             )}
           />
         </div>
-
       </div>
     </div>
   );

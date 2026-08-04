@@ -5,8 +5,7 @@ const ForumCTA = (): JSX.Element => {
     <div
       className="mx-auto mb-6 max-w-3xl rounded-2xl"
       style={{
-        background:
-          'rgba(43, 30, 57, 0.92)',
+        background: 'rgba(43, 30, 57, 0.92)',
       }}
     >
       <div className="px-4 py-5 text-center sm:p-6">

@@ -8,8 +8,8 @@ export default function BlindModeToggle() {
     <button
       onClick={toggleBlindMode}
       aria-pressed={isBlindMode}
-       className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm font-bold leading-tight"
-       style={{
+      className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
+      style={{
         border: '1px solid rgba(240, 194, 255, 0.34)',
         background: '#6D3B9F',
         ['--pme-color' as string]: '#F4EDEA',

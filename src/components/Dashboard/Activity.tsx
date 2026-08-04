@@ -57,8 +57,7 @@ export function ActivityHeatmap({
       <div
         className="px-4 py-5 transition sm:rounded-2xl sm:p-6"
         style={{
-          background:
-            'rgba(43, 30, 57, 0.92)',
+          background: 'rgba(43, 30, 57, 0.92)',
         }}
       >
         <div className="grid gap-y-4 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0">

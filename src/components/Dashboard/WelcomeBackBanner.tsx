@@ -9,8 +9,7 @@ export default function WelcomeBackBanner({
     <div
       className="w-full lg:rounded-2xl"
       style={{
-        background:
-          'rgba(43, 30, 57, 0.92)',
+        background: 'rgba(43, 30, 57, 0.92)',
       }}
     >
       <Link
@@ -41,8 +40,7 @@ export default function WelcomeBackBanner({
               style={
                 {
                   border: '1px solid rgba(240, 194, 255, 0.34)',
-                  background:
-                    '#6D3B9F',
+                  background: '#6D3B9F',
                   '--pme-color': '#F4EDEA',
                   '--pme-hover-color': '#201C36',
                   '--pme-wipe-bg': '#F0C2FF',

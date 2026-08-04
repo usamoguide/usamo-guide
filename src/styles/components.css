@@ -4,17 +4,14 @@
   background-color: var(--bg-surface);
   color: var(--text-primary);
 
-
   &:hover {
     background-color: var(--bg-surface-alt);
   }
-
 
   &:focus {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-
 
   &:disabled {
     cursor: not-allowed;
@@ -23,14 +20,12 @@
   }
 }
 
-
 @layer components {
   .ui-page {
     background-color: var(--bg-page);
     color: var(--text-primary);
     position: relative;
   }
-
 
   .ui-page::before {
     content: '';
@@ -44,39 +39,39 @@
     z-index: 0;
   }
 
-
   html.dark .ui-page::before {
     opacity: 0.05;
   }
-
 
   .ui-page > * {
     position: relative;
     z-index: 1;
   }
 
-
   /* Cards: remove white-based translucency, use palette mixes */
   .ui-card {
-    background-color: color-mix(in srgb, var(--bg-surface-alt), transparent 55%);
+    background-color: color-mix(
+      in srgb,
+      var(--bg-surface-alt),
+      transparent 55%
+    );
     color: var(--text-primary);
     border-radius: 0.75rem;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    transition: background-color 250ms ease, transform 250ms ease;
-
+    transition:
+      background-color 250ms ease,
+      transform 250ms ease;
 
     &:hover {
       transform: translateY(-2px);
     }
   }
 
-
   .dark .ui-card,
   html.dark .ui-card {
     background-color: color-mix(in srgb, var(--bg-surface), transparent 35%);
   }
-
 
   .ui-surface {
     background-color: var(--bg-surface);
@@ -84,16 +79,13 @@
     border-radius: 0.5rem;
   }
 
-
   .ui-muted {
     color: var(--text-muted);
   }
 
-
   .ui-text-secondary {
     color: var(--text-secondary);
   }
-
 
   .ui-input,
   .ui-textarea,
@@ -106,12 +98,10 @@
     padding: 0.5rem 0.75rem;
   }
 
-
   .ui-input::placeholder,
   .ui-textarea::placeholder {
     color: var(--text-muted);
   }
-
 
   .ui-input:focus,
   .ui-textarea:focus,
@@ -121,7 +111,6 @@
     border-color: var(--focus);
   }
 
-
   .ui-input:disabled,
   .ui-textarea:disabled,
   .ui-select:disabled {
@@ -130,7 +119,6 @@
     border-color: var(--border);
     cursor: not-allowed;
   }
-
 
   .ui-button {
     display: inline-flex;
@@ -143,20 +131,20 @@
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     font-weight: 600;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
-
 
   .ui-button:hover {
     background-color: var(--bg-surface-alt);
   }
 
-
   .ui-button:focus {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-
 
   .ui-button:disabled {
     background-color: var(--disabled-bg);
@@ -165,18 +153,15 @@
     cursor: not-allowed;
   }
 
-
   .ui-button-primary {
     background: var(--accent-fill);
     color: var(--text-inverse);
     border-color: transparent;
   }
 
-
   .ui-button-primary:hover {
     filter: brightness(1.06);
   }
-
 
   .ui-button-danger {
     background-color: var(--danger);
@@ -184,22 +169,18 @@
     border-color: var(--danger);
   }
 
-
   .ui-button-danger:hover {
     filter: brightness(0.95);
   }
-
 
   .ui-link {
     color: var(--accent);
     font-weight: 600;
   }
 
-
   .ui-link:hover {
     color: var(--accent-strong);
   }
-
 
   .ui-pill {
     display: inline-flex;
@@ -213,13 +194,11 @@
     font-weight: 600;
   }
 
-
   .ui-table {
     width: 100%;
     border-collapse: collapse;
     color: var(--text-primary);
   }
-
 
   .ui-table thead th {
     text-align: left;
@@ -232,17 +211,14 @@
     border-bottom: 1px solid var(--border);
   }
 
-
   .ui-table td {
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--border);
   }
 
-
   .ui-table tbody tr:hover {
     background-color: var(--bg-surface-alt);
   }
-
 
   .ui-modal {
     background-color: var(--bg-surface);
@@ -250,11 +226,9 @@
     border-radius: 0.75rem;
   }
 
-
   .nav-surface {
     background-color: var(--bg-surface);
   }
-
 
   @media (min-width: 768px) {
     .nav-surface {
@@ -271,12 +245,10 @@
       -webkit-backdrop-filter: blur(18px) saturate(140%);
     }
 
-
     html.dark .nav-surface {
       background-color: color-mix(in srgb, var(--bg-page), transparent 35%);
     }
   }
-
 
   .hero-glow {
     background-image: var(--hero-glow);
@@ -284,49 +256,40 @@
     background-size: cover;
   }
 
-
   .section-footer {
     background-color: var(--bg-surface-alt);
     border-top: 1px solid var(--border);
   }
-
 
   .accent-link {
     color: var(--accent);
     font-weight: 600;
   }
 
-
   .accent-link:hover {
     color: var(--accent-strong);
   }
-
 
   .accent-button {
     background: var(--accent-fill);
     color: var(--text-inverse);
   }
 
-
   .accent-button:hover {
     filter: brightness(1.04);
   }
-
 
   .accent-divider {
     border-color: var(--border-strong);
   }
 
-
   .problems-page {
     background-color: var(--bg-page);
   }
 
-
   html.dark .problems-page {
     background-color: var(--bg-page);
   }
-
 
   .problem-card {
     position: relative;
@@ -336,29 +299,24 @@
     transition: transform 0.2s ease;
   }
 
-
   .problem-card:hover {
     transform: translateY(-2px);
   }
 
-
   html.dark .problem-card {
     background: var(--bg-surface);
   }
-
 
   .problem-tag-pill {
     background-color: color-mix(in srgb, var(--bg-surface-alt), transparent 5%);
     color: var(--text-secondary);
   }
 
-
   html.dark .problem-tag-pill {
     background-color: color-mix(in srgb, var(--bg-surface), transparent 10%);
     color: var(--text-primary);
   }
 }
-
 
 .dark {
   & .input {
@@ -369,11 +327,9 @@
   }
 }
 
-
 .btn-sm {
   @apply px-2 py-1 text-sm;
 }
-
 
 .btn-primary {
   @apply inline-flex items-center rounded-md px-4 py-2 text-sm font-medium focus:outline-hidden;
@@ -381,17 +337,14 @@
   color: var(--text-inverse);
   border: 1px solid transparent;
 
-
   &:hover {
     filter: brightness(1.04);
   }
-
 
   &:focus {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-
 
   &:disabled {
     cursor: not-allowed;
@@ -400,12 +353,10 @@
   }
 }
 
-
 .shine-effect {
   position: relative;
   overflow: hidden;
 }
-
 
 .purple-motion-effect {
   position: relative;
@@ -417,7 +368,6 @@
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
     color 600ms ease,
     filter 220ms ease;
-
 
   &::before {
     content: '';
@@ -431,30 +381,25 @@
     pointer-events: none;
   }
 
-
   &:hover {
     transform: scale(1.05);
     color: var(--pme-hover-color, var(--pme-color, inherit));
     filter: saturate(1.04);
   }
 
-
   &:hover::before {
     transform: translate(0%, 0%) scale(2.5);
   }
 
-
   &:active {
     transform: scale(0.95);
   }
-
 
   &:focus-visible {
     outline: 2px solid rgba(240, 194, 255, 0.5);
     outline-offset: 2px;
   }
 }
-
 
 @keyframes shine {
   from {
@@ -470,11 +415,9 @@
   }
 }
 
-
 .textarea {
   @apply block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-transparent dark:bg-gray-800 dark:focus:border-blue-500;
 }
-
 
 .input {
   @apply block w-full min-w-0 flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
@@ -490,16 +433,13 @@
   }
 }
 
-
 .mobile-menu-button-container {
   @apply rounded-md text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden;
-
 
   .dark & {
     @apply text-dark-med-emphasis hover:text-dark-high-emphasis hover:bg-gray-800 focus:bg-gray-700;
   }
 }
-
 
 @layer utilities {
   /* make Tailwind's bg-white map to your cream-ish surface token */
@@ -507,61 +447,49 @@
     background-color: var(--bg-surface);
   }
 
-
   .bg-gray-50 {
     background-color: var(--bg-surface-alt);
   }
-
 
   .bg-gray-100 {
     background-color: var(--bg-surface-alt);
   }
 
-
   .bg-gray-200 {
     background-color: var(--bg-muted);
   }
-
 
   .text-gray-900 {
     color: var(--text-primary);
   }
 
-
   .text-gray-800 {
     color: var(--text-primary);
   }
-
 
   .text-gray-700 {
     color: var(--text-secondary);
   }
 
-
   .text-gray-600 {
     color: var(--text-secondary);
   }
-
 
   .text-gray-500 {
     color: var(--text-muted);
   }
 
-
   .text-gray-400 {
     color: var(--text-muted);
   }
-
 
   .border-gray-200 {
     border-color: var(--border);
   }
 
-
   .border-gray-300 {
     border-color: var(--border-strong);
   }
-
 
   /* map blues to your mauve/pink accent system */
   .text-blue-300,
@@ -569,23 +497,19 @@
     color: var(--accent-glow);
   }
 
-
   .text-blue-600,
   .text-blue-700 {
     color: var(--accent);
   }
-
 
   .bg-blue-50,
   .bg-blue-100 {
     background-color: var(--accent-soft);
   }
 
-
   .bg-blue-200 {
     background-color: var(--accent-soft-strong);
   }
-
 
   .bg-blue-500,
   .bg-blue-600,
@@ -593,123 +517,100 @@
     background-color: var(--accent);
   }
 
-
   .border-blue-500,
   .border-blue-600,
   .border-blue-700 {
     border-color: var(--accent);
   }
 
-
   .ring-blue-500,
   .ring-blue-600 {
     --tw-ring-color: var(--accent);
   }
-
 
   .ring-blue-300,
   .ring-blue-400 {
     --tw-ring-color: var(--accent-glow);
   }
 
-
   .bg-gray-500\/75 {
     background-color: rgba(32, 28, 54, 0.55);
   }
-
 
   .dark .bg-gray-900\/75 {
     background-color: rgba(32, 28, 54, 0.72);
   }
 
-
   .dark .bg-black {
     background-color: var(--bg-page);
   }
-
 
   .dark .bg-gray-900 {
     background-color: var(--bg-surface);
   }
 
-
   .dark .bg-gray-800 {
     background-color: var(--bg-surface-alt);
   }
-
 
   .dark .bg-gray-700 {
     background-color: var(--bg-muted);
   }
 
-
   .dark .text-gray-200 {
     color: var(--text-secondary);
   }
-
 
   .dark .text-gray-300 {
     color: var(--text-secondary);
   }
 
-
   .dark .text-gray-400 {
     color: var(--text-muted);
   }
-
 
   .dark .text-gray-500 {
     color: var(--text-muted);
   }
 
-
   .dark .border-gray-700 {
     border-color: var(--border-strong);
   }
 
-
   .dark .border-gray-800 {
     border-color: var(--border);
   }
-
 
   .dark .text-blue-300,
   .dark .text-blue-400 {
     color: var(--accent-glow);
   }
 
-
   .dark .text-blue-600 {
     color: var(--accent);
   }
-
 
   .dark .bg-blue-500,
   .dark .bg-blue-600 {
     background-color: var(--accent);
   }
 
-
   .dark .border-blue-500 {
     border-color: var(--accent);
   }
-
 
   .dark .border-blue-700 {
     border-color: var(--accent-strong);
   }
 }
 
-
 .tippy-tooltip {
   --tooltip-bg-color: var(--bg-surface-alt);
-
 
   .dark & {
     --tooltip-bg-color: var(--bg-surface);
     color: var(--text-primary) !important;
   }
-
 
   background-color: var(--tooltip-bg-color) !important;
   padding: 0.5rem;
@@ -717,7 +618,6 @@
   font-size: 1rem !important;
   font-weight: normal !important;
   text-align: center;
-
 
   &[data-placement^='top'] > .tippy-arrow::before {
     border-top-color: var(--tooltip-bg-color) !important;
@@ -733,7 +633,6 @@
   }
 }
 
-
 .tippy-tooltip--asterisk {
   &[data-placement^='top'] {
     transform: translateY(10px);
@@ -743,12 +642,10 @@
   }
 }
 
-
 .tippy-tooltip--compact {
   font-size: 0.875rem !important;
   padding: 0rem;
 }
-
 
 .code-block-copy-button {
   padding: 1.6px 8px 1.6px 8px;
@@ -756,20 +653,19 @@
   background-color: var(--bg-surface-alt);
   border: 1px solid var(--border);
 
-
   position: absolute;
   top: 0px;
   right: calc(var(--right-offset) + var(--left-offset));
   z-index: 99;
   border-radius: 0px 0px 4px 4px;
   font-size: 12px;
-  font-family: 'Inter', 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono';
-
+  font-family:
+    'Inter', 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono';
 
   .dark &:hover {
     background-color: var(--bg-surface-alt);
   }
-
 
   --left-offset: -4 * 0.25rem;
   @media (min-width: 640px) {
@@ -779,4 +675,3 @@
     --left-offset: 0rem;
   }
 }
-

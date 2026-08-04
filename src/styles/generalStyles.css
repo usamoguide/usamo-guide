@@ -2,10 +2,17 @@
 html {
   background-color: var(--bg-page);
   color: var(--text-primary);
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    'Inter',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
 }
-
 
 body,
 button,
@@ -17,19 +24,16 @@ pre {
   font-family: inherit;
 }
 
-
 html.dark {
   background-color: var(--bg-page);
   color: var(--text-primary);
   min-height: 100vh;
 }
 
-
 html.transitioning-color-scheme,
 html.transitioning-color-scheme * {
   transition-duration: 0ms !important;
 }
-
 
 /* Scrollbar styles */
 /* Thanks https://joshwcomeau.com/! */
@@ -57,7 +61,6 @@ html.transitioning-color-scheme * {
   }
 }
 
-
 .react-markdown > pre {
   font-size: 1em;
   line-height: 1.75;
@@ -69,60 +72,49 @@ html.transitioning-color-scheme * {
   overflow: visible;
 }
 
-
 /* Additional vertical padding used by kbd tag. */
 .markdown {
   @apply leading-normal break-words;
 }
 
-
 .markdown p {
   @apply mb-4;
 }
-
 
 .markdown pre {
   @apply mt-4 mb-4;
   font-size: 0.875rem;
 }
 
-
 .markdown > * + * {
   @apply mt-0 mb-4;
 }
-
 
 .markdown > *:first-child {
   @apply mt-0;
 }
 
-
 .markdown li > p + p {
   @apply mt-6;
 }
-
 
 .markdown a {
   color: var(--accent);
   font-weight: 600;
 }
 
-
 .dark .markdown a {
   color: var(--accent-glow);
 }
-
 
 .markdown a:hover {
   color: var(--accent-strong);
 }
 
-
 .markdown strong a,
 .markdown a strong {
   @apply font-bold;
 }
-
 
 .markdown {
   h1,
@@ -137,17 +129,14 @@ html.transitioning-color-scheme * {
   }
 }
 
-
 .markdown h5 {
   @apply mt-6 mb-4 text-sm leading-tight font-semibold;
 }
-
 
 .markdown h6 {
   @apply mt-6 mb-4 text-sm leading-tight font-semibold;
   color: var(--text-secondary);
 }
-
 
 .markdown blockquote {
   border-left: 4px solid var(--accent);
@@ -156,44 +145,36 @@ html.transitioning-color-scheme * {
   color: var(--text-secondary);
 }
 
-
 .dark .markdown blockquote {
   color: var(--text-secondary);
   border-left-color: var(--accent);
 }
 
-
 .markdown code.inline-code {
   @apply text-sm;
 }
-
 
 .markdown h1 code.inline-code {
   @apply text-3xl;
 }
 
-
 .markdown h2 code.inline-code {
   @apply text-2xl;
 }
-
 
 .markdown h3 code.inline-code {
   @apply text-xl;
 }
 
-
 .markdown h4 code.inline-code {
   @apply text-lg;
 }
-
 
 .markdown code.inline-code {
   @apply inline rounded-sm px-1 py-0.5 font-mono;
   background-color: var(--accent-soft);
   color: var(--accent);
 }
-
 
 .markdown table:not(.no-markdown) {
   @apply text-base;
@@ -207,14 +188,12 @@ html.transitioning-color-scheme * {
   }
 }
 
-
 .markdown ul:not(.no-markdown) {
   @apply mb-6 list-disc pl-8;
 }
 .markdown ol {
   @apply mb-6 pl-4;
 }
-
 
 .markdown ul:not(.no-markdown) ul {
   list-style-type: circle;
@@ -229,7 +208,6 @@ html.transitioning-color-scheme * {
 .markdown ol:not(.no-markdown) ol {
   @apply mt-1 mb-2;
 }
-
 
 .markdown ul:not(.no-markdown) ul:last-child {
   @apply mb-0;
@@ -247,7 +225,6 @@ html.transitioning-color-scheme * {
   list-style-type: square;
 }
 
-
 .markdown ul:not(.no-markdown) > li {
   @apply mb-2;
 }
@@ -261,14 +238,12 @@ html.transitioning-color-scheme * {
   @apply mb-0;
 }
 
-
 .markdown ul ul > li {
   @apply mb-1;
 }
 .markdown ol ol > li {
   @apply mb-1;
 }
-
 
 .markdown ul p {
   @apply mb-0;
@@ -277,17 +252,14 @@ html.transitioning-color-scheme * {
   @apply mb-0;
 }
 
-
 .markdown ol {
   counter-reset: number;
 }
-
 
 .markdown ol > li {
   display: flex;
   counter-increment: number;
 }
-
 
 .markdown ol > li:before {
   content: counters(number, '.') '.';
@@ -296,29 +268,24 @@ html.transitioning-color-scheme * {
   color: var(--accent);
 }
 
-
 .dark .markdown ol > li:before {
   color: var(--accent-glow);
 }
-
 
 .markdown kbd {
   @apply inline-block rounded-sm border px-1 py-0.5 align-middle font-mono text-xs font-normal;
   border-color: var(--border-strong);
 }
 
-
 /* Override pygments style background color. */
 .markdown .highlight pre {
   background-color: var(--bg-surface-alt) !important;
 }
 
-
 .spoiler-body > pre {
   margin-left: -1rem !important;
   margin-right: -1rem !important;
 }
-
 
 .spoiler-body > pre:first-child {
   margin-top: -2rem !important;
@@ -348,7 +315,6 @@ html.transitioning-color-scheme * {
   color: var(--text-primary);
 }
 
-
 .markdown .tailwind-alert--info a {
   @apply dark:text-blue-200;
 }
@@ -358,7 +324,6 @@ html.transitioning-color-scheme * {
 .markdown .tailwind-alert--info code.inline-code {
   @apply bg-blue-100 dark:bg-blue-800/50 dark:text-blue-200;
 }
-
 
 .markdown .tailwind-alert--warning a {
   @apply dark:text-yellow-200;
@@ -370,7 +335,6 @@ html.transitioning-color-scheme * {
   @apply bg-yellow-100 dark:bg-yellow-800/50 dark:text-yellow-200;
 }
 
-
 .markdown .tailwind-alert--optional a {
   @apply dark:text-purple-200;
 }
@@ -380,7 +344,6 @@ html.transitioning-color-scheme * {
 .markdown .tailwind-alert--optional code.inline-code {
   @apply bg-purple-100 dark:bg-purple-800/50 dark:text-purple-200;
 }
-
 
 .markdown .tailwind-alert--danger a {
   @apply dark:text-red-200;
@@ -392,11 +355,9 @@ html.transitioning-color-scheme * {
   @apply bg-red-100 dark:bg-red-800/50 dark:text-red-200;
 }
 
-
 .quiz p {
   margin-bottom: 0.5rem;
 }
-
 
 .no-y-margin > *:first-child {
   margin-top: 0 !important;
@@ -408,7 +369,6 @@ html.transitioning-color-scheme * {
   @apply font-normal underline;
   color: var(--text-primary);
 }
-
 
 .table-alternating-stripes {
   background-color: var(--bg-surface);
@@ -423,7 +383,6 @@ html.transitioning-color-scheme * {
   background-color: var(--bg-surface-alt);
 }
 
-
 .dark-mde-container .editor-toolbar {
   border-color: var(--border-strong);
 }
@@ -431,7 +390,6 @@ html.transitioning-color-scheme * {
   background-color: var(--bg-surface);
   color: var(--text-primary);
 }
-
 
 /* from https://www.lekoarts.de/en/blog/language-tabs-for-gatsbys-code-blocks */
 .gatsby-highlight {
@@ -471,20 +429,19 @@ html.transitioning-color-scheme * {
 }
 .gatsby-highlight.light-mode pre[class*='language-cpp']::before {
   content: 'cpp';
-  background: #3D3564;
-  color: #FFFFFF;
+  background: #3d3564;
+  color: #ffffff;
 }
 .gatsby-highlight.light-mode pre[class*='language-java']::before {
   content: 'java';
-  background: #3D3564;
-  color: #FFFFFF;
+  background: #3d3564;
+  color: #ffffff;
 }
 .gatsby-highlight.light-mode pre[class*='language-py']::before {
   content: 'python';
-  background: #3D3564;
-  color: #FFFFFF;
+  background: #3d3564;
+  color: #ffffff;
 }
-
 
 .yt-video-container {
   position: relative;
@@ -499,13 +456,11 @@ html.transitioning-color-scheme * {
   height: 100%;
 }
 
-
 .form-input {
   @apply rounded-md focus:ring-3;
   border-color: var(--border-strong);
   --tw-ring-color: var(--accent);
 }
-
 
 .dark .ais-Highlight-highlighted,
 .dark .ais-Snippet-highlighted {
@@ -537,11 +492,16 @@ html.transitioning-color-scheme * {
   color: #000000;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 150ms ease, border-color 150ms ease,
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
     color 150ms ease;
 }
 
-.problems-page .problems-pagination .ais-Pagination-item--selected .ais-Pagination-link,
+.problems-page
+  .problems-pagination
+  .ais-Pagination-item--selected
+  .ais-Pagination-link,
 .problems-page .problems-pagination .ais-Pagination-link:hover {
   background: #d6a7f3;
   border-color: #c97edc;
@@ -554,16 +514,17 @@ html.transitioning-color-scheme * {
   color: #000000;
 }
 
-.problems-page .problems-pagination .ais-Pagination-item--disabled .ais-Pagination-link {
+.problems-page
+  .problems-pagination
+  .ais-Pagination-item--disabled
+  .ais-Pagination-link {
   opacity: 0.5;
 }
-
 
 .katex * {
   border-color: currentColor;
 }
 /*! purgecss end ignore */
-
 
 .tw-forms-disable input {
   --tw-ring-color: transparent !important;
@@ -575,8 +536,6 @@ html.transitioning-color-scheme * {
   @apply rounded-full;
 }
 
-
 .markdown img {
   background-color: var(--bg-surface-alt);
 }
-

@@ -4,8 +4,4 @@ export const GlowingRing = ({
   children,
 }: {
   children: JSX.Element;
-}): JSX.Element => (
-  <div className="group relative">
-    {children}
-  </div>
-);
+}): JSX.Element => <div className="group relative">{children}</div>;

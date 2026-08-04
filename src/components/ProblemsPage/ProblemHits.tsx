@@ -61,15 +61,13 @@ function ProblemHit({ hit }: ProblemHitProps) {
       }}
       className="group relative cursor-pointer overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1"
       style={{
-        background:
-          'rgba(43, 30, 57, 0.92)',
+        background: 'rgba(43, 30, 57, 0.92)',
       }}
     >
       <div
         className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background:
-            'transparent',
+          background: 'transparent',
         }}
       />
       <div className="relative flex w-full flex-row justify-between">

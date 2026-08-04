@@ -1,6 +1,11 @@
 import classNames from 'classnames';
+import {
+  MotionValue,
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+} from 'framer-motion';
 import * as React from 'react';
-import { MotionValue, motion, useAnimationFrame, useMotionValue } from 'framer-motion';
 
 function GridPattern({
   offsetX,
@@ -20,7 +25,12 @@ function GridPattern({
           height="40"
           patternUnits="userSpaceOnUse"
         >
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+          <path
+            d="M 40 0 L 0 0 0 40"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+          />
         </motion.pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#infinite-grid-pattern)" />
@@ -39,10 +49,12 @@ export const Component = () => {
 
   return (
     <div
-      className={classNames('pointer-events-none absolute inset-0 overflow-hidden')}
+      className={classNames(
+        'pointer-events-none absolute inset-0 overflow-hidden'
+      )}
       aria-hidden="true"
     >
-      <div className="absolute inset-0 opacity-[0.08] text-white/70">
+      <div className="absolute inset-0 text-white/70 opacity-[0.08]">
         <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
       </div>
     </div>

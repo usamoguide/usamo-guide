@@ -40,8 +40,7 @@ const PhotoCard = ({ text, day, tomorrowMilliseconds, hiddenOnDesktop }) => {
       <div
         className="flex flex-col overflow-hidden sm:rounded-2xl"
         style={{
-          background:
-            'rgba(43, 30, 57, 0.92)',
+          background: 'rgba(43, 30, 57, 0.92)',
         }}
       >
         <div className="px-4 pt-5 pb-4 sm:px-6 sm:pt-6">
@@ -197,8 +196,7 @@ export default function DailyStreak({ streak }) {
       <div
         className="overflow-hidden sm:rounded-2xl lg:col-span-2"
         style={{
-          background:
-            'rgba(43, 30, 57, 0.92)',
+          background: 'rgba(43, 30, 57, 0.92)',
         }}
       >
         <div className="px-4 py-5 sm:p-6">

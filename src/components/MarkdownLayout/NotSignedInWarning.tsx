@@ -18,8 +18,7 @@ export default function NotSignedInWarning() {
         <div
           className="overflow-hidden rounded-2xl"
           style={{
-            background:
-              'rgba(242, 216, 244, 0.9)',
+            background: 'rgba(242, 216, 244, 0.9)',
           }}
         >
           <div className="px-4 py-5 sm:p-6">
@@ -48,8 +47,7 @@ export default function NotSignedInWarning() {
                     style={
                       {
                         border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background:
-                          '#6D3B9F',
+                        background: '#6D3B9F',
                         boxShadow: 'none',
                         '--pme-color': '#F4EDEA',
                         '--pme-hover-color': '#201C36',

@@ -5,8 +5,7 @@ export default function DashboardCard(props) {
     <div
       className="rounded-2xl p-0 transition"
       style={{
-        background:
-          'rgba(43, 30, 57, 0.92)',
+        background: 'rgba(43, 30, 57, 0.92)',
       }}
       {...props}
     />

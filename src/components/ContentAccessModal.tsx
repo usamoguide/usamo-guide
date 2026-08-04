@@ -157,8 +157,7 @@ export const ContentAccessModal: React.FC<ContentAccessModalProps> = ({
                   className="inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold focus:outline-hidden"
                   style={{
                     border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background:
-                      '#6D3B9F',
+                    background: '#6D3B9F',
                     color: '#F4EDEA',
                   }}
                   onClick={() =>
@@ -270,8 +269,7 @@ export const ContentAccessModal: React.FC<ContentAccessModalProps> = ({
                       className="inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold focus:outline-hidden disabled:opacity-50"
                       style={{
                         border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background:
-                          '#6D3B9F',
+                        background: '#6D3B9F',
                         color: '#F4EDEA',
                       }}
                       disabled={isSigningIn || !email || !password}
@@ -284,8 +282,7 @@ export const ContentAccessModal: React.FC<ContentAccessModalProps> = ({
                       className="inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold focus:outline-hidden disabled:opacity-50"
                       style={{
                         border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background:
-                          '#EFE3FF',
+                        background: '#EFE3FF',
                         color: '#2C1842',
                       }}
                       disabled={isSigningIn || !email || !password}
