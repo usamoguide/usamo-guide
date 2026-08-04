@@ -23,7 +23,7 @@ const Field = ({
       >
         {label}
       </label>
-      <div className="relative rounded-md shadow-sm">
+      <div className="relative rounded-md">
         <input
           type="text"
           id={id}
@@ -173,7 +173,7 @@ export default function ContactUsPage(props: PageProps) {
               .
             </p>
           </div>
-          <div className="rounded-xl bg-[rgba(18,15,36,0.75)] shadow-lg">
+          <div className="rounded-xl bg-[rgba(18,15,36,0.75)]">
             <form className="px-4 py-5 sm:p-6" onSubmit={handleSubmit}>
               {showSuccess && (
                 <div className="rounded-md bg-green-50 p-4 dark:bg-green-800">
@@ -353,7 +353,7 @@ export default function ContactUsPage(props: PageProps) {
                         You must be logged in to submit the contact form!
                       </p>
                     )}
-                    <div className="relative rounded-md shadow-sm">
+                    <div className="relative rounded-md">
                       <textarea
                         id="contact_message"
                         rows={5}

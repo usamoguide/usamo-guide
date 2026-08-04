@@ -3,7 +3,7 @@ import * as React from 'react';
 const ForumCTA = (): JSX.Element => {
   return (
     <div
-      className="mx-auto mb-6 max-w-3xl rounded-2xl shadow-lg"
+      className="mx-auto mb-6 max-w-3xl rounded-2xl"
       style={{
         background:
           'rgba(43, 30, 57, 0.92)',

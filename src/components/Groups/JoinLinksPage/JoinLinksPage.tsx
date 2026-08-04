@@ -75,7 +75,7 @@ const JoinLinksPage = () => {
             </div>
           </div>
           <div className="h-4" />
-          <div className="overflow-hidden bg-white shadow-sm sm:rounded-md dark:bg-gray-900">
+          <div className="overflow-hidden bg-white sm:rounded-md dark:bg-gray-900">
             <ul className="divide-y divide-gray-200 dark:divide-gray-700">
               {joinLinks?.map(link => (
                 <li key={link.id}>

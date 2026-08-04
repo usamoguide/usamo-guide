@@ -129,15 +129,15 @@ export default function AddProblemModal(props: {
           </span>
           <DialogPanel
             transition
-            className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle text-gray-900 shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
+            className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle text-gray-900 transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
           >
             <DialogTitle as="h3" className="text-lg leading-6 font-medium">
               Add Problem
             </DialogTitle>
-            <div className="relative mt-2 rounded-md shadow-sm">
+            <div className="relative mt-2 rounded-md">
               <input
                 type="text"
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+                className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
                 placeholder="Enter Problem URL"
                 onChange={e => setLink(e.target.value)}
               />

@@ -31,7 +31,7 @@ export default function Tabs({
         </select>
       </div>
       <div className="hidden sm:block">
-        <nav className="relative z-0 flex divide-x divide-gray-200 rounded-lg shadow-sm dark:divide-gray-600">
+        <nav className="relative z-0 flex divide-x divide-gray-200 rounded-lg dark:divide-gray-600">
           {options.map((option, idx) => (
             <button
               key={option}

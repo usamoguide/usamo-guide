@@ -59,7 +59,7 @@ function ProblemHit({ hit }: ProblemHitProps) {
           openProblemInNewTab();
         }
       }}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(101,86,141,0.28)]"
+      className="group relative cursor-pointer overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1"
       style={{
         background:
           'rgba(43, 30, 57, 0.92)',

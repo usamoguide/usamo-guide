@@ -13,15 +13,15 @@ const ProgressBar = ({ text, green, yellow, blue }) => {
       <div className="flex h-4 overflow-hidden text-xs rounded-full" style={{ background: trackColor }}>
         <div
           style={{ width: `${green}%`, background: completedColor }}
-          className="flex flex-col justify-center text-center whitespace-nowrap text-white shadow-none"
+          className="flex flex-col justify-center text-center whitespace-nowrap text-white"
         />
         <div
           style={{ width: `${yellow}%`, background: inProgressColor }}
-          className="flex flex-col justify-center text-center whitespace-nowrap text-white shadow-none"
+          className="flex flex-col justify-center text-center whitespace-nowrap text-white"
         />
         <div
           style={{ width: `${blue}%`, background: skippedColor }}
-          className="flex flex-col justify-center text-center whitespace-nowrap text-white shadow-none"
+          className="flex flex-col justify-center text-center whitespace-nowrap text-white"
         />
       </div>
       <div className="text-right">

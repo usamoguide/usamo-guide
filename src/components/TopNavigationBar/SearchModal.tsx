@@ -34,7 +34,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         <div className="mx-4 my-8 sm:my-16">
           <DialogPanel
             transition
-            className="dark:bg-dark-surface relative mx-auto transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="dark:bg-dark-surface relative mx-auto transform overflow-hidden rounded-lg bg-white text-left transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
           >
             <Suspense
               fallback={

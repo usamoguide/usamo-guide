@@ -76,7 +76,7 @@ export default function EditProblemHintModal({
           </span>
           <DialogPanel
             transition
-            className="dark:bg-dark-surface inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="dark:bg-dark-surface inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"
@@ -138,13 +138,13 @@ export default function EditProblemHintModal({
               <div className="space-x-4">
                 <button
                   type="submit"
-                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-2 sm:text-sm"
+                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-2 sm:text-sm"
                 >
                   Save
                 </button>
                 <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
+                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
                   onClick={() => onClose()}
                 >
                   Cancel
@@ -153,7 +153,7 @@ export default function EditProblemHintModal({
               {initialHint && (
                 <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
+                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
                   onClick={() => {
                     if (confirm('Are you sure you want to delete this hint?')) {
                       onSave(null);

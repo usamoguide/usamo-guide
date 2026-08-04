@@ -74,7 +74,7 @@ export default function AetherFlowHero(): JSX.Element {
             <span>Discord</span>
           </a>
 
-          <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+          <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90">
             Join our community!
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function AetherFlowHero(): JSX.Element {
 
       {/* ── Center content ── */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
-        <div className="mb-5 inline-flex items-center rounded-full bg-white/[0.08] px-4 py-2 font-mono text-[11px] font-bold tracking-[0.28em] text-[#F5F0FA] uppercase shadow-[0_18px_40px_rgba(0,0,0,0.22)] backdrop-blur-md">
+        <div className="mb-5 inline-flex items-center rounded-full bg-white/[0.08] px-4 py-2 font-mono text-[11px] font-bold tracking-[0.28em] text-[#F5F0FA] uppercase backdrop-blur-md">
           {'Written by USA(J)MO Medalists'}
         </div>
 
@@ -95,7 +95,7 @@ export default function AetherFlowHero(): JSX.Element {
               src="/images/Titlemascot.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute -top-6 -right-5 hidden w-16 rotate-[14deg] drop-shadow-[0_8px_18px_rgba(0,0,0,0.35)] min-[770px]:block md:-top-8 md:-right-7 md:w-20 lg:-top-10 lg:-right-9 lg:w-24"
+              className="pointer-events-none absolute -top-6 -right-5 hidden w-16 rotate-[14deg] min-[770px]:block md:-top-8 md:-right-7 md:w-20 lg:-top-10 lg:-right-9 lg:w-24"
             />
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function AetherFlowHero(): JSX.Element {
           <span>Star us on Github</span>
         </a>
 
-        <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+        <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90">
           We are fully{' '}
           <strong className="font-bold text-[#FBF7FF]">open source</strong>.
         </p>

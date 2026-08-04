@@ -41,7 +41,7 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
                 alt={member.displayName}
               />
               <span
-                className="absolute inset-0 rounded-full shadow-inner"
+                className="absolute inset-0 rounded-full"
                 aria-hidden="true"
               ></span>
             </div>

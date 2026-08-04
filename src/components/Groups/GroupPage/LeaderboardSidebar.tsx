@@ -4,7 +4,7 @@ import LeaderboardList from '../LeaderboardList/LeaderboardList';
 
 export default function LeaderboardSidebar() {
   return (
-    <div className="rounded-lg bg-white shadow-sm dark:bg-gray-800">
+    <div className="rounded-lg bg-white dark:bg-gray-800">
       <div className="p-6 pb-3">
         <div className="flex items-baseline justify-between">
           <h2

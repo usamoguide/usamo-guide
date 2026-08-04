@@ -16,7 +16,7 @@ export default function NotSignedInWarning() {
     return (
       <>
         <div
-          className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+          className="overflow-hidden rounded-2xl"
           style={{
             background:
               'rgba(242, 216, 244, 0.9)',

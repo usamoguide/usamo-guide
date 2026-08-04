@@ -66,7 +66,7 @@ export default function ProblemPage(props) {
         <div className="pb-8 xl:pb-10">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 xl:grid xl:max-w-(--breakpoint-xl) xl:grid-cols-3">
             <div className="xl:col-span-2 xl:pr-8">
-              <div className="rounded-2xl bg-white/90 p-6 shadow-xl dark:bg-slate-900/75">
+              <div className="rounded-2xl bg-white/90 p-6 dark:bg-slate-900/75">
                 <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
                   <div>
                     <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl dark:text-white">

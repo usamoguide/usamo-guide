@@ -238,7 +238,7 @@ function ResourceCard({
   const imageAlt = link.imageAlt ?? fallbackImageAlt;
 
   return (
-    <article className="overflow-hidden rounded-2xl bg-[rgba(18,15,36,0.70)] shadow-sm backdrop-blur-sm">
+    <article className="overflow-hidden rounded-2xl bg-[rgba(18,15,36,0.70)] backdrop-blur-sm">
       <div
         className={`grid items-start lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}
       >
@@ -267,7 +267,7 @@ function ResourceCard({
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center rounded-full border border-[rgba(240,194,255,0.30)] bg-[#70428A] px-4 py-2 text-sm font-semibold text-[#F4EDEA] shadow-[0_0_15px_rgba(176,139,208,0.20)] transition hover:bg-[#8A52AA]"
+              className="inline-flex items-center rounded-full border border-[rgba(240,194,255,0.30)] bg-[#70428A] px-4 py-2 text-sm font-semibold text-[#F4EDEA] transition hover:bg-[#8A52AA]"
             >
               Visit resource {'->'}
             </a>
@@ -287,7 +287,7 @@ function TopicSection({
   links,
 }: TopicResources) {
   return (
-    <section className="rounded-3xl bg-[rgba(10,8,24,0.35)] p-4 shadow-[0_0_30px_rgba(176,139,208,0.10)] sm:p-5 lg:p-6">
+    <section className="rounded-3xl bg-[rgba(10,8,24,0.35)] p-4 sm:p-5 lg:p-6">
       <div className="mb-5 rounded-2xl bg-[rgba(18,15,36,0.80)] px-5 py-5 sm:px-6">
         <div className="flex items-start gap-3">
           <div className="rounded-lg bg-[rgba(112,66,138,0.35)] p-2 text-[#F0C2FF]">
@@ -337,7 +337,7 @@ export default function OtherUsefulResourcesPage(props: PageProps) {
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
 
         <main className="mx-auto max-w-screen-2xl px-4 py-10 sm:px-6 lg:px-8">
-          <header className="rounded-2xl bg-[rgba(18,15,36,0.80)] px-6 py-14 text-center shadow-[0_0_25px_rgba(176,139,208,0.15)] backdrop-blur-sm sm:px-10 sm:py-20">
+          <header className="rounded-2xl bg-[rgba(18,15,36,0.80)] px-6 py-14 text-center backdrop-blur-sm sm:px-10 sm:py-20">
             <p className="text-sm font-semibold tracking-wide text-[#F0C2FF] uppercase">
               Community-curated links
             </p>

@@ -188,9 +188,9 @@ export default function TopNavigationBar({
                   </PopoverButton>
                   <PopoverPanel
                     transition
-                    className="absolute left-1/2 z-[120] -mt-2 hidden w-screen max-w-md -translate-x-1/2 transform px-2 shadow-lg transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in sm:px-0 md:block lg:max-w-3xl"
+                    className="absolute left-1/2 z-[120] -mt-2 hidden w-screen max-w-md -translate-x-1/2 transform px-2 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in sm:px-0 md:block lg:max-w-3xl"
                   >
-                    <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
+                    <div className="overflow-hidden rounded-lg ring-1 ring-black/5">
                       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2 dark:bg-[#0D0D0D]">
                         {resources.map(item => {
                           const isInternal = item.href.startsWith('/');

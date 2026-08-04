@@ -98,7 +98,7 @@ export default function FeedItem({
         isBeingDragged
           ? 'bg-gray-200 dark:bg-gray-900'
           : 'bg-white hover:bg-cyan-50 dark:bg-gray-800 dark:hover:bg-cyan-900'
-      } shadow ${
+      } ${
         dragHandle ? 'pr-4 sm:pr-6' : 'px-4 sm:px-6'
       } flex transition sm:rounded-lg`}
     >
@@ -168,7 +168,7 @@ export default function FeedItem({
                 leave="transition ease-in duration-75"
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
-                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden"
+                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 ring-black/5 focus:outline-hidden"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu-0"

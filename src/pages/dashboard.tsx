@@ -321,7 +321,7 @@ export default function DashboardPage(props: PageProps) {
                       </>
                     ) : (
                       <div
-                        className="w-full rounded-2xl px-5 py-5 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                        className="w-full rounded-2xl px-5 py-5 text-center"
                         style={{
                           background:
                             'rgba(242, 216, 244, 0.9)',

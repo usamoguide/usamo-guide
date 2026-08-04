@@ -40,17 +40,17 @@ export default function AddFileModal(props) {
           </span>
           <DialogPanel
             transition
-            className="flex w-full max-w-xl transform flex-col items-start rounded-lg bg-white p-5 shadow-lg transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
+            className="flex w-full max-w-xl transform flex-col items-start rounded-lg bg-white p-5 transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
           >
             <h3 className="text-lg font-bold">Enter Problem URL</h3>
             <input
               type="url"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="e.g. https://codeforces.com/contest/1920/problem/C"
               onChange={e => setFileURL(e.target.value)}
             />
             <p className="mt-2">Problem Division</p>
-            <div className="relative mt-2 w-full rounded-md shadow-sm dark:bg-black">
+            <div className="relative mt-2 w-full rounded-md dark:bg-black">
               <Select
                 options={[
                   'General',

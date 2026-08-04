@@ -119,13 +119,13 @@ export default function AddPageModal(props: {
           </span>
           <DialogPanel
             transition
-            className="flex w-full max-w-xl transform flex-col items-start rounded-lg bg-white p-5 text-left shadow-lg transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
+            className="flex w-full max-w-xl transform flex-col items-start rounded-lg bg-white p-5 text-left transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
           >
             <h3 className="text-lg font-bold">Create New Page</h3>
             <label className="mt-3 block text-sm font-medium">Title</label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="e.g. Geometry Basics"
               onChange={e => setTitle(e.target.value)}
               value={title}
@@ -134,7 +134,7 @@ export default function AddPageModal(props: {
             <label className="mt-3 block text-sm font-medium">Module ID</label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="e.g. geometry-basics"
               onChange={e => {
                 setPageId(e.target.value);
@@ -145,7 +145,7 @@ export default function AddPageModal(props: {
 
             <label className="mt-3 block text-sm font-medium">Section Folder</label>
             <select
-              className="block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 bg-white focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               value={sectionPath}
               onChange={e => setSectionPath(e.target.value)}
             >
@@ -158,7 +158,7 @@ export default function AddPageModal(props: {
 
             <label className="mt-3 block text-sm font-medium">Chapter</label>
             <select
-              className="block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 bg-white focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               value={selectedChapter}
               onChange={e => {
                 setSelectedChapter(e.target.value);
@@ -178,7 +178,7 @@ export default function AddPageModal(props: {
             </label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="New chapter name"
               onChange={e => setCustomChapter(e.target.value)}
               value={customChapter}
@@ -187,7 +187,7 @@ export default function AddPageModal(props: {
             <label className="mt-3 block text-sm font-medium">File Path</label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="content/1_Foundations/New_Page.mdx"
               onChange={e => {
                 setPath(e.target.value);
@@ -199,7 +199,7 @@ export default function AddPageModal(props: {
             <label className="mt-3 block text-sm font-medium">Description</label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="Short summary for the module"
               onChange={e => setDescription(e.target.value)}
               value={description}
@@ -208,7 +208,7 @@ export default function AddPageModal(props: {
             <label className="mt-3 block text-sm font-medium">Author</label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               onChange={e => setAuthor(e.target.value)}
               value={author}
             />
@@ -218,7 +218,7 @@ export default function AddPageModal(props: {
             </label>
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="algebra-basics, counting-fundamentals"
               onChange={e => setPrerequisites(e.target.value)}
               value={prerequisites}

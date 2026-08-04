@@ -58,7 +58,7 @@ const SyllabusModule = ({
 
   return (
     <div
-      className="mb-8 overflow-hidden rounded-lg bg-white shadow-sm"
+      className="mb-8 overflow-hidden rounded-lg bg-white"
       id={url}
     >
       <div className="flex items-center border-b border-gray-200 px-4 py-4 sm:px-6">

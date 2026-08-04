@@ -35,7 +35,7 @@ export const Feature = ({
   return (
     <div
       className={classNames(
-        'relative h-full overflow-hidden rounded-2xl p-5 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(99,84,139,0.4)] sm:p-6 md:p-8',
+        'relative h-full overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:scale-[1.02] sm:p-6 md:p-8',
         className
       )}
       style={{

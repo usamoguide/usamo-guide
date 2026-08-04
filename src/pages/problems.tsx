@@ -32,7 +32,7 @@ const PLUM_MID = '#2A1C37';
 const pageBackgroundClasses = 'min-h-screen transition-colors duration-500';
 const heroCardClasses =
   'relative overflow-hidden rounded-3xl p-8 transition-all duration-500';
-const toolbarCardClasses = 'mb-5 rounded-2xl p-4 shadow-lg';
+const toolbarCardClasses = 'mb-5 rounded-2xl p-4';
 const heroCardStyle: React.CSSProperties = {
   background:
     'rgba(48, 32, 67, 0.91)',

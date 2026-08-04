@@ -49,7 +49,7 @@ export const ResourcesFeature = (): JSX.Element => {
           <div className="mb-4 flex flex-col">
             <div className={`-mx-4 -my-2 overflow-x-auto px-4 py-2`}>
               <div
-                className={`inline-block min-w-full overflow-hidden rounded-lg border-b border-gray-200 align-middle shadow-sm dark:border-l dark:border-black`}
+                className={`inline-block min-w-full overflow-hidden rounded-lg border-b border-gray-200 align-middle dark:border-l dark:border-black`}
               >
                 <table className="no-markdown min-w-full">
                   <thead>

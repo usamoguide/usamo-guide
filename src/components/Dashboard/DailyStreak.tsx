@@ -38,7 +38,7 @@ const PhotoCard = ({ text, day, tomorrowMilliseconds, hiddenOnDesktop }) => {
   return (
     <div className={'mb-8 w-full' + (hiddenOnDesktop ? ' lg:hidden' : '')}>
       <div
-        className="flex flex-col overflow-hidden shadow-lg sm:rounded-2xl"
+        className="flex flex-col overflow-hidden sm:rounded-2xl"
         style={{
           background:
             'rgba(43, 30, 57, 0.92)',
@@ -135,7 +135,7 @@ export default function DailyStreak({ streak }) {
       return (
         <div className="mb-8" key={times.length}>
           <div
-            className="flex flex-col overflow-hidden shadow-lg sm:rounded-2xl"
+            className="flex flex-col overflow-hidden sm:rounded-2xl"
             style={{
               background: 'rgba(244, 237, 234, 0.08)',
             }}
@@ -195,7 +195,7 @@ export default function DailyStreak({ streak }) {
   return (
     <>
       <div
-        className="overflow-hidden shadow-lg sm:rounded-2xl lg:col-span-2"
+        className="overflow-hidden sm:rounded-2xl lg:col-span-2"
         style={{
           background:
             'rgba(43, 30, 57, 0.92)',

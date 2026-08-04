@@ -57,7 +57,7 @@ const ScrollProgressButton = (): JSX.Element | null => {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-20 right-6 z-40 hidden lg:flex items-center justify-center w-14 h-14 rounded-full shadow-md transition-all duration-200 hover:shadow-lg"
+      className="fixed bottom-20 right-6 z-40 hidden lg:flex items-center justify-center w-14 h-14 rounded-full transition-all duration-200"
       style={{
         opacity,
         transform: `scale(${isVisible ? 1 : 0.8})`,

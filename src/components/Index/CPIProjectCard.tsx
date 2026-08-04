@@ -14,8 +14,8 @@ export const CPIProjectCard = ({
   url: string;
   children: React.ReactNode;
 }): JSX.Element => (
-  // <div className="rounded-lg dark:bg-gray-800 p-6 md:p-8 transition hover:shadow-lg relative flex flex-col">
-  <div className="relative flex flex-col rounded-lg bg-white p-6 transition hover:shadow-lg md:p-8 dark:bg-gray-800">
+  // <div className="rounded-lg dark:bg-gray-800 p-6 md:p-8 transition relative flex flex-col">
+  <div className="relative flex flex-col rounded-lg bg-white p-6 transition md:p-8 dark:bg-gray-800">
     <div className="flex-1">
       <div
         className={classNames(

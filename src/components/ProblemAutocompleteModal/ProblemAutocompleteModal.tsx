@@ -38,7 +38,7 @@ const ProblemAutocompleteModal = ({
 
           <DialogPanel
             transition
-            className="inline-block w-full transform overflow-hidden rounded-lg text-left align-bottom shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="inline-block w-full transform overflow-hidden rounded-lg text-left align-bottom transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"

@@ -19,7 +19,7 @@ export default function GroupPage(props) {
         <GroupPageHeader group={group.groupData!} />
         <Link
           to="leaderboard"
-          className="flex items-center justify-between bg-white px-4 py-3 shadow-sm sm:px-8 md:hidden dark:bg-gray-800"
+          className="flex items-center justify-between bg-white px-4 py-3 sm:px-8 md:hidden dark:bg-gray-800"
         >
           <span>View Leaderboard</span> &rarr;
         </Link>

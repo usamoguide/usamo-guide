@@ -175,7 +175,7 @@ export default function SyllabusPage({
               </p>
 
               {(division === 'advanced' || division === 'usamo') && (
-                <div className="mx-auto mb-8 max-w-4xl rounded-2xl bg-[#171228]/76 px-6 py-4 text-center shadow-sm">
+                <div className="mx-auto mb-8 max-w-4xl rounded-2xl bg-[#171228]/76 px-6 py-4 text-center">
                   <p className="text-sm font-semibold text-[#F0C2FF] sm:text-base">
                     This section is currently under development. The content you
                     see here is filler for now.
@@ -223,7 +223,7 @@ export default function SyllabusPage({
               </div>
 
               <div className="mx-auto grid max-w-2xl gap-8 lg:max-w-full lg:grid-cols-2">
-                <div className="rounded-xl bg-[#171228]/68 shadow-[0_10px_35px_rgba(17,10,29,0.36)] backdrop-blur sm:rounded-2xl">
+                <div className="rounded-xl bg-[#171228]/68 backdrop-blur sm:rounded-2xl">
                   <div className="px-4 py-5 sm:p-6">
                     <h3 className="text-lg leading-6 font-semibold text-[#F4EDEA]">
                       Modules Progress
@@ -236,7 +236,7 @@ export default function SyllabusPage({
                     </div>
                   </div>
                 </div>
-                <div className="rounded-xl bg-[#171228]/68 shadow-[0_10px_35px_rgba(17,10,29,0.36)] backdrop-blur sm:rounded-2xl">
+                <div className="rounded-xl bg-[#171228]/68 backdrop-blur sm:rounded-2xl">
                   <div className="px-4 py-5 sm:p-6">
                     <h3 className="text-lg leading-6 font-semibold text-[#F4EDEA]">
                       Problems Progress
@@ -257,7 +257,7 @@ export default function SyllabusPage({
             {section.map(category => (
               <div
                 key={category.name}
-                className="group/category flex flex-col rounded-2xl bg-[#171228]/58 p-4 shadow-sm transition md:flex-row"
+                className="group/category flex flex-col rounded-2xl bg-[#171228]/58 p-4 transition md:flex-row"
               >
                 <div className="flex flex-1 flex-col items-center justify-center pr-0 text-center md:pr-12">
                   <h2 className="py-3 text-2xl leading-tight font-bold tracking-tight text-[#F4EDEA] transition group-hover/category:text-[#F0C2FF] md:text-3xl">

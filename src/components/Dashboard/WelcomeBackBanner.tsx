@@ -7,7 +7,7 @@ export default function WelcomeBackBanner({
 }) {
   return (
     <div
-      className="w-full shadow-lg lg:rounded-2xl"
+      className="w-full lg:rounded-2xl"
       style={{
         background:
           'rgba(43, 30, 57, 0.92)',
@@ -35,7 +35,7 @@ export default function WelcomeBackBanner({
           </div>
         </div>
         <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:shrink-0 sm:items-center lg:mr-2">
-          <span className="inline-flex rounded-md shadow-sm">
+          <span className="inline-flex rounded-md">
             <span
               className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold sm:text-base lg:px-8 lg:py-3"
               style={

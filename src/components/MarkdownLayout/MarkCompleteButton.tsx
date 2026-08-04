@@ -104,7 +104,7 @@ const MarkCompleteButton = ({
             <MenuButton
               type="button"
               id={menuId}
-              className={`inline-flex w-full justify-center rounded-full pr-4 shadow-sm ${
+              className={`inline-flex w-full justify-center rounded-full pr-4 ${
                 state === 'Not Started' ? 'pl-4' : 'pl-3'
               } py-2 font-mono text-sm leading-5 font-bold focus:outline-hidden`}
               style={{
@@ -143,7 +143,7 @@ const MarkCompleteButton = ({
                 dropdownAbove
                   ? 'bottom-0 mb-12 origin-bottom-right'
                   : 'origin-top-right'
-              } absolute right-0 z-10 mt-2 w-36 rounded-xl shadow-lg focus:outline-hidden`}
+              } absolute right-0 z-10 mt-2 w-36 rounded-xl focus:outline-hidden`}
               style={{
                 background:
                   'rgba(43, 30, 57, 0.98)',

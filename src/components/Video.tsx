@@ -15,7 +15,7 @@ export default function Video(): JSX.Element {
   `);
   return (
     <>
-      <div className="relative mx-auto w-full max-w-[512px] rounded-lg shadow-lg lg:mx-4 xl:mx-8">
+      <div className="relative mx-auto w-full max-w-[512px] rounded-lg lg:mx-4 xl:mx-8">
         {showVideo && (
           <div className="focus:shadow-outline relative block min-h-32 w-full overflow-hidden rounded-lg bg-gray-300 focus:outline-hidden lg:min-h-64 xl:min-h-80">
             <YouTube id={'ueNT-w7Oluw'} autoplay />

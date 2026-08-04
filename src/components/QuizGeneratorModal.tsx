@@ -140,7 +140,7 @@ export default function QuizGeneratorModal(): JSX.Element {
         <div className="flex min-h-full items-center justify-center p-4 text-center">
           <DialogPanel
             transition
-            className="h-auto w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white p-8 text-left align-middle shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black"
+            className="h-auto w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white p-8 text-left align-middle transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black"
           >
             <div className={'flex items-center justify-between'}>
               <DialogTitle
@@ -173,7 +173,7 @@ export default function QuizGeneratorModal(): JSX.Element {
                       value={question.question}
                       onChange={e => changeQuestion(e.target.value, idx)}
                       className={
-                        'mt-2 block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
+                        'mt-2 block w-full rounded-md border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
                       }
                     />
                     <div className={'ml-4'}>
@@ -200,7 +200,7 @@ export default function QuizGeneratorModal(): JSX.Element {
                                     )
                                   }
                                   className={
-                                    'block grow rounded-md border-gray-300 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
+                                    'block grow rounded-md border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
                                   }
                                   placeholder={`Answer ${i + 1}`}
                                 />
@@ -249,7 +249,7 @@ export default function QuizGeneratorModal(): JSX.Element {
                               </div>
                               <textarea
                                 className={
-                                  'mt-2 block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
+                                  'mt-2 block w-full rounded-md border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900'
                                 }
                                 value={answer.explanation}
                                 onChange={e =>

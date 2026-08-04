@@ -161,13 +161,13 @@ export default function ProblemSuggestionModal({
         <label className="block font-medium text-gray-700 dark:text-gray-200">
           Problem Name
         </label>
-        <div className="relative mt-2 rounded-md shadow-sm">
+        <div className="relative mt-2 rounded-md">
           {/* Remount component to trigger autofocus when opening modal */}
           {isOpen ? (
             <input
               autoFocus
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="Ex: Lattice Paths (Please do NOT include the source)"
               value={name}
               disabled={loading}
@@ -177,7 +177,7 @@ export default function ProblemSuggestionModal({
           ) : (
             <input
               type="text"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
               placeholder="Ex: AMC 10A 2019 #19 - Lattice Paths"
               value={name}
               onChange={e => setName(e.target.value)}
@@ -191,10 +191,10 @@ export default function ProblemSuggestionModal({
         <label className="block font-medium text-gray-700 dark:text-gray-200">
           Problem Link
         </label>
-        <div className="relative mt-2 rounded-md shadow-sm">
+        <div className="relative mt-2 rounded-md">
           <input
             type="url"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+            className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
             placeholder="https://..."
             value={link}
             onChange={e => setLink(e.target.value)}
@@ -213,7 +213,7 @@ export default function ProblemSuggestionModal({
             sets already covered elsewhere in the guide.
           </p>
         )}
-        <div className="relative mt-2 rounded-md shadow-sm">
+        <div className="relative mt-2 rounded-md">
           <Select
             options={sourceOptions}
             value={sourceOptions.find(s => s.value == source)}
@@ -243,10 +243,10 @@ export default function ProblemSuggestionModal({
         <label className="block font-medium text-gray-700 dark:text-gray-200">
           {!inEditor && 'Suggested '}Tags (separated with comma and space)
         </label>
-        <div className="relative mt-2 rounded-md shadow-sm">
+        <div className="relative mt-2 rounded-md">
           <input
             type="text"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+            className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
             placeholder="Number Theory, Geometry"
             value={tags}
             onChange={e => setTags(e.target.value)}
@@ -263,10 +263,10 @@ export default function ProblemSuggestionModal({
             <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
               In case there's anything else you want to let us know.
             </p>
-            <div className="rounded-md shadow-sm">
+            <div className="rounded-md">
               <textarea
                 rows={3}
-                className="block w-full rounded-md border-gray-300 shadow-sm transition focus:border-blue-500 focus:ring-blue-500 sm:text-sm sm:leading-5 dark:border-gray-700 dark:bg-gray-900"
+                className="block w-full rounded-md border-gray-300 transition focus:border-blue-500 focus:ring-blue-500 sm:text-sm sm:leading-5 dark:border-gray-700 dark:bg-gray-900"
                 value={additionalNotes}
                 onChange={e => setAdditionalNotes(e.target.value)}
                 placeholder="Optional. Links to solutions or reasons to add the problem would be helpful. Markdown is supported."
@@ -280,7 +280,7 @@ export default function ProblemSuggestionModal({
         <button
           type="submit"
           className={
-            'focus:shadow-outline-blue inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm transition duration-150 ease-in-out hover:bg-blue-500 focus:border-blue-700 focus:outline-hidden sm:ml-3 sm:w-auto sm:text-sm sm:leading-5 ' +
+            'focus:shadow-outline-blue inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:border-blue-700 focus:outline-hidden sm:ml-3 sm:w-auto sm:text-sm sm:leading-5 ' +
             (loading ? 'bg-blue-400' : 'bg-blue-600')
           }
           disabled={loading}
@@ -294,7 +294,7 @@ export default function ProblemSuggestionModal({
         <button
           type="button"
           className={
-            'focus:shadow-outline-blue mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 px-4 py-2 text-base leading-6 font-medium text-gray-700 shadow-sm transition duration-150 ease-in-out hover:text-gray-500 focus:border-blue-300 focus:outline-hidden sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm sm:leading-5 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 ' +
+            'focus:shadow-outline-blue mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 px-4 py-2 text-base leading-6 font-medium text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:border-blue-300 focus:outline-hidden sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm sm:leading-5 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 ' +
             (loading ? 'bg-gray-100' : 'bg-white')
           }
           onClick={onClose}
@@ -362,7 +362,7 @@ export default function ProblemSuggestionModal({
 
           <DialogPanel
             transition
-            className="inline-block w-full transform overflow-hidden rounded-lg text-left align-bottom shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="inline-block w-full transform overflow-hidden rounded-lg text-left align-bottom transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
           >
             <div className="dark:bg-dark-surface bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
@@ -427,7 +427,7 @@ export default function ProblemSuggestionModal({
                       <button
                         type="button"
                         onClick={onClose}
-                        className="focus:shadow-outline-blue inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base leading-6 font-medium text-white shadow-sm transition duration-150 ease-in-out hover:bg-blue-500 focus:border-blue-700 focus:outline-hidden sm:ml-3 sm:w-auto sm:text-sm sm:leading-5"
+                        className="focus:shadow-outline-blue inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base leading-6 font-medium text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:border-blue-700 focus:outline-hidden sm:ml-3 sm:w-auto sm:text-sm sm:leading-5"
                       >
                         Done
                       </button>

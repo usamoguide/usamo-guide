@@ -60,7 +60,7 @@ export default function ModuleFeedback({
       {/*{!showSuccess && (*/}
       {/*  <form onSubmit={handleSubmit}>*/}
       {/*    <div className="mb-4">*/}
-      {/*      <div className="relative rounded-md shadow-sm">*/}
+      {/*      <div className="relative rounded-md">*/}
       {/*        <input*/}
       {/*          type="email"*/}
       {/*          className={*/}
@@ -100,7 +100,7 @@ export default function ModuleFeedback({
       {/*      <label htmlFor="message" className="sr-only">*/}
       {/*        Message*/}
       {/*      </label>*/}
-      {/*      <div className="relative rounded-md shadow-sm">*/}
+      {/*      <div className="relative rounded-md">*/}
       {/*        <textarea*/}
       {/*          id="message"*/}
       {/*          rows={4}*/}
@@ -137,7 +137,7 @@ export default function ModuleFeedback({
       {/*      )}*/}
       {/*    </div>*/}
       {/*    <div className="mt-4">*/}
-      {/*      <span className="inline-flex rounded-md shadow-sm">*/}
+      {/*      <span className="inline-flex rounded-md">*/}
       {/*        <button*/}
       {/*          type="submit"*/}
       {/*          disabled={!submitEnabled}*/}

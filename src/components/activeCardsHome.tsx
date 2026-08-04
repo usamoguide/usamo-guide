@@ -113,7 +113,7 @@ const ActiveCardsHome = () => {
                   id === 0 ? 'rounded-t-xl' : '',
                   id === projects.length - 1 ? 'rounded-b-xl' : '',
                   activeCard === id
-                    ? 'shadow-[0_0_24px_rgba(112,66,138,0.16)]'
+                    ? ''
                     : ''
                 )}
                 style={{
@@ -176,7 +176,7 @@ const ActiveCardsHome = () => {
             <div className="sticky top-24 h-fit min-h-[600px]">
               <div
                 className={classNames(
-                  'relative h-full w-full max-w-full overflow-hidden rounded-2xl p-12 shadow-sm backdrop-blur-sm md:p-10'
+                  'relative h-full w-full max-w-full overflow-hidden rounded-2xl p-12 backdrop-blur-sm md:p-10'
                 )}
                 style={{
                   background:
@@ -196,7 +196,7 @@ const ActiveCardsHome = () => {
                   ) : (
                     <div
                       className={classNames(
-                        'my-4 inline-block rounded-xl p-3 shadow-2xl',
+                        'my-4 inline-block rounded-xl p-3',
                         projects[activeCard].color
                       )}
                     >

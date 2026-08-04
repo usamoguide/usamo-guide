@@ -19,7 +19,7 @@ const TableOfContentsBlock = ({
 
   return (
     <aside
-      className="mb-6 rounded-2xl p-5 shadow-lg lg:float-right lg:mb-4 lg:ml-6 lg:w-72"
+      className="mb-6 rounded-2xl p-5 lg:float-right lg:mb-4 lg:ml-6 lg:w-72"
       style={{
         background:
           'rgba(43, 30, 57, 0.92)',

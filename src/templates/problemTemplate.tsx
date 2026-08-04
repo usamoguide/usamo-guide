@@ -545,7 +545,7 @@ export default function ProblemTemplate(
           </nav>
 
           <header
-            className="mb-8 rounded-2xl pb-6 shadow-lg"
+            className="mb-8 rounded-2xl pb-6"
             style={{
               background:
                 'rgba(43, 30, 57, 0.92)',
@@ -594,7 +594,7 @@ export default function ProblemTemplate(
                 </ConfettiProvider>
               </div>
               <div
-                className="mt-5 rounded-2xl px-4 py-4 shadow-lg"
+                className="mt-5 rounded-2xl px-4 py-4"
                 style={{
                   background: 'rgba(14, 11, 31, 0.72)',
                 }}
@@ -708,7 +708,7 @@ export default function ProblemTemplate(
 
           {visibleTags.length === 0 ? (
             <section
-              className="mb-10 rounded-2xl p-5 shadow-lg"
+              className="mb-10 rounded-2xl p-5"
               style={{
                 background:
                   'rgba(43, 30, 57, 0.92)',
@@ -851,7 +851,7 @@ export default function ProblemTemplate(
                 {problem.interaction.choices.map((choice, i) => (
                   <li key={i}>
                     <label
-                      className="flex cursor-pointer items-start gap-2 rounded-2xl px-3 py-2 shadow-lg"
+                      className="flex cursor-pointer items-start gap-2 rounded-2xl px-3 py-2"
                       style={{
                         border: '1px solid rgba(229, 194, 255, 0.12)',
                         background:
@@ -948,7 +948,7 @@ export default function ProblemTemplate(
                 </button>
                 {solutionOpen && (
                   <div
-                    className="mt-6 rounded-2xl p-4 shadow-lg"
+                    className="mt-6 rounded-2xl p-4"
                     style={{
                       background:
                         'rgba(43, 30, 57, 0.92)',

@@ -399,7 +399,7 @@ export default function IndexPage({ path }): JSX.Element {
               <dl className="mx-auto grid max-w-6xl gap-8 text-center md:grid-cols-2 md:gap-8">
                 <div>
                   <div
-                    className="rounded-2xl p-6 text-left shadow-lg"
+                    className="rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -438,7 +438,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -465,7 +465,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -505,7 +505,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -534,7 +534,7 @@ export default function IndexPage({ path }): JSX.Element {
                 </div>
                 <div className="mt-6 md:mt-0">
                   <div
-                    className="rounded-2xl p-6 text-left shadow-lg"
+                    className="rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -561,7 +561,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -594,7 +594,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt
@@ -629,7 +629,7 @@ export default function IndexPage({ path }): JSX.Element {
                     </dd>
                   </div>
                   <div
-                    className="mt-6 rounded-2xl p-6 text-left shadow-lg"
+                    className="mt-6 rounded-2xl p-6 text-left"
                     style={infoCardStyle}
                   >
                     <dt

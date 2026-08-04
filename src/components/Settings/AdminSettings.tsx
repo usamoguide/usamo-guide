@@ -105,7 +105,7 @@ export default function AdminSettings() {
             >
               User Email
             </label>
-            <div className="mt-1 flex rounded-md shadow-sm">
+            <div className="mt-1 flex rounded-md">
               <div className="relative flex grow items-stretch focus-within:z-10">
                 <input
                   type="email"

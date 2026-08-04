@@ -55,7 +55,7 @@ export function ActivityHeatmap({
   return (
     <div className="mt-4">
       <div
-        className="px-4 py-5 shadow-lg transition sm:rounded-2xl sm:p-6"
+        className="px-4 py-5 transition sm:rounded-2xl sm:p-6"
         style={{
           background:
             'rgba(43, 30, 57, 0.92)',
