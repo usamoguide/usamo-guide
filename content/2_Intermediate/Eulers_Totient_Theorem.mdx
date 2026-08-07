@@ -1,39 +1,59 @@
 ---
 id: euler-totient-theorem
 title: Euler's Totient Theorem
-author: Macquel Ko
+author: Aaron He
 description: Fundamental theorem in modular arithmetic.
-prerequisites: ["modular-arithmetic"]
+prerequisites: ["modular-arithmetic", "divisor-functions"]
 ---
 
-## Overview
+## Introduction
+In this unit we will discuss and prove **Euler's Totient Theorem**, which states that if $n$ and $a$ are coprime positive integers, then
 
-this section will go over Euler's Totient theorem, a fundamental theorem in modular arithmetic which appears in numerous competitions from AMC to USAMO.
+$$
+a^{\varphi(n)} \equiv 1 \pmod{n}
+$$
 
-## Key Ideas
+Here, $\varphi(n)$ denotes Euler's totient function, which counts the number of positive integers smaller than $n$ which are coprime to $n$.
 
-- The theorem states that for coprime integers a and n, then $a^{\phi(n)} \equiv 1$ mod n where $\phi(n)$ is equal to the number of integers $k \lt n$ which are coprime to n.
+The converse of the theorem is also true; if the congruence holds, then $a$ and $n$ are coprime.
 
-- This theorem has the advantage over Fermat's little theorem in that n is not restricted to being a prime, meaning you can apply this theorem to composite numbers.
+The special case where $n$ is prime is known as **Fermat's Little Theorem**, which states that if $p$ is prime and $a$ is an integer not divisible by $p$, then
 
-- Euler's Totient function of an integer n calculates the quantity of numbers which are coprime to n. We can calculate this by using another theorem, namely
+$$
+a^{p-1} \equiv 1 \pmod{p}
+$$
 
-$\phi(n) = n \prod_{p | n} = p_{1}(1 -\frac{1}{p_{1}}) p_{2} (1- \frac{1}{p_{2}}) \cdots p_{n} (1-\frac{1}{p_{n}})$
+## Proof of Euler's Totient Theorem
+Now we can return to our original task. Let $a,n$ be coprime positive integers. Define the set $R$ to be all positive integers smaller than $n$ that are coprime to $n$. This set of course has $\varphi(n)$ elements, which we will label $R=\{x_1, x_2, ..., x_{\varphi(n)}\}$.
 
-where the product is taken over all distinct primes which divide n. Furthermore, Euler's Totient function is multiplicative, meaning that $\phi(ab) = \phi(a) \phi(b)$ for all $a,b \in \mathbb{Z}$.
+Our proof hinges on the fact that multiplying all the $x_i$ by $a$ will permute them mod $n$, or in other words:
 
-## Worked Example
+*Claim:* Let $aR = \{a\cdot x_1, a\cdot x_2, ..., a\cdot x_{\varphi(n)} \}$. Then $aR$ is identical to $R$ when considered mod $n$. (they are sets so they may be ordered differently)
 
-(AoPS) Find the last 2 digits of $7^{81} - 3^{81}$.
+*Proof:* Every element of $aR$ is coprime to $n$, and is thus congruent to some element of $R$. Thus we only need to prove that no two distinct elements of $aR$ can be congruent.
 
-First, notice that the last 2 digits of the expression is simply the result when taken mod 100, and $\phi(n) = 40$. Therefore we can use Euler's theorem
-to reduce the expression to $7^{1} - 3^{1} \equiv 04$ mod 100.
+Assume we have $i,j$ such that $a\cdot x_i \equiv a\cdot x_j \pmod{n}$. Then we can multply both sides of the congruence by the modular inverse of $a$ to get $x_i \equiv x_j \pmod{n}$, concluding the proof. $\square$
 
-## Common Pitfalls
+Since $R$ and $aR$ are identical mod $n$, the products of all the elements of $R$ is congruent to the product of all the elements of $aR$.
 
-- incorrectly calculating $\phi(n)$.
-- applying the theorem when a and n are NOT coprime.
-- incorrectly reducing bases.
+$$
+\prod_{i=1}^{\varphi(n)} x_i \equiv 
+\prod_{i=1}^{\varphi(n)} ax_i =
+a^{\varphi(n)}\prod_{i=1}^{\varphi(n)} x_i \pmod{n}
+$$
+
+We can then multiply both sides by the modular inverse of each $x_i$ to get
+
+$$
+a^{\varphi(n)}\equiv 1 \pmod{n}. 
+$$
+
+## Applications
+Euler's Totient Theorem is mainly used in number theory problems involving exponents. In particular, it tells us that $a^{b} \equiv a^{b \pmod{\varphi(n)}} \pmod{n}$ when $a,n$ coprime. Here is a direct application of this fact:
+
+> Let $a_n=6^{n}+8^{n}$. Determine the remainder upon dividing $a_ {83}$ by $49$. (1983 AIME #6)
+
+*Solution:* $\varphi(49)=42$. Thus $6^{83} + 8^{83} \equiv 6^{-1} + 8^{-1} \equiv \frac{8+6}{48} \equiv \frac{14}{-1} \equiv \boxed{035} \pmod{49}$.
 
 ## Practice Problems
 
