@@ -1,0 +1,122 @@
+---
+id: proportional-reasoning
+title: Proportional Reasoning
+author: Macquel Ko
+description: 
+prerequisites: ["optional-prereq-id"]
+---
+
+## Overview
+
+Proportional reasoning is being able to understand and reason about multiplicative relationships between quantities, such as ratios, fractions, rates, and scale factors. Knowing how to reason
+with proportionality is integral to competition math, especially in the AMC10/12 and AIME.
+
+## Key Ideas
+
+- Proportionality is a relationship between two quantities which can be represented as the equation
+
+$\frac{a}{b} = \frac{c}{d}$
+
+for example, the ratio between the sides of a triangle and the sides of the dilations of that same triangle are 
+proportional. Meaning that if we take 2 sides, s and r, from a triangle, and let s’ and r’ denote the corresponding
+sides on the dilated triangle, then we have
+
+$\frac{s’}{s} = \frac{r’}{r}$
+
+- Inversely proportional relationships means that a quantity is proportional to the inverse of another quantity. 
+
+For example, the relationship between a car’s speed and the time it takes to travel to a particular equation.
+
+ This is an example of inverse proportionality because as the car’s speed increases, the time it takes for the car to travel to the location decreases.
+
+### Example 1
+
+Suppose there are 2 jugs, and each is a mixture of juice and water.
+ Jug 1 has a concentration of 10% juice and a volume of 100 L, while
+ Jug 2 has a concentration of 20% juice and a volume of 100 L. 
+ Both jugs are mixed to obtain a mixture with 16% juice concentration,  
+ find the volume of the largest possible mixture.
+
+- Solution
+
+We are trying to find the volume of the mixture given the juice concentration, so let’s
+ let the amount of liquid taken from Jug 1 be x liters and from Jug 2 be y liters.
+
+The problem gives us the juice concentration of each jug, meaning regardless of however much
+liquid we pour from say, Jug 1, we will know that 10% of it will be juice. So we can establish the relationships between the volumes and concentrations.
+
+For Jug 1,
+
+10% juice implies that the juice amount = $0.10x$.
+
+while for Jug 2
+
+20% juice implies that the juice amount = $0.20y$
+
+we know that the final mixture has 16% juice, so
+
+ $\frac{0.10x + 0.20y}{x+y} = 0.16$
+
+ solving this equation, we get
+
+ $0.10x + 0.20y = 0.16x + 0.16y$
+
+simplifying this
+
+$0.20y - 0.16y = 0.16x - 0.10x$
+
+which gives
+
+ $0.04y = 0.06x$
+
+ $\frac{y}{x} = \frac{0.06}{0.04} = \frac{3}{2}$
+
+ Therefore, the mixing ratio is
+
+ $x : y = 2 : 3$
+
+ Since we want to maximize the volume of the mixture,
+ and each jug contains only 100 L, the mixture is maximized if we set y = 100.
+
+ so we can set y = 100 and take all available liquid:
+
+ $y = 100$
+
+ Then we get
+
+ $x = \frac{2}{3}(100) = 66.67$
+
+ so the final volume would be
+
+ $x+y = 66.67 + 100 = 166.67 \text{L}$
+
+ Therefore, the maximized resulting mixture volume is:
+
+ $\boxed{166.7 \text{ liters}}$
+
+## Common Pitfalls
+
+- incorrectly setting up equations representing proportional relationships.
+
+For example, if a problem says
+that the ratio of boys to girls is equal to the ratio of hamburgers to hotdogs, one might incorrectly set up an equation as
+
+$\frac{\text{Boys}}{\text{Girls}} = \frac{\text{Hotdogs}}{\text{Hamburgers}}$
+
+which would be incorrect, since the ratio of hotdogs to hamburgers is inverted.
+
+- confusing multidimensional scale factors.
+
+ For example, we know that similar triangles have proportional side lengths. 
+Meaning if we have a triangle $\triangle ABC$ and multiplied the side lengths by a factor k, 
+we would end up with a new triangle, 
+$\delta A’B’C’$ where the ratios of any pair of sides of $\delta ABC$ to $\delta A’B’C’$ equals k.
+
+ However, the ratio of the areas of the triangles are proportional to $k^{2}$, not k. 
+Meaning that if we doubled the side length of a triangle, it would quadruple the area.
+
+Furthermore, volume is scaled by a factor of $k^{3}$ if the sides are scaled by a factor of k. For example, if a cube of side length s is scaled by a factor of k, the volume is scaled by a factor of $k^{3}$.
+
+## Practice Problems
+
+<Problems problems="practice" />
