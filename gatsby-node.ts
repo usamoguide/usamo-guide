@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execFileSync, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import * as freshOrdering from './content/ordering';
@@ -121,7 +121,13 @@ function isShallowGitRepo() {
 function getGitAuthorTime(filePath: string) {
   if (hasGitRepo()) {
     try {
-      return execSync(`git log -1 --pretty=format:%aI ${filePath}`).toString();
+      return execFileSync('git', [
+        'log',
+        '-1',
+        '--pretty=format:%aI',
+        '--',
+        filePath,
+      ]).toString();
     } catch {
       // Fall through to file mtime.
     }
