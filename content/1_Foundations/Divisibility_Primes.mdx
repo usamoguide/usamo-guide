@@ -25,6 +25,7 @@ We call representation of an integer as the product of several of its factors a 
 A **prime number** is a positive integer greater than 1 that has exactly two positive divisors: 1 and itself. A **composite number** is a positive integer greater than 1 with more than two positive divisors. *1 is not considered prime or composite.* Also, notice that 2 is the only even prime number. It can be proven that there are an infinite number of primes.
 
 *Examples of primes:* 2, 3, 19, 101
+
 *Examples of composites:* 4, 10, 90, 249
 
 It's often helpful to know by heart the 25 prime numbers under 100: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97.
@@ -34,17 +35,6 @@ Prime numbers are so important to number theory mainly because of the **Fundamen
 Every positive integer has a unique **prime factorization** (i.e. a factorization with only prime factors). In other words we can write any positive integer $n$ as $n=p_1^{e_1}p_2^{e_2}\cdot\cdot\cdot p_k^{e_k}$, where $p_1,p_2,...,p_k$ are primes and exponents $e_1,e_2,...,e_k$ are positive integers.
 
 For example, the prime factorization of 28 is $2^2\times7$.
-
-When factorials appear, we often need the exponent of a prime in $n!$. Use
-Legendre's Formula:
-
-$$
-v_p(n!) = \left\lfloor\frac{n}{p}\right\rfloor
-+ \left\lfloor\frac{n}{p^2}\right\rfloor
-+ \left\lfloor\frac{n}{p^3}\right\rfloor + \cdots
-$$
-
-This is especially useful for trailing-zero and divisibility questions.
 ## Sieve of Eratosthenes
 To list all the primes under a number $n$ quickly, we can use an algorithm called the **sieve of Eratosthenes**. It works like this:
 1. Start with a list of consecutive integers from 2 to $n$.
@@ -59,9 +49,10 @@ To check if a number $n$ is prime, it suffices to check divisibility by all prim
 
 For example, to check if 97 is prime, we first observe that $\sqrt{97}<10$. We can then check the primes under 10, which are 2, 3, 5, and 7, none of which are divisors of 97. Hence 97 is prime.
 
-*Exercise:* Try to understand why this works. In particular, why must a composite number $n$ have a prime factor under $\sqrt{n}$?
+This works because $n$'s smallest factor must be under $\sqrt{n}$, but it also must be prime.
 ## Worked Example #1
 If $m$ is prime and $n$ is composite, which of the following must be composite?
+
 $\textbf{(A)}\ m+n \qquad \textbf{(B)}\ n+2m \qquad \textbf{(C)}\ 2(n-m) \qquad \textbf{(D)}\ 2(n+m) \qquad \textbf{(E)}\ m-n$
 > ### Solution
 > The answer is $\boxed{\textbf{(D)}\ 2(n+m)}$. $2(n+m)$ is even, and it is clearly greater than 2, so it must be composite.
@@ -77,5 +68,7 @@ Malcolm wants to visit Isabella after school today and knows the street where sh
 This information allows Malcolm to determine Isabella's house number. What is it?
 > ### Solution
 > Let Isabella's house number be $n$. If the first statement is true, then $n$ is a prime even number or a prime number divisible by 7. This means that $n$ is 2 or 7, which is impossible since $n$ is two digits. Hence, the first statement must be false, so the other three must be true. So $n$ is a multiple of 14, and we can go through all two-digit multiples of 14 to find $n = \boxed{98}$.
+
+## Practice Problems
 
 <Problems problems="practice" />
