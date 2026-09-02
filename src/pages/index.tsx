@@ -544,8 +544,8 @@ export default function IndexPage({ path }): JSX.Element {
               className={classNames(sectionSubtitleClasses, 'mt-4')}
               style={{ color: TEXT_SECONDARY }}
             >
-              Organizations that help keep USAMO Guide free for every contest
-              math student.
+              Organizations that help keep USAMO Guide free for every math contest
+              student.
             </p>
           </RevealSection>
 
