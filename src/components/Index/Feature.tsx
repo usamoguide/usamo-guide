@@ -70,13 +70,13 @@ export const Feature = ({
         </div>
         <h3
           className="text-xl font-bold md:text-3xl"
-          style={{ color: '#F4EDEA' }}
+          style={{ color: 'var(--text-primary)' }}
         >
           {title}
         </h3>
         <p
           className="mt-2 md:mt-4 md:text-lg"
-          style={{ color: 'rgba(244, 237, 234, 0.78)' }}
+          style={{ color: 'var(--text-secondary)' }}
         >
           {children}
         </p>

@@ -2,15 +2,23 @@ import * as React from 'react';
 import { ProblemDifficulty } from '../models/problem';
 import TextTooltip from './Tooltip/TextTooltip';
 
+/**
+ * Difficulty is ordinal, so it reads as one ramp rather than seven unrelated
+ * hues. Ink weight carries the low end; colour appears only at Hard and above,
+ * where it is a genuine warning rather than decoration.
+ *
+ * Replaces a grey/green/blue/purple/orange/red rainbow that shared no vocabulary
+ * with anything else in the product. Every step is paired with its label, so
+ * removing colour entirely leaves the scale fully readable.
+ */
 export const difficultyClasses = {
-  'N/A': 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100',
-  'Very Easy': 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100',
-  Easy: 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
-  Normal: 'bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100',
-  Hard: 'bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100',
-  'Very Hard':
-    'bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-100',
-  Insane: 'bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100',
+  'N/A': 'difficulty--na',
+  'Very Easy': 'difficulty--very-easy',
+  Easy: 'difficulty--easy',
+  Normal: 'difficulty--normal',
+  Hard: 'difficulty--hard',
+  'Very Hard': 'difficulty--very-hard',
+  Insane: 'difficulty--insane',
 };
 export default function DifficultyBox({
   difficulty,
@@ -20,7 +28,7 @@ export default function DifficultyBox({
   return (
     <span
       className={
-        'mr-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs leading-4 font-medium ' +
+        'difficulty-chip ' +
         difficultyClasses[difficulty]
       }
     >

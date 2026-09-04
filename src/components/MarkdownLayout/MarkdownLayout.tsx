@@ -27,7 +27,7 @@ import TableOfContentsBlock from './TableOfContents/TableOfContentsBlock';
 
 const ContentContainer = ({ children }) => (
   <main
-    className="relative overflow-x-hidden pt-6 focus:outline-hidden lg:pt-2"
+    className="relative overflow-x-hidden pt-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] lg:pt-2"
     tabIndex={0}
   >
     <div className="mx-auto">
@@ -173,7 +173,7 @@ export default function MarkdownLayout({
 
             {markdownData instanceof ModuleInfo && (
               <div className="mt-6 mb-2">
-                <LinksToEdit className="group inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700" />
+                <LinksToEdit className="group inline-flex items-center rounded-md border border-[var(--border)] bg-white px-3 py-2 text-sm font-medium text-[var(--text-muted)] transition hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] dark:border-[var(--border)] dark:bg-[var(--bg-surface-alt)] dark:text-[var(--text-muted)] dark:hover:bg-[var(--accent-soft)]" />
               </div>
             )}
 

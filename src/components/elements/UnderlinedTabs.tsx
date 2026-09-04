@@ -20,7 +20,7 @@ export default function UnderlinedTabs({
         <select
           id="selected-tab"
           name="selected-tab"
-          className="mt-1 block w-full rounded-md border-[rgba(240,194,255,0.25)] bg-[rgba(18,15,36,0.80)] py-2 pr-10 pl-3 text-base text-[#F4EDEA] focus:border-[#70428A] focus:ring-[#70428A] focus:outline-hidden sm:text-sm"
+          className="mt-1 block w-full rounded-md border-[var(--border)] bg-[var(--bg-surface)] py-2 pr-10 pl-3 text-base text-[var(--text-primary)] focus:border-[var(--accent-fill)] focus:ring-[var(--accent-fill)] focus:outline-hidden sm:text-sm"
           value={value}
           onChange={e => onChange(e.target.value)}
         >
@@ -32,7 +32,7 @@ export default function UnderlinedTabs({
         </select>
       </div>
       <div className="hidden sm:block">
-        <div className="border-b border-[rgba(240,194,255,0.20)]">
+        <div className="border-b border-[var(--border)]">
           <nav className="-mb-px flex space-x-8">
             {options.map(option => (
               <button
@@ -40,8 +40,8 @@ export default function UnderlinedTabs({
                 onClick={() => onChange(option)}
                 className={
                   (value === option
-                    ? 'border-[#70428A] text-[#F0C2FF]'
-                    : 'border-transparent text-[rgba(244,237,234,0.55)] hover:border-[rgba(240,194,255,0.30)] hover:text-[rgba(244,237,234,0.85)]') +
+                    ? 'border-[var(--accent-fill)] text-[var(--accent)]'
+                    : 'border-transparent text-[var(--text-muted)] hover:border-[var(--border)] hover:text-[var(--text-secondary)]') +
                   ' border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap focus:outline-hidden'
                 }
               >

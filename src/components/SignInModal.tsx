@@ -98,7 +98,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
     >
       <DialogBackdrop
         transition
-        className="fixed inset-0 bg-[rgba(10,8,24,0.85)] backdrop-blur-sm transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in"
+        className="fixed inset-0 bg-[rgba(11,10,9,0.82)] transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in"
       />
 
       <div className="fixed inset-0 z-30 w-screen overflow-y-auto">
@@ -111,7 +111,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-md bg-transparent text-[rgba(240,194,255,0.50)] transition-colors hover:text-[#F0C2FF] focus:ring-2 focus:ring-[#70428A] focus:ring-offset-2 focus:ring-offset-[#120F24] focus:outline-hidden"
+                className="rounded-md bg-transparent text-[var(--border-strong)] transition-colors hover:text-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-fill)] focus:ring-offset-2 focus:ring-offset-[var(--bg-page)] focus:outline-hidden"
               >
                 <span className="sr-only">Close</span>
                 <XIcon aria-hidden="true" className="size-6" />
@@ -122,12 +122,12 @@ export const SignInModal: React.FC<SignInModalProps> = ({
               <div>
                 <DialogTitle
                   as="h3"
-                  className="text-xl leading-7 font-bold text-[#F4EDEA]"
+                  className="text-xl leading-7 font-bold text-[var(--text-primary)]"
                 >
                   Sign In
                 </DialogTitle>
                 <div className="mt-2">
-                  <p className="text-sm text-[rgba(244,237,234,0.65)]">
+                  <p className="text-sm text-[var(--text-muted)]">
                     Signing in allows you to sync your data with our servers
                     (highly recommended). If this is your first time signing
                     in, you will have the option to upload your local data to
@@ -194,7 +194,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
                       xmlns="http://www.w3.org/2000/sv"
                       viewBox="0 0 120 120"
                       version="1.1"
-                      className="h-5 w-5 text-[#F0C2FF]"
+                      className="h-5 w-5 text-[var(--accent)]"
                     >
                       <g
                         stroke="none"
@@ -220,7 +220,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
 
                 <div className="my-5 flex items-center gap-3">
                   <div className="h-px flex-1 bg-[var(--modal-btn-border)]" />
-                  <span className="text-xs font-medium text-[rgba(244,237,234,0.55)]">
+                  <span className="text-xs font-medium text-[var(--text-muted)]">
                     or
                   </span>
                   <div className="h-px flex-1 bg-[var(--modal-btn-border)]" />
@@ -228,19 +228,19 @@ export const SignInModal: React.FC<SignInModalProps> = ({
 
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-sm font-medium text-[rgba(244,237,234,0.78)]">
+                    <label className="block text-sm font-medium text-[var(--text-secondary)]">
                       Email
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="mt-1 w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none"
+                      className="mt-1 w-full rounded-md border border-[var(--border)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[rgba(244,237,234,0.35)] focus:border-[var(--accent-fill)] focus:ring-1 focus:ring-[var(--accent-fill)] focus:outline-none"
                       placeholder="Eg: mathnerdforlife@gmail.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[rgba(244,237,234,0.78)]">
+                    <label className="block text-sm font-medium text-[var(--text-secondary)]">
                       Password
                     </label>
                     <div className="relative">
@@ -248,7 +248,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
                         type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        className="mt-1 w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 pr-11 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none"
+                        className="mt-1 w-full rounded-md border border-[var(--border)] bg-[rgba(10,8,24,0.60)] px-3 py-2 pr-11 text-sm text-[var(--text-primary)] placeholder-[rgba(244,237,234,0.35)] focus:border-[var(--accent-fill)] focus:ring-1 focus:ring-[var(--accent-fill)] focus:outline-none"
                         placeholder="••••••••"
                       />
                       <button
@@ -257,7 +257,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
                         aria-label={
                           showPassword ? 'Hide password' : 'Show password'
                         }
-                        className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-[rgba(244,237,234,0.5)] transition-colors hover:text-[#F0C2FF] focus:outline-none"
+                        className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-[var(--text-muted)] transition-colors hover:text-[var(--accent)] focus:outline-none"
                       >
                         {showPassword ? (
                           <EyeOff className="size-5" />

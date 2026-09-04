@@ -15,12 +15,12 @@ export default function ModuleHeadersLinkList(props: {
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-black underline dark:text-blue-200"
+                className="text-black underline dark:text-[var(--text-secondary)]"
               >
                 {link.label}
               </a>
             ) : (
-              <span className="text-black dark:text-blue-200">
+              <span className="text-black dark:text-[var(--text-secondary)]">
                 {link.label}
               </span>
             )}

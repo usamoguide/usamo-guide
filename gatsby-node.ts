@@ -28,9 +28,7 @@ function isExtraProblemsFile(relativePath: string) {
 
 function isNormalizedProblemBankFile(relativePath: string) {
   const normalized = normalizePath(relativePath);
-  return (
-    normalized === 'problemBank/TotalDatabase.problems.json'
-  );
+  return normalized === 'problemBank/TotalDatabase.problems.json';
 }
 
 function getSectionFromContentRelativePath(
@@ -38,7 +36,9 @@ function getSectionFromContentRelativePath(
 ): SectionID | null {
   const normalized = normalizePath(relativePath);
   const [rootDir] = normalized.split('/');
-  return (SECTION_FROM_CONTENT_DIR as Record<string, SectionID>)[rootDir] ?? null;
+  return (
+    (SECTION_FROM_CONTENT_DIR as Record<string, SectionID>)[rootDir] ?? null
+  );
 }
 
 function parseFrontmatterId(content: string): string | null {
@@ -200,7 +200,10 @@ exports.onCreateNode = async api => {
       isExtraProblems ||
       isNormalizedProblemBankFile(node.relativePath))
   ) {
-    if (isProblemBankSource && !isNormalizedProblemBankFile(node.relativePath)) {
+    if (
+      isProblemBankSource &&
+      !isNormalizedProblemBankFile(node.relativePath)
+    ) {
       return;
     }
 
@@ -217,7 +220,8 @@ exports.onCreateNode = async api => {
       }
 
       Object.keys(parsedContent).forEach(tableId => {
-        if (tableId === 'MODULE_ID' || !Array.isArray(parsedContent[tableId])) return;
+        if (tableId === 'MODULE_ID' || !Array.isArray(parsedContent[tableId]))
+          return;
         parsedContent[tableId].forEach((metadata: ProblemMetadata) => {
           try {
             transformObject(
@@ -262,7 +266,9 @@ exports.onCreateNode = async api => {
       );
     }
 
-    const sectionFromPath = getSectionFromContentRelativePath(node.relativePath);
+    const sectionFromPath = getSectionFromContentRelativePath(
+      node.relativePath
+    );
     const moduleSection =
       (moduleId && resolvedModuleIDToSectionMap[moduleId]) || sectionFromPath;
     const mapForNode = moduleId
@@ -281,15 +287,16 @@ exports.onCreateNode = async api => {
       );
     }
     Object.keys(parsedContent).forEach(tableId => {
-      if (tableId === 'MODULE_ID' || !Array.isArray(parsedContent[tableId])) return;
+      if (tableId === 'MODULE_ID' || !Array.isArray(parsedContent[tableId]))
+        return;
       parsedContent[tableId].forEach((metadata: ProblemMetadata) => {
         try {
           // Validate that statement is provided
           if (!metadata.statement || !metadata.statement.trim()) {
             throw new Error(
               `Problem "${metadata.uniqueId}" (${metadata.name}) is missing a required statement field. ` +
-              `All problems must include their full problem statement in Markdown format. ` +
-              `File: ${node.absolutePath}`
+                `All problems must include their full problem statement in Markdown format. ` +
+                `File: ${node.absolutePath}`
             );
           }
           if (process.env.CI) stream.write(metadata.uniqueId + '\n');
@@ -355,7 +362,10 @@ exports.onCreateNode = async api => {
     }
 
     const contentRoot = path.join(__dirname, 'content');
-    const relativeFromContent = path.relative(contentRoot, node.fileAbsolutePath);
+    const relativeFromContent = path.relative(
+      contentRoot,
+      node.fileAbsolutePath
+    );
     const inferredDivision =
       resolvedModuleIDToSectionMap[node.frontmatter.id] ||
       getSectionFromContentRelativePath(relativeFromContent);
@@ -441,6 +451,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             url
             tags
             source
+            sourceDescription
+            isStarred
+            statement
+            author
+            interaction {
+              type
+              correct
+              choices
+              correctIndex
+            }
+            solutionReveal {
+              mode
+              url
+              markdown
+            }
             solution {
               kind
               label
@@ -453,6 +478,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             module {
               frontmatter {
                 id
+                title
+              }
+              fields {
+                division
               }
             }
           }
@@ -488,11 +517,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     if (problemInfo.hasOwnProperty(node.uniqueId)) {
       const a = node,
         b = problemInfo[node.uniqueId];
-      const normUrl = (u: string) => (u || '').replace(/__/g, '_').replace('index.php?title=', 'index.php/');
+      const normUrl = (u: string) =>
+        (u || '').replace(/__/g, '_').replace('index.php?title=', 'index.php/');
       if (normUrl(a.url) !== normUrl(b.url)) {
-        if (b.url === 'https://usamoguide.com/' && a.url !== 'https://usamoguide.com/') {
+        if (
+          b.url === 'https://usamoguide.com/' &&
+          a.url !== 'https://usamoguide.com/'
+        ) {
           b.url = a.url;
-        } else if (a.url === 'https://usamoguide.com/' && b.url !== 'https://usamoguide.com/') {
+        } else if (
+          a.url === 'https://usamoguide.com/' &&
+          b.url !== 'https://usamoguide.com/'
+        ) {
           a.url = b.url;
         }
       }
@@ -531,19 +567,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     problemURLToUniqueID[node.url] = node.uniqueId;
   });
   // End problems check
-  const problemPageTemplate = path.resolve(`./src/templates/problemTemplate.tsx`);
-  const problemPagesSeen = new Set<string>();
+  // Individual problems are NOT statically generated. Creating a page per
+  // problem meant ~3,800 extra pages, page-data payloads, and SSR renders per
+  // build, which is what pushed deploys past their memory ceiling. Instead we
+  // write one small JSON file per problem and let the client-only route at
+  // src/pages/problems/[...].tsx fetch the one it needs. Build cost is now
+  // constant in the number of problems.
+  //
+  // Files are keyed by the final segment of the existing problem URL, so every
+  // link that worked before still resolves to the same address.
+  const problemDataDir = path.join(__dirname, 'public', 'problem-data');
+  fs.mkdirSync(problemDataDir, { recursive: true });
+  const problemFilesSeen = new Set<string>();
   problems.forEach(({ node }) => {
-    if (problemPagesSeen.has(node.uniqueId)) return;
-    problemPagesSeen.add(node.uniqueId);
-    createPage({
-      path: getProblemURL(node),
-      component: problemPageTemplate,
-      context: {
-        uniqueId: node.uniqueId,
-      },
-    });
+    const slug = getProblemURL(node).split('/').filter(Boolean).pop();
+    if (!slug || problemFilesSeen.has(slug)) return;
+    problemFilesSeen.add(slug);
+    fs.writeFileSync(
+      path.join(problemDataDir, `${slug}.json`),
+      JSON.stringify(node)
+    );
   });
+  reporter.info(
+    `Wrote ${problemFilesSeen.size} problem JSON files (no per-problem pages created)`
+  );
   const moduleTemplate = path.resolve(`./src/templates/moduleTemplate.tsx`);
   const modules = result.data.modules.edges;
   modules.forEach(({ node }) => {
@@ -582,7 +629,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           );
         }
       }
-  });  // Generate Syllabus Pages //
+  }); // Generate Syllabus Pages //
   const syllabusTemplate = path.resolve(`./src/templates/syllabusTemplate.tsx`);
   freshOrdering.SECTIONS.forEach(division => {
     createPage({
@@ -697,7 +744,8 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
 
     const normalizedPath = pathname.replace(/\/+$/, '') || '/';
     return !excludedPathPrefixes.some(
-      prefix => normalizedPath === prefix || normalizedPath.startsWith(`${prefix}/`)
+      prefix =>
+        normalizedPath === prefix || normalizedPath.startsWith(`${prefix}/`)
     );
   };
 

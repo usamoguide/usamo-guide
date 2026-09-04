@@ -101,7 +101,7 @@ export default function Template(props): JSX.Element {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1"
-                  className="text-[#F0C2FF]/12"
+                  className="text-[var(--accent)]/12"
                 />
               </pattern>
             </defs>

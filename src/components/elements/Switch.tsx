@@ -19,15 +19,15 @@ const Switch: React.FC<SwitchProps> = ({ checked, onChange }) => (
     checked={checked}
     onChange={onChange}
     className={classNames(
-      checked ? 'bg-[#70428A]' : 'bg-[rgba(18,15,36,0.90)] border border-[rgba(240,194,255,0.25)]',
-      'relative ml-4 inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-[#70428A] focus:ring-offset-2 focus:ring-offset-[#120F24] focus:outline-hidden'
+      checked ? 'bg-[var(--accent-fill)]' : 'bg-[var(--bg-surface)] border border-[var(--border)]',
+      'relative ml-4 inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-[var(--accent-fill)] focus:ring-offset-2 focus:ring-offset-[var(--bg-page)] focus:outline-hidden'
     )}
   >
     <span
       aria-hidden="true"
       className={classNames(
         checked ? 'translate-x-5' : 'translate-x-0',
-        'inline-block h-5 w-5 transform rounded-full bg-[#F4EDEA] ring-0 transition duration-200 ease-in-out'
+        'inline-block h-5 w-5 transform rounded-full bg-[var(--text-primary)] ring-0 transition duration-200 ease-in-out'
       )}
     />
   </HeadlessUISwitch>

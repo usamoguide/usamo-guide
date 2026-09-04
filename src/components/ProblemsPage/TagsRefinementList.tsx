@@ -144,7 +144,7 @@ export default function TagsRefinementList() {
         <div key={category}>
           <button
             onClick={() => toggleCategory(category)}
-            className="flex items-center gap-2 w-full text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            className="flex items-center gap-2 w-full text-sm font-semibold text-[var(--text-muted)] dark:text-[var(--text-muted)] hover:text-[var(--text-primary)] dark:hover:text-[var(--text-primary)] transition-colors"
           >
             <svg
               className={`w-4 h-4 transition-transform ${
@@ -172,8 +172,8 @@ export default function TagsRefinementList() {
                     href={createURL(item.value)}
                     className={`block text-sm ${
                       item.isRefined
-                        ? 'font-medium text-blue-600 dark:text-blue-400'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                        ? 'font-medium text-[var(--text-primary)] dark:text-[var(--text-primary)]'
+                        : 'text-[var(--text-muted)] dark:text-[var(--text-muted)] hover:text-[var(--text-primary)] dark:hover:text-[var(--text-primary)]'
                     } transition-colors`}
                     onClick={e => {
                       e.preventDefault();

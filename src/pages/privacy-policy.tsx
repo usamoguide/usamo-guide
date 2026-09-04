@@ -17,11 +17,11 @@ export default function PrivacyPolicyPage(props: PageProps) {
         style={{ background: 'var(--bg-page)' }}
       >
         <div className="mx-auto max-w-3xl px-4 pb-16 sm:px-6 lg:px-8">
-          <h1 className="mt-8 text-4xl font-extrabold text-[#F4EDEA]">
+          <h1 className="mt-8 text-4xl font-extrabold text-[var(--text-primary)]">
             Privacy Policy
           </h1>
 
-          <div className="mt-6 space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
+          <div className="mt-6 space-y-4 text-lg text-[var(--text-secondary)]">
             <p>Last updated: April 3, 2026</p>
 
             <p>
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
               it, and your choices.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">
               Information We Collect
             </h2>
             <p>
@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
               limited technical information used for security and reliability.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">
               How We Use Information
             </h2>
             <p>
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
               safety and integrity of our services.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">
               Third-Party Services
             </h2>
             <p>
@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
               according to their own privacy policies.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">
               Data Sharing
             </h2>
             <p>
@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
               rights and safety of users and the community.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">
               Your Choices
             </h2>
             <p>
@@ -76,12 +76,12 @@ export default function PrivacyPolicyPage(props: PageProps) {
               sign-in methods.
             </p>
 
-            <h2 className="pt-2 text-2xl font-bold text-[#F4EDEA]">Contact</h2>
+            <h2 className="pt-2 text-2xl font-bold text-[var(--text-primary)]">Contact</h2>
             <p>
               For privacy questions, contact us at{' '}
               <a
                 href="mailto:contact@usamoguide.com"
-                className="text-[#F0C2FF] underline hover:text-[#F4EDEA]"
+                className="text-[var(--accent)] underline hover:text-[var(--text-primary)]"
               >
                 contact@usamoguide.com
               </a>
@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage(props: PageProps) {
 
             <Link
               to="/"
-              className="mb-4 block text-[#F0C2FF] underline hover:text-[#F4EDEA]"
+              className="mb-4 block text-[var(--accent)] underline hover:text-[var(--text-primary)]"
             >
               &larr; Back to Home
             </Link>

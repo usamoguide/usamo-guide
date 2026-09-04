@@ -10,7 +10,7 @@ const TableOfContentsBlock = ({
   const links = genLinksFromTOCHeadings(
     tableOfContents,
     _ =>
-      'block mb-1 text-sm transition hover:underline text-[rgba(244,237,234,0.72)] hover:text-[#F0C2FF]'
+      'block mb-1 text-sm transition hover:underline text-[var(--text-muted)] hover:text-[var(--accent)]'
   );
 
   if (tableOfContents.length <= 1) {
@@ -26,7 +26,7 @@ const TableOfContentsBlock = ({
     >
       <h2
         className="mb-4 text-sm font-bold tracking-wider uppercase"
-        style={{ color: 'rgba(244,237,234,0.6)' }}
+        style={{ color: 'var(--text-muted)' }}
       >
         Table of Contents
       </h2>

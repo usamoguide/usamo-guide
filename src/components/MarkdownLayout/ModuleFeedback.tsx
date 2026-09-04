@@ -13,13 +13,13 @@ export default function ModuleFeedback({
         Give Us Feedback on {markdownData.title}!
       </h2>
 
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+      <p className="mb-4 text-[var(--text-muted)] dark:text-[var(--text-muted)]">
         Leave suggestions by opening an issue on the{' '}
         <a
           href="https://github.com/usamoguide/usamo-guide/issues"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-600 underline dark:text-blue-300"
+          className="text-[var(--text-primary)] underline dark:text-[var(--text-primary)]"
         >
           USAMO Guide GitHub
         </a>
@@ -64,7 +64,7 @@ export default function ModuleFeedback({
       {/*        <input*/}
       {/*          type="email"*/}
       {/*          className={*/}
-      {/*            'form-input block w-full transition ease-in-out duration-150 dark:bg-gray-900 dark:border-gray-700' +*/}
+      {/*            'form-input block w-full transition ease-in-out duration-150 dark:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]' +*/}
       {/*            (emailErrorMsg*/}
       {/*              ? 'pr-10 border-red-300 text-red-900 dark:text-red-600 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red'*/}
       {/*              : '')*/}
@@ -105,7 +105,7 @@ export default function ModuleFeedback({
       {/*          id="message"*/}
       {/*          rows={4}*/}
       {/*          className={*/}
-      {/*            'form-input block w-full transition ease-in-out duration-150 dark:bg-gray-900 dark:border-gray-700 ' +*/}
+      {/*            'form-input block w-full transition ease-in-out duration-150 dark:bg-[var(--bg-surface-alt)] dark:border-[var(--border)] ' +*/}
       {/*            (showErrors && message === ''*/}
       {/*              ? 'border-red-300 text-red-900 dark:text-red-600 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red'*/}
       {/*              : '')*/}
@@ -141,10 +141,10 @@ export default function ModuleFeedback({
       {/*        <button*/}
       {/*          type="submit"*/}
       {/*          disabled={!submitEnabled}*/}
-      {/*          className={`inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white ${*/}
+      {/*          className={`inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-[var(--accent-fill-text)] ${*/}
       {/*            submitEnabled*/}
-      {/*              ? 'bg-blue-600 dark:bg-blue-900 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-hidden focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700'*/}
-      {/*              : 'bg-blue-400 dark:bg-blue-800 focus:outline-hidden cursor-default'*/}
+      {/*              ? 'bg-[var(--accent-fill)] dark:bg-[var(--accent-fill)] hover:bg-[var(--accent-fill)] dark:hover:bg-[var(--accent-fill)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] focus:border-[var(--focus)] focus:shadow-outline-blue active:bg-[var(--accent-fill)]'*/}
+      {/*              : 'bg-[var(--accent-fill)] dark:bg-[var(--accent-fill)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] cursor-default'*/}
       {/*          } transition ease-in-out duration-150`}*/}
       {/*        >*/}
       {/*          Share Feedback*/}

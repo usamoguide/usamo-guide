@@ -59,7 +59,7 @@ function ProblemHit({ hit }: ProblemHitProps) {
           openProblemInNewTab();
         }
       }}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1"
+      className="group relative cursor-pointer overflow-hidden rounded-xl p-4 transition-colors duration-150"
       style={{
         background: 'var(--card-bg)',
       }}
@@ -72,15 +72,15 @@ function ProblemHit({ hit }: ProblemHitProps) {
       />
       <div className="relative flex w-full flex-row justify-between">
         <span>
-          <span className="text-sm font-medium text-[#B88BD0]">
+          <span className="text-sm font-medium text-[var(--text-muted)]">
             {hit.source}
           </span>
-          <p className="mt-1 mb-2 text-xl leading-6 font-semibold text-[#F4EDEA]">
+          <p className="mt-1 mb-2 text-xl leading-6 font-semibold text-[var(--text-primary)]">
             <Highlight hit={hit} attribute="name" />
           </p>
           {hit.isStarred && (
             <svg
-              className="ml-2 inline-block h-6 w-4 pb-1 text-[#F0C2FF]"
+              className="ml-2 inline-block h-6 w-4 pb-1 text-[var(--accent)]"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -99,7 +99,7 @@ function ProblemHit({ hit }: ProblemHitProps) {
           href={hit.url}
           target="_blank"
           rel="noreferrer"
-          className="text-gray-500 dark:text-dark-med-emphasis text-sm"
+          className="text-[var(--text-muted)] dark:text-dark-med-emphasis text-sm"
         >
           View Problem Statement
           <svg
@@ -119,7 +119,7 @@ function ProblemHit({ hit }: ProblemHitProps) {
           href={solutionLink.url}
           target="_blank"
           rel="noreferrer"
-          className="text-sm text-[#D2D4C8] hover:text-[#F0C2FF]"
+          className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]"
         >
           View Solution
           <svg
@@ -134,7 +134,7 @@ function ProblemHit({ hit }: ProblemHitProps) {
       )}
       {!hideModules && !isBlindMode && (
         <>
-          <p className="mt-2 text-sm text-[#D2D4C8]">Appears In:</p>
+          <p className="mt-2 text-sm text-[var(--text-secondary)]">Appears In:</p>
           <ul className="ml-6 list-disc">
             {problemModules.map(
               ({ id: moduleID, title: moduleLabel, section }) => (
@@ -143,12 +143,12 @@ function ProblemHit({ hit }: ProblemHitProps) {
                     <Link
                       onClick={e => e.stopPropagation()}
                       to={`/${section}/${moduleID}/#problem-${hit.objectID}`}
-                      className="text-sm text-[#8BC2FF] hover:text-[#B8DCFF]"
+                      className="text-sm text-[var(--text-secondary)] underline decoration-[var(--border-strong)] underline-offset-2 transition-colors hover:text-[var(--text-primary)] hover:decoration-[var(--text-primary)]"
                     >
                       {moduleLabel}
                     </Link>
                   ) : (
-                    <span className="text-sm text-[#D2D4C8]">
+                    <span className="text-sm text-[var(--text-secondary)]">
                       {moduleLabel}
                     </span>
                   )}

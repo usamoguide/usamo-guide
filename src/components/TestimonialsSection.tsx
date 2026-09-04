@@ -2,8 +2,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import React from 'react';
 
 const PAGE_BG = 'var(--bg-page)';
-const VANILLA = '#F4EDEA';
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.78)';
+const VANILLA = 'var(--text-primary)';
+const TEXT_SECONDARY = 'var(--text-secondary)';
 
 interface Testimonial {
   name: string;
@@ -127,7 +127,7 @@ const TestimonialsSection = () => {
             </h2>
             <p
               className="mt-1 text-4xl font-black tracking-tight italic md:text-5xl 2xl:text-6xl"
-              style={{ color: 'rgba(240, 194, 255, 0.85)' }}
+              style={{ color: 'var(--border-strong)' }}
             >
               Are Saying
             </p>
@@ -192,7 +192,7 @@ const TestimonialsSection = () => {
                         </p>
                         <p
                           className="mt-1 text-base"
-                          style={{ color: 'rgba(240, 194, 255, 0.62)' }}
+                          style={{ color: 'var(--border-strong)' }}
                         >
                           {testimonial.role}
                         </p>
@@ -208,7 +208,7 @@ const TestimonialsSection = () => {
             <button
               type="button"
               onClick={() => stepByOneCard('back')}
-              className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/10"
+              className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-[var(--accent-soft)]"
               style={{ borderColor: 'rgba(229, 194, 255, 0.28)' }}
               aria-label="Previous testimonial"
             >
@@ -217,7 +217,7 @@ const TestimonialsSection = () => {
             <button
               type="button"
               onClick={() => stepByOneCard('next')}
-              className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/10"
+              className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-[var(--accent-soft)]"
               style={{ borderColor: 'rgba(229, 194, 255, 0.28)' }}
               aria-label="Next testimonial"
             >

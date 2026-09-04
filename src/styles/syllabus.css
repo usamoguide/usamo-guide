@@ -1,20 +1,43 @@
-.syllabus-dotted-line-container {
+/* ── Syllabus track: dashes, lines, dots ───────────────────────────────────
+   Three marks on one axis, each saying something different:
+
+     · a dashed rule running the whole length of the syllabus — the track,
+       continuing through the gaps between category cards;
+     · solid segments inside each card, drawn per module row by
+       link-with-progress.css — the stretch of track a category covers;
+     · a dot per module, sitting on top of both.
+
+   The dashed rule is deliberately painted before the rows, so the solid
+   segments cover it wherever a category is laying track and the dashes only
+   show through in the gaps between cards.
+
+   Geometry. The category and module columns are both `flex-1` and carry the
+   same 3rem of inner padding, so their shared edge falls exactly on the
+   container's midline — the container's `px-4` and the card's `p-4` are
+   symmetric and cancel. The spine then sits --syllabus-gutter inside the
+   module column from that edge. link-with-progress.css positions the markers
+   from the same --syllabus-gutter, so the dashes and the dots cannot drift.
+
+   The previous rule hard-coded a flat 50% while the markers sat at each card's
+   inner column edge, which is why the card padding used to pull them apart.
+*/
+.syllabus-track {
+  --syllabus-gutter: 1.5rem;
+
   @apply relative;
 
   @media (min-width: 768px) {
     &::before {
       content: '';
       position: absolute;
-      width: 2px;
-      display: block;
-      left: calc(50% - 1px);
-      top: 0;
-      bottom: 0;
-      border-right: 2px dashed;
-      @apply border-gray-100;
-    }
-    .dark &::before {
-      @apply border-gray-700;
+      /* py-12 on the container: start and stop at the cards, not in the air. */
+      top: 3rem;
+      bottom: 3rem;
+      left: calc(50% + var(--syllabus-gutter));
+      width: 0;
+      margin-left: -1px;
+      border-left: 2px dashed var(--border);
+      pointer-events: none;
     }
   }
 }

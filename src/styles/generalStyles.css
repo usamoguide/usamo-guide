@@ -2,16 +2,7 @@
 html {
   background-color: var(--bg-page);
   color: var(--text-primary);
-  font-family:
-    'Inter',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: var(--font-sans);
 }
 
 body,
@@ -429,17 +420,17 @@ html.transitioning-color-scheme * {
 }
 .gatsby-highlight.light-mode pre[class*='language-cpp']::before {
   content: 'cpp';
-  background: #3d3564;
+  background: var(--border);
   color: #ffffff;
 }
 .gatsby-highlight.light-mode pre[class*='language-java']::before {
   content: 'java';
-  background: #3d3564;
+  background: var(--border);
   color: #ffffff;
 }
 .gatsby-highlight.light-mode pre[class*='language-py']::before {
   content: 'python';
-  background: #3d3564;
+  background: var(--border);
   color: #ffffff;
 }
 
@@ -472,6 +463,11 @@ html.transitioning-color-scheme * {
   justify-content: center;
 }
 
+.problems-page .problems-pagination,
+.problems-page .problems-pagination .ais-Pagination-item {
+  color: var(--text-muted);
+}
+
 .problems-page .problems-pagination .ais-Pagination-list {
   display: flex;
   align-items: center;
@@ -486,11 +482,22 @@ html.transitioning-color-scheme * {
   min-width: 2.15rem;
   align-items: center;
   justify-content: center;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(232, 194, 255, 0.5);
-  background: #ead8ff;
-  color: #000000;
-  font-weight: 600;
+  border-radius: 999px;
+  /* Was hardcoded lavender with pure-black text. Uses the same moulded
+     material as every other control on the site now. */
+  border: 1px solid transparent;
+  background:
+    var(--btn-dark-face) padding-box,
+    var(--btn-dark-rim) border-box;
+  box-shadow: var(--btn-drop), var(--btn-dark-inset);
+  /* !important is deliberate and scoped: InstantSearch ships its own theme in
+     a separate bundle that sets these on the same elements, and it is not a
+     sheet this project controls. Everything else here wins on specificity. */
+  color: var(--btn-dark-ink) !important;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 0.3125rem 0.5rem;
+  font-weight: 500;
   text-decoration: none;
   transition:
     background-color 150ms ease,
@@ -501,17 +508,29 @@ html.transitioning-color-scheme * {
 .problems-page
   .problems-pagination
   .ais-Pagination-item--selected
-  .ais-Pagination-link,
-.problems-page .problems-pagination .ais-Pagination-link:hover {
-  background: #d6a7f3;
-  border-color: #c97edc;
-  color: #000000;
+  .ais-Pagination-link {
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  /* The selected page sits on the light face, so it needs the dark ink or it
+     is white-on-white — which is exactly what the vendor sheet produced. */
+  color: var(--btn-ink) !important;
 }
 
-.problems-page .problems-pagination .ais-Pagination-link:visited,
-.problems-page .problems-pagination .ais-Pagination-link:focus,
-.problems-page .problems-pagination .ais-Pagination-link:active {
-  color: #000000;
+.problems-page .problems-pagination .ais-Pagination-link:hover {
+  background:
+    var(--btn-dark-face-hover) padding-box,
+    var(--btn-dark-rim) border-box;
+}
+
+.problems-page .problems-pagination .ais-Pagination-link:visited {
+  color: inherit;
+}
+
+.problems-page .problems-pagination .ais-Pagination-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .problems-page

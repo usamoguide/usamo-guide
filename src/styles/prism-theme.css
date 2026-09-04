@@ -7,8 +7,8 @@ pre[class*='language-'] {
   word-break: normal;
   word-wrap: normal;
   color: #e5e7eb;
-  background: #0f172a;
-  font-family: 'Inter', 'Space Grotesk', Roboto Mono, monospace;
+  background: var(--code-block-bg-dark);
+  font-family: var(--font-mono);
   font-size: 1em;
   line-height: 1.5em;
 
@@ -30,7 +30,7 @@ pre[class*='language-']::-moz-selection,
 code[class*='language-'] ::-moz-selection,
 pre[class*='language-'] ::-moz-selection {
   background: #171413;
-  color: #f5f0fa;
+  color: var(--text-primary);
 }
 
 
@@ -39,14 +39,14 @@ pre[class*='language-']::selection,
 code[class*='language-'] ::selection,
 pre[class*='language-'] ::selection {
   background: #171413;
-  color: #f5f0fa;
+  color: var(--text-primary);
 }
 
 .markdown code[class*='language-']::-moz-selection,
 .markdown pre[class*='language-']::-moz-selection,
 .markdown code[class*='language-'] ::-moz-selection,
 .markdown pre[class*='language-'] ::-moz-selection {
-  background: #f5f0fa;
+  background: var(--text-primary);
   color: #171413;
 }
 
@@ -54,7 +54,7 @@ pre[class*='language-'] ::selection {
 .markdown pre[class*='language-']::selection,
 .markdown code[class*='language-'] ::selection,
 .markdown pre[class*='language-'] ::selection {
-  background: #f5f0fa;
+  background: var(--text-primary);
   color: #171413;
 }
 

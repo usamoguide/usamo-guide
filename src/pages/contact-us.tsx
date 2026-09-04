@@ -19,7 +19,7 @@ const Field = ({
     <div className="space-y-1">
       <label
         htmlFor={id}
-        className="block text-sm leading-5 font-medium text-[rgba(244,237,234,0.78)]"
+        className="block text-sm leading-5 font-medium text-[var(--text-secondary)]"
       >
         {label}
       </label>
@@ -28,7 +28,7 @@ const Field = ({
           type="text"
           id={id}
           className={
-            'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none' +
+            'w-full rounded-md border border-[var(--border)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[rgba(244,237,234,0.35)] focus:border-[var(--accent-fill)] focus:ring-1 focus:ring-[var(--accent-fill)] focus:outline-none' +
             (errorMsg
               ? ' border-red-400 focus:border-red-400 focus:ring-red-400'
               : '')
@@ -155,17 +155,17 @@ export default function ContactUsPage(props: PageProps) {
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
         <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="mb-6">
-            <h1 className="text-3xl leading-tight font-bold text-[#F4EDEA]">
+            <h1 className="text-3xl leading-tight font-bold text-[var(--text-primary)]">
               Contact Us
             </h1>
-            <p className="mt-2 text-sm text-[rgba(244,237,234,0.65)]">
+            <p className="mt-2 text-sm text-[var(--text-muted)]">
               Contact us about anything: suggestions, bugs, assistance, and
               more! This will be submitted as a public{' '}
               <a
                 href="https://github.com/usamoguide/usamo-guide/issues"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#F0C2FF] underline hover:text-[#F4EDEA]"
+                className="text-[var(--accent)] underline hover:text-[var(--text-primary)]"
               >
                 Github issue
               </a>
@@ -253,10 +253,10 @@ export default function ContactUsPage(props: PageProps) {
                     onChange={e => setLocation(e.target.value)}
                   />
                   <fieldset className="space-y-2">
-                    <legend className="text-sm leading-5 font-medium text-[rgba(244,237,234,0.78)]">
+                    <legend className="text-sm leading-5 font-medium text-[var(--text-secondary)]">
                       Topic
                     </legend>
-                    <div className="text-sm text-[rgba(244,237,234,0.65)]">
+                    <div className="text-sm text-[var(--text-muted)]">
                       The USAMO Guide is a community project and is not
                       affiliated with the MAA, AMC, AIME, USAMO, or AoPS. If
                       your question is about those organizations, please contact
@@ -271,7 +271,7 @@ export default function ContactUsPage(props: PageProps) {
                                 id={`contact_topic_${idx}`}
                                 type="radio"
                                 name="type"
-                                className="form-radio h-4 w-4 border-[rgba(240,194,255,0.30)] bg-[rgba(18,15,36,0.80)] accent-[#70428A]"
+                                className="form-radio h-4 w-4 border-[var(--border)] bg-[var(--bg-surface)] accent-[var(--accent-fill)]"
                                 checked={topic === t[0]}
                                 onChange={() => setTopic(t[0])}
                               />
@@ -279,7 +279,7 @@ export default function ContactUsPage(props: PageProps) {
                             <div className="pl-7 text-sm leading-5">
                               <label
                                 htmlFor={`contact_topic_${idx}`}
-                                className="font-medium text-[rgba(244,237,234,0.85)]"
+                                className="font-medium text-[var(--text-secondary)]"
                               >
                                 {t[0]} {t.length > 1 ? `(e.g., ${t[1]})` : ''}
                               </label>
@@ -287,7 +287,7 @@ export default function ContactUsPage(props: PageProps) {
                                 <div>
                                   Submitting a pull request{' '}
                                   <a
-                                    className="text-[#F0C2FF] hover:underline"
+                                    className="text-[var(--accent)] hover:underline"
                                     target="_blank"
                                     rel="noreferrer"
                                     href="https://github.com/usamoguide/usamo-guide/pulls"
@@ -343,7 +343,7 @@ export default function ContactUsPage(props: PageProps) {
                   <div className="space-y-1">
                     <label
                       htmlFor="contact_message"
-                      className="block text-sm leading-5 font-medium text-[rgba(244,237,234,0.78)]"
+                      className="block text-sm leading-5 font-medium text-[var(--text-secondary)]"
                     >
                       Message (markdown is supported)
                     </label>
@@ -357,7 +357,7 @@ export default function ContactUsPage(props: PageProps) {
                         id="contact_message"
                         rows={5}
                         className={
-                          'w-full rounded-md border border-[rgba(240,194,255,0.25)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[#F4EDEA] placeholder-[rgba(244,237,234,0.35)] focus:border-[#70428A] focus:ring-1 focus:ring-[#70428A] focus:outline-none ' +
+                          'w-full rounded-md border border-[var(--border)] bg-[rgba(10,8,24,0.60)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[rgba(244,237,234,0.35)] focus:border-[var(--accent-fill)] focus:ring-1 focus:ring-[var(--accent-fill)] focus:outline-none ' +
                           (showErrors && message.length < 10
                             ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
                             : '')
@@ -391,7 +391,7 @@ export default function ContactUsPage(props: PageProps) {
                     <button
                       type="submit"
                       disabled={!submitEnabled}
-                      className="rounded-lg bg-[#70428A] px-5 py-2 text-sm font-semibold text-[#F4EDEA] transition-colors hover:bg-[#8A52AA] disabled:opacity-50"
+                      className="rounded-lg bg-[var(--accent-fill)] px-5 py-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-fill-hover)] disabled:opacity-50"
                     >
                       Contact Us
                     </button>

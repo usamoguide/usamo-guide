@@ -8,18 +8,11 @@ export default function BlindModeToggle() {
     <button
       onClick={toggleBlindMode}
       aria-pressed={isBlindMode}
-      className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
-      style={{
-        border: '1px solid rgba(240, 194, 255, 0.34)',
-        background: '#6D3B9F',
-        ['--pme-color' as string]: '#F4EDEA',
-        ['--pme-hover-color' as string]: '#201C36',
-        ['--pme-wipe-bg' as string]: '#F0C2FF',
-      }}
+      className="btn btn-primary"
       title={isBlindMode ? "Show 'Appears in' tags" : "Hide 'Appears in' tags"}
     >
       <svg
-        className="mr-2 h-5 w-5 text-[#F4EDEA]"
+        className="mr-2 h-5 w-5 text-[var(--text-primary)]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

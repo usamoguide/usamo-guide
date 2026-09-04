@@ -6,13 +6,13 @@ const SidebarBottomButtons = () => {
   const { setIsMobileNavOpen } = useMarkdownLayout();
   return (
     <>
-      <div className="flex shrink-0 border-t border-gray-200 dark:border-gray-800">
+      <div className="flex shrink-0 border-t border-[var(--border)] dark:border-[var(--border)]">
         <Link
-          className="group dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis dark:focus:text-dark-high-emphasis flex flex-1 items-center p-4 text-sm leading-5 font-medium text-gray-600 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-900 focus:bg-gray-100 focus:outline-hidden dark:hover:bg-gray-900 dark:focus:bg-gray-900"
+          className="group dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis dark:focus:text-dark-high-emphasis flex flex-1 items-center p-4 text-sm leading-5 font-medium text-[var(--text-muted)] transition duration-150 ease-in-out hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus:bg-[var(--bg-surface-alt)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] dark:hover:bg-[var(--accent-soft)] dark:focus:bg-[var(--bg-surface-alt)]"
           to="/settings"
         >
           <svg
-            className="mr-4 h-6 w-6 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-400"
+            className="mr-4 h-6 w-6 text-[var(--text-muted)] transition duration-150 ease-in-out group-hover:text-[var(--text-primary)] group-focus:text-[var(--text-muted)] dark:text-[var(--text-muted)] dark:group-hover:text-[var(--text-primary)]"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -34,14 +34,14 @@ const SidebarBottomButtons = () => {
           Settings
         </Link>
       </div>
-      <div className="flex shrink-0 border-t border-gray-200 dark:border-gray-800">
+      <div className="flex shrink-0 border-t border-[var(--border)] dark:border-[var(--border)]">
         <Link
-          className="group dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis dark:focus:text-dark-high-emphasis flex flex-1 items-center p-4 text-sm leading-5 font-medium text-gray-600 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-900 focus:bg-gray-100 focus:outline-hidden dark:hover:bg-gray-900 dark:focus:bg-gray-900"
+          className="group dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis dark:focus:text-dark-high-emphasis flex flex-1 items-center p-4 text-sm leading-5 font-medium text-[var(--text-muted)] transition duration-150 ease-in-out hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus:bg-[var(--bg-surface-alt)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] dark:hover:bg-[var(--accent-soft)] dark:focus:bg-[var(--bg-surface-alt)]"
           to="/contact-us"
           onClick={() => setIsMobileNavOpen(false)}
         >
           <svg
-            className="mr-4 h-6 w-6 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-400"
+            className="mr-4 h-6 w-6 text-[var(--text-muted)] transition duration-150 ease-in-out group-hover:text-[var(--text-primary)] group-focus:text-[var(--text-muted)] dark:text-[var(--text-muted)] dark:group-hover:text-[var(--text-primary)]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

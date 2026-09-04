@@ -34,7 +34,7 @@ const ProgressDropdown = ({
       Practicing: 'text-orange-500',
       Complete: 'text-green-400',
       Skipped: 'text-blue-400',
-      Ignored: 'text-purple-400',
+      Ignored: '[color:var(--text-muted)]',
     };
     const pathMap: { [key in ResourceProgress]: JSX.Element } = {
       'Not Started': <> </>,
@@ -91,7 +91,7 @@ const ProgressDropdown = ({
           role="option"
           className={`${
             activeProgress === progress
-              ? 'bg-indigo-600 text-white dark:bg-indigo-800'
+              ? '[color:var(--bg-page)] [background:var(--accent)]'
               : 'dark:text-dark-med-emphasis text-gray-900'
           } relative cursor-default py-2 pr-4 pl-10 select-none`}
           key={progress}
@@ -113,7 +113,7 @@ const ProgressDropdown = ({
           {progress === currentProgress && (
             <span
               className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                activeProgress === progress ? 'text-white' : 'text-indigo-600'
+                activeProgress === progress ? '[color:var(--bg-page)]' : '[color:var(--accent)]'
               }`}
             >
               <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -161,8 +161,7 @@ export default function ResourcestatusCheckbox({
   const status: ResourceProgress =
     userProgressOnResources[
       replaceIllegalResourceKeyCharacters(resource.url!)
-    ] ||
-    'Not Started';
+    ] || 'Not Started';
   const color: { [key in ResourceProgress]: string } = {
     'Not Started': 'bg-gray-200 dark:bg-gray-700',
     Reading: 'bg-yellow-300 dark:bg-yellow-500',

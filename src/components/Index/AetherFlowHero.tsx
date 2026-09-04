@@ -1,8 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
-
-/** How far the hero backdrop trails the page scroll, as a fraction of it. */
-const HERO_PARALLAX_FACTOR = 0.35;
+import ExtrudedWordmark from './ExtrudedWordmark';
+import GeometryField from './GeometryField';
 
 export default function AetherFlowHero(): JSX.Element {
   const subtitles = React.useMemo(
@@ -18,32 +17,6 @@ export default function AetherFlowHero(): JSX.Element {
   const [subtitleIndex, setSubtitleIndex] = React.useState(0);
   const [typedSubtitle, setTypedSubtitle] = React.useState('');
   const [isDeleting, setIsDeleting] = React.useState(false);
-  const backgroundRef = React.useRef<HTMLDivElement>(null);
-
-  // Parallax: the backdrop trails the page as the hero scrolls away.
-  React.useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let frameId: number | null = null;
-    const render = () => {
-      frameId = null;
-      const background = backgroundRef.current;
-      if (!background) return;
-      background.style.transform = `translate3d(0, ${
-        window.scrollY * HERO_PARALLAX_FACTOR
-      }px, 0) scale(1.12)`;
-    };
-    const onScroll = () => {
-      if (frameId === null) frameId = requestAnimationFrame(render);
-    };
-
-    render();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (frameId !== null) cancelAnimationFrame(frameId);
-    };
-  }, []);
 
   const entranceClass = (direction: 'up' | 'down' = 'up') =>
     direction === 'up' ? 'hero-enter-up' : 'hero-enter-down';
@@ -53,6 +26,14 @@ export default function AetherFlowHero(): JSX.Element {
 
   React.useEffect(() => {
     const current = subtitles[subtitleIndex];
+
+    // With reduced motion requested, the line is shown outright and never
+    // cycles. A caret typing itself out is exactly the kind of continuous
+    // movement the preference is asking us to stop.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (typedSubtitle !== current) setTypedSubtitle(current);
+      return;
+    }
 
     if (!isDeleting && typedSubtitle === current) {
       const holdTimer = window.setTimeout(() => setIsDeleting(true), 1300);
@@ -81,31 +62,25 @@ export default function AetherFlowHero(): JSX.Element {
       className="relative flex min-h-screen w-full flex-col overflow-hidden pt-20"
       style={{ backgroundColor: 'var(--bg-page)' }}
     >
-      <div
-        ref={backgroundRef}
-        className="pointer-events-none absolute inset-0 z-0 will-change-transform"
-        style={{
-          backgroundImage: "url('/images/hero-background.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transform: 'scale(1.12)',
-        }}
-      />
+      {/* Ambient light sits behind the constructions. */}
+      <div className="hero-ambient" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
 
-      {/* Purple gradients feathering both edges into the page background */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: `linear-gradient(to right, rgba(35, 10, 62, 0.95) 0%, rgba(48, 18, 84, 0.72) 10%, rgba(72, 33, 118, 0.5) 20%, rgba(93, 46, 141, 0.32) 30%, rgba(109, 59, 159, 0.19) 40%, rgba(126, 72, 180, 0.1) 50%),
-            linear-gradient(to left, rgba(35, 10, 62, 0.95) 0%, rgba(48, 18, 84, 0.72) 10%, rgba(72, 33, 118, 0.5) 20%, rgba(93, 46, 141, 0.32) 30%, rgba(109, 59, 159, 0.19) 40%, rgba(126, 72, 180, 0.1) 50%)`,
-        }}
-      />
+      <GeometryField />
 
-      {/* Purple falloff so the image doesn't butt straight into the page background */}
+      {/* The ambient glow and the geometry field are clipped by the hero's
+          overflow, which cut a hard horizontal seam where the section ends.
+          This scrim dissolves both into the flat page instead. It sits above
+          the artwork and below the content (z-10), so nothing readable dims. */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-64 md:h-80"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-48 md:h-64"
         style={{
-          background: `linear-gradient(to bottom, rgba(140, 84, 196, 0) 0%, rgba(109, 59, 159, 0.22) 32%, rgba(72, 33, 118, 0.55) 58%, rgba(35, 10, 62, 0.85) 80%, var(--bg-page) 100%)`,
+          background:
+            'linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--bg-page) 55%, transparent) 45%, var(--bg-page) 100%)',
         }}
       />
 
@@ -119,101 +94,69 @@ export default function AetherFlowHero(): JSX.Element {
             href="https://discord.gg/WZge4DWUuy"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white/[0.06] px-4 py-2 font-mono text-[11px] font-bold tracking-[0.24em] text-[#F5F0FA] uppercase backdrop-blur-md transition-colors hover:bg-white/[0.12]"
+            className="hero-chip"
           >
-            <img
-              src="/images/discord.svg"
-              alt=""
+            <svg
+              viewBox="0 0 640 512"
+              fill="currentColor"
               aria-hidden="true"
-              className="h-4 w-4 flex-shrink-0"
-            />
-            <span>Discord</span>
+              className="h-4 w-4 shrink-0"
+            >
+              <path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91A483.689 483.689 0 0 0 116.085 69.14a1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z" />
+            </svg>
+            <span>Join the Discord</span>
           </a>
-
-          <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90">
-            Join our community!
-          </p>
         </div>
       </div>
 
       {/* ── Center content ── */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center md:pb-32">
-        <div
-          className={`mb-5 inline-flex items-center rounded-full bg-white/[0.08] px-4 py-2 font-mono text-[11px] font-bold tracking-[0.28em] text-[#F5F0FA] uppercase backdrop-blur-md ${entranceClass('down')}`}
-          style={entranceDelay(120)}
+        {/* Attribution, set as a plain sentence rather than a tracked-out
+            uppercase chip. It is a claim about who wrote the material, so it
+            should read as language, not as a badge. */}
+        <p
+          className={`mb-6 text-sm font-medium ${entranceClass('down')}`}
+          style={{ ...entranceDelay(120), color: 'var(--text-secondary)' }}
         >
-          {'Written by USA(J)MO Medalists'}
-        </div>
+          Written by USA(J)MO medalists
+        </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-end md:gap-6">
-          <div className="relative inline-block">
-            <h1 className="font-mono text-6xl font-extrabold tracking-tight text-[#F5F0FA] md:text-8xl lg:text-9xl">
-              <span
-                className={`inline-block ${entranceClass()}`}
-                style={entranceDelay(240)}
-              >
-                {'USAMO'}
-              </span>{' '}
-              <span
-                className={`inline-block ${entranceClass()}`}
-                style={entranceDelay(560)}
-              >
-                {'Guide'}
-              </span>
-            </h1>
-            <img
-              src="/images/Titlemascot.png"
-              alt=""
-              aria-hidden="true"
-              className="hero-mascot-enter pointer-events-none absolute -top-6 -right-5 hidden w-16 rotate-[14deg] min-[770px]:block md:-top-8 md:-right-7 md:w-20 lg:-top-10 lg:-right-9 lg:w-24"
-              style={entranceDelay(880)}
-            />
-          </div>
+        <div className={entranceClass()} style={entranceDelay(240)}>
+          <ExtrudedWordmark lead="USAMO" trail="Guide" />
         </div>
 
         <p
-          className={`mt-5 min-h-[2.25rem] font-mono text-xl font-semibold text-[#F1EAF7] md:min-h-[2.5rem] md:text-2xl ${entranceClass()}`}
-          style={entranceDelay(1120)}
+          className={`mt-5 min-h-[2rem] max-w-2xl text-lg font-medium md:min-h-[2.25rem] md:text-xl ${entranceClass()}`}
+          style={{ ...entranceDelay(560), color: 'var(--text-secondary)' }}
         >
           {typedSubtitle}
-          <span className="ml-1 inline-block h-[1.05em] w-[0.09em] animate-pulse bg-[#F1EAF7] align-[-0.15em]" />
+          <span
+            aria-hidden="true"
+            className="hero-caret ml-1 inline-block h-[1.05em] w-[0.075em] align-[-0.15em]"
+          />
         </p>
 
         <div
-          className={`mt-10 flex flex-wrap items-center justify-center gap-4 ${entranceClass()}`}
-          style={entranceDelay(1280)}
+          className={`mt-10 flex flex-wrap items-center justify-center gap-3 ${entranceClass()}`}
+          style={entranceDelay(680)}
         >
-          <Link
-            to="/dashboard"
-            className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-3 font-mono text-lg leading-tight font-bold md:px-8 md:py-3"
-            style={
-              {
-                border: '1px solid rgba(240, 194, 255, 0.34)',
-                background: '#6D3B9F',
-                boxShadow: 'none',
-                '--pme-color': '#F4EDEA',
-                '--pme-hover-color': '#201C36',
-                '--pme-wipe-bg': '#F0C2FF',
-              } as React.CSSProperties
-            }
-          >
-            Start Learning &gt;
+          <Link to="/dashboard" className="btn btn-lg btn-primary">
+            Start learning
+            <svg
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              className="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" />
+            </svg>
           </Link>
-          <Link
-            to="/foundations"
-            className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-3 font-mono text-lg leading-tight font-bold md:px-8 md:py-3"
-            style={
-              {
-                border: '1px solid rgba(240, 194, 255, 0.34)',
-                background: '#EFE3FF',
-                boxShadow: 'none',
-                '--pme-color': '#2C1842',
-                '--pme-hover-color': '#201C36',
-                '--pme-wipe-bg': '#F0C2FF',
-              } as React.CSSProperties
-            }
-          >
-            Browse Topics
+          <Link to="/foundations" className="btn btn-lg btn-secondary">
+            Browse topics
           </Link>
         </div>
       </div>
@@ -221,18 +164,18 @@ export default function AetherFlowHero(): JSX.Element {
       {/* ── Bottom bar ── */}
       <div
         className={`relative z-10 ml-auto flex max-w-2xl flex-col items-center gap-3 px-12 pt-6 pb-12 text-right ${entranceClass()}`}
-        style={entranceDelay(1440)}
+        style={entranceDelay(800)}
       >
         {/* Bottom-right: Open source */}
         <a
           href="https://github.com/usamoguide/usamo-guide"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white/[0.06] px-4 py-2 font-mono text-[11px] font-bold tracking-[0.24em] text-[#F5F0FA] uppercase backdrop-blur-md transition-colors hover:bg-white/[0.12]"
+          className="hero-chip"
         >
           <svg
             viewBox="0 0 16 16"
-            className="h-4 w-4 flex-shrink-0 fill-current"
+            className="h-4 w-4 shrink-0 fill-current"
             aria-hidden="true"
           >
             <path
@@ -246,12 +189,18 @@ export default function AetherFlowHero(): JSX.Element {
               0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
             />
           </svg>
-          <span>Star us on Github</span>
+          <span>Star us on GitHub</span>
         </a>
 
-        <p className="max-w-xl font-mono text-[11px] leading-relaxed font-bold tracking-[0.24em] text-[#F5F0FA] uppercase opacity-90">
-          We are fully{' '}
-          <strong className="font-bold text-[#FBF7FF]">open source</strong>.
+        <p
+          className="max-w-xl text-sm leading-relaxed"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          Every module, problem, and solution on this site is{' '}
+          <strong style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>
+            open source
+          </strong>
+          .
         </p>
       </div>
     </div>

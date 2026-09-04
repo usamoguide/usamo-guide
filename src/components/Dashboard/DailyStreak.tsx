@@ -22,55 +22,76 @@ const ComeBackTimer = ({ tomorrowMilliseconds }) => {
   const minutes = Math.floor((ms / 1000 / 60) % 60);
   const seconds = Math.floor((ms / 1000) % 60);
 
+  const pad = (n: number) => String(n).padStart(2, '0');
+
   return (
     <div>
-      Come back in
-      <p className="my-2 text-2xl">
-        {hours} hours {minutes} minutes {seconds} seconds
+      <p
+        className="font-mono text-xl tabular-nums"
+        style={{ color: 'var(--text-primary)' }}
+      >
+        {hours}:{pad(minutes)}:{pad(seconds)}
       </p>
-      to {days ? 'continue your streak' : 'unlock this math insight'}!
-      {days ? ` Insight unlocks after ${days + 1} days.` : null}
+      <p className="mt-2">
+        {days
+          ? `Unlocks in ${days + 1} days.`
+          : 'Until the next insight unlocks.'}
+      </p>
     </div>
   );
 };
 
-const PhotoCard = ({ text, day, tomorrowMilliseconds, hiddenOnDesktop }) => {
+const PhotoCard = ({ text, day, tomorrowMilliseconds }) => {
   return (
-    <div className={'mb-8 w-full' + (hiddenOnDesktop ? ' lg:hidden' : '')}>
+    <div className="w-full">
       <div
-        className="flex flex-col overflow-hidden sm:rounded-2xl"
+        className="flex flex-col overflow-hidden rounded-xl border"
         style={{
           background: 'var(--card-bg)',
+          borderColor: 'var(--card-border)',
         }}
       >
-        <div className="px-4 pt-5 pb-4 sm:px-6 sm:pt-6">
+        <div
+          className="border-b px-5 py-3"
+          style={{ borderColor: 'var(--border)' }}
+        >
           <h3
-            className="text-lg leading-6 font-medium"
-            style={{ color: '#F4EDEA' }}
+            className="text-[0.8125rem] font-semibold"
+            style={{ color: 'var(--text-muted)' }}
           >
-            Day {day} Insight
+            Day {day}
           </h3>
         </div>
         <div className="relative overflow-hidden">
           {tomorrowMilliseconds >= 0 ? (
             <div
-              className="absolute inset-0 z-10 flex items-center justify-center p-4 text-center text-base font-medium"
-              style={{ background: 'rgba(32, 28, 54, 0.24)', color: '#F4EDEA' }}
+              className="absolute inset-0 z-10 flex items-center justify-center p-5 text-center text-sm leading-6"
+              style={{
+                background: 'var(--bg-surface)',
+                color: 'var(--text-secondary)',
+              }}
             >
               <ComeBackTimer tomorrowMilliseconds={tomorrowMilliseconds} />
             </div>
           ) : null}
+          {/* The blur here is content-hiding, not decoration: it keeps an
+              unearned insight unreadable rather than making a panel look
+              glassy. */}
           <div
-            className="flex min-h-[220px] items-center justify-center px-6 py-10 text-center text-lg font-semibold"
+            className="flex min-h-[132px] items-center justify-center px-6 py-8 text-center text-base leading-7 font-medium text-balance"
             style={
               tomorrowMilliseconds >= 0
                 ? {
-                    background: 'rgba(244, 237, 234, 0.08)',
-                    color: '#F0C2FF',
+                    background: 'var(--bg-surface-alt)',
+                    color: 'var(--text-primary)',
                     filter: 'blur(6px)',
                   }
-                : { background: 'rgba(244, 237, 234, 0.08)', color: '#F0C2FF' }
+                : {
+                    background: 'var(--bg-surface-alt)',
+                    color: 'var(--text-primary)',
+                  }
             }
+            aria-hidden={tomorrowMilliseconds >= 0 ? 'true' : undefined}
           >
             {text}
           </div>
@@ -118,43 +139,41 @@ export default function DailyStreak({ streak }) {
 
   let maxInd = 0;
   while (maxInd < times.length && times[maxInd] <= streak) maxInd++;
-  const getComponent = (i, hideYesNo): React.ReactElement => {
+  const getComponent = (i): React.ReactElement => {
     if (times[i] <= streak) {
       return (
         <PhotoCard
           key={i}
           text={insights[i]}
           day={times[i]}
-          hiddenOnDesktop={hideYesNo}
           tomorrowMilliseconds={-1}
         />
       );
     }
     if (i == times.length) {
       return (
-        <div className="mb-8" key={times.length}>
+        <div key={times.length}>
           <div
-            className="flex flex-col overflow-hidden sm:rounded-2xl"
+            className="flex flex-col overflow-hidden rounded-xl border"
             style={{
-              background: 'rgba(244, 237, 234, 0.08)',
+              background: 'var(--card-bg)',
+              borderColor: 'var(--card-border)',
             }}
           >
-            <div className="px-4 py-5 sm:p-6">
-              <div className="text-center">
-                <h3
-                  className="text-lg leading-6 font-medium"
-                  style={{ color: '#F4EDEA' }}
-                >
-                  You've ran out of cow photos!
-                </h3>
-                <div
-                  className="mt-3 space-y-1 text-sm leading-5"
-                  style={{ color: 'rgba(244, 237, 234, 0.72)' }}
-                >
-                  You've unlocked all current insights. If you want to help add
-                  more, reach out via the Contact Us button.
-                </div>
-              </div>
+            <div className="p-5">
+              <h3
+                className="text-[0.9375rem] font-semibold"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                You've unlocked every insight
+              </h3>
+              <p
+                className="mt-1 text-sm leading-6"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                That's all of them for now. If you want to write more, the
+                contact link at the bottom of the page reaches us.
+              </p>
             </div>
           </div>
         </div>
@@ -165,7 +184,6 @@ export default function DailyStreak({ streak }) {
           key={i}
           text={insights[i]}
           day={times[i]}
-          hiddenOnDesktop={hideYesNo}
           tomorrowMilliseconds={
             lastVisitDate +
             1000 * 60 * 60 * 20 +
@@ -175,57 +193,50 @@ export default function DailyStreak({ streak }) {
       );
     }
   };
-  const leftCows = () => {
-    // 2-column format for desktop, so hide every other cow
+  /* Newest first. One flat list — the grid handles the columns, so each card
+     is rendered once instead of twice with alternates hidden per breakpoint. */
+  const insightCards = () => {
     const items: React.ReactElement[] = [];
-    for (let i = maxInd; i >= 0; --i) {
-      items.push(getComponent(i, (maxInd - i) % 2 == 1));
-    }
-    return items;
-  };
-  const rightCows = () => {
-    // desktop-only
-    const items: React.ReactElement[] = [];
-    for (let i = maxInd - 1; i >= 0; i -= 2) {
-      items.push(getComponent(i, false));
-    }
+    for (let i = maxInd; i >= 0; --i) items.push(getComponent(i));
     return items;
   };
   return (
     <>
+      {/* Reported as a fact, not cheered at. A visit streak is a weak signal
+          about studying, so it gets stated plainly and left alone — no flame,
+          no exclamation, no "keep it up". */}
       <div
-        className="overflow-hidden sm:rounded-2xl lg:col-span-2"
+        className="rounded-xl border"
         style={{
           background: 'var(--card-bg)',
+          borderColor: 'var(--card-border)',
         }}
       >
-        <div className="px-4 py-5 sm:p-6">
-          <div className="text-center">
-            <h3
-              className="text-lg leading-6 font-medium"
-              style={{ color: '#F4EDEA' }}
-            >
-              🔥 {streak} Day Streak: Keep it up!
-            </h3>
-            <div
-              className="mt-3 space-y-1 text-sm leading-5"
-              style={{ color: 'rgba(244, 237, 234, 0.72)' }}
-            >
-              <p>
-                You've visited this guide for {streak} consecutive day
-                {streak !== 1 && 's'}.
-              </p>
-              <p>
-                Each prime day you visit, you'll unlock a new math insight. If
-                you break the streak, the insights will disappear.
-              </p>
-            </div>
-          </div>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 p-5">
+          <h3
+            className="text-[0.9375rem] font-semibold"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Visit streak
+          </h3>
+          <p
+            className="font-mono text-sm tabular-nums"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            <span style={{ color: 'var(--text-primary)' }}>{streak}</span>{' '}
+            consecutive day{streak !== 1 && 's'}
+          </p>
+          <p
+            className="w-full text-sm leading-6"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            A new insight unlocks on each prime-numbered day. Breaking the
+            streak clears the ones you have.
+          </p>
         </div>
       </div>
 
-      <div>{leftCows()}</div>
-      <div className="hidden lg:block">{rightCows()}</div>
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">{insightCards()}</div>
     </>
   );
 }

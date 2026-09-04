@@ -24,8 +24,8 @@ import {
   useProblemsProgressInfo,
 } from '../utils/getProgressInfo';
 
-const VANILLA = '#F4EDEA';
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.72)';
+const VANILLA = 'var(--text-primary)';
+const TEXT_SECONDARY = 'var(--text-muted)';
 const PAGE_BG = 'var(--bg-page)';
 
 export default function DashboardPage(props: PageProps) {
@@ -140,6 +140,15 @@ export default function DashboardPage(props: PageProps) {
     setFinishedRendering(true);
   }, []);
 
+  /**
+   * Progress for one section.
+   *
+   * The four states are separated by ink weight, not by hue — this palette has
+   * no four distinguishable colours to spend here, and spending them would
+   * break the rule that status never rides on colour alone. Every state also
+   * carries its label and its count, so the panel survives being read in
+   * greyscale or by someone who cannot separate the steps at all.
+   */
   const renderStatsTile = (
     title: string,
     total: number,
@@ -150,143 +159,85 @@ export default function DashboardPage(props: PageProps) {
       notStarted: number;
     }
   ) => {
-    const percentComplete =
-      total === 0 ? 0 : Math.round((counts.completed / total) * 100);
     const segment = (value: number) =>
       total === 0 ? 0 : (value / total) * 100;
 
+    const states = [
+      { label: 'Completed', value: counts.completed, ink: 'var(--heatmap-4)' },
+      {
+        label: 'In progress',
+        value: counts.inProgress,
+        ink: 'var(--heatmap-3)',
+      },
+      { label: 'Skipped', value: counts.skipped, ink: 'var(--heatmap-2)' },
+      {
+        label: 'Not started',
+        value: counts.notStarted,
+        ink: 'var(--heatmap-empty)',
+      },
+    ];
+
     return (
       <Card>
-        <div className="px-4 py-5 sm:p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h3
-                className="text-lg leading-6 font-medium"
-                style={{ color: VANILLA }}
-              >
-                {title}
-              </h3>
-              <p className="mt-1 text-sm" style={{ color: TEXT_SECONDARY }}>
-                {total} total
-              </p>
-            </div>
-            <div
-              className="rounded-lg px-4 py-3 text-center"
-              style={{ background: 'rgba(244, 237, 234, 0.10)' }}
+        <div className="p-5">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3
+              className="text-[0.9375rem] font-semibold"
+              style={{ color: VANILLA }}
             >
-              <div
-                className="text-2xl font-semibold"
-                style={{ color: VANILLA }}
-              >
-                {percentComplete}%
-              </div>
-              <div
-                className="text-xs font-medium uppercase"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                Complete
-              </div>
-            </div>
+              {title}
+            </h3>
+            {/* Plain fraction rather than a hero percentage: "0 of 28" says
+                what is actually true without turning a blank slate into a
+                headline. */}
+            <p
+              className="shrink-0 font-mono text-sm tabular-nums"
+              style={{ color: TEXT_SECONDARY }}
+            >
+              <span style={{ color: VANILLA }}>{counts.completed}</span>
+              {' / '}
+              {total}
+            </p>
           </div>
 
-          <div className="mt-4 space-y-3">
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#70428A' }}
-                />
-                Completed
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.completed}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#E085FF' }}
-                />
-                In progress
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.inProgress}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#F0C2FF' }}
-                />
-                Skipped
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.skipped}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: 'rgba(210, 212, 200, 0.6)' }}
-                />
-                Not started
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.notStarted}
-              </span>
-            </div>
+          <div
+            className="mt-4 flex h-1.5 overflow-hidden rounded-full"
+            style={{ background: 'var(--heatmap-empty)' }}
+            role="img"
+            aria-label={`${counts.completed} of ${total} completed, ${counts.inProgress} in progress, ${counts.skipped} skipped, ${counts.notStarted} not started`}
+          >
+            {states.slice(0, 3).map(state => (
+              <div
+                key={state.label}
+                className="h-full"
+                style={{ width: `${segment(state.value)}%`, background: state.ink }}
+              />
+            ))}
           </div>
 
-          <div className="mt-5">
-            <div
-              className="flex h-2 overflow-hidden rounded-full"
-              style={{ background: 'rgba(244, 237, 234, 0.16)' }}
-            >
-              <div
-                style={{
-                  width: `${segment(counts.completed)}%`,
-                  background: '#70428A',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.inProgress)}%`,
-                  background: '#E085FF',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.skipped)}%`,
-                  background: '#F0C2FF',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.notStarted)}%`,
-                  background: 'rgba(210, 212, 200, 0.6)',
-                }}
-                className="h-2"
-              />
-            </div>
-          </div>
+          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-4">
+            {states.map(state => (
+              <div key={state.label} className="flex flex-col gap-1">
+                <dt
+                  className="flex items-center gap-1.5 text-xs"
+                  style={{ color: TEXT_SECONDARY }}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="progress-swatch"
+                    style={{ background: state.ink }}
+                  />
+                  {state.label}
+                </dt>
+                <dd
+                  className="font-mono text-sm tabular-nums"
+                  style={{ color: VANILLA }}
+                >
+                  {state.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Card>
     );
@@ -309,155 +260,139 @@ export default function DashboardPage(props: PageProps) {
         <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
 
         {finishedRendering && (
-          <main className="pb-12">
-            <div className="mx-auto mb-4 max-w-screen-2xl">
-              <div className="pt-4 pb-6 lg:px-4">
-                <div className="mb-4 flex flex-wrap">
-                  <div className="w-full text-center">
-                    {currentUser ? (
-                      <>
-                        Signed in as <i>{currentUser.email}</i>.
-                      </>
-                    ) : (
-                      <div
-                        className="w-full rounded-2xl px-5 py-5 text-center"
-                        style={{
-                          background: 'rgba(242, 216, 244, 0.9)',
-                          color: '#120F24',
-                        }}
-                      >
-                        <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6 lg:justify-between">
-                          <div className="max-w-2xl text-center lg:text-left">
-                            <div className="text-xl font-semibold sm:text-2xl">
-                              You&apos;re not signed in!
-                            </div>
-                            <div
-                              className="mt-1 text-sm"
-                              style={{ color: 'rgba(18, 15, 36, 0.8)' }}
-                            >
-                              Track progress, unlock problem sets, and sync
-                              across devices.
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => signIn()}
-                              className="purple-motion-effect mt-4 inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold"
-                              style={
-                                {
-                                  border: '1px solid rgba(240, 194, 255, 0.34)',
-                                  background: '#6D3B9F',
-                                  '--pme-color': '#F4EDEA',
-                                  '--pme-hover-color': '#201C36',
-                                  '--pme-wipe-bg': '#F0C2FF',
-                                } as React.CSSProperties
-                              }
-                            >
-                              Save Progress
-                            </button>
-                          </div>
-                          <img
-                            src="/images/cryingmascot.png"
-                            alt="Crying mascot"
-                            className="h-24 w-auto shrink-0 object-contain sm:h-28"
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mx-auto mb-8 max-w-screen-2xl px-4 sm:px-6 lg:px-4">
-              <div className="grid gap-8 lg:grid-cols-3">
-                <section className="lg:col-span-2">
-                  <h1
-                    className="text-3xl leading-tight font-bold"
-                    style={{ color: VANILLA }}
-                  >
-                    Activity
-                  </h1>
-                  <Activity />
-                </section>
-                <section className="lg:col-span-1">
-                  <h2
-                    className="text-2xl leading-tight font-bold"
-                    style={{ color: VANILLA }}
-                  >
-                    Active items
-                  </h2>
-                  <div className="mt-4 space-y-6">
-                    {activeProblems.length > 0 && (
-                      <ActiveItems type="problems" items={activeProblems} />
-                    )}
-                    {activeModules.length > 0 && (
-                      <ActiveItems type="modules" items={activeModules} />
-                    )}
-                    {activeProblems.length === 0 &&
-                      activeModules.length === 0 && (
-                        <Card>
-                          <div
-                            className="px-4 py-5 text-sm sm:p-6"
-                            style={{ color: TEXT_SECONDARY }}
-                          >
-                            No active problems or modules yet.
-                          </div>
-                        </Card>
-                      )}
-                  </div>
-                </section>
-              </div>
-              <div className="mt-6 flex">
-                <Link
-                  className="purple-motion-effect inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-mono text-base leading-tight font-bold"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#6D3B9F',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
-                  to={
-                    lastViewedModuleURL ||
-                    '/foundations/fractions_percentages_proportions_p1'
-                  }
-                >
-                  {lastViewedModuleURL
-                    ? `Continue: ${moduleInfoById[lastViewedModuleID]?.title}`
-                    : 'Start: Fractions, Proportions and Percentage Conversions!'}
-                </Link>
-              </div>
-            </div>
-            <header>
-              <div className="mx-auto max-w-screen-2xl px-8">
+          <main className="mx-auto max-w-screen-xl px-4 pt-8 pb-16 sm:px-6 lg:px-8">
+            {/* The page opens with the one action a returning student almost
+                always wants — resume where they stopped — sized to its label
+                rather than stretched across the viewport. */}
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
                 <h1
-                  className="text-3xl leading-tight font-bold"
+                  className="text-2xl font-bold tracking-[-0.02em]"
                   style={{ color: VANILLA }}
                 >
-                  Statistics
+                  Dashboard
                 </h1>
+                {currentUser && (
+                  <p className="mt-1 text-sm" style={{ color: TEXT_SECONDARY }}>
+                    Signed in as {currentUser.email}
+                  </p>
+                )}
               </div>
-            </header>
-            <div className="mx-auto max-w-screen-2xl">
-              <div className="space-y-8 px-8 py-4 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:px-8">
-                <div className="space-y-8">
-                  {renderStatsTile(
-                    `Modules Progress - ${SECTION_LABELS[lastViewedSection]}`,
-                    moduleProgressIDs.length,
-                    allModulesProgressInfo
-                  )}
-                </div>
-                <div className="space-y-8">
-                  {renderStatsTile(
-                    `Problems Progress - ${SECTION_LABELS[lastViewedSection]}`,
-                    Object.keys(problemStatisticsIDs).length,
-                    allProblemsProgressInfo
-                  )}
-                </div>
-                <DailyStreak streak={consecutiveVisits} />
-              </div>
+              <Link
+                className="btn btn-primary"
+                to={
+                  lastViewedModuleURL ||
+                  '/foundations/fractions_percentages_proportions_p1'
+                }
+              >
+                {lastViewedModuleURL
+                  ? `Continue: ${moduleInfoById[lastViewedModuleID]?.title}`
+                  : 'Start: Fractions, proportions and percentages'}
+              </Link>
             </div>
+
+            {!currentUser && (
+              <div
+                className="mt-6 flex flex-col gap-4 rounded-lg border px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
+                style={{
+                  background: 'var(--bg-surface-alt)',
+                  borderColor: 'var(--border)',
+                }}
+              >
+                <div>
+                  <h2
+                    className="text-base font-semibold"
+                    style={{ color: VANILLA }}
+                  >
+                    You're not signed in
+                  </h2>
+                  <p
+                    className="mt-1 text-sm leading-6"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    Progress on this page is stored in this browser only. Sign
+                    in to keep it across devices.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => signIn()}
+                  className="btn btn-primary shrink-0 self-start sm:self-auto"
+                >
+                  Sign in
+                </button>
+              </div>
+            )}
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-3">
+              <section className="lg:col-span-2">
+                <h2
+                  className="text-lg font-semibold tracking-[-0.01em]"
+                  style={{ color: VANILLA }}
+                >
+                  Activity
+                </h2>
+                <div className="mt-4">
+                  <Activity />
+                </div>
+              </section>
+              <section className="lg:col-span-1">
+                <h2
+                  className="text-lg font-semibold tracking-[-0.01em]"
+                  style={{ color: VANILLA }}
+                >
+                  Active items
+                </h2>
+                <div className="mt-4 space-y-6">
+                  {activeProblems.length > 0 && (
+                    <ActiveItems type="problems" items={activeProblems} />
+                  )}
+                  {activeModules.length > 0 && (
+                    <ActiveItems type="modules" items={activeModules} />
+                  )}
+                  {activeProblems.length === 0 &&
+                    activeModules.length === 0 && (
+                      <Card>
+                        <p
+                          className="p-5 text-sm leading-6"
+                          style={{ color: TEXT_SECONDARY }}
+                        >
+                          Nothing in progress. Open a module and it will show up
+                          here.
+                        </p>
+                      </Card>
+                    )}
+                </div>
+              </section>
+            </div>
+
+            <section className="mt-12">
+              <h2
+                className="text-lg font-semibold tracking-[-0.01em]"
+                style={{ color: VANILLA }}
+              >
+                Progress
+              </h2>
+              <p className="mt-1 text-sm" style={{ color: TEXT_SECONDARY }}>
+                {SECTION_LABELS[lastViewedSection]}
+              </p>
+              <div className="mt-4 grid gap-6 lg:grid-cols-2">
+                {renderStatsTile(
+                  'Modules',
+                  moduleProgressIDs.length,
+                  allModulesProgressInfo
+                )}
+                {renderStatsTile(
+                  'Problems',
+                  Object.keys(problemStatisticsIDs).length,
+                  allProblemsProgressInfo
+                )}
+              </div>
+            </section>
+
+            <section className="mt-12">
+              <DailyStreak streak={consecutiveVisits} />
+            </section>
           </main>
         )}
       </div>

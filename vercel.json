@@ -48,6 +48,10 @@
   ],
   "rewrites": [
     {
+      "source": "/problems/:match(.*)",
+      "destination": "/problems/[...]/index.html"
+    },
+    {
       "source": "/groups:match(.*)",
       "destination": "/groups/[...]/index.html"
     }

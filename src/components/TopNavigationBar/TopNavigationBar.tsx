@@ -116,23 +116,26 @@ export default function TopNavigationBar({
         )}
       >
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-          <div className="flex h-16 justify-between">
+          <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4">
             <div className="flex px-2 lg:px-0">
               <Link
                 to={linkLogoToIndex ? '/' : '/dashboard'}
                 state={{ redirect: redirectToDashboard }}
                 className={classNames(
-                  'flex shrink-0 items-center',
+                  'nav-logo-pill flex shrink-0 items-center',
                   animateEntrance && 'nav-item-enter'
                 )}
               >
-                <div className="h-8 sm:h-9">
+                <div className="h-7 sm:h-8">
                   <Logo />
                 </div>
               </Link>
+            </div>
+
+            <div className="hidden justify-center lg:flex">
               <div
                 className={classNames(
-                  'hidden space-x-8 lg:ml-8 lg:flex',
+                  'nav-capsule',
                   animateEntrance && 'nav-enter'
                 )}
                 style={
@@ -145,9 +148,8 @@ export default function TopNavigationBar({
                 <Link
                   to="/problems/"
                   getProps={({ isCurrent }) => ({
-                    className: isCurrent
-                      ? 'inline-flex items-center px-1 pt-0.5 border-b-2 border-blue-500 dark:border-blue-700 text-base font-medium leading-6 text-gray-900 dark:text-dark-high-emphasis focus:outline-hidden focus:border-blue-700 dark:focus:border-blue-500 transition'
-                      : 'inline-flex items-center px-1 pt-0.5 border-b-2 border-transparent text-base font-medium leading-6 text-gray-500 hover:text-gray-900 hover:border-gray-300  focus:outline-hidden focus:text-gray-900 focus:border-gray-300 dark:text-dark-high-emphasis dark:hover:border-gray-500 dark:focus:border-gray-500 transition',
+                    className: 'nav-capsule-link',
+                    'aria-current': isCurrent ? 'page' : undefined,
                   })}
                 >
                   Problems
@@ -156,23 +158,15 @@ export default function TopNavigationBar({
                   href={contestsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="dark:text-dark-high-emphasis inline-flex items-center border-b-2 border-transparent px-1 text-base leading-6 font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-900 focus:border-gray-300 focus:text-gray-900 focus:outline-hidden dark:hover:border-gray-500 dark:focus:border-gray-500"
+                  className="nav-capsule-link"
                 >
                   Contests
                 </a>
                 <Popover className="h-full">
-                  <PopoverButton
-                    className={classNames(
-                      'text-gray-500 hover:border-gray-300 focus:border-gray-300 dark:hover:border-gray-500 dark:focus:border-gray-500',
-                      'group dark:text-dark-high-emphasis inline-flex h-full items-center space-x-2 border-b-2 border-transparent pt-0.5 text-base leading-6 font-medium transition duration-150 ease-in-out hover:text-gray-900 focus:text-gray-900 focus:outline-hidden'
-                    )}
-                  >
+                  <PopoverButton className="nav-capsule-link group inline-flex items-center gap-1">
                     <span>Resources</span>
                     <ChevronDownIcon
-                      className={classNames(
-                        'text-gray-400',
-                        'dark:text-dark-med-emphasis dark:group-hover:text-dark-med-emphasis dark:group-focus:text-dark-med-emphasis h-5 w-5 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500'
-                      )}
+                      className="h-4 w-4 opacity-70"
                       aria-hidden="true"
                     />
                   </PopoverButton>
@@ -180,8 +174,8 @@ export default function TopNavigationBar({
                     transition
                     className="absolute left-1/2 z-[120] -mt-2 hidden w-screen max-w-md -translate-x-1/2 transform px-2 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in sm:px-0 md:block lg:max-w-3xl"
                   >
-                    <div className="overflow-hidden rounded-lg ring-1 ring-black/5">
-                      <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2 dark:bg-[#0D0D0D]">
+                    <div className="nav-dropdown-panel overflow-hidden">
+                      <div className="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                         {resources.map(item => {
                           const isInternal = item.href.startsWith('/');
 
@@ -211,7 +205,7 @@ export default function TopNavigationBar({
                                     </span>
                                   )}
                                 </div>
-                                <p className="dark:text-dark-med-emphasis mt-1 text-sm text-gray-500">
+                                <p className="mt-1 text-sm text-[var(--text-muted)]">
                                   {item.description}
                                 </p>
                               </div>
@@ -246,124 +240,115 @@ export default function TopNavigationBar({
                     </div>
                   </PopoverPanel>
                 </Popover>
-                <Link
-                  to="/about"
-                  className="dark:text-dark-high-emphasis inline-flex items-center border-b-2 border-transparent px-1 text-base leading-6 font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-900 focus:border-gray-300 focus:text-gray-900 focus:outline-hidden dark:hover:border-gray-500 dark:focus:border-gray-500"
-                >
+                <Link to="/about" className="nav-capsule-link">
                   About
                 </Link>
-                <Link
-                  to="/contact-us"
-                  className="dark:text-dark-high-emphasis inline-flex items-center border-b-2 border-transparent px-1 text-base leading-6 font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-900 focus:border-gray-300 focus:text-gray-900 focus:outline-hidden dark:hover:border-gray-500 dark:focus:border-gray-500"
-                >
+                <Link to="/contact-us" className="nav-capsule-link">
                   Contact Us
                 </Link>
               </div>
             </div>
-            <div
-              className={`flex flex-1 items-center justify-end px-2 lg:ml-6 lg:px-0`}
-            >
-              {/* search removed */}
-            </div>
-            <div className="flex items-center lg:hidden">
-              {/* Mobile menu button */}
-              <button
-                className="mobile-menu-button-container inline-flex items-center justify-center p-2"
-                aria-label="Main menu"
-                aria-expanded="false"
-                onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-              >
-                {/* Icon when menu is closed. */}
-                {/* Menu open: "hidden", Menu closed: "block" */}
-                <svg
-                  className={`${isMobileNavOpen ? 'hidden' : 'block'} h-6 w-6`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-                {/* Icon when menu is open. */}
-                {/* Menu open: "block", Menu closed: "hidden" */}
-                <svg
-                  className={`${isMobileNavOpen ? 'block' : 'hidden'} h-6 w-6`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="hidden h-6 self-center border-l border-gray-200 lg:mx-3 lg:block dark:border-gray-700" />
-            <div
-              className={classNames(
-                'hidden lg:flex lg:items-center',
-                animateEntrance && 'nav-enter'
-              )}
-              style={
-                animateEntrance
-                  ? ({ '--nav-enter-base': '770ms' } as React.CSSProperties)
-                  : undefined
-              }
-            >
-              {currentUser ? (
-                <UserAvatarMenu
-                  currentUser={currentUser}
-                  onSignOut={() => signOut()}
-                />
-              ) : !isLoaded ? (
-                <div className="p-2.5">
-                  <LoadingSpinner className="h-4 w-4" />
-                </div>
-              ) : (
-                <>
-                  <button
-                    onClick={() => signIn()}
-                    className="dark:text-dark-high-emphasis relative inline-flex items-center rounded-md border border-transparent px-2 py-1 text-base leading-6 font-medium text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
-                  >
-                    Login
-                  </button>
 
-                  {/* Settings button */}
-                  <Link
-                    to="/settings"
-                    className="dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis rounded-full border-2 border-transparent p-1 text-gray-400 transition hover:text-gray-300 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden dark:focus:bg-gray-700"
-                    aria-label="Settings"
+            <div className="flex items-center justify-end gap-1">
+              <div className="flex items-center lg:hidden">
+                {/* Mobile menu button */}
+                <button
+                  className="mobile-menu-button-container inline-flex items-center justify-center p-2"
+                  aria-label="Main menu"
+                  aria-expanded="false"
+                  onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+                >
+                  {/* Icon when menu is closed. */}
+                  {/* Menu open: "hidden", Menu closed: "block" */}
+                  <svg
+                    className={`${isMobileNavOpen ? 'hidden' : 'block'} h-6 w-6`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                  {/* Icon when menu is open. */}
+                  {/* Menu open: "block", Menu closed: "hidden" */}
+                  <svg
+                    className={`${isMobileNavOpen ? 'block' : 'hidden'} h-6 w-6`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                className={classNames(
+                  'hidden lg:flex lg:items-center',
+                  animateEntrance && 'nav-enter'
+                )}
+                style={
+                  animateEntrance
+                    ? ({ '--nav-enter-base': '770ms' } as React.CSSProperties)
+                    : undefined
+                }
+              >
+                {currentUser ? (
+                  <UserAvatarMenu
+                    currentUser={currentUser}
+                    onSignOut={() => signOut()}
+                  />
+                ) : !isLoaded ? (
+                  <div className="p-2.5">
+                    <LoadingSpinner className="h-4 w-4" />
+                  </div>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => signIn()}
+                      className="btn btn-sm btn-primary"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </Link>
-                </>
-              )}
+                      Log in
+                    </button>
+
+                    {/* Settings button */}
+                    <Link
+                      to="/settings"
+                      className="nav-capsule-link ml-1 inline-flex p-1.5"
+                      aria-label="Settings"
+                    >
+                      <svg
+                        className="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

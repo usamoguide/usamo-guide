@@ -6,7 +6,7 @@ export default function MobileAppBar() {
   const { setIsMobileNavOpen } = useMarkdownLayout();
 
   return (
-    <div className="sticky inset-x-0 top-0 z-10 flex items-center bg-[#0e0c18] pt-1 pl-1 dark:bg-[#0e0c18] lg:hidden">
+    <div className="sticky inset-x-0 top-0 z-10 flex items-center bg-[var(--bg-surface)] pt-1 pl-1 dark:bg-[var(--bg-surface)] lg:hidden">
       <button
         className="mobile-menu-button-container -mt-0.5 -ml-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center"
         aria-label="Open sidebar"

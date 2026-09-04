@@ -1,19 +1,9 @@
-/* Use self-hosted Inter font files from static/Font to avoid Google Fonts requests. */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/Font/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/Font/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-}
+/* Geist Sans + Geist Mono, self-hosted via Fontsource so there are no
+   third-party font requests. They are a designed pair, which matters here:
+   this site sets LaTeX, problem identifiers and numeric columns in mono
+   constantly, and the two have to sit together on a line. */
+@import '@fontsource-variable/geist/index.css';
+@import '@fontsource-variable/geist-mono/index.css';
 
 @import 'tailwindcss';
 @import './theme.css' layer(base);
@@ -76,23 +66,23 @@
   }
 
   ::selection {
-    background: #f5f0fa;
-    color: #171413;
+    background: var(--accent-soft-strong);
+    color: var(--text-primary);
   }
 
   ::-moz-selection {
-    background: #f5f0fa;
-    color: #171413;
+    background: var(--accent-soft-strong);
+    color: var(--text-primary);
   }
 
   .markdown ::selection {
-    background: #f5f0fa;
-    color: #171413;
+    background: var(--accent-soft-strong);
+    color: var(--text-primary);
   }
 
   .markdown ::-moz-selection {
-    background: #f5f0fa;
-    color: #171413;
+    background: var(--accent-soft-strong);
+    color: var(--text-primary);
   }
 }
 

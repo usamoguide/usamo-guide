@@ -98,11 +98,11 @@ export default function ModuleHeaders({
           )}
         <div className="mb-4 sm:flex sm:items-center sm:justify-between">
           <div className="min-w-0 flex-1">
-            <h1 className="dark:text-dark-high-emphasis text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h1 className="dark:text-dark-high-emphasis text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
               {markdownData.title}
             </h1>
             {markdownData.author && (
-              <p className={`dark:text-dark-med-emphasis mt-1 text-gray-500`}>
+              <p className={`dark:text-dark-med-emphasis mt-1 text-[var(--text-secondary)]`}>
                 Author
                 {markdownData.author.indexOf(',') !== -1 ? 's' : ''}:{' '}
                 {markdownData.author}
@@ -110,7 +110,7 @@ export default function ModuleHeaders({
             )}
             {markdownData.contributors && (
               <p
-                className={`dark:text-dark-med-emphasis text-xs text-gray-500`}
+                className={`dark:text-dark-med-emphasis text-xs text-[var(--text-secondary)]`}
               >
                 Contributor
                 {markdownData.contributors.indexOf(',') !== -1 ? 's' : ''}:{' '}
@@ -147,15 +147,15 @@ export default function ModuleHeaders({
         )}
 
         {moduleHeaderLinks?.length > 0 || problem ? (
-          <div className="mb-4 rounded-md bg-gray-50 px-4 py-5 sm:p-6 dark:bg-gray-900">
+          <div className="mb-4 rounded-md bg-[var(--bg-surface-alt)] px-4 py-5 sm:p-6 dark:bg-[var(--bg-surface)]">
             {moduleHeaderLinks?.length > 0 && (
               <div>
-                <h3 className="my-0 text-sm leading-5 font-medium text-gray-800 dark:text-gray-200">
+                <h3 className="my-0 text-sm leading-5 font-medium text-[var(--text-primary)] dark:text-[var(--text-muted)]">
                   {markdownData instanceof ModuleInfo
                     ? 'Prerequisites'
                     : 'Appears In'}
                 </h3>
-                <div className="no-y-margin mt-1 text-sm leading-5 text-gray-700 dark:text-gray-300">
+                <div className="no-y-margin mt-1 text-sm leading-5 text-[var(--text-primary)] dark:text-[var(--text-secondary)]">
                   <ul className="list-inside list-disc space-y-1 pl-3">
                     {moduleHeaderLinks.map(link => (
                       <li key={link.url ?? link.label}>
@@ -164,12 +164,12 @@ export default function ModuleHeaders({
                             href={link.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-black underline dark:text-gray-200"
+                            className="text-black underline dark:text-[var(--text-muted)]"
                           >
                             {link.label}
                           </a>
                         ) : (
-                          <span className="text-black dark:text-gray-200">
+                          <span className="text-black dark:text-[var(--text-muted)]">
                             {link.label}
                           </span>
                         )}
@@ -185,7 +185,7 @@ export default function ModuleHeaders({
                 {moduleHeaderLinks?.length > 0 && <div className="h-4 sm:h-6" />}
                 <Link
                   to={getProblemURL(problem)}
-                  className="my-0 inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-100"
+                  className="my-0 inline-flex items-center text-sm font-medium text-[var(--text-primary)] hover:text-[var(--text-primary)] dark:text-[var(--text-muted)] dark:hover:text-[var(--text-muted)]"
                 >
                   View problem →
                 </Link>

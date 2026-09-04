@@ -11,20 +11,21 @@ import { FrequencyLabels } from '../Frequency';
 import ModuleFrequencyDots from '../MarkdownLayout/ModuleFrequencyDots';
 import Tooltip from '../Tooltip/Tooltip';
 
-const FrequencyCircleColors = [
-  'group-hover:text-[#D8B4E8]',
-  'group-hover:text-[#C79CDA]',
-  'group-hover:text-[#B98CD1]',
-  'group-hover:text-[#AA79C4]',
-  'group-hover:text-[#F0C2FF]',
-];
-
-const FrequencyTextColors = [
-  'group-hover:text-[#D8B4E8]',
-  'group-hover:text-[#C79CDA]',
-  'group-hover:text-[#B98CD1]',
-  'group-hover:text-[#AA79C4]',
-  'group-hover:text-[#F0C2FF]',
+/**
+ * Frequency, as an ink-weight ramp rather than a hue ramp: rarer topics sit
+ * back, common ones come forward. Both the dots and the written label already
+ * state the frequency exactly, so this only has to reinforce them — which is
+ * why every step stays above the 4.5:1 floor instead of fading toward the
+ * background at the low end.
+ *
+ * One array, used for both the dots and the label, so the two can never drift.
+ */
+const FrequencyEmphasis = [
+  'group-hover:text-[var(--text-muted)]',
+  'group-hover:text-[var(--text-muted)]',
+  'group-hover:text-[var(--text-secondary)]',
+  'group-hover:text-[var(--text-secondary)]',
+  'group-hover:text-[var(--text-primary)]',
 ];
 
 // https://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
@@ -116,7 +117,7 @@ const ModuleLink = ({ link }: { link: ModuleLinkInfo }): JSX.Element => {
               progress === 'Ignored'
                 ? 'text-gray-400 dark:text-gray-600'
                 : 'text-gray-700 dark:text-gray-400'
-            } dark:group-hover:text-dark-high-emphasis mb-1 flex items-center transition group-hover:text-[#F0C2FF]`}
+            } dark:group-hover:text-dark-high-emphasis mb-1 flex items-center transition group-hover:text-[var(--accent)]`}
           >
             <span className="mr-2 inline-flex items-end">
               {link.title}{' '}
@@ -127,7 +128,7 @@ const ModuleLink = ({ link }: { link: ModuleLinkInfo }): JSX.Element => {
                   }
                 >
                   <svg
-                    className="ml-1.5 h-5 w-5 text-gray-300 transition duration-150 ease-in-out group-hover:text-[#F0C2FF]"
+                    className="ml-1.5 h-5 w-5 text-gray-300 transition duration-150 ease-in-out group-hover:text-[var(--accent)]"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -148,13 +149,13 @@ const ModuleLink = ({ link }: { link: ModuleLinkInfo }): JSX.Element => {
                 totalCount={4}
                 color={
                   'transition text-gray-400 ' +
-                  FrequencyCircleColors[link.frequency ?? 0]
+                  FrequencyEmphasis[link.frequency ?? 0]
                 }
               />
               <span
                 className={
                   `ml-1 text-gray-500 transition ` +
-                  FrequencyTextColors[link.frequency ?? 0]
+                  FrequencyEmphasis[link.frequency ?? 0]
                 }
               >
                 {FrequencyLabels[link.frequency ?? 0]}
@@ -162,7 +163,7 @@ const ModuleLink = ({ link }: { link: ModuleLinkInfo }): JSX.Element => {
             </p>
           )}
           {/* https://stackoverflow.com/questions/9229213/convert-iso-date-to-milliseconds-in-javascript */}
-          <div className="dark:group-hover:text-dark-high-emphasis block text-sm leading-5 text-gray-400 transition group-hover:text-[#D8B4E8]">
+          <div className="dark:group-hover:text-dark-high-emphasis block text-sm leading-5 text-gray-400 transition group-hover:text-[var(--text-primary)]">
             <ReactMarkdown
               remarkPlugins={[remarkMath] as any}
               rehypePlugins={[rehypeKatex]}

@@ -1,27 +1,25 @@
-import { graphql, Link, PageProps } from 'gatsby';
+import { Link } from 'gatsby';
 import * as React from 'react';
-import DifficultyBox from '../components/DifficultyBox';
-import Layout from '../components/layout';
-import ProblemStatusCheckbox from '../components/markdown/ProblemsList/ProblemStatusCheckbox';
-import ProblemStatementMarkdown from '../components/ProblemPage/ProblemStatementMarkdown';
-import SEO from '../components/seo';
-import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
-import { ConfettiProvider } from '../context/ConfettiContext';
+import { ConfettiProvider } from '../../context/ConfettiContext';
 import {
   useCurrentUser,
   useIsUserDataLoaded,
   useUpdateUserData,
-} from '../context/UserDataContext/UserDataContext';
-import { supabase } from '../lib/supabaseClient';
-import { ProblemDifficulty, ProblemInfo, probSources } from '../models/problem';
+} from '../../context/UserDataContext/UserDataContext';
+import { supabase } from '../../lib/supabaseClient';
+import {
+  ProblemDifficulty,
+  ProblemInfo,
+  probSources,
+} from '../../models/problem';
+import DifficultyBox from '../DifficultyBox';
+import Layout from '../layout';
+import ProblemStatusCheckbox from '../markdown/ProblemsList/ProblemStatusCheckbox';
+import SEO from '../seo';
+import TopNavigationBar from '../TopNavigationBar/TopNavigationBar';
+import ProblemStatementMarkdown from './ProblemStatementMarkdown';
 
-type ProblemTemplateData = {
-  allProblemInfo: {
-    nodes: ProblemTemplateNode[];
-  };
-};
-
-type ProblemTemplateNode = {
+export type ProblemTemplateNode = {
   uniqueId: string;
   name: string;
   url: string;
@@ -111,11 +109,11 @@ function answersMatch(user: string, correct: string): boolean {
 }
 
 const PAGE_BG = 'var(--bg-page)';
-const VANILLA = '#F4EDEA';
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.74)';
-const MAUVE = '#F0C2FF';
-const PURPLE = '#70428A';
-const BORDER_STRONG = 'rgba(240, 194, 255, 0.30)';
+const VANILLA = 'var(--text-primary)';
+const TEXT_SECONDARY = 'var(--text-muted)';
+const MAUVE = 'var(--accent)';
+const PURPLE = 'var(--accent-fill)';
+const BORDER_STRONG = 'var(--border-strong)';
 const DIFFICULTY_SCALE_TEXT = `Scale
 
 0.5: Easiest math competition problems, often solvable even for early middle school students without experience.
@@ -153,10 +151,14 @@ const DIFFICULTY_OPTIONS = Array.from({ length: 20 }, (_, index) =>
   Number((index / 2 + 0.5).toFixed(1))
 );
 
-export default function ProblemTemplate(
-  props: PageProps<ProblemTemplateData, { uniqueId: string }>
-): JSX.Element {
-  const node = props.data.allProblemInfo.nodes[0];
+export default function ProblemView({
+  node,
+  path,
+}: {
+  node: ProblemTemplateNode | null;
+  /** Current pathname, used for canonical URL and breadcrumb JSON-LD. */
+  path: string;
+}): JSX.Element {
   const problem = node ? templateNodeToProblemInfo(node) : null;
   const [solutionOpen, setSolutionOpen] = React.useState(false);
   const [integerInput, setIntegerInput] = React.useState('');
@@ -295,7 +297,7 @@ export default function ProblemTemplate(
   if (!node || !problem) {
     return (
       <Layout>
-        <SEO title="Problem not found" image={null} pathname={props.path} />
+        <SEO title="Problem not found" image={null} pathname={path} />
         <div className="ui-page min-h-screen">
           <TopNavigationBar />
           <main className="mx-auto max-w-3xl px-4 py-16">
@@ -493,7 +495,7 @@ export default function ProblemTemplate(
       <SEO
         title={`${node.name} — ${node.source}`}
         image={null}
-        pathname={props.path}
+        pathname={path}
         structuredData={[
           {
             '@context': 'https://schema.org',
@@ -515,7 +517,7 @@ export default function ProblemTemplate(
                 '@type': 'ListItem',
                 position: 3,
                 name: node.name,
-                item: `https://www.usamoguide.com${props.path}`,
+                item: `https://www.usamoguide.com${path}`,
               },
             ],
           },
@@ -654,8 +656,11 @@ export default function ProblemTemplate(
                     className="rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                     style={{
                       border: `1px solid ${BORDER_STRONG}`,
-                      background: '#6D3B9F',
-                      color: VANILLA,
+                      background: 'var(--accent-fill)',
+                      // --accent-fill and --text-primary are the same value in
+                      // both themes, so pairing them rendered invisible text.
+                      // Ink on an accent fill has to come from the page bg.
+                      color: 'var(--bg-page)',
                     }}
                   >
                     {isSubmittingDifficulty ? 'Saving…' : 'Submit rating'}
@@ -742,16 +747,7 @@ export default function ProblemTemplate(
                   <button
                     type="submit"
                     disabled={isSubmittingTags}
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold disabled:cursor-not-allowed disabled:opacity-70"
-                    style={
-                      {
-                        border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background: '#6D3B9F',
-                        '--pme-color': '#F4EDEA',
-                        '--pme-hover-color': '#201C36',
-                        '--pme-wipe-bg': '#F0C2FF',
-                      } as React.CSSProperties
-                    }
+                    className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {isSubmittingTags ? 'Submitting…' : 'Submit tags'}
                   </button>
@@ -806,16 +802,7 @@ export default function ProblemTemplate(
                 <button
                   type="button"
                   onClick={runCheck}
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#6D3B9F',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
+                  className="btn btn-primary"
                 >
                   Check
                 </button>
@@ -898,16 +885,7 @@ export default function ProblemTemplate(
                 href={problem.solutionReveal.url}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold"
-                style={
-                  {
-                    border: '1px solid rgba(240, 194, 255, 0.34)',
-                    background: '#6D3B9F',
-                    '--pme-color': '#F4EDEA',
-                    '--pme-hover-color': '#201C36',
-                    '--pme-wipe-bg': '#F0C2FF',
-                  } as React.CSSProperties
-                }
+                className="btn btn-primary"
               >
                 Show me the solution
                 <svg
@@ -924,16 +902,7 @@ export default function ProblemTemplate(
                 <button
                   type="button"
                   onClick={() => setSolutionOpen(o => !o)}
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-2.5 font-mono text-sm leading-tight font-bold"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#6D3B9F',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
+                  className="btn btn-primary"
                 >
                   {solutionOpen ? 'Hide solution' : 'Show me the solution'}
                 </button>
@@ -971,50 +940,3 @@ export default function ProblemTemplate(
     </Layout>
   );
 }
-
-export const pageQuery = graphql`
-  query ProblemTemplate($uniqueId: String!) {
-    allProblemInfo(filter: { uniqueId: { eq: $uniqueId } }, limit: 1) {
-      nodes {
-        uniqueId
-        name
-        url
-        source
-        sourceDescription
-        difficulty
-        isStarred
-        tags
-        statement
-        author
-        interaction {
-          type
-          correct
-          choices
-          correctIndex
-        }
-        solutionReveal {
-          mode
-          url
-          markdown
-        }
-        solution {
-          kind
-          label
-          labelTooltip
-          url
-          hasHints
-          sketch
-        }
-        module {
-          frontmatter {
-            id
-            title
-          }
-          fields {
-            division
-          }
-        }
-      }
-    }
-  }
-`;

@@ -1,6 +1,6 @@
 .react-calendar-heatmap text {
   font-size: 9px;
-  fill: #6b7280;
+  fill: var(--text-muted);
 }
 
 .react-calendar-heatmap .react-calendar-heatmap-small-text {
@@ -32,7 +32,7 @@
 }
 
 .react-calendar-heatmap rect:hover {
-  stroke: rgba(112, 66, 138, 0.75);
+  stroke: var(--text-primary);
   stroke-width: 1.5;
   filter: none;
 }
@@ -42,7 +42,7 @@
 }
 
 .dark .react-calendar-heatmap text {
-  fill: #9ca3af;
+  fill: var(--text-muted);
 }
 
 .dark .react-calendar-heatmap .react-calendar-heatmap-small-text {
@@ -70,7 +70,15 @@
 }
 
 .dark .react-calendar-heatmap rect:hover {
-  stroke: rgba(240, 194, 255, 0.85);
+  stroke: var(--text-primary);
   stroke-width: 1.5;
   filter: none;
+}
+
+/* The scroll container clips on the y axis (setting overflow-x forces
+   overflow-y off `visible`), which sheared the bottom row of tiles and the
+   1.5px hover stroke. Reserve the stroke's worth of space inside the SVG. */
+.react-calendar-heatmap {
+  overflow: visible;
+  padding-bottom: 2px;
 }

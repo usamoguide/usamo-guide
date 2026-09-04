@@ -6,10 +6,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        brand: ['Inter', ...defaultTheme.fontFamily.sans],
-        serif: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Geist Variable', 'Geist', ...defaultTheme.fontFamily.sans],
+        brand: ['Geist Variable', 'Geist', ...defaultTheme.fontFamily.sans],
+        serif: ['Geist Variable', 'Geist', ...defaultTheme.fontFamily.sans],
+        /* Was aliased to Inter, so every `font-mono` on the site — LaTeX,
+           problem IDs, numeric columns — has been rendering proportional.
+           A real monospace is the whole point of those positions. */
+        mono: [
+          'Geist Mono Variable',
+          'Geist Mono',
+          ...defaultTheme.fontFamily.mono,
+        ],
       },
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',

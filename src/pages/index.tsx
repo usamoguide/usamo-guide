@@ -13,7 +13,14 @@ import {
 } from 'lucide-react';
 import * as React from 'react';
 import AetherFlowHero from '../components/Index/AetherFlowHero';
+import GlossPanels from '../components/Index/GlossPanels';
+import HarmonicWave from '../components/Index/HarmonicWave';
 import LightRays from '../components/Index/LightRays';
+import ModuleCoverflow from '../components/Index/ModuleCoverflow';
+import ModuleTour from '../components/Index/ModuleTour';
+import TopicMarquee from '../components/Index/TopicMarquee';
+import TrackPlates from '../components/Index/TrackPlates';
+import TryAProblem from '../components/Index/TryAProblem';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
@@ -23,26 +30,14 @@ import {
 } from '../context/UserDataContext/UserDataContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-/**
- * Index-only DARK palette:
- * - Background: midnight navy-ish
- * - Accents/content: vanilla + purple
- *
- * Requested update (image2):
- * - Use the sampled deep purple (~#70428A) for:
- *   - “AMC to Olympiad” text
- *   - “Browse Topics” button background
- * - Remove glow around “Browse Topics” (no GlowingRing wrapper, no shadow)
- */
 /* Every page shares one base background; see --bg-page in src/styles/theme.css. */
 const PAGE_BG = 'var(--bg-page)';
 
-const VANILLA = '#F4EDEA';
-const MAUVE = '#F0C2FF';
-
-const TEXT_PRIMARY = VANILLA;
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.78)';
-const TEXT_MUTED = 'rgba(244, 237, 234, 0.62)';
+const TEXT_PRIMARY = 'var(--text-primary)';
+const TEXT_SECONDARY = 'var(--text-secondary)';
+const TEXT_MUTED = 'var(--text-muted)';
+/* Emphasis in a monochrome system is the brightest ink, not a hue. */
+const EMPHASIS = 'var(--accent)';
 const FAQ_CARD_STYLE: React.CSSProperties = {
   background: 'var(--card-bg)',
   color: TEXT_PRIMARY,
@@ -73,6 +68,52 @@ const PREVIEW_PATH = '/intermediate/shoelace-theorem-p1';
 const PREVIEW_VIEWPORT_WIDTH = 1440;
 /** Pixels per frame the preview auto-scrolls until the visitor takes over. */
 const PREVIEW_SCROLL_SPEED = 0.6;
+
+/** Real modules shown in the coverflow. Each card frames the live page. */
+const COVERFLOW_MODULES = [
+  {
+    path: '/intermediate/shoelace-theorem-p1',
+    id: 'shoelace-theorem-p1',
+    title: 'Shoelace Theorem',
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/vieta-jumping',
+    id: 'vieta-jumping',
+    title: 'Vieta Jumping',
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/binomial-theorem-p1',
+    id: 'binomial-theorem-p1',
+    title: 'Binomial Theorem',
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/newton-sums',
+    id: 'newton-sums',
+    title: "Newton's Sums",
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/modular-arithmetic',
+    id: 'modular-arithmetic',
+    title: 'Modular Arithmetic',
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/expected-value',
+    id: 'expected-value',
+    title: 'Expected Value',
+    track: 'Intermediate',
+  },
+  {
+    path: '/intermediate/advanced-counting',
+    id: 'advanced-counting',
+    title: 'Advanced Counting',
+    track: 'Intermediate',
+  },
+];
 
 /** Applications to run a USAMO Guide chapter, like the one in Bangladesh. */
 const START_A_CHAPTER_FORM =
@@ -274,7 +315,7 @@ function MissionCarousel() {
             goTo(activeIndexRef.current - 1);
           }
         }}
-        className="hide-scrollbar relative flex snap-x snap-mandatory overflow-x-auto rounded-2xl focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[rgba(240,194,255,0.7)]"
+        className="hide-scrollbar relative flex snap-x snap-mandatory overflow-x-auto rounded-2xl focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--border-strong)]"
       >
         {missionMoments.map((moment, index) => (
           <div
@@ -307,7 +348,7 @@ function MissionCarousel() {
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 md:p-9">
                 <span
                   className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase md:text-[11px]"
-                  style={{ color: MAUVE }}
+                  style={{ color: EMPHASIS }}
                 >
                   {moment.eyebrow}
                 </span>
@@ -345,7 +386,7 @@ function MissionCarousel() {
                 style={{
                   width: index === activeIndex ? 40 : 16,
                   background:
-                    index === activeIndex ? MAUVE : 'rgba(244, 237, 234, 0.26)',
+                    index === activeIndex ? EMPHASIS : 'var(--text-muted)',
                 }}
               />
             </button>
@@ -362,11 +403,11 @@ function MissionCarousel() {
               type="button"
               onClick={() => goTo(activeIndexRef.current + step)}
               aria-label={label}
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border transition-colors duration-300 hover:bg-[rgba(240,194,255,0.14)]"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border transition-colors duration-300 hover:bg-[var(--border)]"
               style={{
-                borderColor: 'rgba(240, 194, 255, 0.32)',
+                borderColor: 'var(--border-strong)',
                 background: 'rgba(20, 16, 36, 0.5)',
-                color: MAUVE,
+                color: EMPHASIS,
               }}
             >
               <Icon size={18} strokeWidth={2.2} />
@@ -392,7 +433,7 @@ function FaqCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl p-6 text-left" style={FAQ_CARD_STYLE}>
+    <div className="faq-item">
       <dt>
         {/* The whole header is the toggle, so clicking anywhere on the
             question opens it — not just the arrow. */}
@@ -401,17 +442,17 @@ function FaqCard({
           aria-expanded={isOpen}
           aria-controls={`${id}-content`}
           onClick={onToggle}
-          className="group flex w-full cursor-pointer items-start justify-between gap-4 text-left focus:outline-none"
+          className="faq-toggle group"
         >
           <span
-            className="text-lg leading-6 font-medium"
+            className="text-[1.0625rem] leading-7 font-medium text-pretty"
             style={{ color: TEXT_PRIMARY }}
           >
             {question}
           </span>
           <span
             aria-hidden="true"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#F0C2FF] transition group-hover:bg-white/5 group-hover:text-[#F4EDEA] group-focus-visible:ring-2 group-focus-visible:ring-[#F0C2FF]/60"
+            className="faq-chevron inline-flex h-7 w-7 shrink-0 items-center justify-center"
           >
             <ChevronDownIcon
               className={classNames(
@@ -596,7 +637,27 @@ export default function IndexPage({ path }): JSX.Element {
       animationId = requestAnimationFrame(raf);
     });
 
+    // Lenis drives scroll position from its own rAF loop rather than from
+    // native scroll events, so ScrollTrigger has to be updated from Lenis or
+    // the pinned sections lag a frame behind the content and visibly drift.
+    // Loaded dynamically to match useGsapScroll — this page is built in Node.
+    let detach: (() => void) | undefined;
+    let cancelled = false;
+    import('gsap/ScrollTrigger')
+      .then(({ ScrollTrigger }) => {
+        if (cancelled) return;
+        const update = () => ScrollTrigger.update();
+        lenis.on('scroll', update);
+        detach = () => lenis.off('scroll', update);
+        ScrollTrigger.refresh();
+      })
+      .catch(() => {
+        /* No ScrollTrigger: the pinned scenes fall back to their static state. */
+      });
+
     return () => {
+      cancelled = true;
+      detach?.();
       cancelAnimationFrame(animationId);
       lenis.destroy();
     };
@@ -625,25 +686,16 @@ export default function IndexPage({ path }): JSX.Element {
   };
 
   const linkStyle: React.CSSProperties = {
-    color: MAUVE,
+    color: EMPHASIS,
     textDecoration: 'none',
     fontWeight: 700,
   };
 
   const footerLinkStyle: React.CSSProperties = {
-    color: 'rgba(244, 237, 234, 0.84)',
+    color: 'var(--text-secondary)',
     textDecoration: 'none',
     fontWeight: 500,
   };
-
-  const footerButtonStyle: React.CSSProperties = {
-    border: '1px solid rgba(240, 194, 255, 0.34)',
-    background: '#EFE3FF',
-    boxShadow: 'none',
-    '--pme-color': '#2C1842',
-    '--pme-hover-color': '#201C36',
-    '--pme-wipe-bg': '#F0C2FF',
-  } as React.CSSProperties;
 
   const sectionHeadingClasses =
     'mx-auto flex max-w-4xl flex-col items-center text-center text-4xl font-bold tracking-tight md:text-5xl 2xl:text-6xl';
@@ -655,7 +707,7 @@ export default function IndexPage({ path }): JSX.Element {
       <SEO title={null} image={null} pathname={path} />
 
       <div className="fixed top-0 z-50 w-full">
-        <div className="backdrop-blur-lg">
+        <div>
           <TopNavigationBar hidePromoBar animateEntrance />
         </div>
       </div>
@@ -664,6 +716,7 @@ export default function IndexPage({ path }): JSX.Element {
       <AetherFlowHero />
       {/* End Hero */}
 
+      {/* 2. Learn Contest Math */}
       {/* Wave transition: dark base */}
       <div
         className="pointer-events-none overflow-hidden leading-[0]"
@@ -681,7 +734,6 @@ export default function IndexPage({ path }): JSX.Element {
           />
         </svg>
       </div>
-
       {/* Below hero: keep dark background but page-owned text stays vanilla/purple */}
       <div
         className="relative transition-colors duration-500"
@@ -709,13 +761,6 @@ export default function IndexPage({ path }): JSX.Element {
                 everyone, for free.
               </p>
             </div>
-            <div className="flex justify-center">
-              <img
-                src="/images/Lovemascot.png"
-                alt="Lovemascot"
-                className="h-32 w-auto shrink-0 object-contain md:h-40 lg:h-48 xl:h-56"
-              />
-            </div>
           </div>
         </RevealSection>
 
@@ -725,11 +770,11 @@ export default function IndexPage({ path }): JSX.Element {
           <div
             ref={previewRevealRef}
             className={classNames(
-              'mx-auto w-full max-w-5xl overflow-hidden rounded-2xl backdrop-blur-sm',
+              'mx-auto w-full max-w-5xl overflow-hidden rounded-2xl',
               isPreviewRevealed ? 'preview-enter' : 'opacity-0'
             )}
             style={{
-              border: '1px solid rgba(240, 194, 255, 0.22)',
+              border: '1px solid var(--border)',
               background: 'rgba(255, 255, 255, 0.03)',
               boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35)',
             }}
@@ -744,7 +789,7 @@ export default function IndexPage({ path }): JSX.Element {
             <div
               className="flex items-center gap-3 px-4 py-3"
               style={{
-                borderBottom: '1px solid rgba(240, 194, 255, 0.16)',
+                borderBottom: '1px solid var(--border)',
                 background: 'rgba(255, 255, 255, 0.04)',
               }}
             >
@@ -752,9 +797,9 @@ export default function IndexPage({ path }): JSX.Element {
                 className="flex shrink-0 items-center gap-1.5"
                 aria-hidden="true"
               >
-                <span className="h-3 w-3 rounded-full bg-[#F0C2FF]/70"></span>
-                <span className="h-3 w-3 rounded-full bg-[#F0C2FF]/45"></span>
-                <span className="h-3 w-3 rounded-full bg-[#F0C2FF]/25"></span>
+                <span className="h-3 w-3 rounded-full bg-[var(--accent)]/70"></span>
+                <span className="h-3 w-3 rounded-full bg-[var(--accent)]/45"></span>
+                <span className="h-3 w-3 rounded-full bg-[var(--accent)]/25"></span>
               </div>
               <div className="flex-1"></div>
               <Link
@@ -795,6 +840,7 @@ export default function IndexPage({ path }): JSX.Element {
         </div>
       </div>
 
+      {/* 3. Our Core Mission */}
       {/* Section divider — spans the full viewport, and is where the light rays originate */}
       <RevealSection>
         <div
@@ -859,16 +905,7 @@ export default function IndexPage({ path }): JSX.Element {
                     href={START_A_CHAPTER_FORM}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-7 py-3 font-mono text-base leading-tight font-bold"
-                    style={
-                      {
-                        border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background: '#6D3B9F',
-                        '--pme-color': '#F4EDEA',
-                        '--pme-hover-color': '#201C36',
-                        '--pme-wipe-bg': '#F0C2FF',
-                      } as React.CSSProperties
-                    }
+                    className="btn btn-primary"
                   >
                     Start a Chapter
                   </a>
@@ -880,9 +917,28 @@ export default function IndexPage({ path }): JSX.Element {
                 <MissionCarousel />
               </div>
             </RevealSection>
+          </div>
+          <div className="h-16 md:h-24"></div>
+        </div>
+      </div>
 
-            <div className="h-16 md:h-24"></div>
+      {/* 4-8. Pinned scroll scenes */}
+      {/* Pinned scroll scenes. Each pins for its own scrub distance, so they
+          must sit as direct siblings here — nesting them inside a transformed
+          or overflow-hidden ancestor breaks position: fixed pinning. */}
+      <ModuleCoverflow modules={COVERFLOW_MODULES} />
+      <TryAProblem />
+      <HarmonicWave />
+      <ModuleTour />
+      <GlossPanels />
 
+      {/* 9. Contribute to the Community */}
+      <div
+        className="relative transition-colors duration-500"
+        style={{ background: PAGE_BG, color: TEXT_PRIMARY }}
+      >
+        <div className="relative z-10">
+          <div className={containerClasses}>
             <RevealSection>
               <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-14">
                 <div
@@ -905,7 +961,7 @@ export default function IndexPage({ path }): JSX.Element {
                             />
                           ) : (
                             <div
-                              className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#F4EDEA] via-[#D9D2E8] to-[#B89BCF]"
+                              className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--text-primary)] via-[#D9D2E8] to-[#B89BCF]"
                               aria-hidden="true"
                             >
                               <span className="font-mono text-xl font-bold tracking-tight text-[#4A345B] md:text-2xl">
@@ -958,16 +1014,7 @@ export default function IndexPage({ path }): JSX.Element {
                     href="https://docs.google.com/document/d/1AUNOq6OlVcSZN_gUPfvyhimlh9hA4GNvNaLdzyflX_8/edit?usp=sharing"
                     target="_blank"
                     rel="noreferrer"
-                    className="purple-motion-effect inline-flex items-center justify-center rounded-full px-7 py-3 font-mono text-base leading-tight font-bold"
-                    style={
-                      {
-                        border: '1px solid rgba(240, 194, 255, 0.34)',
-                        background: '#6D3B9F',
-                        '--pme-color': '#F4EDEA',
-                        '--pme-hover-color': '#201C36',
-                        '--pme-wipe-bg': '#F0C2FF',
-                      } as React.CSSProperties
-                    }
+                    className="btn btn-primary"
                   >
                     Get Involved
                   </a>
@@ -975,8 +1022,10 @@ export default function IndexPage({ path }): JSX.Element {
               </div>
             </RevealSection>
           </div>
+          <div className="h-16 md:h-24"></div>
         </div>
       </div>
+
       {/* Begin FAQ */}
       <div
         className="relative transition-colors duration-500"
@@ -1003,7 +1052,7 @@ export default function IndexPage({ path }): JSX.Element {
           </RevealSection>
           <div className="pt-10 md:pt-16">
             <RevealSection delay={100}>
-              <dl className="mx-auto grid max-w-6xl gap-8 text-center md:grid-cols-2 md:gap-8">
+              <dl className="faq-list mx-auto max-w-3xl text-left">
                 <div>
                   <FaqCard
                     id="amc"
@@ -1035,7 +1084,7 @@ export default function IndexPage({ path }): JSX.Element {
                       .
                     </p>
                   </FaqCard>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="syllabus"
                       question="Is this an official syllabus?"
@@ -1056,7 +1105,7 @@ export default function IndexPage({ path }): JSX.Element {
                       </p>
                     </FaqCard>
                   </div>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="bug"
                       question="I found a bug / typo / confusing explanation, what do I do?"
@@ -1089,7 +1138,7 @@ export default function IndexPage({ path }): JSX.Element {
                       </p>
                     </FaqCard>
                   </div>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="tutoring"
                       question="I want live classes or one-on-one tutoring..."
@@ -1127,7 +1176,7 @@ export default function IndexPage({ path }): JSX.Element {
                       are.
                     </p>
                   </FaqCard>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="help"
                       question="Where can I get help when I'm stuck?"
@@ -1154,7 +1203,7 @@ export default function IndexPage({ path }): JSX.Element {
                       </p>
                     </FaqCard>
                   </div>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="contribute"
                       question="How can I contribute?"
@@ -1180,7 +1229,7 @@ export default function IndexPage({ path }): JSX.Element {
                       </p>
                     </FaqCard>
                   </div>
-                  <div className="mt-6">
+                  <div>
                     <FaqCard
                       id="source"
                       question="Is this open source?"
@@ -1203,8 +1252,10 @@ export default function IndexPage({ path }): JSX.Element {
           </div>
         </div>
       </div>
+      <TrackPlates />
+      <TopicMarquee />
       {/*End FAQ*/}
-      <footer className="relative overflow-hidden bg-[#0F1020] text-[#F4EDEA]">
+      <footer className="relative overflow-hidden bg-[var(--bg-surface)] text-[var(--text-primary)]">
         <RevealSection className="relative mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-10 lg:pt-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_repeat(3,minmax(0,0.75fr))] lg:gap-16">
             <div className="max-w-xl">
@@ -1214,33 +1265,31 @@ export default function IndexPage({ path }): JSX.Element {
                   alt="USAMO Guide"
                   className="h-11 w-11 shrink-0 object-cover"
                 />
-                <span className="text-xl font-semibold tracking-tight text-[#F4EDEA]">
+                <span className="text-xl font-semibold tracking-tight text-[var(--text-primary)]">
                   USAMO Guide
                 </span>
               </div>
 
-              <h2 className="mt-6 max-w-md text-4xl font-semibold tracking-tight text-[#F4EDEA] sm:text-5xl">
+              <h2 className="mt-6 max-w-md text-4xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-5xl">
                 Your math contest second home
               </h2>
 
-              <p className="mt-5 max-w-lg text-lg leading-8 text-[#B8B4C5]">
+              <p className="mt-5 max-w-lg text-lg leading-8 text-[var(--text-muted)]">
                 USAMO Guide brings lessons, resources, problem sets, and
                 community support into one place for AMC, AIME, and Olympiad
                 prep.
               </p>
 
-              <Link
-                to="/foundations"
-                className="purple-motion-effect mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 font-mono text-lg leading-tight font-bold md:px-8 md:py-3"
-                style={footerButtonStyle}
-              >
+              <Link to="/foundations" className="btn btn-lg btn-secondary mt-8">
                 Browse topics
               </Link>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[#F4EDEA]">Menu</h3>
-              <ul className="mt-5 space-y-4 text-base text-[#B8B4C5]">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                Menu
+              </h3>
+              <ul className="mt-5 space-y-4 text-base text-[var(--text-muted)]">
                 <li>
                   <Link to="/" style={footerLinkStyle}>
                     Home
@@ -1270,10 +1319,10 @@ export default function IndexPage({ path }): JSX.Element {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[#F4EDEA]">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)]">
                 Community
               </h3>
-              <ul className="mt-5 space-y-4 text-base text-[#B8B4C5]">
+              <ul className="mt-5 space-y-4 text-base text-[var(--text-muted)]">
                 <li>
                   <Link to="/contact-us" style={footerLinkStyle}>
                     Contact Us
@@ -1313,8 +1362,10 @@ export default function IndexPage({ path }): JSX.Element {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[#F4EDEA]">Support</h3>
-              <ul className="mt-5 space-y-4 text-base text-[#B8B4C5]">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                Support
+              </h3>
+              <ul className="mt-5 space-y-4 text-base text-[var(--text-muted)]">
                 <li>
                   <Link to="/contact-us" style={footerLinkStyle}>
                     Contact Support
@@ -1353,7 +1404,7 @@ export default function IndexPage({ path }): JSX.Element {
                   rel="noreferrer"
                   aria-label={label}
                   title={label}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-[#F4EDEA] transition hover:-translate-y-0.5 hover:border-[#F0C2FF]/60 hover:bg-white/5 hover:text-[#F0C2FF]"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-strong)] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]"
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.9} />
                 </a>

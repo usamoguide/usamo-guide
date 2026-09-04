@@ -63,8 +63,8 @@ const ScrollProgressButton = (): JSX.Element | null => {
         transform: `scale(${isVisible ? 1 : 0.8})`,
         transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-out',
         pointerEvents: pointerEvents as any,
-        background: '#6D3B9F',
-        border: '1px solid rgba(240, 194, 255, 0.34)',
+        background: 'var(--accent-fill)',
+        border: '1px solid var(--border-strong)',
       }}
       aria-label="Back to top"
       title="Back to top"
@@ -76,7 +76,7 @@ const ScrollProgressButton = (): JSX.Element | null => {
           cy="28"
           r={radius}
           fill="none"
-          stroke="rgba(240,194,255,0.25)"
+          stroke="var(--border-strong)"
           strokeWidth="1.5"
         />
         <circle
@@ -84,7 +84,7 @@ const ScrollProgressButton = (): JSX.Element | null => {
           cy="28"
           r={radius}
           fill="none"
-          stroke="rgba(240,194,255,0.85)"
+          stroke="var(--border-strong)"
           strokeWidth="1.5"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
@@ -98,7 +98,7 @@ const ScrollProgressButton = (): JSX.Element | null => {
 
       {/* Up arrow icon */}
       <svg
-        className="relative z-10 h-5 w-5 text-white dark:text-gray-900"
+        className="relative z-10 h-5 w-5 text-[var(--accent-fill-text)] dark:text-[var(--text-muted)]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

@@ -39,9 +39,9 @@ const NavBar = ({ alignNavButtonsRight = true }) => {
       : sortedModuleLinks[moduleIdx + 1];
 
   const disabledClasses =
-    'text-gray-200 pointer-events-none dark:text-dark-disabled-emphasis';
+    'text-[var(--text-muted)] pointer-events-none dark:text-dark-disabled-emphasis';
   const activeClasses =
-    'text-gray-500 hover:text-gray-800 dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis transition';
+    'text-[var(--text-muted)] hover:text-[var(--text-primary)] dark:text-dark-med-emphasis dark:hover:text-dark-high-emphasis transition';
   return (
     <div
       className={`flex ${
@@ -68,7 +68,7 @@ const NavBar = ({ alignNavButtonsRight = true }) => {
           >
             <path d="M15 19l-7-7 7-7" />
           </svg>
-          Prev
+          Previous
         </Link>
       </span>
       <div className="hidden items-center sm:flex">

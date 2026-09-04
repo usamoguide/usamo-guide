@@ -16,13 +16,16 @@ export type ActiveItem = {
   url: string;
 };
 
+/* Status reads from the label first; the fill only separates "in flight" from
+   "set aside". Active states share one neutral wash rather than getting a hue
+   each, so the row scans as a list instead of a colour key. */
 const statusClasses: { [key in ActiveItemStatus]: string } = {
-  Skipped: 'bg-[#2A2547] text-[#D2D4C8]',
-  Ignored: 'bg-[#3D3564] text-[#D2D4C8]',
-  Reading: 'bg-[#F0C2FF33] text-[#F0C2FF]',
-  Practicing: 'bg-[#E085FF2E] text-[#F0C2FF]',
-  Solving: 'bg-[#F0C2FF33] text-[#F0C2FF]',
-  Reviewing: 'bg-[#FF7CC833] text-[#FFB3D9]',
+  Skipped: 'bg-[var(--bg-surface-alt)] text-[var(--text-muted)]',
+  Ignored: 'bg-[var(--bg-surface-alt)] text-[var(--text-muted)]',
+  Reading: 'bg-[var(--accent-soft)] text-[var(--text-primary)]',
+  Practicing: 'bg-[var(--accent-soft)] text-[var(--text-primary)]',
+  Solving: 'bg-[var(--accent-soft)] text-[var(--text-primary)]',
+  Reviewing: 'bg-[var(--accent-soft-strong)] text-[var(--text-primary)]',
 };
 
 export default function ActiveItems({
@@ -66,17 +69,17 @@ export default function ActiveItems({
       <div className="px-4 py-5 sm:p-6">
         <h3
           className="text-lg leading-6 font-medium"
-          style={{ color: '#F4EDEA' }}
+          style={{ color: 'var(--text-primary)' }}
         >
           Active {type === 'problems' ? 'Problems' : 'Modules'}
         </h3>
-        <div className="mt-4" style={{ color: 'rgba(244, 237, 234, 0.72)' }}>
+        <div className="mt-4" style={{ color: 'var(--text-muted)' }}>
           {items.map((item, idx) => (
             <p className={idx === 0 ? '' : 'mt-2'} key={item.url}>
               <Link
                 to={item.url}
                 className="font-medium transition duration-150 ease-in-out"
-                style={{ color: '#F0C2FF' }}
+                style={{ color: 'var(--accent)' }}
               >
                 {item.label}
                 <span

@@ -29,7 +29,7 @@ export default function MobileSideNav() {
               className="fixed inset-0"
               onClick={() => setIsMobileNavOpen(false)}
             >
-              <div className="absolute inset-0 bg-gray-600 opacity-75 dark:bg-gray-800" />
+              <div className="absolute inset-0 bg-[var(--bg-surface-alt)] opacity-75 dark:bg-[var(--bg-surface-alt)]" />
             </div>
           </Transition>
 
@@ -43,15 +43,15 @@ export default function MobileSideNav() {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="relative flex w-full max-w-xs flex-1 flex-col bg-[#0e0c18] dark:bg-[#0e0c18]">
+            <div className="relative flex w-full max-w-xs flex-1 flex-col bg-[var(--bg-surface)] dark:bg-[var(--bg-surface)]">
               <div className="absolute top-0 right-0 -mr-14 p-1">
                 <button
-                  className="flex h-12 w-12 items-center justify-center rounded-full focus:bg-gray-600 focus:outline-hidden"
+                  className="flex h-12 w-12 items-center justify-center rounded-full focus:bg-[var(--bg-surface-alt)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]"
                   aria-label="Close sidebar"
                   onClick={() => setIsMobileNavOpen(false)}
                 >
                   <svg
-                    className="h-6 w-6 text-white"
+                    className="h-6 w-6 text-[var(--accent-fill-text)]"
                     stroke="currentColor"
                     fill="none"
                     viewBox="0 0 24 24"

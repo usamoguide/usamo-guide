@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby';
 import React, { useState } from 'react';
-import { Chapter } from '../../content/ordering';
+import { Chapter } from '../../../content/ordering';
 
 import {
   HitsPerPage,
@@ -9,26 +9,26 @@ import {
   PoweredBy,
 } from 'react-instantsearch';
 
-import SECTIONS from '../../content/ordering';
-import BlindModeToggle from '../components/BlindModeToggle';
-import Layout from '../components/layout';
-import ProblemHits from '../components/ProblemsPage/ProblemHits';
-import SearchBox from '../components/ProblemsPage/SearchBox';
+import SECTIONS from '../../../content/ordering';
+import BlindModeToggle from '../../components/BlindModeToggle';
+import Layout from '../../components/layout';
+import ProblemHits from '../../components/ProblemsPage/ProblemHits';
+import SearchBox from '../../components/ProblemsPage/SearchBox';
 import Selection, {
   SelectionProps,
-} from '../components/ProblemsPage/Selection';
-import TagsRefinementList from '../components/ProblemsPage/TagsRefinementList';
-import SEO from '../components/seo';
-import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
-import { useUserProgressOnProblems } from '../context/UserDataContext/properties/userProgress';
-import { searchClient } from '../utils/algoliaSearchClient';
+} from '../../components/ProblemsPage/Selection';
+import TagsRefinementList from '../../components/ProblemsPage/TagsRefinementList';
+import SEO from '../../components/seo';
+import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
+import { useUserProgressOnProblems } from '../../context/UserDataContext/properties/userProgress';
+import { searchClient } from '../../utils/algoliaSearchClient';
 
 const indexName = `${process.env.GATSBY_ALGOLIA_INDEX_NAME ?? 'dev'}_problems`;
 
 // Style constants aligned with homepage
-const VANILLA = '#F4EDEA';
+const VANILLA = 'var(--text-primary)';
 const PAGE_BG = 'var(--bg-page)';
-const PLUM_MID = '#2A1C37';
+const PLUM_MID = 'var(--bg-surface-alt)';
 const pageBackgroundClasses = 'min-h-screen transition-colors duration-500';
 const heroCardClasses =
   'relative overflow-hidden rounded-3xl p-8 transition-all duration-500';
@@ -113,12 +113,12 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
           {
             background: PAGE_BG,
             color: VANILLA,
-            '--select-bg': '#0D0D0D',
-            '--select-menu-bg': '#0D0D0D',
-            '--select-border': 'rgba(240, 194, 255, 0.26)',
-            '--select-text': '#F4EDEA',
-            '--select-option-hover': 'rgba(240, 194, 255, 0.16)',
-            '--select-option-selected': 'rgba(240, 194, 255, 0.24)',
+            '--select-bg': 'var(--bg-surface)',
+            '--select-menu-bg': 'var(--bg-surface)',
+            '--select-border': 'var(--border-strong)',
+            '--select-text': 'var(--text-primary)',
+            '--select-option-hover': 'var(--border-strong)',
+            '--select-option-selected': 'var(--border-strong)',
             '--accent-soft': 'rgba(101, 86, 141, 0.22)',
             '--accent-soft-strong': 'rgba(101, 86, 141, 0.34)',
           } as React.CSSProperties
@@ -179,20 +179,11 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
                     <div className="flex flex-wrap justify-center gap-3">
                       <button
                         onClick={() => sendShuffle(shuffle + 1)}
-                        className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
-                        style={
-                          {
-                            border: '1px solid rgba(240, 194, 255, 0.34)',
-                            background: '#6D3B9F',
-                            '--pme-color': '#F4EDEA',
-                            '--pme-hover-color': '#201C36',
-                            '--pme-wipe-bg': '#F0C2FF',
-                          } as React.CSSProperties
-                        }
+                        className="btn btn-primary"
                         title={'Shuffle problems'}
                       >
                         <svg
-                          className={'mr-2 h-5 w-5 text-gray-200'}
+                          className={'mr-2 h-5 w-5 text-[var(--text-muted)]'}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -209,20 +200,11 @@ export default function ProblemsPage(props: PageProps<DataProps>) {
                       </button>
                       <button
                         onClick={() => sendRandom(random + 1)}
-                        className="purple-motion-effect inline-flex items-center justify-center rounded-full px-5 py-2 font-mono text-sm leading-tight font-bold"
-                        style={
-                          {
-                            border: '1px solid rgba(240, 194, 255, 0.34)',
-                            background: '#EFE3FF',
-                            '--pme-color': '#2C1842',
-                            '--pme-hover-color': '#201C36',
-                            '--pme-wipe-bg': '#F0C2FF',
-                          } as React.CSSProperties
-                        }
+                        className="btn btn-secondary"
                         title={'Go to a random unsolved problem'}
                       >
                         <svg
-                          className={'mr-2 h-5 w-5 text-[#2C1842]'}
+                          className={'mr-2 h-5 w-5 text-[var(--text-inverse)]'}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

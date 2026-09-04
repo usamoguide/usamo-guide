@@ -14,7 +14,7 @@ export default function Accordion({ label, isActive, children }) {
   return (
     <div
       className={clsx(
-        'border-b border-gray-200 last:border-b-0 dark:border-gray-800',
+        'border-b border-[var(--border)] last:border-b-0 dark:border-[var(--border-strong)]',
         isActive && 'bg-[var(--sidebar-active-bg)]'
       )}
     >
@@ -22,11 +22,11 @@ export default function Accordion({ label, isActive, children }) {
         className="relative flex cursor-pointer items-center px-4 py-3 text-sm leading-5 font-semibold transition duration-150 ease-in-out hover:bg-[var(--sidebar-hover-bg)]"
         onClick={() => setExpanded(!expanded)}
       >
-        <span className="dark:text-dark-high-emphasis flex-1 text-gray-800">
+        <span className="dark:text-dark-high-emphasis flex-1 text-[var(--text-primary)]">
           {label}
         </span>
         <svg
-          className="h-5 w-5 shrink-0 text-gray-600"
+          className="h-5 w-5 shrink-0 text-[var(--text-primary)]"
           fill="currentColor"
           viewBox="0 0 20 20"
         >

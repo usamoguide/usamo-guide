@@ -19,6 +19,7 @@ import Layout from '../layout';
 import SEO from '../seo';
 import TopNavigationBar from '../TopNavigationBar/TopNavigationBar';
 import ModuleLink from './ModuleLink';
+import { useSpineIgnition } from '../../hooks/useSpineIgnition';
 import { useLastViewedModule } from '../../context/UserDataContext/properties/simpleProperties';
 import { useUserProgressOnModules } from '../../context/UserDataContext/properties/userProgress';
 
@@ -92,6 +93,7 @@ export default function SyllabusPage({
   );
 
   const section = getModulesForDivision(allModules, division);
+  const spineRef = useSpineIgnition<HTMLDivElement>();
 
   const moduleIDs = section.reduce((acc, cur) => {
     const ids = cur.items
@@ -171,7 +173,7 @@ export default function SyllabusPage({
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1"
-                    className="text-[#F0C2FF]/30"
+                    className="text-[var(--accent)]/30"
                   />
                 </pattern>
               </defs>
@@ -193,16 +195,16 @@ export default function SyllabusPage({
             />
 
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h1 className="mb-6 text-center text-5xl leading-10 font-black tracking-tight text-[#F4EDEA] sm:leading-none md:text-6xl">
+              <h1 className="mb-6 text-center text-5xl leading-10 font-black tracking-tight text-[var(--text-primary)] sm:leading-none md:text-6xl">
                 {SECTION_LABELS[division]}
               </h1>
-              <p className="mx-auto mb-8 max-w-4xl text-center text-[#F4EDEA]/90 sm:mb-10">
+              <p className="mx-auto mb-8 max-w-4xl text-center text-[var(--text-primary)]/90 sm:mb-10">
                 {SECTION_DESCRIPTION[division]}
               </p>
 
               {(division === 'advanced' || division === 'usamo') && (
                 <div className="mx-auto mb-8 max-w-4xl rounded-2xl bg-[var(--card-bg)] px-6 py-4 text-center">
-                  <p className="text-sm font-semibold text-[#F0C2FF] sm:text-base">
+                  <p className="text-sm font-semibold text-[var(--accent)] sm:text-base">
                     This section is currently under development. The content you
                     see here is filler for now.
                   </p>
@@ -212,17 +214,7 @@ export default function SyllabusPage({
               <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
                 <Link
                   to={continueLearningURL}
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-3 font-mono text-lg leading-tight font-bold md:px-8 md:py-3"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#6D3B9F',
-                      boxShadow: 'none',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
+                  className="btn btn-lg btn-primary"
                 >
                   {hasStarted ? 'Continue Learning >' : 'Start Learning >'}
                 </Link>
@@ -230,17 +222,7 @@ export default function SyllabusPage({
                   href="https://discord.gg/WZge4DWUuy"
                   target="_blank"
                   rel="noreferrer"
-                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-6 py-3 font-mono text-lg leading-tight font-bold md:px-8 md:py-3"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#EFE3FF',
-                      boxShadow: 'none',
-                      '--pme-color': '#2C1842',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
+                  className="btn btn-lg btn-secondary"
                 >
                   Join Community
                 </a>
@@ -248,9 +230,9 @@ export default function SyllabusPage({
 
               {hasStarted && (
                 <div className="mx-auto grid max-w-2xl gap-8 lg:max-w-full lg:grid-cols-2">
-                  <div className="rounded-xl bg-[var(--card-bg)] backdrop-blur sm:rounded-2xl">
+                  <div className="rounded-xl bg-[var(--card-bg)] sm:rounded-2xl">
                     <div className="px-4 py-5 sm:p-6">
-                      <h3 className="text-lg leading-6 font-semibold text-[#F4EDEA]">
+                      <h3 className="text-lg leading-6 font-semibold text-[var(--text-primary)]">
                         Modules Progress
                       </h3>
                       <div className="mt-6">
@@ -261,9 +243,9 @@ export default function SyllabusPage({
                       </div>
                     </div>
                   </div>
-                  <div className="rounded-xl bg-[var(--card-bg)] backdrop-blur sm:rounded-2xl">
+                  <div className="rounded-xl bg-[var(--card-bg)] sm:rounded-2xl">
                     <div className="px-4 py-5 sm:p-6">
-                      <h3 className="text-lg leading-6 font-semibold text-[#F4EDEA]">
+                      <h3 className="text-lg leading-6 font-semibold text-[var(--text-primary)]">
                         Problems Progress
                       </h3>
                       <div className="mt-6">
@@ -279,25 +261,26 @@ export default function SyllabusPage({
             </div>
           </div>
 
-          <div className="syllabus-dotted-line-container relative mx-auto max-w-(--breakpoint-xl) space-y-6 px-4 py-12">
+          <div ref={spineRef}
+            className="syllabus-track mx-auto max-w-(--breakpoint-xl) space-y-6 px-4 py-12">
             {section.map(category => (
               <div
                 key={category.name}
                 className="group/category flex flex-col rounded-2xl bg-[var(--card-bg)] p-4 transition md:flex-row"
               >
                 <div className="flex flex-1 flex-col items-center justify-center pr-0 text-center md:pr-12">
-                  <h2 className="py-3 text-2xl leading-tight font-bold tracking-tight text-[#F4EDEA] transition group-hover/category:text-[#F0C2FF] md:text-3xl">
+                  <h2 className="py-3 text-3xl leading-tight font-bold tracking-tight text-[var(--text-primary)] transition group-hover/category:text-[var(--accent)] md:text-4xl">
                     {category.name}
                   </h2>
-                  <div className="py-2 leading-6 text-[#D2D4C8] transition group-hover/category:text-[#F4EDEA]">
+                  <div className="py-2 leading-6 text-[var(--text-secondary)] transition group-hover/category:text-[var(--text-primary)]">
                     {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
                     {useProgressBarForCategory(category)}
                   </div>
-                  <p className="max-w-sm text-sm text-[#D2D4C8] transition group-hover/category:text-[#F4EDEA]">
+                  <p className="max-w-sm text-base leading-7 text-[var(--text-secondary)] transition group-hover/category:text-[var(--text-primary)] md:text-lg">
                     {category.description}
                   </p>
                 </div>
-                <div className="flex-1 pl-12">
+                <div className="flex-1 pl-7 md:pl-12">
                   {category.items
                     .filter((x): x is NonNullable<typeof x> => Boolean(x))
                     .map(item => (

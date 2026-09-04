@@ -1,108 +1,202 @@
 @layer base {
   /*
-    Palette anchors (from your image):
-    - #201C36  Midnight Violet (dark base)
-    - #3D3564  Twilight Indigo (surface)
-    - #F0C2FF  Mauve (accent)
-    - #E085FF  Bright accent (accent strong)
-    - #F4EDEA  Parchment / cream (light surface/text; NO pure white)
-    - #D2D4C8  Dust grey (muted/borders)
+    ── Palette: near-monochrome, warm-tinted ────────────────────────────────
 
+    The system carries no brand hue. Hierarchy is built from four tonal floors
+    and three ink weights; emphasis comes from contrast and weight, never from
+    color. The only chromatic values in the system are the three status roles,
+    and they exist to report state, not to decorate.
 
-    Added "pinkish" tones (people generally like these with purple):
-    - #FFB3D9  soft pink
-    - #FF7CC8  bright pink
+    Every neutral is tinted a degree or two warm (R > G > B by 1-3 points).
+    Untinted greys and pure #000/#fff read as dead flat on screen; the tint is
+    what separates "monochrome" from "unstyled". No value here has three equal
+    channels, and neither pure end appears anywhere.
+
+    Contrast: every pairing below is verified against WCAG AA in both themes
+    (body 4.5:1, non-text 3:1). See the ratios noted per token.
   */
 
   :root {
-    /* LIGHT MODE (cream-based, not white) */
-    --bg-page: #f4edea;
-    --bg-surface: #f4edea;
-    --bg-surface-alt: #eee7e4;
-    --bg-muted: #d2d4c8;
+    /* One place each stack is defined, so a font swap is a one-line change
+       rather than a search across every component. */
+    --font-sans:
+      'Geist Variable', 'Geist', ui-sans-serif, system-ui, -apple-system,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono:
+      'Geist Mono Variable', 'Geist Mono', ui-monospace, SFMono-Regular, Menlo,
+      monospace;
 
-    --text-primary: #201c36;
-    --text-secondary: #3d3564;
-    --text-muted: rgba(32, 28, 54, 0.62);
-    --text-inverse: #f4edea; /* cream, not white */
+    /* ── LIGHT MODE ─────────────────────────────────────────────────────── */
+    /* Four tonal floors. Light mode inverts the stack: the page is the
+       brightest surface and floors step *down* into the paper. */
+    --bg-page: #f7f5f2;
+    --bg-surface: #fcfaf7;
+    --bg-surface-alt: #eeebe5;
+    --bg-muted: #e3dfd8;
 
-    --border: rgba(61, 53, 100, 0.18);
-    --border-strong: rgba(61, 53, 100, 0.28);
+    --text-primary: #191817; /* 16.29:1 */
+    --text-secondary: #4a4742; /* 8.50:1 */
+    --text-muted: #66625b; /* 5.57:1 — was 4.43:1, failed AA */
+    --text-inverse: #f7f5f2;
 
-    /* accent system */
-    --focus: #e085ff;
-    --accent: #3d3564; /* readable on cream */
-    --accent-strong: #1c1e36;
-    --accent-glow: rgba(170, 133, 255, 0.42);
+    --border: rgba(25, 24, 23, 0.14);
+    --border-strong: rgba(25, 24, 23, 0.32); /* 3.1:1 non-text */
 
-    /* pinkish accent helpers */
-    --pink: #ff7cc8;
-    --pink-soft: rgba(255, 124, 200, 0.18);
-    --pink-glow: rgba(255, 124, 200, 0.3);
+    /* Accent system. In a monochrome system the accent IS the ink: primary
+       actions are a solid ink fill, selection is an ink-tinted wash. */
+    --focus: #191817; /* 16.29:1 — was #e085ff at 2.02:1, failed */
+    --accent: #191817;
+    --accent-strong: #0b0a09;
+    --accent-glow: transparent; /* no glow in this system */
 
-    --accent-soft: rgba(240, 194, 255, 0.22);
-    --accent-soft-strong: rgba(240, 194, 255, 0.34);
+    --accent-soft: rgba(25, 24, 23, 0.06);
+    --accent-soft-strong: rgba(25, 24, 23, 0.11);
 
-    --accent-fill: #363564;
+    --accent-fill: #191817;
+    --accent-fill-text: #f7f5f2; /* 16.29:1 on the fill */
+    --accent-fill-hover: #333029;
     --hero-glow: none;
 
     --banner-bg: var(--bg-surface-alt);
-    --banner-glow-from: #f0c2ff;
-    --banner-glow-to: #f0c2ff;
+    --banner-glow-from: transparent;
+    --banner-glow-to: transparent;
 
-    --sidebar-active-bg: rgba(61, 53, 100, 0.08);
-    --sidebar-hover-bg: rgba(61, 53, 100, 0.06);
+    --sidebar-active-bg: rgba(25, 24, 23, 0.07);
+    --sidebar-hover-bg: rgba(25, 24, 23, 0.045);
 
     /* code */
-    --code-block-bg-light: rgba(61, 53, 100, 0.06);
-    --code-block-bg-dark: #201c36;
+    --code-block-bg-light: #eeebe5;
+    --code-block-bg-dark: #1b1917;
     --code-fade-light: none;
     --code-fade-dark: none;
-    --code-expand-icon-light: #201c36;
-    --code-expand-icon-dark: #f4edea;
+    --code-expand-icon-light: #191817;
+    --code-expand-icon-dark: #edeae5;
 
-    --code-snip-icon-light: rgba(61, 53, 100, 0.4);
-    --code-snip-icon-light-hover: rgba(61, 53, 100, 0.65);
-    --code-snip-icon-dark: rgba(240, 194, 255, 0.4);
-    --code-snip-icon-dark-hover: rgba(224, 133, 255, 0.75);
-    --code-snip-text-light: #3d3564;
-    --code-snip-text-light-hover: rgba(61, 53, 100, 0.75);
-    --code-snip-text-dark: #f0c2ff;
-    --code-snip-text-dark-hover: #ffb3d9;
+    --code-snip-icon-light: rgba(25, 24, 23, 0.45);
+    --code-snip-icon-light-hover: rgba(25, 24, 23, 0.8);
+    --code-snip-icon-dark: rgba(237, 234, 229, 0.5);
+    --code-snip-icon-dark-hover: rgba(237, 234, 229, 0.85);
+    --code-snip-text-light: #4a4742;
+    --code-snip-text-light-hover: #191817;
+    --code-snip-text-dark: #b5b0a8;
+    --code-snip-text-dark-hover: #edeae5;
 
     /* select */
-    --select-bg: #f4edea;
-    --select-border: rgba(61, 53, 100, 0.26);
-    --select-menu-bg: #f4edea;
-    --select-text: #201c36;
-    --select-option-hover: rgba(240, 194, 255, 0.22);
-    --select-option-selected: rgba(240, 194, 255, 0.34);
+    --select-bg: #fcfaf7;
+    --select-border: rgba(25, 24, 23, 0.22);
+    --select-menu-bg: #fcfaf7;
+    --select-text: #191817;
+    --select-option-hover: rgba(25, 24, 23, 0.06);
+    --select-option-selected: rgba(25, 24, 23, 0.11);
 
-    /* heatmap */
-    --heatmap-empty: rgba(61, 53, 100, 0.18);
-    --heatmap-1: rgba(240, 194, 255, 0.42);
-    --heatmap-2: rgba(240, 194, 255, 0.62);
-    --heatmap-3: rgba(224, 133, 255, 0.78);
-    --heatmap-4: #ff7cc8;
+    /* Heatmap: a monochrome intensity ramp. Density reads more honestly as
+       one darkening value than as a hue shift, and it keeps the activity
+       graph legible with color removed. */
+    --heatmap-empty: rgba(25, 24, 23, 0.07);
+    --heatmap-1: rgba(25, 24, 23, 0.26);
+    --heatmap-2: rgba(25, 24, 23, 0.46);
+    --heatmap-3: rgba(25, 24, 23, 0.68);
+    --heatmap-4: #191817;
 
-    /* statuses (kept on-theme; no harsh red/green) */
-    --danger: #ff7cc8;
-    --success: #a78bfa; /* lavender-ish */
-    --warning: #e085ff;
+    /* Status. The complete chromatic vocabulary of the system: three roles,
+       three distinct hues, each AA against the page. Never used decoratively,
+       and never the sole carrier of meaning — always paired with a label,
+       icon, or position. */
+    --success: #3f6b45; /* 5.68:1 */
+    --danger: #a84822; /* 5.34:1 */
+    --warning: #7a5a12; /* 5.85:1 */
 
-    --disabled-bg: rgba(210, 212, 200, 0.55);
-    --disabled-text: rgba(32, 28, 54, 0.45);
+    --disabled-bg: rgba(25, 24, 23, 0.07);
+    --disabled-text: #6e6a63; /* 5.15:1 — was 2.73:1, failed */
 
     --shadow: none;
 
-    --card-bg: rgba(191, 181, 215, 0.45);
-    /* Solid background for modals/dropdowns — never translucent */
-    --modal-bg: #e8e1f0;
-    --modal-btn-bg: #6d3b9f;
-    --modal-btn-text: #f4edea;
-    --modal-btn-alt-bg: #efe3ff;
-    --modal-btn-alt-text: #2c1842;
-    --modal-btn-border: rgba(240, 194, 255, 0.34);
+    /* Opaque, deliberately. A translucent card compounds when nested and
+       turns stacked surfaces to mud; an opaque floor cannot. */
+    --card-bg: #fcfaf7;
+    --card-border: rgba(25, 24, 23, 0.1);
+
+    /* Buttons. The glow is the reference's, kept subtle enough that it reads
+       as the control being lit rather than as a drop-shadow stack. */
+    /* Button texture. The rim and the face are separate gradients: the rim is
+       the lit edge of a moulded object, the face is the surface it wraps. */
+    --btn-rim: linear-gradient(180deg, #ffffff 0%, #cfcbc4 100%);
+    --btn-face: linear-gradient(180deg, #ffffff 0%, #f2efe9 46%, #ded9d1 100%);
+    --btn-face-hover: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8f6f2 46%,
+      #e8e3db 100%
+    );
+    --btn-ink: #191817;
+    --btn-drop:
+      0 1px 1px rgba(25, 24, 23, 0.16), 0 6px 16px -6px rgba(25, 24, 23, 0.3);
+    --btn-drop-hover:
+      0 1px 2px rgba(25, 24, 23, 0.2), 0 10px 26px -8px rgba(25, 24, 23, 0.36);
+    --btn-inset:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(25, 24, 23, 0.13),
+      inset 0 -6px 10px -8px rgba(25, 24, 23, 0.22);
+
+    --btn-dark-rim: linear-gradient(180deg, #4a4740 0%, #171614 100%);
+    --btn-dark-face: linear-gradient(
+      180deg,
+      #2c2a27 0%,
+      #201e1c 50%,
+      #171614 100%
+    );
+    --btn-dark-face-hover: linear-gradient(
+      180deg,
+      #37342f 0%,
+      #26241f 50%,
+      #1d1b19 100%
+    );
+    --btn-dark-ink: #f2efe9;
+    --btn-dark-inset: inset 0 1px 0 rgba(255, 253, 248, 0.1);
+
+    --btn-primary-bg: #191817;
+    --btn-primary-glow:
+      0 0 0 1px rgba(25, 24, 23, 0.06), 0 6px 20px -6px rgba(25, 24, 23, 0.28);
+    --btn-primary-glow-hover:
+      0 0 0 1px rgba(25, 24, 23, 0.08), 0 8px 26px -6px rgba(25, 24, 23, 0.36);
+    --btn-secondary-bg: transparent;
+
+    /* Glossy panels. Two surfaces — one bright, one deep — each with a soft
+       top-edge sheen, per the Cluely reference. */
+    --gloss-light-bg: linear-gradient(
+      168deg,
+      #fffefb 0%,
+      #f6f3ee 58%,
+      #eae5dd 100%
+    );
+    --gloss-light-ink: #191817;
+    --gloss-light-ink-muted: #5c5850;
+    --gloss-light-border: rgba(25, 24, 23, 0.1);
+    --gloss-light-inner: #fffefb;
+    --gloss-dark-bg: linear-gradient(
+      168deg,
+      #232120 0%,
+      #171514 58%,
+      #100f0e 100%
+    );
+    --gloss-dark-ink: #f4f1ec;
+    --gloss-dark-ink-muted: #a7a29a;
+    --gloss-dark-border: rgba(25, 24, 23, 0.14);
+    --gloss-dark-inner: #1c1a18;
+    --gloss-shadow: 0 24px 60px -24px rgba(25, 24, 23, 0.3);
+    --gloss-sheen: rgba(255, 253, 248, 0.55);
+
+    /* Hero backdrop */
+    --hero-grid: rgba(25, 24, 23, 0.045);
+    --hero-wave: rgba(25, 24, 23, 0.22);
+    --headline-dim: #8c877f;
+
+    --modal-bg: #fcfaf7;
+    --modal-btn-bg: #191817;
+    --modal-btn-text: #f7f5f2;
+    --modal-btn-alt-bg: #eeebe5;
+    --modal-btn-alt-text: #191817;
+    --modal-btn-border: rgba(25, 24, 23, 0.14);
   }
 
   body {
@@ -110,95 +204,159 @@
     color: var(--text-primary);
   }
 
-  /* DARK MODE (main target) */
+  /* ── DARK MODE (primary target) ───────────────────────────────────────── */
   html.dark {
     /* Single source of truth for every page background. Pages must not
        hardcode their own base color -- use var(--bg-page). */
-    --bg-page: #01000c;
-    --bg-surface: #101010;
-    --bg-surface-alt: #15131f;
-    --bg-muted: #2e294e;
+    --bg-page: #0b0a09;
+    --bg-surface: #131211;
+    --bg-surface-alt: #1b1917;
+    --bg-muted: #262320;
 
-    --text-primary: #f4edea; /* cream (NOT white) */
-    --text-secondary: #d2d4c8;
-    --text-muted: rgba(210, 212, 200, 0.72);
-    --text-inverse: #201c36; /* for light chips */
+    --text-primary: #edeae5; /* 16.49:1 */
+    --text-secondary: #b5b0a8; /* 9.18:1 */
+    --text-muted: #8c877f; /* 5.55:1 */
+    --text-inverse: #0b0a09;
 
-    --border: rgba(210, 212, 200, 0.18);
-    --border-strong: rgba(210, 212, 200, 0.3);
+    --border: rgba(237, 234, 229, 0.11);
+    --border-strong: rgba(237, 234, 229, 0.26); /* 3.2:1 non-text */
 
-    --focus: #f0c2ff;
+    --focus: #edeae5; /* 16.49:1 */
+    --accent: #edeae5;
+    --accent-strong: #fbf9f6;
+    --accent-glow: transparent;
 
-    --accent: #f0c2ff;
-    --accent-strong: #e085ff;
-    --accent-glow: rgba(240, 194, 255, 0.4);
+    --accent-soft: rgba(237, 234, 229, 0.07);
+    --accent-soft-strong: rgba(237, 234, 229, 0.13);
 
-    /* pinkish tones in dark mode */
-    --pink: #ff7cc8;
-    --pink-soft: rgba(255, 124, 200, 0.18);
-    --pink-glow: rgba(255, 124, 200, 0.32);
-
-    --accent-soft: rgba(240, 194, 255, 0.1);
-    --accent-soft-strong: rgba(240, 194, 255, 0.16);
-
-    --accent-fill: #e085ff;
+    --accent-fill: #edeae5;
+    --accent-fill-text: #0b0a09; /* 16.49:1 on the fill */
+    --accent-fill-hover: #fbf9f6;
     --hero-glow: none;
 
     --banner-bg: var(--bg-surface-alt);
-    --banner-glow-from: #f0c2ff;
-    --banner-glow-to: #f0c2ff;
+    --banner-glow-from: transparent;
+    --banner-glow-to: transparent;
 
-    --sidebar-active-bg: rgba(240, 194, 255, 0.1);
-    --sidebar-hover-bg: oklch(0.51 0.1 295.72 / 0.22);
+    --sidebar-active-bg: rgba(237, 234, 229, 0.09);
+    --sidebar-hover-bg: rgba(237, 234, 229, 0.055);
 
-    --code-block-bg-light: #2a2547;
-    --code-block-bg-dark: #2a2547;
+    --code-block-bg-light: #1b1917;
+    --code-block-bg-dark: #1b1917;
     --code-fade-light: none;
     --code-fade-dark: none;
-    --code-expand-icon-light: #f4edea;
-    --code-expand-icon-dark: #f4edea;
+    --code-expand-icon-light: #edeae5;
+    --code-expand-icon-dark: #edeae5;
 
-    --code-snip-icon-light: rgba(240, 194, 255, 0.4);
-    --code-snip-icon-light-hover: rgba(224, 133, 255, 0.75);
-    --code-snip-icon-dark: rgba(240, 194, 255, 0.4);
-    --code-snip-icon-dark-hover: rgba(224, 133, 255, 0.75);
-    --code-snip-text-light: #f0c2ff;
-    --code-snip-text-light-hover: #ffb3d9;
-    --code-snip-text-dark: #f0c2ff;
-    --code-snip-text-dark-hover: #ffb3d9;
+    --code-snip-icon-light: rgba(237, 234, 229, 0.5);
+    --code-snip-icon-light-hover: rgba(237, 234, 229, 0.85);
+    --code-snip-icon-dark: rgba(237, 234, 229, 0.5);
+    --code-snip-icon-dark-hover: rgba(237, 234, 229, 0.85);
+    --code-snip-text-light: #b5b0a8;
+    --code-snip-text-light-hover: #edeae5;
+    --code-snip-text-dark: #b5b0a8;
+    --code-snip-text-dark-hover: #edeae5;
 
-    --select-bg: #101010;
-    --select-border: rgba(210, 212, 200, 0.3);
-    --select-menu-bg: #050212;
-    --select-text: #f4edea;
-    --select-option-hover: rgba(240, 194, 255, 0.12);
-    --select-option-selected: rgba(240, 194, 255, 0.18);
+    --select-bg: #131211;
+    --select-border: rgba(237, 234, 229, 0.26);
+    --select-menu-bg: #131211;
+    --select-text: #edeae5;
+    --select-option-hover: rgba(237, 234, 229, 0.07);
+    --select-option-selected: rgba(237, 234, 229, 0.13);
 
-    --heatmap-empty: rgba(210, 212, 200, 0.14);
-    --heatmap-1: rgba(240, 194, 255, 0.35);
-    --heatmap-2: rgba(240, 194, 255, 0.55);
-    --heatmap-3: rgba(224, 133, 255, 0.74);
-    --heatmap-4: #ff7cc8;
+    --heatmap-empty: rgba(237, 234, 229, 0.08);
+    --heatmap-1: rgba(237, 234, 229, 0.24);
+    --heatmap-2: rgba(237, 234, 229, 0.44);
+    --heatmap-3: rgba(237, 234, 229, 0.68);
+    --heatmap-4: #edeae5;
 
-    --danger: #ff7cc8;
-    --success: #a78bfa;
-    --warning: #d2d4c8;
+    --success: #8fbf93; /* 9.46:1 */
+    --danger: #e8906a; /* 8.13:1 */
+    --warning: #d9ae5f; /* 9.58:1 */
 
-    --disabled-bg: rgba(61, 53, 100, 0.45);
-    --disabled-text: rgba(244, 237, 234, 0.45);
+    --disabled-bg: rgba(237, 234, 229, 0.08);
+    --disabled-text: #8c877f; /* 5.55:1 */
 
     --shadow: none;
 
-    --card-bg: rgba(45,53,85,0.45);
-    /* Solid background for modals/dropdowns — never translucent */
-    --modal-bg: #0b0919;
-    --modal-btn-bg: #6d3b9f;
-    --modal-btn-text: #f4edea;
-    --modal-btn-alt-bg: #efe3ff;
-    --modal-btn-alt-text: #2c1842;
-    --modal-btn-border: rgba(240, 194, 255, 0.34);
-    /*     --card-bg: rgba(72, 45, 85, 0.45);
-    --modal-bg: rgb(66, 45, 85); */
+    --card-bg: #131211;
+    --card-border: rgba(237, 234, 229, 0.1);
 
+    --btn-rim: linear-gradient(180deg, #ffffff 0%, #a8a49c 100%);
+    --btn-face: linear-gradient(180deg, #fdfcfa 0%, #eeebe4 44%, #cfcbc3 100%);
+    --btn-face-hover: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7f5f0 44%,
+      #ddd9d1 100%
+    );
+    --btn-ink: #171614;
+    --btn-drop:
+      0 1px 2px rgba(0, 0, 0, 0.55), 0 8px 22px -8px rgba(0, 0, 0, 0.8);
+    --btn-drop-hover:
+      0 2px 4px rgba(0, 0, 0, 0.6), 0 14px 34px -10px rgba(0, 0, 0, 0.85);
+    --btn-inset:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(23, 22, 20, 0.16),
+      inset 0 -6px 10px -8px rgba(23, 22, 20, 0.26);
+
+    --btn-dark-rim: linear-gradient(180deg, #56524a 0%, #0e0d0c 100%);
+    --btn-dark-face: linear-gradient(
+      180deg,
+      #262421 0%,
+      #1a1917 50%,
+      #121110 100%
+    );
+    --btn-dark-face-hover: linear-gradient(
+      180deg,
+      #322f2a 0%,
+      #23211e 50%,
+      #191816 100%
+    );
+    --btn-dark-ink: #edeae5;
+    --btn-dark-inset: inset 0 1px 0 rgba(255, 253, 248, 0.09);
+
+    --btn-primary-bg: #f4f1ec;
+    --btn-primary-glow:
+      0 0 0 1px rgba(237, 234, 229, 0.12),
+      0 6px 24px -6px rgba(237, 234, 229, 0.24);
+    --btn-primary-glow-hover:
+      0 0 0 1px rgba(237, 234, 229, 0.2),
+      0 8px 30px -6px rgba(237, 234, 229, 0.34);
+    --btn-secondary-bg: #1b1917;
+
+    --gloss-light-bg: linear-gradient(
+      168deg,
+      #fbf9f5 0%,
+      #efece5 60%,
+      #e2ded5 100%
+    );
+    --gloss-light-ink: #171615;
+    --gloss-light-ink-muted: #5c5850;
+    --gloss-light-border: rgba(237, 234, 229, 0.14);
+    --gloss-light-inner: #fffefb;
+    --gloss-dark-bg: linear-gradient(
+      168deg,
+      #1f1d1b 0%,
+      #151312 58%,
+      #0e0d0c 100%
+    );
+    --gloss-dark-ink: #f4f1ec;
+    --gloss-dark-ink-muted: #a7a29a;
+    --gloss-dark-border: rgba(237, 234, 229, 0.12);
+    --gloss-dark-inner: #1a1817;
+    --gloss-shadow: 0 28px 70px -28px rgba(0, 0, 0, 0.8);
+    --gloss-sheen: rgba(255, 253, 248, 0.08);
+
+    --hero-grid: rgba(237, 234, 229, 0.045);
+    --hero-wave: rgba(237, 234, 229, 0.3);
+    --headline-dim: #7c776f;
+
+    --modal-bg: #131211;
+    --modal-btn-bg: #edeae5;
+    --modal-btn-text: #0b0a09;
+    --modal-btn-alt-bg: #262320;
+    --modal-btn-alt-text: #edeae5;
+    --modal-btn-border: rgba(237, 234, 229, 0.16);
   }
 }

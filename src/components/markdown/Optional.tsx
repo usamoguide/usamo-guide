@@ -12,12 +12,12 @@ export interface OptionalProps {
 }
 
 const Optional: React.FC<OptionalProps> = ({ children, title }) => (
-  <div className="mb-4 rounded-md bg-purple-50 p-4 dark:bg-purple-700/25">
+  <div className="mb-4 rounded-md p-4 [background:var(--bg-surface-alt)] [border:1px_solid_var(--border)]">
     <div className="flex">
       <div className="shrink-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 text-purple-400 dark:text-purple-300"
+          className="h-5 w-5 [color:var(--text-muted)]"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -25,10 +25,10 @@ const Optional: React.FC<OptionalProps> = ({ children, title }) => (
         </svg>
       </div>
       <div className="ml-3">
-        <h3 className="text-sm leading-5 font-medium text-purple-800 dark:text-purple-200">
+        <h3 className="text-sm leading-5 font-medium [color:var(--text-primary)]">
           Optional{title ? `: ${title}` : ''}
         </h3>
-        <div className="no-y-margin tailwind-alert tailwind-alert--optional mt-2 text-sm leading-5 text-purple-700 dark:text-purple-300">
+        <div className="no-y-margin tailwind-alert tailwind-alert--optional mt-2 text-sm leading-5 [color:var(--text-secondary)]">
           {children}
         </div>
       </div>

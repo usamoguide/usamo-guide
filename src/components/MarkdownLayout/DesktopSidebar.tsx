@@ -11,7 +11,7 @@ export default function DesktopSidebar() {
       style={{ width: '20rem' }}
     >
       <div
-        className="flex h-screen flex-col border-r border-gray-200 bg-[#0e0c18] dark:border-gray-800 dark:bg-[#0e0c18]"
+        className="flex h-screen flex-col border-r border-[var(--border)] bg-[var(--bg-surface)] dark:border-[var(--border)] dark:bg-[var(--bg-surface)]"
         style={{ width: '20rem' }}
       >
         <div className="flex h-0 grow flex-col pt-5">

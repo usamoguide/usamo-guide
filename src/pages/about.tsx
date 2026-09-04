@@ -23,18 +23,18 @@ export default function AboutPage(props: PageProps) {
       >
         <main className="mx-auto max-w-4xl px-4 pt-10 pb-16 sm:px-6 lg:px-8">
           <header className="mb-8">
-            <h1 className="text-4xl font-extrabold text-[#F4EDEA]">
+            <h1 className="text-4xl font-extrabold text-[var(--text-primary)]">
               Umm, so what is this "USAMO Guide" that everyone is talking about?
             </h1>
-            <p className="mt-3 text-lg text-[rgba(244,237,234,0.80)]">
+            <p className="mt-3 text-lg text-[var(--text-secondary)]">
               USAMO Guide is a free, structured learning platform that helps
               students progress from early contest problem solving to
               Olympiad-level proof writing.
             </p>
           </header>
 
-          <section className="space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
-            <h2 className="text-2xl font-bold text-[#F4EDEA]">
+          <section className="space-y-4 text-lg text-[var(--text-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">
               Why do we exist / Our Philosophy
             </h2>
             <p>
@@ -49,8 +49,8 @@ export default function AboutPage(props: PageProps) {
             </p>
           </section>
 
-          <section className="mt-10 space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
-            <h2 className="text-2xl font-bold text-[#F4EDEA]">
+          <section className="mt-10 space-y-4 text-lg text-[var(--text-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">
               Okayyyy! I see y'all are ambitious, but what have you actually
               achieved till now?
             </h2>
@@ -70,8 +70,8 @@ export default function AboutPage(props: PageProps) {
             </ul>
           </section>
 
-          <section className="mt-10 space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
-            <h2 className="text-2xl font-bold text-[#F4EDEA]">
+          <section className="mt-10 space-y-4 text-lg text-[var(--text-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">
               What makes us different
             </h2>
             <p>
@@ -98,8 +98,8 @@ export default function AboutPage(props: PageProps) {
             </ul>
           </section>
 
-          <section className="mt-10 space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
-            <h2 className="text-2xl font-bold text-[#F4EDEA]">Our aims</h2>
+          <section className="mt-10 space-y-4 text-lg text-[var(--text-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">Our aims</h2>
             <p>
               We aim to make olympiad preparation less intimidating by breaking
               it into achievable steps, helping students build confidence, and
@@ -107,8 +107,8 @@ export default function AboutPage(props: PageProps) {
             </p>
           </section>
 
-          <section className="mt-10 space-y-4 text-lg text-[rgba(244,237,234,0.80)]">
-            <h2 className="text-2xl font-bold text-[#F4EDEA]">Get involved</h2>
+          <section className="mt-10 space-y-4 text-lg text-[var(--text-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">Get involved</h2>
             <p>
               Spot a gate we missed? Help us break it. <br />
               Open a PR on GitHub, DM the admins on Discord, or email

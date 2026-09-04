@@ -8,11 +8,11 @@ import { CalendarCheck } from 'lucide-react';
 import React, { useState } from 'react';
 
 const PAGE_BG = 'var(--bg-page)';
-const VANILLA = '#F4EDEA';
-const MAUVE = '#F0C2FF';
-const PURPLE = '#70428A';
-const BORDER_STRONG = 'rgba(240, 194, 255, 0.26)';
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.78)';
+const VANILLA = 'var(--text-primary)';
+const MAUVE = 'var(--accent)';
+const PURPLE = 'var(--accent-fill)';
+const BORDER_STRONG = 'var(--border-strong)';
+const TEXT_SECONDARY = 'var(--text-secondary)';
 
 const headerClasses =
   'text-4xl md:text-5xl 2xl:text-6xl font-black tracking-tight text-center';
@@ -139,7 +139,7 @@ const ActiveCardsHome = () => {
                           className="h-full w-full object-contain"
                         />
                       ) : (
-                        <project.icon className="size-6 text-[#201C36]" />
+                        <project.icon className="size-6 text-[var(--text-inverse)]" />
                       )}
                     </div>
                     <span
@@ -156,7 +156,7 @@ const ActiveCardsHome = () => {
                     )}
                     style={{
                       color:
-                        activeCard === id ? MAUVE : 'rgba(244, 237, 234, 0.38)',
+                        activeCard === id ? MAUVE : 'var(--text-muted)',
                     }}
                   />
                 </div>
@@ -167,7 +167,7 @@ const ActiveCardsHome = () => {
             <div className="sticky top-24 h-fit min-h-[600px]">
               <div
                 className={classNames(
-                  'relative h-full w-full max-w-full overflow-hidden rounded-2xl p-12 backdrop-blur-sm md:p-10'
+                  'relative h-full w-full max-w-full overflow-hidden rounded-2xl p-12 md:p-10'
                 )}
                 style={{
                   background: 'var(--card-bg)',
@@ -191,7 +191,7 @@ const ActiveCardsHome = () => {
                       )}
                     >
                       {React.createElement(projects[activeCard].icon, {
-                        className: 'w-8 h-8 text-[#201C36]',
+                        className: 'w-8 h-8 text-[var(--text-inverse)]',
                       })}
                     </div>
                   )}
@@ -205,7 +205,7 @@ const ActiveCardsHome = () => {
 
                   <div
                     className="my-4 h-1 w-20 rounded-full"
-                    style={{ backgroundColor: 'rgba(240, 194, 255, 0.34)' }}
+                    style={{ backgroundColor: 'var(--border-strong)' }}
                   />
 
                   <p

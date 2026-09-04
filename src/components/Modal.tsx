@@ -12,11 +12,11 @@ export default function Modal({
   children,
   isOpen,
   onClose,
-  bg = 'bg-black/25',
+  bg = 'bg-[rgba(11,10,9,0.55)]',
 }: ModalProps) {
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-10">
-      <DialogBackdrop className={`fixed inset-0 ${bg} dark:bg-black/50`} />
+      <DialogBackdrop className={`fixed inset-0 ${bg} dark:bg-[rgba(11,10,9,0.72)]`} />
 
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4 text-center">

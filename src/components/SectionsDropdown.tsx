@@ -18,26 +18,22 @@ export default function SectionsDropdown({
           <div className="relative h-full">
             <MenuButton
               className={clsx(
-                'group dark:text-dark-high-emphasis inline-flex h-full items-center space-x-2 text-base leading-6 font-medium transition duration-160 ease-in-out hover:text-gray-900 focus:text-gray-900 focus:outline-hidden',
-                open || sidebarNav ? 'text-gray-900' : 'text-gray-500',
-                !sidebarNav &&
-                  'border-b-2 border-transparent pt-0.5 hover:border-gray-300 focus:border-gray-300 dark:hover:border-gray-500 dark:focus:border-gray-500'
+                'group inline-flex items-center gap-1',
+                sidebarNav ? 'text-base font-medium' : 'nav-capsule-link'
               )}
             >
               <span>
                 {currentSection ? SECTION_LABELS[currentSection] : 'Tracks'}
               </span>
               <ChevronDownIcon
-                className={`${
-                  open ? 'text-gray-500' : 'text-gray-400'
-                } h-5 w-5 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500 ${'dark:text-dark-med-emphasis dark:group-hover:text-dark-med-emphasis dark:group-focus:text-dark-med-emphasis'}`}
+                className="h-4 w-4 opacity-70"
                 aria-hidden="true"
               />
             </MenuButton>
             <MenuItems
               transition
               anchor="top start"
-              className={`absolute left-0 z-[100] -ml-4 w-72 max-w-[calc(100vw-1rem)] rounded-lg bg-white ring-1 ring-black/5 focus:outline-none dark:bg-[#0D0D0D] ${
+              className={`nav-dropdown-panel absolute left-0 z-[100] -ml-4 w-72 max-w-[calc(100vw-1rem)] focus:outline-none ${
                 sidebarNav ? 'mt-2' : '-mt-2'
               } transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in`}
               style={{ zIndex: 9999 }}

@@ -18,7 +18,7 @@ export function ResourcesList({
           <tr>
             <th
               colSpan={6}
-              className={`border-b border-gray-200 bg-purple-50 px-4 py-3 text-left text-sm font-medium text-purple-500 uppercase sm:px-6 dark:border-transparent dark:bg-purple-700/25 dark:text-purple-200`}
+              className={`border-b [border-color:var(--border)] px-4 py-3 text-left text-sm font-medium [color:var(--text-secondary)] uppercase [background:var(--bg-surface-alt)] sm:px-6`}
             >
               Resources{title ? `: ${title}` : ''}
             </th>
@@ -33,10 +33,7 @@ export function ResourcesList({
 
 const moduleSources = {
   AoPS: ['https://artofproblemsolving.com/', 'Art of Problem Solving'],
-  AoPSWiki: [
-    'https://artofproblemsolving.com/wiki/index.php',
-    'AoPS Wiki',
-  ],
+  AoPSWiki: ['https://artofproblemsolving.com/wiki/index.php', 'AoPS Wiki'],
   MAA: ['https://www.maa.org/math-competitions', 'MAA Competitions'],
   Khan: ['https://www.khanacademy.org/math', 'Khan Academy'],
   Brilliant: ['https://brilliant.org/courses/', 'Brilliant'],

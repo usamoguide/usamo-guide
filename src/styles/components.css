@@ -1,25 +1,3 @@
-.btn {
-  @apply inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-hidden;
-  border: 1px solid var(--border-strong);
-  background-color: var(--bg-surface);
-  color: var(--text-primary);
-
-  &:hover {
-    background-color: var(--bg-surface-alt);
-  }
-
-  &:focus {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: var(--disabled-bg);
-    color: var(--disabled-text);
-  }
-}
-
 @layer components {
   .ui-page {
     background-color: var(--bg-page);
@@ -49,19 +27,15 @@
   }
 
   /* Cards */
+  /* Opaque and flat. Depth is a tonal step plus a hairline, never a blur;
+     and the card does not move when pointed at — motion here reports state,
+     and hovering a card is not a state change. */
   .ui-card {
     background-color: var(--card-bg);
     color: var(--text-primary);
+    border: 1px solid var(--card-border);
     border-radius: 0.75rem;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition:
-      background-color 250ms ease,
-      transform 250ms ease;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
+    transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .ui-surface {
@@ -231,13 +205,12 @@
       max-width: 80rem;
       border-radius: 1rem;
       margin-top: 0px;
-      background-color: color-mix(in srgb, var(--bg-surface), transparent 25%);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
     }
 
     html.dark .nav-surface {
-      background-color: color-mix(in srgb, var(--bg-page), transparent 35%);
+      background-color: var(--bg-surface);
     }
   }
 
@@ -285,13 +258,12 @@
   .problem-card {
     position: relative;
     background: var(--card-bg);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-    transition: transform 0.2s ease;
+    border: 1px solid var(--card-border);
+    transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .problem-card:hover {
-    transform: translateY(-2px);
+    background: var(--bg-surface-alt);
   }
 
   .problem-tag-pill {
@@ -314,77 +286,230 @@
   }
 }
 
-.btn-sm {
-  @apply px-2 py-1 text-sm;
-}
-
-.btn-primary {
-  @apply inline-flex items-center rounded-md px-4 py-2 text-sm font-medium focus:outline-hidden;
-  background: var(--accent-fill);
-  color: var(--text-inverse);
-  border: 1px solid transparent;
-
-  &:hover {
-    filter: brightness(1.04);
-  }
-
-  &:focus {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background: var(--disabled-bg);
-    color: var(--disabled-text);
-  }
-}
-
 .shine-effect {
   position: relative;
   overflow: hidden;
 }
 
-.purple-motion-effect {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  color: var(--pme-color, inherit);
-  transform: scale(1);
-  transition:
-    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 600ms ease,
-    filter 220ms ease;
+/* ── Buttons ───────────────────────────────────────────────────────────────
+   Capsule buttons, per the USAAIO reference. This is a deliberate reversal of
+   the earlier squared set and of DESIGN.md's "pills are reserved for tags":
+   the shape was chosen from a reference, not by default, and the size is what
+   keeps it from reading as the oversized stadium we started with — a capsule
+   sized to its label is a button, a capsule stretched to the viewport is not.
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: 100%;
-    background: var(--pme-wipe-bg, #f7deff);
-    transform: translate(150%, 150%) scale(2.5);
-    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-    pointer-events: none;
+   Motion still reports state only: the fill steps and the glow lifts, the
+   button does not move. All seven states are defined.
+*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  /* Bare `.btn` is a complete, usable control: many call sites apply it with
+     no variant, so the default must stand on its own rather than render as an
+     unstyled span. Variants below override the fill. */
+  border: 1px solid transparent;
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  color: var(--btn-ink);
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: -0.006em;
+  /* A capsule must never stretch to fill its row — that is what made the old
+     dashboard button read as a stadium rather than a control. */
+  max-width: max-content;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 150ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
   }
+
+  &:hover:not(:disabled) {
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    background: var(--disabled-bg);
+    border-color: transparent;
+    color: var(--disabled-text);
+    box-shadow: none;
+    text-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+.btn-sm {
+  padding: 0.3125rem 0.875rem;
+  font-size: 0.8125rem;
+}
+
+/* Hero / primary page actions. */
+.btn-lg {
+  padding: 0.8125rem 1.625rem;
+  font-size: 0.9375rem;
+}
+
+.btn-primary {
+  /* Rim gradient on the shell, face gradient on the padding box: two layers,
+     clipped separately, which is what produces the bevel. */
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  border: 1px solid transparent;
+  color: var(--btn-ink);
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover:not(:disabled) {
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+  }
+
+  &:active:not(:disabled) {
+    box-shadow:
+      inset 0 2px 5px rgba(25, 24, 23, 0.28),
+      0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn-secondary {
+  /* Same white face as primary, but seated flat instead of raised. With one
+     fill colour across the system, elevation is what carries hierarchy. */
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  border: 1px solid transparent;
+  color: var(--btn-ink);
+  box-shadow: var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover:not(:disabled) {
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop), var(--btn-inset);
+  }
+
+  &:active:not(:disabled) {
+    box-shadow:
+      inset 0 2px 5px rgba(25, 24, 23, 0.28),
+      0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+
+  &:hover:not(:disabled) {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+  }
+
+  &:active:not(:disabled) {
+    background: var(--accent-soft-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+/* Utility for the rare button that genuinely should fill its container
+   (mobile sheets, full-width forms) — opt in, never the default. */
+.btn-block {
+  max-width: none;
+  width: 100%;
+}
+
+/* Small standalone link-chips in the hero corners (Discord, GitHub). Squared
+   like the buttons, and outlined rather than filled so they sit behind the
+   primary actions in the hierarchy instead of competing with them. */
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 0.4375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  /* --text-secondary is tuned for the dark page, not for a white chip face;
+     the chip carries its own ink so contrast holds on the light fill. */
+  color: var(--btn-ink);
+  cursor: pointer;
+  transition:
+    background-color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
 
   &:hover {
-    transform: scale(1.05);
-    color: var(--pme-hover-color, var(--pme-color, inherit));
-    filter: saturate(1.04);
-  }
-
-  &:hover::before {
-    transform: translate(0%, 0%) scale(2.5);
-  }
-
-  &:active {
-    transform: scale(0.95);
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+    color: var(--btn-ink);
   }
 
   &:focus-visible {
-    outline: 2px solid rgba(240, 194, 255, 0.5);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
+  }
+}
+
+.hero-caret {
+  background: var(--text-secondary);
+  animation: hero-caret-blink 1.1s steps(1) infinite;
+}
+
+@keyframes hero-caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-chip {
+    transition: none;
+  }
+
+  /* The line is rendered in full when motion is reduced, so a caret would be
+     pointing at nothing. */
+  .hero-caret {
+    display: none;
   }
 }
 
@@ -646,9 +771,7 @@
   z-index: 99;
   border-radius: 0px 0px 4px 4px;
   font-size: 12px;
-  font-family:
-    'Inter', 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono';
+  font-family: var(--font-mono);
 
   .dark &:hover {
     background-color: var(--bg-surface-alt);
@@ -661,4 +784,1955 @@
   @media (min-width: 768px) {
     --left-offset: 0rem;
   }
+}
+
+/* ── Resource index ────────────────────────────────────────────────────────
+   A reference list, deliberately not a card grid. Rows are separated by a
+   single hairline rather than by elevation, so fifteen entries read as one
+   scannable column instead of fifteen competing objects.
+*/
+.resource-topic__head {
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.resource-topic__title {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.resource-topic__intro {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+.resource-topic__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resource-topic__list > li + li {
+  border-top: 1px solid var(--border);
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.125rem 1.5rem;
+  padding: 0.875rem 0.75rem;
+  margin-inline: -0.75rem;
+  border-radius: 8px;
+  transition:
+    background-color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    background: var(--accent-soft);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+  }
+}
+
+@media (min-width: 48rem) {
+  .resource-row {
+    /* Name column is fixed so every title starts at the same x, which is what
+       makes a long list scannable. */
+    grid-template-columns: minmax(0, 21rem) minmax(0, 1fr) auto;
+    align-items: baseline;
+  }
+}
+
+.resource-row__name {
+  font-size: 0.9375rem;
+  font-weight: 550;
+  color: var(--text-primary);
+  text-wrap: pretty;
+}
+
+.resource-row__desc {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.resource-row__host {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.resource-row__arrow {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.resource-row:hover .resource-row__arrow {
+  transform: translate(1px, -1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resource-row,
+  .resource-row__arrow {
+    transition: none;
+  }
+
+  .resource-row:hover .resource-row__arrow {
+    transform: none;
+  }
+}
+
+/* ── FAQ ───────────────────────────────────────────────────────────────────
+   One continuous list rather than a field of separate cards. A hairline
+   between questions is enough to separate them, and it lets the eye run down
+   a single column instead of hopping between floating panels.
+*/
+.faq-list {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Rule sits on the item itself rather than on an adjacent-sibling selector:
+   each question is wrapped in its own div, so `+` combinators never match and
+   half the dividers silently go missing. Every item carries its own top rule;
+   the container closes the list with the bottom one. */
+.faq-item {
+  border-top: 1px solid var(--border);
+}
+
+.faq-toggle {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    background: var(--accent-soft);
+  }
+
+  /* Replaces the removed `focus:outline-none`: the whole question row takes
+     the ring, not just the chevron beside it. */
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+  }
+}
+
+.faq-chevron {
+  color: var(--text-muted);
+  transition: color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-toggle:hover .faq-chevron {
+  color: var(--text-primary);
+}
+
+.faq-item dd > div > div {
+  padding-inline: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-toggle,
+  .faq-chevron {
+    transition: none;
+  }
+}
+
+/* Legend swatch for the progress readouts. The hairline matters: the
+   "not started" step is deliberately near-transparent so it disappears into
+   the track, which would leave its legend key invisible without an outline. */
+.progress-swatch {
+  height: 0.5rem;
+  width: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 2px;
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+
+/* ── Gloss panels ──────────────────────────────────────────────────────────
+   The Cluely-style card pair: a bright panel and a deep one, both with a
+   large radius, a soft vertical gradient, and a single specular line along the
+   top edge. The sheen is a 1px highlight, not a blurred glass surface — the
+   panel stays fully opaque, so nothing behind it shows through and stacking
+   two of them never turns to mud.
+*/
+.gloss {
+  position: relative;
+  isolation: isolate;
+  border-radius: 24px;
+  border: 1px solid transparent;
+  box-shadow: var(--gloss-shadow);
+  overflow: hidden;
+}
+
+/* The specular top edge. */
+.gloss::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gloss-sheen) 22%,
+    var(--gloss-sheen) 78%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gloss-light {
+  background: var(--gloss-light-bg);
+  border-color: var(--gloss-light-border);
+  color: var(--gloss-light-ink);
+}
+
+.gloss-dark {
+  background: var(--gloss-dark-bg);
+  border-color: var(--gloss-dark-border);
+  color: var(--gloss-dark-ink);
+}
+
+.gloss-muted {
+  color: var(--gloss-light-ink-muted);
+}
+
+.gloss-dark .gloss-muted {
+  color: var(--gloss-dark-ink-muted);
+}
+
+/* Inset panel inside a gloss card (the problem list, the forum rows). */
+.gloss-inner {
+  border-radius: 14px;
+  border: 1px solid var(--gloss-light-border);
+  background: var(--gloss-light-inner);
+  overflow: hidden;
+}
+
+.gloss-dark .gloss-inner {
+  border-color: var(--gloss-dark-border);
+  background: var(--gloss-dark-inner);
+}
+
+.gloss-row + .gloss-row {
+  border-top: 1px solid var(--gloss-light-border);
+}
+
+.gloss-dark .gloss-row + .gloss-row {
+  border-top-color: var(--gloss-dark-border);
+}
+
+/* Small capsule tag used inside the gloss panels. */
+.gloss-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--gloss-light-border);
+  padding: 0.0625rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.gloss-dark .gloss-tag {
+  border-color: var(--gloss-dark-border);
+}
+
+/* ── Nav capsule ───────────────────────────────────────────────────────────
+   A floating pill holding the links, per the reference. Opaque rather than
+   blurred: it sits over an animated backdrop, and a translucent bar would
+   smear the moving waveform behind it.
+*/
+.nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  padding: 0.3125rem;
+}
+
+.nav-capsule-link {
+  border-radius: 999px;
+  padding: 0.4375rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition:
+    background-color 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+  }
+}
+
+.nav-capsule-link[aria-current='page'] {
+  background: var(--accent-soft-strong);
+  color: var(--text-primary);
+}
+
+/* ── Marquee ───────────────────────────────────────────────────────────────
+   Continuous horizontal drift. The track holds two identical copies of the
+   content and translates by exactly half its width, so the loop is seamless
+   without measuring anything at runtime.
+*/
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee-drift 42s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  /* Without the drift the mask would clip content that can no longer scroll
+     into view, so the row becomes a normal horizontal scroller instead. */
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .nav-capsule-link {
+    transition: none;
+  }
+}
+
+/* ── Hero ambient light ────────────────────────────────────────────────────
+   Three broad glows drifting behind everything. The periods are deliberately
+   not multiples of each other, so the composite has no loop point a viewer
+   can catch. Sits under the geometry field and over the page ground.
+*/
+.hero-ambient {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-ambient span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: 1;
+  will-change: transform;
+}
+
+.hero-ambient span:nth-child(1) {
+  width: 68vw;
+  height: 68vw;
+  left: 4%;
+  top: 8%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--text-primary), transparent 74%) 0%,
+    color-mix(in srgb, var(--text-primary), transparent 90%) 42%,
+    transparent 70%
+  );
+  animation: hero-drift-a 41s ease-in-out infinite;
+}
+
+.hero-ambient span:nth-child(2) {
+  width: 56vw;
+  height: 56vw;
+  right: 6%;
+  top: 22%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--text-primary), transparent 78%) 0%,
+    color-mix(in srgb, var(--text-primary), transparent 92%) 40%,
+    transparent 68%
+  );
+  animation: hero-drift-b 53s ease-in-out infinite;
+}
+
+.hero-ambient span:nth-child(3) {
+  width: 74vw;
+  height: 74vw;
+  left: 28%;
+  bottom: -6%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--text-primary), transparent 80%) 0%,
+    color-mix(in srgb, var(--text-primary), transparent 93%) 44%,
+    transparent 72%
+  );
+  animation: hero-drift-c 67s ease-in-out infinite;
+}
+
+@keyframes hero-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(9vw, 6vh, 0) scale(1.16);
+  }
+}
+
+@keyframes hero-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(-11vw, 9vh, 0) scale(0.94);
+  }
+}
+
+@keyframes hero-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(7vw, -8vh, 0) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambient span {
+    animation: none;
+  }
+}
+
+/* ── Hero backdrop: geometry field ────────────────────────────────────────
+   The constructions carry the whole hero, so there is no grid or vignette
+   competing with them — just the field and a soft ground behind the headline.
+*/
+.geo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --geo-ink: 237, 234, 229;
+}
+
+.geo__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.geo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* A scrim for the headline, not a lid. This previously started at fully
+     opaque --bg-page dead centre, which painted over the ambient glows in
+     exactly the region they were meant to show. */
+  background: radial-gradient(
+    ellipse 52% 42% at 50% 44%,
+    color-mix(in srgb, var(--bg-page), transparent 35%) 0%,
+    color-mix(in srgb, var(--bg-page), transparent 70%) 60%,
+    transparent 82%
+  );
+}
+
+/* ── Wordmark ──────────────────────────────────────────────────────
+   Flat. The stack of offset copies that used to sit behind the face, and the
+   soft cast shadow under it, are both gone — the type carries the hero on its
+   own weight now, with nothing reading as moulded edge or lift.
+*/
+.wordmark {
+  width: 100%;
+}
+
+.wordmark__block {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(3.25rem, 12.5vw, 9.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.wordmark__face {
+  position: relative;
+  display: block;
+}
+
+.wordmark__lead {
+  color: var(--text-primary);
+}
+
+.wordmark__trail-wrap {
+  position: relative;
+  display: inline;
+}
+
+.wordmark__trail {
+  color: var(--headline-dim);
+}
+
+/* ── Gloss panel section ─────────────────────────────────────────────────── */
+.gloss-section {
+  background: var(--bg-page);
+  padding-block: clamp(4rem, 10vw, 8rem);
+}
+
+.gloss-section__inner {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.gloss-section__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.gloss-section__grid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 62rem) {
+  .gloss-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.gloss-section__pad {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.gloss-section__title {
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.gloss-section__title--second {
+  margin-top: 2.5rem;
+}
+
+.gloss-section__lede {
+  margin-top: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 46ch;
+}
+
+.gloss-section__mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+}
+
+.gloss-section__list {
+  margin-top: 1.75rem;
+}
+
+.gloss-section__list-head {
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--gloss-light-border);
+}
+
+.gloss-section__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+}
+
+.gloss-section__item-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 30rem) {
+  .gloss-section__item-track {
+    display: none;
+  }
+}
+
+.gloss-section__link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+.gloss-section__bar {
+  margin-top: 1.75rem;
+  display: flex;
+  height: 0.375rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--heatmap-empty);
+}
+
+.gloss-section__legend {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1.5rem;
+}
+
+.gloss-section__legend > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.gloss-section__legend dt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.gloss-section__threads {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.gloss-section__thread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.875rem;
+}
+
+.gloss-section__thread-q {
+  font-size: 0.875rem;
+}
+
+/* ── Topic marquee ─────────────────────────────────────────────────────── */
+.marquee-section {
+  background: var(--bg-page);
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.marquee-section__inner {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.marquee-section__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.marquee-row {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.marquee-dot {
+  color: var(--border-strong);
+}
+
+/* ── Module tour ─────────────────────────────────────────────────────────── */
+.tour__inner {
+  /* Width, centring and gutters were in the rule shared with the removed
+     Mandelbrot scene, which is why the panel was sitting flush to the
+     viewport edge. */
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding: 3rem 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 64rem) {
+  .tour__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 3.5rem;
+  }
+}
+
+.tour__cta {
+  margin-top: 1.75rem;
+}
+
+.tour__shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+}
+
+.tour__frame {
+  display: block;
+  border: 0;
+  transform-origin: 0 0;
+  /* Inert: the frame is an illustration, and letting it take the pointer
+     would swallow the page scroll the moment the cursor crossed it. */
+  pointer-events: none;
+}
+
+/* ── TextureButton ─────────────────────────────────────────────────────────
+   Same material as `.btn`, exposed as a component for new call sites. The
+   face is a child element so an icon and a label can sit on the moulded
+   surface without either inheriting the rim gradient.
+*/
+.tex-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  max-width: max-content;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -0.006em;
+  white-space: nowrap;
+  transition:
+    background 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+.tex-btn__face {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tex-btn--sm {
+  padding: 0.3125rem 0.875rem;
+  font-size: 0.8125rem;
+}
+.tex-btn--md {
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
+}
+.tex-btn--lg {
+  padding: 0.8125rem 1.625rem;
+  font-size: 0.9375rem;
+}
+
+.tex-btn--primary {
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  color: var(--btn-ink);
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+  }
+
+  &:active {
+    box-shadow:
+      inset 0 2px 5px rgba(25, 24, 23, 0.28),
+      0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.tex-btn--secondary,
+.tex-btn--icon {
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  color: var(--btn-ink);
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    background:
+      var(--btn-face-hover) padding-box,
+      var(--btn-rim) border-box;
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+  }
+
+  &:active {
+    box-shadow:
+      inset 0 2px 5px rgba(25, 24, 23, 0.28),
+      0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.tex-btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  box-shadow: none;
+
+  &:hover {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tex-btn {
+    transition: none;
+  }
+}
+
+/* ── Nav: three pills ──────────────────────────────────────────────────────
+   Logo in its own light pill, links in the dark capsule, action on the right.
+   The logo pill inverts against the page so the three zones read as separate
+   objects on the bar rather than as one wide strip.
+*/
+.nav-logo-pill {
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.3125rem 0.9375rem 0.3125rem 0.625rem;
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  border: 1px solid transparent;
+  box-shadow: var(--btn-drop), var(--btn-inset);
+  color: var(--btn-ink);
+  transition: box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    box-shadow: var(--btn-drop-hover), var(--btn-inset);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+/* The wordmark inside the pill sits on the light face, so it takes the
+   button's ink rather than the page's. */
+.nav-logo-pill {
+  --logo-ink: var(--btn-ink);
+}
+
+/* The mark is a three-blade trefoil, and one of those blades is pale rose —
+   near-invisible against the pill's light face, which left the logo reading as
+   two blades and a gap. A tight dark drop-shadow traces the alpha edge, so the
+   third blade gets a contour without tinting any of them. Scoped to the light
+   pill: on the page ground all three blades already have contrast. */
+.nav-logo-pill .logo-mark {
+  filter: drop-shadow(0 0 0.5px rgba(30, 22, 28, 0.85))
+    drop-shadow(0 0 1.5px rgba(30, 22, 28, 0.5));
+}
+
+/* Give the links capsule the same moulded treatment as the buttons, so the
+   three zones are made of one material. */
+.nav-capsule {
+  background:
+    var(--btn-dark-face) padding-box,
+    var(--btn-dark-rim) border-box;
+  border: 1px solid transparent;
+  box-shadow: var(--btn-drop), var(--btn-dark-inset);
+}
+
+/* Menus that hang off the nav capsule are made of the same material, so they
+   read as an extension of the bar rather than a generic surface panel: same
+   rim gradient, same face, same drop. Only the radius differs, since a panel
+   is not a pill. */
+.nav-dropdown-panel {
+  background:
+    var(--btn-dark-face) padding-box,
+    var(--btn-dark-rim) border-box;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  box-shadow:
+    var(--btn-drop),
+    var(--btn-dark-inset),
+    0 18px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-pill {
+    transition: none;
+  }
+}
+
+/* ── Harmonic wave scene ───────────────────────────────────────────────────
+   Curves run in from the left edge; the panel sits over the right with a
+   gradient scrim so the copy always has ground beneath it.
+*/
+.wave {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-page);
+  overflow: hidden;
+}
+
+.wave__canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  --wave-ink: 237, 234, 229;
+  --wave-glow: 237, 234, 229;
+}
+
+.wave__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wave__canvas-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    98deg,
+    transparent 0%,
+    transparent 46%,
+    color-mix(in srgb, var(--bg-page), transparent 24%) 60%,
+    var(--bg-page) 78%
+  );
+}
+
+.wave__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding: 3rem 1.5rem;
+}
+
+.wave__panel {
+  margin-left: auto;
+  width: min(30rem, 100%);
+}
+
+.wave__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.wave__lede {
+  margin-top: 0.875rem;
+  max-width: 34ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.wave__readout {
+  margin-top: 2.25rem;
+}
+
+.wave__count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.wave__title {
+  margin-top: 0.625rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.wave__body {
+  margin-top: 0.5rem;
+  max-width: 36ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.wave__scale {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.375rem;
+}
+
+.wave__scale span {
+  height: 2px;
+  width: 2.25rem;
+  background: var(--border-strong);
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wave__scale span.is-past {
+  background: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave__scale span {
+    transition: none;
+  }
+}
+
+/* ── Module tour ───────────────────────────────────────────────────────────
+   These section rules were lost when the Mandelbrot scene was removed: they
+   lived in selector lists shared with `.fractal`, so stripping that selector
+   took the whole rule with it and the panel shipped unstyled.
+*/
+.tour {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-page);
+  overflow: hidden;
+}
+
+.tour__heading {
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+
+/* Fixed height so the swapping name cannot reflow the column beneath it —
+   the dots and the button must not jump when a longer word arrives. */
+.tour__cycle {
+  position: relative;
+  margin-top: 0.75rem;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.tour__name {
+  display: inline-block;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--text-primary);
+  text-wrap: balance;
+  animation: tour-name-in 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tour-name-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.tour__dots {
+  display: flex;
+  gap: 0.4375rem;
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+
+.tour__dots li {
+  height: 2px;
+  width: 1.75rem;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tour__dots li.is-current {
+  background: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour__name {
+    animation: none;
+  }
+
+  .tour__dots li {
+    transition: none;
+  }
+}
+
+/* ── Module coverflow ──────────────────────────────────────────────────────
+   The card is a fixed-size window; the framed page is rendered at desktop
+   width and scaled down inside it, so every card shows a real desktop layout
+   rather than a module page squeezed into a mobile breakpoint.
+*/
+.cf {
+  --cf-card: clamp(210px, 26vw, 340px);
+  --cf-card-h: calc(var(--cf-card) * 1.3);
+  background: var(--bg-page);
+  padding-block: clamp(4rem, 9vw, 7rem);
+  overflow: hidden;
+}
+
+.cf__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.cf__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.cf__stage {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+/* Arrows sit outside the rake so they never overlap the centre card. */
+.cf__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 200;
+  transform: translateY(-50%);
+  padding: 0.5rem;
+  aspect-ratio: 1;
+}
+
+.cf__arrow--prev {
+  left: clamp(0.75rem, 4vw, 3rem);
+}
+
+.cf__arrow--next {
+  right: clamp(0.75rem, 4vw, 3rem);
+}
+
+.cf__frame {
+  /* Vertical padding keeps the card shadows clear of the overflow clip. */
+  padding-block: 2.5rem;
+  overflow: hidden;
+  cursor: grab;
+  outline: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -4px;
+    border-radius: 12px;
+  }
+}
+
+.cf__track {
+  position: relative;
+  height: var(--cf-card-h);
+  transform-style: preserve-3d;
+  user-select: none;
+}
+
+.cf__card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--cf-card);
+  height: var(--cf-card-h);
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
+  will-change: transform;
+}
+
+.cf__caption {
+  margin-top: 1.5rem;
+  text-align: center;
+  animation: cf-caption-in 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cf-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cf__track-name {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cf__title-link {
+  display: inline-block;
+  margin-top: 0.375rem;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+.cf__dots {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cf__dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 999px;
+  background: var(--border-strong);
+  cursor: pointer;
+  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    background: var(--text-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+.cf__dot.is-current {
+  background: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf__caption {
+    animation: none;
+  }
+
+  .cf__dot {
+    transition: none;
+  }
+}
+
+/* ── Track plates ──────────────────────────────────────────────────────────
+   Four objects standing on the page. The plate is tilted back on X and given
+   a cast shadow below it, so it reads as sitting on a surface rather than
+   floating. Hover lifts it and shortens the shadow — the two have to move
+   together or the illusion breaks immediately.
+*/
+.plates {
+  background: var(--bg-page);
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.plates__inner {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+
+.plates__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.plates__lede {
+  margin-top: 0.875rem;
+  margin-inline: auto;
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.plates__row {
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4rem) 1.5rem;
+  perspective: 900px;
+}
+
+@media (min-width: 52rem) {
+  .plates__row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.plates__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 6px;
+    border-radius: 12px;
+  }
+}
+
+.plates__key {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(84px, 11vw, 128px);
+  aspect-ratio: 1 / 1.06;
+  margin-bottom: 1.25rem;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background:
+    var(--btn-face) padding-box,
+    var(--btn-rim) border-box;
+  box-shadow:
+    var(--btn-inset),
+    0 18px 30px -18px rgba(0, 0, 0, 0.9);
+  transform: rotateX(14deg) translateY(0);
+  transform-style: preserve-3d;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The cast shadow on the surface below, separate from the key's own shadow so
+   it can shrink as the key lifts. */
+.plates__key::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -14px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  filter: blur(7px);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.plates__link:hover .plates__key,
+.plates__link:focus-visible .plates__key {
+  transform: rotateX(14deg) translateY(-9px);
+  box-shadow:
+    var(--btn-inset),
+    0 30px 46px -20px rgba(0, 0, 0, 0.95);
+}
+
+.plates__link:hover .plates__key::after,
+.plates__link:focus-visible .plates__key::after {
+  transform: scaleX(0.86);
+  opacity: 0.7;
+}
+
+.plates__face {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--btn-ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.plates__name {
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.plates__contest {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plates__key,
+  .plates__key::after {
+    transition: none;
+  }
+}
+
+/* ── Try a problem ─────────────────────────────────────────────────────── */
+.tryp {
+  background: var(--bg-page);
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.tryp__inner {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .tryp__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 4rem;
+  }
+}
+
+.tryp__heading {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.tryp__lede {
+  margin-top: 0.75rem;
+  max-width: 42ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.tryp__question {
+  margin-top: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.tryp__stem {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  text-wrap: pretty;
+}
+
+.tryp__choices {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tryp__choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background:
+    var(--btn-dark-face) padding-box,
+    var(--btn-dark-rim) border-box;
+  box-shadow: var(--btn-drop), var(--btn-dark-inset);
+  padding: 0.4375rem 0.9375rem 0.4375rem 0.5rem;
+  color: var(--btn-dark-ink);
+  cursor: pointer;
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover:not(:disabled) {
+    background:
+      var(--btn-dark-face-hover) padding-box,
+      var(--btn-dark-rim) border-box;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+.tryp__key {
+  display: grid;
+  place-items: center;
+  height: 1.375rem;
+  width: 1.375rem;
+  border-radius: 999px;
+  background: var(--accent-soft-strong);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+}
+
+.tryp__value {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status is never colour alone: the correct choice also gains a ring and the
+   verdict states the answer in words directly above. */
+.tryp__choice.is-correct {
+  border-color: var(--success);
+  box-shadow:
+    var(--btn-dark-inset),
+    0 0 0 2px color-mix(in srgb, var(--success), transparent 55%);
+}
+
+.tryp__choice.is-correct .tryp__key {
+  background: var(--success);
+  color: var(--bg-page);
+}
+
+.tryp__choice.is-wrong {
+  border-color: var(--danger);
+  opacity: 0.85;
+}
+
+.tryp__choice.is-wrong .tryp__key {
+  background: var(--danger);
+  color: var(--bg-page);
+}
+
+.tryp__choice.is-dim {
+  opacity: 0.32;
+}
+
+/* Height reserved so the reveal does not shove the page. */
+.tryp__result {
+  min-height: 9.5rem;
+  margin-top: 1.25rem;
+}
+
+.tryp__result-in {
+  animation: tryp-reveal 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tryp-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tryp__verdict {
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+.tryp__verdict.is-correct {
+  color: var(--success);
+}
+
+.tryp__verdict.is-wrong {
+  color: var(--danger);
+}
+
+.tryp__explain {
+  margin-top: 0.5rem;
+  max-width: 56ch;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.tryp__cta {
+  margin-top: 1.125rem;
+}
+
+.tryp__svg {
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin-inline: auto;
+  display: block;
+  overflow: visible;
+}
+
+.tryp__grid {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.tryp__path {
+  stroke: var(--text-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 460;
+  animation: tryp-trace 2.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes tryp-trace {
+  0% {
+    stroke-dashoffset: 460;
+  }
+  55%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tryp__node {
+  fill: var(--text-primary);
+}
+
+.tryp__node.is-end {
+  fill: var(--bg-page);
+  stroke: var(--text-primary);
+  stroke-width: 2.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tryp__choice,
+  .tryp__result-in {
+    transition: none;
+    animation: none;
+  }
+
+  .tryp__path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The mascot sits on the end of the wordmark, scaled from the type size so it
+   keeps its perch at every viewport rather than drifting off the last letter.
+   Anchored to the trail span so it tracks the final "e" rather than the block edge. */
+.wordmark__pet {
+  position: absolute;
+  right: 0.02em;
+  /* Rests on the top of the final "e" rather than sinking into it. The "e" of
+     Geist tops out 0.55em above the baseline, which is 0.845em up from the
+     bottom of the inline box this is anchored to; a hair under that lands the
+     mascot's feet on the letter instead of leaving it hovering. It was 0.58em,
+     which buried it to the waist. */
+  bottom: 0.8em;
+  width: 0.46em;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  transform-origin: bottom center;
+  animation: pet-bob 5.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes pet-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-6%) rotate(9deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark__pet {
+    animation: none;
+  }
+}
+
+/* ── Coverflow card face ───────────────────────────────────────────────────
+   Real module frontmatter, laid out the way the module page lays its header
+   out. No iframe: every card can render at once, and the section costs
+   nothing at runtime.
+*/
+/* The live module page on the centre card. It sits over .cf__page and fades in
+   on load, so the card never goes blank while the frame fetches — the
+   frontmatter face is the ground underneath it the whole time. */
+.cf__live {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.cf__live.is-ready {
+  opacity: 1;
+}
+
+.cf__live-frame {
+  display: block;
+  border: 0;
+  /* Scaled from the top-left by the factor the component measures, so the
+     desktop-width render fills the card face exactly. */
+  transform-origin: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf__live {
+    transition: none;
+  }
+}
+
+.cf__page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.875rem, 1.6vw, 1.25rem);
+  background:
+    radial-gradient(130% 90% at 50% 0%, var(--bg-muted) 0%, transparent 58%),
+    var(--bg-surface-alt);
+  overflow: hidden;
+}
+
+.cf__page-track {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cf__page-title {
+  margin-top: 0.5rem;
+  font-size: clamp(0.9375rem, 1.7vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.cf__page-author {
+  margin-top: 0.3125rem;
+  font-size: 0.625rem;
+  color: var(--text-muted);
+}
+
+.cf__page-desc {
+  margin-top: 0.625rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  /* Clamped rather than truncated mid-word: the descriptions vary a lot in
+     length and a ragged bottom edge is worse than a clean cut. */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cf__page-rule {
+  margin-top: auto;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-strong), transparent 88%);
+}
+
+.cf__page-meta {
+  margin: 0.75rem 0 0;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.cf__page-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.cf__page-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cf__page-meta dd {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Difficulty chips ──────────────────────────────────────────────────────
+   One ordinal ramp. The chip carries a hairline at every step so the faintest
+   levels stay visible, and the label is always present — the scale survives
+   with colour removed.
+*/
+.difficulty-chip {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface-alt);
+  padding: 0.0625rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.15rem;
+  white-space: nowrap;
+}
+
+.difficulty--na {
+  color: var(--text-muted);
+}
+.difficulty--very-easy {
+  color: color-mix(in srgb, var(--text-muted), var(--text-secondary) 50%);
+}
+.difficulty--easy {
+  color: var(--text-secondary);
+}
+.difficulty--normal {
+  color: var(--text-primary);
+}
+/* Colour starts here: past Normal, difficulty is information you want to
+   notice before you commit an hour to a problem. */
+.difficulty--hard {
+  color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning), transparent 65%);
+}
+.difficulty--very-hard {
+  color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning), transparent 45%);
+  background: color-mix(in srgb, var(--warning), transparent 92%);
+}
+.difficulty--insane {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger), transparent 45%);
+  background: color-mix(in srgb, var(--danger), transparent 90%);
 }

@@ -9,15 +9,15 @@ const Breadcrumbs = () => {
   const module = moduleLayoutInfo.markdownLayoutInfo;
   if (module instanceof SolutionInfo) return null;
   return (
-    <nav className="dark:text-dark-med-emphasis flex flex-wrap items-center text-sm leading-loose font-medium text-gray-500">
+    <nav className="dark:text-dark-med-emphasis flex flex-wrap items-center text-sm leading-loose font-medium text-[var(--text-muted)]">
       <Link
         to="/dashboard/"
-        className="dark:hover:text-dark-high-emphasis transition hover:text-gray-700"
+        className="dark:hover:text-dark-high-emphasis transition hover:text-[var(--text-primary)]"
       >
         Home
       </Link>
       <svg
-        className="mx-2 h-5 w-5 shrink-0 text-gray-400"
+        className="mx-2 h-5 w-5 shrink-0 text-[var(--text-muted)]"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -29,12 +29,12 @@ const Breadcrumbs = () => {
       </svg>
       <Link
         to={`/${module.section}/`}
-        className="dark:hover:text-dark-high-emphasis transition hover:text-gray-700"
+        className="dark:hover:text-dark-high-emphasis transition hover:text-[var(--text-primary)]"
       >
         {SECTION_LABELS[module.section]}
       </Link>
       <svg
-        className="mx-2 h-5 w-5 shrink-0 text-gray-400"
+        className="mx-2 h-5 w-5 shrink-0 text-[var(--text-muted)]"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

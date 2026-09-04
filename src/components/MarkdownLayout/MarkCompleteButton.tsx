@@ -51,7 +51,7 @@ const moduleProgressToIcon = (status: ModuleProgress): JSX.Element => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-5 w-5 text-blue-400"
+          className="h-5 w-5 text-[var(--text-primary)]"
         >
           <path
             fillRule="evenodd"
@@ -71,7 +71,7 @@ const moduleProgressToIcon = (status: ModuleProgress): JSX.Element => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-5 w-5 text-purple-400"
+          className="h-5 w-5 [color:var(--text-muted)]"
         >
           <path
             fillRule="evenodd"
@@ -106,11 +106,14 @@ const MarkCompleteButton = ({
               id={menuId}
               className={`inline-flex w-full justify-center rounded-full pr-4 ${
                 state === 'Not Started' ? 'pl-4' : 'pl-3'
-              } py-2 font-mono text-sm leading-5 font-bold focus:outline-hidden`}
+              } py-2 text-sm leading-5 font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]`}
               style={{
-                background: '#6D3B9F',
-                border: '1px solid rgba(240, 194, 255, 0.34)',
-                color: '#F4EDEA',
+                background: 'var(--accent-fill)',
+                border: '1px solid transparent',
+                /* --accent-fill and --text-primary are the same value in dark
+                   mode, so this rendered as an unreadable blank pill at 1:1.
+                   The fill has its own paired ink for exactly this. */
+                color: 'var(--accent-fill-text)',
               }}
             >
               {moduleProgressToIcon(state as ModuleProgress)}
@@ -143,10 +146,7 @@ const MarkCompleteButton = ({
                 dropdownAbove
                   ? 'bottom-0 mb-12 origin-bottom-right'
                   : 'origin-top-right'
-              } absolute right-0 z-10 mt-2 w-36 rounded-xl focus:outline-hidden`}
-              style={{
-                background: 'var(--modal-bg)',
-              }}
+              } nav-dropdown-panel absolute right-0 z-10 mt-2 w-36 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]`}
             >
               <div className="py-1">
                 {ModuleProgressOptions.map(option => (
@@ -155,10 +155,10 @@ const MarkCompleteButton = ({
                       <button
                         onClick={() => onChange(option)}
                         className={classNames(
-                          'flex w-full items-center px-3 py-2 text-left font-mono text-sm',
+                          'flex w-full items-center px-3 py-2 text-left text-sm',
                           active
-                            ? 'bg-white/10 text-[#F4EDEA]'
-                            : 'text-[rgba(244,237,234,0.8)]'
+                            ? 'bg-[var(--accent-soft-strong)] text-[var(--text-primary)]'
+                            : 'text-[var(--text-secondary)]'
                         )}
                         role="menuitem"
                       >
