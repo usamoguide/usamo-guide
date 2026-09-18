@@ -511,6 +511,31 @@ export default function IndexPage({ path }): JSX.Element {
           </div>
         </div>
       </div>
+      {/* Begin International Ambassador Program */}
+      <div
+        className="relative transition-colors duration-500"
+        style={{
+          background: PAGE_BG,
+          color: TEXT_PRIMARY,
+        }}
+      >
+        <div className={containerClasses}>
+          <RevealSection>
+            <p
+              className="mx-auto max-w-2xl text-center text-base md:text-lg"
+              style={{ color: TEXT_SECONDARY }}
+            >
+              We also run an{' '}
+              <Link to="/ambassadors" style={linkStyle}>
+                International Ambassador Program
+              </Link>{' '}
+              - olympiad students representing USAMO Guide in nine countries so
+              far.
+            </p>
+          </RevealSection>
+        </div>
+      </div>
+      {/* End International Ambassador Program */}
       {/* Begin FAQ */}
       <div
         className="relative transition-colors duration-500"
@@ -784,6 +809,11 @@ export default function IndexPage({ path }): JSX.Element {
                 <li>
                   <Link to="/contact-us" style={footerLinkStyle}>
                     Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/ambassadors" style={footerLinkStyle}>
+                    Ambassador Program
                   </Link>
                 </li>
                 <li>
