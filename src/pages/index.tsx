@@ -70,6 +70,19 @@ const builderProfiles = [
   { name: 'Daniel Liao', role: 'CMO', imageSrc: 'images/CMO.jpeg' },
 ];
 
+const partners = [
+  {
+    name: 'YIMO',
+    href: 'https://www.yimo-official.org/',
+    imageSrc: '/images/yimo-logo.png',
+  },
+  {
+    name: 'Mustang Math',
+    href: 'https://www.mustangmath.com/',
+    imageSrc: '/images/mustang-math-logo.png',
+  },
+] as const;
+
 function RevealSection({
   children,
   className = '',
@@ -511,6 +524,114 @@ export default function IndexPage({ path }): JSX.Element {
           </div>
         </div>
       </div>
+      {/* Begin Partners & Sponsorship */}
+      <div
+        className="relative transition-colors duration-500"
+        style={{
+          background: PAGE_BG,
+          color: TEXT_PRIMARY,
+        }}
+      >
+        <div className={containerClasses}>
+          <RevealSection>
+            <h2
+              className={sectionHeadingClasses}
+              style={{ color: TEXT_PRIMARY }}
+            >
+              Our Partners
+            </h2>
+            <p
+              className={classNames(sectionSubtitleClasses, 'mt-4')}
+              style={{ color: TEXT_SECONDARY }}
+            >
+              Organizations that help keep USAMO Guide free for every math contest
+              student.
+            </p>
+          </RevealSection>
+
+          <div className="h-10 md:h-14"></div>
+
+          <RevealSection delay={100}>
+            <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+              {partners.map(partner => (
+                <a
+                  key={partner.name}
+                  href={partner.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-40 flex-col items-center justify-center gap-3 rounded-2xl border border-[#F0C2FF]/20 transition hover:-translate-y-1 hover:border-[#F0C2FF]/50"
+                  style={{ background: 'var(--card-bg)' }}
+                >
+                  <img
+                    src={partner.imageSrc}
+                    alt={`${partner.name} logo`}
+                    className="h-20 w-20 object-contain"
+                    loading="lazy"
+                  />
+                  <span
+                    className="font-mono text-sm font-semibold tracking-wide"
+                    style={{ color: TEXT_SECONDARY }}
+                  >
+                    {partner.name}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </RevealSection>
+
+          <div className="h-14 md:h-20"></div>
+
+          {/* Sponsor / partner with us */}
+          <RevealSection delay={150}>
+            <div
+              className="mx-auto max-w-4xl rounded-3xl px-6 py-10 text-center sm:px-10 md:py-12"
+              style={{
+                background: 'var(--card-bg)',
+                border: '1px solid rgba(240, 194, 255, 0.22)',
+              }}
+            >
+              <h3
+                className="text-2xl font-bold tracking-tight md:text-3xl"
+                style={{ color: TEXT_PRIMARY }}
+              >
+                Sponsor USAMO Guide
+              </h3>
+              <p
+                className="mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                Want to support free olympiad math education and reach
+                thousands of motivated contest students? We'd love to partner
+                with you. Reach out at{' '}
+                <a href="mailto:team@usamoguide.com" style={linkStyle}>
+                  team@usamoguide.com
+                </a>{' '}
+                and let's talk.
+              </p>
+              <div className="mt-7 flex justify-center">
+                <a
+                  href="mailto:team@usamoguide.com"
+                  className="purple-motion-effect inline-flex items-center justify-center rounded-full px-7 py-3 font-mono text-base leading-tight font-bold"
+                  style={
+                    {
+                      border: '1px solid rgba(240, 194, 255, 0.34)',
+                      background: '#6D3B9F',
+                      '--pme-color': '#F4EDEA',
+                      '--pme-hover-color': '#201C36',
+                      '--pme-wipe-bg': '#F0C2FF',
+                    } as React.CSSProperties
+                  }
+                >
+                  Become a Sponsor
+                </a>
+              </div>
+            </div>
+          </RevealSection>
+
+          <div className="h-16 md:h-24"></div>
+        </div>
+      </div>
+      {/* End Partners & Sponsorship */}
       {/* Begin FAQ */}
       <div
         className="relative transition-colors duration-500"
