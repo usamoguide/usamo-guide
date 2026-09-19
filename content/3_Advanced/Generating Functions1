@@ -1,0 +1,257 @@
+---
+id: Generating Functions
+title: Generating Functions
+author: Andrew Zhou
+description: All about Generating Functions
+prerequisites: ["optional-prereq-id"]
+---
+
+ ## Introduction
+
+"A generating function is a clothesline on which we hang up a sequence
+of numbers for display." - Generating Functionology (https://www2.math.upenn.edu/~wilf/gfology2.pdf), an excellent resource for learning about generating functions. 
+
+They are often used in combinatorics style questions that involve solving recursions or analysing sequences of numbers.
+
+## Formal Definitions and Notation
+
+Suppose we have a sequence $$a_0$$, $$a_1$$, $$a_2$$, $$a_n$$, and we wish to better understand how it behaves or even better be able to quickly compute the n th term. 
+
+Now this is simple if we know the formula for the n th term that governs the sequence, for example if $$a_n$$ = $$n + 1$$.
+
+However, this isnt always the case. In those cases we may be able to find a simple formula for the sum of a power series whose coefficients are the sequence we are looking for. This is the definition of a generating function.
+
+More formally, the generating function g(x) for the above sequence is generally one such that the coefficient of $$x^n$$ is $$a_n$$. Hence g(x) = $$a_0$$ + $$a_1$$ $$x$$ + $$a_2$$ $$x^2$$ + ... + $$a_n$$ $$x^n$$ + ..., which may also have a closed form.
+
+This will become clearer as we explore a few examples.
+
+## Example: Solving a Recurrence with Generating Functions
+
+>Consider the recurrence
+
+$$
+a_{n+1} = 2a_n + 1 \quad (n \ge 0),\quad a_0 = 0.
+$$
+
+>Find its general formula with proof, using generating functions.
+
+### Step 1: Inspect the sequence
+
+Compute the first few terms:
+
+$$
+0, 1, 3, 7, 15, 31, \dots
+$$
+
+This suggests the pattern:
+
+$$
+a_n = 2^n - 1,
+$$
+
+but we will derive this using generating functions.
+
+
+### Step 2: Define the generating function
+
+$$
+A(x) = \sum_{n \ge 0} a_n x^n.
+$$
+
+
+### Step 3: Apply the recurrence
+
+Multiply the recurrence by $$x^n$$ and sum over $$n \ge 0$$.
+
+**Left-hand side:**
+
+$$
+\sum_{n \ge 0} a_{n+1} x^n = \frac{A(x)}{x}
+$$
+
+(using $$a_0 = 0$$)
+
+**Right-hand side:**
+
+$$
+\sum_{n \ge 0} (2a_n + 1)x^n = 2A(x) + \sum_{n \ge 0} x^n
+$$
+
+$$
+= 2A(x) + \frac{1}{1 - x}
+$$
+
+### Step 4: Solve for $$A(x)$$
+
+$$
+\frac{A(x)}{x} = 2A(x) + \frac{1}{1 - x}
+$$
+
+$$
+A(x) = \frac{x}{(1 - x)(1 - 2x)}
+$$
+
+
+
+### Step 5: Extract coefficients
+
+Partial fractions:
+
+$$
+\frac{x}{(1 - x)(1 - 2x)} = \frac{x}{1 - 2x} - \frac{x}{1 - x}
+$$
+
+Expand:
+
+$$
+\frac{x}{1 - 2x} = 2x + 2^2 x^2 + 2^3 x^3 + \cdots
+$$
+
+$$
+\frac{x}{1 - x} = x + x^2 + x^3 + \cdots
+$$
+
+So,
+
+$$
+A(x) = \sum_{n \ge 0} (2^n - 1)x^n
+$$
+
+
+
+### Final Answer
+
+$$
+a_n = 2^n - 1 \quad (n \ge 0)
+$$
+
+
+## Fibonacci Numbers via Generating Functions
+
+>Consider the Fibonacci recurrence
+
+$$
+F_{n+1} = F_n + F_{n-1}, \quad n \ge 1, \quad F_0 = 0,\; F_1 = 1.
+$$
+
+>Using generating functions, find a proof of its general formula.
+
+### Step 1: Define the generating function
+
+$$
+F(x) = \sum_{n \ge 0} F_n x^n
+$$
+
+### Step 2: Apply the recurrence
+
+Multiply the recurrence by $$x^n$$ and sum over $$n \ge 1$$.
+
+**Left-hand side:**
+
+$$
+\sum_{n \ge 1} F_{n+1} x^n = \frac{F(x) - x}{x}
+$$
+
+**Right-hand side:**
+
+$$
+\sum_{n \ge 1} F_n x^n + \sum_{n \ge 1} F_{n-1} x^n
+$$
+
+$$
+= F(x) + xF(x)
+$$
+
+
+### Step 3: Solve for $$F(x)$$
+
+$$
+\frac{F(x) - x}{x} = F(x) + xF(x)
+$$
+
+$$
+F(x) = \frac{x}{1 - x - x^2}
+$$
+
+
+### Step 4: Extract coefficients
+
+Factor the denominator:
+
+$$
+1 - x - x^2 = (1 - r_+ x)(1 - r_- x)
+$$
+
+where
+
+$$
+r_\pm = \frac{1 \pm \sqrt{5}}{2}
+$$
+
+Using partial fractions and geometric series:
+
+$$
+F(x) = \frac{1}{\sqrt{5}} \sum_{n \ge 0} \left(r_+^n - r_-^n\right)x^n
+$$
+
+
+### Final Formula
+
+$$
+F_n = \frac{1}{\sqrt{5}} \left(r_+^n - r_-^n\right), \quad n \ge 0
+$$
+
+This is the legendary **Binet's formula**!
+
+### Asymptotic Approximation
+
+Earlier we talked about how generating functions can also help us analyze the properties of an unknown sequence. This is an example of how.
+
+Since $$|r_-| < 1$$, for large $$n$$:
+
+$$
+F_n \sim \frac{1}{\sqrt{5}} \, r_+^n
+$$
+
+$$
+= \frac{1}{\sqrt{5}} \left(\frac{1 + \sqrt{5}}{2}\right)^n
+$$
+
+Thus in fact for large n, we have a sensible approximation for the size of $$F_n$$, and therefore a good way of representing its growth. Please convince yourself of the validity of this approximation before moving on.
+
+
+
+## Summary of Methods
+
+Upon reading the first two examples, undoubtedly you will recognize a structure to the way we have approached the problems and presented their solutions!
+
+In fact, there is indeed a general method to follow for solving questions that require the application of generating functions which is remarkably effective and efficient.
+
+With inspiration from the textbook Generating Functionology (link in introduction), it is the following:
+
+1. **Specify the domain**  
+   Clearly state the values of $$n$$ for which the recurrence is valid.
+
+2. **Define the generating function**  
+   Introduce a function (e.g. $$A(x)$$) by
+   $$
+   A(x) = \sum_{n \ge 0} a_n x^n
+   $$
+
+3. **Apply the method**  
+   Multiply the recurrence by $$x^n$$ and sum over all valid $$n$$.
+
+4. **Rewrite in terms of $$A(x)$$**  
+   Express both sides entirely using the generating function.
+
+5. **Solve for the generating function**  
+   Rearrange the equation to obtain an explicit formula for $$A(x)$$.
+
+6. **Extract the sequence**  
+   Expand $$A(x)$$ as a power series to find a formula for $$a_n$$.  
+   If $$A(x)$$ is a rational function, use partial fractions and known series expansions.
+
+Once again, the only way to get better at these types of problems is practice. Since the use of generating functions in olympiad problems is mainly a technical exercise rather than a test of intuition, only practice makes perfect. 
+
+Happy solving!
+
