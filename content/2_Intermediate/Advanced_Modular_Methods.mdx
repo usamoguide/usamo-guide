@@ -1,0 +1,196 @@
+---
+id: advanced-modular-methods
+title: Advanced Modular Methods
+author: Raymond Li
+description: Fermat's Little Theorem, Wilson's Theorem, and quadratic residues
+prerequisites: []
+---
+
+## Introduction
+
+While units-digit and simple remainder problems can often be completed intuitively, remainders of large powers, factorials, and more are often unsolvable by elementary methods. The three following concepts handle many cases of modular arithmetic:
+
+**Fermat's Little Theorem**: computing powers modulo a prime
+
+**Wilson's Theorem**: computing factorials modulo a prime
+
+**Quadratic residues**: computing which remainders are achievable from a square number module a prime
+
+These three concepts use the fact that remainders modulo a prime $p$ behave like a self-contained number system under multiplication mod $p$.
+
+## Key Ideas
+
+### Fermat's Little Theorem
+
+> **Fermat's Little Theorem:** Let $p$ be prime and let $a$ be an integer with $p \nmid a$. Then
+> $$
+> a^{p-1} \equiv 1 \pmod{p}.
+> $$
+> **Corollary:** For every integer $a$, $a^{p} \equiv a \pmod{p}$.
+
+**Useful Application:** By reducing the exponent mod $p-1$, you get that $a^n \pmod p$ only depends on $n \bmod (p-1)$ (when $p \nmid a$), because $a^n = a^{(p-1)q + r} = (a^{p-1})^q \cdot a^r \equiv a^r \pmod p$.
+
+**Common Pitfall:** The theorem requires $p \nmid a$. If $p \mid a$, then $a^{p-1}\equiv 0$
+
+### Wilson's Theorem
+
+> **Wilson's Theorem:** For an integer $n > 1$,
+> $$
+> (n-1)! \equiv -1 \pmod{n} \quad \text{if and only if } n \text{ is prime.}
+> $$
+
+**~~Useful~~ Application:** Since a prime is the only $n$ for which $(n-1)!\equiv -1$, it can be used as a (very inefficient) primality test.
+
+**Truncating Factorials:** Wilson's Theorem covers $(p-1)!$ directly, by removing factors, we can adapt Wilson's to cover all $(p-k)!$. By reducing each of the first $k-1$ factors mod $p$ (becoming $-1,-2,\dots,-(k-1)$), Wilson's Theorem can be rewritten into
+$$
+(-1)^{k-1}(k-1)!\cdot(p-k)! \equiv -1 \pmod p \implies \boxed{(p-k)! \equiv \frac{(-1)^k}{(k-1)!} \pmod p} \quad (1 \le k \le p).
+$$
+This formula is able to find the remainder of any factorial $n!$ when divided by a prime larger than $n$.
+
+**Special Cases:** Wilson's theorem can also be applied to composite modulus with extra steps. When you have a composite modulus for a factorial $n!$, first remove as many prime factors of the modulus as possible that can divide $n!$. Then, compute the remainder using each of the remaining prime factors of the original modulus, and recombine with Chinese Remainder Theorem. 
+
+Note that this is only applicible if the remaining prime factors of the modulus are not repeated (ie. $p^2 \text{ or } p^3$ would not work).
+
+
+>**Special Case Example:** Find the remainder when $10!$ is divided by $11 \times 13 \times 7 = 1001$.
+
+
+Factor the modulus into its three prime factors and check each one against $n = 10$.
+
+**Mod 7**: Since $7 \le 10$, the number $7$ is one of the
+factors of $10!$, so $10! \equiv 0 \pmod{7}$
+
+**Mod 11:** Since $11 > 10$, this is the base case of Wilson's Theorem as $10! = (11-1)! \equiv -1 \equiv 10 \pmod{11}.$
+
+**Mod 13:** Since $13 > 10$, write $10! = (13-3)!$ and use the
+truncated factorial formula $(p-k)! \equiv \dfrac{(-1)^k}{(k-1)!} \pmod p$
+with $p = 13,\ k = 3$. We get that $10! \equiv \frac{(-1)^3}{2!} = -\frac{1}{2} \pmod{13}.$
+Since $2 \cdot 7 = 14 \equiv 1 \pmod{13}$, we can find $-\frac{1}{2} \equiv 7$, so $10! \equiv -7 \equiv 6 \pmod{13}.$
+
+**Combining with CRT:** We need to find $x$ satisfying
+
+$x \equiv 0 \pmod{7}, \qquad x \equiv 10 \pmod{11}, \qquad x \equiv 6 \pmod{13}.$
+
+We apply Chinese Remainder Theorem to get that $x=175$, and thus $10! \pmod {1001}=\boxed{175}$.
+ 
+### Quadratic Residues and Euler's Criterion
+
+> **Definition:** Let $p$ be an odd prime with $\gcd(a,p)=1$. We say $a$ is a **quadratic residue (QR)** mod $p$ if and only if $x^2 \equiv a \pmod p$ has a solution, and a **quadratic non-residue (QNR)** otherwise.
+
+**Finding Quadratic Residues:** Squaring the nonzero residues $1, 2, \dots, p-1$ hits each QR exactly twice, since $x^2 \equiv (p-x)^2 \pmod p$. This means there are exactly $\dfrac{p-1}{2}$ quadratic residues with values $1^2, 2^2, \dots, \left(\frac{p-1}{2}\right)^2 \pmod p$.
+
+> **Euler's Criterion.**
+> $$
+> a^{\frac{p-1}{2}} \equiv \begin{cases} \phantom{-}1 \pmod p & \text{if } a \text{ is a QR mod } p \\ -1 \pmod p & \text{if } a \text{ is a QNR mod } p \end{cases}
+> $$
+
+From Fermat's Little Theorem, since $a^{p-1}\equiv 1$, the value $a^{(p-1)/2}$ squares to $1$, so it must itself be $\pm 1 \pmod p$. Using the definition of QR, we can say that $x^2\equiv a \pmod p$, so by FLT, $a^{\frac{p-1}{2}} \equiv (x^2)^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p$. Thus, all quadratic residues $a$ satisfy $a^{\frac{p-1}{2}} \equiv 1 \pmod p$, and by conflict of polynomial roots, all quadratic non-residues satisfy $a^{\frac{p-1}{2}} \equiv -1 \pmod p$
+
+In practice, Euler's Criterion can be used to test whether $a$ (mod $p$) is a perfect square without listing all $\frac{p-1}{2}$ residues.
+
+**Special Case:** $a = -1$,
+$$
+-1 \text{ is a QR mod } p \iff (-1)^{\frac{p-1}{2}} = 1 \iff p \equiv 1 \pmod 4.
+$$
+Following this, you can get that:
+$$
+n^2 \equiv 0 \text{ or } 1 \pmod 4, \qquad n^2 \equiv 0, 1, \text{ or } 4 \pmod 8.
+$$
+These are very simple statements that can be proven by quadratic residues, and they are worth memorizing since they can often be used to rule out solutions to or even entire dophiantine problems.
+
+**Example.** Is $5$ a quadratic residue mod $11$?
+
+Squaring $1$ through $5$ (residues past $5$ just repeat from symmetry): $1^2=1,\ 2^2=4,\ 3^2=9,\ 4^2=16\equiv 5,\ 5^2 = 25 \equiv 3$. The QRs mod $11$ are $\{1,3,4,5,9\}$, so $5$ is indeed a QR ($4^2$).
+
+Using Euler's Criterion, $\frac{p-1}{2}=5$:
+$$
+5^5 = 5^2\cdot 5^2 \cdot 5 \equiv 3 \cdot 3 \cdot 5 = 45 \equiv 1 \pmod{11},
+$$
+confirming $5$ is a QR mod $11$.
+
+
+
+## Worked Examples
+
+> **2017 AMC 10B Problem 14**
+>
+> An integer $N$ is selected uniformly at random from $1$ to $2020$, inclusive. What is the probability that $N^{16}$ has a remainder of $1$ when divided by $5$?
+>
+> $\textbf{(A) } \dfrac{1}{5} \qquad \textbf{(B) } \dfrac{2}{5} \qquad \textbf{(C) } \dfrac{3}{5} \qquad \textbf{(D) } \dfrac{4}{5} \qquad \textbf{(E) } 1$
+
+If $5 \mid N$, then $N^{16}\equiv 0 \pmod 5$, which is never $1$.
+
+If $5 \nmid N$, Fermat's Little Theorem gives $N^4 \equiv 1 \pmod 5$, so
+$$
+N^{16} = (N^4)^4 \equiv 1^4 = 1 \pmod 5.
+$$
+$N^{16}\equiv 1 \pmod 5$ for *every* $N$ not divisible by $5$, so the probability is $\boxed{\textbf{(D) } \dfrac{4}{5}}$.
+
+> **1989 AIME Problem 9**
+>
+> One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer $n$ for which
+> $$
+> 133^5 + 110^5 + 84^5 + 27^5 = n^5.
+> $$
+> Find the value of $n$.
+
+Direct computation is not feasable, but Fermat's Little Theorem allows us to narrow down possibilities of $n$.
+
+**Mod 2:** by the FLT corollary $a^5 \equiv a \pmod 2$ for any $a$ (in fact $a^5$ and $a$ always share parity). The parities of $133, 110, 84, 27$ are odd, even, even, odd, summing to even. Thus $n^5$, and hence $n$, is **even**.
+
+**Mod 3:** similarly $a^5 \equiv a \pmod 3$ (since $a^3\equiv a$, so $a^5 = a^3\cdot a^2 \equiv a \cdot a^2 = a^3 \equiv a$). Reducing: $133\equiv 1,\ 110\equiv 2,\ 84\equiv 0,\ 27 \equiv 0 \pmod 3$, summing to $1+2+0+0\equiv 0 \pmod 3$. So $n \equiv 0 \pmod 3$.
+
+Combining the last two: $n \equiv 0 \pmod 6$.
+
+**Mod 5:** the FLT corollary applies directly, $a^5 \equiv a \pmod 5$. Reducing: $133\equiv 3,\ 110\equiv 0,\ 84\equiv 4,\ 27\equiv 2 \pmod 5$, summing to $3+0+4+2 = 9 \equiv 4 \pmod 5$. So $n \equiv 4 \pmod 5$.
+
+Combining with $n\equiv 0 \pmod 6$: the Chinese Remainder Theorem gives $n \equiv 24 \pmod{30}$.
+
+A crude size bound helps next: $n^5 < 4\cdot 133^5$, so $n < 133 \cdot 4^{1/5} \approx 175.6$, and clearly $n > 133$. That leaves two candidates in the range consistent with $n\equiv 24 \pmod{30}$: $n = 144$ and $n = 174$.
+
+While we could use further modular arithmetic to find the answer, we can note that $n = 174$ is very close to the upper bound, and we heavily overestimated the upper bound by assuming all the numbers on the left side were equal to $133$. Thus, we can intuitively rule out $n = 174$, leaving the remaining option $n = \boxed{144}$.
+
+> **2019 AMC 10A Problem 25**
+>
+> For how many integers $n$ between $1$ and $50$, inclusive, is
+> $$
+> \frac{(n^2-1)!}{(n!)^n}
+> $$
+> an integer?
+>
+> $\textbf{(A) } 31 \qquad \textbf{(B) } 32 \qquad \textbf{(C) } 33 \qquad \textbf{(D) } 34 \qquad \textbf{(E) } 35$
+
+The expression $\dfrac{(n^2)!}{(n!)^{n+1}}$ counts the amount of ways to split $n^2$ labeled objects into $n+1$ groups, and it can be shown it is always an integer. Splitting off one factor of $n!$ turns this into
+$$
+\frac{(n^2-1)!}{(n!)^n} = \frac{(n^2)!}{(n!)^{n+1}} \cdot \frac{n!}{n^2},
+$$
+This means the original expression is an integer for every $n$ *except*  when $\frac{n!}{n^2} = \frac{(n-1)!}{n}$ is not an integer.
+
+- If $n$ is **prime**, by Wilson's Theorem, $(n-1)! \equiv -1 \pmod n$, so $n \nmid (n-1)! \to$ not an integer.
+- If $n$ is **composite and $n > 4$**, $n$ can be split into two factors, each of which within $(n-1)!$, so the expression is an integer.
+- If $n = 4$: $(n-1)! = 3! = 6$, and $4 \nmid 6 \to$ not an integer
+
+The expression is not an integer when $n$ is prime or $n = 4$. Between $1$ and $50$ there are $15$ primes ($2,3,5,7,11,13,17,19,23,29,31,37,41,43,47$), plus the single exceptional value $n=4$. There are, thus, $50-16= \boxed{\textbf{(D) } 34}$ integers $n$ such that the expression is an integer.
+
+
+## Final Remarks
+
+**Check requirements before solving:** Fermat's Little Theorem needs $p$ prime and $p \nmid a$; Wilson's Theorem needs $n$ to be prime; Euler's Criterion needs an odd prime $p$ and $\gcd(a,p)=1$. If the requirements aren't met, try reducing via Chinese Remainder Theorem.
+
+**Try reducing the exponent:** When computing $a^n \pmod p$ with $p \nmid a$, try reducing the exponent to $n$ modulo $p - 1$ before continuing.
+
+**Use rules for squares mod 4 and mod 8:** check whether an equation is possible mod $4$ or mod $8$
+
+### Which Tool to Use:
+
+| Tool | Situation | Why |
+| --- | --- | --- |
+| Fermat's Little Theorem | Prime modulus of large exponent | Reduce the exponent mod $p-1$ before computing |
+|  Wilson's Theorem | Factorial mod a prime | Provides an exact remainder |
+| Quadratic Residues | Proving no solutions exist | Restricts which residues squares can take |
+| Euler's Criterion | Finding if $a$ is a perfect square mod $p$ | Check if $a^{(p-1)/2} \equiv  1 \pmod p$ |
+| Chinese Remainder Theorem | A composite modulus | Split into prime pieces; solve and recombine |
+
+## Practice Problems
+
+<Problems problems="practice" />
