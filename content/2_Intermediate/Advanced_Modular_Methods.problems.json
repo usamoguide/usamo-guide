@@ -1,0 +1,89 @@
+{
+  "MODULE_ID": "advanced-modular-methods",
+  "practice": [
+    {
+      "uniqueId": "amc10-2024b-7",
+      "name": "Problem 7",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2024_AMC_10B_Problems/Problem_7",
+      "source": "AMC 10",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Number Theory", "Modular Arithmetic", "Fermat's Little Theorem"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc12-2008a-15",
+      "name": "Problem 15",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2008_AMC_12A_Problems/Problem_15",
+      "source": "AMC 12",
+      "difficulty": "Normal",
+      "isStarred": true,
+      "tags": ["Number Theory", "Modular Arithmetic", "Fermat's Little Theorem", "Units Digit"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10-2022a-19",
+      "name": "Problem 19",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Problems/Problem_19",
+      "source": "AMC 10",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": ["Number Theory", "Modular Arithmetic", "Wilson's Theorem"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2018i-11",
+      "name": "Problem 11",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2018_AIME_I_Problems/Problem_11",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": true,
+      "tags": ["Number Theory", "Modular Arithmetic", "Fermat's Little Theorem", "Order of an Element"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2008i-4",
+      "name": "Problem 4",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2008_AIME_I_Problems/Problem_4",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": ["Number Theory", "Quadratic Residues", "Diophantine Equations"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc12-2010a-23",
+      "name": "Problem 23",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2010_AMC_12A_Problems/Problem_23",
+      "source": "AMC 12",
+      "difficulty": "Very Hard",
+      "isStarred": true,
+      "tags": ["Number Theory", "Modular Arithmetic", "Wilson's Theorem", "Chinese Remainder Theorem"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "imo-1970-4",
+      "name": "Problem 4",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1970_IMO_Problems/Problem_4",
+      "source": "IMO",
+      "difficulty": "Very Hard",
+      "isStarred": false,
+      "tags": ["Number Theory", "Wilson's Theorem", "Quadratic Residues", "Proof"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
+}
