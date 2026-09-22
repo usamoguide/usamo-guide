@@ -1,0 +1,346 @@
+---
+id: bounding-techniques
+title: Bounding Techniques (AIME)
+author: USAMO Guide Team
+description: Using inequalities, integrality, and substitutions to bound variables and reduce AIME problems to finitely many cases.
+prerequisites: ["inequalities"]
+---
+
+## Overview
+
+Bounding is one of the most useful techniques in AIME number theory. Many
+problems seem difficult because there are infinitely many possible integers to
+consider, but a good inequality can reduce the search to only a few cases.
+
+The main idea is simple: **your first bound does not need to solve the problem.
+It only needs to make the problem manageable.**
+
+A common workflow is:
+
+1. Rewrite or normalize the expression.
+2. Introduce a useful integer parameter.
+3. Find a simple upper or lower bound.
+4. Use integrality to reduce to a few cases.
+5. Substitute those cases back into the original condition.
+6. Sharpen the bound only if necessary.
+
+## Key Ideas
+
+### Normalize Before Bounding
+
+If several terms share a positive factor, divide it out.
+
+For example, start with $$11ab\le a^3-b^3\le12ab.$$
+
+Since $ab>0$, divide by $ab$: $$11\le\frac{a^3-b^3}{ab}\le12.$$
+
+This often exposes the structure of the expression much more clearly.
+
+### Introduce an Integer Gap
+
+If $a>b$, try $$d=a-b.$$
+
+Since $a,b$ are integers, $d$ is a positive integer.
+
+If we prove $$0<d<4,$$
+
+then immediately $$d\in\{1,2,3\}.$$
+
+Difference substitutions are especially useful with $$a^2-b^2=(a-b)(a+b)$$ and
+$$a^3-b^3=(a-b)(a^2+ab+b^2).$$
+
+### Use a Crude Bound First
+
+Do not search for the strongest possible inequality immediately.
+
+For positive $a,b$, AM-GM gives $$\frac ab+\frac ba\ge2.$$
+
+If this reduces an integer variable to only a few possibilities, the bound has
+already done its job.
+
+The usual pattern is
+$$\text{easy bound}\longrightarrow\text{few cases}\longrightarrow\text{sharper analysis}.$$
+
+### Exploit Integrality
+
+Suppose $n$ is an integer and $$3.2<n<6.1.$$
+
+Then $$n\in\{4,5,6\}.$$
+
+Whenever you obtain a bound, immediately ask whether the bounded quantity is an
+integer.
+
+### Use Ordering
+
+If a problem is symmetric, you can often assume $$x\le y.$$
+
+Then $$x^2\le xy,$$ $$x\le\sqrt{xy},$$ and $$\frac1x\ge\frac1y.$$
+
+These simple comparisons can be enough to isolate one variable.
+
+### Compare with Consecutive Integers
+
+If $$m^2<N<(m+1)^2,$$
+
+then $$m<\sqrt N<m+1.$$
+
+Therefore, $$\lfloor\sqrt N\rfloor=m.$$
+
+### Bound the Smaller Factor
+
+Suppose $$xy=N$$ and $$x\le y.$$
+
+Then $$x^2\le xy=N.$$
+
+So $$x\le\sqrt N.$$
+
+Thus, when searching for factor pairs of $N$, only divisors up to $\sqrt N$ need
+to be checked.
+
+## Worked Example
+
+Find all pairs of positive integers $(a,b)$ such that
+$$11ab\le a^3-b^3\le12ab.$$
+
+### Step 1: Introduce the Difference
+
+Since $$a^3-b^3>0,$$
+
+we know $$a>b.$$
+
+Let $$d=a-b.$$
+
+Then $d$ is a positive integer.
+
+### Step 2: Normalize
+
+Divide the original inequality by $ab$: $$11\le\frac{a^3-b^3}{ab}\le12.$$
+
+Factor the difference of cubes: $$a^3-b^3=(a-b)(a^2+ab+b^2).$$
+
+Therefore, $$\frac{a^3-b^3}{ab}=d\left(\frac ab+1+\frac ba\right).$$
+
+So $$11\le d\left(\frac ab+1+\frac ba\right)\le12.$$
+
+### Step 3: Bound $d$
+
+By AM-GM, $$\frac ab+\frac ba\ge2.$$
+
+Thus, $$\frac ab+1+\frac ba\ge3.$$
+
+Therefore, $$3d\le12.$$
+
+So $$d\le4.$$
+
+Since $a>b$, we have $a\ne b$, so equality in AM-GM cannot occur.
+
+Thus, $$\frac ab+\frac ba>2.$$
+
+If $d=4$, then $$d\left(\frac ab+1+\frac ba\right)>4(3)=12,$$
+
+which is impossible.
+
+Hence, $$d\in\{1,2,3\}.$$
+
+### Step 4: Rewrite More Precisely
+
+Use the identity $$a^2+ab+b^2=3ab+(a-b)^2.$$
+
+Then $$a^3-b^3=(a-b)(3ab+(a-b)^2).$$
+
+Since $d=a-b$, $$a^3-b^3=3dab+d^3.$$
+
+Divide by $ab$: $$\frac{a^3-b^3}{ab}=3d+\frac{d^3}{ab}.$$
+
+Since $a=b+d$, $$ab=b(b+d).$$
+
+Therefore, $$\frac{a^3-b^3}{ab}=3d+\frac{d^3}{b(b+d)}.$$
+
+### Step 5: Check $d=1$
+
+If $d=1$, then $$\frac{a^3-b^3}{ab}=3+\frac1{b(b+1)}.$$
+
+Since $b\ge1$, $$\frac1{b(b+1)}\le\frac12.$$
+
+Thus, $$3+\frac1{b(b+1)}\le\frac72<11.$$
+
+So $d=1$ is impossible.
+
+### Step 6: Check $d=2$
+
+If $d=2$, then $$\frac{a^3-b^3}{ab}=6+\frac8{b(b+2)}.$$
+
+Since $b\ge1$, $$b(b+2)\ge3.$$
+
+Thus, $$6+\frac8{b(b+2)}\le6+\frac83<9.$$
+
+So $d=2$ is impossible.
+
+### Step 7: Check $d=3$
+
+If $d=3$, then $$11\le9+\frac{27}{b(b+3)}\le12.$$
+
+Subtract $9$: $$2\le\frac{27}{b(b+3)}\le3.$$
+
+Therefore, $$9\le b(b+3)\le\frac{27}{2}.$$
+
+Check nearby positive integers: $$1(4)=4,$$ $$2(5)=10,$$ $$3(6)=18.$$
+
+Thus, $$b=2.$$
+
+Since $a=b+3$, $$a=5.$$
+
+Finally, $$11(5)(2)=110,$$ $$5^3-2^3=117,$$ $$12(5)(2)=120.$$
+
+Therefore, $$110\le117\le120.$$
+
+Hence the unique solution is $$\boxed{(a,b)=(5,2)}.$$
+
+The key step was proving that $a-b$ could only be $1$, $2$, or $3$. Bounding
+turned an infinite search into three cases.
+
+## More Examples
+
+### Example 1: Reciprocal Bounding
+
+Suppose positive integers $x\le y$ satisfy $$\frac1x+\frac1y=\frac16.$$
+
+Since $x\le y$, $$\frac1y\le\frac1x.$$
+
+Thus, $$\frac16=\frac1x+\frac1y\le\frac2x.$$
+
+Therefore, $$x\le12.$$
+
+Also, $$\frac1x<\frac16,$$
+
+so $$x>6.$$
+
+Hence, $$7\le x\le12.$$
+
+Now multiply the original equation by $6xy$: $$6x+6y=xy.$$
+
+Rearrange: $$xy-6x-6y=0.$$
+
+Add $36$: $$xy-6x-6y+36=36.$$
+
+Factor: $$(x-6)(y-6)=36.$$
+
+Checking factor pairs gives
+$$(x,y)\in\{(7,42),(8,24),(9,18),(10,15),(12,12)\}.$$
+
+### Example 2: Consecutive Squares
+
+Determine $$\left\lfloor\sqrt{n^2+3n+1}\right\rfloor$$ for positive integer $n$.
+
+First, $$(n+1)^2=n^2+2n+1.$$
+
+Since $n>0$, $$(n+1)^2<n^2+3n+1.$$
+
+Also, $$(n+2)^2=n^2+4n+4.$$
+
+Therefore, $$n^2+3n+1<(n+2)^2.$$
+
+Combining, $$(n+1)^2<n^2+3n+1<(n+2)^2.$$
+
+Taking square roots, $$n+1<\sqrt{n^2+3n+1}<n+2.$$
+
+Thus, $$\boxed{\left\lfloor\sqrt{n^2+3n+1}\right\rfloor=n+1}.$$
+
+### Example 3: Bounding a Factor
+
+Suppose $$xy=2025$$ and $$x\le y.$$
+
+Then $$x^2\le xy.$$
+
+So $$x^2\le2025=45^2.$$
+
+Therefore, $$x\le45.$$
+
+Thus, only divisors of $2025$ at most $45$ need to be checked.
+
+### Example 4: Factorization Plus Bounding
+
+Suppose positive integers $a\le b$ satisfy $$ab=a+b+19.$$
+
+Rearrange: $$ab-a-b=19.$$
+
+Add $1$: $$(a-1)(b-1)=20.$$
+
+Since $a\le b$, $$a-1\le b-1.$$
+
+Therefore, $$(a-1)^2\le20.$$
+
+So, $$a-1\le4.$$
+
+The possible smaller factors of $20$ are $$1,2,4.$$
+
+Thus, $$(a-1,b-1)\in\{(1,20),(2,10),(4,5)\}.$$
+
+Therefore, $$\boxed{(a,b)\in\{(2,21),(3,11),(5,6)\}}.$$
+
+### Example 5: Dropping Positive Terms
+
+Suppose positive integers $x,y$ satisfy $$x^2+xy+y^2\le100.$$
+
+Since all terms are positive, $$x^2<100.$$
+
+Therefore, $$x\le9.$$
+
+Similarly, $$y^2<100.$$
+
+So, $$y\le9.$$
+
+This does not finish the problem, but it reduces an infinite search to finitely
+many possibilities.
+
+## Common Bounding Patterns
+
+If $0<n<4$ and $n$ is a positive integer, then $$n\in\{1,2,3\}.$$
+
+If $xy=N$ and $x\le y$, then $$x\le\sqrt N.$$
+
+If $x+y=S$, then AM-GM gives $$xy\le\frac{S^2}{4}.$$
+
+If $$m^2<N<(m+1)^2,$$
+
+then $$\lfloor\sqrt N\rfloor=m.$$
+
+If $n\mid k$ and $|k|<n$, then $$k=0.$$
+
+If $A,B,C\ge0$ and $$A+B+C\le M,$$
+
+then $$A\le M,\qquad B\le M,\qquad C\le M.$$
+
+## Common Mistakes
+
+- Trying to solve exactly before looking for a simple bound.
+- Forgetting that a bounded quantity must be an integer.
+- Dividing an inequality by a quantity whose sign is unknown.
+- Reversing an inequality incorrectly when taking reciprocals.
+- Forgetting the equality conditions of an inequality.
+- Searching for an overly strong bound when a crude bound already leaves only a
+  few cases.
+
+## Strategy Checklist
+
+- Can I divide by a positive quantity to normalize the expression?
+- Can I factor a difference of powers?
+- Should I set $d=a-b$?
+- Can I assume an ordering by symmetry?
+- Can AM-GM give a quick bound?
+- Can I drop positive terms?
+- Can I compare with consecutive integers or squares?
+- Can I bound the smaller factor by a square root?
+- Is the quantity I bounded an integer?
+- Can I reduce the problem to only a few cases?
+- Do equality conditions eliminate an endpoint?
+- After fixing one parameter, does the original condition become easier?
+
+The central idea is:
+
+> **A good first bound does not need to finish the problem. It only needs to
+> make the remaining possibilities manageable.**
+
+## Practice Problems
+
+<Problems problems="practice" />
