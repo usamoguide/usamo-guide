@@ -2,594 +2,520 @@
 id: modular-arithmetic
 title: Modular Arithmetic
 author: USAMO Guide Team
-description: Learn how congruences, residues, and modular techniques simplify olympiad problems involving divisibility, remainders, and cyclic behaviour.
+description: Learn how congruences, residues, and modular techniques simplify olympiad problems involving divisibility, remainders, powers, and integer equations.
 prerequisites: []
 ---
 
 ## Additional Resources
 
 <Resources>
-  <Resource
-    source="DA"
-    title="Modular Arithmetic"
-    url="https://davidaltizio.web.illinois.edu/ModularArithmetic.pdf"
-    starred
-  >
+  <Resource source="DA" title="Modular Arithmetic" url="https://davidaltizio.web.illinois.edu/ModularArithmetic.pdf" starred>
     Thorough handout covering residues, inverses, and orders.
   </Resource>
-  <Resource
-    source="OL"
-    title="Mastering AMC 10/12 (Ch. 24)"
-    url="https://www.omegalearn.org/books/Mastering_AMC_1012_Book.pdf"
-  >
+  <Resource source="OL" title="Mastering AMC 10/12 (Ch. 24)" url="https://www.omegalearn.org/books/Mastering_AMC_1012_Book.pdf">
     Direct PDF &mdash; Chapter 24 is the modular arithmetic chapter.
   </Resource>
-  <Resource
-    source="OL"
-    title="Video: Modular Arithmetic"
-    url="https://youtu.be/orrw4VydBTk"
-  >
+  <Resource source="OL" title="Video: Modular Arithmetic" url="https://youtu.be/orrw4VydBTk">
     From the basic definitions up to AMC-level applications.
   </Resource>
-  <Resource
-    source="JS"
-    title="Olympiad Number Theory Through Challenging Problems"
-    url="https://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf"
-  >
+  <Resource source="JS" title="Olympiad Number Theory Through Challenging Problems" url="https://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf">
     Builds modular arithmetic up to Fermat and Euler with problems.
   </Resource>
-  <Resource
-    source="OL"
-    title="Video: Algebraic Number Theory"
-    url="https://youtu.be/LqrXinQbk1Q"
-  >
-    Mixing modular arithmetic with algebraic manipulation.
-  </Resource>
-  <Resource
-    source="AoPSWiki"
-    title="Fermat's Little Theorem"
-    url="https://artofproblemsolving.com/wiki/index.php/Fermat's_Little_Theorem"
-  >
-    The key theorem for simplifying large exponents mod a prime.
+  <Resource source="AoPSWiki" title="Fermat's Little Theorem" url="https://artofproblemsolving.com/wiki/index.php/Fermat's_Little_Theorem">
+    The key theorem for simplifying large exponents modulo a prime.
   </Resource>
 </Resources>
 
 ## Overview
 
-Modular arithmetic is one of the most important tools in olympiad mathematics.
-It allows us to work with remainders instead of entire numbers, often turning
-complicated expressions into manageable computations.
+Modular arithmetic is arithmetic with remainders. Instead of caring about the exact value of a huge integer, we often care only about what remainder it leaves after division by some number.
 
-Many problems involving:
-- Divisibility
-- Last digits
-- Cyclic patterns
-- Parity
-- Residues
-- Number theoretic equations
-and more become a lot simpler when viewed modulo some integer.
+For example, $17$ and $5$ are different integers, but they both leave remainder $5$ when divided by $12$. We write
+$$17\equiv5\pmod{12}.$$
 
-The main idea is that two integers are considered equivalent if they leave the same remainder when divided by a fixed modulus.
+This simple idea is extremely powerful. Modular arithmetic can turn enormous powers, complicated divisibility questions, and impossible-looking integer equations into short computations.
+
+It is especially useful for:
+- remainders and last digits
+- divisibility
+- parity
+- powers and repeating cycles
+- proving integer equations impossible
+- narrowing down possible values in Diophantine equations
 
 ## Motivation
 
-Suppose we want to determine the last digit of
+Suppose we want the last digit of
+$$7^{2026}.$$
 
-$$
-7^{2026}.
-$$
+The last digit only depends on the remainder modulo $10$, so compute powers of $7$ modulo $10$:
+$$7^1\equiv7\pmod{10}$$
+$$7^2\equiv9\pmod{10}$$
+$$7^3\equiv3\pmod{10}$$
+$$7^4\equiv1\pmod{10}.$$
 
-Computing the entire number is impossible by hand. However, the last digit of a
-number depends only on its remainder modulo $10$. As such, we can work modulo $10$:
-
-$$
-7^1 \equiv 7 \pmod{10}
-$$
-
-$$
-7^2 = 49 \equiv 9 \pmod{10}
-$$
-
-$$
-7^3 \equiv (7)(9) = 63 \equiv 3 \pmod{10}
-$$
-
-$$
-7^4 \equiv (7)(3) = 21 \equiv 1 \pmod{10}
-$$
-
-The powers repeat with period $4$:
-
-$$
-7,9,3,1,7,9,3,1,\ldots
-$$
+Now the pattern repeats every $4$ powers:
+$$7,9,3,1,7,9,3,1,\ldots$$
 
 Since
+$$2026\equiv2\pmod4,$$
 
-$$
-2026 \equiv 2 \pmod{4},
-$$
+$7^{2026}$ has the same final digit as $7^2$. Therefore the last digit is
+$$\boxed9.$$
 
-the last digit matches that of $7^2$, namely $9$.
-
-Instead of handling a very large number directly, modular arithmetic reduced the problem to studying a short repeating cycle.
+The point is not just that modular arithmetic finds the answer. It lets us completely ignore the enormous size of $7^{2026}$.
 
 ## Congruences
 
 ### Definition
 
-Let $m$ be a positive integer. We say that
-
-$$
-a \equiv b \pmod{m}
-$$
-
+For a positive integer $m$, we write
+$$a\equiv b\pmod m$$
 if $a$ and $b$ leave the same remainder when divided by $m$.
 
 Equivalently,
+$$m\mid(a-b).$$
 
-$$
-m \mid (a-b).
-$$
-
-In words, $a-b$ is divisible by $m$.
+So saying
+$$a\equiv b\pmod m$$
+means that $a-b$ is a multiple of $m$.
 
 ### Examples
 
-$$
-17 \equiv 5 \pmod{12}
-$$
+Since
+$$17-5=12,$$
+we have
+$$17\equiv5\pmod{12}.$$
 
-because $17-5=12$ is divisible by $12$.
+Since
+$$38-2=36,$$
+we have
+$$38\equiv2\pmod9.$$
 
-$$
-38 \equiv 2 \pmod{9}
-$$
+Negative residues work too. Since
+$$-3-4=-7,$$
+we have
+$$-3\equiv4\pmod7.$$
 
-because $38-2=36$ is divisible by $9$.
+## Thinking in Residue Classes
 
-Negative numbers also work:
+Modulo $m$, every integer is equivalent to one of
+$$0,1,2,\ldots,m-1.$$
 
-$$
--3 \equiv 4 \pmod{7}
-$$
+For example, modulo $5$,
+$$12\equiv2,\qquad27\equiv2,\qquad102\equiv2\pmod5.$$
 
-since
+All three numbers behave the same way modulo $5$.
 
-$$
--3-4=-7.
-$$
+A useful mental model is a clock. Modulo $12$, after reaching $11$ we wrap back around to $0$.
 
-## Residue Classes
+For example,
+$$10+5=15\equiv3\pmod{12}.$$
 
-Modulo $m$, every integer belongs to one of the residue classes
-
-$$
-0,1,2,\ldots,m-1.
-$$
-
-For example, modulo $5$:
-
-- $12 \equiv 2 \pmod{5}$
-- $27 \equiv 2 \pmod{5}$
-- $102 \equiv 2 \pmod{5}$
-
-so all three numbers belong to the same residue class.
-
-You can think of modular arithmetic as a number system that 'wraps around' after reaching the modulus.
-
-For instance, modulo $12$ behaves like a clock
-
-- $10+5 \equiv 3 \pmod{12}$
-- $11+4 \equiv 3 \pmod{12}$
-
-because after passing $12$, we begin again at $0$.
-
-## Basic Properties
+## Basic Operations
 
 If
-
-$$
-a \equiv b \pmod{m}
-$$
-
+$$a\equiv b\pmod m$$
 and
+$$c\equiv d\pmod m,$$
+then we may add:
+$$a+c\equiv b+d\pmod m.$$
 
-$$
-c \equiv d \pmod{m},
-$$
+We may subtract:
+$$a-c\equiv b-d\pmod m.$$
 
-then:
+We may multiply:
+$$ac\equiv bd\pmod m.$$
 
-### Addition
+We may also take positive integer powers:
+$$a^k\equiv b^k\pmod m.$$
 
-$$
-a+c \equiv b+d \pmod{m}
-$$
+These rules mean that we can replace numbers by simpler representatives whenever we want.
 
-### Subtraction
+### Example
 
-$$
-a-c \equiv b-d \pmod{m}
-$$
+Find
+$$47^2+32\pmod5.$$
 
-### Multiplication
+Reduce first:
+$$47\equiv2\pmod5$$
+and
+$$32\equiv2\pmod5.$$
 
-$$
-ac \equiv bd \pmod{m}
-$$
+Therefore,
+$$47^2+32\equiv2^2+2=6\equiv1\pmod5.$$
 
-### Powers
+So the remainder is
+$$\boxed1.$$
 
-$$
-a^k \equiv b^k \pmod{m}
-$$
+## Reduce Early and Often
 
-for all positive integers $k$.
+Do not carry around unnecessarily large numbers.
 
-These rules allow us to simplify expressions significantly before computing.
+For example, find
+$$38^4\pmod7.$$
+
+First,
+$$38\equiv3\pmod7.$$
+
+Thus,
+$$38^4\equiv3^4=81\pmod7.$$
+
+Now,
+$$81\equiv4\pmod7.$$
+
+Therefore,
+$$\boxed4.$$
+
+The calculation $38^4$ was never needed.
+
+## Negative Residues
+
+The standard remainder is not always the easiest number to use.
+
+For example,
+$$19\equiv-1\pmod{10}.$$
+
+Therefore,
+$$19^{101}\equiv(-1)^{101}\equiv-1\equiv9\pmod{10}.$$
+
+Using $-1$ is much easier than repeatedly working with $9$.
+
+Similarly,
+$$48\equiv-2\pmod{10}$$
+and
+$$99\equiv-1\pmod{100}.$$
+
+A good habit is to choose the residue with the smallest absolute value.
 
 ## Important Warning: Division
 
-In ordinary arithmetic, we can cancel common factors freely:
-
-$$
-6x = 6y \implies x=y.
-$$
-
-In modular arithmetic, cancellation requires more thought.
+Addition, subtraction, and multiplication work naturally modulo $m$. Division is different.
 
 For example,
+$$2\cdot1\equiv2\cdot4\pmod6$$
+because both sides are congruent to $2$ modulo $6$.
 
-$$
-(2)(1) \equiv (2)(4) \pmod{6}
-$$
+But
+$$1\not\equiv4\pmod6.$$
 
-since both sides equal $2$ modulo $6$.
-
-However,
-
-$$
-1 \not\equiv 4 \pmod{6}.
-$$
-
-We can only divide by a number if it is coprime to the modulus.
+So cancelling the $2$ was illegal.
 
 ### Cancellation Rule
 
 If
-
-$$
-ac \equiv bc \pmod{m}
-$$
-
+$$ac\equiv bc\pmod m$$
 and
+$$\gcd(c,m)=1,$$
+then we may cancel $c$:
+$$a\equiv b\pmod m.$$
 
-$$
-\gcd(c,m)=1,
-$$
-
-then
-
-$$
-a \equiv b \pmod{m}.
-$$
-
-This idea appears frequently in olympiad problems.
+The coprimality condition is essential.
 
 ## Modular Inverses
 
-Closely related to cancellation is the idea of a modular inverse. We say that
-$a$ has a multiplicative inverse modulo $m$ if there exists an integer $b$
-such that $ab \equiv 1 \pmod{m}$. This inverse exists if and only if
-$\gcd(a,m)=1$, a fact following from Bézout's identity. When it does exist, dividing by $a$ modulo $m$ means
-multiplying by $b$.
+Instead of thinking of modular division as ordinary division, think of it as multiplication by an inverse.
 
-## Working with Large Numbers
+An inverse of $a$ modulo $m$ is a number $b$ such that
+$$ab\equiv1\pmod m.$$
 
-A major advantage of modular arithmetic is that we can reduce numbers at every
-step.
-
-For example,
-
-$$
-13^{100} \pmod{5}.
-$$
-
-Since
-
-$$
-13 \equiv 3 \pmod{5},
-$$
-
-we instead compute
-
-$$
-3^{100} \pmod{5}.
-$$
-
-Now notice:
-
-$$
-3^2=9 \equiv -1 \pmod{5}.
-$$
-
-Therefore
-
-$$
-3^{100} = (3^2)^{50} \equiv (-1)^{50}=1 \pmod{5}.
-$$
-
-Hence
-
-$$
-13^{100} \equiv 1 \pmod{5}.
-$$
-
-## Cyclicity
-
-Powers modulo $m$ often repeat in cycles. Since there are only finitely many
-possible residues modulo $m$, repeated multiplication must eventually produce a repeated residue.
+An inverse exists exactly when
+$$\gcd(a,m)=1.$$
 
 ### Example
 
-Find the last digit of
+Find the inverse of $3$ modulo $7$.
 
-$$
-2^{100}.
-$$
+We want
+$$3b\equiv1\pmod7.$$
 
-The powers of $2$ modulo $10$ are:
+Since
+$$3\cdot5=15\equiv1\pmod7,$$
+the inverse is
+$$3^{-1}\equiv5\pmod7.$$
 
-$$
-2,4,8,6,2,4,8,6,\ldots
-$$
+## Solving Linear Congruences
+
+Solve
+$$3x\equiv5\pmod7.$$
+
+The inverse of $3$ modulo $7$ is $5$, so multiply both sides by $5$:
+$$x\equiv25\pmod7.$$
+
+Reduce:
+$$x\equiv4\pmod7.$$
+
+Therefore,
+$$\boxed{x\equiv4\pmod7}.$$
+
+## Powers and Cycles
+
+Powers modulo $m$ often repeat.
+
+For example, powers of $2$ modulo $10$ are
+$$2,4,8,6,2,4,8,6,\ldots$$
 
 The cycle length is $4$.
 
-Since
+To find the last digit of
+$$2^{100},$$
+compute
+$$100\equiv0\pmod4.$$
 
-$$
-100 \equiv 0 \pmod{4},
-$$
+So we use the fourth entry in the cycle:
+$$\boxed6.$$
 
-the last digit corresponds to the fourth term in the cycle:
+When looking for a cycle:
+1. Reduce each power modulo $m$.
+2. Stop when the residues begin repeating.
+3. Reduce the exponent modulo the cycle length.
 
-$$
-6.
-$$
+## Fermat's Little Theorem
 
-Recognising cyclic behaviour is one of the most common uses of modular
-arithmetic in AMC and AIME problems.
+Cycles can sometimes be found without listing powers.
+
+If $p$ is prime and $p\nmid a$, then
+$$a^{p-1}\equiv1\pmod p.$$
+
+This is Fermat's Little Theorem.
+
+### Example
+
+Find
+$$3^{2026}\pmod7.$$
+
+Since $7$ is prime and $7\nmid3$,
+$$3^6\equiv1\pmod7.$$
+
+Now,
+$$2026=6(337)+4.$$
+
+Therefore,
+$$3^{2026}\equiv3^4\pmod7.$$
+
+Compute:
+$$3^2=9\equiv2\pmod7.$$
+
+Thus,
+$$3^4\equiv2^2=4\pmod7.$$
+
+So the remainder is
+$$\boxed4.$$
+
+## Choosing the Right Modulus
+
+In many AIME problems, the hardest part is not doing modular arithmetic. It is deciding which modulus to use.
+
+Here are some common choices:
+
+- Use modulo $2$ for parity.
+- Use modulo $4$ or $8$ for squares and parity.
+- Use modulo $3$ or $9$ for digit sums.
+- Use modulo $5$ or $10$ for last digits.
+- Use modulo $11$ for alternating digit sums.
+- Use modulo $100$ for last two digits.
+- Use a prime modulus when Fermat's Little Theorem may help.
+- Use a modulus that makes one side of an equation especially restricted.
+
+The best modulus is usually the one that gives the fewest possible residues.
+
+## Useful Residue Patterns
+
+### Squares Modulo $4$
+
+Every integer is congruent to $0,1,2,$ or $3$ modulo $4$.
+
+Squaring:
+$$0^2\equiv0\pmod4$$
+$$1^2\equiv1\pmod4$$
+$$2^2\equiv0\pmod4$$
+$$3^2\equiv1\pmod4.$$
+
+Therefore,
+$$\boxed{x^2\equiv0\text{ or }1\pmod4}.$$
+
+This is one of the most useful facts in elementary number theory.
+
+### Odd Squares Modulo $8$
+
+Every odd integer is congruent to $1,3,5,$ or $7$ modulo $8$.
+
+Squaring any of these gives
+$$x^2\equiv1\pmod8.$$
+
+Therefore every odd square satisfies
+$$\boxed{x^2\equiv1\pmod8}.$$
+
+### Squares Modulo $3$
+
+Checking $0,1,2$ gives
+$$x^2\equiv0\text{ or }1\pmod3.$$
+
+These small residue sets are very useful for proving that equations are impossible.
+
+## Worked Example: Proving Impossibility
+
+Show that no integers $x,y$ satisfy
+$$x^2+y^2=4k+3$$
+for any integer $k$.
+
+Every square is congruent to $0$ or $1$ modulo $4$.
+
+Therefore,
+$$x^2+y^2\equiv0,1,\text{ or }2\pmod4.$$
+
+But
+$$4k+3\equiv3\pmod4.$$
+
+The two sides cannot have the same remainder modulo $4$.
+
+Therefore no integer solutions exist.
+
+The important idea is that we did not try to solve the equation. We found a modulus under which the equation becomes impossible.
 
 ## Divisibility Tests
 
-Many familiar divisibility rules come naturally from modular arithmetic.
+Many familiar divisibility rules are consequences of modular arithmetic.
 
 Let
+$$N=\overline{a_1a_2\cdots a_n}.$$
 
-$$
-N = \overline{a_1a_2\cdots a_n}
-$$
-
-be a positive integer.
-
-Since
-
-$$
-N = a_1(10^{n-1})+a_2(10^{n-2})+\cdots+a_n,
-$$
-
-we can analyse $N$ modulo different integers.
-
-### Divisibility by $2$
-
-Because
-
-$$
-10 \equiv 0 \pmod{2},
-$$
-
-all powers of $10$ beyond the units digit disappear modulo $2$.
-
-So only the final digit matters.
+Then
+$$N=a_1 10^{n-1}+a_2 10^{n-2}+\cdots+a_n.$$
 
 ### Divisibility by $3$
 
 Since
-
-$$
-10 \equiv 1 \pmod{3},
-$$
-
+$$10\equiv1\pmod3,$$
 we have
+$$10^k\equiv1\pmod3.$$
 
-$$
-10^k \equiv 1 \pmod{3}
-$$
+Therefore,
+$$N\equiv a_1+a_2+\cdots+a_n\pmod3.$$
 
-for all $k$. Therefore,
-
-$$
-N \equiv a_1+a_2+\cdots+a_n \pmod{3}.
-$$
-
-Hence a number is divisible by $3$ when its digit sum is divisible
-by $3$.
+So a number is divisible by $3$ exactly when its digit sum is divisible by $3$.
 
 ### Divisibility by $9$
 
-The same argument works because
-
-$$
-10 \equiv 1 \pmod{9}.
-$$
+Similarly,
+$$10\equiv1\pmod9,$$
+so the same digit-sum rule works modulo $9$.
 
 ### Divisibility by $11$
 
 Since
+$$10\equiv-1\pmod{11},$$
+the powers of $10$ alternate:
+$$1,-1,1,-1,\ldots$$
 
-$$
-10 \equiv -1 \pmod{11},
-$$
+Therefore,
+$$N\equiv a_n-a_{n-1}+a_{n-2}-a_{n-3}+\cdots\pmod{11}.$$
 
-we get
+Thus a number is divisible by $11$ when its alternating digit sum is divisible by $11$.
 
-$$
-N \equiv a_1-a_2+a_3-a_4+\cdots \pmod{11}.
-$$
+## More Examples
 
-As such, a number is divisible by $11$ when the alternating digit sum is
-a multiple of $11$.
+### Example 1: Last Two Digits
 
-## Solving Congruences
-
-### Linear Congruences
-
-Consider
-
-$$
-3x \equiv 5 \pmod{7}.
-$$
-
-We want a multiplicative inverse of $3$ modulo $7$.
-
-Since
-
-$$
-(3)(5) = 15 \equiv 1 \pmod{7},
-$$
-
-multiplying both sides by $5$ gives
-
-$$
-x \equiv 25 \equiv 4 \pmod{7}.
-$$
-
-Thus
-
-$$
-x \equiv 4 \pmod{7}.
-$$
-
-## Key Olympiad Insight
-
-Modular arithmetic is powerful because it allows us to:
-- Eliminate impossible cases
-- Reduce very large computations
-- Classify numbers into residue classes
-- Detect patterns and cycles
-- Prove divisibility or non divisibility.
-
-In many olympiad problems, choosing the correct modulus is the main challenge.
-
-A good heuristic is:
-- Use modulo $2$ for parity
-- Modulo $10$ for last digits
-- Modulo $3$ or $9$ for digit sums
-- Modulo primes for divisibility and residues
-- Modulo small numbers to simplify expressions
-
-## Worked Examples
-
-### Example 1
-
-> Find the remainder when $3^{2026}$ is divided by $7$.
-
-The powers of $3$ modulo $7$ cycle:
-
-$$
-3,2,6,4,5,1.
-$$
-
-The cycle length is $6$.
-
-Since
-
-$$
-2026 \equiv 4 \pmod{6},
-$$
-
-we get
-
-$$
-3^{2026} \equiv 3^4 \equiv 4 \pmod{7}.
-$$
-
-Hence the remainder is $4$.
-
-### Example 2
-
-> Prove that no perfect square leaves remainder $2$ when divided by $4$.
-
-Every integer is congruent to one of $0,1,2,3$ modulo $4$.
-
-Squaring each possibility gives:
-
-$$
-0^2 \equiv 0 \pmod{4}
-$$
-
-$$
-1^2 \equiv 1 \pmod{4}
-$$
-
-$$
-2^2 \equiv 0 \pmod{4}
-$$
-
-$$
-3^2 \equiv 1 \pmod{4}.
-$$
-
-Therefore every square is congruent to either $0$ or $1$ modulo $4$, never $2$.
-
-### Example 3
-
-> Determine the last two digits of $7^{222}$.
+Find the last two digits of
+$$7^{222}.$$
 
 We work modulo $100$.
 
-Observe:
+Notice that
+$$7^4=2401\equiv1\pmod{100}.$$
 
-$$
-7^4 = 2401 \equiv 1 \pmod{100}.
-$$
-
-Then
-
-$$
-7^{222} = (7^4)^{55}(7^2).
-$$
+Since
+$$222=4(55)+2,$$
+we get
+$$7^{222}=(7^4)^{55}7^2.$$
 
 Therefore,
+$$7^{222}\equiv1^{55}\cdot49\equiv49\pmod{100}.$$
 
-$$
-7^{222} \equiv (1^{55})(49) \equiv 49 \pmod{100}.
-$$
+So the last two digits are
+$$\boxed{49}.$$
+
+### Example 2: An Impossible Equation
+
+Determine whether integers $x,y$ can satisfy
+$$x^2+y^2=2027.$$
+
+Reduce modulo $4$:
+$$2027\equiv3\pmod4.$$
+
+But
+$$x^2+y^2\equiv0,1,\text{ or }2\pmod4.$$
+
+Therefore the equation has no integer solutions.
+
+### Example 3: Using a Clever Modulus
+
+Suppose
+$$x^2=3y+2$$
+for integers $x,y$.
+
+Reducing modulo $3$ gives
+$$x^2\equiv2\pmod3.$$
+
+But squares modulo $3$ are only $0$ and $1$.
+
+Therefore no integer solutions exist.
+
+This illustrates an important strategy: if one side contains a multiple of $3$ plus a constant, modulo $3$ is a natural first choice.
+
+### Example 4: Large Exponent
+
+Find
+$$13^{100}\pmod5.$$
+
+First,
+$$13\equiv3\pmod5.$$
+
+Then,
+$$3^2=9\equiv-1\pmod5.$$
+
+Therefore,
+$$3^{100}=(3^2)^{50}\equiv(-1)^{50}=1\pmod5.$$
+
+Hence,
+$$\boxed{13^{100}\equiv1\pmod5}.$$
+
+## Key Olympiad Strategy
+
+When you see an integer problem, ask:
+
+1. What happens if I reduce everything modulo a small number?
+2. Are the possible residues of squares, cubes, or powers restricted?
+3. Can I choose a modulus that makes one side become $0$, $1$, or $-1$?
+4. Does the problem involve last digits or divisibility?
+5. Do powers repeat in a short cycle?
+6. Can a congruence eliminate most or all possible cases?
+
+Modular arithmetic is often strongest when used to eliminate possibilities rather than directly construct the answer.
 
 ## Common Pitfalls
-- Forgetting that congruence means equality of remainders, not ordinary
-  equality.
-- Cancelling factors modulo $m$ when the factor is not coprime to $m$.
-- Reducing incorrectly after exponentiation.
-- Using a modulus that does not actually simplify the problem.
-- Assuming patterns continue without proof.
 
-## Strategy Tips
-- Reduce numbers modulo $m$ as early as possible.
-- Search for cycles in powers.
-- Test small cases to identify residue patterns.
-- Use negative residues when convenient:
+- Congruence is not ordinary equality.
+- Do not cancel a factor unless it is coprime to the modulus.
+- Reduce numbers before doing large computations.
+- Do not assume a power cycle continues without identifying why it repeats.
+- Remember that a negative residue such as $-1$ may be easier than the standard positive residue.
+- Do not choose a modulus randomly. Choose one that interacts with the structure of the problem.
+- When checking possible square or cube residues, make sure you test every residue class modulo that modulus.
 
-$$
-19 \equiv -1 \pmod{10}
-$$
+## Strategy Checklist
 
-is often easier to work with than $19 \equiv 9 \pmod{10}$.
-
-- When proving impossibility, try looking at all residue classes modulo a small
-  integer.
+- Reduce large numbers immediately.
+- Try small moduli such as $2,3,4,5,8,9,10,$ and $11$.
+- Use negative residues when convenient.
+- Look for cycles in powers.
+- Know common square residues.
+- Use Fermat's Little Theorem for large powers modulo a prime.
+- Check whether cancellation is actually legal.
+- When proving impossibility, compare the possible residues of both sides.
+- When solving a congruence, look for a modular inverse.
+- Always ask why your chosen modulus is useful.
 
 ## Practice Problems
 
