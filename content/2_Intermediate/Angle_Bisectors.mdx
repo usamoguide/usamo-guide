@@ -1,146 +1,102 @@
 ---
 id: angle-bisectors
 title: Angle Bisectors
-author: Lefteris Demosthenous
-description: The angle bisector theorem and length facts.
+author: USAMO Guide Team - Ava Berenji
+description: Incenters, angle bisector theorem, and length and area facts.
 prerequisites: []
 ---
 
 ## Overview
 
-Angle bisectors turn angles into side ratios. You will need them for area and segment-ratio problems, and frequently appear in AMC 8, AMC 10, and basic olympiad geometry.
+Angle bisectors convert information about angles into side ratios, most commonly using the Angle Bisector Theorem. They are especially useful in geometry problems involving ratios, areas, cevians, and triangle side lengths.
 
-The most important result is the Angle Bisector Theorem, which changes angle information into side-length information. This makes many geometry problems simple algebra.
 
 ## Definitions and Key Ideas
 
-Consider triangle $ABC$, and let the bisector of $\angle A$ intersect side $BC$ at $D$.
+A **cevian** is a line that connectes a vertex to a triangle's opposite side (or its extension). An angle bisector is an example of a cevian; medians and altitudes are as well.
 
-The Angle Bisector Theorem states that
+An **angle bisector** is a line drawn from a vertex $A$ such that $\angle A$ is divided into two angles of equal measure. The bisector from a vertex lies inside the triangle and hits the opposite side between the endpoints.
 
-$$
-\frac{BD}{DC} = \frac{AB}{AC}.
-$$
+The three angle bisectors intersect at the **incenter,** which is the center of the circle tangent to all three sides of a triangle.
+ 
+- The angle bisector is equidistant from the sides of the angle it bisects. 
+- Thus, the incenter is equidistant from all three sides (this distance is the **inradius**).
+- For any **tangential** polygon, it holds that Area $K = r s,$ where $r$ is the inradius and $s$ is the **semiperimeter** (half the perimeter). Quadrilaterals are tangential iff pairs opposite sides have the same sum (Pitot's Theorem).
+- The incenter's tangency points split the perimeter into 6 segments, 2 each of length $s-a, s-b, s-c.$
+- (Angle Bisector Theorem) If $AD$ bisects $\angle A$ in triangle $ABC$, then
+  $\frac{BD}{DC} = \frac{AB}{AC}$.
+- Triangles $ABD$ and $ACD$ share a height from $A$, so their areas are in the
+  ratio $BD:DC$.
 
-In words, an angle bisector divides the opposite side in the ratio of the adjacent sides.
+## Properties
 
-Because triangles $ABD$ and $ACD$ share the same altitude from $A$, their areas satisfy
+**Equidistance:** An angle bisector is equidistant from the sides of the angle it bisects. Let $AD$ bisect $\angle A$ in triangle $ABC$, and let $P$ be a point on the angle bisector. Drop altitudes $M$ and $N$ to $AB$ and $AC.$ Then by AAS congruence, $\triangle AMP \cong \triangle ANP,$ so $MP=NP$ and we are done.
+The **converse** (that if a point is equidistant from two sides, it lies on the corresponding angle bisector) is also true, and can be proven using HL congruence.
 
-$$
-\frac{[ABD]}{[ACD]} = \frac{BD}{DC}.
-$$
+**Incenter:** The three angle bisectors in a triangle can be proven to intersect at one point: the **incenter** $I.$ Due to the above property, the incenter must be equidistant from all three sides. Thus, we can draw a circle with **inradius** $MI=NI=LI,$ this is the **incircle,** and is tangent to all three sides of the triangle (recall that the radius to the point of tangency is perpendicular to the tangent line, and vice versa).
 
-Combining this with the Angle Bisector Theorem gives
+**Area:** For any polygon with an incircle (not just triangles!), their area is equal to $rs,$ inradius times semiperimeter. The proof uses simple area techniques. Connect the incenter to each of the vertices. This will divide the polygon into triangles. Then draw the inradii with length $r$; these are also the altitudes from the incenter to each of the sides, so we can use them as an altitude for each triangle as well. Using $\frac{1}{2}bh,$ the area of the polygon $ABCD(...)$ is 
 
-$$
-\frac{[ABD]}{[ACD]} = \frac{AB}{AC}.
-$$
+$$\dfrac{1}{2} \left[ (AB)(r) + (BC)(r) + (CD) r + \cdots \right] $$
 
-This is one of the fastest shortcuts for area-ratio problems.
+$$ = \dfrac{1}{2} (AB + BC + CD + \cdots) r$$
 
-Another useful fact is that every interior angle bisector meets the opposite side between its endpoints, dividing the triangle into two smaller triangles.
+$$ = rs.$$
 
-## The Angle Bisector Theorem
+**Segments:** Because of the two tangents theorem, or alternatively triangle congruence, we know that $AM=AN, BM=BL, CN=CL.$ Call the respective quantities $x,y,$ and $z.$ If we are given $AB=c,BC=a,$ and $AC=b,$ we can set up the following system
+
+$$x+y=c$$
+
+$$y+z=a$$
+
+$$z+x=b.$$
+
+Solving and abbreviating $s=\frac{a+b+c}{2}$ (semiperimeter), it yields
+
+$$x=s-a$$
+
+$$y=s-b$$
+
+$$z=s-c.$$
+
+
+*Corollary:* All triangles have an incenter, but not all polygons with 4 (or more) sides do. Quadrilaterals that have an incircle are called **tangential.** By **Pitot's theorem,** a quadrilateral is tangential if and only if **the sums of the lengths of its *opposite* sides are equal.** This would allow us to split the quadrilateral into 8 segments (4 pairs of equal length from the same vertex). However, we generally cannot find the length of these segments directly from the sides of the quadrilateral as we did with the triangle equation system, since *quadrilaterals are not uniquely determined by their side lengths.*
+
+ 
+
+### The Angle Bisector Theorem
+
 
 If $AD$ bisects $\angle A$ in triangle $ABC$, then
+  $\frac{BD}{DC} = \frac{AB}{AC}$.
 
-$$
-\frac{BD}{DC} = \frac{AB}{AC}.
-$$
+### Proof
 
-This theorem is often used together with
+Drop altitudes from $D$ to $AB$ and $AC.$ As proved above, an angle bisector is equidistant from the sides of the angle it bisects. Thus, the altitudes have the same length, say $h.$ Thus, $[ABD] = \frac{1}{2} h AB,$ and $[ADC] = \frac{1}{2} h AC.$ Therefore,
 
-$$
-BD+DC=BC
-$$
+$$\dfrac{[ABD]}{[ADC]} = \dfrac{AB}{AC}.$$
 
-to find unknown segment lengths.
+Next, notice that $\triangle ABD$ and $\triangle ADC$ share an altitude from $A$ to $BC.$ Thus, their areas satisfy
 
-For example, if
+$$\dfrac{[ABD]}{[ADC]} = \dfrac{BD}{DC}.$$
 
-$$
-AB=8,\qquad AC=6,
-$$
+Thus, we conclude that $\frac{AB}{AC} = \frac{BD}{DC}.$
 
-then
 
-$$
-BD:DC=8:6=4:3.
-$$
+### Applications
 
-If $BC=14$, then
-
-$$
-BD=8,\qquad DC=6.
-$$
-
-## Area Ratios
-
-One of the most common AMC applications of angle bisectors involves areas.
-
-Since triangles $ABD$ and $ACD$ share the same altitude from $A$,
-
-$$
-\frac{[ABD]}{[ACD]} = \frac{BD}{DC}.
-$$
-
-Using the Angle Bisector Theorem,
-
-$$
-\frac{[ABD]}{[ACD]} = \frac{AB}{AC}.
-$$
-
-Thus, if
-
-$$
-AB:AC=3:5,
-$$
-
-then
-
-$$
-[ABD]:[ACD]=3:5.
-$$
-
-No area formulas are required.
-
-## Recognizing Angle Bisector Problems
-
-Common clues that suggest using the Angle Bisector Theorem include:
-
-- A segment is explicitly described as an angle bisector.
-- Two side lengths adjacent to an angle are given.
-- A ratio on the opposite side is requested.
-- Area ratios appear alongside an angle bisector.
-- A triangle is divided into two smaller triangles by a segment from a vertex.
-
-Whenever you see an angle bisector and side lengths together, try the theorem immediately.
+- Sometimes the lengths in the ratio statement will not be directly given to you. If the full side $BC$ is given, set a variable for $BD$ or $DC$ and use $BD+DC=BC$ and the ABT to solve for it.
+- If the solution involves areas, note that because $ABD$ and $ACD$ share an altitude from $A$, their areas are proportional to $BD$ and $DC$.
+- Look for tangential quadrilaterals using Pitot's theorem.
 
 ## Common Pitfalls
 
-- Using the theorem on a median instead of an angle bisector.
+- Thinking that the equal ratios of two sides and angle makes $\triangle ABD$ and $\triangle ACD$ similar (they aren't; this is faulty SSA similarity) 
 - Mixing up side lengths and segment lengths.
-- Writing
-
-$$
-\frac{BD}{DC} = \frac{BC}{AC}
-$$
-
-instead of
-
-$$
-\frac{BD}{DC} = \frac{AB}{AC}.
-$$
-
-- Forgetting to use
-
-$$
-BD+DC=BC
-$$
-
-when the entire side length is known.
-
-- Applying the theorem without first confirming that the segment is actually an angle bisector.
+- If your diagram is close to equilateral, thinking a median or altitude is an angle bisector based on appearance.
+- Reversing the ratio: $AB/AC = BD/DC,$ not $DC/BD.$
+- Forgetting that the ratio uses the adjacent sides to the bisected angle. Watch out for this when there are multiple other lines going through the same point in addition to the angle bisector.
+- Applying Pitot's when same sides are equal instead of opposite sides.
 
 ## Worked Example
 
@@ -248,26 +204,7 @@ $$
 [DIC] = \frac{3}{5}\cdot30 = 18.
 $$
 
-## Strategy Checklist
 
-- Confirm the segment is an angle bisector.
-- Immediately write
-
-$$
-\frac{BD}{DC} = \frac{AB}{AC}.
-$$
-
-- Use
-
-$$
-BD+DC=BC
-$$
-
-when a full side length is given.
-
-- Convert area information into side ratios whenever possible.
-
-- Look for shared altitudes when comparing triangle areas.
 
 ## Practice Problems
 
