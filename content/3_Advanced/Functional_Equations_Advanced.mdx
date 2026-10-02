@@ -1,262 +1,395 @@
 ---
 id: functional-equations-advanced
 title: Functional Equations (AIME Level)
-author: USAMO Guide Team
-description: More sophisticated substitutions and invariants in FE problems.
-prerequisites: ["functional-equations"]
+author: Siddhant Arora
+description: Reading the domain, forcing substitutions, and pinning down an unknown function
+prerequisites: ["functional-equations-p1", "functional-equations-p2"]
 ---
+
+## Additional Resources
+
+<Resources>
+  <Resource
+    source="AoPSWiki"
+    title="Functional Equation"
+    url="https://artofproblemsolving.com/wiki/index.php/Functional_equation"
+    starred
+  >
+    Definitions, inverse and cyclic functions, and the bijectivity vocabulary.
+  </Resource>
+  <Resource
+    source="AoPSWiki"
+    title="Cauchy Functional Equation"
+    url="https://artofproblemsolving.com/wiki/index.php/Cauchy_Functional_Equation"
+  >
+    The additive equation over the rationals and over the reals, treated carefully.
+  </Resource>
+  <Resource
+    source="EC"
+    title="Introduction to Functional Equations"
+    url="https://web.evanchen.cc/handouts/FuncEq-Intro/FuncEq-Intro.pdf"
+  >
+    Olympiad-level handout. Well past AIME, but the best place to go next.
+  </Resource>
+  <Resource
+    source="CJQ"
+    title="Orbits"
+    url="https://cjquines.com/files/orbits.pdf"
+  >
+    Functional graphs and iteration, the right way to picture nested $f$'s.
+  </Resource>
+  <Resource
+    source="WP"
+    title="Cauchy's Functional Equation"
+    url="https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation"
+  >
+    Statement of the regularity conditions that force a linear solution.
+  </Resource>
+  <Resource
+    source="AoPSWiki"
+    title="Category: Functional Equation Problems"
+    url="https://artofproblemsolving.com/wiki/index.php/Category:Functional_Equation_Problems"
+  >
+    Every functional equation catalogued on the wiki, sorted by difficulty.
+  </Resource>
+</Resources>
 
 ## Overview
 
-Advanced functional equations often mix algebra and number theory. Expect to
-find hidden constraints via special inputs and symmetry.
+Up to this point, solving an equation has meant finding a number. A **functional equation** raises the stakes: the thing you are solving for is a rule, and the problem tells you one identity that this rule obeys at every legal input.
 
-## Key Ideas
-
-- If $f$ is defined on integers, parity and modular arguments can restrict it.
-- Look for fixed points: solve $f(x)=x$ or $f(x)=c$.
-- Iteration (apply the equation repeatedly) can uncover structure.
-
-## Core Skills
-
-### Pin Down Constants
-
-Use $x=0$, $y=0$, $x=y$, or $x=-y$ to extract $f(0)$ and other constants.
-
-### Iterate the Functional Equation
-
-Apply the equation multiple times to relate $f(x)$ to $f(f(x))$ or $f(x+c)$.
-
-### Use Injectivity/Surjectivity
-
-Prove injectivity by showing $f(a)=f(b)\Rightarrow a=b$, then use it to
-simplify equations.
-
-## Worked Example
-
-If $f(x)=2x$ satisfies $f(x+y)=f(x)+f(y)$ for all $x,y$, then $f$ is additive.
-Many contest problems ask you to prove that linear functions are the only
-solutions.
-
-## Easy Warm-up Examples
-
-### Example 1: Fixed Point
-
-If $f(f(x))=x$, show $f$ is bijective.
-
-Apply $f$ to both sides to get $f(x)=f(f(f(x)))$, implying surjectivity and
-injectivity.
-
-### Example 2: Integer Restriction
-
-If $f:\mathbb{Z}\to\mathbb{Z}$ and $f(x+1)=f(x)+2$, then $f(x)=2x+c$.
-
-### Example 3: Symmetry
-
-If $f(x)+f(1-x)=1$, then setting $x=1-x$ gives $f(1/2)=1/2$.
-### Example 4: Injectivity Practice
-
-If
+A first example everyone meets is
 
 $$
-f(x+f(y))=f(x)+y
+f(x+y) = f(x) + f(y),
 $$
 
-for all real numbers $x,y$, your goal is to show that $f$ is injective.
+which asks you to describe every $f$ satisfying that identity for all $x$ and $y$ simultaneously.
 
-Suppose $f(a)=f(b)$. Then
+On a proof contest, the entire difficulty is ruling out solutions with the intended answer being usually easy to spot, all accompanied by a writeup. The AIME is kinder! You are asked for one integer, so you can often stop the moment you can evaluate $f$ somewhere specific. 
 
-$$
-f(x+f(a))=f(x)+a,
-$$
+## Know Your Domain
 
-and
+Before touching the equation, read what set $f$ is defined on. This single observation determines which tools are legal, and it is the fastest way to orient yourself.
 
-$$
-f(x+f(b))=f(x)+b.
-$$
+| Domain | Techniques |
+|---|---|
+| $\mathbb{Z}$ or $\mathbb{Z}^{+}$ | Induction, parity, and residues. Values propagate one step at a time. |
+| $\mathbb{Q}$ or $\mathbb{Q}^{+}$ | Everything above, plus scaling: reach $p/q$ from $p$ by splitting into $q$ equal pieces. |
+| $\mathbb{R}$ | Induction reaches nothing. You need a given like continuity, monotonicity, or a bound. |
+| A finite set | The equation becomes a constraint on a directed graph. Count, do not solve. |
+| Stated to be a polynomial | Degrees, leading coefficients, and root counts are all fair game. |
 
-Since $f(a)=f(b)$, we obtain $a=b$.
+The row that catches people is $\mathbb{R}$. Over the reals an unadorned identity constrains far less than intuition suggests. Nothing in the word "function" promises a formula, a smooth graph, or any predictable behavior in between the points you have already pinned down.
 
-### Example 5: Surjectivity Practice
+Two concrete warnings make the point better than a list of adjectives:
 
-If
+- Knowing $f(x+1) - f(x) = 1$ for every real $x$ does **not** make $f$ linear. For instance, the function $f(x) = x + \sin(2\pi x)$ satisfies it, since the sine term repeats with period $1$ and cancels.
+- Knowing $g(x+2) = g(x)$ for every real $x$ does **not** make $g$ constant. Take $g(x) = \cos(\pi x)$.
 
-$$
-f(f(x))=f(0)+x
-$$
+So a step is only as good as the algebra behind it. Reasoning from a sketch of the graph, or from the slope of a function you have no reason to believe is differentiable, proves nothing!
 
-for all real numbers $x$, your job is to show that $f$ is surjective.
+## Opening Moves
 
-As $x$ varies over $\mathbb{R}$, the right-hand side attains every real value.
-Hence $f(f(x))$ attains every real value, so $f$ is surjective.
+Almost every solution starts the same way: feed the equation convenient inputs and collect whatever falls out. Here is a rough list:
 
-### Example 6: What c makes the function 0?
+1. **Set every variable to $0$**, then to $1$. This usually produces an equation in $f(0)$ or $f(1)$ alone.
+2. **Set one variable to $0$** and leave the other free. Terms collapse and you often get a relation between $f(x)$ and $f(0)$.
+3. **Set $y = x$**, then $y = -x$. The second frequently exposes whether $f$ is odd or even.
+4. **Choose inputs that kill a term.** If some $f(\cdot)$ has an argument you can zero out, do it.
 
-Suppose
+A short example shows how far the first two steps alone can carry you.
 
-$$
-f(x+f(y))=f(x)+y
-$$
+> Find all $f : \mathbb{R} \to \mathbb{R}$ such that $f(x)f(y) - f(xy) = x + y$ for all real $x, y$.
 
-for all real numbers $x,y$.
-
-Since $f$ is surjective, choose $c$ such that $f(c)=0$. Then
-
-$$
-f(x)=f(x+f(c))=f(x)+c,
-$$
-
-so $c=0$.
-
-### Example 7: Finding Solutions
-
-Your job is to find all linear solutions to the following functional equation:
+Start with $x = y = 0$:
 
 $$
-f(x+f(y))=f(x)+2y.
+f(0)^2 - f(0) = 0 \implies f(0) \in \lbrace 0, 1 \rbrace.
 $$
 
-First, we let $f(x)=ax+b$.Then, substituting gives
+Now set $y = 0$ but keep $x$ free, which gives $f(x)f(0) - f(0) = x$. If $f(0) = 0$ this says $0 = x$ for every real $x$, which is absurd. So $f(0) = 1$, and the same equation becomes $f(x) - 1 = x$, that is,
 
 $$
-a(x+ay+b)+b=ax+2y+b.
+f(x) = x + 1.
 $$
 
-Comparing coefficients yields
+Verifying, $(x+1)(y+1) - (xy+1) = x + y$ as required. Two substitutions solved the entire problem.
+
+## Making Two Arguments Coincide
+
+When $f$ appears with two different arguments that are built from the same variables, ask whether you can choose inputs making those arguments **equal**. The two terms then cancel outright, and whatever is left over is a free constraint.
+
+> Find all $f : \mathbb{R} \to \mathbb{R}$ such that $f(x+y) = f(3x - y) + f(x^2)$ for all real $x, y$.
+
+The arguments $x + y$ and $3x - y$ are both linear in $y$, so we can force them together. Solving $x + y = 3x - y$ gives $y = x$. Substituting that choice,
 
 $$
-a^2=2,\qquad ab=0.
+f(2x) = f(2x) + f(x^2) \implies f(x^2) = 0.
 $$
 
-Since $a\neq 0$, we get $b=0$, so
+As $x$ ranges over $\mathbb{R}$, the quantity $x^2$ ranges over every nonnegative real, so $f$ vanishes on $[0, \infty)$. In particular $f(0) = 0$.
+
+That handles half the line. For the other half, set $x = 0$ in the original equation:
 
 $$
-f(x)=\sqrt{2}\,x
-\quad\text{or}\quad
-f(x)=-\sqrt{2}\,x.
+f(y) = f(-y) + f(0) = f(-y),
 $$
 
-### Example 8: What is $f(0)$?
+so $f$ is even. Any negative $t$ therefore satisfies $f(t) = f(-t) = 0$, since $-t$ is positive. Hence $f \equiv 0$, which visibly works.
 
-Suppose that
+So when you see two terms that may cancel, try cancelling them!
 
-$$
-f(x+y)+f(x-y)=2f(x)+2f(y)
-$$
+## Swapping the Variables
 
-for all real numbers $x,y$.
+If the equation is symmetric in $x$ and $y$ *except* for a small piece, write down the equation with $x$ and $y$ exchanged and subtract. Everything symmetric cancels, and the leftover is usually short enough to read directly.
 
-Setting $x=y=0$ gives
+> Find all $f : \mathbb{R} \to \mathbb{R}$ such that $f(x+y) + f(x)f(y) = f(xy) + f(x) + y$.
 
-$$
-2f(0)=4f(0),
-$$
-
-hence
+Look at which parts survive a swap. On the left, $x + y$ and $f(x)f(y)$ are both unchanged. On the right, $f(xy)$ is unchanged, but $f(x) + y$ is not. So exchanging the variables gives
 
 $$
-f(0)=0.
+f(x+y) + f(x)f(y) = f(xy) + f(y) + x,
 $$
 
-### Example 9: Find the Functional Relation
-
-Suppose
+and subtracting this from the original leaves:
 
 $$
-f(x+y)+f(x-y)=2f(x)+2f(y)
+f(x) + y = f(y) + x \implies f(x) - x = f(y) - y.
 $$
 
-and $f(0)=0$.
+A quantity depending only on $x$ that equals a quantity depending only on $y$ must be constant, so $f(x) = x + c$ for some fixed $c$.
 
-Setting $y=x$ gives
-
-$$
-f(2x)+f(0)=4f(x),
-$$
-
-so
+Now recover $c$ by substituting back. The left side becomes $(x+y+c) + (x+c)(y+c)$ and the right side becomes $(xy+c) + (x+c) + y$. Expanding and cancelling the common $xy$, the difference is
 
 $$
-f(2x)=4f(x).
+cx + cy + c^2 - c,
 $$
 
-### Example 10: Iteration
+which must vanish for all $x$ and $y$. The coefficient of $x$ forces $c = 0$, and then $c^2 - c = 0$ holds automatically. Therefore $f(x) = x$, and checking, both sides equal $x + y + xy$.
 
-If $f(f(x))=f(0)+x$, show that $f(f(f(f(x))))=2f(0)+x$.
+## Cancelling an $f$: Injectivity and Surjectivity
 
-Applying the given relation with $x$ replaced by $f(f(x))$ gives
+The two properties below are worth learning not as definitions to memorize but as **permissions**. Each one licenses a specific move.
 
-$$
-f(f(f(f(x))))=f(0)+f(f(x)).
-$$
+> **Injective** means $f(a) = f(b)$ forces $a = b$. The permission: if you ever derive $f(A) = f(B)$, you may erase both $f$'s and write $A = B$.
 
-Using the original equation again,
+> **Surjective** means every value in the codomain is achieved. The permission: you may introduce a symbol $t$ with $f(t)$ equal to whatever convenient number you like, such as $0$ or $1$, and then substitute $t$ into the equation.
 
-$$
-f(f(f(f(x))))=f(0)+(f(0)+x)=2f(0)+x.
-$$
-### Example 11: Constant Solutions
+Together they make $f$ **bijective**, which means $f$ can be undone.
 
-Your goal here is to find all constant solutions of
+The reason these show up so often is that they are frequently free. Look for a variable that sits by itself on one side, unwrapped by any $f$, and then hold every other variable fixed.
 
-$$
-f(x+y)=f(x)f(y)-f(xy)+1.
-$$
+> Suppose $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(f(y) - x) = y - f(x)$ for all real $x, y$.
 
-Let $f(x)\equiv c$. Then
+**Injectivity.** Suppose $f(a) = f(b)$. Put $y = a$ and then $y = b$, keeping $x$ fixed:
 
 $$
-c=c^2-c+1.
+f(f(a) - x) = a - f(x), \qquad f(f(b) - x) = b - f(x).
 $$
 
-Thus
+Since $f(a) = f(b)$, the two left sides are literally the same number, so $a - f(x) = b - f(x)$ and thus $a = b$.
+
+**Surjectivity.** Freeze $x = 0$, so the equation reads $f(f(y)) = y - f(0)$. As $y$ sweeps across $\mathbb{R}$, the right side takes every real value, while the left side always has the form $f(\text{something})$. So every real is an output of $f$.
+
+One equation, both properties, and no cleverness required. (For the curious, $f(x) = -x$ satisfies this equation.)
+
+## Iterating: Composition Chains
+
+When the equation involves $f(f(x))$, the productive move is usually to build a longer chain and evaluate it two different ways. Compositions are associative, so $f(f(f(x)))$ can be simplified by collapsing either the inner pair or the outer pair, and setting the two results equal is a genuine deduction.
+
+> Suppose $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(f(x)) = 2 - x$ for all real $x$.
+
+Collapse the inner two copies: since $f(f(x)) = 2-x$, we get $f(f(f(x))) = f(2-x)$.
+
+Collapse the outer two instead, by applying the given identity with $x$ replaced by $f(x)$: this gives $f(f(f(x))) = 2 - f(x)$.
+
+The two must agree, so
 
 $$
-(c-1)^2=0,
+f(2 - x) = 2 - f(x).
 $$
 
-so the only constant solution is
+Setting $x = 1$ yields $f(1) = 2 - f(1)$, hence $f(1) = 1$. We have located a value of $f$ using nothing but bookkeeping.
+
+The same chain also shows $f$ is invertible. Applying $f\circ f$ twice sends $x \mapsto 2-x \mapsto x$, so four applications of $f$ return the input. A function with a two-sided inverse (here $f$ composed with itself three times) is a bijection.
+
+The cleanest special case is worth naming: if $f(f(x)) = x$ identically, then $f$ is its own inverse, so it is automatically a bijection and you inherit both permissions from the previous section for free.
+
+## Additive and Multiplicative Equations
+
+The additive identity $f(x+y) = f(x) + f(y)$ recurs constantly, and its resolution depends entirely on the domain, which is why that table came first.
+
+### On the Integers and Rationals
+
+For folklore, this is also called Cauchy's Functional Equation. Set $x = y = 0$ to get $f(0) = 0$, and abbreviate $k = f(1)$. Repeatedly adding $1$ gives $f(2) = 2k$, then $f(3) = 3k$, and induction gives $f(n) = nk$ for every positive integer $n$. Choosing $y = -x$ gives $f(x) + f(-x) = 0$, so $f$ is odd and the formula carries over to negative integers.
+
+To reach a fraction $p/q$, split it into $q$ equal pieces. Adding $p/q$ to itself $q$ times gives $p$, so additivity yields
 
 $$
-f(x)\equiv 1.
+q \cdot f\!\left(\tfrac{p}{q}\right) = f(p) = kp \implies f\!\left(\tfrac{p}{q}\right) = k \cdot \tfrac{p}{q}.
 $$
 
-### Example 12: What is $f(0)$?
+So on $\mathbb{Q}$ the answer is exactly $f(x) = kx$. Notice this argument only ever used the *domain*; it works verbatim for $f : \mathbb{Q} \to \mathbb{R}$.
 
-If
+### On the Reals
 
-$$
-f(x+y)=f(x)f(y)-f(xy)+1
-$$
+Over $\mathbb{R}$ the induction above reaches only the rational multiples of a single value, and that is unfortunately not enough, additive functions exist that are not of the form $kx$. You therefore need one additional hypothesis, and contest problems supply one.
 
-for all real numbers $x,y$, show that either $f(0)=1$ or $f$ is constant.
+> **Theorem.** If $f : \mathbb{R} \to \mathbb{R}$ is additive, then $f(qx) = qf(x)$ for every rational $q$. If in addition $f$ is continuous, or monotonic, or bounded on some interval of positive length, then $f(x) = kx$ for a constant $k$.
 
-Setting $x=0$ gives
+The practical reading is that you should hunt for a bound. If some manipulation shows $f \ge 0$ on a stretch of the line, you are done. For example, an $f$ that is both additive and multiplicative satisfies $f(t^2) = f(t)^2 \ge 0$, which bounds it below on $[0, \infty)$ and forces $f(x) = kx$; then $kxy = (kx)(ky)$ leaves only $k = 0$ and $k = 1$.
 
-$$
-f(y)=f(0)f(y)-f(0)+1.
-$$
+### The Multiplicative Version
 
-Letting $a=f(0)$, we obtain
+On the AIME the additive equation more often arrives disguised as
 
 $$
-(1-a)f(y)=1-a.
+f(ab) = f(a) + f(b),
 $$
 
-Thus either $a=1$ or
+a rule that converts products into sums exactly like a logarithm. Setting $a = b = 1$ gives $f(1) = 2f(1)$, so $f(1) = 0$, and then $0 = f(a \cdot \tfrac{1}{a}) = f(a) + f(\tfrac{1}{a})$ gives
 
 $$
-f(y)\equiv 1.
+f\!\left(\tfrac{1}{a}\right) = -f(a).
 $$
 
-## Medium-Level Examples 
+Repeated multiplication gives $f(p^n) = nf(p)$. Combining these, a positive rational written as a ratio of prime factorizations has its value determined entirely by the values of $f$ on primes. Whenever you see products turning into sums, prime factorizations may be a good idea.
 
-## Strategy Checklist
+## Symmetry Lines and Periodicity
 
-- Plug in special values to find constants.
-- Iterate the equation to uncover structure.
-- Use injectivity or surjectivity when possible.
+This is the pattern the AIME reuses most. A condition of the form $f(a+x) = f(a-x)$ is a reflection statement: it says the input $t$ and its mirror image about $a$ receive the same output. Written without the auxiliary variable,
+
+$$
+f(t) = f(2a - t) \quad \text{for every } t.
+$$
+
+Reflecting twice, about $a$ and then about $b$, is a translation. Chaining the two statements,
+
+$$
+f(t) = f(2a - t) = f\big(2b - (2a - t)\big) = f\big(t + 2(b-a)\big).
+$$
+
+> **Two reflection symmetries, about $x = a$ and $x = b$, make $f$ periodic with period $2(b-a)$.**
+
+With three or more symmetries, compute a period from each pair and take their $\gcd$.
+
+> **1984 AIME Problem 12**
+>
+> A function $f$ is defined for all real numbers and satisfies $f(2+x) = f(2-x)$ and $f(7+x) = f(7-x)$ for all $x$. If $x = 0$ is a root of $f(x) = 0$, what is the least number of roots $f(x)=0$ must have in the interval $-1000 \le x \le 1000$?
+
+The mirrors sit at $x = 2$ and $x = 7$, so the period is $2(7-2) = 10$. We are handed the root $x = 0$, and reflecting it about $x = 2$ produces a second root at $x = 4$. Translating both by multiples of $10$ gives two arithmetic families,
+
+$$
+x \equiv 0 \pmod{10} \qquad \text{and} \qquad x \equiv 4 \pmod{10}.
+$$
+
+Now just count inside $[-1000, 1000]$. The multiples of $10$ run from $-1000$ to $1000$ in steps of $10$, which is $201$ values. For the other family, the nonnegative ones are $4, 14, \ldots, 994$, a total of $100$, and the negative ones are $-6, -16, \ldots, -996$, another $100$. Altogether
+
+$$
+201 + 100 + 100 = \boxed{401}.
+$$
+
+## Scaling Equations
+
+A hypothesis such as $f(kx) = kf(x)$ says the graph reproduces itself at every scale, magnified by $k$ each time. Combined with an explicit formula on one starting interval, it determines $f$ everywhere: to evaluate a large input, divide by $k$ until you land back in the interval you were given.
+
+> **2001 AIME II Problem 8**
+>
+> A certain function $f$ has the properties that $f(3x) = 3f(x)$ for all positive real values of $x$, and that $f(x) = 1 - |x-2|$ for $1 \le x \le 3$. Find the smallest $x$ for which $f(x) = f(2001)$.
+
+Begin by walking $2001$ down into $[1,3]$. Since $3^6 = 729$ and $2001/729 \approx 2.74$ sits in that interval,
+
+$$
+f(2001) = 3^6 f\!\left(\tfrac{2001}{729}\right) = 729\left(1 - \left|\tfrac{2001}{729} - 2\right|\right) = 729 \cdot \tfrac{186}{729} = 186.
+$$
+
+For the smallest input hitting $186$, notice that on $[3^n, 3^{n+1}]$ the graph is the starting triangle blown up by $3^n$, so its peak there has height $3^n$, reached at $x = 2 \cdot 3^n$. Attaining the value $186$ requires $3^n \ge 186$, and $3^5 = 243$ is the first that qualifies. So the answer lies in $[243, 729]$, where
+
+$$
+243\left(1 - \left|\tfrac{x}{243} - 2\right|\right) = 186 \implies \left|\tfrac{x}{243} - 2\right| = \tfrac{57}{243}.
+$$
+
+The smaller of the two solutions is $x = 486 - 57 = \boxed{429}$.
+
+## Recursions on the Integers
+
+When $f : \mathbb{Z} \to \mathbb{Z}$ is given by cases and one case is self-referential, like $f(n) = f(f(n+c))$ below a threshold, resist the urge to find a formula. Compute! Start immediately under the threshold where the base case still applies, generate several values by hand, and watch for the short repeating pattern. Once you have the pattern, the only remaining work is deciding which residue class your input belongs to.
+
+## When $f$ Is a Polynomial
+
+If the statement tells you $f$ is a polynomial, a bunch of new techniques open up:
+
+- **Compare degrees** on the two sides to determine $\deg f$.
+- **Substitute the roots.** 
+- **Guess the building block**, confirm it algebraically, and use the numerical conditions to fix any remaining exponent.
+
+## Example Problem
+
+> **2007 AIME II Problem 14**
+>
+> Let $f(x)$ be a polynomial with real coefficients such that $f(0) = 1$, $f(2) + f(3) = 125$, and for all $x$, $f(x)f(2x^2) = f(2x^3+x)$. Find $f(5)$.
+
+We are told $f$ is a polynomial, so degrees and roots are available.
+
+**Test $f(x) = (x^2+1)^n$.** The left side is
+
+$$
+f(x)f(2x^2) = (x^2+1)^n\left((2x^2)^2+1\right)^n = \left[(x^2+1)(4x^4+1)\right]^n,
+$$
+
+and multiplying out the bracket gives $4x^6 + 4x^4 + x^2 + 1$. The right side is
+
+$$
+f(2x^3+x) = \left((2x^3+x)^2+1\right)^n = \left(4x^6 + 4x^4 + x^2 + 1\right)^n.
+$$
+
+These agree for every $n$, and $f(0) = 1$ comes along for free.
+
+**Pin down $n$.** The condition $f(2) + f(3) = 125$ becomes
+
+$$
+5^n + 10^n = 125.
+$$
+
+Small values settle it: $n=1$ gives $15$, $n=3$ gives $1125$, and $n=2$ gives $25 + 100 = 125$.
+
+**Finish.** With $f(x) = (x^2+1)^2$,
+
+$$
+f(5) = (25+1)^2 = 26^2 = \boxed{676}.
+$$
+
+## Traps to Avoid
+
+- **Pointwise is not global.** Deriving $f(t)^2 = t^2$ tells you that for *each* $t$ separately, $f(t)$ is $t$ or $-t$. It does not tell you the same choice is made every time. The function $f(t) = |t|$ obeys the pointwise statement while matching neither $t$ nor $-t$ globally. To close the gap you must forbid $f$ from switching, typically by supposing $f(a) = a$ and $f(b) = -b$ for some nonzero $a$ and $b$ and deriving a contradiction.
+- **Do not promote $f$ to a polynomial.** Opening with an expression like $a_0 + a_1x + \cdots + a_nx^n$ assumes the answer unless the problem says $f$ is a polynomial.
+- **Do not differentiate.** Nothing has told you $f$ is differentiable, and phrases like "constant rate of change" presuppose what you are trying to prove.
+- **Substitute your answer back.** You are answering two questions at once, which candidates work and which are all of them, and the first is settled only by checking.
+
+## A Rough Toolkit
+
+| What you see | What to try |
+|---|---|
+| A fresh problem, no idea yet | Plug in $0$, then $1$, then $y=x$, then $y=-x$ |
+| Two different arguments of $f$ | Choose inputs making them equal so the terms cancel |
+| Almost symmetric in $x$ and $y$ | Swap the variables and subtract |
+| A bare variable alone on one side | Read off injectivity, surjectivity, or both |
+| $f(f(x))$ equal to something non-trivial | Expand $f(f(f(x)))$ by collapsing each pair in turn |
+| $f(f(x)) = x$ | Self-inverse, so bijective; cancel $f$ at will |
+| $f(a+x) = f(a-x)$ at two values of $a$ | Period $2(b-a)$, then $\gcd$ across pairs |
+| $f(kx) = kf(x)$ with a formula on one interval | Divide the input by $k$ until it lands in that interval |
+| $f(x+y) = f(x)+f(y)$ on $\mathbb{Z}$ or $\mathbb{Q}$ | Induct, then split fractions; the answer is $kx$ |
+| $f(x+y) = f(x)+f(y)$ on $\mathbb{R}$ | Find a bound, or use a given continuity or monotonicity |
+| $f(ab) = f(a)+f(b)$ | Prime factorize; values on primes determine everything |
+| $f$ declared a polynomial | Match degrees, then follow roots |
+| A small finite domain | Draw the arrow diagram and count shapes |
+
+## Remarks
+
+Functional Equations serve as exciting, puzzle-like problems where trying several things and noticing patterns is especially helpful. 
+
+As a summary, on new problems, try subbing nice values, or cancelling. Using properties derived from this experimentation, you may notice several new properties about the function or even canonical examples of citable equations like Cauchy. On the AIME, most functional equations are usually polynomials, so get good practice with them!
 
 ## Practice Problems
 
