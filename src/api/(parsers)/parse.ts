@@ -195,10 +195,27 @@ async function tryCodeforcesAPI(url: string): Promise<string | null> {
 }
 
 export default async function parse(url: string) {
+  const parsedUrl = new URL(url);
+  const parserEntry = Object.entries(parsers).find(
+    ([domain]) =>
+      parsedUrl.protocol.match(/^https?:$/) &&
+      (parsedUrl.hostname === domain ||
+        parsedUrl.hostname.endsWith('.' + domain))
+  );
+  if (!parserEntry) {
+    throw new Error(
+      `No parser found for this url.
+Available parsers:
+${Object.keys(parsers)
+  .map(key => `  - ${key}`)
+  .join('\n')}`
+    );
+  }
+  const [domain, parser] = parserEntry;
   let html;
 
   try {
-    if (url.includes('codeforces.com')) {
+    if (domain === 'codeforces.com') {
       try {
         html = await tryCodeforcesAPI(url);
       } catch (error) {
@@ -210,7 +227,7 @@ export default async function parse(url: string) {
           html = apiResult;
         } else {
           throw new Error(
-            `Failed to fetch Codeforces problem ${url}. Both direct scraping and API fallback failed. This may be due to Cloudflare protection or the problem not being available.`
+            `Failed to fetch Codeforces problem ${url}. Both direct scraping and Codeforces API failed. This may be due to Cloudflare protection or the problem not being available.`
           );
         }
       }
@@ -223,15 +240,5 @@ export default async function parse(url: string) {
       `Failed to fetch html for url ${url}: ${error instanceof Error ? error.message : 'Unknown error'}`
     );
   }
-
-  for (const [domain, parser] of Object.entries(parsers)) {
-    if (url.includes(domain)) {
-      return parser(url, html);
-    }
-  }
-  throw new Error(`No parser found for this url.
-Available parsers:
-${Object.keys(parsers)
-  .map(key => `  - ${key}`)
-  .join('\n')}`);
+  return parser(url, html);
 }
