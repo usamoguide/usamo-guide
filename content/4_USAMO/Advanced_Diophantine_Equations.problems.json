@@ -10,7 +10,7 @@
       "isStarred": false,
       "tags": ["Diophantine Equations", "Factorization techniques"],
       "statement": "Find all integer pairs $(x,y)$ satisfying\n$$\nx^2-y^2=77.\n$$\nRemember to include negative values of either variable.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -31,7 +31,7 @@
       "isStarred": false,
       "tags": ["Diophantine Equations", "Modular Arithmetic"],
       "statement": "Prove that there are no integers $x,y,z$ satisfying\n$$\nx^2+y^2=4z^2+3.\n$$",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -56,7 +56,7 @@
         "Unique factorization"
       ],
       "statement": "Find all positive integer triples $(x,y,z)$ such that\n$$\n\\gcd(x,y)=1,\\qquad x+y=25,\\qquad xy=z^2.\n$$",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -77,7 +77,7 @@
       "isStarred": false,
       "tags": ["Diophantine Equations", "Unique factorization"],
       "statement": "Find all integer pairs $(x,y)$ satisfying\n$$\nx^2=10y^4.\n$$\nUse the exponent of a prime in the factorization, rather than estimates of square roots.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -98,7 +98,7 @@
       "isStarred": false,
       "tags": ["Diophantine Equations", "Perfect Squares"],
       "statement": "Find all pairs of nonnegative integers $(n,m)$ satisfying\n$$\nm^2=n^2+3n+1.\n$$",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -123,7 +123,7 @@
         "Unique factorization"
       ],
       "statement": "Find all pairs $(x,n)$ with $x$ an integer and $n$ a nonnegative integer such that\n$$\nx^2=2^n+9.\n$$",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -148,7 +148,7 @@
         "Greatest common divisors (gcd)"
       ],
       "statement": "A Pythagorean triple is a triple of positive integers $(a,b,c)$ with $a^2+b^2=c^2$. It is primitive if $\\gcd(a,b,c)=1$.\n\nFind all ordered primitive Pythagorean triples with $c=65$. Derive the parameterization you use from a factorization; do not assume the Pythagorean triple formula.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -173,7 +173,7 @@
         "Modular Arithmetic"
       ],
       "statement": "Let $(a,b,c)$ be a primitive Pythagorean triple of positive integers, so $a^2+b^2=c^2$ and $\\gcd(a,b,c)=1$. Prove that $60$ divides $abc$.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -198,7 +198,7 @@
         "Infinite descent / root flipping"
       ],
       "statement": "Find all integer triples $(x,y,z)$ satisfying\n$$\nx^2+y^2=7z^2.\n$$\nA congruence alone will show that certain coordinates are divisible by $7$. Explain why repeating that observation rules out every nonzero solution.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -224,7 +224,7 @@
         "Recurrence relations"
       ],
       "statement": "Determine all pairs of nonnegative integers $(x,y)$ satisfying\n$$\nx^2-3y^2=1.\n$$\nExpress the answer by a recurrence and prove that the recurrence produces every solution, rather than merely infinitely many solutions.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
@@ -250,7 +250,7 @@
         "Recurrence relations"
       ],
       "statement": "Determine all ordered pairs of positive integers $(x,y)$ satisfying\n$$\nx^2+y^2+5=5xy.\n$$\nGive a rule that generates all the pairs, and prove both that the generated pairs satisfy the equation and that no other pairs exist.",
-      "author": "USAMO Guide Team",
+      "author": "Neal Shandilya",
       "interaction": {
         "type": "none"
       },
