@@ -1,0 +1,720 @@
+---
+id: advanced-diophantine-equations
+title: Advanced Diophantine Equations
+author: USAMO Guide Team
+description:
+  Build integer-equation proofs from scratch using factorization, congruences,
+  coprime powers, bounds, infinite descent, Vieta jumping, and Pell equations.
+prerequisites:
+  [
+    'polynomial-factoring-and-identities',
+    'gcd-and-lcm',
+    'modular-arithmetic',
+    'proof-writing-basics',
+  ]
+---
+
+## Why Integer Equations Need Different Tools
+
+Suppose we want positive integers $x,y$ satisfying
+
+$$
+x^2-y^2=45.
+$$
+
+Over the real numbers, we could choose any positive $y$ and set
+$x=\sqrt{y^2+45}$. But an integer square root is a much stronger requirement.
+Factoring gives
+
+$$
+(x-y)(x+y)=45.
+$$
+
+Now both factors are positive integers. There are only three possible pairs with
+the smaller factor first: $(1,45)$, $(3,15)$, and $(5,9)$. Suddenly an unbounded
+search has become a short list.
+
+A **Diophantine equation** is an equation in which we seek integer solutions.
+The goal of this module is to turn the requirement "integer" into useful
+structure, then build complete proofs from that structure. We start with the
+basic tools and develop them into olympiad techniques; no prior knowledge of
+descent, Vieta jumping, or Pell equations is needed.
+
+You should be comfortable expanding and factoring polynomials. The prerequisite
+modules explain factoring, greatest common divisors, congruences, and proof
+writing. We review the number theory facts we will actually use below.
+
+### How to Work Through This Module
+
+Read the factorization, congruence, coprimality, and bounding sections first.
+Then study infinite descent before Vieta jumping. The Pell section is a second
+application of descent, while the final IMO example combines the earlier ideas
+in a harder proof. Try each worked problem before reading its solution, and use
+the practice set in order to test whether you can choose the tool yourself.
+
+## Definitions and the Shape of a Complete Solution
+
+We write $\mathbb Z$ for all integers, $\mathbb Z_{>0}$ for positive integers,
+and $\mathbb Z_{\ge 0}$ for nonnegative integers. Always read the domain: zero
+and negative numbers can change the answer.
+
+- $d\mid n$ means $n=dt$ for some integer $t$.
+- $a\equiv b\pmod m$ means $m\mid(a-b)$: the numbers have the same remainder
+  modulo the positive integer $m$.
+- $\gcd(a,b)$ is the greatest positive integer dividing both $a$ and $b$.
+  Positive integers are **coprime** when their gcd is 1.
+- A **perfect square** is an integer of the form $t^2$, with $t\in\mathbb Z$. A
+  perfect $r$th power has the form $t^r$.
+
+When a problem asks for **all solutions**, a complete proof has two parts:
+
+1. **Necessity:** every solution belongs to your proposed list or family.
+2. **Sufficiency:** every member of that list or family satisfies the original
+   equation and the required domain.
+
+Finding several examples proves neither that a list is complete nor that an
+infinite family contains every solution. A useful first step is to test small
+values, but your proof must explain what happens beyond the values you tested.
+
+## Factorization: Replace Variables with Divisors
+
+An equation $AB=N$ with $A,B$ positive integers gives a finite search when $N$
+is fixed: $A$ must be a positive divisor of $N$, and $B=N/A$. Factor pairs must
+still obey any conditions inherited from the original variables.
+
+### Worked Example 1: Finishing the Opening Problem
+
+> Find all positive integer pairs $(x,y)$ such that $x^2-y^2=45$.
+
+**Solution.** Set $u=x-y$ and $v=x+y$. Since $x^2>y^2$ and both variables are
+positive, $x>y$, so $0<u<v$. Conversely,
+
+$$
+x=\frac{u+v}{2},\qquad y=\frac{v-u}{2}.
+$$
+
+These are integers only if $u$ and $v$ have the same parity, meaning they are
+both even or both odd. Since $uv=45$, both factors are odd, so every candidate
+in our list has the required parity.
+
+| $u$ | $v$ | $x$ | $y$ |
+| --- | --- | --- | --- |
+| 1   | 45  | 23  | 22  |
+| 3   | 15  | 9   | 6   |
+| 5   | 9   | 7   | 2   |
+
+The factorization proves there are no other positive pairs. Substituting each
+pair gives $(x-y)(x+y)=45$, so all three work. Thus
+
+$$
+\boxed{(x,y)\in\{(23,22),(9,6),(7,2)\}.}
+$$
+
+If the problem had asked for all integers, we would also need to consider
+negative factor pairs. Here neither coordinate can be zero, and all integer
+solutions are obtained by independently choosing either sign for each coordinate
+of the three displayed pairs.
+
+### When a Product Is Not Yet Visible
+
+Completing a product can expose a constant. For example,
+
+$$
+xy+x+y=11\quad\Longleftrightarrow\quad (x+1)(y+1)=12.
+$$
+
+This is often called Simon's Favorite Factoring Trick. The important step is to
+translate back: if $x,y$ are positive, the new factors must both be at least 2.
+Similarly, after factoring a difference of squares, remember that its two
+factors have the same parity. A factorization is useful only when you keep these
+extra restrictions.
+
+## Congruences: Rule Out Impossible Remainders
+
+To find possible square residues modulo $m$, square each of the remainders
+$0,1,\ldots,m-1$ and reduce modulo $m$. Every integer has one of those
+remainders, so this produces a complete list.
+
+| Modulus | Possible residues of a square |
+| ------- | ----------------------------- |
+| 3       | 0, 1                          |
+| 4       | 0, 1                          |
+| 8       | 0, 1, 4                       |
+
+In particular, an odd square is 1 modulo 8. To see why, write an odd integer as
+$2t+1$. Its square is $4t(t+1)+1$, and one of the consecutive integers $t,t+1$
+is even.
+
+### Worked Example 2: A Modular Obstruction
+
+> Prove that $x^2+y^2=4z+3$ has no integer solutions.
+
+**Solution.** Modulo 4, each square is 0 or 1, so their sum can only be 0, 1,
+or 2. The right side is 3 modulo 4. The two sides cannot be equal, giving
+
+$$
+\boxed{\text{There are no integer solutions.}}
+$$
+
+This argument covers negative integers and zero as well: the square residue
+table holds for every integer.
+
+Congruences give necessary conditions, which need not be sufficient. For
+example, $x^2=73$ passes the square tests modulo 3, 4, and 8, but 73 lies
+strictly between $8^2$ and $9^2$. Choose moduli for a reason: squares suggest 4
+or 8; powers of 3 suggest 3 or 9; a product involving a prime suggests working
+modulo that prime.
+
+## Coprimality and Perfect Powers
+
+Two elementary gcd facts are especially useful after factoring:
+
+$$
+\gcd(a,b)=\gcd(a,b-a),\qquad \gcd(a,a+1)=1.
+$$
+
+For the first identity, a common divisor of $a,b$ divides $b-a$, and a common
+divisor of $a,b-a$ divides $b$. The second follows because a common divisor of
+consecutive integers divides their difference, which is 1.
+
+### The Coprime Perfect-Power Lemma
+
+If $A,B$ are positive coprime integers and $AB$ is a perfect $r$th power for an
+integer $r\ge 2$, then both $A$ and $B$ are perfect $r$th powers.
+
+**Proof.** By unique prime factorization, a positive integer is a perfect $r$th
+power exactly when the exponent of every prime in its factorization is a
+multiple of $r$. Since $\gcd(A,B)=1$, each prime dividing $AB$ occurs in exactly
+one of $A,B$. Its exponent in that factor therefore equals its exponent in the
+product, which is a multiple of $r$. This proves the claim.
+
+The coprimality hypothesis matters: $2\cdot 8=16$ is a square, but neither
+factor is a square.
+
+### Worked Example 3: Consecutive Factors
+
+> Find all nonnegative integer pairs $(x,y)$ satisfying $x(x+1)=y^2$.
+
+**Solution.** If $x=0$, the equation forces $y=0$. Now suppose $x\ge 1$. The
+positive factors $x$ and $x+1$ are coprime, so the lemma gives
+
+$$
+x=a^2,\qquad x+1=b^2
+$$
+
+for positive integers $a,b$ with $b>a$. Hence
+
+$$
+(b-a)(b+a)=b^2-a^2=1.
+$$
+
+Both factors are positive, so both would have to be 1. Subtracting them would
+give $2a=0$, contradicting $a>0$. Thus the only solution is
+
+$$
+\boxed{(x,y)=(0,0),}
+$$
+
+which satisfies the original equation.
+
+### Prime Valuations: Count the Copies of a Prime
+
+For a prime $p$ and a positive integer $n$, the **valuation** $v_p(n)$ is the
+exponent of $p$ in the prime factorization of $n$. Thus $v_2(40)=3$ because
+$40=2^3\cdot 5$. Unique prime factorization gives
+
+$$
+v_p(AB)=v_p(A)+v_p(B),\qquad v_p(A^r)=r\,v_p(A).
+$$
+
+A square has an even valuation at every prime. This can give a contradiction
+even when a simple remainder test only tells us a variable is divisible by a
+prime.
+
+### Worked Example 4: An Odd Exponent in a Square
+
+> Prove that $x^2=12y^2$ has no positive integer solutions.
+
+**Solution.** Comparing the exponents of the prime 3 gives
+
+$$
+2v_3(x)=v_3(12)+2v_3(y)=1+2v_3(y).
+$$
+
+The left side is even and the right side is odd, a contradiction. Therefore
+
+$$
+\boxed{\text{There are no positive integer solutions.}}
+$$
+
+We required positivity before taking valuations, so zero causes no gap in the
+proof. Valuations of products add; valuations of sums generally do not. For
+instance, $v_2(2+2)=2$, while both summands have valuation 1.
+
+## Bounds: Use the Gaps Between Integers
+
+If $t$ is a nonnegative integer, no perfect square lies strictly between $t^2$
+and $(t+1)^2$. This follows because an integer whose square is larger than $t^2$
+has absolute value at least $t+1$.
+
+### Worked Example 5: Trapping a Square
+
+> Find all positive integer pairs $(x,y)$ satisfying $y^2=x^2+x+1$.
+
+**Solution.** For every positive integer $x$,
+
+$$
+x^2<x^2+x+1<x^2+2x+1=(x+1)^2.
+$$
+
+The middle expression cannot be an integer square, so
+
+$$
+\boxed{\text{There are no positive integer solutions.}}
+$$
+
+Both inequalities must be strict. If the domain included $x=0$, the upper
+inequality would become an equality and $(0,1)$ would be a solution.
+
+More generally, when an expression is close to a square or cube, compare it to
+consecutive powers. When inequalities bound one variable, explain why the
+remaining possibilities form a finite list before checking them.
+
+## Combining Tools: Exponential Equations
+
+A variable in an exponent can look very different from a polynomial equation.
+Factoring still helps if one side becomes a difference of squares.
+
+### Worked Example 6: A Square One More Than a Power of 2
+
+> Find all positive integer pairs $(x,n)$ satisfying $x^2=2^n+1$.
+
+**Solution.** Since $n\ge 1$, $x$ is odd and $x>1$. Thus $x-1$ and $x+1$ are
+positive even integers, and
+
+$$
+(x-1)(x+1)=2^n.
+$$
+
+Every positive divisor of a power of 2 is itself a power of 2, so write
+$x-1=2^r$ and $x+1=2^s$, where $s>r\ge 1$. Their difference is 2:
+
+$$
+2^r(2^{s-r}-1)=2.
+$$
+
+The factor in parentheses is odd. Comparing the powers of 2 on both sides gives
+$r=1$, and then $2^{s-r}-1=1$, so $s=2$. Consequently $x=3$ and $n=r+s=3$.
+Finally, $3^2=2^3+1$, so
+
+$$
+\boxed{(x,n)=(3,3).}
+$$
+
+Notice the sequence of ideas: parity made the factors even, factorization made
+them powers of 2, and their small difference forced their sizes.
+
+## Parameterization: Describe an Infinite Family
+
+Some equations have infinitely many integer solutions. A **parameterization**
+describes them using integer parameters, together with precise restrictions on
+those parameters. We must prove both that the formulas work and that they
+produce every solution in the claimed domain.
+
+### Worked Example 7: Primitive Pythagorean Triples
+
+> Describe all positive integer triples $(x,y,z)$ with $x^2+y^2=z^2$ and
+> $\gcd(x,y)=1$.
+
+Such a triple is called **primitive**. By swapping the legs $x,y$ if necessary,
+we may take $x$ to be the odd leg and $y$ the even leg.
+
+**Solution, step 1: establish parity.** The legs cannot both be even because
+they are coprime. They cannot both be odd because their squares would sum to 2
+modulo 4, whereas a square is 0 or 1. Thus exactly one leg is even, and $z$ is
+odd.
+
+**Step 2: factor into coprime squares.** Since $z>x>0$, the integers
+
+$$
+A=\frac{z+x}{2},\qquad B=\frac{z-x}{2}
+$$
+
+are positive, and
+
+$$
+AB=\frac{z^2-x^2}{4}=\left(\frac y2\right)^2.
+$$
+
+We claim $\gcd(A,B)=1$. A common divisor divides $A+B=z$ and $A-B=x$. Also
+$\gcd(x,z)=1$: if a prime divided both, it would divide $y^2=z^2-x^2$, hence
+$y$, contradicting $\gcd(x,y)=1$. So the coprime perfect-power lemma gives
+$A=m^2$ and $B=n^2$ for positive integers $m>n$.
+
+**Step 3: translate back.** We obtain
+
+$$
+\boxed{x=m^2-n^2,\qquad y=2mn,\qquad z=m^2+n^2,}
+$$
+
+where $\gcd(m,n)=1$ because $m^2$ and $n^2$ are coprime. Since $x$ is odd, $m,n$
+have opposite parity.
+
+**Step 4: verify the converse.** Take any $m>n>0$ that are coprime and of
+opposite parity. The formulas give positive integers, and expansion shows
+
+$$
+(m^2-n^2)^2+(2mn)^2=(m^2+n^2)^2.
+$$
+
+The first leg is odd, so 2 cannot divide both legs. If an odd prime divided both
+$m^2-n^2$ and $2mn$, it would divide one of $m,n$, and the difference $m^2-n^2$
+would then force it to divide the other. This contradicts coprimality. Thus the
+generated triple is primitive.
+
+This proves the formulas describe every primitive positive triple, allowing the
+two legs to be swapped. For example, $(m,n)=(2,1)$ gives $(3,4,5)$, and $(3,2)$
+gives $(5,12,13)$.
+
+For an arbitrary positive triple, let $d=\gcd(x,y)$. Then $d$ also divides $z$:
+prime by prime, $d^2\mid z^2$ implies $d\mid z$. Dividing all three coordinates
+by $d$ produces a primitive triple. Hence every positive Pythagorean triple is a
+positive integer multiple of one from the formulas.
+
+## Infinite Descent: A Solution Would Produce a Smaller One
+
+Positive integers cannot decrease forever. Equivalently, every nonempty set of
+positive integers has a least element; this is the **well-ordering principle**.
+
+**Infinite descent** uses this principle to prove nonexistence. Assume a
+solution exists, choose one minimizing a specified positive integer, and
+construct another valid solution with a smaller value. That contradicts
+minimality.
+
+There are four checks in a descent proof:
+
+1. Specify the measure you minimize, such as $z$ or $x+y$.
+2. Prove the new coordinates are integers.
+3. Prove they satisfy the same equation and the required signs.
+4. Prove the measure strictly decreases.
+
+### Worked Example 8: Dividing All Variables by a Prime
+
+> Prove that $x^2+y^2=3z^2$ has no positive integer solutions.
+
+**Solution.** Suppose a solution exists, and choose one with $z$ as small as
+possible. Modulo 3,
+
+$$
+x^2+y^2\equiv 0\pmod 3.
+$$
+
+The only way to add two square residues from $\{0,1\}$ to get 0 modulo 3 is
+$0+0$. Thus $3\mid x$ and $3\mid y$. Write $x=3u$ and $y=3v$. Substitution gives
+
+$$
+9u^2+9v^2=3z^2\quad\Longrightarrow\quad z^2=3(u^2+v^2).
+$$
+
+Therefore $3\mid z^2$, so $3\mid z$. Write $z=3w$ and divide the original
+equation by 9 to obtain
+
+$$
+u^2+v^2=3w^2.
+$$
+
+The new coordinates are positive integers satisfying the same equation, but
+$w=z/3<z$. This contradicts our choice of $z$, proving
+
+$$
+\boxed{\text{There are no positive integer solutions.}}
+$$
+
+Simply saying "all variables are multiples of 3" would not finish the proof:
+some equations really do have solutions whose coordinates share a factor. The
+contradiction comes from repeating the structure at a smaller scale, or from
+choosing a minimal solution as we did here.
+
+## Vieta Jumping: Descent by Replacing a Quadratic Root
+
+Consider an equation quadratic in one variable:
+
+$$
+X^2-SX+P=0.
+$$
+
+If its roots are $x,x'$, expanding $(X-x)(X-x')$ gives
+
+$$
+x+x'=S,\qquad xx'=P.
+$$
+
+These are Vieta's formulas. If $S$ and one root $x$ are integers, the other root
+$x'=S-x$ is an integer too. **Vieta jumping** replaces one coordinate by this
+other root. In a symmetric equation, we can then reorder the two coordinates and
+try to descend.
+
+The root formulas prove that a jump preserves the equation. They do not
+automatically prove the new root is positive or smaller; those checks are the
+heart of the argument.
+
+### Worked Example 9: Classifying a Quadratic Equation
+
+> Find all positive integer pairs $(x,y)$ satisfying $x^2+y^2+1=3xy$.
+
+**Solution, step 1: find the jump.** The equation is symmetric, so first take
+$x\ge y$. As a quadratic in $x$, it is
+
+$$
+X^2-3yX+(y^2+1)=0.
+$$
+
+The other root is
+
+$$
+x'=3y-x=\frac{y^2+1}{x}.
+$$
+
+It is an integer by the first expression and positive by the second. The pair
+$(x',y)$ satisfies the same equation.
+
+**Step 2: prove strict descent away from the boundary.** If $x=y$, the equation
+forces $y^2=1$, so the only equal pair is $(1,1)$. When $y\ge 2$, we therefore
+have $x\ge y+1$, and
+
+$$
+0<x'=\frac{y^2+1}{x}\le\frac{y^2+1}{y+1}<y.
+$$
+
+The last inequality follows from $1<y$. Thus $(y,x')$ is a new positive solution
+with smaller sum than $(x,y)$.
+
+**Step 3: identify where descent stops.** The positive integer $x+y$ decreases
+at every step with $y\ge 2$, so eventually the smaller coordinate is 1. Setting
+$y=1$ gives
+
+$$
+x^2-3x+2=(x-1)(x-2)=0.
+$$
+
+The terminal pairs, up to swapping, are $(1,1)$ and $(1,2)$.
+
+**Step 4: reverse the jumps and verify completeness.** For a solution $(u,v)$
+with $u\le v$, the reverse jump is
+
+$$
+(u,v)\longmapsto(v,3v-u).
+$$
+
+It preserves the equation by Vieta's formulas. It also produces positive
+coordinates, since $3v-u\ge 2v>0$. Starting at $(1,1)$ gives
+
+$$
+(1,1),\ (1,2),\ (2,5),\ (5,13),\ (13,34),\ldots
+$$
+
+Every original pair descends to one of the first two pairs, and the second is
+itself the first jump from the first. Reversing its descent therefore places
+every solution in this sequence, up to swapping the coordinates.
+
+More precisely, define $a_0=a_1=1$ and $a_{n+2}=3a_{n+1}-a_n$ for $n\ge 0$. The
+complete answer is
+
+$$
+\boxed{(x,y)=(a_n,a_{n+1})\text{ or }(a_{n+1},a_n),\qquad n\ge 0.}
+$$
+
+The recurrence is a parameterization of the solutions; the descent is what
+proves it is complete.
+
+## Pell Equations: An Infinite Family with a Descent Proof
+
+A **Pell equation** has the form
+
+$$
+x^2-Dy^2=1,
+$$
+
+where $D$ is a positive integer that is not a perfect square. We will completely
+solve the case $D=2$ without assuming any theory about continued fractions. The
+method below proves a result for this case; other values of $D$ require their
+own analysis.
+
+### Worked Example 10: All Nonnegative Solutions for $D=2$
+
+> Find all nonnegative integer pairs $(x,y)$ satisfying $x^2-2y^2=1$.
+
+**Step 1: generate candidates.** The pair $(1,0)$ works, as does $(3,2)$. If
+$(x,y)$ is a solution, set
+
+$$
+X=3x+4y,\qquad Y=2x+3y.
+$$
+
+Expansion shows
+
+$$
+X^2-2Y^2=x^2-2y^2=1.
+$$
+
+Starting at $(1,0)$ therefore produces solutions
+
+$$
+(1,0),\ (3,2),\ (17,12),\ (99,70),\ (577,408),\ldots
+$$
+
+This proves we have a family. It does not yet prove we have every solution.
+
+**Step 2: construct an inverse step.** For a solution with $y>0$, put
+
+$$
+x'=3x-4y,\qquad y'=3y-2x.
+$$
+
+Again, expansion gives $x'^2-2y'^2=1$. We must check these new integers are
+nonnegative and that $y'<y$.
+
+The case $y=1$ would require $x^2=3$, which is impossible. Thus $y\ge 2$. Since
+$x^2=2y^2+1$, we have
+
+$$
+\left(\frac{4y}{3}\right)^2<2y^2+1
+\le\left(\frac{3y}{2}\right)^2.
+$$
+
+The upper inequality uses $1\le y^2/4$; equality occurs when $y=2$. Taking
+positive square roots gives
+
+$$
+\frac{4y}{3}<x\le\frac{3y}{2}.
+$$
+
+Consequently $x'>0$ and $y'\ge 0$. Also $x>y$, so $y'=3y-2x<y$. This is a valid
+descent in the nonnegative integer $y$.
+
+**Step 3: prove completeness.** Repeating the inverse step must eventually reach
+$y=0$, where the equation and nonnegativity force $x=1$. The forward step is the
+inverse of the descent step: direct substitution verifies that applying one
+after the other restores $(x,y)$. Hence every nonnegative solution is obtained
+from $(1,0)$ by the forward recurrence.
+
+We can express the answer compactly using $\sqrt2$. Multiplication gives
+
+$$
+(3+2\sqrt2)(x+y\sqrt2)=(3x+4y)+(2x+3y)\sqrt2.
+$$
+
+Thus the complete answer is
+
+$$
+\boxed{x+y\sqrt2=(3+2\sqrt2)^n,\qquad n\in\mathbb Z_{\ge 0}.}
+$$
+
+The recurrence proves the coefficients $x,y$ are integers and satisfy the
+equation for every $n$. The positive solutions correspond to $n\ge 1$. If all
+integers were allowed, we would additionally allow independent signs on $x$ and
+$y$, since the equation only contains their squares.
+
+## Olympiad Application: A Square Quotient
+
+The following is a reformulation of
+[IMO 1988, Problem 6](https://www.imo-official.org/assets/documents/problems/1988/1988_eng.pdf).
+
+> For positive integers $a,b$, suppose $(a^2+b^2)/(ab+1)$ is an integer. Prove
+> that this integer is a perfect square.
+
+We will use Vieta jumping to descend among solutions with the same quotient. The
+extra work is proving that the new root stays positive.
+
+### Step 1: Fix a Hypothetical Nonsquare Quotient
+
+Write
+
+$$
+a^2+b^2=k(ab+1),\qquad k\in\mathbb Z_{>0}.
+$$
+
+Suppose some nonsquare $k$ occurs. Keep this $k$ fixed, and among all its
+positive integer solutions choose one minimizing $a+b$. By symmetry, take
+$a\ge b$.
+
+Viewed as a quadratic in $a$, the equation is
+
+$$
+A^2-kbA+(b^2-k)=0.
+$$
+
+Its other root $c$ satisfies
+
+$$
+c=kb-a,\qquad ac=b^2-k.
+$$
+
+In particular, $c$ is an integer and $(c,b)$ satisfies the same equation with
+the same $k$.
+
+### Step 2: Prove the New Root Is Positive
+
+If $c=0$, the product relation gives $k=b^2$, contradicting our assumption that
+$k$ is not a square.
+
+If $c<0$, write $c=-d$ with $d\ge 1$. The sum and product relations become
+
+$$
+a=kb+d,\qquad k=b^2+ad.
+$$
+
+Substituting the first into the second gives
+
+$$
+k=b^2+kbd+d^2\quad\Longrightarrow\quad k(1-bd)=b^2+d^2.
+$$
+
+The left side is nonpositive because $b,d\ge 1$ and $k>0$; the right side is
+positive. This is impossible. Hence $c>0$.
+
+### Step 3: Prove Strict Descent
+
+Using $k>0$ and $a\ge b$,
+
+$$
+0<c=\frac{b^2-k}{a}<\frac{b^2}{a}\le b.
+$$
+
+Thus $(b,c)$ is a positive integer solution with the same nonsquare quotient
+$k$, but $b+c<a+b$. This contradicts minimality. No nonsquare quotient occurs,
+so
+
+$$
+\boxed{\frac{a^2+b^2}{ab+1}\text{ is a perfect square.}}
+$$
+
+Notice why "the other root is an integer" alone would have been insufficient: a
+zero or negative root would leave the domain of positive solutions. We handled
+those cases before invoking minimality.
+
+## Reference Guide: Choose the Tool from the Equation
+
+| What you notice                                           | What to try                                      | What you must check                                                 |
+| --------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- |
+| A difference of squares or a nearly factorable expression | Factor and list divisors                         | Signs, parity, and how to recover the original variables            |
+| Squares or powers with restricted remainders              | A congruence modulo a small prime or prime power | The complete residue list and any exceptional small exponents       |
+| A product that is a square or another perfect power       | Compute the gcd of the factors                   | Coprimality before declaring each factor a perfect power            |
+| A fixed prime appears in a perfect-power equation         | Compare prime valuations                         | Every expression whose valuation you take is nonzero                |
+| An expression lies near a square or cube                  | Bound it between consecutive powers              | Strict inequalities and boundary cases                              |
+| Congruences force a common divisor                        | Look for a scaling descent                       | Dividing must preserve the equation and decrease the chosen measure |
+| A symmetric equation quadratic in a variable              | Use Vieta's formulas to replace one root         | Integrality, positivity, and strict descent                         |
+| $x^2-Dy^2=1$ and an apparent recurrence                   | Generate solutions, then seek an inverse descent | A completeness proof for the specific $D$                           |
+
+When writing your proof, keep the chain of reasoning visible: domain, structural
+restriction, reduction, and final verification. A statement such as "the
+remaining cases are easy" can hide the only missing part of an otherwise correct
+solution.
+
+## Practice Problems
+
+The first problems reinforce individual tools; the later problems require
+combining them or proving that an infinite family is complete. Each has a full
+solution on its problem page. Attempt a proof before revealing it.
+
+<Problems problems="practice" />
