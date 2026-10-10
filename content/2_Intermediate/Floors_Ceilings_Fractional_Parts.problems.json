@@ -1,0 +1,38 @@
+{
+  "MODULE_ID": "floors-and-ceilings",
+  "practice": [
+    {
+      "uniqueId": "aime-1991-6",
+      "name": "Problem 6 (1991 AIME)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1991_AIME_Problems/Problem_6",
+      "source": "AIME",
+      "difficulty": "Medium",
+      "isStarred": true,
+      "tags": ["Floors and ceilings"],
+      "statement": "Suppose $r$ is a real number for which $\\left\\lfloor r + \\frac{19}{100} \\right\\rfloor + \\left\\lfloor r + \\frac{20}{100} \\right\\rfloor + \\cdots + \\left\\lfloor r + \\frac{91}{100} \\right\\rfloor = 546$. Find $\\lfloor 100r \\rfloor$.",
+      "solutionMetadata": { "kind": "none" }
+    },
+    {
+      "uniqueId": "aime-1985-10",
+      "name": "Problem 10 (1985 AIME)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1985_AIME_Problems/Problem_10",
+      "source": "AIME",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": ["Floors and ceilings"],
+      "statement": "How many of the first $1000$ positive integers can be expressed in the form $\\lfloor 2x \\rfloor + \\lfloor 4x \\rfloor + \\lfloor 6x \\rfloor + \\lfloor 8x \\rfloor$, where $x$ is a real number?",
+      "solutionMetadata": { "kind": "none" }
+    },
+    {
+      "uniqueId": "usamo-1981-5",
+      "name": "Problem 5 (1981 USAMO)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1981_USAMO_Problems/Problem_5",
+      "source": "USAMO",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": ["Floors and ceilings"],
+      "statement": "If $x$ is a positive real number and $n$ is a positive integer, prove that $\\lfloor nx \\rfloor \\ge \\frac{\\lfloor x \\rfloor}{1} + \\frac{\\lfloor 2x \\rfloor}{2} + \\frac{\\lfloor 3x \\rfloor}{3} + \\cdots + \\frac{\\lfloor nx \\rfloor}{n}$.",
+      "solutionMetadata": { "kind": "none" }
+    }
+  ]
+}

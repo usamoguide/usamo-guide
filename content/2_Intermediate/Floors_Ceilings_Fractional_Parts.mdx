@@ -1,0 +1,283 @@
+---
+id: floors-and-ceilings
+title: Floors, Ceilings, and Fractional Parts
+author: Siddharth Vegesna
+description: The floor, ceiling, and fractional part functions, why they show up everywhere in contest math, and the go-to techniques for taming equations and sums that involve them.
+prerequisites: []
+---
+
+## The Intuition Behind Floors and Ceilings
+
+Quick question: how many multiples of $7$ are there from $1$ to $1000$?
+
+You probably did $1000 \div 7 \approx 142.86$, shrugged at the decimal, and said $142$. Congratulations, you just used the floor function! You took a messy real number and asked "okay, but how many *whole* ones fit?"
+
+That's really all floors and ceilings are about. The real world (and contest problems) love to hand you numbers like $142.86$, but you can't have $0.86$ of a multiple of $7$, $0.86$ of a bus, or $0.86$ of a person. Floors and ceilings are how we snap a real number back onto the integers:
+
+- **Floor** says: "round down, how many full ones do I have?"
+- **Ceiling** says: "round up, how many do I need to cover everything?" (If $142.86$ busloads of people show up, you need $143$ buses, not $142$.)
+- **Fractional part** is the leftover bit, the $0.86$ you chopped off.
+
+The tricky part is that these functions are *jumpy*. They sit flat and then suddenly leap up by $1$. That makes them annoying for ordinary algebra, since you can't just "solve for $x$" through a floor. The whole game of this module is learning a few tricks that turn floor problems back into things we know how to handle: inequalities, counting, and clever pairings.
+
+## Formal Definitions and Notation
+
+- The **floor** of $x$, written $\lfloor x \rfloor$, is the greatest integer less than or equal to $x$.
+- The **ceiling** of $x$, written $\lceil x \rceil$, is the least integer greater than or equal to $x$.
+- The **fractional part** of $x$, written $\{x\}$, is what's left over: $\{x\} = x - \lfloor x \rfloor$. It always satisfies $0 \le \{x\} < 1$.
+
+Put together, every real number splits into an integer chunk and a leftover chunk:
+
+$$
+x = \lfloor x \rfloor + \{x\}
+$$
+
+A few examples to calibrate:
+
+$$
+\lfloor 3.7 \rfloor = 3, \quad \lfloor -3.7 \rfloor = -4, \quad \lceil 3.2 \rceil = 4, \quad \lceil -3.2 \rceil = -3, \quad \{-3.7\} = 0.3
+$$
+
+Negative numbers are where everyone slips up the first time. The floor always rounds **down**, toward $-\infty$, not toward $0$. So $\lfloor -3.7 \rfloor$ is $-4$, which is why $\{-3.7\} = -3.7 - (-4) = 0.3$, not $0.7$. If you ever get a negative fractional part, something went wrong.
+
+## Key Properties (and Why You'd Care)
+
+Let $x, y$ be real numbers and $n$ be an integer. Rather than memorize these as a list, notice what each one is *for*.
+
+**1. The defining inequality: your "escape hatch"**
+
+$$
+\lfloor x \rfloor = n \iff n \le x < n + 1
+$$
+
+This is the single most useful fact in the module. You can't do algebra *through* a floor, but you can do algebra with inequalities all day. So whenever a floor is in your way, trade it for this pair of inequalities. Almost every floor equation gets cracked this way.
+
+**2. Integers slide right out**
+
+$$
+\lfloor x + n \rfloor = \lfloor x \rfloor + n, \qquad \{x + n\} = \{x\}
+$$
+
+Shifting by a whole number doesn't change the "leftover" part, so it just passes through the floor untouched. This is great for simplifying: $\lfloor 7 + \sqrt{2} \rfloor = 7 + \lfloor \sqrt{2} \rfloor = 8$, no thinking required. Careful: this only works when $n$ is an integer.
+
+**3. Ceilings are just floors in disguise**
+
+$$
+\lceil x \rceil = -\lfloor -x \rfloor
+$$
+
+Flip the number, round down, flip back, and you've rounded up. This means you never need separate tricks for ceilings: convert to floors and use everything else in this module. Also handy: $\lceil x \rceil - \lfloor x \rfloor$ is $0$ if $x$ is an integer and $1$ otherwise.
+
+**4. What happens with negatives**
+
+$$
+\lfloor x \rfloor + \lfloor -x \rfloor = \begin{cases} 0 & x \in \mathbb{Z} \\ -1 & x \notin \mathbb{Z} \end{cases}, \qquad \{x\} + \{-x\} = \begin{cases} 0 & x \in \mathbb{Z} \\ 1 & x \notin \mathbb{Z} \end{cases}
+$$
+
+This looks like trivia, but it's secretly the engine behind a whole family of "pair up the terms" tricks. Whenever two terms in a sum add up to an integer, this property tells you exactly what their floors add up to. We'll use it in Technique 4.
+
+**5. Floors almost split over addition**
+
+$$
+\lfloor x \rfloor + \lfloor y \rfloor \le \lfloor x + y \rfloor \le \lfloor x \rfloor + \lfloor y \rfloor + 1
+$$
+
+The floor of a sum is *almost* the sum of the floors, off by at most $1$. The extra $1$ shows up exactly when the leftovers combine into a whole: $\{x\} + \{y\} \ge 1$. This is the go-to tool for floor *inequalities*, which are a favorite on olympiads.
+
+**6. Nested floors collapse** (for a positive integer $n$)
+
+$$
+\left\lfloor \frac{\lfloor x \rfloor}{n} \right\rfloor = \left\lfloor \frac{x}{n} \right\rfloor
+$$
+
+Rounding down twice is the same as rounding down once at the end. Useful when a problem stacks floors inside each other and you want to clean things up.
+
+## Scaffolded Examples
+
+### Technique 1: Split $x$ into $n + f$ (Easy)
+
+**When to reach for it:** the equation has $x$, $\lfloor x \rfloor$, or $\{x\}$ all mixed together, and you want to "solve for $x$."
+
+The idea: $x$ is one slippery real number, but $n = \lfloor x \rfloor$ is an *integer* and $f = \{x\}$ is trapped in $[0, 1)$. Two variables with tight restrictions are much easier to pin down than one with none.
+
+> Solve $2\lfloor x \rfloor = x + 2\{x\}$, and find the sum of all solutions.
+
+**Solution:** Write $x = n + f$. The equation becomes $2n = n + f + 2f$, which simplifies to $n = 3f$.
+
+Now use the restrictions. Since $0 \le f < 1$, we get $0 \le n < 3$, and since $n$ is an integer, $n \in \{0, 1, 2\}$. Each choice gives $f = \frac{n}{3}$:
+
+$$
+x = 0, \quad x = 1 + \tfrac{1}{3} = \tfrac{4}{3}, \quad x = 2 + \tfrac{2}{3} = \tfrac{8}{3}.
+$$
+
+The sum is $0 + \frac{4}{3} + \frac{8}{3} = \boxed{4}$.
+
+Notice how the restriction $0 \le f < 1$ did all the heavy lifting. That's the whole point of the split.
+
+### Technique 1, Harder: When the Equation Isn't Linear (Medium)
+
+The same idea works when there's a square or another function involved. You just lean harder on Property 1.
+
+> **Canada 1999.** Find all real solutions to $4x^2 - 40\lfloor x \rfloor + 51 = 0$.
+
+**Solution:** Let $n = \lfloor x \rfloor$. Then $4x^2 = 40n - 51$. Since the left side is nonnegative, $40n \ge 51$, so $n \ge 2$ and $x$ is positive.
+
+Here's the key move. We know $n \le x < n + 1$, and since everything is positive, we can square:
+
+$$
+4n^2 \le 4x^2 < 4(n+1)^2 \quad \Longrightarrow \quad 4n^2 \le 40n - 51 < 4(n+1)^2.
+$$
+
+Now it's just two quadratic inequalities in the integer $n$:
+
+- Left side: $4n^2 - 40n + 51 \le 0$ gives $1.5 \le n \le 8.5$.
+- Right side: $4n^2 - 32n + 55 > 0$ gives $n < 2.5$ or $n > 5.5$.
+
+Both hold for $n \in \{2, 6, 7, 8\}$. Plugging into $x = \frac{\sqrt{40n - 51}}{2}$:
+
+$$
+\boxed{x = \frac{\sqrt{29}}{2}, \ \frac{\sqrt{189}}{2}, \ \frac{\sqrt{229}}{2}, \ \frac{\sqrt{269}}{2}}
+$$
+
+Always do a sanity check at the end: $\frac{\sqrt{29}}{2} \approx 2.69$, whose floor really is $2$. It's easy to pick up fake solutions with floors, so checking is a good habit.
+
+### Technique 2: Counting with Floors (Easy)
+
+**When to reach for it:** the problem asks "how many multiples," "how many factors of $p$," or "how many zeros at the end."
+
+Remember the opener: the number of multiples of $d$ in $\{1, 2, \ldots, n\}$ is $\left\lfloor \frac{n}{d} \right\rfloor$. Push this idea a little further and you get **Legendre's formula** for the exponent of a prime $p$ in $n!$:
+
+$$
+\nu_p(n!) = \left\lfloor \frac{n}{p} \right\rfloor + \left\lfloor \frac{n}{p^2} \right\rfloor + \left\lfloor \frac{n}{p^3} \right\rfloor + \cdots
+$$
+
+Why does this work? The first term counts every multiple of $p$, each contributing one factor of $p$. But multiples of $p^2$ secretly contribute a *second* factor, so the next term counts those again, and so on.
+
+> How many zeros are at the end of $100!$?
+
+**Solution:** Each trailing zero needs a factor of $10 = 2 \cdot 5$. There are way more $2$s than $5$s floating around, so the $5$s are the bottleneck. Count them:
+
+$$
+\left\lfloor \frac{100}{5} \right\rfloor + \left\lfloor \frac{100}{25} \right\rfloor = 20 + 4 = \boxed{24}.
+$$
+
+### Technique 3: Group Terms with Equal Floors (Medium)
+
+**When to reach for it:** you need to add up a long sum of floors, like $\lfloor \sqrt{k} \rfloor$ or $\lfloor \frac{n}{k} \rfloor$ for many $k$.
+
+Floors are lazy. They stay at the same value for long stretches before jumping. So instead of computing every term, ask: "for which $k$ does the floor equal $m$, and how many such $k$ are there?"
+
+> Evaluate $\displaystyle\sum_{k=1}^{100} \lfloor \sqrt{k} \rfloor$.
+
+**Solution:** $\lfloor \sqrt{k} \rfloor = m$ exactly when $m^2 \le k \le (m+1)^2 - 1$. That's a block of $2m + 1$ consecutive values of $k$, each contributing $m$.
+
+For $m = 1, \ldots, 9$ these blocks cover $k = 1$ through $99$, and then $k = 100$ adds one more term equal to $10$. So instead of $100$ terms we only have $10$ blocks:
+
+$$
+\sum_{m=1}^{9} m(2m+1) + 10 = 2 \cdot 285 + 45 + 10 = \boxed{625}.
+$$
+
+### Technique 4: Floor Sums via Fractional Parts (Hard)
+
+**When to reach for it:** you have a floor sum where the fractional parts have a nice pattern, often because of divisibility or symmetry.
+
+Here's a sneaky reframe. Since $\lfloor x \rfloor = x - \{x\}$, any floor sum is "the easy sum without floors" minus "a sum of leftovers." The first part is usually a simple formula, and the leftovers often have structure you can exploit.
+
+> If $p$ and $q$ are relatively prime positive integers, find $\displaystyle S = \sum_{k=1}^{p-1} \left\lfloor \frac{kq}{p} \right\rfloor$.
+
+#### Splitting Off the Easy Part
+
+Write each term as $\frac{kq}{p} - \left\{ \frac{kq}{p} \right\}$. Without the floors, the sum is a plain arithmetic series:
+
+$$
+\sum_{k=1}^{p-1} \frac{kq}{p} = \frac{q}{p} \cdot \frac{(p-1)p}{2} = \frac{q(p-1)}{2}.
+$$
+
+#### Handling the Leftovers
+
+The fractional part $\left\{ \frac{kq}{p} \right\}$ is just $\frac{r_k}{p}$, where $r_k$ is the remainder when $kq$ is divided by $p$. Here's where $\gcd(p, q) = 1$ pays off: as $k$ runs from $1$ to $p - 1$, the remainders $r_k$ hit each of $1, 2, \ldots, p-1$ exactly once, just shuffled. So the leftovers add up to
+
+$$
+\frac{1 + 2 + \cdots + (p-1)}{p} = \frac{p-1}{2}.
+$$
+
+#### Putting It Together
+
+$$
+S = \frac{q(p-1)}{2} - \frac{p-1}{2} = \boxed{\frac{(p-1)(q-1)}{2}}.
+$$
+
+**A slicker way:** pair $k$ with $p - k$. Since $\frac{kq}{p}$ is never an integer here, Property 4 tells us
+
+$$
+\left\lfloor \frac{kq}{p} \right\rfloor + \left\lfloor q - \frac{kq}{p} \right\rfloor = q - 1.
+$$
+
+So writing the sum forwards and backwards and adding gives $2S = (p-1)(q-1)$. Same answer, half the work. When you spot two terms that add to an integer, always try pairing!
+
+### Technique 5: Hermite's Identity (Hard)
+
+**When to reach for it:** you see floors of $x$ shifted by equally spaced fractions, like $x$, $x + \frac{1}{n}$, $x + \frac{2}{n}$, and so on, or a sum that looks like it "should" telescope.
+
+$$
+\lfloor x \rfloor + \left\lfloor x + \frac{1}{n} \right\rfloor + \left\lfloor x + \frac{2}{n} \right\rfloor + \cdots + \left\lfloor x + \frac{n-1}{n} \right\rfloor = \lfloor nx \rfloor
+$$
+
+It looks like magic, but here's the intuition: as $x$ creeps upward, each of the $n$ terms on the left jumps by $1$ at a different moment, spaced exactly $\frac{1}{n}$ apart. And $\lfloor nx \rfloor$ also jumps by $1$ every $\frac{1}{n}$. They tick up in perfect sync.
+
+**Proof:** Let $f(x)$ be the left side minus the right side. Replacing $x$ with $x + \frac{1}{n}$ shifts every term on the left over by one spot, with $\lfloor x \rfloor$ becoming $\lfloor x + 1 \rfloor = \lfloor x \rfloor + 1$. Meanwhile, the right side becomes $\lfloor nx + 1 \rfloor = \lfloor nx \rfloor + 1$. Both sides went up by $1$, so $f\left(x + \frac{1}{n}\right) = f(x)$. For $0 \le x < \frac{1}{n}$ every term is $0$, so $f(x) = 0$ there, and since $f$ repeats every $\frac{1}{n}$, it's $0$ everywhere. $\blacksquare$
+
+> Compute $\displaystyle\sum_{k=0}^{\infty} \left\lfloor \frac{1000 + 2^k}{2^{k+1}} \right\rfloor$.
+
+**Solution:** That infinite sum looks scary, but split each fraction: $\frac{1000 + 2^k}{2^{k+1}} = \frac{1000}{2^{k+1}} + \frac{1}{2}$. Hermite's identity with $n = 2$ says $\lfloor y \rfloor + \left\lfloor y + \frac{1}{2} \right\rfloor = \lfloor 2y \rfloor$, so
+
+$$
+\left\lfloor y + \frac{1}{2} \right\rfloor = \lfloor 2y \rfloor - \lfloor y \rfloor.
+$$
+
+With $y = \frac{1000}{2^{k+1}}$, each term becomes
+
+$$
+\left\lfloor \frac{1000}{2^k} \right\rfloor - \left\lfloor \frac{1000}{2^{k+1}} \right\rfloor.
+$$
+
+It telescopes! Everything cancels except the very first piece, $\left\lfloor \frac{1000}{1} \right\rfloor$, so the sum is $\boxed{1000}$.
+
+## Reference Guide
+
+### Turn Floors into Inequalities
+When a floor blocks your algebra, replace $\lfloor x \rfloor = n$ with $n \le x < n + 1$. For equations, also split $x = n + f$ with $0 \le f < 1$, and check your answers at the end.
+
+### Count with Floors
+$\left\lfloor \frac{n}{d} \right\rfloor$ counts multiples of $d$ up to $n$. Stack these for Legendre's formula to count prime factors of $n!$ and trailing zeros.
+
+### Group, Pair, or Split Big Sums
+Group terms where the floor stays constant. Pair terms that add to an integer using Property 4. Or rewrite $\lfloor x \rfloor = x - \{x\}$ when the fractional parts have a pattern.
+
+### Hermite's Identity
+Equally spaced shifts $x, x + \frac{1}{n}, \ldots, x + \frac{n-1}{n}$ add up to $\lfloor nx \rfloor$. It often turns hard sums into telescoping ones.
+
+### When to Use Which Technique
+
+| Situation | Recommended Tool |
+| :--- | :--- |
+| Equation mixing $x$, $\lfloor x \rfloor$, and $\{x\}$ | Split $x = n + f$, use $0 \le f < 1$ |
+| Floor inside a quadratic or other function | Property 1, then solve inequalities in the integer $n$ |
+| "How many multiples," prime powers in $n!$, trailing zeros | Counting with $\left\lfloor \frac{n}{d} \right\rfloor$, Legendre's formula |
+| Long sum like $\sum \lfloor \sqrt{k} \rfloor$ | Group terms with equal floor values |
+| Sum where terms $k$ and $p - k$ add to an integer | Pairing with Property 4 |
+| Sum of $\lfloor \frac{kq}{p} \rfloor$ with $\gcd(p, q) = 1$ | Rewrite as $x - \{x\}$, use remainders |
+| Floors of $x$ plus equally spaced fractions | Hermite's identity |
+| Inequality involving floors of sums | Property 5 |
+
+## Common Mistakes
+
+- $\lfloor -x \rfloor \ne -\lfloor x \rfloor$. Try $x = 2.5$: $\lfloor -2.5 \rfloor = -3$, but $-\lfloor 2.5 \rfloor = -2$.
+- The fractional part is never negative, so $\{-x\} \ne -\{x\}$.
+- The floor doesn't split over addition: $\lfloor x + y \rfloor$ can be $\lfloor x \rfloor + \lfloor y \rfloor + 1$.
+- The floor doesn't split over multiplication either: $\lfloor xy \rfloor \ne \lfloor x \rfloor \lfloor y \rfloor$ in general.
+- After solving with $n = \lfloor x \rfloor$, always plug back in to make sure each answer really has $\lfloor x \rfloor = n$.
+
+## Practice Problems
+
+<Problems problems="practice" />

@@ -134,7 +134,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'newton-sums',
         'polynomial-manipulations',
         'vieta-jumping',
-        'telescoping'
+        'telescoping',
+        'floors-and-ceilings'
       ],
     },
     {
