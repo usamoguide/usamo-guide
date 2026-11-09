@@ -136,11 +136,13 @@ function getGitAuthorTime(filePath: string) {
   }
 }
 
-// Questionable hack to get full commit history so that timestamps work
+// Questionable hack to get full commit history so that timestamps work.
+// `git log -- <file>` only needs commits and trees, so skip the blobs: on
+// Vercel's shallow clone this is ~6s instead of ~50s for the full history.
 if (!unshallowAttempted && hasGitRepo() && isShallowGitRepo()) {
   unshallowAttempted = true;
   try {
-    execSync('git fetch --unshallow');
+    execSync('git fetch --unshallow --filter=blob:none');
   } catch (e) {
     console.warn(
       'Git fetch failed. Ignore this if developing or building locally.'
@@ -155,6 +157,25 @@ if (!unshallowAttempted && hasGitRepo() && isShallowGitRepo()) {
 // bytes off disk instead so the File node stays small.
 const readNodeContentUncached = (node): Promise<string> =>
   fs.promises.readFile(node.absolutePath, 'utf8');
+
+// Gatsby scans the source of every installed package with "gatsby" in its name
+// for page queries and page exports. `storybook-addon-gatsby` (Storybook only)
+// ships its TypeScript source, and its `src/index.ts` has `export const config`,
+// which Gatsby takes for a page `config` export. That alone makes every build
+// compile the SSR/DSG rendering engines (~11s cold, ~400MB of build cache) even
+// though every page here is static. Leave that package out of the scan.
+exports.onPreInit = ({ reporter }) => {
+  try {
+    const dependents = require('gatsby/dist/utils/gatsby-dependents');
+    const scan = dependents.getGatsbyDependents;
+    dependents.getGatsbyDependents = async () =>
+      (await scan()).filter(dep => dep.name !== 'storybook-addon-gatsby');
+  } catch (e) {
+    reporter.warn(
+      'Could not exclude storybook-addon-gatsby from query extraction; the build still works, it just also builds the unused rendering engines.'
+    );
+  }
+};
 
 // ideally problems would be its own query with
 // source nodes: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#sourceNodes
@@ -387,12 +408,6 @@ exports.onCreateNode = async api => {
   }
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    cache: false,
-  });
-};
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage, createRedirect } = actions;
   const redirectsData = fs.readFileSync('./src/redirects.txt');
@@ -603,6 +618,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   createTypes(typeDefs);
 };
+
 // Estimated reading time of a lesson, from its raw MDX (kept on the node as
 // internal.content). A resolver rather than a node field so that nodes restored
 // from Gatsby's cache (locally and on Vercel) have it without re-sourcing.
@@ -663,6 +679,15 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
       module: {
         rules: [],
       },
+    });
+  }
+  if (stage === 'build-html') {
+    // octokit is only used by the in-browser editor (src/atoms/editor.ts), which
+    // renders nothing on the server. Keep it out of the HTML renderer: its
+    // `node:crypto` imports don't build there without the rendering engines
+    // (see onPreInit), and it's dead weight in that bundle anyway.
+    actions.setWebpackConfig({
+      resolve: { alias: { octokit: false } },
     });
   }
 };
