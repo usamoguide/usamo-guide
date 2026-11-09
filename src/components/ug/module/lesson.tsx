@@ -37,8 +37,9 @@ function isBlank(node: React.ReactNode): boolean {
 
 /** Plain text of a rendered MDX tree (math counts as its LaTeX source). */
 export function textOf(node: React.ReactNode): string {
-  if (node === null || node === undefined || typeof node === 'boolean')
+  if (node === null || node === undefined || typeof node === 'boolean') {
     return '';
+  }
   if (typeof node === 'string' || typeof node === 'number') return String(node);
   if (Array.isArray(node)) return node.map(textOf).join('');
   if (React.isValidElement(node)) {

@@ -111,8 +111,9 @@ export default function PracticeTable({
         String(window.location.href).split(/[?#]/)[0] +
         '#problem-' +
         p.uniqueId;
-      if (navigator.clipboard?.writeText)
+      if (navigator.clipboard?.writeText) {
         navigator.clipboard.writeText(url).catch(() => undefined);
+      }
     } catch (e) {
       // ignore
     }

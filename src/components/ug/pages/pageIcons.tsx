@@ -4,17 +4,20 @@ import * as React from 'react';
 // Same contract as src/components/ug/icons.tsx: `svg.ico`, colour from currentColor.
 type IcoProps = { className?: string };
 
-const svg =
-  (children: React.ReactNode) =>
-  ({ className }: IcoProps): JSX.Element => (
-    <svg
-      className={className ? `ico ${className}` : 'ico'}
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      {children}
-    </svg>
-  );
+const svg = (children: React.ReactNode) => {
+  function Ico({ className }: IcoProps): JSX.Element {
+    return (
+      <svg
+        className={className ? `ico ${className}` : 'ico'}
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        {children}
+      </svg>
+    );
+  }
+  return Ico;
+};
 
 export const IcoDots = svg(<path d="M6 12h.01M12 12h.01M18 12h.01" />);
 export const IcoLink = svg(

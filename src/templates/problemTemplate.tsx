@@ -142,8 +142,9 @@ const trackLabel = (division: string): string =>
 /** A real link to the original problem, not the usamoguide.com placeholder some entries carry. */
 function originalUrlOf(url: string | null | undefined): string | null {
   if (!url) return null;
-  if (/^https?:\/\/(www\.)?usamo(guide\.com|\.guide)(\/|$)/.test(url))
+  if (/^https?:\/\/(www\.)?usamo(guide\.com|\.guide)(\/|$)/.test(url)) {
     return null;
+  }
   return /^https?:/.test(url) ? url : null;
 }
 
