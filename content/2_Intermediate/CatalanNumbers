@@ -1,0 +1,141 @@
+---
+id: Catalan Numbers
+title: Catalan Numbers
+author: Andrew Zhou
+description: All about Catalan Numbers
+prerequisites: ["optional-prereq-id"]
+---
+
+ ## The Intuition Behind Catalan Numbers
+
+What do binary trees, balanced brackets, and lattice paths about the line y=x have in common?
+
+At first glance, they seem completely unrelated. But hidden beneath them is the same surprising pattern: the Catalan numbers.
+
+Catalan numbers count structured arrangements where every choice must respect a constraint—whether you're building a tree, matching brackets, or drawing a path.
+
+Follow along to learn what this constraint this and be prepared to develop a powerful tool that unlocks difficult problems by exploiting their underlying structure.
+
+## Formal Definitions and Notation
+
+The **n-th Catalan number**, denoted by **$$C_n$$**, is given by  
+
+$$
+C_n = \frac{1}{n+1}\binom{2n}{n} = \frac{(2n)!}{(n+1)!n!}
+$$
+
+so the first few **Catalan numbers** are ($$C_0, C_1, C_2, C_3, C_4, C_5, ...$$) = ($$1,1,2,5,11,42$$)
+
+
+An alternative formula to compute **Catalan numbers** recursively is given by
+
+$$
+C_0=1,\qquad
+C_{n+1}=\sum_{k=0}^{n} C_kC_{n-k}.
+$$
+
+Can you see why this is useful for many counting problems?
+
+But before we dive into the details, its important to first understand the concept of a **bijection**. Put simply, a **bijection** is a pairing between two sets where every element in one set matches exactly one element in the other, and nothing is left out.
+
+### Classic Example 1
+
+>For any nonnegative integer n, find the number of lattice paths from (0,0) to (n,n) using only up moves and right moves, and never stepping above the x = y line.
+
+Try some small cases! When n = 0, clearly there are 0 such paths. When n = 1 there is 1, when n = 2, there are 2, when n = 3, there are 5, ...
+
+Do you see a pattern? It seems as if the number is $$C_n$$.
+
+Now we present a proof. First, we ignore the constraint of never stepping above the **x=y** line to discover that there are $$\binom{2n}{n}$$ paths in total from (0,0) to (n,n).
+
+This is because we can think of each path as a series of steps: **U** representing up 1 unit and **R** representing right 1 unit. This formula gives us the number of sequences of length 2n with exactly n **U** steps and n **R** steps, which is exactly what we want.
+
+But we only want paths that do not go above the **x=y** line. To find this, we use **reflection**. 
+
+Consider a lattice path from (0,0) to (n,n) that goes above the diagonal **x=y**. We call these bad paths. Find the first step that takes the path above the diagonal. Up to this point, the path has made one more up step than right step. Now reflect every step up to and including this step in the line **x=y**: every right step **R** becomes an up step **U**, and every up step **U** becomes a right step **R**.
+
+Why does the new path end at (n+1,n-1)? The original path contains exactly n right steps and n up steps. After the first crossing, the original section has one more **U** than **R**. Therefore, after swapping **R** and **U**, the whole path has one fewer **U** and one extra **R**: it contains n+1 right steps and n-1 up steps. Hence it ends at (n+1,n-1).
+
+In fact we have just established a **bijection** between the number of bad paths and the number of paths from (0,0) to (n+1,n-1) using n+1 **R** steps and n-1 **U** steps. But this number is just $$\binom{2n}{n-1}$$.
+
+Hence the number of good paths is $$\binom{2n}{n}$$ - $$\binom{2n}{n-1}$$. Simplifying gives the formula for the nth **Catalan number**. 
+
+
+### Classic Example 2
+
+>Find the number of expressions containing n pairs of parentheses which are correctly matched
+
+This problem is another example of the **Catalan numbers** coming up and signifying the same underlying structures. Can you see how we can relate this to the previous example?
+
+In fact, the answer is also $$C_n$$, because there is a **bijection** between the number of lattice paths from (0,0) to (n,n), not stepping above the **x=y** line and the number of expression containing n pairs of correctly matched parenthesis.
+
+To see this, let us map each **(** to a step **R** and each **)** to a step **U**. So now each sequence of parenthesis corresponds to a string of letters. Now because the parethesis are correctly matched, the number of **R**s is always greater than or equal to the number of **U**s at any given point in this string. This guarentees that the lattice path corresponding to this string never cross the line **x=y**. Moreover, there are 0 **R**s and **U**s at the very start and n **R**s and **U**s at the very end, corresponding to starting at (0,0) and finishing at (n,n).
+
+### A Direct Application
+
+> **2024 AMC 8 Problems/Problem 13**
+>
+> Buzz Bunny is hopping up and down a set of stairs, one step at a time. In how many ways can Buzz Bunny start on the ground, make a sequence of $6$ hops, and end up back on the ground? (For example, one sequence of hops is up-up-down-down-up-down.)
+>
+> $\textbf{(A) }4\qquad\textbf{(B) }5\qquad\textbf{(C) }6\text\qquad\textbf{(D) }8\qquad\textbf{(E) }12$
+
+**Solution:**
+The key bijection: let **U** represent hopping up and **D** represent hopping down. The number of **U**s is always greater than or equal than the number of **D**s at any point in a sequence of length 6 so that the bunny is never below ground. 
+
+There are 3 of each letter in the sequence since the bunny ends up back on the ground.
+
+So the answer is $$C_3$$
+
+$\boxed{\textbf{(B) } 5}$
+
+### Slightly Harder Problem
+
+
+ > **British Mathematical Olympiad Round 1 2001-2002 Question 4**
+ >
+ >Twelve people are seated around a circular table. In how many ways can six pairs of people engage in handshakes so that no arms cross?
+
+We can solve this using Catalan numbers.
+
+Choose one person, **A**. There must be an even number of people between **A** and the person that he shakes hands with, because if there is an odd number of people then they wouldn't be able to pair togather to shake hands. 
+
+Suppose **A** shakes hands with someone who has **2k** people between them on one side. The handshake divides the remaining people into two groups:
+
+**2k** people on one side and
+**10-2k** people on the other side.
+
+Since no arms can cross, the people on each side must be paired independently. If $$C_n$$ denotes the number of non-crossing pairings of **2n** people, this gives the recurrence
+
+$$
+C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k},
+$$
+
+with
+
+$$
+C_0=1.
+$$
+
+This is precisely the Catalan recurrence. Therefore, the number of ways to pair **2n** people without crossing is $$C_n$$.
+
+Here n=6, so the required number of arrangements is
+
+$$
+C_6
+=\frac{1}{6+1}\binom{12}{6}
+=\frac{924}{7}
+=\boxed{132}.
+$$
+
+Thus, there are 132 ways to arrange the six handshakes without any arms crossing.
+
+## Summary of Ideas
+
+In this module you have learnt about the **Catalan numbers**. More specifically, you have learnt how to compute them and the recurrence that they satisfy. 
+
+Very often, **Catalan numbers** are disguised in olympiad problems and rarely is it obvious that they are in fact the key step. However, by spotting this, often easier problems can be solved very quickly. More difficult problems may involve us finding lemmas inspired by the Catalan numbers or modifying the sequence in some way, though a direct application is rare since a well versed competitor **(such as one familiar with this module)** would find the problem trivial!
+
+By trying small cases, one should become sensitive to the first few **Catalan numbers** appearing and then conjecture that the solution obeys the sequence satisfied by them.
+
+To prove this is in fact the case, the most common techniques are to show that the answers satisfies the recurrence relationship that define the **Catalan numbers**, or to find a bijection between the given problem and another problem, like the lattice path problem examined above, which has a well known solution using the **Catalan numbers**.
+

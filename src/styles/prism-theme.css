@@ -8,7 +8,7 @@ pre[class*='language-'] {
   word-wrap: normal;
   color: #e5e7eb;
   background: #0f172a;
-  font-family: 'Inter', 'Space Grotesk', Roboto Mono, monospace;
+  font-family: var(--font-family);
   font-size: 1em;
   line-height: 1.5em;
 

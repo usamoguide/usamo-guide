@@ -116,7 +116,9 @@ function insertPromptIntoChildren(children: React.ReactNode): React.ReactNode {
     );
   })();
 
-  const prompt = <NotSignedInWarning key="not-signed-in-warning" />;
+  // Warning is now rendered at the top of the page (see return below).
+  // Keeping insertPromptIntoChildren intact for future use.
+  const prompt = null; // <NotSignedInWarning key="not-signed-in-warning" />;
 
   return [
     ...childList.slice(0, insertionIndex),
@@ -142,7 +144,7 @@ export function evaluateMdx(
  * - `body`: the compiled MDX (or pass an already evaluated `content`)
  * - `components`: the components map (defaults to MDXComponents)
  * - `transform`: rearranges the top-level blocks (the module page groups them
- *   into sections); without it the sign-in prompt is inserted as before
+ *   into sections); without it the sign-in prompt goes at the top
  * - `className`: the wrapper's class (defaults to the legacy `markdown`)
  * - `after`: rendered inside the wrapper after the content
  */
@@ -197,6 +199,7 @@ const Markdown = (props: {
 
   return (
     <div className={props.className ?? 'markdown'}>
+      <NotSignedInWarning key="not-signed-in-warning" />
       {renderedContent}
       {props.after}
     </div>

@@ -1,0 +1,599 @@
+---
+id: recurrence-relations-for-counting
+title: Recurrence Relations for Counting
+author: USAMO Guide Team
+description: Learn how recurrence relations count tilings, arrangements, and Fibonacci type structures by building objects from smaller cases.
+prerequisites: []
+---
+
+## Overview
+
+A recurrence relation defines a sequence using earlier terms.
+
+In counting problems, recurrences are useful when a large object can be built
+from smaller objects.
+
+For example, the Fibonacci numbers satisfy
+
+$$
+F_n=F_{n-1}+F_{n-2}.
+$$
+
+This type of recurrence appears naturally in tiling problems, stair climbing
+problems, and arrangements with restrictions.
+
+The key idea is:
+
+> Count the final object by looking at how it could have ended.
+
+## Motivation
+
+Suppose we want to tile a board of length $n$ using:
+- Squares of length $1$,
+- Dominoes of length $2$.
+
+Let
+
+$$
+T_n
+$$
+
+be the number of ways to tile a board of length $n$.
+
+Look at the last tile.
+
+If the last tile is a square, then the first $n-1$ positions can be tiled in
+
+$$
+T_{n-1}
+$$
+
+ways.
+
+If the last tile is a domino, then the first $n-2$ positions can be tiled in
+
+$$
+T_{n-2}
+$$
+
+ways.
+
+Therefore,
+
+$$
+T_n=T_{n-1}+T_{n-2}.
+$$
+
+This is the Fibonacci recurrence.
+
+## Base Cases
+
+A recurrence is incomplete without base cases.
+
+For the tiling example:
+
+$$
+T_0=1
+$$
+
+and
+
+$$
+T_1=1.
+$$
+
+The value
+
+$$
+T_0=1
+$$
+
+means there is exactly one way to tile an empty board, use no tiles.
+
+This convention often makes recurrence formulas work cleanly.
+
+Using
+
+$$
+T_n=T_{n-1}+T_{n-2},
+$$
+
+we get
+
+$$
+T_2=2,
+$$
+
+$$
+T_3=3,
+$$
+
+$$
+T_4=5,
+$$
+
+and so on.
+
+## Building a Recurrence
+
+To build a recurrence, ask:
+1. What quantity should the sequence count?
+2. What is the last step or final piece?
+3. What smaller problem remains after removing it?
+4. What are the base cases?
+
+The hardest part is choosing the right cases so that they do not overlap and do
+not miss anything.
+
+## Tiling With Squares and Dominoes
+
+### Example 1
+
+> How many ways are there to tile a $1\times 7$ board using $1\times 1$
+> squares and $1\times 2$ dominoes?
+
+Let
+
+$$
+T_n
+$$
+
+be the number of tilings of a $1\times n$ board.
+
+As above,
+
+$$
+T_n=T_{n-1}+T_{n-2}.
+$$
+
+The base cases are
+
+$$
+T_0=1,
+\qquad
+T_1=1.
+$$
+
+Now compute:
+
+$$
+T_2=2,
+$$
+
+$$
+T_3=3,
+$$
+
+$$
+T_4=5,
+$$
+
+$$
+T_5=8,
+$$
+
+$$
+T_6=13,
+$$
+
+$$
+T_7=21.
+$$
+
+So there are
+
+$$
+21
+$$
+
+tilings.
+
+## Stair-Climbing Problems
+
+Recurrences also appear in stair problems.
+
+Suppose a person can climb either $1$ step or $2$ steps at a time.
+
+Let
+
+$$
+S_n
+$$
+
+be the number of ways to climb $n$ steps.
+
+The final move is either:
+- A $1$-step move from step $n-1$
+- A $2$-step move from step $n-2$
+
+So
+
+$$
+S_n=S_{n-1}+S_{n-2}.
+$$
+
+Again, the Fibonacci recurrence appears.
+
+## Tiling With More Tile Sizes
+
+If more tile sizes are allowed, the recurrence changes.
+
+### Example 2
+
+> How many ways are there to tile a $1\times n$ board using tiles of lengths
+> $1$, $2$, and $3$?
+
+Let
+
+$$
+T_n
+$$
+
+be the number of tilings.
+
+The last tile can have length $1$, $2$, or $3$.
+
+Therefore,
+
+$$
+T_n=T_{n-1}+T_{n-2}+T_{n-3}.
+$$
+
+The base cases are
+
+$$
+T_0=1,
+$$
+
+$$
+T_1=1,
+$$
+
+and
+
+$$
+T_2=2.
+$$
+
+## Avoiding Consecutive Objects
+
+Recurrences can count arrangements with restrictions.
+
+### Example 3
+
+> How many binary strings of length $n$ have no two consecutive $1$'s?
+
+Let
+
+$$
+A_n
+$$
+
+be the number of valid strings of length $n$.
+
+Look at the end of the string.
+
+If the string ends in $0$, then the first $n-1$ digits can be any valid string.
+This gives
+
+$$
+A_{n-1}
+$$
+
+strings.
+
+If the string ends in $1$, then the previous digit must be $0$. So the string
+ends in
+
+$$
+01.
+$$
+
+The first $n-2$ digits can be any valid string. This gives
+
+$$
+A_{n-2}
+$$
+
+strings.
+
+Therefore,
+
+$$
+A_n=A_{n-1}+A_{n-2}.
+$$
+
+The base cases are
+
+$$
+A_1=2
+$$
+
+and
+
+$$
+A_2=3.
+$$
+
+## Recurrences With Several States
+
+Sometimes one sequence is not enough.
+
+If a problem has different ending types, it may be useful to define multiple
+states.
+
+### Example 4
+
+> How many length-$n$ strings made from $A$ and $B$ have no three consecutive
+> $A$'s?
+
+Let
+
+$$
+x_n
+$$
+
+be the number of valid strings of length $n$ ending in $B$.
+
+Let
+
+$$
+y_n
+$$
+
+be the number ending in exactly one $A$.
+
+Let
+
+$$
+z_n
+$$
+
+be the number ending in exactly two consecutive $A$'s.
+
+Then
+
+$$
+x_{n+1}=x_n+y_n+z_n,
+$$
+
+because we may add $B$ to any valid string.
+
+Also,
+
+$$
+y_{n+1}=x_n,
+$$
+
+because to end in exactly one $A$, the previous character must be $B$.
+
+Finally,
+
+$$
+z_{n+1}=y_n,
+$$
+
+because to end in exactly two consecutive $A$'s, the previous string must have
+ended in exactly one $A$.
+
+The total number of valid strings is
+
+$$
+x_n+y_n+z_n.
+$$
+
+This state method is often cleaner than trying to force one recurrence too
+early.
+
+## Solving Simple Linear Recurrences
+
+Some recurrences can be solved exactly.
+
+For example,
+
+$$
+F_n=F_{n-1}+F_{n-2}
+$$
+
+has a closed form, but in most contest counting problems we only need to compute
+terms up to a certain value.
+
+For recurrences like
+
+$$
+a_n=2a_{n-1},
+$$
+
+the solution is exponential.
+
+If
+
+$$
+a_0=1,
+$$
+
+then
+
+$$
+a_n=2^n.
+$$
+
+If
+
+$$
+a_n=a_{n-1}+3
+$$
+
+with
+
+$$
+a_0=2,
+$$
+
+then
+
+$$
+a_n=2+3n.
+$$
+
+The form of the recurrence reflects the growth of the counting process.
+
+## Worked Examples
+
+### Example 5
+
+> A rabbit can jump either $1$, $2$, or $3$ spaces at a time. How many ways can
+> it reach space $6$?
+
+Let
+
+$$
+R_n
+$$
+
+be the number of ways to reach space $n$.
+
+The last jump could have size $1$, $2$, or $3$, so
+
+$$
+R_n=R_{n-1}+R_{n-2}+R_{n-3}.
+$$
+
+Use base cases:
+
+$$
+R_0=1,
+\qquad
+R_1=1,
+\qquad
+R_2=2.
+$$
+
+Then
+
+$$
+R_3=R_2+R_1+R_0=4,
+$$
+
+$$
+R_4=R_3+R_2+R_1=7,
+$$
+
+$$
+R_5=R_4+R_3+R_2=13,
+$$
+
+$$
+R_6=R_5+R_4+R_3=24.
+$$
+
+So there are
+
+$$
+24
+$$
+
+ways.
+
+### Example 6
+
+> How many ways are there to tile a $1\times 8$ board using only dominoes of
+> length $2$ and trominoes of length $3$?
+
+Let
+
+$$
+T_n
+$$
+
+be the number of tilings of length $n$.
+
+The last tile has length $2$ or $3$, so
+
+$$
+T_n=T_{n-2}+T_{n-3}.
+$$
+
+We use
+
+$$
+T_0=1,
+$$
+
+$$
+T_1=0,
+$$
+
+and
+
+$$
+T_2=1.
+$$
+
+Then
+
+$$
+T_3=1,
+$$
+
+$$
+T_4=T_2+T_1=1,
+$$
+
+$$
+T_5=T_3+T_2=2,
+$$
+
+$$
+T_6=T_4+T_3=2,
+$$
+
+$$
+T_7=T_5+T_4=3,
+$$
+
+$$
+T_8=T_6+T_5=4.
+$$
+
+So there are
+
+$$
+4
+$$
+
+tilings.
+
+## Key Contest Insight
+
+Recurrence problems are usually solved by looking at the last step.
+
+If the final choice leaves a smaller version of the same problem, a recurrence
+is likely useful.
+
+The most important part is choosing cases that are:
+- Complete
+- Non-overlapping
+- Easy to translate into smaller subproblems
+
+## Strategy Tips
+- Define the sequence clearly
+- Decide what $a_n$ counts
+- Look at the last tile, last step, or last symbol
+- Write the recurrence from smaller cases
+- Choose base cases carefully
+- Use $a_0=1$ when counting empty constructions
+- If one sequence is not enough, introduce multiple states
+- Compute terms patiently and check small cases
+
+## Common Pitfalls
+- Forgetting base cases
+- Using the wrong value for the empty case
+- Double-counting overlapping cases
+- Missing a possible final step
+- Defining $a_n$ vaguely
+- Trying to solve a recurrence before setting it up correctly
+
+## Practice Problems
+
+<Problems problems="practice" />

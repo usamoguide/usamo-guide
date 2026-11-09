@@ -1,0 +1,202 @@
+---
+id: prime-factorization-exponent-methods
+title: Prime Factorization & Exponent Methods
+author: Zhiheng Luo (TLZ/ZhiTuur, USAMO Guide Team)
+description: Theory and examples for the Prime Factorization & Exponent Methods
+prerequisites: []
+---
+
+## The Intuition Prime Factor and Exponent Methods
+One of the most fundamental rules of arithmetic guarantees that every nonzero positive integer (excluding 1) can be uniquely
+factored into a product of prime numbers and their powers. 
+
+This is very often the starting point of working on a math competition problem because you dig into the core components of elements you are working with to better understand them.
+
+## Formal Definitions and Notation
+The defintion of the **fundamental theorem of arithmetic** is:
+
+Let $n \in \mathbb{Z}^+$ be an integer. Its prime factorization is uniquely given by:
+
+$$
+n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} = \prod_{i=1}^k p_i^{e_i}
+$$
+
+where $p_1 < p_2 < \dots < p_k$ are prime numbers, and $e_i \ge 1$ are positive integer exponents.
+
+Another basic function that you should know is one for counting the amount of divisors it has by choosing every possible combination of prime factors; for the integer defined as $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$:
+
+**Number of Divisors $d(n)$**: The total count of positive factors is found by choosing an exponent from $0$ to $e_i$ for each prime:
+$$
+d(n) = (e_1 + 1)(e_2 + 1)\cdots(e_k + 1)
+$$
+
+Aswell as in similar manner 
+
+**Sum of Divisors $\sigma(n)$**: 
+The sum of all positive factors expands into:
+$$
+\sigma(n) = (1 + p_1 + \dots + p_1^{e_1})(1 + p_2 + \dots + 
+p_2^{e_2}) \cdots (1 + p_k + \dots + p_k^{e_k})
+$$
+
+Other quick rules you should familiarize with are:
+
+**Perfect Squares**: An integer $n$ is a perfect square if and only if every prime exponent $e_i$ in its prime factorization is even.
+
+The same rule holds for cubes and so on but with their respective power divisiblity.
+
+**GCD and LCM via Prime Factorization**: 
+
+$$
+\gcd(a, b) = \prod p_i^{\min(e_i, f_i)}
+$$
+$$
+\operatorname{lcm}(a, b) = \prod p_i^{\max(e_i, f_i)}
+$$
+Where $a = \prod p_i^{e_i}$ and $b = \prod p_i^{f_i}$
+
+## Scaffolded Examples
+
+### Direct Application (Easy)
+
+Find the total number of positive divisors and the sum of positive divisors of $n = 180$.
+
+**Solution:**
+
+First, find prime factorization of $180$ manually
+
+$$
+180 = 18 \cdot 10 = (2 \cdot 3^2) \cdot (2 \cdot 5) = 2^2 \cdot 3^2 \cdot 5^1
+$$
+Using the divisor counting formula:
+$$
+d(n) = (e_1 + 1)(e_2 + 1)(e_3 + 1)= d(180) = (2 + 1)(2 + 1)(1 + 1) = 18
+$$
+Using the sum of divisors formula:
+
+$$
+\sigma(n) = (1 + 2 + 2^2)(1 + 3 + 3^2)(1 + 5) = 546
+$$
+So our answers are:
+$$
+\boxed{18 \text{ and } 546}
+$$
+respectively.
+
+### Slightly Harder Problem (Medium)
+Find all positive integers $n$ such that $2^n + 121$ is a perfect square.
+
+**Solution:**
+
+Suppose $2^n + 121 = m^2$ for some positive integer $m$.
+
+ Rearranging gives a difference of squares:
+ $$
+ m^2 - 121 = 2^n \implies (m - 11)(m + 11) = 2^n
+ $$
+ By unique prime factorization, any factor of a power of $2$ must itself be a power of $2$. 
+
+ Let WLOG where $a < b$ and $a + b = n$:
+ $$
+ m - 11 = 2^a \quad \text{and} \quad m + 11 = 2^b
+ $$
+Subtracting the two equations eliminates $m$:
+$$
+(m + 11) - (m - 11) = 2^b - 2^a \implies 22 = 2^a(2^{b-a} - 1) = 2 \cdot 11
+$$
+And since $b > a$, we know  $2^{b-a} - 1$ must be an odd integer. 
+Comparing the even power of $2$ and odd factors on both sides:
+$$
+2^a = 2 \implies 2^{b-1} - 1 = 11 \implies 2^{b-1} = 12
+$$
+Since $12$ is not a power of $2$, there are no integer solutions for $b$. Thus, there are:
+$$
+\boxed{\text{No solutions}}
+$$
+
+### Olympiad Application (Hard)
+
+Find all pairs of positive integers $(a, b)$ such that $a^2b + a + b$ is divisible by $ab^2 + b + 1$.
+
+**Solution:**
+
+We start by first establishing that $b$ and $ab^2 + b + 1$ are coprime.
+
+Suppose $d = \gcd(b, ab^2 + b + 1)$. Then $d \mid b$, which implies $d \mid b(ab + 1)$, so $d \mid (ab^2 + b)$.
+
+Since $d$ must also divide $ab^2 + b + 1$, it must divide their difference:
+$$
+d \mid (ab^2 + b + 1) - (ab^2 + b) \implies d \mid 1
+$$
+Thus, $\gcd(b, ab^2 + b + 1) = 1$.
+
+Because $b$ shares no common prime factors with the divisor $ab^2 + b + 1$, multiplying the numerator in the given valid fraction $$ab^2 + b + 1 \mid a^2b + a + b$$ by $b$ creates an equivalent divisibility relation without introducing extraneous solutions:
+$$
+ab^2 + b + 1 \mid a^2b + a + b \iff ab^2 + b + 1 \mid b(a^2b + a + b)
+$$
+Working out gives:
+$$
+ab^2 + b + 1 \mid a(ab^2 + b + 1) + (b^2 - a) \implies ab^2 + b + 1 \mid b^2 - a
+$$
+
+We now analyze the possible values of $b^2 - a$:
+
+**Case 1:** $b^2 - a = 0$
+
+$\implies a = b^2$;
+Testing $a = b^2$ in the original expression:
+$$
+a^2b + a + b = b^5 + b^2 + b = b(b^4 + b + 1)
+$$
+and
+$$
+ab^2 + b + 1 = b^4 + b + 1
+$$
+Since $b^4 + b + 1 \mid b(b^4 + b + 1)$ holds for all positive integers $b$, $(b^2, b)$ is a valid solution family.
+ 
+**Case 2:** $b^2 - a > 0$
+
+For a positive integer to be divisible by another, the dividend must be at least as large as the divisor:
+$$
+b^2 - a \ge ab^2 + b + 1
+$$
+However, since $a \ge 1$ and $b \ge 1$, we have $ab^2 + b + 1 > b^2 > b^2 - a$, creating a contradiction.
+ 
+**Case 3:** $b^2 - a < 0$
+
+Let $a - b^2 > 0$ for the sake of contradiction.
+Divisibility requires:
+$$
+a - b^2 \ge ab^2 + b + 1 \implies a(1 - b^2) \ge b^2 + b + 1
+$$
+Since $b \ge 1$, we have $(1 - b^2) \le 0$, while $b^2 + b + 1 > 0$. 
+
+A non-positive quantity cannot be greater than or equal to a positive quantity, so no solutions exist here.
+
+Thus, the complete set of solutions is:
+$$
+\boxed{(b^2, b) \text{ for any strict positive integer } b }
+$$
+
+## Reference Guide
+
+Exponent manipulation and prime decomposition allow you to reduce high-degree polynomial expressions and complex divisibility statements down to fundamental properties of prime integer factors.
+
+Important usages are Prime Factorization Identities: 
+
+-**Divisor Count** and **Divisor sum** as seen above.
+
+What is also useful are Algebraic & Bounding Techniques:
+
+-**Algebraic Factorization** like difference of perfect squares can reveal underlying structures formed by prime factors.
+
+-**Coprime Component Splitting:** If $X \cdot Y = p^k$ and $\gcd(X, Y) = 1$, then one factor must be $1$ and the other $p^k$.
+
+-**Size Bounds:** Use divisibility size inequalities ($A \mid B \implies \vert{}A\vert{} \le \vert{}B\vert{}$ for $B \neq 0$) to eliminate impossible exponent ranges.
+
+## Key Ideas
+Simplify messy exponents and seemingly random numbers into their factors to see underlying structure
+
+## Practice Problems
+
+<Problems problems="practice" />

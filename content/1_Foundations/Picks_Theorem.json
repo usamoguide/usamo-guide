@@ -1,0 +1,77 @@
+{
+  "MODULE_ID": "picks-theorem",
+  "practice": [
+    {
+      "uniqueId": "amc8-2004-14",
+      "name": "Problem 14",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2004_AMC_8_Problems/Problem_14",
+      "source": "AMC 8",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Area"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10-2021fb-2",
+      "name": "Problem 2",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems/Problem_2",
+      "source": "AMC 10",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Area"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc8-2015-19",
+      "name": "Problem 19",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2015_AMC_8_Problems/Problem_19",
+      "source": "AMC 8",
+      "difficulty": "Easy",
+      "isStarred": true,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Area"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10-2013a-18",
+      "name": "Problem 18",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2013_AMC_10A_Problems/Problem_18",
+      "source": "AMC 10",
+      "difficulty": "Normal",
+      "isStarred": true,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Coordinate Geometry"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2007ii-5",
+      "name": "Problem 5",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2007_AIME_II_Problems/Problem_5",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": true,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Counting"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "imo-1987-5",
+      "name": "Problem 5",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1987_IMO_Problems/Problem_5",
+      "source": "IMO",
+      "difficulty": "Very Hard",
+      "isStarred": false,
+      "tags": ["Geometry", "Pick's Theorem", "Lattice Points", "Proof"],
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
+}

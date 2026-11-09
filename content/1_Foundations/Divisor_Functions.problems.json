@@ -1,0 +1,169 @@
+{
+  "MODULE_ID": "divisor-functions",
+  "practice": [
+    {
+      "uniqueId": "amc10-2016a-22",
+      "name": "Problem 22 (2016 AMC 10A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2016_AMC_10A_Problems/Problem_22",
+      "source": "AMC 10",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Prime Factorization"
+      ],
+      "statement": "For some positive integer n, the number 110n^3 has 110 positive integer divisors, including 1 and the number 110n^3. How many positive integer divisors does the number 81n^4 have?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "110",
+          "191",
+          "261",
+          "325",
+          "425"
+        ],
+        "correctIndex": 3
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10-2019b-19",
+      "name": "Problem 19 (2019 AMC 10B)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems/Problem_19",
+      "source": "AMC 10",
+      "difficulty": "Medium",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Prime Factorization"
+      ],
+      "statement": "Let S be the set of all positive integer divisors of 100,000. How many numbers are the product of two distinct elements of S?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "98",
+          "100",
+          "117",
+          "119",
+          "121"
+        ],
+        "correctIndex": 2
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-1990-1-5",
+      "name": "Problem 5 (1990 AIME I)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1990_AIME_Problems/Problem_5",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Prime Factorization",
+        "Optimization"
+      ],
+      "statement": "Let n be the smallest positive integer that is a multiple of 75 and has exactly 75 positive integral divisors, including 1 and itself. Find n/75.",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2019i-9",
+      "name": "Problem 9 (2019 AIME I)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2019_AIME_I_Problems/Problem_9",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Perfect Squares",
+        "Casework"
+      ],
+      "statement": "Let tau(n) denote the number of positive integer divisors of n. Find the sum of the six least positive integers n that are solutions to tau(n) + tau(n+1) = 7.",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2004ii-8",
+      "name": "Problem 8 (2004 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2004_AIME_II_Problems/Problem_8",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": true,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Prime Factorization",
+        "Stars and Bars"
+      ],
+      "statement": "How many positive integer divisors of 2004^2004 are divisible by exactly 2004 positive integers?",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2016ii-11",
+      "name": "Problem 11 (2016 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2016_AIME_II_Problems/Problem_11",
+      "source": "AIME",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Prime Factorization",
+        "Modular Arithmetic"
+      ],
+      "statement": "For positive integers N and k, define N to be k-nice if there exists a positive integer a such that a^k has exactly N positive divisors. Find the number of positive integers less than 1000 that are neither 7-nice nor 8-nice.",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2012ii-9",
+      "name": "Problem 9 (2012 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2012_AIME_II_Problems/Problem_9",
+      "source": "AIME",
+      "difficulty": "Very Hard",
+      "isStarred": false,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Inclusion-Exclusion",
+        "Prime Factorization"
+      ],
+      "statement": "Find the number of positive integers that are divisors of at least one of 10^10, 15^7, and 18^11.",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "aime-2020ii-2",
+      "name": "Problem 2 (2020 AIME II)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2020_AIME_II_Problems/Problem_2",
+      "source": "AIME",
+      "difficulty": "Very Hard",
+      "isStarred": true,
+      "tags": [
+        "Number Theory",
+        "Divisor Functions",
+        "Divisor Pairing",
+        "Prime Factorization"
+      ],
+      "statement": "Let n = 2^31 * 3^19. How many positive integer divisors of n^2 are less than n but do not divide n?",
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
+}

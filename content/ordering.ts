@@ -119,6 +119,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       name: 'Advanced Algebra',
       description: 'Quadratics, systems, and polynomial identities for AMC 10/12.',
       items: [
+        'polynomial-division-and-remainders',
         'function-basics-p1',
         'function-basics-p2',
         'function-basics',
@@ -168,6 +169,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'chinese-remainder-theorem',
         'euler-totient-theorem',
         'chicken-mcnugget',
+        'order-of-an-element-mod-n'
       ],
     },
     {
@@ -193,7 +195,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       description: 'Analytic methods, Shoelace formula, and coordinate-based proofs.',
       items: [
         'shoelace-theorem-p1',
-        'shoelace-theorem-p2'
+        'shoelace-theorem-p2',
+        "barycentric-coordinates-intermediate"
       ],
     },
     {
@@ -237,7 +240,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
     {
       name: 'Geometry Extensions',
       description: 'Additional geometric structures.',
-      items: ['regular-polygons', 'three-d-geometry'],
+      items: ['regular-polygons', 'three-d-geometry',"graph-theory"],
     },
   ],
 

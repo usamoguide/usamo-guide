@@ -44,6 +44,80 @@ The key is that whenever you differentiate a term involving $y$, you must multip
 >
 > $$\boxed{y' = \frac{-2x - y}{x + 3y^2}}$$
 
+> **Example 3:** Your goal is to find $\frac{dy}{dx}$ at the point $(1,1)$ if $x^y = y^x$ for $x, y > 0$.
+>
+> **Solution:** 
+>
+> * Simply take ln of both sides $y \ln x = x \ln y$
+>
+> * Differentiate implicitly as follows: $y' \ln x + \frac{y}{x} = \ln y + \frac{x}{y} y'$
+>
+> * Substitute $(x,y) = (1,1)$: $y'(0) + 1 = 0 + 1(y')$
+>
+> * And boom! $\boxed{y' = 1}$
+
+> **Example 4:** Your goal is to find $\frac{dy}{dx}$ in terms of $x$ and $y$ for the curve defined by $\sin(x+y) = y^2 \cos x$.
+>
+> **Solution:** 
+>
+> * First, we differentiate to get $\cos(x+y)(1 + y') = 2y y' \cos x - y^2 \sin x$
+>
+> * Expanding arrives us at $\cos(x+y) + y'\cos(x+y) = 2y y' \cos x - y^2 \sin x$
+>
+> * Grouping $y'$ terms gives us $y'[\cos(x+y) - 2y \cos x] = -y^2 \sin x - \cos(x+y)$
+>
+> * And isolating $y'$ leads us to our final answer: $\boxed{y' = \frac{y^2 \sin x + \cos(x+y)}{2y \cos x - \cos(x+y)}}$
+
+> **Example 5:** Your goal is to find the value of $\frac{d^2y}{dx^2}$ at the point $(0,0)$ for the curve $e^{x+y} = x - y + 1$.
+>
+> **Solution:** 
+>
+> * First, we will find the first derivative $e^{x+y}(1 + y') = 1 - y'$
+>
+> * At $(0,0)$: $e^0(1 + y') = 1 - y' \implies 1 + y' = 1 - y' \implies y' = 0$
+>
+> * Now, we take the second derivative to get $e^{x+y}(1+y')^2 + e^{x+y}(y'') = -y''$
+>
+> * Substituting $(0,0)$ and $y'=0$: $1(1+0)^2 + 1(y'') = -y''$
+>
+> * And so our answer is: $1 + y'' = -y'' \implies \boxed{y'' = -\frac{1}{2}}$
+
+> **Example 6:** Your goal is to find $\frac{dy}{dx}$ at the point $(1,2)$ for the curve $x^3 + y^3 = 9xy$.
+>
+> **Solution:** 
+>
+> * First step like usual, we differentiate $3x^2 + 3y^2 y' = 9y + 9xy'$
+>
+> * Then, we simplify the expression $x^2 + y^2 y' = 3y + 3xy'$
+>
+> * After that, we will simply substitue $(1,2)$: $1^2 + 2^2 y' = 3(2) + 3(1)y'$
+>
+> * And solve to get $1 + 4y' = 6 + 3y' \implies \boxed{y' = 5}$
+
+> **Example 7:** If $\tan^{-1}(x^2 y) = x + y^3$, your goal is to find (if it exists) $\frac{dy}{dx}$ at the origin $(0,0)$.
+>
+> **Solution:** 
+>
+> * As usual, we differentiate $\frac{1}{1 + (x^2 y)^2} \cdot (2xy + x^2 y') = 1 + 3y^2 y'$
+>
+> * Substitute $(0,0)$: $\frac{1}{1 + 0} \cdot (0 + 0) = 1 + 3(0)y'$
+>
+> * And we get something fishy: $\boxed{0 = 1}$
+
+> **Example 8:** Your goal is to find $\frac{dy}{dx}$ at $(1, e)$ for the graph $y \ln y - x^2 e^{x-1} = 0$.
+>
+> **Solution:** 
+>
+> * Differentiate like usual to get $(1 \cdot \ln y + y \cdot \frac{1}{y})y' - (2x e^{x-1} + x^2 e^{x-1}) = 0$
+>
+> * Then, we simplify $(\ln y + 1)y' - e^{x-1}(2x + x^2) = 0$
+>
+> * Substitute $(1,e)$: $(\ln e + 1)y' - e^0(2(1) + 1^2) = 0$
+>
+> * And we solve to get: $2y' - 3 = 0 \implies \boxed{y' = \frac{3}{2}}$
+
+
+
 # Practice Problems
 
 > **Problem 1:** Given $2xy + x^3 - 3y^2 = 5$, find $\dfrac{dy}{dx}$.

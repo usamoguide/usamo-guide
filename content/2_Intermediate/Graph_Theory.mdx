@@ -1,0 +1,1372 @@
+---
+id: graph-theory
+title: Graph Theory
+author: Neronvain
+description: Learn the foundations of graph theory, including vertices, edges, degrees, paths, cycles, bipartite graphs, trees, Euler trails, and walk counting methods for contest problems.
+prerequisites: []
+---
+
+## Overview
+
+Graph theory studies relationships between objects.
+
+A graph consists of vertices joined by edges. The vertices represent objects,
+and the edges represent connections between them.
+
+For example:
+- People can be vertices, with friendships as edges
+- Cities can be vertices, with roads as edges
+- Rooms can be vertices, with doors as edges
+- Numbers can be vertices, with edges joining numbers that satisfy a condition
+
+Graph theory appears often in olympiad and contest problems because many
+problems about movement, pairing, networks, games, and arrangements can be
+translated into graph language.
+
+In AMC style problems, a particularly common type asks about walks:
+
+> How many ways can we move through a graph in exactly $n$ steps?
+
+This module gives the basic vocabulary of graph theory and then spends extra
+time on walk counting strategies.
+
+## What Is a Graph?
+
+A graph is made of two parts:
+- A set of vertices
+- A set of edges joining pairs of vertices
+
+Formally, a graph is written as
+
+$$
+G=(V,E),
+$$
+
+where $V$ is the vertex set and $E$ is the edge set.
+
+For example, suppose
+
+$$
+V=\{A,B,C,D\}
+$$
+
+and
+
+$$
+E=\{\{A,B\},\{B,C\},\{C,D\},\{D,A\}\}.
+$$
+
+This graph has four vertices and four edges. It forms a cycle:
+
+$$
+A-B-C-D-A.
+$$
+
+In this module, unless otherwise stated, graphs are simple and undirected.
+
+That means:
+- There is at most one edge between any two vertices
+- No edge joins a vertex to itself
+- Edges have no direction
+
+A simple undirected graph is the most common type in introductory contest
+problems.
+
+## Vertices and Edges
+
+The points of a graph are called vertices.
+
+The connections between vertices are called edges.
+
+If an edge joins vertices $u$ and $v$, we may write it as
+
+$$
+\{u,v\}.
+$$
+
+Since the graph is undirected,
+
+$$
+\{u,v\}=\{v,u\}.
+$$
+
+If there is an edge between $u$ and $v$, we say that $u$ and $v$ are adjacent.
+
+If a vertex $v$ lies on an edge $e$, we say that $v$ is incident to $e$.
+
+## Degree of a Vertex
+
+The degree of a vertex is the number of edges incident to it.
+
+The degree of a vertex $v$ is written as
+
+$$
+d(v).
+$$
+
+For example, if vertex $A$ is joined to $B$, $C$, and $D$, then
+
+$$
+d(A)=3.
+$$
+
+A vertex of degree $0$ is called an isolated vertex.
+
+## The Handshaking Lemma
+
+In any finite undirected graph,
+
+$$
+\sum_{v\in V}d(v)=2|E|.
+$$
+
+This is called the Handshaking Lemma.
+
+It is true because every edge contributes $1$ to the degree of each of its two
+endpoints. Therefore, every edge is counted exactly twice in the degree sum.
+
+### Consequence
+
+The number of vertices with odd degree is even.
+
+Why?
+
+The sum of all degrees is even, since it equals
+
+$$
+2|E|.
+$$
+
+A sum of integers is even only if it contains an even number of odd terms.
+
+So every graph has an even number of odd degree vertices.
+
+This simple fact is surprisingly useful in contest problems.
+
+## Subgraphs
+
+A graph $H$ is a subgraph of $G$ if its vertices and edges are taken from $G$.
+
+If
+
+$$
+G=(V,E)
+$$
+
+and
+
+$$
+H=(V_H,E_H),
+$$
+
+then $H$ is a subgraph of $G$ when
+
+$$
+V_H\subseteq V
+$$
+
+and
+
+$$
+E_H\subseteq E.
+$$
+
+An induced subgraph is formed by choosing some vertices and keeping every edge
+from the original graph whose endpoints are both among those chosen vertices.
+
+For example, if a graph has vertices $A,B,C,D$ and we choose only $A,B,C$, then
+the induced subgraph on $A,B,C$ contains all edges among $A,B,C$ that were
+already present in the original graph.
+
+## Complete Graphs
+
+A complete graph is a graph in which every pair of distinct vertices is joined
+by an edge.
+
+The complete graph on $n$ vertices is denoted
+
+$$
+K_n.
+$$
+
+Since every edge is determined by choosing $2$ vertices from $n$, the number of
+edges in $K_n$ is
+
+$$
+\binom{n}{2}
+=
+\frac{n(n-1)}{2}.
+$$
+
+For example,
+
+$$
+K_4
+$$
+
+has
+
+$$
+\binom{4}{2}=6
+$$
+
+edges.
+
+A complete subgraph is often called a clique.
+
+## Null Graphs and Independent Sets
+
+A null graph is a graph with vertices but no edges.
+
+Equivalently, every vertex is isolated.
+
+An independent set in a graph is a set of vertices with no edges between any two
+of them.
+
+For example, if no two selected people are friends, then those selected people
+form an independent set in the friendship graph.
+
+Independent sets are closely related to complements of graphs.
+
+## Complement of a Graph
+
+The complement of a graph $G$ is the graph with the same vertex set, but with
+exactly the missing edges.
+
+In other words, two vertices are adjacent in the complement when they
+are not adjacent in the original graph.
+
+If $G$ has $n$ vertices and $e$ edges, then its complement has
+
+$$
+\binom{n}{2}-e
+$$
+
+edges.
+
+This is useful because sometimes it is easier to count missing edges than
+present edges.
+
+## Connected Graphs
+
+A graph is connected if every vertex can be reached from every other vertex by
+following edges.
+
+If a graph is not connected, it breaks into connected components.
+
+A connected component is a largest possible connected subgraph.
+
+For example, a graph made of two separate triangles has two connected
+components.
+
+## Directed Graphs
+
+A directed graph, or digraph, has directed edges.
+
+A directed edge from $u$ to $v$ is written as
+
+$$
+(u,v).
+$$
+
+This is different from
+
+$$
+(v,u).
+$$
+
+Directed graphs are useful for modelling one way roads, tournament results, or
+processes with allowed directions.
+
+A directed graph is strongly connected if every vertex can be reached from every
+other vertex by following directed edges in the correct direction.
+
+## Weighted Graphs
+
+A weighted graph is a graph whose edges have weights.
+
+The weights may represent:
+- Distances
+- Costs
+- Times
+- Probabilities
+- Scores etc.
+
+For example, a road map can be modelled by a weighted graph where cities are
+vertices and road distances are edge weights.
+
+Shortest path problems often use weighted graphs.
+
+## Bipartite Graphs
+
+A graph is bipartite if its vertices can be split into two sets, say $L$ and
+$R$, such that every edge connects a vertex in $L$ to a vertex in $R$.
+
+There are no edges within $L$, and no edges within $R$.
+
+A graph is bipartite if and only if it has no odd cycle.
+
+Equivalently, a graph is bipartite if and only if its vertices can be coloured
+using two colours so that adjacent vertices always have different colours.
+
+### Complete Bipartite Graphs
+
+The complete bipartite graph
+
+$$
+K_{m,n}
+$$
+
+has two parts of sizes $m$ and $n$, and every vertex in the first part is joined
+to every vertex in the second part.
+
+It has
+
+$$
+mn
+$$
+
+edges.
+
+## Planar Graphs
+
+A graph is planar if it can be drawn in the plane so that no edges cross except
+at vertices.
+
+For example,
+
+$$
+K_4
+$$
+
+is planar, but
+
+$$
+K_5
+$$
+
+is not planar.
+
+Also,
+
+$$
+K_{3,3}
+$$
+
+is not planar.
+
+A planar drawing divides the plane into regions called faces. The outside
+region is also counted as a face.
+
+## Euler's Formula for Planar Graphs
+
+For a connected planar graph with
+
+$$
+V
+$$
+
+vertices,
+
+$$
+E
+$$
+
+edges, and
+
+$$
+F
+$$
+
+faces, Euler's formula says
+
+$$
+V-E+F=2.
+$$
+
+This is one of the main results about planar graphs.
+
+For a connected simple planar graph with
+
+$$
+V\ge 3,
+$$
+
+we also have
+
+$$
+E\le 3V-6.
+$$
+
+If the graph is triangle free and planar, then
+
+$$
+E\le 2V-4.
+$$
+
+These inequalities are often used to prove that certain graphs are not planar.
+
+## Walks, Trails, Paths, and Cycles
+
+This is one of the most important sections for contest problem solving.
+
+A walk is a sequence of vertices where each consecutive pair is joined by an
+edge.
+
+Vertices and edges may repeat in a walk.
+
+For example,
+
+$$
+A,B,C,B,A
+$$
+
+is a walk if all the needed edges exist.
+
+A trail is a walk that does not repeat any edge.
+
+A path is a walk that does not repeat any vertex.
+
+A closed walk starts and ends at the same vertex.
+
+A cycle is a closed path, meaning it starts and ends at the same vertex and does
+not repeat other vertices.
+
+These words are similar, so it is important to distinguish them carefully.
+
+## Walk Length
+
+The length of a walk is the number of edges used.
+
+For example,
+
+$$
+A,B,C,D
+$$
+
+has length $3$, because it uses the edges
+
+$$
+AB,\quad BC,\quad CD.
+$$
+
+A walk of length $n$ has $n$ steps.
+
+AMC style questions often ask:
+
+> How many walks of length $n$ go from one vertex to another?
+
+This means we count sequences of moves, not just simple paths.
+
+Repeating vertices is allowed unless the problem says otherwise.
+
+## The Main Walk Counting Idea
+
+When counting walks, the most important question is:
+
+> Where can I be after each step?
+
+A walk counting problem is often solved by tracking the number of ways to be at
+each type of vertex after each move.
+
+This is dynamic programming on a graph.
+
+Instead of listing every walk, we update counts step by step.
+
+## Walks on a Small Graph
+
+Suppose a graph has vertices
+
+$$
+A,B,C
+$$
+
+and edges
+
+$$
+AB,\quad BC.
+$$
+
+This is a path of length $2$:
+
+$$
+A-B-C.
+$$
+
+How many walks of length $4$ start at $A$ and end at $A$?
+
+Let
+
+$$
+a_n
+$$
+
+be the number of ways to be at $A$ after $n$ steps,
+
+$$
+b_n
+$$
+
+be the number of ways to be at $B$ after $n$ steps,
+
+and
+
+$$
+c_n
+$$
+
+be the number of ways to be at $C$ after $n$ steps.
+
+Initially,
+
+$$
+a_0=1,\qquad b_0=0,\qquad c_0=0.
+$$
+
+From $A$, we can only move to $B$.
+
+From $B$, we can move to $A$ or $C$.
+
+From $C$, we can only move to $B$.
+
+Therefore,
+
+$$
+a_{n+1}=b_n,
+$$
+
+$$
+b_{n+1}=a_n+c_n,
+$$
+
+and
+
+$$
+c_{n+1}=b_n.
+$$
+
+Now work out:
+
+After $1$ step,
+
+$$
+(a_1,b_1,c_1)=(0,1,0).
+$$
+
+After $2$ steps,
+
+$$
+(a_2,b_2,c_2)=(1,0,1).
+$$
+
+After $3$ steps,
+
+$$
+(a_3,b_3,c_3)=(0,2,0).
+$$
+
+After $4$ steps,
+
+$$
+(a_4,b_4,c_4)=(2,0,2).
+$$
+
+So there are
+
+$$
+2
+$$
+
+walks of length $4$ from $A$ back to $A$.
+
+They are
+
+$$
+A-B-A-B-A
+$$
+
+and
+
+$$
+A-B-C-B-A.
+$$
+
+## Walks on a Square
+
+Consider a square with vertices
+
+$$
+A,B,C,D
+$$
+
+and edges
+
+$$
+AB,\quad BC,\quad CD,\quad DA.
+$$
+
+How many walks of length $6$ start at $A$ and end at $A$?
+
+A direct listing would be annoying, but symmetry makes the problem simple.
+
+At any step, relative to $A$, a walker can be:
+- At $A$
+- At the opposite vertex $C$
+- At one of the two adjacent vertices $B$ or $D$
+
+Let
+
+$$
+x_n
+$$
+
+be the number of ways to be at $A$ after $n$ steps.
+
+Let
+
+$$
+y_n
+$$
+
+be the total number of ways to be at $B$ or $D$ after $n$ steps.
+
+Let
+
+$$
+z_n
+$$
+
+be the number of ways to be at $C$ after $n$ steps.
+
+Initially,
+
+$$
+(x_0,y_0,z_0)=(1,0,0).
+$$
+
+From $A$, a move goes to one of $B,D$.
+
+From $C$, a move also goes to one of $B,D$.
+
+From $B$ or $D$, a move goes either to $A$ or to $C$.
+
+As such,
+
+$$
+x_{n+1}=y_n,
+$$
+
+$$
+y_{n+1}=2x_n+2z_n,
+$$
+
+and
+
+$$
+z_{n+1}=y_n.
+$$
+
+Now work out:
+
+$$
+(x_1,y_1,z_1)=(0,2,0)
+$$
+
+$$
+(x_2,y_2,z_2)=(2,0,2)
+$$
+
+$$
+(x_3,y_3,z_3)=(0,8,0)
+$$
+
+$$
+(x_4,y_4,z_4)=(8,0,8)
+$$
+
+$$
+(x_5,y_5,z_5)=(0,32,0)
+$$
+
+$$
+(x_6,y_6,z_6)=(32,0,32).
+$$
+
+Therefore, there are
+
+$$
+32
+$$
+
+walks of length $6$ from $A$ back to $A$.
+
+## Bipartite Graphs and Parity of Walks
+
+Parity is extremely important in walk problems.
+
+In a bipartite graph, every move switches sides.
+
+If a walk starts in $L$, then:
+- After an odd number of steps, it is in $R$
+- After an even number of steps, it is in $L$
+
+Therefore, in a bipartite graph, there is no odd length closed walk.
+
+This gives fast zero answers.
+
+### Example
+
+A square is bipartite.
+
+Therefore, the number of walks of length $7$ from a vertex back to itself is
+
+$$
+0.
+$$
+
+The walker would need to return to the same side after an odd number of moves,
+which is impossible.
+
+## Walks on Complete Graphs
+
+Complete graphs also appear in counting problems.
+
+In
+
+$$
+K_m,
+$$
+
+each vertex is connected to every other vertex, but not to itself.
+
+Suppose we want the number of walks of length $n$ from a fixed vertex back to
+itself.
+
+Let
+
+$$
+a_n
+$$
+
+be the number of walks of length $n$ ending at the starting vertex.
+
+Let
+
+$$
+b_n
+$$
+
+be the total number of walks of length $n$ ending at any other vertex.
+
+Initially,
+
+$$
+a_0=1,
+\qquad
+b_0=0.
+$$
+
+To return to the starting vertex at step $n+1$, we must have been at another
+vertex at step $n$:
+
+$$
+a_{n+1}=b_n.
+$$
+
+To end at a different vertex at step $n+1$:
+- From the starting vertex, there are $m-1$ choices
+- From a different vertex, there are $m-2$ choices that still end at a different
+  vertex
+
+Therefore,
+
+$$
+b_{n+1}=(m-1)a_n+(m-2)b_n.
+$$
+
+This recurrence solves many complete graph walk problems quickly.
+
+### Example
+
+In
+
+$$
+K_4,
+$$
+
+how many walks of length $4$ start and end at a fixed vertex?
+
+Here,
+
+$$
+m=4.
+$$
+
+So
+
+$$
+a_{n+1}=b_n
+$$
+
+and
+
+$$
+b_{n+1}=3a_n+2b_n.
+$$
+
+Start with
+
+$$
+(a_0,b_0)=(1,0).
+$$
+
+Then
+
+$$
+(a_1,b_1)=(0,3)
+$$
+
+$$
+(a_2,b_2)=(3,6)
+$$
+
+$$
+(a_3,b_3)=(6,21)
+$$
+
+$$
+(a_4,b_4)=(21,60).
+$$
+
+So the number of walks of length $4$ from a vertex back to itself is
+
+$$
+21.
+$$
+
+## Walks Using an Adjacency Matrix
+
+For a graph with vertices
+
+$$
+v_1,v_2,\ldots,v_n,
+$$
+
+the adjacency matrix is the matrix $A$ where the entry in row $i$, column $j$
+is
+
+$$
+1
+$$
+
+if $v_i$ is joined to $v_j$, and
+
+$$
+0
+$$
+
+otherwise.
+
+A useful result is:
+
+> The entry in row $i$, column $j$ of $A^k$ is the number of walks of length
+> $k$ from $v_i$ to $v_j$.
+
+This is a very useful method when the graph is small.
+
+## Why the Adjacency Matrix Method Works
+
+The entry in row $i$, column $j$ of $A^2$ counts the number of ways to go from
+$v_i$ to $v_j$ in two steps.
+
+In turn, a two step walk has the form
+
+$$
+v_i\to v_r\to v_j.
+$$
+
+For each possible middle vertex $v_r$, we need both:
+
+$$
+v_i\to v_r
+$$
+
+and
+
+$$
+v_r\to v_j.
+$$
+
+This is what matrix multiplication counts.
+
+Similarly, $A^3$ counts three step walks, and in general $A^k$ counts
+$k$ step walks.
+
+## Example Using an Adjacency Matrix
+
+Consider the path graph
+
+$$
+A-B-C.
+$$
+
+Using the vertex order
+
+$$
+A,B,C,
+$$
+
+the adjacency matrix is
+
+$$
+M=
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}.
+$$
+
+Then
+
+$$
+M^2=
+\begin{pmatrix}
+1 & 0 & 1 \\
+0 & 2 & 0 \\
+1 & 0 & 1
+\end{pmatrix}.
+$$
+
+The entry in row $A$, column $C$ is $1$, so there is exactly one walk of length
+$2$ from $A$ to $C$:
+
+$$
+A-B-C.
+$$
+
+The entry in row $B$, column $B$ is $2$, so there are two walks of length $2$
+from $B$ back to $B$:
+
+$$
+B-A-B
+$$
+
+and
+
+$$
+B-C-B.
+$$
+
+## Walks vs. Paths
+
+In contest problems, do not confuse walks and paths.
+
+A walk may repeat vertices and edges.
+
+A path may not repeat vertices.
+
+For example, in the graph
+
+$$
+A-B-C,
+$$
+
+the sequence
+
+$$
+A-B-A-B-C
+$$
+
+is a walk from $A$ to $C$.
+
+It is not a path, because it repeats vertices and edges.
+
+If a problem asks for 'routes', 'ways to move', or 'walks', repetition is often
+allowed unless the problem says otherwise.
+
+If a problem asks for 'paths' or says 'without visiting a vertex more than
+once', then repetition is not allowed.
+
+## Euler Trails
+
+An Euler trail is a trail that uses every edge of a graph exactly once.
+
+An Euler circuit is an Euler trail that starts and ends at the same vertex.
+
+For a connected graph with at least one edge:
+- An Euler circuit exists if and only if every vertex has even degree
+- An Euler trail that is not a circuit exists if and only if exactly two
+  vertices have odd degree
+
+The two odd degree vertices, if they exist, must be the start and end of the
+Euler trail.
+
+This is another direct application of parity.
+
+## Trees
+
+A tree is a connected graph with no cycles.
+
+A forest is a graph with no cycles. Each connected component of a forest is a
+tree.
+
+For a tree with $n$ vertices, the number of edges is
+
+$$
+n-1.
+$$
+
+Conversely, a connected graph with $n$ vertices and $n-1$ edges is a tree.
+
+Trees are important because there is exactly one path between any two vertices
+in a tree.
+
+## Leaves in Trees
+
+A leaf is a vertex of degree $1$.
+
+Every tree with at least two vertices has at least two leaves.
+
+This is often useful in induction arguments and graph counting problems.
+
+## Worked Examples
+
+### Example 1
+
+> A graph has $8$ vertices and $13$ edges. What is the sum of the degrees of
+> all vertices?
+
+By the Handshaking Lemma,
+
+$$
+\sum_{v\in V}d(v)=2|E|.
+$$
+
+Since
+
+$$
+|E|=13,
+$$
+
+the sum of the degrees is
+
+$$
+2(13)=26.
+$$
+
+### Example 2
+
+> Can a graph have exactly three vertices of odd degree?
+
+No.
+
+The number of odd degree vertices in any graph must be even.
+
+Therefore a graph cannot have exactly three odd degree vertices.
+
+### Example 3
+
+> How many edges does $K_{10}$ have?
+
+A complete graph on $10$ vertices has one edge for each pair of vertices.
+
+So the number of edges is
+
+$$
+\binom{10}{2}
+=
+45.
+$$
+
+### Example 4
+
+> How many edges does $K_{3,5}$ have?
+
+In a complete bipartite graph, every vertex in one part is joined to every
+vertex in the other part.
+
+So
+
+$$
+K_{3,5}
+$$
+
+has
+
+$$
+3(5)=15
+$$
+
+edges.
+
+### Example 5
+
+> A graph is bipartite. How many closed walks of odd length can it have?
+
+It has none.
+
+In a bipartite graph, each step switches sides. After an odd number of steps, a
+walk must be on the opposite side from where it began.
+
+So it cannot be closed.
+
+### Example 6
+
+> Consider the triangle graph $K_3$. How many walks of length $4$ start and end
+> at a fixed vertex?
+
+Use the complete graph recurrence with
+
+$$
+m=3.
+$$
+
+Let $a_n$ be the number of walks ending at the starting vertex after $n$ steps,
+and $b_n$ the total number of walks ending at one of the other two vertices.
+
+Then
+
+$$
+a_{n+1}=b_n
+$$
+
+and
+
+$$
+b_{n+1}=2a_n+b_n.
+$$
+
+Start with
+
+$$
+(a_0,b_0)=(1,0).
+$$
+
+Then
+
+$$
+(a_1,b_1)=(0,2)
+$$
+
+$$
+(a_2,b_2)=(2,2)
+$$
+
+$$
+(a_3,b_3)=(2,6)
+$$
+
+$$
+(a_4,b_4)=(6,10).
+$$
+
+So there are
+
+$$
+6
+$$
+
+walks of length $4$ from a vertex back to itself.
+
+### Example 7
+
+> A square has vertices $A,B,C,D$ in order. How many walks of length $5$ go
+> from $A$ to $C$?
+
+A square is bipartite.
+
+Vertices $A$ and $C$ are in the same part because they are opposite vertices.
+
+After an odd number of steps, a walk starting at $A$ must be in the other part.
+
+Since $5$ is odd, it is impossible to end at $C$.
+
+Therefore, the number of walks is
+
+$$
+0.
+$$
+
+### Example 8
+
+> A square has vertices $A,B,C,D$ in order. How many walks of length $4$ go
+> from $A$ to $C$?
+
+Use the same symmetry notation as before:
+- $x_n$ is the number of walks ending at $A$
+- $y_n$ is the total number ending at $B$ or $D$
+- $z_n$ is the number ending at $C$
+
+Initially,
+
+$$
+(x_0,y_0,z_0)=(1,0,0).
+$$
+
+The recurrences are
+
+$$
+x_{n+1}=y_n,
+$$
+
+$$
+y_{n+1}=2x_n+2z_n,
+$$
+
+and
+
+$$
+z_{n+1}=y_n.
+$$
+
+Work out:
+
+$$
+(x_1,y_1,z_1)=(0,2,0)
+$$
+
+$$
+(x_2,y_2,z_2)=(2,0,2)
+$$
+
+$$
+(x_3,y_3,z_3)=(0,8,0)
+$$
+
+$$
+(x_4,y_4,z_4)=(8,0,8).
+$$
+
+So the number of walks of length $4$ from $A$ to $C$ is
+
+$$
+8.
+$$
+
+## Problem Solving Methods for Walk Questions
+
+Walk questions can look different, but most are solved using a small set of
+methods.
+
+### Method 1: Track Each Vertex
+
+If the graph is small and asymmetric, keep a separate count for each vertex
+after each step.
+
+This is the safest method.
+
+Let
+
+$$
+a_n,b_n,c_n,\ldots
+$$
+
+be the number of ways to be at each vertex after $n$ steps.
+
+Then update using the edges of the graph.
+
+### Method 2: Use Symmetry
+
+If several vertices behave the same way, group them together.
+
+For example, in a square starting at $A$, vertices $B$ and $D$ are symmetric.
+So instead of tracking $B$ and $D$ separately, we can track the total number of
+ways to be at either of them.
+
+This makes the recurrence much shorter.
+
+### Method 3: Use Parity
+
+If the graph is bipartite, parity often gives an immediate answer.
+
+A walk switches sides every step.
+
+So:
+- Same side requires an even number of steps
+- Opposite side requires an odd number of steps
+
+This can quickly show that the answer is $0$.
+
+### Method 4: Use an Adjacency Matrix
+
+If the graph has a small number of vertices and the walk length is not too
+large, form the adjacency matrix.
+
+Then entries of powers of the adjacency matrix count walks.
+
+This method is systematic and works especially well when the graph is fixed.
+
+### Method 5: Use Complementary States
+
+Sometimes the exact vertex does not matter. What matters is whether we are:
+- At the starting vertex
+- At a neighbouring vertex
+- At a non neighbouring vertex
+- In a certain region
+
+This is common in complete graphs, cubes, regular polygons, and symmetric
+networks.
+
+## Common AMC Style Walk Patterns
+
+AMC 10 and AMC 12 walk problems often use small graphs and a fixed number of
+steps.
+
+The most common patterns are:
+- Moving around a polygon
+- Moving on a small network of points
+- Walking on the edges of a cube
+- Counting routes with exactly $n$ moves
+- Returning to the starting point
+- Reaching an opposite vertex
+- Using parity to eliminate impossible cases
+
+The safest approach is to avoid listing all walks. Instead, track the number of
+ways to be in each state after each step.
+
+## Key Contest Insight
+
+Graph theory problems often become much easier after translating the problem
+into vertices and edges.
+
+For walk counting problems, remember:
+- A walk may repeat vertices and edges
+- Count by number of steps
+- Update possible positions after each step
+- Use symmetry whenever possible
+- Use bipartite parity to detect impossible walks
+
+The question is rarely about drawing an actual good looking graph. It is usually about
+choosing the right states to track.
+
+## Strategy Tips
+- Identify the vertices and edges clearly
+- Decide whether the graph is directed or undirected
+- Check whether the graph is bipartite
+- For walk problems, determine whether repetition is allowed
+- Track positions after each step instead of listing walks
+- Use symmetry to combine equivalent vertices
+- For complete graphs, use a recurrence involving the starting vertex and all
+  other vertices
+- For small graphs, consider the adjacency matrix method
+- For Euler trail problems, count odd degree vertices
+- For tree problems, use the facts that a tree has no cycles and has $n-1$
+  edges
+
+## Common Pitfalls
+- Confusing walks with paths
+- Forgetting that walks may repeat vertices and edges
+- Counting paths when the problem asks for walks
+- Ignoring parity in bipartite graphs
+- Forgetting that a closed walk starts and ends at the same vertex
+- Assuming a graph is connected without checking
+- Forgetting that the degree sum is twice the number of edges
+- Using Euler trail conditions without checking connectedness
+- Treating directed edges as undirected
+- Counting rotations or symmetries incorrectly when the graph itself has
+  symmetry
+
+## Practice Problems
+
+<Problems problems="practice" />

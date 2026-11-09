@@ -1,0 +1,690 @@
+---
+id: polynomial-division-and-remainders
+title: Polynomial Division and Remainders
+author: USAMO Guide Team
+description: Learn polynomial division, the Remainder Theorem, the Factor Theorem, and how to find remainders when dividing by linear or quadratic polynomials.
+prerequisites: []
+---
+
+## Overview
+
+Polynomial division is the polynomial version of ordinary division.
+
+When a polynomial $P(x)$ is divided by another polynomial $D(x)$, we can write
+
+$$
+P(x)=D(x)Q(x)+R(x),
+$$
+
+where:
+- $Q(x)$ is the quotient
+- $R(x)$ is the remainder
+- The degree of $R(x)$ is less than the degree of $D(x)$
+
+This is called the division algorithm for polynomials.
+
+The most important cases in contest algebra are:
+- Dividing by a linear polynomial
+- Using the Remainder Theorem
+- Using the Factor Theorem
+- Finding remainders when dividing by a quadratic
+
+## Polynomial Division
+
+Suppose we divide
+
+$$
+P(x)
+$$
+
+by
+
+$$
+D(x).
+$$
+
+Then
+
+$$
+P(x)=D(x)Q(x)+R(x),
+$$
+
+where
+
+$$
+\deg R<\deg D.
+$$
+
+For example, if $D(x)$ is linear, then $R(x)$ must be constant.
+
+If $D(x)$ is quadratic, then $R(x)$ has degree at most $1$, so it has the form
+
+$$
+ax+b.
+$$
+
+This degree condition is the key to many remainder problems.
+
+## Dividing by a Linear Polynomial
+
+When dividing by
+
+$$
+x-a,
+$$
+
+the remainder is a constant.
+
+So we may write
+
+$$
+P(x)=(x-a)Q(x)+r.
+$$
+
+Now substitute
+
+$$
+x=a.
+$$
+
+Since
+
+$$
+a-a=0,
+$$
+
+we get
+
+$$
+P(a)=r.
+$$
+
+Therefore, the remainder when $P(x)$ is divided by $x-a$ is
+
+$$
+P(a).
+$$
+
+This is the Remainder Theorem.
+
+## Remainder Theorem
+
+If a polynomial $P(x)$ is divided by
+
+$$
+x-a,
+$$
+
+then the remainder is
+
+$$
+P(a).
+$$
+
+### Example 1
+
+> Find the remainder when
+>
+> $$
+> P(x)=x^4+3x^2-5x+7
+> $$
+>
+> is divided by $x-2$.
+
+By the Remainder Theorem, the remainder is
+
+$$
+P(2).
+$$
+
+Compute:
+
+$$
+P(2)=2^4+3(2^2)-5(2)+7.
+$$
+
+So
+
+$$
+P(2)=16+12-10+7=25.
+$$
+
+The remainder is
+
+$$
+25.
+$$
+
+## Factor Theorem
+
+The Factor Theorem says:
+
+$$
+x-a
+$$
+
+is a factor of $P(x)$ if and only if
+
+$$
+P(a)=0.
+$$
+
+This follows directly from the Remainder Theorem.
+
+If the remainder when dividing by $x-a$ is $0$, then $x-a$ divides $P(x)$.
+
+### Example 2
+
+> Show that $x-3$ is a factor of
+>
+> $$
+> P(x)=x^3-4x^2+x+6.
+> $$
+
+Use the Factor Theorem.
+
+Compute:
+
+$$
+P(3)=3^3-4(3^2)+3+6.
+$$
+
+Thus
+
+$$
+P(3)=27-36+3+6=0.
+$$
+
+Therefore,
+
+$$
+x-3
+$$
+
+is a factor of $P(x)$.
+
+## Remainder by a Quadratic
+
+If a polynomial $P(x)$ is divided by a quadratic polynomial, the remainder must
+have degree less than $2$.
+
+So the remainder has the form
+
+$$
+R(x)=ax+b.
+$$
+
+So,
+
+$$
+P(x)=D(x)Q(x)+ax+b.
+$$
+
+To find $a$ and $b$, we use values of $x$ that make $D(x)=0$.
+
+## Quadratic With Distinct Linear Factors
+
+Suppose we divide by
+
+$$
+(x-r)(x-s),
+$$
+
+where
+
+$$
+r\neq s.
+$$
+
+Then the remainder has the form
+
+$$
+R(x)=ax+b.
+$$
+
+Since
+
+$$
+P(x)=(x-r)(x-s)Q(x)+R(x),
+$$
+
+substitute $x=r$:
+
+$$
+P(r)=R(r).
+$$
+
+Substitute $x=s$:
+
+$$
+P(s)=R(s).
+$$
+
+So we solve
+
+$$
+ar+b=P(r)
+$$
+
+and
+
+$$
+as+b=P(s).
+$$
+
+This gives the remainder.
+
+## Worked Quadratic Example
+
+### Example 3
+
+> Find the remainder when
+>
+> $$
+> P(x)=x^5+2x^3+1
+> $$
+>
+> is divided by
+>
+> $$
+> x^2-1.
+> $$
+
+Since
+
+$$
+x^2-1=(x-1)(x+1),
+$$
+
+the remainder has the form
+
+$$
+R(x)=ax+b.
+$$
+
+Now use the roots $1$ and $-1$.
+
+First,
+
+$$
+P(1)=1^5+2(1^3)+1=4.
+$$
+
+So
+
+$$
+R(1)=a+b=4.
+$$
+
+Next,
+
+$$
+P(-1)=(-1)^5+2(-1)^3+1=-1-2+1=-2.
+$$
+
+So
+
+$$
+R(-1)=-a+b=-2.
+$$
+
+Solving
+
+$$
+a+b=4
+$$
+
+and
+
+$$
+-a+b=-2,
+$$
+
+we get
+
+$$
+a=3
+$$
+
+and
+
+$$
+b=1.
+$$
+
+Therefore, the remainder is
+
+$$
+3x+1.
+$$
+
+## Remainder by an Irreducible Quadratic
+
+Sometimes the quadratic does not factor nicely over the real numbers.
+
+For example, suppose we divide by
+
+$$
+x^2+1.
+$$
+
+Since
+
+$$
+x^2+1=0
+$$
+
+implies
+
+$$
+x^2=-1,
+$$
+
+we can reduce powers of $x$ using
+
+$$
+x^2\equiv -1 \pmod{x^2+1}.
+$$
+
+This means we simplify the polynomial while replacing every $x^2$ by $-1$.
+
+### Example 4
+
+> Find the remainder when
+>
+> $$
+> x^6+2x^5+x^2+3
+> $$
+>
+> is divided by
+>
+> $$
+> x^2+1.
+> $$
+
+Modulo $x^2+1$, we have
+
+$$
+x^2\equiv -1.
+$$
+
+Then
+
+$$
+x^4\equiv 1
+$$
+
+and
+
+$$
+x^6\equiv -1.
+$$
+
+Also,
+
+$$
+x^5=x(x^4)\equiv x.
+$$
+
+Therefore,
+
+$$
+x^6+2x^5+x^2+3
+\equiv
+-1+2x-1+3.
+$$
+
+So the remainder is
+
+$$
+2x+1.
+$$
+
+## Remainder by a Repeated Linear Factor
+
+If the divisor is
+
+$$
+(x-a)^2,
+$$
+
+then the remainder has the form
+
+$$
+R(x)=mx+b.
+$$
+
+We need two conditions.
+
+Since
+
+$$
+P(x)=(x-a)^2Q(x)+R(x),
+$$
+
+substitute $x=a$:
+
+$$
+P(a)=R(a).
+$$
+
+Differentiate both sides:
+
+$$
+P'(x)=2(x-a)Q(x)+(x-a)^2Q'(x)+R'(x).
+$$
+
+Now substitute $x=a$:
+
+$$
+P'(a)=R'(a).
+$$
+
+So for division by $(x-a)^2$, use
+
+$$
+R(a)=P(a)
+$$
+
+and
+
+$$
+R'(a)=P'(a).
+$$
+
+### Example 5
+
+> Find the remainder when
+>
+> $$
+> P(x)=x^4+x^2+1
+> $$
+>
+> is divided by
+>
+> $$
+> (x-1)^2.
+> $$
+
+The remainder has the form
+
+$$
+R(x)=mx+b.
+$$
+
+First,
+
+$$
+P(1)=1+1+1=3.
+$$
+
+So
+
+$$
+R(1)=m+b=3.
+$$
+
+Now
+
+$$
+P'(x)=4x^3+2x.
+$$
+
+Thus
+
+$$
+P'(1)=4+2=6.
+$$
+
+Since
+
+$$
+R'(x)=m,
+$$
+
+we get
+
+$$
+m=6.
+$$
+
+Then
+
+$$
+6+b=3,
+$$
+
+so
+
+$$
+b=-3.
+$$
+
+Therefore, the remainder is
+
+$$
+6x-3.
+$$
+
+## Polynomial Congruences
+
+It is often useful to think of remainders using polynomial congruences.
+
+Writing
+
+$$
+P(x)\equiv R(x)\pmod{D(x)}
+$$
+
+means that $P(x)$ and $R(x)$ have the same remainder when divided by $D(x)$.
+
+For example,
+
+$$
+x^2\equiv 1 \pmod{x^2-1}.
+$$
+
+So when working modulo $x^2-1$, we may replace $x^2$ with $1$.
+
+This is similar to ordinary modular arithmetic, but with polynomials.
+
+## Worked Examples
+
+### Example 6
+
+> Find the remainder when
+>
+> $$
+> x^{2026}
+> $$
+>
+> is divided by
+>
+> $$
+> x^2-1.
+> $$
+
+Modulo $x^2-1$, we have
+
+$$
+x^2\equiv 1.
+$$
+
+Therefore,
+
+$$
+x^{2026}=(x^2)^{1013}\equiv 1^{1013}\equiv 1.
+$$
+
+So the remainder is
+
+$$
+1.
+$$
+
+### Example 7
+
+> Find the remainder when
+>
+> $$
+> x^{2025}
+> $$
+>
+> is divided by
+>
+> $$
+> x^2-1.
+> $$
+
+Again,
+
+$$
+x^2\equiv 1 \pmod{x^2-1}.
+$$
+
+Then
+
+$$
+x^{2025}=x(x^2)^{1012}\equiv x.
+$$
+
+So the remainder is
+
+$$
+x.
+$$
+
+## Key Contest Insight
+
+The remainder always has smaller degree than the divisor.
+
+This is the main idea.
+
+- When dividing by $x-a$, the remainder is constant
+- When dividing by a quadratic, the remainder has the form $ax+b$
+- When dividing by $(x-a)^2$, use both the value and derivative at $a$
+
+For large powers, reduce using the relation created by the divisor.
+
+## Strategy Tips
+
+- Identify the degree of the divisor
+- Write the most general possible remainder
+- For divisor $x-a$, use $P(a)$
+- For divisor $(x-r)(x-s)$, use the two roots
+- For divisor $(x-a)^2$, use $P(a)$ and $P'(a)$
+- For divisors like $x^2+1$, reduce powers using the relation $x^2=-1$
+- Always check that the remainder has lower degree than the divisor
+
+## Common Pitfalls
+
+- Forgetting that the remainder by a quadratic is linear or constant
+- Using only one value when two conditions are needed
+- Forgetting the derivative condition for repeated roots
+- Making sign errors when substituting negative roots
+- Leaving a remainder with degree too large
+- Confusing numerical modular arithmetic with polynomial congruences
+
+## Practice Problems
+
+<Problems problems="practice" />

@@ -6,6 +6,63 @@ description: Learn how the Lifting the Exponent Lemma helps compute prime powers
 prerequisites: []
 ---
 
+## Additional Resources
+
+<Resources>
+  <Resource
+    source="CJQ"
+    title="Lifting the Exponent"
+    url="https://cjquines.com/files/liftingtheexponent.pdf"
+    starred
+  >
+    Short, readable derivation of the lemma with examples.
+  </Resource>
+  <Resource
+    source="AHP"
+    title="Lifting the Exponent Lemma (v6)"
+    url="https://pregatirematematicaolimpiadejuniori.wordpress.com/wp-content/uploads/2016/07/lte.pdf"
+    starred
+  >
+    The classic reference: every case of the lemma, fully proved, plus
+    olympiad problems.
+  </Resource>
+  <Resource
+    source="EC"
+    title="OTIS Excerpts"
+    url="https://web.evanchen.cc/textbooks/OTIS-Excerpts.pdf"
+  >
+    Places LTE alongside orders and other olympiad NT machinery.
+  </Resource>
+  <Resource
+    source="YZ"
+    title="aⁿ ± 1 (Solutions)"
+    url="https://yufeizhao.com/olympiad/exponent_lifting_sol.pdf"
+  >
+    Solutions to exponent-lifting problems about $a^n \pm 1$.
+  </Resource>
+  <Resource
+    source="JS"
+    title="Olympiad Number Theory Through Challenging Problems"
+    url="https://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf"
+  >
+    Builds up the prerequisites for LTE from scratch.
+  </Resource>
+  <Resource
+    source="WP"
+    title="Lifting-the-Exponent Lemma"
+    url="https://en.wikipedia.org/wiki/Lifting-the-exponent_lemma"
+  >
+    Concise statement of every case, including $p = 2$.
+  </Resource>
+  <Resource
+    source="CJQ"
+    title="Sledgehammers in Number Theory"
+    url="https://cjquines.com/files/sledgehammers.pdf"
+  >
+    When a heavy tool like LTE is the right move &mdash; and when it is not.
+  </Resource>
+</Resources>
+
 ## Overview
 
 The Lifting the Exponent Lemma, often abbreviated as LTE, is a powerful tool in
@@ -307,5 +364,36 @@ v_3(10^6-1)=3.
 $$
 
 So the largest power of $3$ dividing $10^6-1$ is $3^3$.
+
+### Example 2: Direct LTE Application
+
+Let $p$ be an odd prime. Your goal is to prove that $p^n$ divides $(p+1)^{p^{n-1}} - 1$ for all positive integers $n$.
+
+We can simply apply LTE to the expression $x^k - y^k$ where $x = p+1$, $y = 1$, and $k = p^{n-1}$. Since $p \mid (x - y)$ because $(p+1) - 1 = p$, and $p \nmid (p+1)$, the conditions for LTE are satisfied. So, we have $v_p((p+1)^{p^{n-1}} - 1) = v_p((p+1) - 1) + v_p(p^{n-1}) = v_p(p) + (n-1) = 1 + n - 1 = n$. And so, $p^n \mid (p+1)^{p^{n-1}} - 1$.
+
+### Example 3: Interesting Prime Divisibility Problem
+
+Your job is to find all odd primes $p$ such that $p^2$ divides $5^{p^2} + 7^{p^2}$.
+
+First, we can analyze the expression using the LTE for an odd exponent $k = p^2$. One of the conditions requires $p \mid (5 + 7)$, which implies $p \mid 12$, which narrows down all possibilities to just $p = 3$. Testing $p = 3$ with LTE gives us $v_3(5^{9} + 7^{9}) = v_3(5 + 7) + v_3(9) = v_3(12) + 2 = 1 + 2 = 3$. Since $v_3(5^9 + 7^9) = 3 \ge 2$, the condition holds, and so $p = 3$ is the unique solution.
+
+### Example 4: Classic
+
+Let $n$ be a positive integer. Your goal is to prove that $n!$ does not divide $2^n - 1$.
+
+ATC (assume towards contradiction) that $n! \mid 2^n - 1$. So, we will let $p$ be the smallest prime divisor of $n$. If $n \ge p$, then $p \mid n!$, which means that $p \mid 2^n - 1$. By Fermat's Little Theorem, let $d = \text{ord}_p(2)$, so $d \mid n$ and $d \mid p-1$. Because $d \le p-1$, every prime factor of $d$ must be strictly less than $p$, contradicting the fact that $p$ is the smallest prime factor of $n$ unless $d=1$, which is impossible since $2^1 \not\equiv 1 \pmod p$.
+
+### Example 5: Skibidi Diophantine Equation
+
+Your goal is to find all positive integer solutions $(n, k)$ to the equation $3^k - 1 = 2^n$.
+
+First, if $k$ is odd, $3^k - 1 \equiv 2 \pmod 4$, forcing $n=1$ and giving the solution $(1, 1)$. If $k$ is even, we write $k = 2^m \cdot q$ where $q$ is odd. Applying p=2 LTE gives $v_2(3^k - 1) = v_2(3-1) + v_2(3+1) + v_2(k) - 1 = 1 + 2 + m - 1 = m + 2$. Since $3^k - 1 = 2^n$, we must have $q=1$, which means that $k = 2^m$. Substituting back into LTE gives $n = m + 2$, which gives another solution $(3, 2)$.
+
+### Example 6: Bounds Problem
+
+Let $a, b, n$ be positive integers such that $\gcd(a,b)=1$ and $n > 1$. If $n$ divides $v_p(a^n - b^n)$ for an odd prime $p$ dividing $a-b$, your job is to prove that $v_p(a-b) \ge n - v_p(n)$.
+
+We can apply LTE directly to the expression to get: $v_p(a^n - b^n) = v_p(a-b) + v_p(n)$. We are given that $n$ divides this total valuation, which means that the value must be greater than or equal to $n$, so $v_p(a-b) + v_p(n) \ge n$. Rearranging this inequality gives us the desired: $v_p(a-b) \ge n - v_p(n)$.
+
 
 ## Part 2: Check the part 2 for continuation

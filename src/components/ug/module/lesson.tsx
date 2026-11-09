@@ -547,50 +547,34 @@ export function sectionize(children: React.ReactNode): React.ReactNode {
     kids.push(k);
   }
 
-  type Sec = { id: string | null; nodes: React.ReactNode[]; text: number };
+  type Sec = { id: string | null; nodes: React.ReactNode[] };
   const secs: Sec[] = [];
-  let cur: Sec = { id: null, nodes: [], text: 0 };
+  let cur: Sec = { id: null, nodes: [] };
   kids.forEach(k => {
     if (isEl(k, SECTION_HEADINGS)) {
       if (cur.nodes.some(n => !isBlank(n))) secs.push(cur);
-      cur = { id: k.props.id ?? null, nodes: [], text: 0 };
+      cur = { id: k.props.id ?? null, nodes: [] };
       cur.nodes.push(cur.id ? React.cloneElement(k, { id: `h-${cur.id}` }) : k);
     } else {
       cur.nodes.push(k);
     }
-    cur.text += textOf(k).trim().length;
   });
   if (cur.nodes.some(n => !isBlank(n))) secs.push(cur);
 
-  // where the sign-in prompt goes: the end of the section nearest 40% in
-  const total = secs.reduce((n, s) => n + s.text, 0);
-  let promptAt = Math.max(0, Math.floor(secs.length / 2) - 1);
-  if (total > 0 && secs.length > 1) {
-    let run = 0;
-    let best = Infinity;
-    secs.forEach((s, i) => {
-      run += s.text;
-      const d = Math.abs(run - total * 0.4);
-      if (d < best && i < secs.length - 1) {
-        best = d;
-        promptAt = i;
-      }
-    });
-  }
-
-  return secs.map((s, i) => {
-    const nodes =
-      i === promptAt
-        ? [...s.nodes, <NotSignedInWarning key="not-signed-in-warning" />]
-        : s.nodes;
-    return s.id ? (
-      <section key={`s-${s.id}`} id={s.id} aria-labelledby={`h-${s.id}`}>
-        {nodes}
-      </section>
-    ) : (
-      <section key={`s-intro-${i}`}>{nodes}</section>
-    );
-  });
+  // The sign-in prompt sits at the top of the lesson (a product decision on
+  // main; the export places it partway through).
+  return [
+    <NotSignedInWarning key="not-signed-in-warning" />,
+    ...secs.map((s, i) =>
+      s.id ? (
+        <section key={`s-${s.id}`} id={s.id} aria-labelledby={`h-${s.id}`}>
+          {s.nodes}
+        </section>
+      ) : (
+        <section key={`s-intro-${i}`}>{s.nodes}</section>
+      )
+    ),
+  ];
 }
 
 /** Rough reading time of the lesson, in minutes. */

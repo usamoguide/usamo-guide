@@ -20,6 +20,14 @@
   src: url('/Font/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/Font/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+}
+
 @import 'tailwindcss';
 @import './theme.css' layer(base);
 

@@ -1,0 +1,183 @@
+---
+id: fermats-little-theorem
+title: Fermat's Little Theorem
+author: Zhiheng Luo (TLZ/ZhiTuur, USAMO Guide Team)
+description: Theory and examples for the renowned Fermat's Little Theorem
+prerequisites: []
+---
+
+## The Intuition Behind Fermat's Little Theorem
+Imagine a theorem so fundamental to Olympiad mathematics number theory problems that you are bound to come across it in some way or form during any competition; that theorem is the so called Fermat's Little Theorem named after the 17th century polymath Pierre De Fermat (the funny thing is he never wrote it down and only briefly mentioned it in a letter). Even so it is often abbreviated as 'FLT' in the math Olympiad community.
+To build intuition, consider powers of integers with modulo a prime number, say $p = 5$:
+* $2^5 = 32 \equiv 2 \pmod 5$
+* $3^5 = 243 \equiv 3 \pmod 5$
+* $4^5 = 1024 \equiv 4 \pmod 5$
+
+Notice how raising any integer $a$ to the $p$-th power modulo $p$ returns the original value $a$.
+
+## Formal Definitions and Notation
+**Fermat's Little Theorem (FLT)** states that if $p$ is a prime number and $n$ is any integer, then:
+$$
+n^p \equiv n \pmod{p} \quad \text{[form 1]}
+$$
+
+If $n$ is not divisible by $p$ or in other words are coprime to eachother (that is, $\gcd(n, p) = 1$), we can divide both sides by $n$ to get the more primarily used form:
+$$
+n^{p-1} \equiv 1 \pmod{p} \quad \text{[form 2]}
+$$
+
+The 2 forms are used interchangeably; it is important you know that they are the same thing and are able to recognise them quickly.
+> **Important note:** The modulus $p$ **must** be a **prime number**.
+
+## Scaffolded Examples
+
+### Direct Application (Easy)
+
+Find $7^{224} \pmod{17}$.
+
+**Solution:**
+
+Since $17$ is a prime number and $\gcd(7, 17) = 1$, we apply **Fermat's Little Theorem**:
+
+$$
+7^{16} \equiv 1 \pmod{17}
+$$
+
+Next, we divide the exponent $224$ by $16$:
+
+$$
+224 = 16 \cdot 14 + 0
+$$
+
+Since $224$ is a multiple of $16$, we can rewrite $7^{224}$ as:
+
+$$
+7^{224} = (7^{16})^{14} \equiv 1^{14} \equiv 1 \pmod{17}
+$$
+So our answer is:
+$$
+\boxed{1}
+$$
+
+### Slightly Harder Problem (Medium)
+Find the remainder when $17^{17^{17}}$ is divided by $7$.
+
+**Solution:**
+
+First, simplify the base modulo $7$:
+
+$$
+17 \equiv 3 \pmod 7 \implies 17^{17^{17}} \equiv 3^{17^{17}} \pmod 7
+$$
+
+Since $7$ is prime and $\gcd(3, 7) = 1$, per **FLT** we know $3^6 \equiv 1 \pmod 7$. Thus, we try to express the exponent $17^{17}$ modulo $6$:
+
+$$
+17 \equiv -1 \pmod 6
+$$
+
+$$
+17^{17} \equiv (-1)^{17} \equiv -1 \equiv 5 \pmod 6
+$$
+
+This tells us that $17^{17} = 6k + 5$ for some integer $k$. Now, substitute this back into our original expression modulo $7$:
+
+$$
+3^{17^{17}} = 3^{6k + 5} = (3^6)^k \cdot 3^5 \equiv 1^k \cdot 3^5 \pmod 7
+$$
+
+Finally, $3^5 \pmod 7$:
+
+$$
+3^5 = 243 = 7 \cdot 34 + 5 \equiv 5 \pmod 7
+$$
+
+Yields
+
+$$
+\boxed{5}
+$$
+
+>Notice this can apply to alot of problems.
+
+### Olympiad Application (Hard)
+
+Determine all prime numbers $p$ such that $p$ divides $2^p + 1$.
+
+**Solution**
+
+The condition $p \mid (2^p + 1)$ can be written in modular arithmetic as:
+
+$$
+2^p + 1 \equiv 0 \pmod p \implies 2^p \equiv -1 \pmod p
+$$
+
+By **Fermat's Little Theorem**, for any prime $p$, we know:
+
+$$
+2^p \equiv 2 \pmod p
+$$
+
+We now have two distinct equivalences for $2^p \pmod p$. Equating them gives:
+
+$$
+2 \equiv -1 \pmod p
+$$
+
+Working out gives:
+
+$$
+3 \equiv 0 \pmod p
+$$
+
+This implies that $p$ must be a prime factor of $3$. Since $3$ is prime, the only possible candidate is $p = 3$.
+
+As a sufficiency check, we check if $p = 3$ satisfies the original condition:
+
+$$
+2^3 + 1 = 8 + 1 = 9
+$$
+
+And because $3 \mid 9$, we know:
+
+$$
+\boxed{3}
+$$
+
+is the answer.
+
+
+## Reference Guide
+
+Fermat's Little Theorem provides a powerful set of tools for simplifying modular exponentiation, finding modular inverses, and solving divisibility problems involving primes. In fact is is a special case of Euler's theorem when n is a prime number. In number theory, considering FLT as an intermediate step should be thought of firsthand when seeing a prime number.
+
+### Modulo Exponent Simplifying
+For a prime $p$ and an integer $a$ that are coprime ($\gcd(a, p) = 1$), any power $a^k \pmod p$ can be written by reducing the exponent $k$ modulo $p - 1$:
+
+$$
+a^k \equiv a^{k \pmod{p-1}} \pmod p
+$$
+
+this is as seen in the easy example above.
+### Finding Modular Inverses
+Since $a \cdot a^{p-2} = a^{p-1} \equiv 1 \pmod p$, the multiplicative inverse of $a$ modulo a prime $p$ is directly given by:
+
+$$
+a^{-1} \equiv a^{p-2} \pmod p
+$$
+This is especially useful when in time constrained competitions such as AMC and AIME.
+
+
+### When to Use Which Technique
+
+| Situation | Recommended Tool |
+| :--- | :--- |
+| Large powers modulo $a$ prime $p$ when coprime | Reduce the exponent modulo $p-1$ |
+| Nested powers $a^{b^c} \pmod p$ | Reduce $b^c$ modulo $p-1$ first, then reduce $a$ modulo $p$, very general use|
+| Modular division / inverse modulo $a$ prime $p$ | See above |
+
+
+
+## Practice Problems
+
+<Problems problems="practice" />

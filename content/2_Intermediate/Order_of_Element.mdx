@@ -1,0 +1,442 @@
+---
+id: order-of-an-element-mod-n
+title: Order of an Element Modulo n
+author: USAMO Guide Team
+description: Learn how the order of an element modulo n describes repeating powers, and how to use it in number theory problems.
+prerequisites: []
+---
+
+## Overview
+
+The order of an element modulo $n$ is a way to measure how quickly powers repeat
+back to $1$.
+
+For example, modulo $7$,
+
+$$
+3^1\equiv 3,
+$$
+
+$$
+3^2\equiv 2,
+$$
+
+$$
+3^3\equiv 6,
+$$
+
+$$
+3^4\equiv 4,
+$$
+
+$$
+3^5\equiv 5,
+$$
+
+$$
+3^6\equiv 1.
+$$
+
+So the powers of $3$ first return to $1$ at exponent $6$.
+
+We say that the order of $3$ modulo $7$ is $6$.
+
+## Definition
+
+Let $a$ and $n$ be positive integers with
+
+$$
+\gcd(a,n)=1.
+$$
+
+The order of $a$ modulo $n$, written
+
+$$
+\operatorname{ord}_n(a),
+$$
+
+is the smallest positive integer $k$ such that
+
+$$
+a^k\equiv 1 \pmod n.
+$$
+
+The condition
+
+$$
+\gcd(a,n)=1
+$$
+
+is important. If $a$ is not relatively prime to $n$, then the powers of $a$ may
+never become congruent to $1$ modulo $n$.
+
+## Motivation
+
+Suppose we want to find the remainder of
+
+$$
+2^{100}
+$$
+
+modulo $7$.
+
+Instead of computing the power directly, we look for a cycle.
+
+Modulo $7$,
+
+$$
+2^1\equiv 2,
+$$
+
+$$
+2^2\equiv 4,
+$$
+
+$$
+2^3\equiv 8\equiv 1.
+$$
+
+So
+
+$$
+\operatorname{ord}_7(2)=3.
+$$
+
+This means powers of $2$ repeat every $3$ exponents modulo $7$.
+
+Since
+
+$$
+100\equiv 1 \pmod 3,
+$$
+
+we get
+
+$$
+2^{100}\equiv 2^1\equiv 2 \pmod 7.
+$$
+
+The order turns a large exponent into a small one.
+
+## Basic Properties
+
+If
+
+$$
+\operatorname{ord}_n(a)=d,
+$$
+
+then
+
+$$
+a^d\equiv 1 \pmod n.
+$$
+
+Also,
+
+$$
+a^m\equiv 1 \pmod n
+$$
+
+if and only if
+
+$$
+d\mid m.
+$$
+
+This is one of the most useful facts about order.
+
+### Why This Is True
+
+Suppose
+
+$$
+m=qd+r,
+$$
+
+where
+
+$$
+0\le r<d.
+$$
+
+Then
+
+$$
+a^m=a^{qd+r}=(a^d)^q a^r.
+$$
+
+Since
+
+$$
+a^d\equiv 1 \pmod n,
+$$
+
+we get
+
+$$
+a^m\equiv a^r \pmod n.
+$$
+
+If
+
+$$
+a^m\equiv 1 \pmod n,
+$$
+
+then
+
+$$
+a^r\equiv 1 \pmod n.
+$$
+
+But $d$ was the smallest positive exponent giving $1$. Therefore,
+
+$$
+r=0.
+$$
+
+So
+
+$$
+d\mid m.
+$$
+
+## Connection to Euler's Theorem
+
+Euler's Theorem says that if
+
+$$
+\gcd(a,n)=1,
+$$
+
+then
+
+$$
+a^{\varphi(n)}\equiv 1 \pmod n.
+$$
+
+Therefore, the order of $a$ modulo $n$ must divide
+
+$$
+\varphi(n).
+$$
+
+So
+
+$$
+\operatorname{ord}_n(a)\mid \varphi(n).
+$$
+
+This gives a powerful way to find the order: instead of testing every exponent,
+we only test divisors of $\varphi(n)$.
+
+For a prime $p$, we have
+
+$$
+\varphi(p)=p-1.
+$$
+
+So if $p$ is prime and $p\nmid a$, then
+
+$$
+\operatorname{ord}_p(a)\mid p-1.
+$$
+
+## Finding the Order
+
+To find
+
+$$
+\operatorname{ord}_n(a),
+$$
+
+use the following method:
+
+1. Check that $\gcd(a,n)=1$.
+2. Compute $\varphi(n)$, if useful.
+3. List possible divisors of $\varphi(n)$.
+4. Test powers of $a$ until the first one congruent to $1$ appears.
+
+The smallest valid exponent is the order.
+
+## Worked Examples
+
+### Example 1
+
+> Find $\operatorname{ord}_7(3)$.
+
+Compute powers of $3$ modulo $7$:
+
+$$
+3^1\equiv 3 \pmod 7,
+$$
+
+$$
+3^2\equiv 9\equiv 2 \pmod 7,
+$$
+
+$$
+3^3\equiv 6 \pmod 7,
+$$
+
+$$
+3^4\equiv 18\equiv 4 \pmod 7,
+$$
+
+$$
+3^5\equiv 12\equiv 5 \pmod 7,
+$$
+
+$$
+3^6\equiv 15\equiv 1 \pmod 7.
+$$
+
+The first exponent that gives $1$ is $6$.
+
+Therefore,
+
+$$
+\operatorname{ord}_7(3)=6.
+$$
+
+### Example 2
+
+> Find $\operatorname{ord}_{15}(2)$.
+
+Since
+
+$$
+\gcd(2,15)=1,
+$$
+
+the order exists.
+
+Now compute:
+
+$$
+2^1\equiv 2 \pmod{15},
+$$
+
+$$
+2^2\equiv 4 \pmod{15},
+$$
+
+$$
+2^3\equiv 8 \pmod{15},
+$$
+
+$$
+2^4\equiv 16\equiv 1 \pmod{15}.
+$$
+
+Thus
+
+$$
+\operatorname{ord}_{15}(2)=4.
+$$
+
+### Example 3
+
+> Find the remainder when $5^{2026}$ is divided by $13$.
+
+First find the order of $5$ modulo $13$.
+
+Compute:
+
+$$
+5^1\equiv 5 \pmod{13},
+$$
+
+$$
+5^2\equiv 25\equiv -1 \pmod{13}.
+$$
+
+Therefore,
+
+$$
+5^4\equiv 1 \pmod{13}.
+$$
+
+Since $5^2\not\equiv 1 \pmod{13}$, the order is
+
+$$
+\operatorname{ord}_{13}(5)=4.
+$$
+
+Now reduce the exponent:
+
+$$
+2026\equiv 2 \pmod 4.
+$$
+
+So
+
+$$
+5^{2026}\equiv 5^2\equiv -1 \equiv 12 \pmod{13}.
+$$
+
+The remainder is
+
+$$
+12.
+$$
+
+## Common Use in Contest Problems
+
+Order is especially useful when a problem involves:
+- Large powers modulo $n$
+- Divisibility of expressions like $a^m-1$
+- Repeating units digits
+- Remainders with prime moduli
+- Equations involving exponents
+
+For example, if
+
+$$
+a^m\equiv 1 \pmod n,
+$$
+
+then
+
+$$
+\operatorname{ord}_n(a)\mid m.
+$$
+
+This often turns a modular equation into a divisibility condition.
+
+## Key Contest Insight
+
+The order of $a$ modulo $n$ is the period of the powers of $a$ modulo $n$.
+
+Once you know the order, large exponents can be reduced modulo that order.
+
+The most important fact is
+
+$$
+a^m\equiv 1 \pmod n
+\quad\Longleftrightarrow\quad
+\operatorname{ord}_n(a)\mid m.
+$$
+
+## Strategy Tips
+
+- Always check that $\gcd(a,n)=1$
+- For prime moduli, remember that the order divides $p-1$
+- For general moduli, the order divides $\varphi(n)$
+- Test divisors of $\varphi(n)$ from smallest to largest
+- Once the order is known, reduce exponents modulo the order
+- If the exponent leaves remainder $0$, use the power corresponding to the full
+  cycle
+
+## Common Pitfalls
+
+- Forgetting that the order may not exist if $\gcd(a,n)\neq 1$
+- Assuming the order is always $\varphi(n)$
+- Testing exponents randomly instead of using divisors of $\varphi(n)$
+- Reducing the base incorrectly
+- Forgetting that the order is the smallest positive exponent giving $1$
+
+## Practice Problems
+
+<Problems problems="practice" />

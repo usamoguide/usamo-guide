@@ -15,6 +15,9 @@
   */
 
   :root {
+    /* Single source of truth for the app-wide font family */
+    --font-family: 'Inter', system-ui, sans-serif;
+
     /* LIGHT MODE (cream-based, not white) */
     --bg-page: #f4edea;
     --bg-surface: #f4edea;

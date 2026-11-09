@@ -1,0 +1,2162 @@
+---
+title: "Olympiad 3D Geometry & Solid Geometry"
+description: "A complete olympiad-focused module on solid geometry, including projections, cross-sections, vectors, tetrahedra, spheres, dihedral angles, and affine geometry."
+---
+
+# Olympiad 3D Geometry & Solid Geometry
+
+**Author:** Neal Shandilya
+
+Solid geometry appears less often than planar geometry in olympiad problems. Most problems are handled by a small set of recurring reductions.
+
+> **Do not think in three dimensions longer than necessary.**
+
+Typical reductions include:
+
+1. finding a useful **planar cross-section**;
+2. using **orthogonal projection**;
+3. exploiting **symmetry**;
+4. choosing simple **coordinates or vectors**;
+5. comparing **volumes**;
+6. using an **affine normalization**.
+
+Topics covered:
+
+- lines and planes
+- perpendicularity
+- orthogonal projection
+- planar cross-sections
+- angles and dihedral angles
+- vectors and coordinates
+- distances in space
+- tetrahedra
+- spheres
+- volume ratios
+- affine geometry
+- polyhedra
+
+---
+
+# Part I. Lines and Planes
+
+## 1. Determining a Plane
+
+A unique plane is determined by any of the following:
+
+- three noncollinear points
+- a line and a point not on the line
+- two intersecting lines
+- two distinct parallel lines
+
+Three arbitrary points do **not** determine a unique plane if they are collinear.
+
+---
+
+## 2. Relative Positions of Lines
+
+Two distinct lines in space may be:
+
+- intersecting
+- parallel
+- skew
+
+### Skew Lines
+
+Two lines are **skew** if they:
+
+- do not intersect
+- are not parallel
+- do not lie in a common plane
+
+Nonintersecting lines are not necessarily parallel.
+
+---
+
+## 3. Relative Positions of Planes
+
+Two distinct planes are either:
+
+- parallel, or
+- intersecting in a line
+
+Two nonparallel planes cannot intersect in only one point.
+
+---
+
+# Part II. Perpendicularity
+
+## 4. Line Perpendicular to a Plane
+
+Suppose \(l\) is a line and \(\Pi\) is a plane.
+
+If \(m,n\subset\Pi\) are two intersecting lines and
+
+\[
+l\perp m,
+\qquad
+l\perp n,
+\]
+
+then
+
+\[
+\boxed{l\perp\Pi}.
+\]
+
+Perpendicularity to a single line in \(\Pi\) is not enough.
+
+---
+
+## 5. Consequence of Perpendicularity to a Plane
+
+If
+
+\[
+l\perp\Pi,
+\]
+
+then \(l\) is perpendicular to every line in \(\Pi\) passing through the point \(l\cap\Pi\).
+
+---
+
+## 6. Perpendicular Planes
+
+If plane \(\Pi_1\) contains a line perpendicular to plane \(\Pi_2\), then
+
+\[
+\Pi_1\perp\Pi_2.
+\]
+
+---
+
+## 7. The Three-Perpendiculars Principle
+
+Let \(P\) project orthogonally to \(H\) in plane \(\Pi\).
+
+Take \(A\in\Pi\), and suppose a line \(l\subset\Pi\) through \(A\) satisfies
+
+\[
+l\perp AH.
+\]
+
+Since
+
+\[
+PH\perp\Pi,
+\]
+
+we also have
+
+\[
+l\perp PH.
+\]
+
+Thus \(l\) is perpendicular to two intersecting lines \(AH\) and \(PH\) in plane \(APH\), so
+
+\[
+\boxed{l\perp AP}.
+\]
+
+The spatial perpendicularity has been reduced to a planar one.
+
+---
+
+# Part III. Orthogonal Projection
+
+## 8. Projection of a Point onto a Plane
+
+Let \(P\) lie outside plane \(\Pi\), and let \(H\) be the foot of the perpendicular from \(P\) to \(\Pi\).
+
+For every \(X\in\Pi\),
+
+\[
+PX^2=PH^2+HX^2.
+\]
+
+Therefore
+
+\[
+PX\ge PH.
+\]
+
+So \(PH\) is the shortest distance from \(P\) to the plane.
+
+---
+
+## 9. Equidistance and Projection
+
+Suppose \(A,B,C\) are noncollinear points in plane \(\Pi\), and
+
+\[
+PA=PB=PC.
+\]
+
+Let \(H\) be the projection of \(P\) onto \(\Pi\).
+
+Then
+
+\[
+PA^2=PH^2+HA^2,
+\]
+
+and similarly
+
+\[
+PB^2=PH^2+HB^2,
+\qquad
+PC^2=PH^2+HC^2.
+\]
+
+Hence
+
+\[
+HA=HB=HC.
+\]
+
+Therefore \(H\) is the circumcenter of \(\triangle ABC\).
+
+If a point outside a plane is equidistant from three noncollinear points in the plane, its orthogonal projection is their circumcenter.
+
+---
+
+## 10. Perpendicular-Bisector Planes
+
+For two points \(A,B\), the set of all points \(P\) satisfying
+
+\[
+PA=PB
+\]
+
+is the plane perpendicular to \(AB\) through the midpoint of \(AB\).
+
+Perpendicular-bisector planes help locate sphere centers.
+
+---
+
+# Part IV. Planar Cross-Sections
+
+## 11. Choosing a Cross-Section
+
+Many difficult-looking 3D configurations become ordinary Euclidean geometry after choosing the correct plane.
+
+Common choices include planes through:
+
+- the center of a sphere
+- a tangent point
+- an altitude
+- an axis of symmetry
+- a diagonal of a cube
+- two relevant edges
+- a point and its projection
+- several relevant vertices of a tetrahedron
+
+Before introducing coordinates, check whether the relevant objects lie in one plane.
+
+---
+
+## 12. Cross-Section of a Sphere
+
+Suppose a plane cuts a sphere with center \(O\).
+
+The intersection is a circle.
+
+If \(H\) is the projection of \(O\) onto the plane, then \(H\) is the center of the intersection circle.
+
+If the sphere has radius \(R\), the distance from \(O\) to the plane is \(d\), and the cross-section has radius \(r\), then
+
+\[
+R^2=d^2+r^2.
+\]
+
+Therefore
+
+\[
+\boxed{r^2=R^2-d^2}.
+\]
+
+---
+
+# Part V. Angles in Space
+
+## 13. Angle Between Two Lines
+
+For two intersecting lines, use the ordinary planar angle.
+
+For two nonintersecting lines, translate one line parallel to itself until the two directions meet.
+
+Thus the angle between two lines depends only on their direction vectors.
+
+If their direction vectors are \(\mathbf u,\mathbf v\),
+
+\[
+\cos\theta
+=
+\frac{|\mathbf u\cdot\mathbf v|}
+{|\mathbf u||\mathbf v|}.
+\]
+
+---
+
+## 14. Angle Between a Line and a Plane
+
+Let a line have direction vector \(\mathbf v\), and let the plane have normal vector \(\mathbf n\).
+
+If \(\theta\) is the acute angle between the line and the plane,
+
+\[
+\boxed{
+\sin\theta
+=
+\frac{|\mathbf v\cdot\mathbf n|}
+{|\mathbf v||\mathbf n|}
+}.
+\]
+
+Geometrically, the line-plane angle is the angle between the line and its orthogonal projection onto the plane.
+
+---
+
+## 15. Dihedral Angles
+
+Suppose two planes \(\Pi_1,\Pi_2\) meet along line \(l\).
+
+To measure the angle between the planes:
+
+1. choose a point \(P\in l\)
+2. draw \(m\subset\Pi_1\) through \(P\) with \(m\perp l\)
+3. draw \(n\subset\Pi_2\) through \(P\) with \(n\perp l\)
+
+Then the angle between \(m\) and \(n\) is the **dihedral angle** between the planes.
+
+This converts a plane-plane angle into an ordinary planar angle.
+
+---
+
+## 16. Angle Between Two Planes Using Normals
+
+If \(\mathbf n_1,\mathbf n_2\) are normal vectors to the planes, then their acute angle satisfies
+
+\[
+\boxed{
+\cos\theta
+=
+\frac{|\mathbf n_1\cdot\mathbf n_2|}
+{|\mathbf n_1||\mathbf n_2|}
+}.
+\]
+
+The two possible dihedral angles are supplementary, so always check which one the problem asks for.
+
+---
+
+# Part VI. Vectors
+
+## 17. Dot Product
+
+For vectors \(\mathbf u,\mathbf v\),
+
+\[
+\mathbf u\cdot\mathbf v
+=
+|\mathbf u||\mathbf v|\cos\theta.
+\]
+
+Hence
+
+\[
+\boxed{
+\mathbf u\perp\mathbf v
+\iff
+\mathbf u\cdot\mathbf v=0
+}.
+\]
+
+The dot product gives a direct algebraic test for perpendicularity.
+
+---
+
+## 18. Equations of Planes
+
+A plane through point \(P_0\) with normal vector \(\mathbf n\) has equation
+
+\[
+\mathbf n\cdot(\mathbf p-\mathbf p_0)=0.
+\]
+
+In coordinates,
+
+\[
+ax+by+cz=d,
+\]
+
+with normal vector
+
+\[
+(a,b,c).
+\]
+
+---
+
+## 19. Coplanarity
+
+Four points \(A,B,C,D\) are coplanar exactly when
+
+\[
+\overrightarrow{AB},
+\quad
+\overrightarrow{AC},
+\quad
+\overrightarrow{AD}
+\]
+
+are linearly dependent.
+
+Equivalently,
+
+\[
+\boxed{
+\overrightarrow{AB}\cdot
+\left(
+\overrightarrow{AC}\times\overrightarrow{AD}
+\right)=0
+}.
+\]
+
+---
+
+# Part VII. Coordinates
+
+## 20. Choosing Coordinates Well
+
+Coordinates should reflect the geometry.
+
+Avoid completely general coordinates unless absolutely necessary.
+
+Good coordinates should make:
+
+- perpendicular lines align with coordinate axes
+- symmetric points have symmetric coordinates
+- midpoints or centroids simple
+- planes become equations like \(x=0\) or \(x+y+z=c\)
+
+---
+
+## 21. Rectangular Box
+
+Let
+
+\[
+A=(0,0,0)
+\]
+
+and place the three mutually perpendicular edges through \(A\) along the coordinate axes.
+
+If their lengths are \(a,b,c\), then the opposite vertex is
+
+\[
+G=(a,b,c).
+\]
+
+Hence
+
+\[
+\boxed{AG=\sqrt{a^2+b^2+c^2}}.
+\]
+
+---
+
+## 22. Cube
+
+For a unit cube, use the eight points
+
+\[
+\{0,1\}^3.
+\]
+
+With these coordinates, perpendicularity and plane equations stay simple.
+
+---
+
+## 23. Regular Tetrahedron
+
+A symmetric model is
+
+\[
+A=(1,1,1),
+\]
+
+\[
+B=(1,-1,-1),
+\]
+
+\[
+C=(-1,1,-1),
+\]
+
+\[
+D=(-1,-1,1).
+\]
+
+Every edge has length
+
+\[
+2\sqrt2,
+\]
+
+and the centroid is
+
+\[
+(0,0,0).
+\]
+
+It works well for:
+
+- opposite-edge problems
+- perpendicularity
+- distances
+- centers
+- dihedral angles
+
+---
+
+# Part VIII. Distances in Space
+
+## 24. Point-to-Plane Distance
+
+For plane
+
+\[
+ax+by+cz+d=0
+\]
+
+and point
+
+\[
+P=(x_0,y_0,z_0),
+\]
+
+the distance is
+
+\[
+\boxed{
+\frac{|ax_0+by_0+cz_0+d|}
+{\sqrt{a^2+b^2+c^2}}
+}.
+\]
+
+In olympiad solutions, projection or volume may give a shorter argument.
+
+---
+
+## 25. Distance Between Parallel Planes
+
+If
+
+\[
+ax+by+cz=d_1
+\]
+
+and
+
+\[
+ax+by+cz=d_2,
+\]
+
+then their distance is
+
+\[
+\boxed{
+\frac{|d_1-d_2|}
+{\sqrt{a^2+b^2+c^2}}
+}.
+\]
+
+---
+
+## 26. Distance Between Skew Lines
+
+Suppose
+
+\[
+L_1:A+t\mathbf u,
+\qquad
+L_2:B+s\mathbf v,
+\]
+
+with \(\mathbf u\) not parallel to \(\mathbf v\).
+
+Then
+
+\[
+\mathbf u\times\mathbf v
+\]
+
+is perpendicular to both lines.
+
+Therefore
+
+\[
+\boxed{
+\operatorname{dist}(L_1,L_2)
+=
+\frac{
+|\overrightarrow{AB}\cdot(\mathbf u\times\mathbf v)|
+}{
+|\mathbf u\times\mathbf v|
+}
+}.
+\]
+
+In a synthetic solution, it may be easier to find the actual **common perpendicular**.
+
+---
+
+# Part IX. Spheres
+
+## 27. Tangent Plane to a Sphere
+
+If plane \(\Pi\) is tangent to a sphere at \(T\), and \(O\) is the sphere's center, then
+
+\[
+\boxed{OT\perp\Pi}.
+\]
+
+The statement is the spatial tangent-radius theorem.
+
+---
+
+## 28. Sphere Through Four Points
+
+Four noncoplanar points determine a unique sphere.
+
+For tetrahedron \(ABCD\), the sphere center \(O\) satisfies
+
+\[
+OA=OB=OC=OD.
+\]
+
+Let \(H\) be the circumcenter of \(\triangle ABC\).
+
+Because
+
+\[
+OA=OB=OC,
+\]
+
+the projection of \(O\) onto plane \(ABC\) must be \(H\).
+
+Hence \(O\) lies on the line through \(H\) perpendicular to plane \(ABC\).
+
+---
+
+## 29. Power of a Point
+
+For a sphere with center \(O\) and radius \(R\),
+
+\[
+\boxed{
+\operatorname{Pow}(P)=PO^2-R^2
+}.
+\]
+
+If a line through \(P\) meets the sphere at \(A,B\), then
+
+\[
+\boxed{
+PA\cdot PB=PO^2-R^2
+}.
+\]
+
+Take the plane through \(P,O,A,B\) and apply the ordinary power-of-a-point theorem.
+
+---
+
+## 30. Radical Plane
+
+For two spheres, the set of points having equal powers to the spheres is a plane.
+
+This plane is the **radical plane**.
+
+If the sphere centers are \(O_1,O_2\), then the radical plane is perpendicular to
+
+\[
+O_1O_2.
+\]
+
+---
+
+## 31. Radical Axis of Three Spheres
+
+Suppose three spheres have pairwise radical planes.
+
+If two radical planes intersect in a line \(l\), then every point on \(l\) has equal power to all three spheres.
+
+Therefore \(l\) lies in the third radical plane.
+
+The same equal-power argument used for radical centers in the plane applies here.
+
+---
+
+# Part X. Tetrahedra
+
+## 32. Volume
+
+For tetrahedron \(ABCD\),
+
+\[
+\boxed{
+V=\frac13[\triangle ABC]h_D
+},
+\]
+
+where \(h_D\) is the perpendicular distance from \(D\) to plane \(ABC\).
+
+Using vectors,
+
+\[
+\boxed{
+V=
+\frac16
+\left|
+\overrightarrow{AB}\cdot
+\left(
+\overrightarrow{AC}\times
+\overrightarrow{AD}
+\right)
+\right|
+}.
+\]
+
+---
+
+## 33. Volume Ratios
+
+If two tetrahedra have the same base,
+
+\[
+\frac{V_1}{V_2}
+=
+\frac{h_1}{h_2}.
+\]
+
+If they have the same altitude and their bases lie in one plane,
+
+\[
+\frac{V_1}{V_2}
+=
+\frac{A_1}{A_2}.
+\]
+
+Volume ratios play the role of area ratios in many tetrahedron problems.
+
+---
+
+## 34. Barycentric Interpretation of Volume
+
+Let \(P\) lie inside tetrahedron \(ABCD\).
+
+Then
+
+\[
+[PBCD],
+\quad
+[PACD],
+\quad
+[PABD],
+\quad
+[PABC]
+\]
+
+determine the barycentric coordinates of \(P\).
+
+For example, if all four volumes are equal, then
+
+\[
+P=\frac{A+B+C+D}{4}.
+\]
+
+Thus \(P\) is the centroid.
+
+---
+
+## 35. Centroid
+
+For tetrahedron \(ABCD\),
+
+\[
+\boxed{
+G=\frac{A+B+C+D}{4}
+}.
+\]
+
+Let \(M\) be the centroid of face \(BCD\). Then
+
+\[
+M=\frac{B+C+D}{3}.
+\]
+
+Therefore
+
+\[
+G
+=
+\frac14A+\frac34M.
+\]
+
+So \(G\) lies on \(AM\), with
+
+\[
+\boxed{AG:GM=3:1}.
+\]
+
+---
+
+## 36. Incenter
+
+A point inside a tetrahedron that has equal perpendicular distance from all four faces is the **incenter**.
+
+If that common distance is \(r\), then \(r\) is the inradius.
+
+Splitting the tetrahedron into four smaller tetrahedra gives
+
+\[
+V
+=
+\frac r3
+(S_1+S_2+S_3+S_4),
+\]
+
+where \(S_1,S_2,S_3,S_4\) are the face areas.
+
+Thus
+
+\[
+\boxed{
+V=\frac{rS}{3}
+},
+\]
+
+where \(S\) is the total surface area.
+
+---
+
+# Part XI. Regular Tetrahedron
+
+## 37. Basic Formulas
+
+Let a regular tetrahedron have side length \(a\).
+
+Its altitude is
+
+\[
+\boxed{
+h=a\sqrt{\frac23}
+}.
+\]
+
+Its volume is
+
+\[
+\boxed{
+V=\frac{a^3}{6\sqrt2}
+}.
+\]
+
+Its circumradius is
+
+\[
+\boxed{
+R=\frac{\sqrt6}{4}a
+}.
+\]
+
+Its inradius is
+
+\[
+\boxed{
+r=\frac{\sqrt6}{12}a
+}.
+\]
+
+Therefore
+
+\[
+\boxed{R=3r}.
+\]
+
+---
+
+## 38. Opposite Edges
+
+Let \(ABCD\) be a regular tetrahedron.
+
+Let \(M,N\) be the midpoints of opposite edges \(AB,CD\).
+
+Then
+
+\[
+MN\perp AB,
+\qquad
+MN\perp CD.
+\]
+
+Furthermore,
+
+\[
+\boxed{
+MN=\frac{a}{\sqrt2}
+}.
+\]
+
+Thus \(MN\) is the common perpendicular between the opposite edges.
+
+---
+
+## 39. Dihedral Angle of a Regular Tetrahedron
+
+Let \(\theta\) be the acute dihedral angle between two faces of a regular tetrahedron.
+
+Then
+
+\[
+\boxed{
+\cos\theta=\frac13
+}.
+\]
+
+Hence
+
+\[
+\boxed{
+\theta=\arccos\frac13
+}.
+\]
+
+This is approximately
+
+\[
+70.53^\circ.
+\]
+
+---
+
+# Part XII. Orthocentric Tetrahedra
+
+## 40. A Fundamental Opposite-Edge Theorem
+
+Suppose tetrahedron \(ABCD\) satisfies
+
+\[
+AB\perp CD
+\]
+
+and
+
+\[
+AC\perp BD.
+\]
+
+Then automatically
+
+\[
+\boxed{AD\perp BC}.
+\]
+
+### Vector Proof
+
+Set
+
+\[
+\mathbf b=\overrightarrow{AB},
+\qquad
+\mathbf c=\overrightarrow{AC},
+\qquad
+\mathbf d=\overrightarrow{AD}.
+\]
+
+From
+
+\[
+AB\perp CD,
+\]
+
+we obtain
+
+\[
+\mathbf b\cdot(\mathbf d-\mathbf c)=0.
+\]
+
+Thus
+
+\[
+\mathbf b\cdot\mathbf d
+=
+\mathbf b\cdot\mathbf c.
+\]
+
+Similarly,
+
+\[
+AC\perp BD
+\]
+
+gives
+
+\[
+\mathbf c\cdot(\mathbf d-\mathbf b)=0,
+\]
+
+so
+
+\[
+\mathbf c\cdot\mathbf d
+=
+\mathbf b\cdot\mathbf c.
+\]
+
+Therefore
+
+\[
+\mathbf d\cdot\mathbf c
+=
+\mathbf d\cdot\mathbf b,
+\]
+
+and hence
+
+\[
+\mathbf d\cdot(\mathbf c-\mathbf b)=0.
+\]
+
+But \(\mathbf c-\mathbf b\) is a direction vector of \(BC\).
+
+Thus
+
+\[
+AD\perp BC.
+\]
+
+---
+
+## 41. Orthocentric Tetrahedron
+
+A tetrahedron whose altitudes are concurrent is called **orthocentric**.
+
+A tetrahedron is orthocentric exactly when its pairs of opposite edges are perpendicular.
+
+
+---
+
+# Part XIII. Affine Geometry
+
+## 42. Affine Transformations
+
+Affine transformations preserve:
+
+- collinearity
+- coplanarity
+- parallelism
+- ratios along a line
+- midpoints
+- centroids
+- area ratios
+- volume ratios
+
+They do **not** preserve:
+
+- lengths
+- angles
+- perpendicularity
+- circles
+- spheres
+
+---
+
+## 43. Affine Normalization of a Tetrahedron
+
+If a tetrahedron problem depends only on incidence, parallelism, ratios, or volumes, normalize to
+
+\[
+A=(0,0,0),
+\]
+
+\[
+B=(1,0,0),
+\]
+
+\[
+C=(0,1,0),
+\]
+
+\[
+D=(0,0,1).
+\]
+
+The normalized tetrahedron is easier to calculate with.
+
+Affine normalization does not preserve the following data:
+
+- equal lengths
+- perpendicularity
+- angles
+- circles or spheres
+
+---
+
+# Part XIV. Polyhedra
+
+## 44. Euler's Formula
+
+For a convex polyhedron,
+
+\[
+\boxed{V-E+F=2},
+\]
+
+where \(V,E,F\) denote the numbers of vertices, edges, and faces.
+
+If every face is a \(k\)-gon,
+
+\[
+kF=2E.
+\]
+
+If every vertex has degree \(d\),
+
+\[
+dV=2E.
+\]
+
+Together with Euler's formula, these relations constrain regular and semiregular structures.
+
+---
+
+# Part XV. Worked Examples
+
+## Example 1: Projection and Circumcenters
+
+Point \(P\) lies outside plane \(ABC\), and
+
+\[
+PA=PB=PC.
+\]
+
+Prove that the line joining \(P\) to the circumcenter \(O\) of triangle \(ABC\) is perpendicular to plane \(ABC\).
+
+### Solution
+
+Let \(H\) be the orthogonal projection of \(P\) onto plane \(ABC\).
+
+Then
+
+\[
+PA^2=PH^2+HA^2,
+\]
+
+\[
+PB^2=PH^2+HB^2,
+\]
+
+\[
+PC^2=PH^2+HC^2.
+\]
+
+Since
+
+\[
+PA=PB=PC,
+\]
+
+we get
+
+\[
+HA=HB=HC.
+\]
+
+Thus \(H\) is the circumcenter of \(\triangle ABC\), so
+
+\[
+H=O.
+\]
+
+Since \(PH\perp ABC\),
+
+\[
+\boxed{PO\perp ABC}.
+\]
+
+---
+
+## Example 2: Cube Perpendicularity
+
+In cube \(ABCDEFGH\), prove that
+
+\[
+AG\perp BDE.
+\]
+
+### Solution
+
+Use
+
+\[
+A=(0,0,0),
+\quad
+B=(1,0,0),
+\]
+
+\[
+D=(0,1,0),
+\quad
+E=(0,0,1),
+\]
+
+\[
+G=(1,1,1).
+\]
+
+Then
+
+\[
+\overrightarrow{AG}=(1,1,1).
+\]
+
+Inside plane \(BDE\),
+
+\[
+\overrightarrow{BD}=(-1,1,0),
+\]
+
+and
+
+\[
+\overrightarrow{BE}=(-1,0,1).
+\]
+
+Now
+
+\[
+(1,1,1)\cdot(-1,1,0)=0
+\]
+
+and
+
+\[
+(1,1,1)\cdot(-1,0,1)=0.
+\]
+
+Thus \(AG\) is perpendicular to two intersecting lines in plane \(BDE\).
+
+Therefore
+
+\[
+\boxed{AG\perp BDE}.
+\]
+
+---
+
+## Example 3: Sphere Cross-Section
+
+A sphere has radius \(13\). A plane cuts it in a circle of radius \(12\).
+
+Find the distance from the center to the plane.
+
+### Solution
+
+Let the distance be \(d\).
+
+Then
+
+\[
+13^2=d^2+12^2.
+\]
+
+Hence
+
+\[
+d^2=169-144=25.
+\]
+
+Therefore
+
+\[
+\boxed{d=5}.
+\]
+
+---
+
+## Example 4: Opposite Edges of a Regular Tetrahedron
+
+A regular tetrahedron has side length \(a\).
+
+Find the distance between two opposite edges.
+
+### Solution
+
+Let \(M,N\) be their midpoints.
+
+By symmetry,
+
+\[
+MN\perp AB
+\]
+
+and
+
+\[
+MN\perp CD.
+\]
+
+Thus \(MN\) is the common perpendicular.
+
+Using the symmetric coordinate model, the model tetrahedron has edge length
+
+\[
+2\sqrt2
+\]
+
+and midpoint distance
+
+\[
+2.
+\]
+
+Therefore
+
+\[
+\frac{MN}{a}
+=
+\frac{2}{2\sqrt2}
+=
+\frac1{\sqrt2}.
+\]
+
+Hence
+
+\[
+\boxed{
+MN=\frac{a}{\sqrt2}
+}.
+\]
+
+---
+
+## Example 5: A Tri-Rectangular Tetrahedron
+
+Suppose
+
+\[
+AB\perp AC,
+\qquad
+AB\perp AD,
+\qquad
+AC\perp AD,
+\]
+
+with
+
+\[
+AB=a,\qquad AC=b,\qquad AD=c.
+\]
+
+Find the area of face \(BCD\).
+
+### Solution
+
+Use
+
+\[
+A=(0,0,0),
+\]
+
+\[
+B=(a,0,0),
+\qquad
+C=(0,b,0),
+\qquad
+D=(0,0,c).
+\]
+
+Then
+
+\[
+\overrightarrow{BC}=(-a,b,0),
+\]
+
+\[
+\overrightarrow{BD}=(-a,0,c).
+\]
+
+Their cross product has magnitude
+
+\[
+\sqrt{
+a^2b^2+a^2c^2+b^2c^2
+}.
+\]
+
+Therefore
+
+\[
+\boxed{
+[BCD]
+=
+\frac12
+\sqrt{
+a^2b^2+a^2c^2+b^2c^2
+}
+}.
+\]
+
+---
+
+## Example 6: Equal Subvolumes
+
+Point \(P\) lies inside tetrahedron \(ABCD\) and
+
+\[
+[PBCD]
+=
+[PACD]
+=
+[PABD]
+=
+[PABC].
+\]
+
+Prove that \(P\) is the centroid.
+
+### Solution
+
+The four tetrahedra partition \(ABCD\), so each has one-fourth of its volume.
+
+Hence the barycentric coordinates of \(P\) are
+
+\[
+\frac14,\frac14,\frac14,\frac14.
+\]
+
+Therefore
+
+\[
+P
+=
+\frac{A+B+C+D}{4}.
+\]
+
+Thus
+
+\[
+\boxed{P=G}.
+\]
+
+---
+
+# Part XVI. Problem-Solving Strategy
+
+Try the following reductions in order.
+
+## Step 1. Reduce to 2D
+
+Look for a plane containing:
+
+- the relevant points
+- a sphere center
+- a tangent point
+- a projection
+- an altitude
+- an axis of symmetry
+
+Once the right cross-section is chosen, the remaining argument may be planar.
+
+---
+
+## Step 2. Try a Projection
+
+Projection is worth checking when the configuration contains:
+
+- equal distances
+- perpendicular distances to a plane
+- circumcenters
+- spheres
+
+---
+
+## Step 3. Check Symmetry
+
+For cubes and regular tetrahedra, symmetry can determine that:
+
+- a line must pass through a midpoint
+- a line must be perpendicular to an edge
+- several distances are equal
+
+Record the symmetric relations before introducing coordinates.
+
+---
+
+## Step 4. Choose Coordinates
+
+Coordinates work well when:
+
+- the figure is a cube or rectangular box
+- three edges are mutually perpendicular
+- the tetrahedron is regular
+- the conclusion is perpendicularity or coplanarity
+
+Use coordinates when they simplify the structure of the figure.
+
+---
+
+## Step 5. Use Volume for Distances
+
+Remember
+
+\[
+V=\frac13Bh.
+\]
+
+If the volume and base area are known, the perpendicular distance follows from the volume formula.
+
+---
+
+## Step 6. Check Affine Invariance
+
+If only the following matter:
+
+- parallelism
+- ratios
+- centroids
+- coplanarity
+- volume ratios
+
+then affine normalization may simplify everything.
+
+---
+
+## Step 7. Translate the Goal into Vectors
+
+For perpendicularity:
+
+\[
+\boxed{\mathbf u\cdot\mathbf v=0}.
+\]
+
+For coplanarity:
+
+\[
+\boxed{
+\mathbf u\cdot(\mathbf v\times\mathbf w)=0
+}.
+\]
+
+For equal lengths:
+
+\[
+|\mathbf u|^2=|\mathbf v|^2.
+\]
+
+Squared lengths avoid unnecessary radicals.
+
+---
+
+# Part XVII. Common Errors
+
+## 1. Trusting the Diagram
+
+A 2D drawing of a 3D object does not preserve angles.
+
+Something that appears perpendicular may not be.
+
+---
+
+## 2. Confusing Skew and Parallel Lines
+
+Two lines can fail to intersect without being parallel.
+
+Check coplanarity before calling two nonintersecting lines parallel.
+
+---
+
+## 3. Proving Perpendicularity to Only One Line
+
+To prove
+
+\[
+l\perp\Pi,
+\]
+
+show that \(l\) is perpendicular to two intersecting lines in \(\Pi\).
+
+---
+
+## 4. Choosing General Coordinates
+
+Coordinates such as
+
+\[
+A=(a_1,a_2,a_3),
+\quad
+B=(b_1,b_2,b_3)
+\]
+
+hide the structure of the problem.
+
+Choose coordinates adapted to the symmetry.
+
+---
+
+## 5. Missing the Cross-Section
+
+Many sphere and tetrahedron problems reduce to circle or triangle geometry in the right plane.
+
+---
+
+## 6. Using Affine Geometry Illegally
+
+Affine transformations do not preserve angles or perpendicularity.
+
+After an affine normalization, metric conclusions require separate justification.
+
+---
+
+## 7. Confusing Plane Angle and Dihedral Angle
+
+Arbitrary lines chosen from two planes do not, in general, measure the dihedral angle.
+
+Use lines perpendicular to their intersection line, or use plane normals.
+
+---
+
+# Part XVIII. Graded Problem Set
+
+## Level I: Fundamentals
+
+### Problem 1
+
+A cube has side length \(a\).
+
+Find its space diagonal.
+
+### Problem 2
+
+A sphere of radius \(10\) is cut by a plane whose distance from the center is \(6\).
+
+Find the radius of the cross-section.
+
+### Problem 3
+
+A regular tetrahedron has side length \(a\).
+
+Find its altitude.
+
+### Problem 4
+
+A point \(P\) lies outside plane \(ABC\) and
+
+\[
+PA=PB=PC.
+\]
+
+Prove that the projection of \(P\) onto plane \(ABC\) is the circumcenter of \(\triangle ABC\).
+
+### Problem 5
+
+A point lies inside a tetrahedron and has equal perpendicular distance from all four faces.
+
+Identify the point.
+
+---
+
+## Level II: Intermediate
+
+### Problem 6
+
+In cube \(ABCDEFGH\), prove
+
+\[
+AG\perp BDE.
+\]
+
+### Problem 7
+
+Let \(G\) be the centroid of tetrahedron \(ABCD\), and let \(M\) be the centroid of face \(BCD\).
+
+Prove
+
+\[
+AG:GM=3:1.
+\]
+
+### Problem 8
+
+A sphere passes through the vertices \(A,B,C,D\) of a tetrahedron.
+
+Let \(H\) be the circumcenter of \(\triangle ABC\).
+
+Prove that the sphere center lies on the line through \(H\) perpendicular to plane \(ABC\).
+
+### Problem 9
+
+Let \(ABCD\) be a regular tetrahedron of side \(a\).
+
+Let \(M,N\) be the midpoints of \(AB,CD\).
+
+Find \(MN\).
+
+### Problem 10
+
+Suppose tetrahedron \(ABCD\) satisfies
+
+\[
+AB\perp AC,
+\qquad
+AB\perp AD,
+\qquad
+AC\perp AD,
+\]
+
+and
+
+\[
+AB=a,\quad AC=b,\quad AD=c.
+\]
+
+Find \([BCD]\).
+
+---
+
+## Level III: Olympiad
+
+### Problem 11
+
+Point \(P\) lies inside tetrahedron \(ABCD\) and satisfies
+
+\[
+[PBCD]
+=
+[PACD]
+=
+[PABD]
+=
+[PABC].
+\]
+
+Prove that \(P\) is the centroid.
+
+### Problem 12
+
+Let \(ABCD\) be a tetrahedron satisfying
+
+\[
+AB\perp CD
+\]
+
+and
+
+\[
+AC\perp BD.
+\]
+
+Prove
+
+\[
+AD\perp BC.
+\]
+
+### Problem 13
+
+A point \(P\) inside tetrahedron \(ABCD\) has equal perpendicular distance \(r\) from all four faces.
+
+If the face areas are \(S_1,S_2,S_3,S_4\), prove
+
+\[
+V
+=
+\frac r3
+(S_1+S_2+S_3+S_4).
+\]
+
+### Problem 14
+
+Three spheres have pairwise radical planes.
+
+Suppose two of the radical planes intersect in a line \(l\).
+
+Prove that \(l\) lies in the third radical plane.
+
+### Problem 15
+
+Find the acute dihedral angle between two faces of a regular tetrahedron.
+
+---
+
+## Level IV: Challenge
+
+### Problem 16
+
+In a regular tetrahedron \(ABCD\), let \(M\) and \(N\) be the midpoints of opposite edges \(AB\) and \(CD\).
+
+Prove synthetically, without coordinates, that
+
+\[
+MN\perp AB
+\]
+
+and
+
+\[
+MN\perp CD.
+\]
+
+### Problem 17
+
+Let \(ABCD\) be an orthocentric tetrahedron.
+
+Prove that the orthogonal projection of each vertex onto the opposite face is the orthocenter of that face.
+
+### Problem 18
+
+A tetrahedron has face areas
+
+\[
+S_1,S_2,S_3,S_4
+\]
+
+and inradius \(r\).
+
+Show that
+
+\[
+\boxed{
+r=\frac{3V}{S_1+S_2+S_3+S_4}
+}.
+\]
+
+Then use this to compute the inradius of a regular tetrahedron of side \(a\).
+
+### Problem 19
+
+Let two skew lines have direction vectors \(\mathbf u,\mathbf v\), and let \(A,B\) be points on them.
+
+Derive
+
+\[
+\operatorname{dist}(L_1,L_2)
+=
+\frac{
+|\overrightarrow{AB}\cdot(\mathbf u\times\mathbf v)|
+}{
+|\mathbf u\times\mathbf v|
+}.
+\]
+
+### Problem 20
+
+In a unit cube, determine the distance between two opposite skew edges.
+
+Solve the problem in two ways:
+
+1. by finding a common perpendicular
+2. using vectors
+
+---
+
+# Part XIX. Hints and Answers
+
+## Problem 1
+
+\[
+\boxed{a\sqrt3}
+\]
+
+## Problem 2
+
+Use
+
+\[
+r^2+6^2=10^2.
+\]
+
+Thus
+
+\[
+\boxed{r=8}.
+\]
+
+## Problem 3
+
+\[
+\boxed{
+a\sqrt{\frac23}
+}
+\]
+
+## Problem 4
+
+Use
+
+\[
+PX^2=PH^2+HX^2.
+\]
+
+## Problem 5
+
+The point is the tetrahedron's
+
+\[
+\boxed{\text{incenter}}.
+\]
+
+## Problem 6
+
+Use coordinates or show \(AG\) is perpendicular to two intersecting directions in plane \(BDE\).
+
+## Problem 7
+
+Write
+
+\[
+M=\frac{B+C+D}{3}
+\]
+
+and
+
+\[
+G=\frac{A+B+C+D}{4}.
+\]
+
+## Problem 8
+
+Project the sphere center onto plane \(ABC\).
+
+## Problem 9
+
+\[
+\boxed{
+MN=\frac{a}{\sqrt2}
+}
+\]
+
+## Problem 10
+
+\[
+\boxed{
+[BCD]
+=
+\frac12
+\sqrt{
+a^2b^2+a^2c^2+b^2c^2
+}
+}
+\]
+
+## Problem 11
+
+Use volume-based barycentric coordinates.
+
+## Problem 12
+
+Translate both perpendicularities into dot products.
+
+## Problem 13
+
+Split the tetrahedron into four smaller tetrahedra with common vertex \(P\).
+
+## Problem 14
+
+For \(P\in l\),
+
+\[
+\operatorname{Pow}_1(P)
+=
+\operatorname{Pow}_2(P)
+=
+\operatorname{Pow}_3(P).
+\]
+
+## Problem 15
+
+\[
+\boxed{
+\cos\theta=\frac13
+}
+\]
+
+## Problem 16
+
+Use congruent triangles involving the midpoints and symmetry of the regular tetrahedron.
+
+## Problem 17
+
+Use the fact that opposite edges of an orthocentric tetrahedron are perpendicular.
+
+## Problem 18
+
+\[
+\boxed{
+r=\frac{3V}{S}
+}
+\]
+
+For a regular tetrahedron,
+
+\[
+\boxed{
+r=\frac{\sqrt6}{12}a
+}
+\]
+
+## Problem 19
+
+The vector
+
+\[
+\mathbf u\times\mathbf v
+\]
+
+is perpendicular to both lines.
+
+Project \(\overrightarrow{AB}\) onto this direction.
+
+## Problem 20
+
+For a unit cube, the required distance is
+
+\[
+\boxed{1}.
+\]
+
+---
+
+# Part XX. Core Facts to Memorize
+
+## Line Perpendicular to a Plane
+
+If
+
+\[
+l\perp m,
+\qquad
+l\perp n
+\]
+
+for two intersecting lines \(m,n\subset\Pi\), then
+
+\[
+\boxed{l\perp\Pi}.
+\]
+
+## Orthogonal Projection
+
+\[
+\boxed{
+PX^2=PH^2+HX^2
+}
+\]
+
+## Sphere Cross-Section
+
+\[
+\boxed{
+r^2=R^2-d^2
+}
+\]
+
+## Dot Product
+
+\[
+\boxed{
+\mathbf u\perp\mathbf v
+\iff
+\mathbf u\cdot\mathbf v=0
+}
+\]
+
+## Coplanarity
+
+\[
+\boxed{
+\mathbf a\cdot(\mathbf b\times\mathbf c)=0
+}
+\]
+
+## Tetrahedron Volume
+
+\[
+\boxed{
+V
+=
+\frac13Bh
+=
+\frac16
+\left|
+\mathbf a\cdot(\mathbf b\times\mathbf c)
+\right|
+}
+\]
+
+## Tetrahedron Centroid
+
+\[
+\boxed{
+G=\frac{A+B+C+D}{4}
+}
+\]
+
+## Tetrahedron Inradius
+
+\[
+\boxed{
+V=\frac{rS}{3}
+}
+\]
+
+## Power of a Point
+
+\[
+\boxed{
+\operatorname{Pow}(P)=PO^2-R^2
+}
+\]
+
+## Euler's Formula
+
+\[
+\boxed{
+V-E+F=2
+}
+\]
+
+## Regular Tetrahedron
+
+\[
+\boxed{
+h=a\sqrt{\frac23}
+}
+\]
+
+\[
+\boxed{
+V=\frac{a^3}{6\sqrt2}
+}
+\]
+
+\[
+\boxed{
+R=\frac{\sqrt6}{4}a
+}
+\]
+
+\[
+\boxed{
+r=\frac{\sqrt6}{12}a
+}
+\]
+
+\[
+\boxed{
+\cos\theta_{\text{dihedral}}=\frac13
+}
+\]
+
+---

@@ -74,6 +74,39 @@ The Zsigmondy theorem is useful for bounding by prime factors, like in the situa
 
 **Example** (USA January TST 2012, this problem is quite silly): Find all positive integers $a, n\ge 1$ such that for all primes $p$ dividing $a^n-1$, there exists a positive integer $m$ less than $n$ such that $p\mid a^m-1$
 
+## Warm-Up Examples
+
+### Example 1: LTE Problem
+
+Let $p$ be an odd prime. Your goal is to prove that for any positive integer $n$, $p^n \parallel (p+1)^{p^{n-1}} - 1$.
+
+First, we will let $x = p+1$ and $y = 1$. Note that $p \mid (x-y)$ since $(p+1) - 1 = p$, and $p \nmid x, y$. Now, since the exponent $k = p^{n-1}$ is a positive integer and $p$ is an odd prime, we can simply use LTE directly. We get $v_p((p+1)^{p^{n-1}} - 1) = v_p((p+1) - 1) + v_p(p^{n-1})$. Simplifying the right side gives us  $v_p(p) + (n-1) = 1 + n - 1 = n$. By definition, we have proven $p^n \parallel (p+1)^{p^{n-1}} - 1$.
+
+### Example 2: LTE Special Case
+
+Your goal is to find all positive integers $n$ such that $2^{n+2}$ divides $3^n - 1$.
+
+We will be using the specific $2$-adic version of LTE. Firstly, if $n$ is odd, then $3^n - 1 \equiv 2 \pmod 4$, which means that $v_2(3^n - 1) = 1$. The condition requires $1 \ge n+2$, which gives no solutions. Now, if $n$ is even, we can simply apply special case LTE for the prime $2$ to get $v_2(3^n - 1) = v_2(3-1) + v_2(3+1) + v_2(n) - 1$. This simplifies to $1 + 2 + v_2(n) - 1 = v_2(n) + 2$. The divisibility condition requires $v_2(n) + 2 \ge n + 2$, which simplifies to $v_2(n) \ge n$. Since $2^{v_2(n)} \le n$, the inequality $n \le v_2(n)$ is impossible for all positive integers $n$. So, sadly, there are NO integer solutions.
+
+### Example 3: Zsigmondy!!!
+
+Your job is to find all positive integers $n$ such that $n^2$ divides $2^n - 1$.
+
+First of all, the trivial case $n=1$ clearly works. For $n > 1$, we will let $p$ be the smallest prime factor of $n$. Now, since $n^2 \mid 2^n - 1$, we must have that $p \mid 2^n - 1$. Let $d = \text{ord}_p(2)$, which means that $d \mid n$. Furthermore, by FLT, we also know $d \mid p-1$. Because $d$ divides $p-1$, any prime factor of $d$ must be strictly less than $p$. However, since $d \mid n$ and $p$ is already defined as the smallest prime factor of $n$, the only way to avoid a contradiction is if $d = 1$. This implies $2^1 \equiv 1 \pmod p$, which means $p \mid 1$, which is impossible. Therefore, $n=1$ is the only solution.
+
+### Example 4: Spicy Problem
+
+Let $a, b$ be coprime positive integers and $p$ be a prime such that $p \mid a+b$. If $v_p(a^n + b^n) = v_p(a+b) + 1$, your job is to determine all possible values for the exponent $n$ when $p$ is odd.
+
+Because $p \mid a+b$ and $p$ is an odd prime, we can apply LTE for an odd exponent $n$. If $n$ were even, $a^n + b^n \equiv 2a^n \pmod p$, and since $\gcd(a,b)=1$, $p \nmid a$, meaning $v_p(a^n+b^n) = 0$, contradiction. Thus, $n$ must be odd. Applying LTE for odd $n$ gives $v_p(a^n + b^n) = v_p(a+b) + v_p(n)$. We are given that this expression equals $v_p(a+b) + 1$. Equating them, and simplifying gives us $v_p(n) = 1$. So, $n$ must be any odd multiple of $p$ that is not a multiple of $p^2$, which can be written as $n = p \cdot k$ where $\gcd(k, 2p) = 1$. :)
+
+### Example 5: Another Spicy Problem
+
+Your goal is to prove that $7^n - 5^n = 2^k$ has NO integer solutions for $n > 1$.
+
+If $n=2$, $7^2 - 5^2 = 24$, which is not a pure power of $2$. For $n > 2$, we can use Zsigmondy's Theorem to guarantee that $7^n - 5^n$ must contain AT LEAST ONE primitive prime divisor $p$ because the base pair $(7,5)$ and $n$ do not match the $(2,1,6)$ exception. By definition, this primitive prime $p$ must satisfy $p \nmid (7^1 - 5^1)$, which meansthat $p \nmid 2$. Therefore, $p$ HAS TO be an odd prime factor of $7^n - 5^n$. However, now notice that the other side of the equation is $2^k$, which contains no odd prime factors. So, no solutions can exist for any $n > 1$.
+
+
 ## Walkthrough
 
 To be written 
