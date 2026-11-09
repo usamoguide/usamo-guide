@@ -51,10 +51,10 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
           but preserve the same layout if the text wraps without making the image jump around.
         */}
           <div className="pt-1.5">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-[var(--text-primary)]">
               {member.displayName}
             </h1>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-300">
+            <p className="text-sm font-medium text-gray-500 dark:text-[var(--text-secondary)]">
               {userLeaderboardData?.totalPoints ?? 0} Points Earned
             </p>
           </div>
@@ -63,17 +63,17 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
 
       {/* Tabs */}
       {/*<div className="mt-6 sm:mt-2 2xl:mt-5">*/}
-      {/*  <div className="border-b border-gray-200">*/}
+      {/*  <div className="border-b border-gray-200 dark:border-[var(--border)]">*/}
       {/*    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">*/}
       {/*      <nav className="-mb-px flex space-x-8" aria-label="Tabs">*/}
-      {/*        /!* Current: "border-pink-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" *!/*/}
-      {/*        <a href="/" className="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">*/}
+      {/*        /!* Current: "border-pink-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-[var(--text-secondary)]" *!/*/}
+      {/*        <a href="/" className="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm dark:text-[var(--text-primary)]" aria-current="page">*/}
       {/*          Profile*/}
       {/*        </a>*/}
-      {/*        <a href="/" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">*/}
+      {/*        <a href="/" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm dark:text-[var(--text-secondary)]">*/}
       {/*          Calendar*/}
       {/*        </a>*/}
-      {/*        <a href="/" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">*/}
+      {/*        <a href="/" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm dark:text-[var(--text-secondary)]">*/}
       {/*          Recognition*/}
       {/*        </a>*/}
       {/*      </nav>*/}
@@ -86,7 +86,7 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
           <div className="mt-8 space-x-4">
             <button
               type="button"
-              className="btn"
+              className="btn-legacy"
               onClick={() => {
                 if (
                   confirm(
@@ -111,7 +111,7 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
               .map(newPermission => (
                 <button
                   key={newPermission}
-                  className="btn"
+                  className="btn-legacy"
                   onClick={() => {
                     if (
                       confirm(
@@ -149,7 +149,7 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
                 </button>
               ))}
             <button
-              className="btn"
+              className="btn-legacy"
               onClick={() => {
                 alert(
                   'Viewing group as member. Do not submit any problems. Reload the page to undo.'
@@ -162,7 +162,7 @@ export default function MemberDetail({ member }: { member: MemberInfo }) {
             </button>
           </div>
         )}
-        <hr className="my-6 dark:border-gray-700" />
+        <hr className="my-6 dark:border-[var(--border)]" />
         <p>Future feature: View user progress on all problems/assignments!</p>
       </div>
     </article>

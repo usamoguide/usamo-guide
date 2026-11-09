@@ -195,8 +195,8 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
               key={tab.value}
               className={classNames(
                 tab.value === activeTab
-                  ? 'bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100'
-                  : 'text-gray-500 hover:bg-gray-100 hover:text-gray-600 active:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:active:bg-gray-900',
+                  ? 'bg-gray-200 text-gray-900 dark:bg-[var(--bg-surface-alt)] dark:text-[var(--text-primary)]'
+                  : 'text-gray-500 hover:bg-gray-100 hover:text-gray-600 active:bg-gray-100 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-400 dark:active:bg-gray-900 dark:text-[var(--text-secondary)]',
                 'px-4 py-2 text-sm font-medium transition focus:outline-hidden'
               )}
               onClick={() => onTabSelect(tab)}
@@ -208,12 +208,12 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
       </div>
       <div
         className={
-          'flex bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-gray-400'
+          'flex bg-gray-100 text-gray-600 dark:bg-[var(--bg-surface)] dark:text-[var(--text-secondary)]'
         }
       >
         <button
           className={classNames(
-            'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:active:bg-gray-800',
+            'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300 dark:active:bg-gray-800',
             'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
           )}
           onClick={() => setOpen(true)}
@@ -223,7 +223,7 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
         </button>
         <button
           className={classNames(
-            'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:active:bg-gray-800',
+            'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300 dark:active:bg-gray-800',
             'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
           )}
           onClick={() => onFormatCode()}
@@ -233,7 +233,7 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
         {useAtomValue(tabAtom) === 'problems' && (
           <button
             className={classNames(
-              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:active:bg-gray-800',
+              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300 dark:active:bg-gray-800',
               'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
             )}
             onClick={() => setDialogOpen(true)}
@@ -244,7 +244,7 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
         {githubInfo && octokit && file && branch && (
           <button
             className={classNames(
-              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:active:bg-gray-800',
+              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300 dark:active:bg-gray-800',
               'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
             )}
             onClick={() => updateFile(file)}
@@ -255,7 +255,7 @@ const EditorTabBar: React.FC<EditorTabBarProps> = ({
         {githubInfo && octokit && file && branch && (
           <button
             className={classNames(
-              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:active:bg-gray-800',
+              'hover:bg-gray-200 hover:text-gray-800 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300 dark:active:bg-gray-800',
               'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
             )}
             onClick={() => pullCode()}

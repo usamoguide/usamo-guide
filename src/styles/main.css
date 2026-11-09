@@ -1,3 +1,8 @@
+/* Layer order. `ug` holds the redesign stylesheets (src/styles/ug, generated
+   from usamo-guide-export): above the older component styles, below Tailwind
+   utilities so a utility class can still adjust a redesign element. */
+@layer theme, base, components, ug, utilities;
+
 /* Use self-hosted Inter font files from static/Font to avoid Google Fonts requests. */
 @font-face {
   font-family: 'Inter';
@@ -32,6 +37,26 @@
 @import './link-with-progress.css' layer(components);
 @import './anchor.css' layer(utilities);
 @import './animations.css' layer(utilities);
+
+/* the redesign: element resets beside preflight, everything else in `ug` */
+@import './ug/base-global.css' layer(base);
+@import './ug/compat-base.css' layer(base);
+@import './ug/base.css' layer(ug);
+@import './ug/app.css' layer(ug);
+@import './ug/landing.css' layer(ug);
+@import './ug/start.css' layer(ug);
+@import './ug/dashboard.css' layer(ug);
+@import './ug/track.css' layer(ug);
+@import './ug/module.css' layer(ug);
+@import './ug/problems.css' layer(ug);
+@import './ug/compat.css' layer(ug);
+@import './ug/fix-app.css' layer(ug);
+@import './ug/fix-landing.css' layer(ug);
+@import './ug/fix-start.css' layer(ug);
+@import './ug/fix-dashboard.css' layer(ug);
+@import './ug/fix-track.css' layer(ug);
+@import './ug/fix-module.css' layer(ug);
+@import './ug/fix-problems.css' layer(ug);
 
 @source "../../src/components";
 @source "../../src/context";

@@ -4,18 +4,18 @@ import LeaderboardList from '../LeaderboardList/LeaderboardList';
 
 export default function LeaderboardSidebar() {
   return (
-    <div className="rounded-lg bg-white dark:bg-gray-800">
+    <div className="rounded-lg bg-white dark:bg-[var(--bg-surface-alt)]">
       <div className="p-6 pb-3">
         <div className="flex items-baseline justify-between">
           <h2
             id="who-to-follow-heading"
-            className="text-base font-medium text-gray-900 dark:text-gray-100"
+            className="text-base font-medium text-gray-900 dark:text-[var(--text-primary)]"
           >
             Leaderboard
           </h2>
           <Link
             to="leaderboard"
-            className="text-sm font-medium text-gray-800 hover:text-black dark:text-gray-200 dark:hover:text-white"
+            className="text-sm font-medium text-gray-800 hover:text-black dark:text-[var(--text-primary)] dark:hover:text-white"
           >
             View All &rarr;
           </Link>

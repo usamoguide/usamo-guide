@@ -8,7 +8,7 @@ export default function Feedback({ videoId }): JSX.Element {
   const { uid } = useCurrentUser()!;
   const baseClasses =
     'rounded-full border h-8 w-8 text-xl transform transition focus:outline-hidden';
-  const unselectedClasses = 'hover:scale-110 border-gray-200';
+  const unselectedClasses = 'hover:scale-110 border-gray-200 dark:border-[var(--border)]';
   const selectedClasses = 'scale-110 border-cyan-600';
 
   const [selected, setSelected] = useState<
@@ -171,7 +171,7 @@ export default function Feedback({ videoId }): JSX.Element {
               height: '4rem',
               minHeight: '4rem',
             }}
-            className="mt-4 mr-2 w-full rounded-md border-gray-300 px-2 py-2 text-sm placeholder-gray-500 focus:border-cyan-500 focus:ring-cyan-500"
+            className="mt-4 mr-2 w-full rounded-md border-gray-300 px-2 py-2 text-sm placeholder-gray-500 focus:border-cyan-500 focus:ring-cyan-500 dark:border-[var(--border)]"
             placeholder="Tell us how you felt about the video..."
             value={comment}
             onChange={e => setComment(e.target.value)}
@@ -179,14 +179,14 @@ export default function Feedback({ videoId }): JSX.Element {
           <div className="block">
             <button
               type="submit"
-              className="mt-2 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-hidden sm:mt-0"
+              className="mt-2 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-hidden sm:mt-0 dark:bg-[var(--bg-surface)] dark:text-[var(--text-secondary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]"
             >
               Submit Private Comment
             </button>
             <button
               type="button"
               onClick={() => setShowAdditionalFeedback(false)}
-              className="mt-2 ml-2 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-hidden sm:mt-0"
+              className="mt-2 ml-2 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-hidden sm:mt-0 dark:bg-[var(--bg-surface)] dark:text-[var(--text-secondary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]"
             >
               Close
             </button>

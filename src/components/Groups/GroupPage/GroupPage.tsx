@@ -14,12 +14,12 @@ export default function GroupPage(props) {
   return (
     <Layout>
       <SEO title={group.groupData?.name} image={null} pathname={props.path} />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <div className="min-h-screen bg-[var(--bg-page)]">
         <GroupPageHeader group={group.groupData!} />
         <Link
           to="leaderboard"
-          className="flex items-center justify-between bg-white px-4 py-3 sm:px-8 md:hidden dark:bg-gray-800"
+          className="flex items-center justify-between bg-white px-4 py-3 sm:px-8 md:hidden dark:bg-[var(--bg-surface-alt)]"
         >
           <span>View Leaderboard</span> &rarr;
         </Link>

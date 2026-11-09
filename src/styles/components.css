@@ -1,4 +1,4 @@
-.btn {
+.btn-legacy {
   @apply inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-hidden;
   border: 1px solid var(--border-strong);
   background-color: var(--bg-surface);
@@ -314,7 +314,7 @@
   }
 }
 
-.btn-sm {
+.btn-legacy-sm {
   @apply px-2 py-1 text-sm;
 }
 

@@ -52,10 +52,10 @@ export default function ProblemSubmissionInterface({
 
   return (
     <div>
-      <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
+      <h2 className="text-xl font-medium text-gray-900 dark:text-[var(--text-primary)]">
         Submit Solution
       </h2>
-      <div className="mt-1 text-gray-900 dark:text-gray-300">
+      <div className="mt-1 text-gray-900 dark:text-[var(--text-secondary)]">
         Share a link to your solution (PDF, image, or doc). Make sure the link
         is accessible to others.
       </div>
@@ -70,7 +70,7 @@ export default function ProblemSubmissionInterface({
           value={submissionLink}
           onChange={e => setSubmissionLink(e.target.value)}
         />
-        <button type="submit" className="btn mt-4">
+        <button type="submit" className="btn-legacy mt-4">
           Submit
         </button>
       </form>

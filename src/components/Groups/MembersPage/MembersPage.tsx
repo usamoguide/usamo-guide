@@ -54,7 +54,7 @@ export default function MembersPage({ path }: { path: string }): JSX.Element {
         pathname={path}
       />
       <div className="flex flex-col xl:h-screen xl:overflow-hidden">
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
 
         <div className="relative z-0 flex flex-1 flex-col overflow-hidden lg:flex-row">
           <main
@@ -83,15 +83,15 @@ export default function MembersPage({ path }: { path: string }): JSX.Element {
             <div className="px-6 pt-6 pb-4">
               <Link
                 to={`/groups/${activeGroup.groupData!.id}`}
-                className="text-sm text-gray-600 underline dark:text-gray-300"
+                className="text-sm text-gray-600 underline dark:text-[var(--text-secondary)]"
               >
                 &larr; Back to group page
               </Link>
               <div className="h-4" />
-              <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+              <h2 className="text-lg font-medium text-gray-900 dark:text-[var(--text-primary)]">
                 Members
               </h2>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              <p className="mt-1 text-sm text-gray-600 dark:text-[var(--text-secondary)]">
                 {memberInfo?.length ?? 'Loading...'} Members
               </p>
               {/*<form className="mt-6 flex space-x-4" action="#">*/}
@@ -105,10 +105,10 @@ export default function MembersPage({ path }: { path: string }): JSX.Element {
               {/*          <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />*/}
               {/*        </svg>*/}
               {/*      </div>*/}
-              {/*      <input type="search" name="search" id="search" className="focus:ring-pink-500 focus:border-pink-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="Search" />*/}
+              {/*      <input type="search" name="search" id="search" className="focus:ring-pink-500 focus:border-pink-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md dark:border-[var(--border)]" placeholder="Search" />*/}
               {/*    </div>*/}
               {/*  </div>*/}
-              {/*  <button type="submit" className="inline-flex justify-center px-3.5 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">*/}
+              {/*  <button type="submit" className="inline-flex justify-center px-3.5 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 dark:bg-[var(--bg-surface)] dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]">*/}
               {/*    /!* Heroicon name: solid/filter *!/*/}
               {/*    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">*/}
               {/*      <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />*/}
@@ -123,10 +123,10 @@ export default function MembersPage({ path }: { path: string }): JSX.Element {
               aria-label="Directory"
             >
               <div className="relative">
-                <ul className="relative z-0 divide-y divide-gray-200 dark:divide-gray-700">
+                <ul className="relative z-0 divide-y divide-gray-200 dark:divide-[var(--border)]">
                   {memberInfo?.map(member => (
                     <li key={member.uid}>
-                      <div className="relative flex items-center space-x-3 px-6 py-5 focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-inset hover:bg-gray-50 dark:hover:bg-gray-900">
+                      <div className="relative flex items-center space-x-3 px-6 py-5 focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-inset hover:bg-gray-50 dark:hover:bg-[var(--bg-surface-alt)]">
                         <div className="shrink-0">
                           <img
                             className="h-10 w-10 rounded-full"
@@ -144,10 +144,10 @@ export default function MembersPage({ path }: { path: string }): JSX.Element {
                               className="absolute inset-0"
                               aria-hidden="true"
                             />
-                            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                            <p className="text-sm font-medium text-gray-900 dark:text-[var(--text-primary)]">
                               {member.displayName}
                             </p>
-                            <p className="truncate text-sm text-gray-500 dark:text-gray-300">
+                            <p className="truncate text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                               {getTotalPointsForMember(member.uid)} Points
                             </p>
                           </a>

@@ -26,7 +26,7 @@ export default function PostPage(
   if (activeGroup.isLoading) {
     return (
       <>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Loading...</p>
         </main>
@@ -37,7 +37,7 @@ export default function PostPage(
   if (!post) {
     return (
       <>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Post Not Found</p>
         </main>
@@ -52,7 +52,7 @@ export default function PostPage(
         image={null}
         pathname={props.path}
       />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
         <Breadcrumbs
           className={`${
@@ -68,7 +68,7 @@ export default function PostPage(
         <div className="pb-8 xl:pb-10">
           {post.type === 'assignment' ? (
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 xl:grid xl:max-w-(--breakpoint-xl) xl:grid-cols-3">
-              <div className="xl:col-span-2 xl:border-r xl:border-gray-200 xl:pr-8 dark:border-gray-700">
+              <div className="xl:col-span-2 xl:border-r xl:border-gray-200 xl:pr-8 dark:border-[var(--border)]">
                 <div>
                   <PostHeader post={post} />
                   <aside className="mt-8 xl:hidden">

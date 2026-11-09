@@ -19,7 +19,7 @@ const Template: StoryFn<{ isOpen?: boolean }> = args => {
   const darkMode = React.useContext(DarkModeContext);
   return (
     <div className="flex items-center justify-center">
-      <button onClick={() => setModalOpen(true)} className="btn">
+      <button onClick={() => setModalOpen(true)} className="btn-legacy">
         Open Modal
       </button>
       <Dialog
@@ -48,7 +48,7 @@ const Template: StoryFn<{ isOpen?: boolean }> = args => {
                   Modal Title
                 </DialogTitle>
                 <DialogDescription>Modal Description</DialogDescription>
-                <button onClick={() => setModalOpen(false)} className="btn">
+                <button onClick={() => setModalOpen(false)} className="btn-legacy">
                   Close
                 </button>
               </div>

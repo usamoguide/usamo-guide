@@ -1,0 +1,44 @@
+/* Hand-written fixes for the landing view (not generated). Scope rules with :where(.ugv-landing). Loaded into the ug layer after the generated files. */
+
+/* Tailwind preflight sets a{text-decoration:inherit}; in the export these links keep the browser's underline */
+:where(.ugv-landing) .lad-foot a,:where(.ugv-landing) .ans a{text-decoration:underline}
+
+/* ---------- the sample lesson: a real module's MDX (SampleLesson.tsx) in the export's lesson type ----------
+   MDX h2 -> .ls-sec h4 (the export's section title), h3 -> h5, h4 -> h6. */
+:where(.ugv-landing) .ls-item{padding-block:9px;line-height:1.3}
+:where(.ugv-landing) .ls-intro > :first-child{margin-top:28px}
+:where(.ugv-landing) .ls-sec h5{margin:28px 0 0;font-size:17.5px;font-weight:600;line-height:1.35;letter-spacing:-.015em;color:var(--ink)}
+:where(.ugv-landing) .ls-sec h6{margin:22px 0 0;font-size:16px;font-weight:600;line-height:1.4;color:var(--ink)}
+:where(.ugv-landing) .ls-sec strong{font-weight:600}
+:where(.ugv-landing) .ls-sec a{color:var(--vt);text-decoration:underline;text-underline-offset:3px}
+:where(.ugv-landing) .ls-sec ul,:where(.ugv-landing) .ls-sec ol{margin:14px 0 0;padding-left:1.35em}
+:where(.ugv-landing) .ls-sec ul{list-style:disc}
+:where(.ugv-landing) .ls-sec ol{list-style:decimal}
+:where(.ugv-landing) .ls-sec li{margin-top:6px;font-size:16.5px;line-height:1.7;color:var(--ink)}
+:where(.ugv-landing) .ls-sec li::marker{color:var(--vt)}
+:where(.ugv-landing) .ls-sec li > p:first-child{margin-top:0}
+/* "> **Key Insight:** ..." callouts, in the export's tinted panel (.ls-formula) */
+:where(.ugv-landing) .ls-sec blockquote{margin:20px 0 0;padding:16px 20px 18px;border:1px solid var(--haze);border-radius:16px;background:var(--mist)}
+:where(.ugv-landing) .ls-sec blockquote > p:first-of-type{margin-top:0}
+/* KaTeX: display math scrolls sideways inside the window instead of widening it */
+:where(.ugv-landing) .ls-sec .math-display{margin-top:16px;padding:2px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--lilac) transparent}
+:where(.ugv-landing) .ls-sec .math-display + .math-display{margin-top:4px}
+:where(.ugv-landing) .ls-sec .katex-display{margin:0}
+:where(.ugv-landing) .ls-sec .katex{font-size:1.1em}
+/* tables, code and figures, should a lesson use them */
+:where(.ugv-landing) .ls-sec table{display:block;max-width:100%;overflow-x:auto;margin-top:18px;border-collapse:collapse;font-size:15px}
+:where(.ugv-landing) .ls-sec th,:where(.ugv-landing) .ls-sec td{padding:8px 14px;border-bottom:1px solid var(--haze);text-align:left;vertical-align:top}
+:where(.ugv-landing) .ls-sec th{font-weight:600;color:var(--ink-2);background:var(--mist)}
+:where(.ugv-landing) .ls-sec code{padding:.1em .35em;border-radius:6px;background:var(--mist);font-size:.9em}
+:where(.ugv-landing) .ls-sec pre{margin-top:16px;max-width:100%;overflow-x:auto;border-radius:12px}
+:where(.ugv-landing) .ls-sec img{margin:18px auto 0;border-radius:10px}
+
+/* ---------- the team: real photos in the slot of the export's gold shapes ---------- */
+:where(.ugv-landing) .p-photo{display:block;width:64px;height:64px;max-width:none;margin-bottom:20px;border:1.6px solid var(--on-acc);border-radius:50%;background:var(--mist);object-fit:cover}
+.ug:where(.ugv-landing)[data-theme="dark"] .p-photo{border-color:var(--line)}
+@media (max-width:600px){
+  :where(.ugv-landing) .p-photo{width:48px;height:48px;margin-bottom:12px}
+}
+@media (max-width:600px){
+  :where(.ugv-landing) .ls-sec .katex{font-size:1em}
+}

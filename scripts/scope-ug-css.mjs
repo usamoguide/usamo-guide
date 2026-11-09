@@ -1,0 +1,143 @@
+// Copies the redesign stylesheets from usamo-guide-export/css into src/styles/ug,
+// scoping every view stylesheet to its page so they can all ship in one bundle.
+//
+// The export loads base.css + (app.css | landing.css) + <view>.css per page and
+// never loads two views together, so their selectors overlap freely (.h1, .bar,
+// .seg, the nav media queries...). Gatsby bundles all global CSS together, so
+// each file except base.css is scoped with `:where(.ugv-<scope>)`. :where() adds
+// no specificity, so within one page the cascade is identical to the export.
+// The `.ug` root element carries the scope classes (see src/components/layout.tsx).
+//
+// Usage: node scripts/scope-ug-css.mjs
+import fs from 'fs';
+import path from 'path';
+import postcss from 'postcss';
+import selectorParser from 'postcss-selector-parser';
+
+const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const SRC = path.join(root, 'usamo-guide-export/css');
+const OUT = path.join(root, 'src/styles/ug');
+
+// file -> scope class (null = global)
+const FILES = {
+  base: null,
+  app: 'ugv-app',
+  landing: 'ugv-landing',
+  start: 'ugv-start',
+  dashboard: 'ugv-dashboard',
+  track: 'ugv-track',
+  module: 'ugv-module',
+  problems: 'ugv-problems',
+};
+
+// classes that live on <html>, above the .ug root
+const HTML_LEVEL = new Set(['ug-live', 'ug-navdark', 'ug-dark', 'lenis']);
+
+function isHtmlLevelCompound(nodes) {
+  return nodes.some(
+    n =>
+      (n.type === 'tag' && (n.value === 'html' || n.value === 'body')) ||
+      (n.type === 'class' && HTML_LEVEL.has(n.value)) ||
+      (n.type === 'pseudo' && n.value.startsWith('::view-transition'))
+  );
+}
+
+function scopeSelector(sel, scope) {
+  const where = () =>
+    selectorParser.pseudo({
+      value: ':where',
+      nodes: [selectorParser.selector({ nodes: [selectorParser.className({ value: scope })] })],
+    });
+  return selectorParser(selectors => {
+    selectors.each(s => {
+      // 1. a compound that names the .ug root: attach the scope to it
+      let ugNode = null;
+      s.walkClasses(c => {
+        if (!ugNode && c.value === 'ug') ugNode = c;
+      });
+      if (ugNode) {
+        ugNode.parent.insertAfter(ugNode, where());
+        return;
+      }
+      // split into compounds
+      const compounds = [[]];
+      s.nodes.forEach(n => {
+        if (n.type === 'combinator') compounds.push(n, []);
+        else compounds[compounds.length - 1].push(n);
+      });
+      const first = compounds[0];
+      // 2. purely html-level selectors (html.lenis body) stay global
+      const allHtml = compounds.every(c => Array.isArray(c) ? isHtmlLevelCompound(c) : true);
+      if (allHtml) return;
+      // 3. starts on <html> (.ug-live .rv): put the scope just below it
+      if (isHtmlLevelCompound(first)) {
+        const lastOfFirst = first[first.length - 1];
+        s.insertAfter(lastOfFirst, selectorParser.combinator({ value: ' ' }));
+        const comb = s.nodes[s.nodes.indexOf(lastOfFirst) + 1];
+        s.insertAfter(comb, where());
+        return;
+      }
+      // 4. everything else is a descendant of the scoped root
+      s.prepend(selectorParser.combinator({ value: ' ' }));
+      s.prepend(where());
+    });
+  }).processSync(sel);
+}
+
+const scopePlugin = scope => ({
+  postcssPlugin: 'ug-scope',
+  Rule(rule) {
+    if (!scope || rule.__scoped) return;
+    let p = rule.parent;
+    while (p) {
+      if (p.type === 'atrule' && /keyframes$/i.test(p.name)) return;
+      p = p.parent;
+    }
+    rule.selector = scopeSelector(rule.selector, scope);
+    rule.__scoped = true;
+  },
+});
+
+// tweaks needed because the app shares the page with other CSS
+const FIXUPS = {
+  // the export references images next to the css folder; the app serves them from /ug/img
+  landing: css => css.replace(/url\(\.\.\/img\//g, 'url(/ug/img/'),
+};
+
+// base.css's element rules and zero-specificity resets go to base-global.css,
+// which main.css loads into Tailwind's `base` layer (next to preflight) so they
+// can't override the markdown and older screens. Everything else loads into the
+// `ug` layer, between `components` and `utilities`.
+const GLOBAL_SEL = /^(html|body|a)\b|^:where\(\.ug\)|^\.ug \*/;
+function splitGlobal(css) {
+  const rootNode = postcss.parse(css);
+  const globals = postcss.root();
+  rootNode.walkRules(rule => {
+    if (rule.parent.type !== 'root') return;
+    if (rule.selectors.every(s => GLOBAL_SEL.test(s.trim()))) {
+      globals.append(rule.clone());
+      rule.remove();
+    }
+  });
+  return [rootNode.toString(), globals.toString()];
+}
+
+fs.mkdirSync(OUT, { recursive: true });
+for (const [name, scope] of Object.entries(FILES)) {
+  let css = fs.readFileSync(path.join(SRC, `${name}.css`), 'utf8');
+  if (FIXUPS[name]) css = FIXUPS[name](css);
+  let out = postcss([scopePlugin(scope)]).process(css, { from: undefined }).css;
+  if (name === 'base') {
+    const [rest, globals] = splitGlobal(out);
+    out = rest;
+    fs.writeFileSync(
+      path.join(OUT, 'base-global.css'),
+      `/* generated by scripts/scope-ug-css.mjs: the element rules of usamo-guide-export/css/base.css. Loaded into the base layer. */\n${globals}\n`
+    );
+  }
+  const header = `/* generated by scripts/scope-ug-css.mjs from usamo-guide-export/css/${name}.css${
+    scope ? `, scoped to .${scope}` : ''
+  }. Edit the source or the script, not this file. */\n`;
+  fs.writeFileSync(path.join(OUT, `${name}.css`), header + out);
+  console.log(`${name}.css -> ${scope ?? 'global'}`);
+}

@@ -20,10 +20,10 @@ const LeaderboardListItem = ({
           <img className="h-8 w-8 rounded-full" src={member.photoURL} alt="" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-100">
+          <p className="truncate text-sm font-medium text-gray-900 dark:text-[var(--text-primary)]">
             {place}. {member.displayName}
           </p>
-          <p className="truncate text-sm text-gray-500 dark:text-gray-400">
+          <p className="truncate text-sm text-gray-500 dark:text-[var(--text-secondary)]">
             {Math.round(points)} points
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function LeaderboardList({
           />
         ))
       ) : (
-        <p className="py-2 text-gray-600 italic dark:text-gray-300">
+        <p className="py-2 text-gray-600 italic dark:text-[var(--text-secondary)]">
           Loading...
         </p>
       )}

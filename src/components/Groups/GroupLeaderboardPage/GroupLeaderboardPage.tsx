@@ -36,7 +36,7 @@ export default function GroupLeaderboardPage(props: {
         pathname={props.path}
       />
 
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
 
       <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
         <Breadcrumbs
@@ -52,12 +52,12 @@ export default function GroupLeaderboardPage(props: {
       >
         <div className="md:flex md:items-center md:justify-between">
           <div className="min-w-0 flex-1 px-4 sm:px-0">
-            <h2 className="text-2xl leading-7 font-bold text-gray-900 sm:truncate sm:text-3xl dark:text-gray-100">
+            <h2 className="text-2xl leading-7 font-bold text-gray-900 sm:truncate sm:text-3xl dark:text-[var(--text-primary)]">
               Leaderboard: {activeGroup.groupData!.name}
             </h2>
           </div>
           {/*<div className="mt-4 flex md:mt-0 md:ml-4">*/}
-          {/*  <button type="button" className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">*/}
+          {/*  <button type="button" className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-[var(--bg-surface)] dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]">*/}
           {/*    Edit*/}
           {/*  </button>*/}
           {/*  <button type="button" className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">*/}

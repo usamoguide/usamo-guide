@@ -4,6 +4,8 @@ import {
   useImportUserDataAction,
   useUserData,
 } from '../../context/UserDataContext/UserDataContext';
+import Btn from '../ug/Btn';
+import { SettingsGroup } from './SettingRow';
 
 export default function UserData() {
   const userData = useUserData();
@@ -54,58 +56,43 @@ export default function UserData() {
 
   return (
     <>
-      <div>
-        <div className="space-y-1">
-          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
-            Export User Data
-          </h3>
-        </div>
-        <div className="h-4" />
-        <button
-          className="focus:shadow-outline-blue inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm leading-5 font-medium text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:border-blue-300 focus:outline-hidden active:bg-gray-50 active:text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-          onClick={handleExportUserData}
-        >
-          Export User Data
-        </button>
-      </div>
-
-      <div>
-        <div className="space-y-1">
-          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
-            Import User Data
-          </h3>
-          <p className="max-w-2xl text-sm text-gray-500">
-            Note that this will permanently override all existing user data. Use
-            at your own risk!
-          </p>
-        </div>
-
-        <div className="h-4" />
-
+      <SettingsGroup
+        title="Export user data"
+        description="Download your progress and settings as a JSON file."
+      >
         <div>
+          <Btn kind="s" size="sm" onClick={handleExportUserData}>
+            Export user data
+          </Btn>
+        </div>
+      </SettingsGroup>
+
+      <SettingsGroup
+        title="Import user data"
+        description="Note that this will permanently override all existing user data. Use at your own risk!"
+      >
+        <div className="ap-import">
           {/* https://stackoverflow.com/questions/38731271/clear-an-input-field-with-reactjs */}
           {/* https://stackoverflow.com/questions/42192346/how-to-reset-reactjs-file-input */}
-          <input
-            className="py-2 text-sm"
-            type="file"
-            accept="application/json"
-            onChange={handleUpload}
-            key={resetInput}
-          />
+          <label className="ap-file">
+            <span className="ap-label">JSON file</span>
+            <input
+              type="file"
+              accept="application/json"
+              onChange={handleUpload}
+              key={resetInput}
+            />
+          </label>
+          <Btn
+            kind="p"
+            size="sm"
+            disabled={!file}
+            onClick={handleImportUserData}
+          >
+            Import user data
+          </Btn>
         </div>
-
-        <button
-          className={`${
-            file !== ''
-              ? 'focus:shadow-outline-blue text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:border-blue-300 focus:outline-hidden active:bg-gray-50 active:text-gray-800 dark:text-gray-200'
-              : 'cursor-default text-gray-300 dark:text-gray-600'
-          } inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm leading-5 font-medium dark:border-gray-600 dark:bg-gray-800`}
-          disabled={!file}
-          onClick={handleImportUserData}
-        >
-          Import User Data
-        </button>
-      </div>
+      </SettingsGroup>
     </>
   );
 }

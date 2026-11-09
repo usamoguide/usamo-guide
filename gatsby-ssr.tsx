@@ -5,18 +5,41 @@ export const wrapRootElement = wrap;
 
 // https://joshwcomeau.com/gatsby/dark-mode/
 const MagicScriptTag = () => {
-  // Dark mode is forced globally (see src/context/DarkModeProvider.tsx), so apply
-  // the class before first paint -- otherwise the light --bg-page shows for a
-  // frame on browsers whose system preference is light.
+  // Light is the default. A saved dark theme (see src/context/DarkModeProvider.tsx)
+  // is applied before first paint so the page doesn't flash light: `ug-dark` for
+  // the redesign tokens, `dark` for Tailwind's dark: variants.
   const codeToRunOnClient = `
   (function(){
-    document.documentElement.classList.add('dark');
+    try {
+      var t = JSON.parse(localStorage.getItem('guide:userData:theme'));
+      if (t === 'dark') {
+        document.documentElement.classList.add('dark', 'ug-dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    } catch (e) {}
   })()
   `;
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
 };
-export const onRenderBody = ({ setPreBodyComponents }) => {
+
+// The redesign's type: Bricolage Grotesque (display), Instrument Sans (text),
+// Instrument Serif (math italics), Shadows Into Light (handwritten notes),
+// Noto Sans Bengali (the landing page's languages strip).
+const UG_FONTS =
+  'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@1&family=Noto+Sans+Bengali:wght@500&family=Shadows+Into+Light&display=swap';
+
+export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
+  setHeadComponents([
+    <link key="ug-gf-pre" rel="preconnect" href="https://fonts.googleapis.com" />,
+    <link
+      key="ug-gf-pre2"
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin="anonymous"
+    />,
+    <link key="ug-gf" rel="stylesheet" href={UG_FONTS} />,
+  ]);
   setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
 };
 

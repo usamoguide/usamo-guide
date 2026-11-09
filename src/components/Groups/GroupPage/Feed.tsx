@@ -142,7 +142,7 @@ export default function Feed(): JSX.Element {
               items={items}
               strategy={verticalListSortingStrategy}
             >
-              <div className="divide-y divide-solid divide-gray-200 sm:space-y-4 sm:divide-none dark:divide-gray-600">
+              <div className="divide-y divide-solid divide-gray-200 sm:space-y-4 sm:divide-none dark:divide-[var(--border)]">
                 {items.map(id => (
                   <SortableItem
                     key={id}
@@ -173,7 +173,7 @@ export default function Feed(): JSX.Element {
             </DragOverlay>
           </DndContext>
         ) : (
-          <div className="divide-y divide-solid divide-gray-200 sm:space-y-4 sm:divide-none dark:divide-gray-600">
+          <div className="divide-y divide-solid divide-gray-200 sm:space-y-4 sm:divide-none dark:divide-[var(--border)]">
             {items.map(id => {
               const post = group.posts.find(x => x.id === id);
               if (!post!.isPublished) return null;

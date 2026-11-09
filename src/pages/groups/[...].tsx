@@ -28,6 +28,7 @@ import { ProblemSubmissionPopupProvider } from '../../components/Groups/ProblemS
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import TopNavigationBar from '../../components/TopNavigationBar/TopNavigationBar';
+import Btn from '../../components/ug/Btn';
 import { useSignIn } from '../../context/SignInContext';
 import {
   useCurrentUser,
@@ -68,17 +69,14 @@ const GroupPageWrapper = (props: GroupPageWrapperProps): ReactElement => {
   if (isUserLoaded && !currentUser?.uid) {
     return (
       <Layout>
-        <TopNavigationBar />
-        <main className="py-10 text-center">
-          <p className="text-2xl font-medium">
-            You need to sign in to access groups.{' '}
-            <button
-              onClick={signIn}
-              className="text-blue-600 underline focus:outline-hidden dark:text-blue-300"
-            >
+        <TopNavigationBar current="groups" />
+        <main className="wrap ap-page">
+          <div className="ap-note ap-gnote">
+            <p>You need to sign in to access groups.</p>
+            <Btn kind="p" size="sm" onClick={() => signIn()}>
               Sign in now
-            </button>
-          </p>
+            </Btn>
+          </div>
         </main>
       </Layout>
     );
@@ -90,7 +88,7 @@ const GroupPageWrapper = (props: GroupPageWrapperProps): ReactElement => {
   ) {
     return (
       <Layout>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <SEO title="Loading..." image={null} pathname={props.path} />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Loading...</p>
@@ -101,15 +99,12 @@ const GroupPageWrapper = (props: GroupPageWrapperProps): ReactElement => {
   if (!groupData) {
     return (
       <Layout>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <SEO title="Group Not Found" image={null} pathname={props.path} />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">
             Group not found.{' '}
-            <Link
-              to="/groups"
-              className="text-blue-600 underline dark:text-blue-400"
-            >
+            <Link to="/groups" className="text-[var(--accent)] underline">
               Return Home.
             </Link>
           </p>

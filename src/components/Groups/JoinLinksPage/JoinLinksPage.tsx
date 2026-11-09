@@ -26,7 +26,7 @@ const JoinLinksPage = () => {
           image={null}
           pathname={window.location.pathname}
         />
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <p className="mt-12 text-center">
           You don't have permission to access this page.
         </p>
@@ -42,7 +42,7 @@ const JoinLinksPage = () => {
         pathname={window.location.pathname}
       />
       <div className="min-h-screen bg-[var(--bg-page)]">
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
           <Breadcrumbs
             className={`mx-auto w-full max-w-2xl px-4 pt-3 pb-4 sm:px-6 lg:px-8`}
@@ -53,14 +53,14 @@ const JoinLinksPage = () => {
           <div>
             <div className="mt-2 md:flex md:items-center md:justify-between">
               <div className="min-w-0 flex-1">
-                <h2 className="text-2xl leading-7 font-bold text-gray-900 sm:truncate sm:text-3xl dark:text-gray-100">
+                <h2 className="text-2xl leading-7 font-bold text-gray-900 sm:truncate sm:text-3xl dark:text-[var(--text-primary)]">
                   Join Links
                 </h2>
               </div>
               <div className="mt-4 flex shrink-0 md:mt-0 md:ml-4">
                 <button
                   type="button"
-                  className="btn"
+                  className="btn-legacy"
                   onClick={async () => {
                     const link = await createJoinLink(
                       activeGroup.activeGroupId!
@@ -75,8 +75,8 @@ const JoinLinksPage = () => {
             </div>
           </div>
           <div className="h-4" />
-          <div className="overflow-hidden bg-white sm:rounded-md dark:bg-gray-900">
-            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="overflow-hidden bg-white sm:rounded-md dark:bg-[var(--bg-surface)]">
+            <ul className="divide-y divide-gray-200 dark:divide-[var(--border)]">
               {joinLinks?.map(link => (
                 <li key={link.id}>
                   <button
@@ -84,25 +84,25 @@ const JoinLinksPage = () => {
                       setCurLink(link);
                       setIsEditOpen(true);
                     }}
-                    className="block w-full hover:bg-gray-50 focus:outline-hidden dark:hover:bg-gray-800"
+                    className="block w-full hover:bg-gray-50 focus:outline-hidden dark:hover:bg-[var(--bg-surface-alt)]"
                   >
                     <div className="flex items-center px-4 py-4 sm:px-6">
                       <div className="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
                         <div className="truncate">
                           <div className="flex text-sm">
-                            <p className="truncate font-medium text-blue-600 dark:text-blue-300">
+                            <p className="truncate font-medium text-[var(--accent)]">
                               {link.id}
                             </p>
-                            <p className="ml-1 shrink-0 font-normal text-gray-500 dark:text-gray-400">
+                            <p className="ml-1 shrink-0 font-normal text-gray-500 dark:text-[var(--text-secondary)]">
                               · {link.numUses} Uses
                               {link.revoked && ` · REVOKED`}
                             </p>
                           </div>
                           <div className="mt-2 flex">
-                            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <div className="flex items-center text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                               {/* Heroicon name: solid/calendar */}
                               <svg
-                                className="mr-1.5 h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+                                className="mr-1.5 h-5 w-5 shrink-0 text-gray-400 dark:text-[var(--text-secondary)]"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
@@ -128,8 +128,8 @@ const JoinLinksPage = () => {
                             {link.author.startsWith('REGISTRATION_') && (
                               <>
                                 <span className="mx-2">&middot;</span>
-                                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                  <UserIcon className="mr-1.5 h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500" />
+                                <div className="flex items-center text-sm text-gray-500 dark:text-[var(--text-secondary)]">
+                                  <UserIcon className="mr-1.5 h-5 w-5 shrink-0 text-gray-400 dark:text-[var(--text-secondary)]" />
                                   <p>
                                     {link.author.replace('REGISTRATION_', '')}
                                   </p>
@@ -142,7 +142,7 @@ const JoinLinksPage = () => {
                       <div className="ml-5 shrink-0">
                         {/* Heroicon name: solid/chevron-right */}
                         <svg
-                          className="h-5 w-5 text-gray-400 dark:text-gray-500"
+                          className="h-5 w-5 text-gray-400 dark:text-[var(--text-secondary)]"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"

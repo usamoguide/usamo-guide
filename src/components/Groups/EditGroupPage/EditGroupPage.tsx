@@ -32,7 +32,7 @@ export default function EditGroupPage(props) {
   if (activeGroup.isLoading || !group) {
     return (
       <>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Loading...</p>
         </main>
@@ -50,7 +50,7 @@ export default function EditGroupPage(props) {
         image={undefined}
         pathname={undefined}
       />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
         <Breadcrumbs
           className="mx-auto w-full max-w-4xl px-4 pt-3 pb-4 sm:px-6 lg:px-8"
@@ -58,26 +58,26 @@ export default function EditGroupPage(props) {
         />
       </nav>
       <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
+        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-[var(--border)]">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-[var(--text-primary)]">
               Edit Group: {group.name}
             </h1>
           </div>
           <div className="mt-4 flex space-x-3 md:mt-0">
-            <Link to="../" className="btn">
+            <Link to="../" className="btn-legacy">
               <span>Back</span>
             </Link>
           </div>
         </div>
         <div className="h-6" />
-        <div className="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="space-y-8 divide-y divide-gray-200 dark:divide-[var(--border)]">
           <div>
             <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <label
                   htmlFor="group_name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Group Name
                 </label>
@@ -96,7 +96,7 @@ export default function EditGroupPage(props) {
               <div className="sm:col-span-6">
                 <label
                   htmlFor="group_description"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Group Description
                 </label>

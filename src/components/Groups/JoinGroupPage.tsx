@@ -75,7 +75,7 @@ const JoinGroupPage = (props: RouteComponentProps) => {
   return (
     <Layout>
       <SEO title="Join Group" image={null} pathname={props.path} />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <main>
         <div className="mx-auto max-w-7xl px-2 py-16 sm:px-4 lg:px-8">
           {showNotSignedInMessage && (
@@ -83,7 +83,7 @@ const JoinGroupPage = (props: RouteComponentProps) => {
               <p className="text-center text-2xl font-medium">
                 Please{' '}
                 <button
-                  className="text-blue-600 underline focus:outline-hidden"
+                  className="text-[var(--accent)] underline focus:outline-hidden"
                   onClick={() => signIn()}
                 >
                   sign in

@@ -32,10 +32,10 @@ const ProblemListItem = ({
   if (!problem) throw new Error('No problem found'); // this shouldn't happen...
 
   return (
-    <div className="dark:bg-dark-surface flex items-center bg-white">
+    <div className="dark:bg-[var(--bg-page)] flex items-center bg-white">
       {dragHandle}
       <div
-        className={`relative flex-1 py-5 pr-6 hover:bg-gray-50 sm:py-6 dark:hover:bg-gray-900 ${
+        className={`relative flex-1 py-5 pr-6 hover:bg-gray-50 sm:py-6 dark:hover:bg-[var(--bg-surface-alt)] ${
           dragHandle ? 'pl-2' : 'pl-4 sm:pl-6 lg:pl-8 xl:pl-6'
         }`}
       >
@@ -64,7 +64,7 @@ const ProblemListItem = ({
             </div>
             <div className="group relative flex items-center space-x-2.5">
               <svg
-                className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+                className="h-5 w-5 shrink-0 text-gray-400 dark:text-[var(--text-secondary)]"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -75,7 +75,7 @@ const ProblemListItem = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
+              <span className="truncate text-sm font-medium text-gray-500 dark:text-[var(--text-secondary)]">
                 {pointsEarned} / {problem.points} points earned
               </span>
             </div>
@@ -101,12 +101,12 @@ const ProblemListItem = ({
             <p className="flex items-center space-x-4">
               <Link
                 to={`/groups/${group.id}/post/${post.id}/problems/${problem.id}`}
-                className="relative text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                className="relative text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-[var(--text-secondary)] dark:hover:text-gray-100"
               >
                 View Problem
               </Link>
             </p>
-            <p className="flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="flex space-x-2 text-sm text-gray-500 dark:text-[var(--text-secondary)]">
               <span>Source: {problem.source}</span>
               <span aria-hidden="true">&middot;</span>
               <span>Difficulty: {problem.difficulty}</span>

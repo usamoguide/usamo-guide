@@ -9,12 +9,12 @@ const Template: StoryFn = args => <button {...args}>My button</button>;
 
 export const Default = Template.bind({});
 Default.args = {
-  className: 'btn',
+  className: 'btn-legacy',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  className: 'btn btn-sm',
+  className: 'btn-legacy btn-legacy-sm',
 };
 
 export const Primary = Template.bind({});
@@ -24,6 +24,6 @@ Primary.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  className: 'btn',
+  className: 'btn-legacy',
   disabled: true,
 };

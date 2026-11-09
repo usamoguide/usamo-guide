@@ -44,11 +44,11 @@ function FigureImage({
   const [failed, setFailed] = React.useState(false);
   if (!src || failed) {
     return (
-      <span className="my-2 block rounded-md bg-gray-50 px-3 py-2 text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+      <span className="prb-fig-miss">
         Figure unavailable
         {src?.startsWith(FIGURES_URL_PREFIX)
-          ? ' — diagram not yet compiled (run yarn compile:figures)'
-          : ' — see the original problem for the diagram'}
+          ? ' (diagram not yet compiled: run yarn compile:figures)'
+          : '. See the original problem for the diagram.'}
       </span>
     );
   }
@@ -58,11 +58,14 @@ function FigureImage({
       src={src}
       alt={alt || 'figure'}
       onError={() => setFailed(true)}
-      className={`mx-auto my-2 max-w-full ${
-        isGeneratedFigure ? 'rounded-md dark:bg-white dark:p-2' : ''
-      }`.trim()}
+      className={isGeneratedFigure ? 'prb-fig prb-fig-gen' : 'prb-fig'}
     />
   );
+}
+
+/** In inline mode (answer choices) paragraphs render as spans. */
+function InlineP({ children }: { children?: React.ReactNode }): JSX.Element {
+  return <span>{children}</span>;
 }
 
 /**
@@ -74,27 +77,35 @@ function FigureImage({
 export default function ProblemStatementMarkdown({
   children,
   className = '',
+  inline = false,
 }: {
   children: string;
   className?: string;
+  /** render as inline text (no block wrapper or paragraph spacing) */
+  inline?: boolean;
 }): JSX.Element {
   const processed = React.useMemo(
     () => normalizeTexDelimiters(transformFigureBlocks(children ?? '')),
     [children]
   );
   if (!processed?.trim()) return <></>;
-  return (
-    <div className={`prose dark:prose-invert max-w-none ${className}`.trim()}>
-      <ReactMarkdown
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- remark/unified version skew
-        remarkPlugins={[remarkGfm, remarkMath] as any}
-        rehypePlugins={[[rehypeKatex, KATEX_OPTIONS]]}
-        components={{
-          img: FigureImage,
-        }}
-      >
-        {processed}
-      </ReactMarkdown>
-    </div>
+  const md = (
+    <ReactMarkdown
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- remark/unified version skew
+      remarkPlugins={[remarkGfm, remarkMath] as any}
+      rehypePlugins={[[rehypeKatex, KATEX_OPTIONS]]}
+      components={
+        inline ? { img: FigureImage, p: InlineP } : { img: FigureImage }
+      }
+    >
+      {processed}
+    </ReactMarkdown>
   );
+  // Styled by `.prb-md` in src/styles/ug/fix-app.css (the redesign's type and colours).
+  if (inline) {
+    return (
+      <span className={`prb-md prb-md-inline ${className}`.trim()}>{md}</span>
+    );
+  }
+  return <div className={`prb-md ${className}`.trim()}>{md}</div>;
 }

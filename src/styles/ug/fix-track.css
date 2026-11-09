@@ -1,0 +1,20 @@
+/* Hand-written fixes for the track view (not generated). Scope rules with :where(.ugv-track). Loaded into the ug layer after the generated files. */
+
+/* App states the export doesn't draw (skipped and ignored modules, modules
+   with unfinished sections, tracks still being written), in its language. */
+
+/* "Incomplete": a quiet badge beside the gold "Start here" / "Continue" */
+:where(.ugv-track) .tr-badge-inc{background:var(--mist);box-shadow:inset 0 0 0 1px var(--haze);color:var(--ink-2);font-weight:600}
+
+/* skipped: a dash in the dot; ignored: the same, and the row recedes */
+:where(.ugv-track) .tr-mod.skip .st-dot::after,:where(.ugv-track) .tr-mod.ign .st-dot::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:2px;margin:-1px 0 0 -4px;border-radius:2px;background:var(--ink-2)}
+:where(.ugv-track) .tr-mod.skip .tr-mod-t,:where(.ugv-track) .tr-mod.ign .tr-mod-t{color:var(--ink-2)}
+:where(.ugv-track) .tr-mod.ign{opacity:.62}
+:where(.ugv-track) .tr-mod.ign:hover{opacity:1}
+
+/* "this track is still being written" */
+:where(.ugv-track) .tr-wip{display:flex;align-items:baseline;gap:10px;max-width:36em;margin-top:18px;padding:11px 16px;border:1px solid var(--haze);border-radius:14px;background:var(--mist);font-size:15px;line-height:1.5;color:var(--ink-2)}
+:where(.ugv-track) .tr-wip::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--acc);translate:0 -1px}
+
+/* descriptions with inline math (KaTeX) keep the line height of the text */
+:where(.ugv-track) .tr-mod-d .katex{font-size:1.05em}

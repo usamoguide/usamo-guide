@@ -55,19 +55,19 @@ export default function PostSidebar({
           </div>
         )}
       </div>
-      <div className="mt-6 space-y-8 border-t border-gray-200 py-6 dark:border-gray-700">
+      <div className="mt-6 space-y-8 border-t border-gray-200 py-6 dark:border-[var(--border)]">
         {!isMobile && (
           <div>
             <div className="flex items-baseline justify-between">
               <h3
                 id="who-to-follow-heading"
-                className="text-base font-medium text-gray-900 dark:text-gray-100"
+                className="text-base font-medium text-gray-900 dark:text-[var(--text-primary)]"
               >
                 Assignment Leaderboard
               </h3>
               <Link
                 to="leaderboard"
-                className="text-sm font-medium text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                className="text-sm font-medium text-gray-700 hover:text-black dark:text-[var(--text-secondary)] dark:hover:text-white"
               >
                 View All &rarr;
               </Link>

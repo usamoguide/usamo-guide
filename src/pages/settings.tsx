@@ -1,15 +1,13 @@
-import { navigate } from 'gatsby';
 import * as React from 'react';
-import UnderlinedTabs from '../components/elements/UnderlinedTabs';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import AdminSettings from '../components/Settings/AdminSettings';
 import Authentication from '../components/Settings/Authentication';
-import DarkMode from '../components/Settings/DarkMode';
 import General from '../components/Settings/General';
 import Profile from '../components/Settings/Profile';
 import UserData from '../components/Settings/UserData';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
+import { AppPageHead } from '../components/ug/pages/AppPage';
 import { useUserPermissions } from '../context/UserDataContext/UserPermissionsContext';
 
 /*
@@ -32,6 +30,14 @@ import { useUserPermissions } from '../context/UserDataContext/UserPermissionsCo
 
 - Import / Export
  */
+
+const LABELS: Record<string, string> = {
+  general: 'General',
+  profile: 'Profile',
+  auth: 'Sign-in methods',
+  'user-data': 'User data',
+  admin: 'Admin',
+};
 
 export default function SettingsPage(props) {
   const { isAdmin } = useUserPermissions();
@@ -57,99 +63,68 @@ export default function SettingsPage(props) {
     };
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashChange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // arrow keys move between tabs, as in a tablist
+  const onTabKey = (e: React.KeyboardEvent<HTMLButtonElement>, i: number) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    const j =
+      (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+    setTab(tabs[j]);
+    const el = document.getElementById(`set-tab-${tabs[j]}`);
+    el?.focus();
+  };
 
   return (
     <Layout>
       <SEO title="Settings" image={null} pathname={props.path} noIndex />
+      <TopNavigationBar current="settings" />
 
-      <div
-        data-page-tone="dark"
-        className="min-h-screen"
-        style={{ background: 'var(--bg-page)' }}
-      >
-        <TopNavigationBar />
+      <main className="wrap ap-page">
+        <AppPageHead
+          crumbs={[{ label: 'Home', to: '/' }, { label: 'Settings' }]}
+          k="Account"
+          title="Settings"
+          lede="If you're signed in, settings sync across devices."
+          pose="panda-focus"
+        />
 
-        <main className="min-h-screen">
-          <div className="relative mx-auto max-w-xl md:px-8 xl:px-0">
-            <button
-              className="mx-4 mt-8 inline-flex items-center rounded-lg border border-[rgba(240,194,255,0.25)] bg-[rgba(112,66,138,0.20)] px-4 py-2 text-sm font-medium text-[#F4EDEA] transition-colors hover:bg-[rgba(112,66,138,0.35)] sm:mx-6 md:mx-0"
-              onClick={() => navigate(-1)}
-            >
-              <svg
-                className="mr-2 -ml-1 h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+        <div className="ap-settings">
+          <div className="ap-tabs" role="tablist" aria-label="Settings">
+            {tabs.map((t, i) => (
+              <button
+                key={t}
+                id={`set-tab-${t}`}
+                type="button"
+                role="tab"
+                aria-selected={tab === t}
+                aria-controls="set-panel"
+                tabIndex={tab === t ? 0 : -1}
+                className={tab === t ? 'on' : undefined}
+                onClick={() => setTab(t)}
+                onKeyDown={e => onTabKey(e, i)}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Back
-            </button>
-            <div className="pt-4 pb-16 sm:pt-6">
-              <div className="px-4 sm:px-6 md:px-0">
-                <h1 className="text-3xl font-extrabold text-[#F4EDEA]">
-                  Settings
-                </h1>
-                <p className="mt-2 text-[rgba(244,237,234,0.65)]">
-                  If you're signed in, settings sync across devices.
-                </p>
-              </div>
-              <div className="px-4 sm:px-6 md:px-0">
-                <div className="py-6">
-                  <UnderlinedTabs
-                    options={tabs}
-                    labelMap={{
-                      general: 'General',
-                      profile: 'Profile',
-                      auth: 'Sign In Methods',
-                      'user-data': 'User Data',
-                      admin: 'Admin Settings',
-                    }}
-                    value={tab}
-                    onChange={x => setTab(x)}
-                  />
-
-                  <div className="h-10" />
-
-                  <div className="space-y-10">
-                    {tab === 'general' && (
-                      <>
-                        <General />
-                      </>
-                    )}
-                    {tab === 'profile' && (
-                      <>
-                        <Profile />
-                      </>
-                    )}
-                    {tab === 'auth' && (
-                      <>
-                        <Authentication />
-                      </>
-                    )}
-                    {tab === 'user-data' && (
-                      <>
-                        <UserData />
-                      </>
-                    )}
-                    {tab === 'admin' && (
-                      <>
-                        <AdminSettings />
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+                {LABELS[t]}
+              </button>
+            ))}
           </div>
-        </main>
-      </div>
+
+          <div
+            className="card ap-panel"
+            id="set-panel"
+            role="tabpanel"
+            aria-labelledby={`set-tab-${tab}`}
+          >
+            {tab === 'general' && <General />}
+            {tab === 'profile' && <Profile />}
+            {tab === 'auth' && <Authentication />}
+            {tab === 'user-data' && <UserData />}
+            {tab === 'admin' && <AdminSettings />}
+          </div>
+        </div>
+      </main>
     </Layout>
   );
 }

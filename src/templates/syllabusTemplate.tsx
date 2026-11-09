@@ -1,10 +1,15 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
-import SyllabusPage from '../components/syllabus/SyllabusPage';
+import { SectionID } from '../../content/ordering';
+import TrackPage from '../components/ug/track/TrackPage';
 
-export default function Template(props) {
+export default function Template(props: {
+  data: Queries.SyllabusQuery;
+  pageContext: { division: SectionID };
+  path: string;
+}) {
   return (
-    <SyllabusPage
+    <TrackPage
       data={props.data}
       division={props.pageContext.division}
       path={props.path}
@@ -25,12 +30,9 @@ export const pageQuery = graphql`
           title
           id
           description
-          frequency
         }
         isIncomplete
-        fields {
-          gitAuthorTime
-        }
+        readingMinutes
       }
     }
     problems: allProblemInfo(
@@ -38,7 +40,6 @@ export const pageQuery = graphql`
     ) {
       nodes {
         uniqueId
-        name
         module {
           frontmatter {
             id

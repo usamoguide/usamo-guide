@@ -124,10 +124,10 @@ export const assignDefaultsToUserData = (data: object): UserData => {
   const { lang: _lang, ...rest } = data as { lang?: unknown };
   return {
     consecutiveVisits: 1,
-    showTags: false,
+    showTags: true,
     hideDifficulty: false,
     hideModules: false,
-    showIgnored: true,
+    showIgnored: false,
     divisionTableQuery: {
       division: '',
       season: '',

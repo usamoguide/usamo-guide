@@ -10,6 +10,8 @@ import * as React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
+import { IcoExternal } from '../components/ug/icons';
+import { AppPageHead } from '../components/ug/pages/AppPage';
 
 type ResourceLink = {
   name: string;
@@ -221,142 +223,98 @@ const RESOURCES: TopicResources[] = [
   },
 ];
 
-function ResourceCard({
-  topic,
-  link,
-  fallbackImageSrc,
-  fallbackImageAlt,
-  reverse,
-}: {
-  topic: string;
-  link: ResourceLink;
-  fallbackImageSrc: string;
-  fallbackImageAlt: string;
-  reverse: boolean;
-}) {
-  const imageSrc = link.imageSrc ?? fallbackImageSrc;
-  const imageAlt = link.imageAlt ?? fallbackImageAlt;
+/** "https://www.example.com/path" -> "example.com" */
+function hostOf(href: string): string {
+  try {
+    return new URL(href).hostname.replace(/^www\./, '');
+  } catch (e) {
+    return href;
+  }
+}
 
+/** One link, drawn like a module row on the track page (`.tr-mod`). */
+function ResourceRow({ link }: { link: ResourceLink }) {
   return (
-    <article className="overflow-hidden rounded-2xl bg-[var(--card-bg)] backdrop-blur-sm">
-      <div
-        className={`grid items-start lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}
-      >
-        <div className="relative h-56 max-h-[380px] sm:h-64 lg:h-80 xl:h-[360px]">
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="h-full w-full object-cover object-center"
-            loading="lazy"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-black/25" />
-          <div className="absolute right-3 bottom-3 rounded-md bg-[rgba(10,8,24,0.70)] px-2.5 py-1 text-xs font-medium tracking-wide text-[#F0C2FF] uppercase">
-            {topic}
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-center px-5 py-6 sm:px-7">
-          <h3 className="text-2xl font-black tracking-tight text-[#F4EDEA]">
-            {link.name}
-          </h3>
-          <p className="mt-3 text-sm leading-6 text-[rgba(244,237,234,0.72)] sm:text-base">
-            {link.description}
-          </p>
-          <div className="mt-6">
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center rounded-full border border-[rgba(240,194,255,0.30)] bg-[#70428A] px-4 py-2 text-sm font-semibold text-[#F4EDEA] transition hover:bg-[#8A52AA]"
-            >
-              Visit resource {'->'}
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
+    <li>
+      <a className="ap-res" href={link.href} target="_blank" rel="noreferrer">
+        <span className="ap-res-main">
+          <span className="ap-res-t">{link.name}</span>
+          <span className="ap-res-d">{link.description}</span>
+          <span className="ap-res-h">{hostOf(link.href)}</span>
+        </span>
+        <IcoExternal />
+      </a>
+    </li>
   );
 }
 
-function TopicSection({
-  topic,
-  icon: Icon,
-  intro,
-  imageSrc,
-  imageAlt,
-  links,
-}: TopicResources) {
+function TopicSection({ topic, intro, links }: TopicResources) {
+  const id = topic.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   return (
-    <section className="rounded-3xl bg-[var(--card-bg)] p-4 sm:p-5 lg:p-6">
-      <div className="mb-5 rounded-2xl bg-[var(--card-bg)] px-5 py-5 sm:px-6">
-        <div className="flex items-start gap-3">
-          <div className="rounded-lg bg-[rgba(112,66,138,0.35)] p-2 text-[#F0C2FF]">
-            <Icon className="h-5 w-5" aria-hidden="true" />
-          </div>
-          <div>
-            <h2 className="text-4xl font-black tracking-tight text-[#F4EDEA] sm:text-5xl">
-              {topic}
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-[rgba(244,237,234,0.72)] sm:text-base">
-              {intro}
-            </p>
-          </div>
-        </div>
+    <section className="ap-sec" id={id} aria-labelledby={`${id}-h`}>
+      <div className="ap-sec-h">
+        <p className="k-label">
+          {links.length} {links.length === 1 ? 'resource' : 'resources'}
+        </p>
+        <h2 className="ap-sec-t" id={`${id}-h`}>
+          {topic}
+        </h2>
+        <p className="ap-sec-d">{intro}</p>
       </div>
-
-      <div className="space-y-5">
-        {links.map((link, index) => (
-          <ResourceCard
-            key={link.name}
-            topic={topic}
-            link={link}
-            fallbackImageSrc={imageSrc}
-            fallbackImageAlt={imageAlt}
-            reverse={index % 2 === 1}
-          />
+      <ul className="ap-res-list">
+        {links.map(link => (
+          <ResourceRow key={link.name} link={link} />
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
 
-// And update the header section:
 export default function OtherUsefulResourcesPage(props: PageProps) {
   return (
     <Layout>
       <SEO title="Other Useful Resources" pathname={props.path} />
+      <TopNavigationBar />
 
-      <div
-        data-page-tone="dark"
-        className="min-h-screen text-[#F4EDEA]"
-        style={{
-          background: 'var(--bg-page)',
-        }}
-      >
-        <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
-
-        <main className="mx-auto max-w-screen-2xl px-4 py-10 sm:px-6 lg:px-8">
-          <header className="rounded-2xl bg-[var(--card-bg)] px-6 py-14 text-center backdrop-blur-sm sm:px-10 sm:py-20">
-            <p className="text-sm font-semibold tracking-wide text-[#F0C2FF] uppercase">
-              Community-curated links
-            </p>
-            <h1 className="mt-4 text-5xl font-black tracking-tight text-[#F4EDEA] sm:text-6xl lg:text-7xl">
-              Other Useful Resources
-            </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-[rgba(244,237,234,0.72)] sm:text-lg">
-              This page collects strong external resources for specific contest
-              math topics. Use it as a companion to USAMO Guide when you want
-              extra explanations, alternate problem sets, or deeper dives.
-            </p>
-          </header>
-
-          <div className="mt-8 space-y-8">
-            {RESOURCES.map(topic => (
-              <TopicSection key={topic.topic} {...topic} />
+      <main className="wrap ap-page">
+        <AppPageHead
+          crumbs={[
+            { label: 'Home', to: '/' },
+            { label: 'Other useful resources' },
+          ]}
+          k="Community-curated links"
+          title="Other useful resources"
+          lede="This page collects strong external resources for specific contest math topics. Use it as a companion to USAMO Guide when you want extra explanations, alternate problem sets, or deeper dives."
+          meta={
+            <>
+              <span>
+                <b>{RESOURCES.length}</b> topics
+              </span>
+              <span>
+                <b>{RESOURCES.reduce((n, t) => n + t.links.length, 0)}</b> links
+              </span>
+            </>
+          }
+          pose="panda-read"
+        >
+          <nav className="ap-jump" aria-label="Topics">
+            {RESOURCES.map(t => (
+              <a
+                key={t.topic}
+                href={`#${t.topic.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+              >
+                {t.topic}
+              </a>
             ))}
-          </div>
-        </main>
-      </div>
+          </nav>
+        </AppPageHead>
+
+        <div className="ap-body">
+          {RESOURCES.map(topic => (
+            <TopicSection key={topic.topic} {...topic} />
+          ))}
+        </div>
+      </main>
     </Layout>
   );
 }

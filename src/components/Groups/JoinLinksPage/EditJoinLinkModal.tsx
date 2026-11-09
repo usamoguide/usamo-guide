@@ -56,18 +56,18 @@ export default function EditJoinLinkModal({
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
-            className="dark:bg-dark-surface relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="dark:bg-[var(--bg-page)] relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
           >
             <form onSubmit={handleSubmit}>
               <div>
                 <h3
-                  className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100"
+                  className="text-lg leading-6 font-medium text-gray-900 dark:text-[var(--text-primary)]"
                   id="modal-headline"
                 >
                   Join Link
                 </h3>
                 <div className="mt-6">
-                  <div className="flex items-center rounded-sm bg-gray-50 p-4 dark:bg-gray-800">
+                  <div className="flex items-center rounded-sm bg-gray-50 p-4 dark:bg-[var(--bg-surface-alt)]">
                     <span className="flex-1">
                       https://usamo.guide/groups/join?key={link.id}
                     </span>
@@ -88,7 +88,7 @@ export default function EditJoinLinkModal({
                         hideOnClick={false}
                       >
                         <svg
-                          className="h-6 w-6 shrink-0 text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gray-300"
+                          className="h-6 w-6 shrink-0 text-gray-600 hover:text-black dark:text-[var(--text-secondary)] dark:hover:text-gray-300"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export default function EditJoinLinkModal({
                     <div>
                       <li className="flex items-center justify-between py-2">
                         <div className="flex flex-col">
-                          <p className="font-medium text-gray-700 dark:text-gray-200">
+                          <p className="font-medium text-gray-700 dark:text-[var(--text-primary)]">
                             Limit maximum number of uses
                           </p>
                         </div>
@@ -124,7 +124,7 @@ export default function EditJoinLinkModal({
                         <div className="mb-4">
                           <label
                             htmlFor="link_uses"
-                            className="block text-sm font-medium text-gray-500 dark:text-gray-300"
+                            className="block text-sm font-medium text-gray-500 dark:text-[var(--text-secondary)]"
                           >
                             Max Uses
                           </label>
@@ -148,7 +148,7 @@ export default function EditJoinLinkModal({
                     <div>
                       <li className="flex items-center justify-between py-2">
                         <div className="flex flex-col">
-                          <p className="font-medium text-gray-700 dark:text-gray-200">
+                          <p className="font-medium text-gray-700 dark:text-[var(--text-primary)]">
                             Set expiration time
                           </p>
                         </div>
@@ -165,7 +165,7 @@ export default function EditJoinLinkModal({
                       </li>
                       {link.expirationTime !== null && (
                         <div className="mb-4">
-                          <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
+                          <label className="block text-sm font-medium text-gray-500 dark:text-[var(--text-secondary)]">
                             Expiry Date
                           </label>
 
@@ -216,7 +216,7 @@ export default function EditJoinLinkModal({
                   </button>
                   <button
                     type="button"
-                    className="btn"
+                    className="btn-legacy"
                     onClick={() => onClose()}
                   >
                     Cancel
@@ -224,7 +224,7 @@ export default function EditJoinLinkModal({
                 </div>
                 <button
                   type="button"
-                  className="btn"
+                  className="btn-legacy"
                   onClick={() => {
                     if (
                       !link.revoked &&

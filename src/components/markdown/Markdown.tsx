@@ -77,8 +77,10 @@ function getNearestH1SectionEndIndex(
   return h1Indexes.reduce((nearestEndIndex, h1Index, sectionIndex) => {
     const nextH1Index = h1Indexes[sectionIndex + 1];
     const sectionEndIndex = nextH1Index ?? childList.length;
-    const sectionEndTextLength = cumulativeTextLengths[sectionEndIndex - 1] ?? 0;
-    const nearestEndTextLength = cumulativeTextLengths[nearestEndIndex - 1] ?? 0;
+    const sectionEndTextLength =
+      cumulativeTextLengths[sectionEndIndex - 1] ?? 0;
+    const nearestEndTextLength =
+      cumulativeTextLengths[nearestEndIndex - 1] ?? 0;
 
     return Math.abs(sectionEndTextLength - targetTextLength) <
       Math.abs(nearestEndTextLength - targetTextLength)
@@ -95,7 +97,10 @@ function insertPromptIntoChildren(children: React.ReactNode): React.ReactNode {
   }
 
   const childTextLengths = childList.map(child => getTextLength(child));
-  const totalTextLength = childTextLengths.reduce((sum, value) => sum + value, 0);
+  const totalTextLength = childTextLengths.reduce(
+    (sum, value) => sum + value,
+    0
+  );
 
   const insertionIndex = (() => {
     if (totalTextLength <= 0) {
@@ -120,12 +125,61 @@ function insertPromptIntoChildren(children: React.ReactNode): React.ReactNode {
   ];
 }
 
-const Markdown = (props: { body: string }) => {
-  const mdxComponent = new Function(props.body)({
+/** Run a compiled MDX body with a components map; returns the MDX element. */
+export function evaluateMdx(
+  body: string,
+  componentMap: { [name: string]: unknown } = components
+): React.ReactNode {
+  return new Function(body)({
     Fragment,
     jsx,
     jsxs,
-  }).default({ components });
+  }).default({ components: componentMap });
+}
+
+/**
+ * Renders a module's compiled MDX.
+ * - `body`: the compiled MDX (or pass an already evaluated `content`)
+ * - `components`: the components map (defaults to MDXComponents)
+ * - `transform`: rearranges the top-level blocks (the module page groups them
+ *   into sections); without it the sign-in prompt is inserted as before
+ * - `className`: the wrapper's class (defaults to the legacy `markdown`)
+ * - `after`: rendered inside the wrapper after the content
+ */
+const Markdown = (props: {
+  body?: string;
+  content?: React.ReactNode;
+  components?: { [name: string]: unknown };
+  transform?: (children: React.ReactNode) => React.ReactNode;
+  className?: string;
+  after?: React.ReactNode;
+}) => {
+  const mdxComponent =
+    props.content !== undefined
+      ? props.content
+      : evaluateMdx(props.body ?? '', props.components ?? components);
+
+  const mdxChildren = React.isValidElement(mdxComponent)
+    ? (mdxComponent as React.ReactElement<{ children?: React.ReactNode }>).props
+        .children
+    : mdxComponent;
+
+  // with a memoized `content`, the transformed tree keeps its identity across
+  // re-renders, so React can skip the lesson when only the page around it changes
+  const { transform } = props;
+  const transformed = React.useMemo(
+    () => (transform ? transform(mdxChildren) : null),
+    [transform, mdxChildren]
+  );
+
+  if (transform) {
+    return (
+      <div className={props.className ?? 'markdown'}>
+        {transformed}
+        {props.after}
+      </div>
+    );
+  }
 
   const renderedContent = React.isValidElement(mdxComponent)
     ? (() => {
@@ -141,7 +195,12 @@ const Markdown = (props: { body: string }) => {
       })()
     : mdxComponent;
 
-  return <div className="markdown">{renderedContent}</div>;
+  return (
+    <div className={props.className ?? 'markdown'}>
+      {renderedContent}
+      {props.after}
+    </div>
+  );
 };
 
 export default React.memo(Markdown);

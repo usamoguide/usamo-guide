@@ -23,7 +23,7 @@ const SubmissionListItem = ({
   return (
     <li className="group relative py-2">
       <div className="flex items-center justify-between space-x-4">
-        <span className="block text-sm leading-3 font-medium text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-100">
+        <span className="block text-sm leading-3 font-medium text-gray-500 group-hover:text-gray-900 dark:text-[var(--text-secondary)] dark:group-hover:text-gray-100">
           <button
             type="button"
             className="focus:outline-hidden"
@@ -33,7 +33,7 @@ const SubmissionListItem = ({
             {getSubmissionTimestampString(submission)}
           </button>
         </span>
-        <div className="flex items-center text-sm font-medium text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-100">
+        <div className="flex items-center text-sm font-medium text-gray-500 group-hover:text-gray-900 dark:text-[var(--text-secondary)] dark:group-hover:text-gray-100">
           <span
             className={`h-5 w-5 ${
               submissionCircleBorderColor[getSubmissionStatus(submission)]
@@ -81,7 +81,7 @@ export default function ProblemSubmissionsList({
 }) {
   if (!submissions?.length) {
     return (
-      <p className="text-sm text-gray-500 dark:text-gray-400">
+      <p className="text-sm text-gray-500 dark:text-[var(--text-secondary)]">
         No submissions yet!
       </p>
     );

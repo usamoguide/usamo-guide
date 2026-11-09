@@ -177,7 +177,7 @@ const ActualQuiz = props => {
 
       <div className="mt-4 flex items-center justify-between">
         <button
-          className="btn"
+          className="btn-legacy"
           disabled={currentQuestion === 0}
           onClick={() => handleQuestionChange(currentQuestion - 1)}
         >
@@ -188,7 +188,7 @@ const ActualQuiz = props => {
           {React.Children.count(props.children)}
         </span>
         <button
-          className="btn"
+          className="btn-legacy"
           disabled={canMoveOn && currentQuestion === questionList.length - 1}
           onClick={() => {
             if (!canMoveOn) {

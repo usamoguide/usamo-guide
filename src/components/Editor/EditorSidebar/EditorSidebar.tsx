@@ -133,7 +133,7 @@ function GithubActions() {
         installed === undefined ? (
           <p>Detecting app installation...</p>
         ) : (
-          <a className="btn" href="https://github.com/apps/usamo-guide-editor">
+          <a className="btn-legacy" href="https://github.com/apps/usamo-guide-editor">
             Install GitHub App
           </a>
         )
@@ -146,7 +146,7 @@ function GithubActions() {
               <>
                 <p>No fork detected.</p>
                 <a
-                  className="btn mt-1"
+                  className="btn-legacy mt-1"
                   href="https://github.com/usamoguide/usamo-guide/fork"
                   target="_blank"
                   rel="noreferrer"
@@ -162,7 +162,7 @@ function GithubActions() {
                   href={fork}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-[var(--accent)] hover:underline"
                 >
                   Fork detected!
                 </a>
@@ -174,7 +174,7 @@ function GithubActions() {
                     href={`https://github.com/${githubInfo.login}/usamo-guide/tree/${branch}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-blue-500 hover:underline"
+                    className="text-[var(--accent)] hover:underline"
                   >
                     {branch}
                   </a>
@@ -188,13 +188,13 @@ function GithubActions() {
                     prompt('Branch name? (leave empty for auto-generated name)')
                   )
                 }
-                className="btn"
+                className="btn-legacy"
               >
                 {branchState}
               </button>
               {branch && githubInfo && (
                 <a
-                  className="btn mt-4"
+                  className="btn-legacy mt-4"
                   href={`https://github.com/usamoguide/usamo-guide/compare?expand=1&base=main&head=${githubInfo.login}:${branch}`}
                   target="_blank"
                   rel="noreferrer"
@@ -226,7 +226,7 @@ function GithubSidebar({ loading }: { loading: boolean }) {
                 ? 'http://localhost:8000/editor'
                 : ''
             }`}
-            className="btn"
+            className="btn-legacy"
           >
             Login with GitHub &rarr;
           </a>
@@ -287,7 +287,7 @@ export const EditorSidebar = (props): JSX.Element => {
     }
   };
   return (
-    <div className="w-[250px] flex-col border-r border-gray-200 dark:border-gray-800">
+    <div className="w-[250px] flex-col border-r border-gray-200 dark:border-[var(--border)]">
       <FileListSidebar
         {...props}
         activeFile={activeFile}

@@ -3,7 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import * as freshOrdering from './content/ordering';
 import { typeDefs } from './graphql-types';
-import { createXdmNode } from './src/gatsby/create-xdm-node';
+import {
+  createXdmNode,
+  estimateReadingMinutes,
+} from './src/gatsby/create-xdm-node';
 import {
   getProblemInfo,
   getProblemURL,
@@ -599,6 +602,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   createTypes(typeDefs);
+};
+// Estimated reading time of a lesson, from its raw MDX (kept on the node as
+// internal.content). A resolver rather than a node field so that nodes restored
+// from Gatsby's cache (locally and on Vercel) have it without re-sourcing.
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    Xdm: {
+      readingMinutes: {
+        type: 'Int',
+        resolve: source =>
+          source?.internal?.content
+            ? estimateReadingMinutes(source.internal.content)
+            : null,
+      },
+    },
+  });
 };
 exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
   actions.setWebpackConfig({

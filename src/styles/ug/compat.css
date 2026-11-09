@@ -1,0 +1,132 @@
+/* Hand-written (not generated): where the redesign CSS meets the rest of the app.
+   Loaded last into the `ug` layer by main.css. */
+
+/* Prism marks HTML tags in code blocks `.token.tag`; give them back their code
+   colours instead of the redesign's .tag pill. */
+:where(.ug) .token.tag {
+  all: revert-layer;
+}
+
+/* app.css's `button.btn{font:inherit}` outranks `.btn`'s type. The export only
+   has one <button class="btn"> (module's Mark done, kept as the export draws it);
+   everywhere else its keys are <a>. <Btn> renders a <button> for actions, so give
+   those the same type as the links. */
+:where(.ug) button.btn:not(.md-done-b) {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+:where(.ug) button.btn.btn-sm:not(.md-done-b) {
+  font-size: 15px;
+}
+:where(.ug) button.btn.btn-lg:not(.md-done-b) {
+  font-size: 17px;
+}
+
+/* The older screens (groups, editor, settings, problem pages, modals) read the
+   palette from these variables (see theme.css). Point them at the redesign
+   palette so those screens follow the same purple, gold and paper, in both
+   themes. Set on :root because modals render outside the .ug root. */
+:root {
+  --ugc-v: #6b2de6;
+  --bg-page: #fff;
+  --bg-surface: #fff;
+  --bg-surface-alt: color-mix(in oklab, var(--ugc-v) 4%, white);
+  --bg-muted: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --text-primary: #17122e;
+  --text-secondary: #5a5773;
+  --text-muted: #5a5773;
+  --text-inverse: #fff;
+  --border: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --border-strong: color-mix(in oklab, var(--ugc-v) 30%, white);
+  --focus: var(--ugc-v);
+  --accent: var(--ugc-v);
+  --accent-strong: color-mix(in oklab, var(--ugc-v) 86%, black);
+  --accent-glow: color-mix(in oklab, var(--ugc-v) 30%, transparent);
+  --accent-soft: color-mix(in oklab, var(--ugc-v) 8%, transparent);
+  --accent-soft-strong: color-mix(in oklab, var(--ugc-v) 14%, transparent);
+  --accent-fill: var(--ugc-v);
+  --pink: #ffc53d;
+  --pink-soft: color-mix(in oklab, #ffc53d 20%, white);
+  --pink-glow: color-mix(in oklab, #ffc53d 40%, transparent);
+  --banner-bg: var(--ugc-v);
+  --banner-glow-from: color-mix(in oklab, var(--ugc-v) 30%, white);
+  --banner-glow-to: color-mix(in oklab, var(--ugc-v) 30%, white);
+  --sidebar-active-bg: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --sidebar-hover-bg: color-mix(in oklab, var(--ugc-v) 4%, white);
+  --code-block-bg-light: color-mix(in oklab, var(--ugc-v) 4%, white);
+  --code-block-bg-dark: #1a1331;
+  --select-bg: #fff;
+  --select-border: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --select-menu-bg: #fff;
+  --select-text: #17122e;
+  --select-option-hover: color-mix(in oklab, var(--ugc-v) 4%, white);
+  --select-option-selected: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --heatmap-empty: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --heatmap-1: color-mix(in oklab, #ffc53d 35%, white);
+  --heatmap-2: color-mix(in oklab, #ffc53d 60%, white);
+  --heatmap-3: #ffc53d;
+  --heatmap-4: #d08a12;
+  --danger: #c2410c;
+  --success: #9a5b00;
+  --warning: #9a5b00;
+  --disabled-bg: color-mix(in oklab, var(--ugc-v) 8%, white);
+  --disabled-text: #8a87a3;
+  --card-bg: color-mix(in oklab, var(--ugc-v) 4%, white);
+  --modal-bg: #fff;
+  --modal-btn-bg: var(--ugc-v);
+  --modal-btn-text: #fff;
+  --modal-btn-alt-bg: color-mix(in oklab, var(--ugc-v) 12%, white);
+  --modal-btn-alt-text: #3a1c6e;
+  --modal-btn-border: color-mix(in oklab, var(--ugc-v) 30%, white);
+}
+html.ug-dark {
+  --bg-page: #0f0a1e;
+  --bg-surface: #1a1331;
+  --bg-surface-alt: #231a40;
+  --bg-muted: #2f2654;
+  --text-primary: #f3effd;
+  --text-secondary: #aca4cc;
+  --text-muted: #aca4cc;
+  --text-inverse: #0f0a1e;
+  --border: #2f2654;
+  --border-strong: #43327f;
+  --focus: #b89dff;
+  --accent: #b89dff;
+  --accent-strong: #cfc1ff;
+  --accent-soft: rgba(184, 157, 255, 0.1);
+  --accent-soft-strong: rgba(184, 157, 255, 0.16);
+  --accent-fill: #b89dff;
+  --pink-soft: color-mix(in oklab, #ffc53d 14%, #0f0a1e);
+  --banner-glow-from: #43327f;
+  --banner-glow-to: #43327f;
+  --sidebar-active-bg: #2f2654;
+  --sidebar-hover-bg: #231a40;
+  --code-block-bg-light: #231a40;
+  --code-block-bg-dark: #231a40;
+  --select-bg: #1a1331;
+  --select-border: #2f2654;
+  --select-menu-bg: #1a1331;
+  --select-text: #f3effd;
+  --select-option-hover: #231a40;
+  --select-option-selected: #2f2654;
+  --heatmap-empty: #2f2654;
+  --heatmap-1: color-mix(in oklab, #ffc53d 30%, #0f0a1e);
+  --heatmap-2: color-mix(in oklab, #ffc53d 55%, #0f0a1e);
+  --heatmap-3: #ffc53d;
+  --heatmap-4: #ffe08a;
+  --danger: #ff8a65;
+  --success: #ffc53d;
+  --warning: #ffc53d;
+  --disabled-bg: #231a40;
+  --disabled-text: #6f6896;
+  --card-bg: #1a1331;
+  --modal-bg: #1a1331;
+  --modal-btn-bg: #6b2de6;
+  --modal-btn-text: #fff;
+  --modal-btn-alt-bg: #2f2654;
+  --modal-btn-alt-text: #f3effd;
+  --modal-btn-border: #43327f;
+}

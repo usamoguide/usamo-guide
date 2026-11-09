@@ -19,6 +19,23 @@ import { compile } from 'xdm';
 
 // todo: migrate to resolver for even better development performance
 
+/**
+ * Rough reading time for a lesson, in minutes: prose words (no frontmatter,
+ * imports, code blocks or JSX tags) at 130 words a minute, which allows for
+ * worked math being slower to read than plain text. Shown on the track, start
+ * and module pages. Exposed as `Xdm.readingMinutes` by a resolver in
+ * gatsby-node.ts (a resolver, not a node field, so cached nodes get it too).
+ */
+export function estimateReadingMinutes(content: string): number {
+  const prose = content
+    .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+    .replace(/^(import|export) .*$/gm, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<[^>]+>/g, ' ');
+  const words = (prose.match(/[A-Za-z0-9]+/g) || []).length;
+  return Math.max(3, Math.round(words / 130));
+}
+
 export async function createXdmNode({ id, node, content }, api) {
   let xdmNode: any = {
     id,

@@ -33,14 +33,14 @@ export const FileListSidebar: React.FC<{
 
   return (
     <div className={`w-full overflow-y-auto`}>
-      <div className="flex items-center justify-between border-b border-gray-200 text-sm font-medium text-gray-300 dark:border-gray-800">
-        <span className="px-4 py-2 text-gray-600 dark:text-gray-300">
+      <div className="flex items-center justify-between border-b border-gray-200 text-sm font-medium text-gray-300 dark:border-[var(--border)]">
+        <span className="px-4 py-2 text-gray-600 dark:text-[var(--text-secondary)]">
           Files
         </span>
         <div className="shrink-0">
           <button
             className={classNames(
-              'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300',
+              'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-800 dark:text-[var(--text-secondary)] dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-300',
               'px-3 py-2 text-sm font-medium transition focus:outline-hidden'
             )}
             onClick={() => onCloseAllFiles()}
@@ -52,9 +52,9 @@ export const FileListSidebar: React.FC<{
       <div className="h-1" />
       {files.map(file => (
         <div
-          className={`flex items-center text-gray-500 transition hover:bg-gray-200 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-400 ${
-            activeFile?.path === file ? 'bg-gray-100 dark:bg-gray-900' : ''
-          }`}
+          className={`flex items-center text-gray-500 transition hover:bg-gray-200 hover:text-gray-600 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-400 ${
+            activeFile?.path === file ? 'bg-gray-100 dark:bg-[var(--bg-surface)]' : ''
+          } dark:text-[var(--text-secondary)]`}
           key={file}
         >
           <div
@@ -74,7 +74,7 @@ export const FileListSidebar: React.FC<{
       <div className="h-1" />
       <button
         className={classNames(
-          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-400 dark:active:bg-gray-800',
+          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-400 dark:active:bg-gray-800 dark:text-[var(--text-secondary)]',
           'w-full px-4 py-2 text-sm font-medium transition focus:outline-hidden'
         )}
         onClick={() => setIsAddPageOpen(true)}
@@ -83,7 +83,7 @@ export const FileListSidebar: React.FC<{
       </button>
       <button
         className={classNames(
-          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-400 dark:active:bg-gray-800',
+          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-400 dark:active:bg-gray-800 dark:text-[var(--text-secondary)]',
           'w-full px-4 py-2 text-sm font-medium transition focus:outline-hidden'
         )}
         onClick={() => setIsAddProblemOpen(true)}
@@ -92,7 +92,7 @@ export const FileListSidebar: React.FC<{
       </button>
       <button
         className={classNames(
-          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-400 dark:active:bg-gray-800',
+          'text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-200 dark:hover:bg-[var(--bg-surface-alt)] dark:hover:text-gray-400 dark:active:bg-gray-800 dark:text-[var(--text-secondary)]',
           'w-full px-4 py-2 text-sm font-medium transition focus:outline-hidden'
         )}
         onClick={() => setIsFileModalOpen(true)}

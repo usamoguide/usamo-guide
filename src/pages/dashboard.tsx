@@ -1,466 +1,579 @@
 import { graphql, Link, PageProps } from 'gatsby';
 import * as React from 'react';
-import { SECTION_LABELS } from '../../content/ordering';
-import ActiveItems, { ActiveItem } from '../components/Dashboard/ActiveItems';
-import Activity from '../components/Dashboard/Activity';
-import DailyStreak from '../components/Dashboard/DailyStreak';
-import Card from '../components/Dashboard/DashboardCard';
+import { SectionID, SECTIONS } from '../../content/ordering';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
+import Btn from '../components/ug/Btn';
+import ActivityCard from '../components/ug/dashboard/ActivityCard';
+import StreakRow from '../components/ug/dashboard/StreakRow';
+import { IcoArrow, IcoChev } from '../components/ug/icons';
+import { UG_TRACKS } from '../components/ug/links';
+import { buildTrack, ModuleSource } from '../components/ug/track/curriculum';
 import { useSignIn } from '../context/SignInContext';
-import { useLastVisitInfo } from '../context/UserDataContext/properties/lastVisit';
+import { useLastViewedModule } from '../context/UserDataContext/properties/simpleProperties';
 import {
-  useLastViewedModule,
-  useShowIgnoredSetting,
-} from '../context/UserDataContext/properties/simpleProperties';
-import {
-  useUserProgressOnModules,
-  useUserProgressOnProblems,
-} from '../context/UserDataContext/properties/userProgress';
-import { useCurrentUser } from '../context/UserDataContext/UserDataContext';
-import {
-  useModulesProgressInfo,
-  useProblemsProgressInfo,
-} from '../utils/getProgressInfo';
+  useCurrentUser,
+  useIsUserDataLoaded,
+  useUserData,
+} from '../context/UserDataContext/UserDataContext';
+import { getProblemURL } from '../models/problem';
 
-const VANILLA = '#F4EDEA';
-const TEXT_SECONDARY = 'rgba(244, 237, 234, 0.72)';
-const PAGE_BG = 'var(--bg-page)';
-
-export default function DashboardPage(props: PageProps) {
-  const { modules, problems } = props.data as any;
-  const moduleInfoById = modules.edges.reduce((acc, cur) => {
-    const id = cur.node.frontmatter.id;
-    const division = cur.node.fields?.division;
-    if (!id || !division) return acc;
-    acc[id] = {
-      title: cur.node.frontmatter.title,
-      section: division,
-      url: `/${division}/${id}`,
-    };
-    return acc;
-  }, {});
-  const problemIDMap = React.useMemo(() => {
-    // 1. problems in modules
-    const res = problems.edges.reduce((acc, cur) => {
-      const problem = cur.node;
-      // ignore problems that don't have an associated module (extraProblems.json)
-      if (problem.module) {
-        const moduleId = problem.module.frontmatter.id;
-        const moduleInfo = moduleInfoById[moduleId];
-        if (!moduleInfo) {
-          return acc;
-        }
-        if (!(problem.uniqueId in acc)) {
-          acc[problem.uniqueId] = {
-            label: `${problem.source}: ${problem.name}`,
-            modules: [],
-          };
-        }
-        acc[problem.uniqueId].modules.push({
-          url: `${moduleInfo.url}/#problem-${problem.uniqueId}`,
-          moduleId,
-        });
-      }
-      return acc;
-    }, {});
-
-    return res;
-  }, [problems, moduleInfoById]);
-  const lastViewedModuleID = useLastViewedModule();
-  const userProgressOnModules = useUserProgressOnModules();
-  const userProgressOnProblems = useUserProgressOnProblems();
-  const currentUser = useCurrentUser();
-  const { consecutiveVisits } = useLastVisitInfo();
-  const showIgnored = useShowIgnoredSetting();
-  const { signIn } = useSignIn();
-
-  const lastViewedModuleURL = moduleInfoById[lastViewedModuleID]?.url;
-  const activeModules: ActiveItem[] = React.useMemo(() => {
-    return Object.keys(userProgressOnModules)
-      .filter(
-        x =>
-          (userProgressOnModules[x] === 'Reading' ||
-            userProgressOnModules[x] === 'Practicing' ||
-            userProgressOnModules[x] === 'Skipped' ||
-            (showIgnored && userProgressOnModules[x] === 'Ignored')) &&
-          moduleInfoById.hasOwnProperty(x)
-      )
-      .map(x => ({
-        label: `${SECTION_LABELS[moduleInfoById[x].section]}: ${moduleInfoById[x].title}`,
-        url: moduleInfoById[x].url,
-        status: userProgressOnModules[x] as
-          | 'Skipped'
-          | 'Reading'
-          | 'Practicing'
-          | 'Ignored',
-      }));
-  }, [userProgressOnModules, showIgnored, moduleInfoById]);
-  const activeProblems: ActiveItem[] = React.useMemo(() => {
-    return Object.keys(userProgressOnProblems)
-      .filter(
-        x =>
-          (userProgressOnProblems[x] === 'Reviewing' ||
-            userProgressOnProblems[x] === 'Solving' ||
-            userProgressOnProblems[x] === 'Skipped' ||
-            (showIgnored && userProgressOnProblems[x] === 'Ignored')) &&
-          problemIDMap.hasOwnProperty(x)
-      )
-      .map(x => ({
-        label: problemIDMap[x].label,
-        url: problemIDMap[x].modules[0].url,
-        status: userProgressOnProblems[x] as
-          | 'Reviewing'
-          | 'Solving'
-          | 'Skipped'
-          | 'Ignored',
-      }));
-  }, [userProgressOnProblems, showIgnored]);
-
-  const lastViewedSection =
-    moduleInfoById[lastViewedModuleID]?.section || 'foundations';
-  const moduleProgressIDs = Object.keys(moduleInfoById).filter(
-    x => moduleInfoById[x].section === lastViewedSection
-  );
-  const allModulesProgressInfo = useModulesProgressInfo(moduleProgressIDs);
-
-  const problemStatisticsIDs = React.useMemo(() => {
-    return Object.keys(problemIDMap).filter(problemID =>
-      problemIDMap[problemID].modules.some(
-        (module: { url: string; moduleId: string }) =>
-          moduleInfoById[module.moduleId]?.section === lastViewedSection
-      )
-    );
-  }, [problemIDMap, lastViewedSection, moduleInfoById]);
-  const allProblemsProgressInfo = useProblemsProgressInfo(problemStatisticsIDs);
-
-  const [finishedRendering, setFinishedRendering] = React.useState(false);
-  React.useEffect(() => {
-    setFinishedRendering(true);
-  }, []);
-
-  const renderStatsTile = (
-    title: string,
-    total: number,
-    counts: {
-      completed: number;
-      inProgress: number;
-      skipped: number;
-      notStarted: number;
-    }
-  ) => {
-    const percentComplete =
-      total === 0 ? 0 : Math.round((counts.completed / total) * 100);
-    const segment = (value: number) =>
-      total === 0 ? 0 : (value / total) * 100;
-
-    return (
-      <Card>
-        <div className="px-4 py-5 sm:p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h3
-                className="text-lg leading-6 font-medium"
-                style={{ color: VANILLA }}
-              >
-                {title}
-              </h3>
-              <p className="mt-1 text-sm" style={{ color: TEXT_SECONDARY }}>
-                {total} total
-              </p>
-            </div>
-            <div
-              className="rounded-lg px-4 py-3 text-center"
-              style={{ background: 'rgba(244, 237, 234, 0.10)' }}
-            >
-              <div
-                className="text-2xl font-semibold"
-                style={{ color: VANILLA }}
-              >
-                {percentComplete}%
-              </div>
-              <div
-                className="text-xs font-medium uppercase"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                Complete
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-3">
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#70428A' }}
-                />
-                Completed
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.completed}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#E085FF' }}
-                />
-                In progress
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.inProgress}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: '#F0C2FF' }}
-                />
-                Skipped
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.skipped}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <span
-                className="flex items-center gap-2"
-                style={{ color: TEXT_SECONDARY }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: 'rgba(210, 212, 200, 0.6)' }}
-                />
-                Not started
-              </span>
-              <span className="font-medium" style={{ color: VANILLA }}>
-                {counts.notStarted}
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-5">
-            <div
-              className="flex h-2 overflow-hidden rounded-full"
-              style={{ background: 'rgba(244, 237, 234, 0.16)' }}
-            >
-              <div
-                style={{
-                  width: `${segment(counts.completed)}%`,
-                  background: '#70428A',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.inProgress)}%`,
-                  background: '#E085FF',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.skipped)}%`,
-                  background: '#F0C2FF',
-                }}
-                className="h-2"
-              />
-              <div
-                style={{
-                  width: `${segment(counts.notStarted)}%`,
-                  background: 'rgba(210, 212, 200, 0.6)',
-                }}
-                className="h-2"
-              />
-            </div>
-          </div>
-        </div>
-      </Card>
-    );
+type DashboardData = {
+  modules: {
+    nodes: {
+      frontmatter: { id: string; title: string };
+      fields: { division: string | null } | null;
+    }[];
   };
+  problemLists: {
+    nodes: {
+      moduleId: string;
+      problemLists: {
+        problems: { uniqueId: string; name: string; source: string }[];
+      }[];
+    }[];
+  };
+};
+
+type DbModule = {
+  id: string;
+  title: string;
+  chapter: string;
+  /** "1.5", numbered as the track page numbers them */
+  num: string;
+  url: string;
+  problemIds: string[];
+};
+
+type ProblemRef = { uniqueId: string; name: string; source: string };
+
+const plural = (n: number, w: string) => n + ' ' + w + (n === 1 ? '' : 's');
+const pctOf = (n: number, of: number) => (of ? Math.round((100 * n) / of) : 0);
+
+const MODULE_STATUS_LABEL: Record<string, string> = {
+  'Not Started': 'Not started',
+  Reading: 'Reading',
+  Practicing: 'Practicing',
+  Complete: 'Complete',
+  Skipped: 'Skipped',
+  Ignored: 'Ignored',
+};
+const PILL: Record<string, string> = {
+  Reading: 'read',
+  Practicing: 'prac',
+  Solving: 'solv',
+  Reviewing: 'rev',
+};
+const SOLVED = new Set(['Solved', 'Reviewing']);
+/** how many open items show before "Show all" */
+const ACTIVE_SHOWN = 8;
+
+/**
+ * The curriculum and problem lists, shaped for the dashboard. Tracks are built
+ * with the track page's buildTrack, so module numbers and totals match it.
+ */
+function useCurriculum(data: DashboardData) {
+  return React.useMemo(() => {
+    const titles: Record<string, string> = {};
+    const moduleTrack: Record<string, SectionID> = {};
+    const sources = {} as Record<SectionID, Record<string, ModuleSource>>;
+    SECTIONS.forEach(sec => (sources[sec] = {}));
+    data.modules.nodes.forEach(n => {
+      const id = n.frontmatter?.id;
+      const div = n.fields?.division as SectionID | undefined;
+      if (!id || !div || !sources[div]) return;
+      titles[id] = n.frontmatter.title;
+      moduleTrack[id] = div;
+      sources[div][id] = { id, title: n.frontmatter.title, description: null };
+    });
+
+    const moduleProblems: Record<string, string[]> = {};
+    const problems: Record<string, ProblemRef> = {};
+    data.problemLists.nodes.forEach(node => {
+      const ids = new Set<string>();
+      node.problemLists.forEach(l =>
+        l.problems.forEach(p => {
+          if (!p?.uniqueId) return;
+          ids.add(p.uniqueId);
+          if (!problems[p.uniqueId]) problems[p.uniqueId] = p;
+        })
+      );
+      moduleProblems[node.moduleId] = Array.from(ids);
+    });
+
+    const trackModules = {} as Record<SectionID, DbModule[]>;
+    const trackProblems = {} as Record<SectionID, Set<string>>;
+    const problemTracks: Record<string, Set<SectionID>> = {};
+    SECTIONS.forEach(sec => {
+      const mods: DbModule[] = [];
+      const probs = new Set<string>();
+      buildTrack(sec, sources[sec], moduleProblems).forEach(ch =>
+        ch.modules.forEach(m => {
+          mods.push({
+            id: m.id,
+            title: m.title,
+            chapter: ch.name,
+            num: m.num,
+            url: m.url,
+            problemIds: m.problemIds,
+          });
+          m.problemIds.forEach(id => {
+            probs.add(id);
+            if (!problemTracks[id]) problemTracks[id] = new Set();
+            problemTracks[id].add(sec);
+          });
+        })
+      );
+      trackModules[sec] = mods;
+      trackProblems[sec] = probs;
+    });
+
+    return {
+      titles,
+      moduleTrack,
+      trackModules,
+      problems,
+      problemTracks,
+      trackProblems,
+    };
+  }, [data]);
+}
+
+/** First name for the greeting. */
+function firstName(name: string | null | undefined, email?: string | null) {
+  const n = (name || '').trim();
+  if (n && !n.includes('@')) return n.split(/\s+/)[0];
+  const local = (email || n || '').split('@')[0];
+  return local ? local.charAt(0).toUpperCase() + local.slice(1) : '';
+}
+
+/**
+ * User data arrives from localStorage a moment after the first render (and
+ * from the server after that when signed in). Every page load counts a page
+ * view, so a non-zero count means the saved data is in.
+ */
+function useDataReady(numPageviews: number): boolean {
+  const loaded = useIsUserDataLoaded();
+  const [mounted, setMounted] = React.useState(false);
+  const [waited, setWaited] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+    const t = setTimeout(() => setWaited(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
+  const now = mounted && ((loaded && numPageviews > 0) || waited);
+  // once shown, stay shown: signing in reloads the data from the server, and
+  // the page updates in place rather than blanking while it does
+  const [shown, setShown] = React.useState(false);
+  React.useEffect(() => {
+    if (now) setShown(true);
+  }, [now]);
+  return shown || now;
+}
+
+export default function DashboardPage(props: PageProps): JSX.Element {
+  const cur = useCurriculum(props.data as DashboardData);
+  const userData = useUserData();
+  const user = useCurrentUser();
+  const { signIn } = useSignIn();
+  const lastViewed = useLastViewedModule();
+  const ready = useDataReady(userData.numPageviews);
+
+  const modProgress = userData.userProgressOnModules || {};
+  const probProgress = userData.userProgressOnProblems || {};
+
+  // when each module / problem was last given a status, for ordering open items
+  const touched = React.useMemo(() => {
+    const m: Record<string, number> = {};
+    const p: Record<string, number> = {};
+    (userData.userProgressOnModulesActivity || []).forEach(a => {
+      if (a && a.timestamp > (m[a.moduleID] || 0)) m[a.moduleID] = a.timestamp;
+    });
+    (userData.userProgressOnProblemsActivity || []).forEach(a => {
+      if (a && a.timestamp > (p[a.problemID] || 0)) p[a.problemID] = a.timestamp;
+    });
+    return { m, p };
+  }, [
+    userData.userProgressOnModulesActivity,
+    userData.userProgressOnProblemsActivity,
+  ]);
+
+  const trackHasProgress = (sec: SectionID) =>
+    cur.trackModules[sec].some(
+      m => modProgress[m.id] && modProgress[m.id] !== 'Not Started'
+    ) ||
+    Object.keys(probProgress).some(
+      id =>
+        probProgress[id] !== 'Not Attempted' &&
+        cur.problemTracks[id]?.has(sec)
+    );
+
+  const lastTrack: SectionID | undefined =
+    lastViewed ? cur.moduleTrack[lastViewed] : undefined;
+  const [picked, setPicked] = React.useState<SectionID | null>(null);
+  const track: SectionID =
+    picked ||
+    lastTrack ||
+    SECTIONS.find(s => trackHasProgress(s)) ||
+    'foundations';
+  const trackLabel = UG_TRACKS.find(t => t.id === track)?.label || track;
+  const mods = cur.trackModules[track];
+
+  // ---------- continue card ----------
+  const cont = (() => {
+    const done = (id: string) =>
+      ['Complete', 'Skipped', 'Ignored'].includes(modProgress[id]);
+    let m: DbModule | undefined;
+    let k: string;
+    let go: string;
+    const last = lastTrack === track ? mods.find(x => x.id === lastViewed) : undefined;
+    if (last) {
+      m = last;
+      k = 'Continue where you left off';
+      go = 'Continue';
+    } else {
+      const open = mods.find(x =>
+        ['Reading', 'Practicing'].includes(modProgress[x.id])
+      );
+      const next = open || mods.find(x => !done(x.id));
+      if (!next) {
+        m = mods[mods.length - 1];
+        k = 'You finished this track';
+        go = 'Review';
+      } else if (trackHasProgress(track)) {
+        m = next;
+        k = 'Up next in this track';
+        go = 'Continue';
+      } else {
+        m = mods[0];
+        k = 'Start this track';
+        go = 'Start';
+      }
+    }
+    if (!m) return null;
+    const status = modProgress[m.id] || 'Not Started';
+    const probs = m.problemIds;
+    const solved = probs.filter(id => SOLVED.has(probProgress[id])).length;
+    const meta =
+      status === 'Not Started' && solved === 0
+        ? probs.length
+          ? plural(probs.length, 'practice problem')
+          : 'Not started'
+        : MODULE_STATUS_LABEL[status] +
+          (probs.length
+            ? ' · ' + solved + ' of ' + probs.length + ' problems solved'
+            : '');
+    const pct = probs.length
+      ? pctOf(solved, probs.length)
+      : status === 'Complete'
+        ? 100
+        : 0;
+    return {
+      k,
+      go,
+      path: m.chapter + ' · Module ' + m.num,
+      name: m.title,
+      pct: pct + '%',
+      meta,
+      href: m.url,
+    };
+  })();
+
+  // ---------- active items ----------
+  const active = React.useMemo(() => {
+    const ms = Object.keys(modProgress)
+      .filter(
+        id =>
+          (modProgress[id] === 'Reading' || modProgress[id] === 'Practicing') &&
+          cur.moduleTrack[id] === track
+      )
+      .sort((a, b) => (touched.m[b] || 0) - (touched.m[a] || 0))
+      .map(id => ({
+        key: 'm:' + id,
+        kind: 'Module',
+        name: cur.titles[id],
+        st: modProgress[id],
+        href: `/${track}/${id}`,
+      }));
+    const ps = Object.keys(probProgress)
+      .filter(
+        id =>
+          (probProgress[id] === 'Solving' || probProgress[id] === 'Reviewing') &&
+          cur.problems[id] &&
+          cur.problemTracks[id]?.has(track)
+      )
+      .sort((a, b) => (touched.p[b] || 0) - (touched.p[a] || 0))
+      .map(id => ({
+        key: 'p:' + id,
+        kind: 'Problem',
+        name: cur.problems[id].name,
+        st: probProgress[id],
+        href: getProblemURL(cur.problems[id]),
+      }));
+    return [...ms, ...ps];
+  }, [modProgress, probProgress, track, cur, touched]);
+  const [showAll, setShowAll] = React.useState(false);
+  const shownActive = showAll ? active : active.slice(0, ACTIVE_SHOWN);
+
+  // ---------- statistics ----------
+  const stat = (
+    title: string,
+    ids: string[],
+    status: Record<string, string>,
+    c: string[],
+    i: string[],
+    ignored: string
+  ) => {
+    // what you marked Ignored doesn't count toward the track
+    const counted = ids.filter(id => status[id] !== ignored);
+    const n = (vals: string[]) =>
+      counted.filter(id => vals.includes(status[id])).length;
+    const done = n(c);
+    const prog = n(i);
+    const skip = n(['Skipped']);
+    const rows = [
+      { name: 'Completed', n: done, cls: 'c' },
+      { name: 'In progress', n: prog, cls: 'i' },
+      { name: 'Skipped', n: skip, cls: 's' },
+      { name: 'Not started', n: counted.length - done - prog - skip, cls: 'n' },
+    ];
+    return {
+      title,
+      total: counted.length,
+      pct: pctOf(done, counted.length) + '%',
+      rows,
+      aria: rows.map(r => r.n + ' ' + r.name.toLowerCase()).join(', '),
+    };
+  };
+  const stats = [
+    stat(
+      'Modules',
+      mods.map(m => m.id),
+      modProgress,
+      ['Complete'],
+      ['Reading', 'Practicing'],
+      'Ignored'
+    ),
+    stat(
+      'Problems',
+      Array.from(cur.trackProblems[track]),
+      probProgress,
+      ['Solved', 'Reviewing'],
+      ['Solving'],
+      'Ignored'
+    ),
+  ];
+
+  // ---------- header ----------
+  const streak = Math.max(1, userData.consecutiveVisits || 1);
+  const anyProgress =
+    Object.values(modProgress).some(s => s && s !== 'Not Started') ||
+    Object.values(probProgress).some(s => s && s !== 'Not Attempted');
+  const returning = anyProgress || !!lastTrack || userData.numPageviews > 3;
+  const first = user ? firstName(user.displayName, user.email) : '';
+  const h1 = user
+    ? (returning ? 'Welcome back' : 'Welcome') + (first ? ', ' + first : '')
+    : returning
+      ? 'Welcome back'
+      : 'Your dashboard';
+  const lede =
+    streak > 1
+      ? `You're on a ${streak}-day streak. ` +
+        (lastTrack ? "Here's where you left off." : "Here's how you're doing.")
+      : lastTrack || anyProgress
+        ? "Here's where you left off."
+        : 'Start a track and your progress, streak and activity show up here.';
+
+  const moduleTitle = React.useCallback(
+    (id: string) => cur.titles[id] || null,
+    [cur]
+  );
+  const problemName = React.useCallback(
+    (id: string) => cur.problems[id]?.name || null,
+    [cur]
+  );
 
   return (
-    <Layout>
+    <Layout view="dashboard">
       <SEO title="Dashboard" image={null} pathname={props.path} noIndex />
-
-      <div
-        data-page-tone="dark"
-        className="ui-page min-h-screen px-0"
-        style={
-          {
-            background: PAGE_BG,
-            color: VANILLA,
-          } as React.CSSProperties
-        }
-      >
-        <TopNavigationBar linkLogoToIndex={true} redirectToDashboard={false} />
-
-        {finishedRendering && (
-          <main className="pb-12">
-            <div className="mx-auto mb-4 max-w-screen-2xl">
-              <div className="pt-4 pb-6 lg:px-4">
-                <div className="mb-4 flex flex-wrap">
-                  <div className="w-full text-center">
-                    {currentUser ? (
-                      <>
-                        Signed in as <i>{currentUser.email}</i>.
-                      </>
-                    ) : (
-                      <div
-                        className="w-full rounded-2xl px-5 py-5 text-center"
-                        style={{
-                          background: 'rgba(242, 216, 244, 0.9)',
-                          color: '#120F24',
-                        }}
-                      >
-                        <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6 lg:justify-between">
-                          <div className="max-w-2xl text-center lg:text-left">
-                            <div className="text-xl font-semibold sm:text-2xl">
-                              You&apos;re not signed in!
-                            </div>
-                            <div
-                              className="mt-1 text-sm"
-                              style={{ color: 'rgba(18, 15, 36, 0.8)' }}
-                            >
-                              Track progress, unlock problem sets, and sync
-                              across devices.
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => signIn()}
-                              className="purple-motion-effect mt-4 inline-flex items-center justify-center rounded-full px-6 py-2 font-mono text-sm leading-tight font-bold"
-                              style={
-                                {
-                                  border: '1px solid rgba(240, 194, 255, 0.34)',
-                                  background: '#6D3B9F',
-                                  '--pme-color': '#F4EDEA',
-                                  '--pme-hover-color': '#201C36',
-                                  '--pme-wipe-bg': '#F0C2FF',
-                                } as React.CSSProperties
-                              }
-                            >
-                              Save Progress
-                            </button>
-                          </div>
-                          <img
-                            src="/images/cryingmascot.png"
-                            alt="Crying mascot"
-                            className="h-24 w-auto shrink-0 object-contain sm:h-28"
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+      <TopNavigationBar current="dashboard" />
+      <main className="db">
+        <div className="wrap">
+          <header className="db-head">
+            <div className="db-head-t">
+              <p className="crumbs">
+                <Link to="/">Home</Link>
+                <span className="sep">/</span>
+                <span className="here">Dashboard</span>
+              </p>
+              <h1 className="db-h1">{ready ? h1 : 'Dashboard'}</h1>
+              <p className="db-lede" style={ready ? undefined : { visibility: 'hidden' }}>
+                {ready ? lede : 'Loading your progress.'}
+              </p>
             </div>
-            <div className="mx-auto mb-8 max-w-screen-2xl px-4 sm:px-6 lg:px-4">
-              <div className="grid gap-8 lg:grid-cols-3">
-                <section className="lg:col-span-2">
-                  <h1
-                    className="text-3xl leading-tight font-bold"
-                    style={{ color: VANILLA }}
-                  >
-                    Activity
-                  </h1>
-                  <Activity />
-                </section>
-                <section className="lg:col-span-1">
-                  <h2
-                    className="text-2xl leading-tight font-bold"
-                    style={{ color: VANILLA }}
-                  >
-                    Active items
-                  </h2>
-                  <div className="mt-4 space-y-6">
-                    {activeProblems.length > 0 && (
-                      <ActiveItems type="problems" items={activeProblems} />
-                    )}
-                    {activeModules.length > 0 && (
-                      <ActiveItems type="modules" items={activeModules} />
-                    )}
-                    {activeProblems.length === 0 &&
-                      activeModules.length === 0 && (
-                        <Card>
-                          <div
-                            className="px-4 py-5 text-sm sm:p-6"
-                            style={{ color: TEXT_SECONDARY }}
-                          >
-                            No active problems or modules yet.
-                          </div>
-                        </Card>
-                      )}
+            <label className="sel db-tsel">
+              <span className="sel-k">Showing progress for</span>
+              <select
+                value={track}
+                onChange={e => {
+                  setPicked(e.target.value as SectionID);
+                  setShowAll(false);
+                }}
+              >
+                {UG_TRACKS.map(t => (
+                  <option key={t.id} value={t.id}>
+                    {t.label}
+                  </option>
+                ))}
+              </select>
+              <IcoChev />
+            </label>
+          </header>
+
+          {!ready ? (
+            <div className="db-wait" aria-busy="true" />
+          ) : (
+            <>
+              {cont ? (
+                <Link className="cont" to={cont.href}>
+                  <div className="cont-l">
+                    <p className="cont-k">{cont.k}</p>
+                    <p className="cont-path">{cont.path}</p>
+                    <h2 className="cont-t">{cont.name}</h2>
+                    <div className="bar cont-bar">
+                      <span style={{ width: cont.pct }} />
+                    </div>
+                    <p className="cont-meta">{cont.meta}</p>
                   </div>
-                </section>
-              </div>
-              <div className="mt-6 flex">
-                <Link
-                  className="purple-motion-effect inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-mono text-base leading-tight font-bold"
-                  style={
-                    {
-                      border: '1px solid rgba(240, 194, 255, 0.34)',
-                      background: '#6D3B9F',
-                      '--pme-color': '#F4EDEA',
-                      '--pme-hover-color': '#201C36',
-                      '--pme-wipe-bg': '#F0C2FF',
-                    } as React.CSSProperties
-                  }
-                  to={
-                    lastViewedModuleURL ||
-                    '/foundations/fractions_percentages_proportions_p1'
-                  }
-                >
-                  {lastViewedModuleURL
-                    ? `Continue: ${moduleInfoById[lastViewedModuleID]?.title}`
-                    : 'Start: Fractions, Proportions and Percentage Conversions!'}
+                  <span className="cont-go">
+                    {cont.go}
+                    <IcoArrow />
+                  </span>
                 </Link>
-              </div>
-            </div>
-            <header>
-              <div className="mx-auto max-w-screen-2xl px-8">
-                <h1
-                  className="text-3xl leading-tight font-bold"
-                  style={{ color: VANILLA }}
-                >
-                  Statistics
-                </h1>
-              </div>
-            </header>
-            <div className="mx-auto max-w-screen-2xl">
-              <div className="space-y-8 px-8 py-4 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:px-8">
-                <div className="space-y-8">
-                  {renderStatsTile(
-                    `Modules Progress - ${SECTION_LABELS[lastViewedSection]}`,
-                    moduleProgressIDs.length,
-                    allModulesProgressInfo
+              ) : null}
+
+              {!user ? (
+                <section className="db-card db-sign" aria-labelledby="sg-h">
+                  <img
+                    className="db-sign-pose"
+                    src="/ug/img/panda-wave.webp"
+                    alt=""
+                    width={450}
+                    height={464}
+                  />
+                  <div className="db-sign-t">
+                    <h2 className="db-h2" id="sg-h">
+                      Your progress is only saved on this device
+                    </h2>
+                    <p className="db-sub">
+                      Sign in to keep it safe and pick up where you left off
+                      on any device.
+                    </p>
+                  </div>
+                  <Btn kind="p" onClick={() => signIn()} arrow>
+                    Sign in
+                  </Btn>
+                </section>
+              ) : null}
+
+              <div className="db-row">
+                <ActivityCard
+                  data={userData}
+                  problemName={problemName}
+                  moduleTitle={moduleTitle}
+                />
+
+                <section className="db-card db-items" aria-labelledby="ai-h">
+                  <div className="db-card-h">
+                    <h2 className="db-h2" id="ai-h">
+                      Active items
+                    </h2>
+                    <p className="db-sub">
+                      {active.length ? active.length + ' open' : 'Nothing open'}
+                    </p>
+                  </div>
+                  {active.length ? (
+                    <ul className="ai-l">
+                      {shownActive.map(a => (
+                        <li key={a.key}>
+                          <Link to={a.href}>
+                            <span className="ai-k">{a.kind}</span>
+                            <span className="ai-t">{a.name}</span>
+                          </Link>
+                          <span className={'pill ' + PILL[a.st]}>{a.st}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="ai-empty">
+                      No active problems or modules yet. Anything you mark as
+                      reading, solving or reviewing shows up here.
+                    </p>
                   )}
-                </div>
-                <div className="space-y-8">
-                  {renderStatsTile(
-                    `Problems Progress - ${SECTION_LABELS[lastViewedSection]}`,
-                    Object.keys(problemStatisticsIDs).length,
-                    allProblemsProgressInfo
-                  )}
-                </div>
-                <DailyStreak streak={consecutiveVisits} />
+                  {active.length > ACTIVE_SHOWN ? (
+                    <button
+                      className="ai-more"
+                      type="button"
+                      aria-expanded={showAll}
+                      onClick={() => setShowAll(s => !s)}
+                    >
+                      {showAll
+                        ? 'Show fewer'
+                        : 'Show all ' + active.length}
+                    </button>
+                  ) : null}
+                </section>
               </div>
-            </div>
-          </main>
-        )}
-      </div>
+
+              <h2 className="db-sec-h">
+                Statistics<span>{trackLabel}</span>
+              </h2>
+              <div className="db-stats">
+                {stats.map(s => (
+                  <section className="db-card stat" key={s.title}>
+                    <div className="stat-h">
+                      <div>
+                        <h3 className="stat-t">{s.title}</h3>
+                        <p className="db-sub">{s.total} total</p>
+                      </div>
+                      <p className="stat-pct">
+                        <b>{s.pct}</b>
+                        <span>complete</span>
+                      </p>
+                    </div>
+                    <ul className="stat-l">
+                      {s.rows.map(r => (
+                        <li key={r.cls}>
+                          <span className={'lg ' + r.cls} aria-hidden="true" />
+                          <span className="stat-n">{r.name}</span>
+                          <b>{r.n}</b>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="seg" role="img" aria-label={s.aria}>
+                      {s.rows
+                        .filter(r => r.n > 0)
+                        .map(r => (
+                          <span
+                            key={r.cls}
+                            className={r.cls}
+                            style={{ flexGrow: r.n }}
+                          />
+                        ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+
+              <StreakRow
+                streak={streak}
+                lastVisitDate={userData.lastVisitDate}
+              />
+            </>
+          )}
+        </div>
+      </main>
     </Layout>
   );
 }
@@ -473,28 +586,24 @@ export const pageQuery = graphql`
         fields: { division: { ne: null } }
       }
     ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            id
-          }
-          fields {
-            division
-          }
+      nodes {
+        frontmatter {
+          id
+          title
+        }
+        fields {
+          division
         }
       }
     }
-    problems: allProblemInfo {
-      edges {
-        node {
-          uniqueId
-          name
-          source
-          module {
-            frontmatter {
-              id
-            }
+    problemLists: allModuleProblemLists {
+      nodes {
+        moduleId
+        problemLists {
+          problems {
+            uniqueId
+            name
+            source
           }
         }
       }

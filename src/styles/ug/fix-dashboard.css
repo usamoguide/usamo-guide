@@ -1,0 +1,41 @@
+/* Hand-written fixes for the dashboard view (not generated). Scope rules with :where(.ugv-dashboard). Loaded into the ug layer after the generated files. */
+
+/* Space held while the saved progress loads, so the footer doesn't jump. */
+:where(.ugv-dashboard) .db-wait{min-height:1200px}
+
+/* Preflight makes images block and fluid; the streak pose is sized by the export. */
+:where(.ugv-dashboard) .streak-pose{max-width:none}
+
+/* The export's .sel has no Tailwind forms reset to fight; keep its own select look. */
+:where(.ugv-dashboard) .sel select{background-image:none}
+:where(.ugv-dashboard) .sel select:focus{outline:none}
+
+/* Signed out: a card asking to sign in, since progress lives only on this device. */
+:where(.ugv-dashboard) .db-sign{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:20px;padding:18px 24px}
+:where(.ugv-dashboard) .db-sign-pose{flex:none;width:64px;height:auto;margin:-4px 0}
+:where(.ugv-dashboard) .db-sign-t{flex:1 1 320px;min-width:0}
+:where(.ugv-dashboard) .db-sign-t .db-sub{margin-top:4px}
+:where(.ugv-dashboard) .db-sign .btn{flex:none}
+
+/* More open items than fit: a quiet toggle under the list. */
+:where(.ugv-dashboard) .ai-more{display:inline-flex;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--vt);cursor:pointer}
+:where(.ugv-dashboard) .ai-more:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Several earlier insights fold under one summary. */
+:where(.ugv-dashboard) .ins-old p b{font-weight:600;color:var(--ink)}
+:where(.ugv-dashboard) .ins-old summary{list-style:revert}
+
+/* Locked insight with every insight already read: link in the card's ink. */
+:where(.ugv-dashboard) .ins.lock .db-sub a{color:var(--vt);font-weight:600}
+
+/* Day one of a streak: no insight unlocked yet, so the streak card takes its place. */
+:where(.ugv-dashboard) .db-row3.no-ins{grid-template-columns:minmax(0,2.25fr) minmax(0,1fr)}
+@media (max-width:1100px){
+  :where(.ugv-dashboard) .db-row3.no-ins{grid-template-columns:minmax(0,1fr)}
+}
+
+@media (max-width:600px){
+  :where(.ugv-dashboard) .db-sign{padding:18px 18px 20px}
+  :where(.ugv-dashboard) .db-sign-pose{display:none}
+  :where(.ugv-dashboard) .db-sign .btn{width:100%}
+}

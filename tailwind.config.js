@@ -6,9 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        brand: ['Inter', ...defaultTheme.fontFamily.sans],
-        serif: ['Inter', ...defaultTheme.fontFamily.sans],
+        // the redesign's type (fonts load in gatsby-ssr.tsx)
+        sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
+        brand: ['Bricolage Grotesque', 'Instrument Sans', ...defaultTheme.fontFamily.sans],
+        serif: ['Instrument Serif', ...defaultTheme.fontFamily.serif],
         mono: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {

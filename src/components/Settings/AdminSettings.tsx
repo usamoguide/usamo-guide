@@ -30,9 +30,12 @@ export default function AdminSettings() {
 
     setSearching(true);
     try {
-      const { data, error } = await supabase.functions.invoke('admin-get-user', {
-        body: { email },
-      });
+      const { data, error } = await supabase.functions.invoke(
+        'admin-get-user',
+        {
+          body: { email },
+        }
+      );
       if (error) throw error;
       if (!data || data.users.length === 0) {
         toast.error('The user with email ' + email + ' could not be found.');
@@ -91,39 +94,34 @@ export default function AdminSettings() {
   return (
     <div>
       <div className="space-y-1">
-        <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
-          User Search
-        </h3>
+        <h3 className="ap-set-h2">User Search</h3>
       </div>
       <div className="h-4" />
       <div>
         <form className="space-y-6" onSubmit={handleSearch}>
           <div>
-            <label
-              htmlFor="search_email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-            >
+            <label htmlFor="search_email" className="ap-label">
               User Email
             </label>
-            <div className="mt-1 flex rounded-md">
-              <div className="relative flex grow items-stretch focus-within:z-10">
+            <div className="ap-inrow">
+              <div className="ap-grow">
                 <input
                   type="email"
                   name="search_email"
                   id="search_email"
-                  className="input rounded-r-none"
+                  className="ap-in"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   required
                 />
               </div>
               <button
-                className="btn relative -ml-px space-x-2 rounded-l-none focus:border-blue-500 focus:ring-1 focus:ring-offset-0 dark:focus:border-blue-500"
+                className="tbtn ap-tbtn"
                 type="submit"
                 disabled={searching}
               >
                 <svg
-                  className="h-5 w-5 text-gray-400"
+                  className="ico"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -150,7 +148,7 @@ export default function AdminSettings() {
           <div>
             <div className="mb-4 flex items-center">
               <div className="mr-4 shrink-0">
-                <img src={userData.photoURL} className="h-16 w-16 rounded-md" />
+                <img src={userData.photoURL} className="ap-avatar" />
               </div>
               <div>
                 <h4 className="text-lg font-bold">{userData.displayName}</h4>
@@ -158,44 +156,34 @@ export default function AdminSettings() {
               </div>
             </div>
             <div className="mb-3">
-              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Account Disabled?
-              </div>
-              <p className="mt-0.5 text-sm text-gray-900 dark:text-gray-100">
-                {userData.disabled ? 'Yes' : 'No'}
-              </p>
+              <div className="ap-label">Account Disabled?</div>
+              <p className="ap-val">{userData.disabled ? 'Yes' : 'No'}</p>
             </div>
             <div className="mb-3">
-              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                User ID
-              </div>
-              <p className="mt-0.5 text-sm text-gray-900 dark:text-gray-100">
-                {userData.uid}
-              </p>
+              <div className="ap-label">User ID</div>
+              <p className="ap-val">{userData.uid}</p>
             </div>
             <div className="mb-3">
-              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              <div className="ap-label">
                 This information has also been logged to the console.
               </div>
             </div>
           </div>
           <div className="h-4" />
-          <h4 className="font-medium text-gray-900 dark:text-gray-100">
-            User Permissions
-          </h4>
+          <h4 className="ap-set-h2">User Permissions</h4>
           <form onSubmit={handleUpdateUserPermissions}>
             <div>
-              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+              <ul className="ap-perms">
                 {Object.keys(UserPermissionInformation).map(key => (
                   <li
                     className="flex items-center justify-between py-4"
                     key={key}
                   >
                     <div className="flex flex-col">
-                      <p className="text-sm font-medium text-gray-900 dark:text-gray-200">
+                      <p className="ap-perm-t">
                         {UserPermissionInformation[key].label}
                       </p>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                      <span className="ap-perm-d">
                         {UserPermissionInformation[key].description}
                       </span>
                     </div>
@@ -211,7 +199,11 @@ export default function AdminSettings() {
             <div className="h-1" />
 
             <div className="flex">
-              <button type="submit" className="btn" disabled={isUpdating}>
+              <button
+                type="submit"
+                className="tbtn ap-tbtn"
+                disabled={isUpdating}
+              >
                 {isUpdating ? 'Updating...' : 'Update User Permissions'}
               </button>
             </div>

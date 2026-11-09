@@ -1,0 +1,26 @@
+/* Hand-written fixes for the problems view (not generated). Scope rules with :where(.ugv-problems). Loaded into the ug layer after the generated files. */
+
+/* The design's buttons are links; here "Random problem" and "Load more" are
+   <button>s, and app.css resets a button.btn's font to inherit. Put the .btn type back. */
+:where(.ugv-problems) button.btn{font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1}
+:where(.ugv-problems) button.btn-sm{font-size:15px}
+
+/* the source label links to the original problem */
+:where(.ugv-problems) a.pc-src{text-decoration:none}
+:where(.ugv-problems) a.pc-src:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* "Show all 76" under a topic group with many tags (the real index has hundreds) */
+:where(.ugv-problems) .fl-more{display:block;margin:2px 0 4px;padding:4px 8px 4px 36px;border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:600;color:var(--vt);text-align:left;cursor:pointer}
+:where(.ugv-problems) .fl-more:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Algolia attribution next to "Showing 24 of 3,840" */
+:where(.ugv-problems) .pb-algolia a{color:inherit;text-decoration:none}
+:where(.ugv-problems) .pb-algolia a:hover{color:var(--vt);text-decoration:underline;text-underline-offset:3px}
+
+/* module names in the select's track groups */
+:where(.ugv-problems) .sel select optgroup{background:var(--paper);color:var(--ink-2);font-weight:600}
+
+/* @tailwindcss/forms rings inputs and selects on :focus; the design shows the
+   ring on .pb-search (focus-within) and on .sel select only for keyboard focus */
+:where(.ugv-problems) .pb-search input:focus{box-shadow:none}
+:where(.ugv-problems) .sel select:focus:not(:focus-visible){box-shadow:none}

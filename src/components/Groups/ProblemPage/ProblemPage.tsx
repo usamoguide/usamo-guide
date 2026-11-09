@@ -45,7 +45,7 @@ export default function ProblemPage(props) {
         image={null}
         pathname={props.path}
       />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <div className="relative overflow-hidden bg-orange-50 transition-colors duration-500 dark:bg-[#0b0a12]">
         <div
           className="pointer-events-none absolute inset-0 bg-center bg-repeat opacity-20"
@@ -67,9 +67,9 @@ export default function ProblemPage(props) {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 xl:grid xl:max-w-(--breakpoint-xl) xl:grid-cols-3">
             <div className="xl:col-span-2 xl:pr-8">
               <div className="rounded-2xl bg-white/90 p-6 dark:bg-slate-900/75">
-                <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
+                <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-[var(--border)]">
                   <div>
-                    <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl dark:text-white">
+                    <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl dark:text-[var(--text-primary)]">
                       Problem: {problem.name}
                     </h1>
                     <p className="mt-2 text-base font-medium text-orange-700 dark:text-orange-300">
@@ -112,7 +112,7 @@ export default function ProblemPage(props) {
                       <>
                         <div className="h-10" />
                         <div>
-                          <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
+                          <h2 className="text-xl font-medium text-gray-900 dark:text-[var(--text-primary)]">
                             Solution
                           </h2>
                         </div>
@@ -136,7 +136,7 @@ export default function ProblemPage(props) {
                           ((problem.solutionReleaseMode == 'due-date' &&
                             post.dueTimestamp) ||
                             problem.solutionReleaseMode == 'custom') && (
-                            <p className="text-gray-600 italic dark:text-gray-400">
+                            <p className="text-gray-600 italic dark:text-[var(--text-secondary)]">
                               The problem solution will be released on{' '}
                               {problem &&
                                 dayjs(

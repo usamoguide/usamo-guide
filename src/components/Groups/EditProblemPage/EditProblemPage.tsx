@@ -124,7 +124,7 @@ export default function EditProblemPage(props: Props) {
   if (!problem) {
     return (
       <>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Loading...</p>
         </main>
@@ -139,7 +139,7 @@ export default function EditProblemPage(props: Props) {
         image={undefined}
         pathname={undefined}
       />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
         <Breadcrumbs
           className="mx-auto w-full max-w-4xl px-4 pt-3 pb-4 sm:px-6 lg:px-8"
@@ -148,30 +148,30 @@ export default function EditProblemPage(props: Props) {
         />
       </nav>
       <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
+        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-[var(--border)]">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-[var(--text-primary)]">
               Edit Problem: {problem.name}
             </h1>
           </div>
           <div className="mt-4 flex space-x-3 md:mt-0">
-            <Link to="../" replace className="btn">
+            <Link to="../" replace className="btn-legacy">
               <span>Back</span>
             </Link>
-            <button type="submit" onClick={handleSaveProblem} className="btn">
+            <button type="submit" onClick={handleSaveProblem} className="btn-legacy">
               Save
             </button>
           </div>
         </div>
         <div className="h-6" />
-        <div className="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="space-y-8 divide-y divide-gray-200 dark:divide-[var(--border)]">
           <div>
             <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <button
                   type="button"
                   onClick={() => setIsSearchOpen(true)}
-                  className="btn"
+                  className="btn-legacy"
                 >
                   Import Problem From USAMO Guide
                 </button>
@@ -184,7 +184,7 @@ export default function EditProblemPage(props: Props) {
                     />
                     This problem is linked to a USAMO Guide Problem (
                     <button
-                      className={'text-blue-700 hover:underline'}
+                      className={'text-[var(--accent)] hover:underline'}
                       onClick={() => editProblem({ guideProblemId: null })}
                     >
                       Unlink
@@ -192,8 +192,8 @@ export default function EditProblemPage(props: Props) {
                     )
                   </b>
                 ) : (
-                  <b className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-                    <XIcon className={'mr-1 inline h-4 w-4 text-gray-700'} />
+                  <b className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
+                    <XIcon className={'mr-1 inline h-4 w-4 text-gray-700 dark:text-[var(--text-primary)]'} />
                     This problem is not linked to a USAMO Guide Problem. To link
                     this problem to a USAMO Guide Problem, import a problem from
                     above.
@@ -203,7 +203,7 @@ export default function EditProblemPage(props: Props) {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="problem_name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Problem Name
                 </label>
@@ -220,7 +220,7 @@ export default function EditProblemPage(props: Props) {
               </div>
 
               <div className="sm:col-span-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                   Problem Content
                 </label>
                 <div className="mt-1">
@@ -232,7 +232,7 @@ export default function EditProblemPage(props: Props) {
               </div>
 
               <div className="sm:col-span-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                   Problem Solution
                 </label>
                 <div className="mt-2">
@@ -244,7 +244,7 @@ export default function EditProblemPage(props: Props) {
               </div>
               {problem.solution && (
                 <div className="sm:col-span-4">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                     Problem Solution Will Be Shown:
                   </label>
 
@@ -265,7 +265,7 @@ export default function EditProblemPage(props: Props) {
                       }
                     />
                     {problem.solutionReleaseMode == 'due-date' && (
-                      <p className="mt-2 text-sm text-gray-500">
+                      <p className="mt-2 text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                         If a due date is not set, the solution will not be
                         released.
                       </p>
@@ -309,7 +309,7 @@ export default function EditProblemPage(props: Props) {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="source"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Problem Source
                 </label>
@@ -328,7 +328,7 @@ export default function EditProblemPage(props: Props) {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="points"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Max Problem Points
                 </label>
@@ -347,7 +347,7 @@ export default function EditProblemPage(props: Props) {
                     disabled={!canEditPoints}
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                   {canEditPoints
                     ? "Warning: You won't be able to change point value after a user has submitted code."
                     : "You can't change this problem's maximum points anymore since a user has already submitted this problem."}
@@ -357,7 +357,7 @@ export default function EditProblemPage(props: Props) {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="difficulty"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Difficulty
                 </label>

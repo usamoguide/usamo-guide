@@ -9,19 +9,19 @@ export default function PostHeader({ post }: { post: PostData }) {
   const { updatePost } = usePostActions(activeGroup.groupData!.id);
 
   return (
-    <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-4 dark:border-gray-700">
+    <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-4 dark:border-[var(--border)]">
       <div>
-        <h1 className="text-2xl leading-tight font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl leading-tight font-bold text-gray-900 dark:text-[var(--text-primary)]">
           {post.name}
           {post.isPublished ? '' : ' (Unpublished)'}
         </h1>
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mt-2 text-sm text-gray-500 dark:text-[var(--text-secondary)]">
           {getPostTimestampString(post)}
         </p>
       </div>
       {activeGroup.showAdminView && (
         <div className="mt-4 flex space-x-3 md:mt-0">
-          <Link to="edit" className="btn">
+          <Link to="edit" className="btn-legacy">
             <svg
               className="mr-2 -ml-1 h-5 w-5 text-gray-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ export default function PostHeader({ post }: { post: PostData }) {
             onClick={() =>
               updatePost(post.id!, { isPublished: !post.isPublished })
             }
-            className="btn"
+            className="btn-legacy"
           >
             <span>{post.isPublished ? 'Unpublish' : 'Publish'}</span>
           </button>

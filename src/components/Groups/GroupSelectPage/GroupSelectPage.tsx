@@ -1,5 +1,6 @@
 import { navigate } from 'gatsby';
 import * as React from 'react';
+import { useSignIn } from '../../../context/SignInContext';
 import {
   useCurrentUser,
   useIsUserDataLoaded,
@@ -10,6 +11,7 @@ import { useUserGroups } from '../../../hooks/groups/useUserGroups';
 import Layout from '../../layout';
 import SEO from '../../seo';
 import TopNavigationBar from '../../TopNavigationBar/TopNavigationBar';
+import Btn from '../../ug/Btn';
 import AdminViewAllGroups from './AdminViewAllGroups';
 import { GroupCard } from './GroupCard';
 
@@ -19,6 +21,7 @@ const GroupSelectPage = () => {
   const groups = useUserGroups();
   const { createNewGroup } = useGroupActions();
   const permissions = useUserPermissions();
+  const { signIn } = useSignIn();
 
   const showNotSignedInMessage = isLoaded && !currentUser?.uid;
   const showLoading = !showNotSignedInMessage && !groups.isSuccess;
@@ -32,23 +35,24 @@ const GroupSelectPage = () => {
   return (
     <Layout>
       <SEO title="My Groups" image={null} pathname={window.location.pathname} />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <main>
         <div className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold md:text-3xl">My Groups</h1>
+            <h1 className="ap-gh1">My Groups</h1>
             {!showLoading && !showNotSignedInMessage ? (
-              <button className="btn" onClick={handleCreateNewGroup}>
-                Create New Group
-              </button>
+              <Btn kind="p" size="sm" onClick={handleCreateNewGroup}>
+                Create new group
+              </Btn>
             ) : null}
           </div>
-          <hr className="mt-6 mb-8 dark:border-gray-700" />
+          <hr className="mt-6 mb-8 dark:border-[var(--border)]" />
           {showNotSignedInMessage && (
-            <div>
-              <p className="text-2xl font-medium">
-                Please sign in to access Groups.
-              </p>
+            <div className="ap-note">
+              <p>Please sign in to access Groups.</p>
+              <Btn kind="p" size="sm" onClick={() => signIn()}>
+                Log in
+              </Btn>
             </div>
           )}
 
@@ -79,7 +83,7 @@ const GroupSelectPage = () => {
                   All Groups (Admin Only)
                 </h1>
               </div>
-              <hr className="mt-6 mb-8 dark:border-gray-700" />
+              <hr className="mt-6 mb-8 dark:border-[var(--border)]" />
               <AdminViewAllGroups />
             </>
           )}

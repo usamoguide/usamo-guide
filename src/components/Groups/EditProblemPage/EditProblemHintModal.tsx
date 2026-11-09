@@ -76,7 +76,7 @@ export default function EditProblemHintModal({
           </span>
           <DialogPanel
             transition
-            className="dark:bg-dark-surface inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            className="dark:bg-[var(--bg-page)] inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"
@@ -84,7 +84,7 @@ export default function EditProblemHintModal({
             <div>
               <DialogTitle
                 as="h3"
-                className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100"
+                className="text-lg leading-6 font-medium text-gray-900 dark:text-[var(--text-primary)]"
                 id="modal-headline"
               >
                 {initialHint ? 'Edit Hint' : 'Add New Hint'}
@@ -93,7 +93,7 @@ export default function EditProblemHintModal({
                 <div>
                   <label
                     htmlFor="hint_name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                    className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                   >
                     Name
                   </label>
@@ -108,12 +108,12 @@ export default function EditProblemHintModal({
                       placeholder="Optional"
                     />
                   </div>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                  <p className="mt-2 text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                     Publicly visible hint name.
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                     Content
                   </label>
                   <div className="mt-1">
@@ -144,7 +144,7 @@ export default function EditProblemHintModal({
                 </button>
                 <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
+                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm dark:bg-[var(--bg-surface)] dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]"
                   onClick={() => onClose()}
                 >
                   Cancel
@@ -153,7 +153,7 @@ export default function EditProblemHintModal({
               {initialHint && (
                 <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm"
+                  className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden sm:col-start-1 sm:mt-0 sm:text-sm dark:bg-[var(--bg-surface)] dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)] dark:border-[var(--border)]"
                   onClick={() => {
                     if (confirm('Are you sure you want to delete this hint?')) {
                       onSave(null);

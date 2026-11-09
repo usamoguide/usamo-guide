@@ -1,0 +1,506 @@
+/* Hand-written fixes for the module view (not generated). Scope rules with :where(.ugv-module). Loaded into the ug layer after the generated files. */
+
+/* ---------- page chrome ---------- */
+
+/* the content behind the "still in development" notice (advanced, olympiad) */
+:where(.ugv-module) .md-blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Prev / Next at the ends of a track */
+:where(.ugv-module) .md-step.is-off {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* statuses the export's sidebar doesn't draw: skipped (dashed) and ignored (struck) */
+:where(.ugv-module) .sb-m.skip .sd {
+  border-style: dashed;
+  border-color: var(--ink-2);
+}
+:where(.ugv-module) .sb-m.ign .sd {
+  border-color: var(--ink-2);
+  overflow: hidden;
+}
+:where(.ugv-module) .sb-m.ign .sd::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 1.5px;
+  margin-left: -0.75px;
+  background: var(--ink-2);
+  rotate: 45deg;
+}
+
+/* prerequisites under the meta line */
+:where(.ugv-module) .md-pre {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+:where(.ugv-module) .md-pre-k {
+  margin-right: 8px;
+  font-weight: 600;
+  color: var(--ink);
+}
+:where(.ugv-module) .md-pre a {
+  color: var(--vt);
+  text-decoration: underline;
+  text-decoration-color: var(--lilac);
+  text-underline-offset: 3px;
+}
+:where(.ugv-module) .md-pre a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* edit / report / last updated, in one row at the end */
+:where(.ugv-module) .md-edit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 22px;
+  margin-top: 22px;
+}
+:where(.ugv-module) .md-edit-row .md-edit {
+  margin-top: 0;
+}
+:where(.ugv-module) .md-edit-row .md-edit > .ico:only-of-type {
+  width: 16px;
+  height: 16px;
+}
+:where(.ugv-module) .md-upd {
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+
+/* starred (recommended) problems in the practice table */
+:where(.ugv-module) .pp-name .pp-star {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 6px 0 0;
+  vertical-align: -2px;
+  fill: var(--acc);
+  stroke: var(--acc-ink);
+  stroke-width: 1.4;
+}
+
+/* ---------- the lesson: what the MDX renders, in the export's type ---------- */
+
+:where(.ugv-module) .md-body {
+  overflow-wrap: break-word;
+}
+:where(.ugv-module) .md-body > section > h2 + * {
+  margin-top: 14px;
+}
+
+:where(.ugv-module) .md-body .md-h3 {
+  margin-top: 34px;
+  font-family: var(--display);
+  font-size: clamp(20px, 1.7vw, 23px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+:where(.ugv-module) .md-body .md-h4 {
+  margin-top: 26px;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+:where(.ugv-module) .md-body :is(h5, h6) {
+  margin-top: 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+:where(.ugv-module) .md-body strong {
+  font-weight: 600;
+}
+:where(.ugv-module) .md-body .md-a {
+  color: var(--vt);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--lilac);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+:where(.ugv-module) .md-body .md-a:hover {
+  color: var(--vt);
+  text-decoration-color: currentColor;
+}
+
+/* lists: the export resets ol, preflight resets ul */
+:where(.ugv-module) .md-body :is(ul, ol):not([class]) {
+  margin-top: 14px;
+  padding-left: 1.5em;
+  font-size: 17px;
+  line-height: 1.7;
+}
+:where(.ugv-module) .md-body ul:not([class]) {
+  list-style: disc;
+}
+:where(.ugv-module) .md-body ol:not([class]) {
+  list-style: decimal;
+}
+:where(.ugv-module) .md-body :is(ul, ol):not([class]) > li {
+  padding-left: 0.2em;
+}
+:where(.ugv-module) .md-body :is(ul, ol):not([class]) > li + li {
+  margin-top: 6px;
+}
+:where(.ugv-module) .md-body :is(ul, ol):not([class]) > li::marker {
+  color: var(--vt);
+  font-weight: 600;
+}
+:where(.ugv-module) .md-body li > :first-child {
+  margin-top: 0;
+}
+:where(.ugv-module) .md-body li > p {
+  font-size: inherit;
+  line-height: inherit;
+}
+:where(.ugv-module) .md-body li :is(ul, ol):not([class]) {
+  margin-top: 6px;
+}
+
+/* inline code and code blocks */
+:where(.ugv-module) .md-body .md-code {
+  padding: 0.08em 0.38em;
+  border: 1px solid var(--haze);
+  border-radius: 6px;
+  background: var(--mist);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.86em;
+}
+:where(.ugv-module) .md-body pre {
+  margin-top: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+/* display math: centred, scrolls sideways instead of overflowing on a phone */
+:where(.ugv-module) .md-body .md-math {
+  margin-top: 14px;
+  padding: 2px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lilac) transparent;
+}
+:where(.ugv-module) .md-body .md-math .katex-display {
+  /* katex.min.css is unlayered, so only an important rule in this layer outranks it */
+  margin: 0 !important;
+}
+
+/* tables */
+:where(.ugv-module) .md-body .md-table {
+  margin-top: 20px;
+  overflow-x: auto;
+  border: 1px solid var(--haze);
+  border-radius: 16px;
+  background: var(--paper);
+}
+:where(.ugv-module) .md-body .md-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+:where(.ugv-module) .md-body .md-table th {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--haze);
+  background: var(--mist);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+:where(.ugv-module) .md-body .md-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--haze);
+  vertical-align: top;
+}
+:where(.ugv-module) .md-body .md-table tr:last-child td {
+  border-bottom: 0;
+}
+:where(.ugv-module) .md-body .md-table :is(td, th) p {
+  margin: 0;
+  font-size: inherit;
+}
+
+/* figures (FigureBox, Asymptote diagrams) and plain images */
+:where(.ugv-module) .md-body .md-fig {
+  margin: 22px 0 0;
+  border: 1px solid var(--haze);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--paper);
+}
+:where(.ugv-module) .md-body .md-fig-img {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  background: #fff;
+}
+:where(.ugv-module) .md-body .md-fig-img img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+}
+:where(.ugv-module) .md-body .md-fig figcaption {
+  padding: 14px 20px 16px;
+  border-top: 1px solid var(--haze);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+:where(.ugv-module) .md-body .md-fig figcaption .k-label {
+  margin-bottom: 4px;
+}
+:where(.ugv-module) .md-body .md-fig figcaption p {
+  margin-top: 4px;
+  font-size: inherit;
+  line-height: inherit;
+}
+:where(.ugv-module) .md-body .md-img {
+  margin: 14px auto 0;
+  border-radius: 14px;
+}
+
+:where(.ugv-module) .md-body hr {
+  margin: 32px 0 0;
+  border: 0;
+  border-top: 1px solid var(--haze);
+}
+
+/* ---------- callouts: the export's rule box, plus tones for warning/optional/incomplete ---------- */
+
+:where(.ugv-module) .md-body .rule > :first-child:not(.k-label) {
+  margin-top: 0;
+}
+:where(.ugv-module) .md-body .rule :is(ul, ol):not([class]) {
+  margin-top: 8px;
+}
+:where(.ugv-module) .md-body .rule > .md-math {
+  margin-top: 8px;
+}
+:where(.ugv-module) .md-body .rule-warn {
+  border-left-color: var(--acc);
+  background: var(--acc-soft);
+}
+:where(.ugv-module) .md-body .rule-warn > .k-label {
+  color: var(--acc-ink);
+}
+:where(.ugv-module) .md-body .rule-opt {
+  border-left-color: var(--lilac);
+}
+:where(.ugv-module) .md-body .rule-inc {
+  border-left-style: dashed;
+}
+
+/* examples: the heading is the card's label */
+:where(.ugv-module) .md-body .ex > .k-label + * {
+  margin-top: 8px;
+}
+:where(.ugv-module) .md-body .ex > .k-label + p {
+  font-size: 17.5px;
+}
+
+/* reveals that hold more than one paragraph */
+:where(.ugv-module) .md-body .reveal > .ans > :first-child {
+  margin-top: 0;
+}
+:where(.ugv-module) .md-body .reveal > .ans p {
+  margin-top: 10px;
+  font-size: inherit;
+  line-height: inherit;
+}
+:where(.ugv-module) .md-body .reveal > .ans :is(ul, ol):not([class]) {
+  font-size: inherit;
+}
+/* a solution that stands on its own (not inside a card) keeps a thread to the left */
+:where(.ugv-module) .md-body section > .reveal > .ans {
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid var(--haze);
+}
+
+/* ---------- the sign-in nudge partway through the lesson ---------- */
+:where(.ugv-module) .md-gate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 28px;
+  padding: 18px 24px 18px 18px;
+  border: 1px solid var(--haze);
+  border-radius: 20px;
+  background: var(--mist);
+}
+:where(.ugv-module) .md-gate-pose {
+  width: 76px;
+  height: auto;
+  margin: -14px 0 -8px;
+}
+:where(.ugv-module) .md-gate-t {
+  flex: 1;
+  min-width: 220px;
+}
+:where(.ugv-module) .md-gate h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+:where(.ugv-module) .md-body .md-gate p {
+  margin-top: 4px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+:where(.ugv-module) .md-gate .btn {
+  margin-bottom: 4px;
+}
+
+@container (max-width: 560px) {
+  :where(.ugv-module) .md-gate-pose {
+    display: none;
+  }
+}
+
+/* ---------- legacy lesson components that keep their own markup ---------- */
+/* (Resources, Quiz, YouTube, focus problems, division lists) sit in the lesson flow */
+:where(.ugv-module) .md-body > section > :is(div, iframe):not([class]) {
+  margin-top: 20px;
+}
+
+/* raw <details><summary>Proof</summary>...</details> written in the MDX: the export's reveal pill */
+:where(.ugv-module) .md-body details:not([class]) {
+  margin-top: 14px;
+}
+:where(.ugv-module) .md-body details:not([class]) > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 15px;
+  border: 1px solid var(--lilac);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--vt);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  transition: border-color 0.25s;
+}
+:where(.ugv-module) .md-body details:not([class]) > summary::-webkit-details-marker {
+  display: none;
+}
+:where(.ugv-module) .md-body details:not([class]) > summary::marker {
+  content: '';
+}
+:where(.ugv-module) .md-body details:not([class]) > summary:hover {
+  border-color: var(--v);
+}
+:where(.ugv-module) .md-body details:not([class]) > summary::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin: -3px 0 0 2px;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  rotate: 45deg;
+  transition: rotate 0.25s var(--ease), margin 0.25s var(--ease);
+}
+:where(.ugv-module) .md-body details:not([class])[open] > summary::after {
+  rotate: -135deg;
+  margin-top: 3px;
+}
+:where(.ugv-module) .md-body details:not([class])[open] > :not(summary) {
+  animation: ugAns 0.5s var(--ease);
+}
+:where(.ugv-module) .md-body details:not([class])[open] > summary + * {
+  margin-top: 14px;
+}
+:where(.ugv-module) .md-body details:not([class])[open] {
+  padding-bottom: 2px;
+}
+
+/* a figure that fails to load still shows its alt text on the white backing */
+:where(.ugv-module) .md-body .md-fig-img {
+  color: #5a5773;
+  font-size: 14px;
+}
+
+/* headings keep their hover permalink (rehype-autolink-headings), in the left margin */
+:where(.ugv-module) .md-body :is(h2, .md-h3, .md-h4) {
+  position: relative;
+}
+:where(.ugv-module) .md-body :is(h2, .md-h3, .md-h4) > .anchor {
+  color: var(--lilac);
+  text-decoration: none;
+}
+:where(.ugv-module) .md-body :is(h2, .md-h3, .md-h4) > .anchor:hover {
+  color: var(--vt);
+}
+:where(.ugv-module) .md-body :is(h2, .md-h3, .md-h4) > .anchor svg {
+  display: inline-block;
+  vertical-align: middle;
+  stroke-width: 2.2;
+}
+
+/* a long contents list scrolls inside the sticky column instead of running off the screen */
+:where(.ugv-module) .md-toc {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lilac) transparent;
+}
+
+/* long sources ("Harvard-MIT Mathematics Tournament") get a wider column and wrap */
+:where(.ugv-module) .pp.wide-src :is(.pp-head, .pp-row) {
+  grid-template-columns: 58px 132px minmax(0, 1fr) var(--cd) var(--ct) 34px;
+}
+:where(.ugv-module) .pp.wide-src .pp-src {
+  white-space: normal;
+  line-height: 1.35;
+}
+@container (max-width: 600px) {
+  :where(.ugv-module) .pp.wide-src .pp-row {
+    grid-template-columns: 38px minmax(0, 1fr) auto 32px;
+  }
+}
+
+/* images written as raw <img> in the MDX */
+:where(.ugv-module) .md-body :is(section, .ans, .ex, .rule, li) > img:not([class]),
+:where(.ugv-module) .md-body p > img:not([class]) {
+  margin-top: 14px;
+  border-radius: 12px;
+}
+/* diagrams are dark ink on a transparent background: give them paper in the dark theme */
+:where(.ugv-module[data-theme='dark']) .md-body :is(img:not([class]), .md-img) {
+  padding: 8px;
+  background: #fff;
+}
+
+/* <WarmUp>, <Rule>, <Formula> (src/components/markdown/LessonBlocks.tsx) */
+:where(.ugv-module) .md-body .warm .ans > :first-child,
+:where(.ugv-module) .md-body .formula > :first-child {
+  margin-top: 0;
+}
+:where(.ugv-module) .md-body .formula .md-math {
+  overflow: visible;
+}

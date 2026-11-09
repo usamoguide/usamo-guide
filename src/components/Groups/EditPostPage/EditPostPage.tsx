@@ -52,7 +52,7 @@ export default function EditPostPage(props) {
     if (activeGroup.isLoading) {
       return (
         <>
-          <TopNavigationBar />
+          <TopNavigationBar current="groups" />
           <main className="py-10 text-center">
             <p className="text-2xl font-medium">Loading...</p>
           </main>
@@ -63,7 +63,7 @@ export default function EditPostPage(props) {
     if (!originalPost) {
       return (
         <>
-          <TopNavigationBar />
+          <TopNavigationBar current="groups" />
           <main className="py-10 text-center">
             <p className="text-2xl font-medium">Post not found</p>
           </main>
@@ -74,7 +74,7 @@ export default function EditPostPage(props) {
     // If we have originalPost but no post state, we're still loading
     return (
       <>
-        <TopNavigationBar />
+        <TopNavigationBar current="groups" />
         <main className="py-10 text-center">
           <p className="text-2xl font-medium">Loading...</p>
         </main>
@@ -89,7 +89,7 @@ export default function EditPostPage(props) {
         image={undefined}
         pathname={undefined}
       />
-      <TopNavigationBar />
+      <TopNavigationBar current="groups" />
       <nav className="mt-6 mb-4 flex" aria-label="Breadcrumb">
         <Breadcrumbs
           className="mx-auto w-full max-w-4xl px-4 pt-3 pb-4 sm:px-6 lg:px-8"
@@ -98,27 +98,27 @@ export default function EditPostPage(props) {
         />
       </nav>
       <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-gray-700">
+        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6 dark:border-[var(--border)]">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-[var(--text-primary)]">
               Edit {post.type === 'assignment' ? 'Assignment' : 'Announcement'}:{' '}
               {post.name}
             </h1>
           </div>
           <div className="mt-4 flex space-x-3 md:mt-0">
-            <Link to="../" className="btn">
+            <Link to="../" className="btn-legacy">
               <span>Back</span>
             </Link>
           </div>
         </div>
         <div className="h-6" />
-        <div className="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="space-y-8 divide-y divide-gray-200 dark:divide-[var(--border)]">
           <div>
             <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <label
                   htmlFor="post_name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Post Name
                 </label>
@@ -135,7 +135,7 @@ export default function EditPostPage(props) {
               </div>
 
               <div className="sm:col-span-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                   Post Date
                 </label>
 
@@ -172,7 +172,7 @@ export default function EditPostPage(props) {
 
               {post.type === 'assignment' && (
                 <div className="sm:col-span-4">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]">
                     Due Date (Optional)
                   </label>
 
@@ -217,7 +217,7 @@ export default function EditPostPage(props) {
               <div className="sm:col-span-6">
                 <label
                   htmlFor="post_content"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  className="block text-sm font-medium text-gray-700 dark:text-[var(--text-primary)]"
                 >
                   Post Content
                 </label>

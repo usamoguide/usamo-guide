@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { SECTION_LABELS } from '../../content/ordering';
 import { ContentAccessModal } from '../components/ContentAccessModal';
 import Layout from '../components/layout';
-import Markdown from '../components/markdown/Markdown';
 import MarkdownLayout from '../components/MarkdownLayout/MarkdownLayout';
 import SEO from '../components/seo';
+import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
 import { ConfettiProvider } from '../context/ConfettiContext';
 import { MarkdownProblemListsProvider } from '../context/MarkdownProblemListsContext';
 import { useIsUserDataLoaded } from '../context/UserDataContext/UserDataContext';
@@ -37,8 +37,17 @@ export default function Template(props): JSX.Element {
       try {
         const anchor = document.getElementById(hash.substring(1));
         if (!anchor) throw new Error(`The anchor "${hash}" doesn't exist`);
-        const offset = anchor.getBoundingClientRect().top + window.scrollY;
-        window.scroll({ top: offset, left: 0 });
+        // a solution reveal (or anything inside one) opens before we scroll to it
+        let d: HTMLDetailsElement | null =
+          anchor instanceof HTMLDetailsElement
+            ? anchor
+            : anchor.closest('details');
+        while (d) {
+          d.open = true;
+          d = d.parentElement?.closest('details') ?? null;
+        }
+        // scroll-margin-top on [id] keeps it clear of the sticky nav
+        anchor.scrollIntoView({ block: 'start' });
       } catch (e) {
         console.error(e);
       }
@@ -46,7 +55,7 @@ export default function Template(props): JSX.Element {
   }, [isLoaded]);
 
   return (
-    <Layout setLastViewedModule={module.id}>
+    <Layout view="module" footer="wide" setLastViewedModule={module.id}>
       <SEO
         title={`${module.title}`}
         description={module.description}
@@ -80,54 +89,23 @@ export default function Template(props): JSX.Element {
         ]}
       />
 
-      <div
-        data-page-tone="dark"
-        className="relative overflow-hidden bg-[var(--bg-page)]"
-      >
-        <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="h-full w-full opacity-[0.04] dark:opacity-[0.05]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="module-grid-pattern"
-                width="64"
-                height="64"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 64 0 L 0 0 0 64"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-[#F0C2FF]/12"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#module-grid-pattern)" />
-          </svg>
-        </div>
+      <TopNavigationBar current="tracks" wide hidePromoBar />
 
-        <div
-          className={
-            showDevelopmentModal
-              ? 'pointer-events-none blur-[4px] select-none'
-              : ''
-          }
-        >
-          <ConfettiProvider>
-            <MarkdownProblemListsProvider
-              value={moduleProblemLists?.problemLists || []}
-            >
-              <MarkdownLayout markdownData={module}>
-                <div className="py-4">
-                  <Markdown body={body} />
-                </div>
-              </MarkdownLayout>
-            </MarkdownProblemListsProvider>
-          </ConfettiProvider>
-        </div>
+      <div
+        className={showDevelopmentModal ? 'md-blur' : undefined}
+        aria-hidden={showDevelopmentModal ? 'true' : undefined}
+      >
+        <ConfettiProvider>
+          <MarkdownProblemListsProvider
+            value={moduleProblemLists?.problemLists || []}
+          >
+            <MarkdownLayout
+              markdownData={module}
+              body={body}
+              readingMinutes={xdm.readingMinutes}
+            />
+          </MarkdownProblemListsProvider>
+        </ConfettiProvider>
       </div>
 
       <ContentAccessModal
@@ -148,6 +126,7 @@ export const pageQuery = graphql`
   query ($id: String!) {
     xdm(frontmatter: { id: { eq: $id } }) {
       body
+      readingMinutes
       frontmatter {
         title
         author

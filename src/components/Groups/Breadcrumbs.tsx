@@ -18,7 +18,7 @@ export default function Breadcrumbs({
         <div>
           <Link
             to="/groups"
-            className="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+            className="text-gray-400 hover:text-gray-500 dark:text-[var(--text-secondary)] dark:hover:text-gray-400"
           >
             {/* Heroicon name: solid/home */}
             <svg
@@ -38,7 +38,7 @@ export default function Breadcrumbs({
         <div className="flex items-center">
           {/* Heroicon name: solid/chevron-right */}
           <svg
-            className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+            className="h-5 w-5 shrink-0 text-gray-400 dark:text-[var(--text-secondary)]"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -52,7 +52,7 @@ export default function Breadcrumbs({
           </svg>
           <Link
             to={`/groups/${group.id}`}
-            className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-[var(--text-secondary)] dark:hover:text-gray-200"
           >
             {group.name}
           </Link>
@@ -63,7 +63,7 @@ export default function Breadcrumbs({
           <div className="flex items-center">
             {/* Heroicon name: solid/chevron-right */}
             <svg
-              className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+              className="h-5 w-5 shrink-0 text-gray-400 dark:text-[var(--text-secondary)]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -78,7 +78,7 @@ export default function Breadcrumbs({
             <Link
               to={`/groups/${group.id}/post/${post.id}`}
               aria-current="page"
-              className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-[var(--text-secondary)] dark:hover:text-gray-200"
             >
               {post.name}
             </Link>

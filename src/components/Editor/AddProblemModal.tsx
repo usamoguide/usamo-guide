@@ -129,7 +129,7 @@ export default function AddProblemModal(props: {
           </span>
           <DialogPanel
             transition
-            className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle text-gray-900 transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-black dark:text-white"
+            className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle text-gray-900 transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[enter]:ease-out data-[leave]:duration-200 data-[leave]:ease-in sm:my-8 sm:align-middle data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 dark:bg-[var(--bg-page)] dark:text-[var(--text-primary)]"
           >
             <DialogTitle as="h3" className="text-lg leading-6 font-medium">
               Add Problem
@@ -137,7 +137,7 @@ export default function AddProblemModal(props: {
             <div className="relative mt-2 rounded-md">
               <input
                 type="text"
-                className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-700 dark:bg-gray-900"
+                className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-[var(--border)] dark:bg-[var(--bg-surface)]"
                 placeholder="Enter Problem URL"
                 onChange={e => setLink(e.target.value)}
               />
@@ -145,7 +145,7 @@ export default function AddProblemModal(props: {
 
             <div className="mt-4">
               <button
-                className="btn"
+                className="btn-legacy"
                 disabled={status === 'Fetching metadata...'}
                 onClick={() =>
                   addProblem(link, setMetadata, setStatus, setShowError)
@@ -159,7 +159,7 @@ export default function AddProblemModal(props: {
                 {metadata}
               </pre>
               <CopyButton
-                className="btn absolute top-2 right-2"
+                className="btn-legacy absolute top-2 right-2"
                 onClick={() => {
                   navigator.clipboard.writeText(metadata);
                 }}
@@ -173,12 +173,12 @@ export default function AddProblemModal(props: {
         <div className="text-center">
           <DialogTitle
             as="h3"
-            className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100"
+            className="text-lg leading-6 font-medium text-gray-900 dark:text-[var(--text-primary)]"
           >
             Error Processing Request
           </DialogTitle>
           <div className="mt-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-[var(--text-secondary)]">
               There was an error while processing your request. You can manually
               edit the data.
             </p>

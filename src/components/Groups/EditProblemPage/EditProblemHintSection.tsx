@@ -45,21 +45,21 @@ export default function EditProblemHintSection({
 
   return (
     <>
-      <span className="block font-medium text-gray-700 dark:text-gray-200">
+      <span className="block font-medium text-gray-700 dark:text-[var(--text-primary)]">
         Problem Hints
       </span>
 
       <div>
         <div className="mt-4 flow-root">
-          <ul className="-my-5 divide-y divide-gray-200 dark:divide-gray-700">
+          <ul className="-my-5 divide-y divide-gray-200 dark:divide-[var(--border)]">
             {problem.hints.map(hint => (
               <li className="py-4" key={hint.id}>
                 <div className="flex items-center space-x-4">
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-200">
+                    <p className="truncate text-sm font-medium text-gray-900 dark:text-[var(--text-primary)]">
                       {hint.name || 'Hint'}
                     </p>
-                    <p className="truncate text-sm text-gray-500 dark:text-gray-400">
+                    <p className="truncate text-sm text-gray-500 dark:text-[var(--text-secondary)]">
                       {hint.body}
                     </p>
                   </div>
@@ -69,7 +69,7 @@ export default function EditProblemHintSection({
                         setCurrentProblemHint(hint);
                         setIsHintModalOpen(true);
                       }}
-                      className="btn rounded-full px-2.5 py-0.5"
+                      className="btn-legacy rounded-full px-2.5 py-0.5"
                     >
                       Edit
                     </button>
@@ -85,7 +85,7 @@ export default function EditProblemHintSection({
               setIsHintModalOpen(true);
               setCurrentProblemHint(null);
             }}
-            className="btn"
+            className="btn-legacy"
           >
             Add New Hint
           </button>

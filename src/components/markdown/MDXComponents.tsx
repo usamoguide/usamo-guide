@@ -8,6 +8,7 @@ import FigureBox from './FigureBox';
 import FocusProblem from './FocusProblem';
 import HTMLComponents from './HTMLComponents';
 import { IncompleteSection } from './IncompleteSection';
+import { Formula, Rule, WarmUp } from './LessonBlocks';
 import Info from './Info';
 import {
   CPPOnly,
@@ -122,6 +123,9 @@ export const components = {
   MATHDIV,
   MATHSPAN,
   AsyDiagram,
+  WarmUp,
+  Rule,
+  Formula,
 
   ...HTMLComponents,
 };

@@ -96,8 +96,8 @@ export default function FeedItem({
     <div
       className={`${
         isBeingDragged
-          ? 'bg-gray-200 dark:bg-gray-900'
-          : 'bg-white hover:bg-cyan-50 dark:bg-gray-800 dark:hover:bg-cyan-900'
+          ? 'bg-gray-200 dark:bg-[var(--bg-surface)]'
+          : 'bg-white hover:bg-cyan-50 dark:bg-[var(--bg-surface-alt)] dark:hover:bg-cyan-900'
       } ${
         dragHandle ? 'pr-4 sm:pr-6' : 'px-4 sm:px-6'
       } flex transition sm:rounded-lg`}
@@ -121,15 +121,15 @@ export default function FeedItem({
           <div className="min-w-0 flex-1 py-4 sm:py-5">
             <h2
               id="question-title-81614"
-              className="flex items-center text-base font-medium text-gray-900 dark:text-gray-100"
+              className="flex items-center text-base font-medium text-gray-900 dark:text-[var(--text-primary)]"
             >
               {post.name}
               {post.isPublished ? '' : ' (Unpublished)'}
               {post.isPinned && (
-                <BookmarkIcon className="ml-1 h-5 w-5 text-gray-300 dark:text-gray-500" />
+                <BookmarkIcon className="ml-1 h-5 w-5 text-gray-300 dark:text-[var(--text-secondary)]" />
               )}
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-300">
+            <p className="text-sm text-gray-500 dark:text-[var(--text-secondary)]">
               {getPostTimestampString(post)}
             </p>
           </div>
@@ -168,7 +168,7 @@ export default function FeedItem({
                 leave="transition ease-in duration-75"
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
-                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 ring-black/5 focus:outline-hidden"
+                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 ring-black/5 focus:outline-hidden dark:bg-[var(--bg-surface)]"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu-0"
@@ -180,7 +180,7 @@ export default function FeedItem({
                     onClick={() =>
                       updatePost(post.id, { isPinned: !post.isPinned })
                     }
-                    className="w-full flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    className="w-full flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)]"
                     role="menuitem"
                   >
                     <BookmarkIcon className="mr-3 h-5 w-5 text-gray-400" />
@@ -191,7 +191,7 @@ export default function FeedItem({
                     onClick={() =>
                       updatePost(post.id!, { isPublished: !post.isPublished })
                     }
-                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)]"
                     role="menuitem"
                   >
                     <svg
@@ -221,7 +221,7 @@ export default function FeedItem({
                         deletePost(post.id!).catch(e => toast.error(e.message));
                       }
                     }}
-                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)]"
                     role="menuitem"
                   >
                     <svg
@@ -246,7 +246,7 @@ export default function FeedItem({
                       setShowExportModal(true);
                       console.log('toggled');
                     }}
-                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-[var(--text-primary)] dark:hover:bg-[var(--bg-surface-alt)]"
                     role="menuitem"
                   >
                     <svg

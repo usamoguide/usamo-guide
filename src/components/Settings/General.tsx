@@ -9,7 +9,8 @@ import {
   useShowIgnoredSetting,
   useShowTagsSetting,
 } from '../../context/UserDataContext/properties/simpleProperties';
-import Switch from '../elements/Switch';
+import DarkMode from './DarkMode';
+import SettingRow, { SettingsGroup } from './SettingRow';
 
 export default function General(): JSX.Element {
   // todo: I think we should actually just use one massive useUserSettings() hook lol
@@ -36,88 +37,60 @@ export default function General(): JSX.Element {
   React.useEffect(() => {
     if (isLongPolling) {
       localStorage.setItem('USAMO_GUIDE_LONG_POLLING', 'true');
-      // console.log('Initializing long polling');
     } else {
       localStorage.setItem('USAMO_GUIDE_LONG_POLLING', 'false');
-      // console.log('Disabling long polling');
     }
   }, [isLongPolling]);
+
   return (
-    <div>
-      <div className="space-y-1">
-        <h3 className="text-lg leading-6 font-medium text-[#F4EDEA]">
-          Options
-        </h3>
-      </div>
-      <div>
-        <ul className="divide-y divide-[rgba(240,194,255,0.12)]">
-          <li className="flex items-center justify-between py-4">
-            <div className="flex flex-col">
-              <p
-                className="text-sm font-medium text-[rgba(244,237,234,0.72)]"
-                id="privacy-option-1-label"
-              >
-                Problem Lists and Search: Show Tags
-              </p>
-            </div>
-            <Switch checked={showTags} onChange={b => setShowTags(b)} />
-          </li>
-          <li className="flex items-center justify-between py-4">
-            <div className="flex flex-col">
-              <p
-                className="text-sm font-medium text-[rgba(244,237,234,0.72)]"
-                id="privacy-option-1-label"
-              >
-                Problem Lists and Search: Hide Difficulty
-              </p>
-            </div>
-            <Switch
-              checked={hideDifficulty}
-              onChange={b => setHideDifficulty(b)}
-            />
-          </li>
-          <li className="flex items-center justify-between py-4">
-            <div className="flex flex-col">
-              <p
-                className="text-sm font-medium text-[rgba(244,237,234,0.72)]"
-                id="privacy-option-1-label"
-              >
-                Problem Search: Hide Modules
-              </p>
-            </div>
-            <Switch checked={hideModules} onChange={b => setHideModules(b)} />
-          </li>
-          <li className="flex items-center justify-between py-4">
-            <div className="flex flex-col">
-              <p
-                className="text-sm font-medium text-[rgba(244,237,234,0.72)]"
-                id="privacy-option-2-label"
-              >
-                Dashboard: Show Ignored Problems & Modules
-              </p>
-            </div>
-            <Switch checked={showIgnored} onChange={b => setShowIgnored(b)} />
-          </li>
-          <li className="flex items-center justify-between py-4">
-            <div className="flex flex-col">
-              <p
-                className="text-sm font-medium text-[rgba(244,237,234,0.72)]"
-                id="privacy-option-2-label"
-              >
-                Use Long Polling (Close and reopen tab after toggling) -{' '}
-                <span className="font-bold">
-                  Enable this option ONLY if you encounter issues connecting to
-                  Supabase (nothing loads).
-                </span>
-              </p>
-            </div>
-            <Switch
-              checked={isLongPolling}
-              onChange={b => setIsLongPolling(b)}
-            />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <>
+      <SettingsGroup
+        title="Display"
+        description="How the guide looks and what problem lists show."
+      >
+        <div className="ap-rows">
+          <DarkMode />
+          <SettingRow
+            title="Show tags"
+            description="In problem lists and search."
+            checked={showTags}
+            onChange={b => setShowTags(b)}
+          />
+          <SettingRow
+            title="Hide difficulty"
+            description="In problem lists and search."
+            checked={hideDifficulty}
+            onChange={b => setHideDifficulty(b)}
+          />
+          <SettingRow
+            title="Hide modules"
+            description="In problem search."
+            checked={hideModules}
+            onChange={b => setHideModules(b)}
+          />
+          <SettingRow
+            title="Show ignored problems and modules"
+            description="On the dashboard."
+            checked={showIgnored}
+            onChange={b => setShowIgnored(b)}
+          />
+        </div>
+      </SettingsGroup>
+      <SettingsGroup title="Connection">
+        <div className="ap-rows">
+          <SettingRow
+            title="Use long polling"
+            description={
+              <>
+                <b>Turn this on only if you can't connect to Supabase</b>{' '}
+                (nothing loads). Close and reopen the tab after switching.
+              </>
+            }
+            checked={isLongPolling}
+            onChange={b => setIsLongPolling(b)}
+          />
+        </div>
+      </SettingsGroup>
+    </>
   );
 }

@@ -149,7 +149,7 @@ export default function QuizGeneratorModal(): JSX.Element {
               >
                 Quiz Generator
               </DialogTitle>
-              <button className={'btn'} onClick={() => addQuestion()}>
+              <button className={'btn-legacy'} onClick={() => addQuestion()}>
                 Add question
               </button>
             </div>
@@ -269,7 +269,7 @@ export default function QuizGeneratorModal(): JSX.Element {
                       </div>
                       <div className={'my-2 flex w-full justify-end'}>
                         <button
-                          className={'btn'}
+                          className={'btn-legacy'}
                           onClick={() => addAnswer(idx)}
                         >
                           Add answer
@@ -284,7 +284,7 @@ export default function QuizGeneratorModal(): JSX.Element {
                   onClick={() => {
                     navigator.clipboard.writeText(code);
                   }}
-                  className="btn absolute top-2 right-3"
+                  className="btn-legacy absolute top-2 right-3"
                 />
                 <CodeBlock className="language-mdx" isDarkMode={isDarkMode}>
                   {code}

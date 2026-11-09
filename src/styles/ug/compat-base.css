@@ -1,0 +1,10 @@
+/* Hand-written (not generated). Loaded into the `base` layer after preflight.
+   The export runs without Tailwind's preflight, so its plain text links get the
+   browser's default underline (it writes text-decoration:none wherever it
+   doesn't want one). Preflight sets `a { text-decoration: inherit }`; give the
+   ported views their underline back. Zero specificity and the base layer keep
+   every explicit style (export CSS, markdown styles, utilities) in charge. */
+:where(.ugv-landing, .ugv-start, .ugv-dashboard, .ugv-track, .ugv-module, .ugv-problems)
+  :where(a) {
+  text-decoration: underline;
+}

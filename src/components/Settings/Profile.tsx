@@ -2,6 +2,9 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { useCurrentUser } from '../../context/UserDataContext/UserDataContext';
 import { supabase } from '../../lib/supabaseClient';
+import Btn from '../ug/Btn';
+import { SettingsGroup } from './SettingRow';
+import SignedOut from './SignedOut';
 
 export default function Profile(): JSX.Element {
   const currentUser = useCurrentUser();
@@ -38,43 +41,38 @@ export default function Profile(): JSX.Element {
   };
 
   return (
-    <div>
-      <div className="space-y-1">
-        <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
-          Profile
-        </h3>
-      </div>
-      <div className="h-4" />
+    <SettingsGroup title="Profile">
       {currentUser ? (
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label
-              htmlFor="display_name"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-            >
-              Display Name
+        <form className="ap-form" onSubmit={handleSubmit}>
+          <div className="ap-field">
+            <label htmlFor="display_name" className="ap-label">
+              Display name
             </label>
-            <div className="mt-1">
-              <input
-                type="text"
-                name="display_name"
-                id="display_name"
-                className="input"
-                value={name ?? undefined}
-                onChange={e => setName(e.target.value)}
-              />
-            </div>
+            <input
+              type="text"
+              name="display_name"
+              id="display_name"
+              className="ap-in"
+              autoComplete="nickname"
+              value={name ?? ''}
+              onChange={e => setName(e.target.value)}
+            />
           </div>
-
-          <div className="flex">
-            <button type="submit" className="btn-primary">
+          {currentUser.email ? (
+            <div className="ap-field">
+              <span className="ap-label">Email</span>
+              <p className="ap-val">{currentUser.email}</p>
+            </div>
+          ) : null}
+          <div>
+            <Btn kind="p" size="sm" type="submit">
               Save
-            </button>
+            </Btn>
           </div>
         </form>
       ) : (
-        <p>You need to be logged in to update your profile.</p>
+        <SignedOut what="update your profile" />
       )}
-    </div>
+    </SettingsGroup>
   );
 }
