@@ -1,0 +1,153 @@
+
+/* ---------- app pages: the pieces every screen shares ---------- */
+.wrap-w{width:100%;max-width:1400px;margin-inline:auto;padding-inline:clamp(20px,3.4vw,48px)}
+.nav-links > a[aria-current="page"],.nav-dd-t[aria-current="page"]{color:var(--ink);font-weight:600}
+.nav-start[aria-current="page"]{pointer-events:none}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:14px;color:var(--ink-2)}
+.crumbs a{color:var(--ink-2);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--vt);text-decoration:underline;text-underline-offset:3px}
+.crumbs .sep{color:var(--lilac)}
+.crumbs .here{color:var(--ink);font-weight:500}
+.k-label{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vt)}
+.bar{position:relative;height:6px;border-radius:6px;background:var(--haze);overflow:hidden}
+.bar > span{position:absolute;left:0;top:0;bottom:0;border-radius:inherit;background:var(--acc)}
+.mv{font-family:var(--serif);font-style:italic;font-size:1.14em;line-height:1;padding:0 .04em}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .14em;font-size:.8em;line-height:1.12;text-align:center}
+.frac > span:first-child{padding:0 .2em .06em}
+.frac > span + span{padding:.08em .2em 0;border-top:1.2px solid currentColor}
+.hnote{font-family:var(--hand);font-size:23px;line-height:1;letter-spacing:.01em;color:var(--vt);-webkit-text-stroke:.45px currentColor;white-space:nowrap}
+.card{border:1px solid var(--haze);border-radius:20px;background:var(--paper)}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.nw{white-space:nowrap}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:7px;border:1px solid var(--haze);background:var(--mist);font-size:12.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+/* difficulty: one purple, getting heavier as the problems get harder */
+.diff{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.d-easy{background:var(--mist);color:var(--vt);box-shadow:inset 0 0 0 1px var(--haze)}
+.d-med{background:var(--haze);color:var(--vt)}
+.d-hard{background:var(--lilac);color:var(--ink)}
+.d-vhard{background:var(--v);color:#fff}
+.d-insane{background:var(--ink);color:var(--page)}
+/* a solved/unsolved toggle: an empty ring that fills with a check */
+.chk-c{flex:none;display:grid;place-items:center;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid var(--lilac);background:var(--paper);color:transparent;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.chk-c .ico{width:14px;height:14px;stroke-width:2.8}
+.chk-c:hover{border-color:var(--v)}
+.chk-c[aria-pressed="true"]{background:var(--acc);border-color:var(--on-acc);color:var(--on-acc)}
+/* reveal: a quiet pill that opens an answer underneath */
+.reveal{margin-top:14px}
+.reveal summary{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 15px;border:1px solid var(--lilac);border-radius:999px;background:var(--paper);color:var(--vt);font-size:14px;font-weight:600;cursor:pointer;list-style:none;transition:border-color .25s}
+.reveal summary:hover{border-color:var(--v)}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal summary::marker{content:""}
+.reveal .a-hide,.reveal[open] .a-show{display:none}
+.reveal[open] .a-hide{display:inline}
+.reveal[open] > :not(summary){animation:ugAns .5s var(--ease)}
+@keyframes ugAns{from{opacity:0;filter:blur(8px);translate:0 -6px}to{opacity:1;filter:blur(0);translate:0 0}}
+button.btn{padding:0;border:0;background:none;font:inherit;cursor:pointer}
+.ug [id]{scroll-margin-top:88px}
+/* compact footer for the app screens */
+.afoot{margin-top:clamp(72px,8vw,120px);border-top:1px solid var(--haze);padding-block:34px 42px}
+.afoot-in{display:flex;flex-wrap:wrap;align-items:center;gap:18px 36px}
+.afoot-links{display:flex;flex-wrap:wrap;gap:6px 24px;margin-left:auto}
+.afoot-links a{font-size:15px;color:var(--ink-2);text-decoration:none;transition:color .2s}
+.afoot-links a:hover{color:var(--vt)}
+.afoot-note{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 24px;font-size:13px;color:var(--ink-2)}
+/* the Discord announcement above the nav */
+.ann{background:var(--v);color:#fff}
+.ann-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;min-height:46px;padding-block:7px;font-size:14.5px;text-align:center}
+.ann p{color:#fff}
+.ann-a{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 13px;border-radius:999px;background:var(--acc);color:var(--on-acc);font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background-color .2s}
+.ann-a:hover{color:var(--on-acc);background:color-mix(in oklab,var(--acc) 78%,white)}
+.ann-a .ico{width:15px;height:15px}
+.ann-x{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:#fff;cursor:pointer;transition:background-color .2s}
+.ann-x:hover{background:rgba(255,255,255,.16)}
+.ann-x .ico{width:16px;height:16px}
+/* settings: a gear in the nav, the same panel at the foot of the article sidebar */
+.set{position:relative}
+.set > summary,.nav-user > summary,.ps > summary,.rm > summary,.sb-track > summary{list-style:none;cursor:pointer}
+.set > summary::-webkit-details-marker,.nav-user > summary::-webkit-details-marker,.ps > summary::-webkit-details-marker,.rm > summary::-webkit-details-marker,.sb-track > summary::-webkit-details-marker{display:none}
+.set > summary::marker,.nav-user > summary::marker,.ps > summary::marker,.rm > summary::marker,.sb-track > summary::marker{content:""}
+.set-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--haze);border-radius:50%;background:var(--paper);color:var(--ink);transition:background-color .3s,border-color .3s}
+.set-btn:hover,.set[open] .set-btn{background:var(--mist);border-color:var(--lilac)}
+.set-btn .ico{width:19px;height:19px;transition:rotate .6s var(--ease)}
+.set[open] .set-btn .ico{rotate:60deg}
+.set-pop{position:absolute;right:0;top:calc(100% + 12px);z-index:70;width:min(320px,calc(100vw - 32px));padding:8px;border:1px solid var(--haze);border-radius:18px;background:var(--paper);box-shadow:0 30px 60px -30px rgba(23,18,46,.38);animation:ugAns .4s var(--ease)}
+.set.up .set-pop{top:auto;bottom:calc(100% + 8px);left:0;right:auto}
+.set-k{margin:8px 10px 4px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:10px;border:0;border-radius:12px;background:transparent;font:inherit;color:var(--ink);text-align:left;cursor:pointer;transition:background-color .2s}
+.set-row:hover{background:var(--mist)}
+.set-t{font-size:15px;font-weight:500;line-height:1.3}
+.set-t small{display:block;margin-top:2px;font-size:13px;font-weight:400;color:var(--ink-2)}
+.sw{position:relative;flex:none;width:40px;height:24px;border-radius:999px;background:var(--haze);transition:background-color .2s}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(23,18,46,.28);transition:translate .25s var(--ease)}
+.set-row[aria-checked="true"] .sw{background:var(--v)}
+.set-row[aria-checked="true"] .sw::after{translate:16px 0}
+/* signed in: initials instead of Login */
+.nav-user{position:relative}
+.nav-user > summary{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:box-shadow .25s}
+.nav-user > summary:hover,.nav-user[open] > summary{box-shadow:0 0 0 4px color-mix(in oklab,var(--v) 16%,transparent)}
+.av{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--v);color:#fff;font-size:14px;font-weight:600;letter-spacing:.02em}
+.nu-pop{position:absolute;right:0;top:calc(100% + 12px);z-index:70;width:250px;padding:8px;border:1px solid var(--haze);border-radius:18px;background:var(--paper);box-shadow:0 30px 60px -30px rgba(23,18,46,.38);animation:ugAns .4s var(--ease)}
+.nu-name{padding:8px 10px 12px;margin-bottom:6px;border-bottom:1px solid var(--haze);font-size:15px;font-weight:600}
+.nu-name span{display:block;margin-top:2px;font-size:13px;font-weight:400;color:var(--ink-2)}
+.nu-pop a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-size:14.5px;color:var(--ink);text-decoration:none}
+.nu-pop a:hover{background:var(--mist);color:var(--ink)}
+.nu-pop a[aria-current="page"]{font-weight:600}
+.nu-pop .ico{width:17px;height:17px;color:var(--vt)}
+/* problem status: an empty ring that fills as you go, with a menu of every status */
+.ps{position:relative}
+.ps-btn{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;transition:background-color .2s}
+.ps-btn:hover,.ps[open] .ps-btn{background:var(--mist)}
+.ps-ic{position:relative;flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:2px solid var(--lilac);background:var(--paper);color:transparent;transition:background-color .2s,border-color .2s,box-shadow .2s}
+.ps-ic .ico{width:13px;height:13px;stroke-width:3}
+.ps-ic.p1{border-color:var(--v);box-shadow:inset 9px 0 0 var(--v)}
+.ps-ic.p2{border-color:var(--on-acc);background:var(--acc);color:var(--on-acc)}
+.ps-ic.p3{border-color:var(--v);background:var(--v);box-shadow:inset 0 0 0 4px var(--paper)}
+.ps-ic.p4{border-style:dashed;border-color:var(--ink-2)}
+.ps-ic.p5{border-color:var(--haze);overflow:hidden}
+.ps-ic.p5::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink-2);rotate:45deg}
+.ps-menu{position:absolute;left:0;top:calc(100% + 6px);z-index:30;display:grid;gap:2px;min-width:196px;padding:8px;border:1px solid var(--haze);border-radius:16px;background:var(--paper);box-shadow:0 26px 50px -26px rgba(23,18,46,.32);animation:ugAns .3s var(--ease)}
+.ps-menu.r{left:auto;right:0}
+.ps-opt{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:0;border-radius:10px;background:transparent;font:inherit;font-size:14.5px;color:var(--ink);text-align:left;white-space:nowrap;cursor:pointer}
+.ps-opt:hover{background:var(--mist)}
+.ps-opt.on{background:var(--mist);font-weight:600}
+.ps-opt .ps-ic{width:18px;height:18px}
+.ps-opt .ps-ic .ico{width:11px;height:11px}
+.ps-opt .ps-ic.p1{box-shadow:inset 7px 0 0 var(--v)}
+.ps-opt .ps-ic.p3{box-shadow:inset 0 0 0 3px var(--paper)}
+/* selects in the house style */
+.sel{position:relative;display:flex;flex-direction:column;gap:6px;min-width:0}
+.sel-k{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.sel select{appearance:none;-webkit-appearance:none;width:100%;height:46px;padding:0 42px 0 15px;border:1px solid var(--haze);border-radius:13px;background:var(--paper);font:inherit;font-size:15px;color:var(--ink);text-overflow:ellipsis;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.sel select:hover{border-color:var(--lilac)}
+.sel select:focus-visible{outline:none;border-color:var(--v);box-shadow:0 0 0 4px color-mix(in oklab,var(--v) 14%,transparent)}
+.sel select option{background:var(--paper);color:var(--ink)}
+.sel > .ico{position:absolute;right:15px;bottom:15px;width:16px;height:16px;color:var(--ink-2);pointer-events:none}
+/* the nav folds the same way it does on the landing page */
+@media (max-width:1300px){
+  .nav-links > a,.nav-dd-t{padding:0 9px}
+  .nav-login{padding:0 9px}
+  .nav-in{gap:16px}
+}
+@media (max-width:1180px){
+  .nav-links,.nav-sep,.nav-login{display:none}
+  .nav-cta{margin-left:auto}
+  .nav-mm{display:block}
+}
+@media (max-width:560px){
+  .nav-start{display:none}
+  .set-btn,.nav-user > summary{width:40px;height:40px}
+  /* on a phone the nav pop-ups span the screen instead of hanging off its edge */
+  .nav .set-pop,.nu-pop{position:fixed;left:16px;right:16px;top:76px;width:auto}
+  .av{width:36px;height:36px;font-size:13px}
+  .ann-in{font-size:13.5px;justify-content:flex-start;text-align:left}
+  .ann p{flex:1 1 200px}
+  .nav-mm summary{width:40px;height:40px}
+  .nav-in{gap:12px}
+  .theme-tg{width:40px;height:40px}
+  .wm{font-size:18px}
+  .afoot-links{margin-left:0}
+}
+.ug[data-amb="off"] *,.ug[data-amb="off"] *::before,.ug[data-amb="off"] *::after{animation:none !important}
+@media (prefers-reduced-motion:reduce){
+  .ug *,.ug *::before,.ug *::after{animation:none !important;transition:none !important}
+}

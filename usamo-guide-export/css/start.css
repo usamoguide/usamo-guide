@@ -1,0 +1,86 @@
+
+/* ---------- start learning: one question, one clear first step ---------- */
+.dot{margin:0 8px;color:var(--lilac)}
+.st-hero{padding:clamp(36px,4.4vw,64px) 0 clamp(64px,7vw,104px)}
+.st-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(40px,6vw,96px);align-items:start}
+.st-h1{margin-top:18px;font-family:var(--display);font-size:clamp(40px,4.8vw,68px);line-height:1;letter-spacing:-.045em;font-weight:700;text-wrap:balance}
+.st-lede{margin-top:20px;max-width:32em;font-size:clamp(17px,1.35vw,19px);line-height:1.55;color:var(--ink-2);text-wrap:pretty}
+.st-opts{position:relative;display:grid;gap:12px;margin-top:56px}
+.st-note{position:absolute;right:10px;bottom:calc(100% + 2px);display:flex;align-items:flex-end;gap:2px;rotate:-3deg;pointer-events:none}
+.st-note svg{width:40px;height:36px;margin:0 0 -22px 2px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;scale:-1 1}
+.st-opt{display:grid;grid-template-columns:24px minmax(0,1fr) auto;grid-template-areas:"r t k" "r d k";column-gap:16px;row-gap:4px;align-items:center;width:100%;padding:18px 22px 18px 20px;border:1.5px solid var(--haze);border-radius:18px;background:var(--paper);font:inherit;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background-color .2s,box-shadow .2s}
+.st-opt:hover{border-color:var(--lilac)}
+.st-opt.on{border-color:var(--v);background:var(--mist);box-shadow:0 0 0 4px color-mix(in oklab,var(--v) 12%,transparent)}
+.st-radio{grid-area:r;align-self:start;width:22px;height:22px;margin-top:1px;border-radius:50%;border:2px solid var(--lilac);background:var(--paper);transition:border .2s}
+.st-opt.on .st-radio{border:7px solid var(--v)}
+.st-opt-t{grid-area:t;font-size:17.5px;font-weight:600;letter-spacing:-.012em;line-height:1.3}
+.st-opt-d{grid-area:d;font-size:15px;line-height:1.45;color:var(--ink-2)}
+.st-opt-k{grid-area:k;justify-self:end;padding-left:8px;font-size:13px;font-weight:600;color:var(--vt);white-space:nowrap}
+.st-unsure{margin-top:20px;font-size:15.5px;color:var(--ink-2)}
+.st-unsure a{color:var(--vt);font-weight:600;text-underline-offset:3px}
+/* the answer: a purple card that changes with the choice */
+.st-rec{--pw:236px;position:relative;padding-top:calc(var(--pw) * .798 - 8px)}
+.st-pose{position:absolute;right:22px;top:0;z-index:2;width:var(--pw);height:auto;pointer-events:none}
+.rec-card{position:relative;padding:34px 34px 30px;border-radius:26px;background:var(--v);color:#fff}
+.rec-k{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in oklab,var(--v) 22%,white)}
+.rec-track{margin-top:18px;font-size:15.5px;font-weight:500;color:color-mix(in oklab,var(--v) 14%,white)}
+.rec-mod{margin-top:6px;max-width:13em;font-family:var(--display);font-size:clamp(30px,2.8vw,42px);line-height:1.04;letter-spacing:-.035em;font-weight:700;text-wrap:balance}
+.rec-meta{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-top:14px;font-size:15px}
+.rec-meta .ico{width:17px;height:17px;margin-right:8px}
+.rec-card .dot{color:color-mix(in oklab,var(--v) 40%,white)}
+.rec-why{margin-top:16px;max-width:31em;font-size:15.5px;line-height:1.55;color:color-mix(in oklab,var(--v) 10%,white)}
+.rec-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:28px}
+.rec-link{color:#fff;font-weight:600;text-underline-offset:4px}
+.rec-link:hover{color:#fff;text-decoration-thickness:2px}
+.rec-next{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.22)}
+.rec-next-k{font-size:13px;font-weight:600;color:color-mix(in oklab,var(--v) 22%,white)}
+.rec-next ol{display:grid;gap:8px;margin-top:10px}
+.rec-next li{display:flex;gap:12px;align-items:baseline;font-size:15.5px}
+.rec-n{min-width:26px;font-size:13px;font-weight:600;color:color-mix(in oklab,var(--v) 30%,white);font-variant-numeric:tabular-nums}
+.rec-card .btn-pop i{background:#fff}
+.rec-card .btn:focus-visible .btn-face{outline-color:#fff}
+/* how a module works */
+.st-how{padding-block:clamp(56px,6vw,88px);border-top:1px solid var(--haze)}
+.st-h2{font-family:var(--display);font-size:clamp(28px,2.8vw,40px);line-height:1.05;letter-spacing:-.035em;font-weight:700}
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px}
+.how-i{position:relative;padding:20px 22px 24px;border:1px solid var(--haze);border-radius:20px;background:var(--paper)}
+.how-fox{display:block;width:78px;height:auto;margin:-4px 0 10px -8px}
+.how-n{position:absolute;right:20px;top:18px;font-size:13px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.how-i h3{font-size:18px;font-weight:600;letter-spacing:-.015em}
+.how-i p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.st-save{padding-bottom:8px}
+.save-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 40px;padding:26px 30px;border-radius:22px;border:1px solid var(--haze);background:var(--mist)}
+.save-h{font-size:20px;font-weight:600;letter-spacing:-.015em}
+.save-card p{margin-top:6px;font-size:15.5px;color:var(--ink-2)}
+.save-card .btn{margin-bottom:4px}
+@media (max-width:1100px){
+  .how{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:960px){
+  .st-grid{grid-template-columns:minmax(0,1fr)}
+  .st-rec{--pw:210px}
+}
+@media (max-width:600px){
+  .st-opt{grid-template-columns:22px minmax(0,1fr);grid-template-areas:"r t" "r d" "r k"}
+  .st-opt-k{justify-self:start;padding:4px 0 0}
+  .st-note{display:none}
+  .st-opts{margin-top:32px}
+  .rec-card{padding:26px 22px 24px}
+  .how{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  /* phones: shorter steps, a smaller mascot frame, less air between blocks */
+  .st-hero{padding:28px 0 56px}
+  .st-h1{font-size:40px}
+  .st-opt{padding:16px 16px 16px 14px;column-gap:12px}
+  .st-rec{--pw:170px}
+  .st-pose{right:12px}
+  .st-how{padding-block:48px}
+  .how{gap:10px;margin-top:22px}
+  .how-i{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:14px;align-items:start;padding:16px 16px 18px}
+  .how-fox{grid-row:1 / span 2;width:56px;margin:0}
+  .how-i h3{grid-column:2;padding-right:22px}
+  .how-i p{grid-column:2;margin-top:4px}
+  .how-n{top:16px;right:16px}
+  .save-card{padding:22px 20px}
+}

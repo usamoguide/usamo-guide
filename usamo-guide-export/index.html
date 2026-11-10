@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>USAMO Guide · Landing page</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/landing.css">
+<script src="runtime/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=Instrument+Sans:wdth,wght@75..100,400..700&amp;family=Instrument+Serif:ital@1&amp;family=Noto+Sans+Bengali:wght@500&amp;family=Shadows+Into+Light&amp;display=swap">
+</helmet>
+<div class="ug" ref="{{ setRoot }}" data-amb="{{ amb }}" data-theme="{{ theme }}" style="--v: {{ accent }}; --display: {{ display }}; --acc: {{ acc }}; --acc-dk: {{ accDk }}">
+<svg class="ug-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><symbol id="ug-mark" viewBox="78 70 340 340"><path style="fill: var(--mk-light)" d="M145.2 377.8C102.6 372.7 79.6 348.2 85.7 314.5C87.5 304.7 88.6 300.6 92.4 290.5C97.5 276.6 102 266.4 107 257.4C108 255.6 109.8 252.1 111 249.6C112.3 247.2 114.1 243.7 115.1 241.9C116.1 240.1 117.9 236.8 119.1 234.7C120.3 232.5 121.9 229.7 122.7 228.4C123.5 227.2 124.8 225.1 125.5 223.8C127.4 220.3 133.8 210.8 134.2 210.7C136.4 210.2 136.3 210.9 132.6 221C130.3 227 129.5 229.4 126.2 239.1C123.1 248.1 121 256.6 118.8 268.8C112.3 305.2 132.9 328 175.1 331C177.1 331.1 179.4 331.4 180.2 331.6C182.5 332 196.8 332 198.9 331.6C199.7 331.4 202.2 331.1 204.5 331C206.8 330.9 209.2 330.6 210 330.5C210.8 330.3 213.4 330.1 215.9 330C219 329.8 221.6 329.6 224.4 329C226.6 328.6 229.3 328.2 230.5 328C231.7 327.9 233.9 327.4 235.4 327C236.9 326.6 240.8 325.7 244 325C255.7 322.4 270.8 317.8 276.8 315.1C278.5 314.3 281.6 313 283.7 312.1C285.7 311.2 289.1 309.7 291.2 308.7C297.8 305.4 300.5 305.2 299.2 308.3C298.5 309.9 290.1 319.5 287.1 322.2C286.1 323 283.6 325.2 281.5 327.2C274.1 333.9 259.5 344.7 252.9 348.3C251.8 348.8 249.2 350.3 247.2 351.5C237.8 357.2 219 365.9 212.2 367.8C210.7 368.2 208.3 368.9 206.9 369.5C189.9 375.9 161.1 379.8 145.2 377.8Z"></path><path style="fill: var(--mk-mid)" d="M159 320.1C140.1 314.5 130.9 304.8 127.1 286.8C124.9 276.4 126.5 259.2 130.9 245.8C131.4 244.3 132 242.2 132.3 241C133.7 234.9 140.6 215.5 144.3 206.8C145.8 203.4 147.4 199.5 148 198.1C151.4 189.4 156.1 179.4 158.5 175.3C159.2 174.1 160.1 172.2 160.6 170.9C161.9 167.5 164.5 163 168.4 157.1C170.3 154.2 172.9 150.2 174.2 148.2C177.2 143.3 185.3 132.8 189.2 128.7C190.3 127.5 191.7 125.9 192.2 125.1C195.4 120.4 200.5 114.7 204 111.9C204.9 111.2 206.8 109.5 208.2 108.1C211.1 105.3 212.1 104.7 217.8 101.2C229.5 94.2 244.9 90.1 252.9 92C254.2 92.3 256.6 92.7 258.4 93C267.7 94.5 283.8 103 283.8 106.4C283.7 108.3 282.4 108.7 274.2 109C262.9 109.4 253.2 115 245 125.9C244.1 127.1 242.7 128.9 241.9 129.8C241.2 130.7 240 132.5 239.4 133.8C237.9 136.7 236.9 138.4 234.5 142.1C233.4 143.8 232.1 146.2 231.6 147.5C229.7 151.8 227.3 156.7 225.9 159C225.2 160.2 224.1 162.3 223.5 163.7C222.9 165 221.8 167.4 221 169C220.2 170.6 219 173.2 218.3 174.9C217.6 176.5 215.2 181.2 213.1 185.4C211 189.5 208.7 194.4 207.9 196.4C207.1 198.3 206 200.8 205.4 202C203.9 205.4 200.2 214 198 219.5C196.9 222.3 195.4 225.7 194.7 227.1C194 228.4 192.7 231.8 191.8 234.5C190.8 237.2 189.3 241.6 188.3 244.2C187.3 246.9 185.9 251.2 185.1 253.6C183.1 260 182 263.2 180 268.5C178 273.8 177.4 275.6 176.9 279.1C176.7 280.5 176.1 283 175.6 284.8C175.2 286.5 174.6 288.7 174.4 289.6C174.2 290.6 173.4 293.1 172.8 295.1C171.3 299.7 170.3 304.4 170 309.1C169.2 320 166.7 322.4 159 320.1Z"></path><path style="fill: var(--mk-deep)" d="M215.9 388.7C215.2 388.7 213.3 388.4 211.8 388.3C210.2 388.1 207.6 387.8 206 387.6C204.4 387.4 201.5 387.1 199.5 387C191.4 386.5 182 384.7 181.6 383.5C181.3 382.3 182.1 381.8 185.7 381.2C186.5 381.1 188.4 380.7 189.8 380.3C193.5 379.2 201 377.4 203.5 376.9C204.7 376.6 207.2 375.9 209.1 375.1C211.1 374.4 214.2 373.3 216.1 372.7C225.9 369.5 227 369 244.9 360.1C256.6 354.2 257.8 353.5 270.2 344.8C275.4 341.1 283.3 334.8 287 331.4C294.5 324.3 299.5 319.4 301.2 317.3C302.2 316 304.1 313.6 305.4 312.1C313.4 302.5 321.5 286.8 322.7 278.7C323.4 273.9 323.8 270.9 324 268.3C324.7 260.2 328.7 263.4 336.2 278.1C337.2 280.2 338.9 283.2 339.8 284.8C341.8 287.9 343.9 292.3 346.2 297.8C347.1 299.7 348.6 303.1 349.6 305.3C356.1 318.9 359.8 339.3 357.3 347.9C357 348.8 356.4 351.1 355.9 353C353.1 363.5 344.7 374.2 336.9 377.1C336 377.4 334.1 378.3 332.6 379C325.8 382.1 319.5 384 312.6 385C310.7 385.3 307.9 385.7 306.5 386C305.1 386.3 302.1 386.6 300 386.8C297.9 386.9 295.1 387.2 293.8 387.4C292.4 387.6 289 387.9 286.2 388C283.3 388.1 280.9 388.3 280.7 388.4C280.1 388.8 218.5 389.1 215.9 388.7ZM344.7 379.7C342.5 378.9 343.5 377.4 348.9 373.9C355.5 369.5 358 366.8 360.9 361.4C366.9 350 367.6 338.2 363.3 321.1C360.1 308.6 349.9 285.7 342.1 273.8C341.3 272.4 339.7 269.7 338.5 267.6C334.4 260.2 327.1 249.3 321.2 241.8C319.9 240.2 318.1 237.6 317 236C315.9 234.4 314 231.8 312.7 230.2C311.4 228.7 309.7 226.5 309 225.5C308.3 224.5 306.7 222.4 305.5 221C304.3 219.6 302.6 217.4 301.8 216.2C300.9 214.9 298.8 212.5 297.1 210.7C295.5 208.9 292.7 205.6 291 203.5C289.3 201.4 286.3 197.9 284.4 195.8C282.5 193.8 278.3 189.3 275.2 185.9C269.9 180.1 256.3 166.6 253.1 164.1C252.3 163.4 250 161.4 248 159.5C246 157.6 243 155 241.2 153.6C235.7 149.2 235.5 147.4 240.1 140.5C241.2 138.8 242.8 136.4 243.6 135.2C244.5 133.8 246.2 131.8 248 130C249.6 128.4 251.8 126.1 253 124.8C266.9 110.1 291.1 110.5 302.6 125.6C303.4 126.7 305.2 128.8 306.6 130.2C308 131.7 309.9 133.9 310.7 135.1C311.6 136.4 313.3 138.6 314.5 140C315.7 141.4 317.3 143.5 318 144.5C318.7 145.5 320.3 147.6 321.4 149C322.5 150.4 324.2 152.8 325.2 154.2C326.1 155.7 328.3 158.7 329.9 160.9C331.6 163.1 334.1 166.7 335.5 168.9C336.9 171.2 339 174.2 340.1 175.6C341.2 177.1 343.2 180 344.5 182.1C345.8 184.2 347.8 187.2 349 188.9C351.4 192.2 356.2 199.8 357.5 202.1C358.6 204 362.8 210.8 365.1 214.2C366 215.7 367.3 218 368 219.3C369.2 221.7 373.1 228.1 376 232.5C376.8 233.8 378.5 236.7 379.6 238.9C380.7 241.1 382.3 244.1 383.2 245.6C385 248.5 392.8 263.9 396.8 272.4C398.3 275.4 400 279.5 401.1 282.8C402.1 285.7 403.7 289.9 404.6 292.1C406.9 297.8 410.2 308.6 410.7 312C410.9 313 411.2 315.3 411.4 317C415 341.7 402.2 361.5 376.4 371.6C374.7 372.3 372.1 373.3 370.5 374C368.6 374.8 366.3 375.6 363.8 376.1C361.8 376.6 358.8 377.3 357.3 377.7C351.1 379.5 346.1 380.2 344.7 379.7Z"></path></symbol></defs></svg>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="USAMO Guide, back to top"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use class="mark-spin" href="#ug-mark" width="100" height="100"></use></svg><span class="wm" aria-hidden="true">USAMO Guide</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-dd">
+        <button class="nav-dd-t" type="button" aria-haspopup="true">Tracks<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></button>
+        <div class="nav-menu">
+          <a href="track.html">Foundations (AMC 8)</a>
+          <a href="track.html">Intermediate (AMC 10/12)</a>
+          <a href="track.html">Advanced (AIME)</a>
+          <a href="track.html">Olympiad (USA(J)MO)</a>
+        </div>
+      </div>
+      <a href="problems.html">Problems</a>
+      <a href="#contests">Contests</a>
+      <div class="nav-dd">
+        <button class="nav-dd-t" type="button" aria-haspopup="true">Resources<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></button>
+        <div class="nav-menu">
+          <a href="#o4e">Olympiad4Everyone</a>
+          <a href="#discord">Discord</a>
+          <a href="#github">GitHub</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <a href="#about">About</a>
+      <a href="mailto:contact@usamoguide.com">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a class="nav-login" href="dashboard.html">Login</a>
+      <button class="theme-tg" type="button" onClick="{{ toggleTheme }}" aria-label="Dark mode" aria-pressed="{{ darkPressed }}"><svg class="ico tg-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"></path></svg><svg class="ico tg-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"></path></svg></button>
+      <a class="btn btn-p btn-sm nav-start" href="start.html" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Start learning<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <details class="nav-mm">
+        <summary aria-label="Menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></summary>
+        <div class="nav-sheet">
+          <p class="nav-sheet-k">Tracks</p>
+          <a href="track.html">Foundations (AMC 8)</a>
+          <a href="track.html">Intermediate (AMC 10/12)</a>
+          <a href="track.html">Advanced (AIME)</a>
+          <a href="track.html">Olympiad (USA(J)MO)</a>
+          <hr>
+          <a href="problems.html">Problems</a>
+          <a href="#contests">Contests</a>
+          <a href="start.html">Start learning</a>
+          <p class="nav-sheet-k">Resources</p>
+          <a href="#o4e">Olympiad4Everyone</a>
+          <a href="#discord">Discord</a>
+          <a href="#github">GitHub</a>
+          <a href="#faq">FAQ</a>
+          <hr>
+          <a href="#about">About</a>
+          <a href="mailto:contact@usamoguide.com">Contact Us</a>
+          <a href="dashboard.html">Login</a>
+        </div>
+      </details>
+    </div>
+  </div>
+  <div class="nav-prog" aria-hidden="true"></div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-doodles" aria-hidden="true">
+    <div class="dd dd-sparks" style="--bd: 1.55s"><svg class="dd-svg" viewBox="0 0 130 110"><path class="spk spk1" d="M44 26Q46.6 49.4 70 52Q46.6 54.6 44 78Q41.4 54.6 18 52Q41.4 49.4 44 26Z"></path><path class="spk spk2" d="M98 9Q99.3 20.7 111 22Q99.3 23.3 98 35Q96.7 23.3 85 22Q96.7 20.7 98 9Z"></path><path class="spk spk3" d="M102 75Q102.9 83.1 111 84Q102.9 84.9 102 93Q101.1 84.9 93 84Q101.1 83.1 102 75Z"></path></svg></div>
+  </div>
+  <div class="wrap hero-in">
+    <h1 class="h1"><span class="h1-l1"><span class="hw" style="--i: 0">Free,</span> <span class="hw" style="--i: 1">structured</span> <span class="hw" style="--i: 2">prep</span><span class="hero-fox" aria-hidden="true"><img class="hf-img" src="img/panda-wave.webp" alt="" width="450" height="464"><span class="fox-bubble">hi! try a problem ↓</span></span></span><br> <span class="hw" style="--i: 3">from</span> <span class="hw" style="--i: 4">AMC</span> <span class="hw" style="--i: 5">to</span> <span class="hw" style="--i: 6">USAMO.</span></h1>
+    <p class="h-sub h-in" style="--d: 640ms">Contest math without the gatekeeping.</p>
+    <p class="lede h-in" style="--d: 800ms">Lessons, problem sets and mock contests in one place, and every line of it is open source.</p>
+    <div class="cta-row h-in" style="--d: 900ms">
+      <span class="hand-note" aria-hidden="true"><span>start here</span><svg viewBox="0 0 62 42"><path d="M4 5C21 3 38 11 51 31"></path><path d="M41 29l10.5 3.5 1.5-11"></path></svg></span>
+        <a class="btn btn-p btn-lg" href="start.html" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Start learning<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+        <a class="btn btn-s btn-lg" href="#discord" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h14a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2h-7.5L7 20.5V17H5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2z"></path><path d="M8.5 10.75h.01M12 10.75h.01M15.5 10.75h.01"></path></svg>Join the Discord</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+    </div>
+    <p class="eyebrow-pill h-in" style="--d: 1080ms">Written by USA(J)MO medalists</p>
+  </div>
+</section>
+
+<section class="sec sample" id="sample" aria-labelledby="ug-sample-h">
+  <div class="sample-geo" aria-hidden="true"><span class="sg-ring"></span><span class="sg-ring sg-ring2"></span></div>
+  <div class="dz dz-pascal" aria-hidden="true"><div class="dd-in rv" style="--d: 200ms"><svg class="dd-svg" viewBox="0 0 250 236"><text class="dd-t" x="120" y="34">1</text><text class="dd-t" x="103.5" y="67">1</text><text class="dd-t" x="136.5" y="67">1</text><text class="dd-t" x="87" y="100">1</text><text class="dd-t" x="120" y="100">2</text><text class="dd-t" x="153" y="100">1</text><text class="dd-t" x="70.5" y="133">1</text><text class="dd-t" x="103.5" y="133">3</text><text class="dd-t" x="136.5" y="133">3</text><text class="dd-t" x="169.5" y="133">1</text><text class="dd-t" x="54" y="166">1</text><text class="dd-t" x="87" y="166">4</text><text class="dd-t" x="120" y="166">6</text><text class="dd-t" x="153" y="166">4</text><text class="dd-t" x="186" y="166">1</text><path class="ink ink-v dr" pathLength="1" d="M108.3 144.5C109.8 143.9 114.3 141.5 117.6 141C120.9 140.5 125 140.5 128 141.7C131 142.8 133.7 145.5 135.7 147.9C137.6 150.3 139.2 153.3 139.8 156.2C140.3 159.1 140.1 162.6 138.9 165.3C137.7 168 135.1 170.4 132.5 172.3C130 174.2 127 176 123.9 176.7C120.7 177.4 116.8 177.2 113.7 176.3C110.5 175.5 106.9 173.8 104.8 171.5C102.8 169.3 101.9 165.9 101.3 163C100.7 160.1 100.3 156.8 101.2 154.1C102 151.4 104.3 148.9 106.5 146.7C108.7 144.6 111.5 142 114.5 141.1C117.6 140.2 121.8 140.3 124.9 141.2C128 142.1 131.7 145.6 133.1 146.5"></path><path class="ink ink-v dr dr2" pathLength="1" d="M196 206C178 206 160 196 146 178M146 178L155.8 183M146 178L147.3 188.9"></path><text class="dd-n" x="205" y="226">C(4, 2)</text></svg></div></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2 rv" id="ug-sample-h" style="--d: 60ms">Read a lesson right here.</h2>
+      <p class="sec-lede rv" style="--d: 120ms">This one counts the regions you get by drawing chords in a circle, a pattern that fools almost everyone. Scroll inside the window to read it, then try the problem at the end.</p>
+    </div>
+    <div class="lf-wrap rv" style="--d: 160ms">
+      <img class="lf-fox" src="img/panda-read.webp" alt="" width="450" height="464">
+      <span class="lf-note" aria-hidden="true">it scrolls, try it<svg class="arw" viewBox="0 0 60 70"><path class="ink ink-v" d="M10 6C30 8 44 24 40 58"></path><path class="ink ink-v" d="M40 58L34.6 47.3M40 58L47.2 48.4"></path></svg></span>
+    <div class="lesson-frame">
+      <div class="lf-bar">
+        <span class="lf-url"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"></path></svg>usamoguide.com</span>
+        <span class="lf-tag">Sample lesson</span>
+        <a class="lf-open" href="module.html" aria-label="Open this lesson in the Guide"><span>Open in the Guide</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+      </div>
+      <div class="lf-body">
+        <div class="ls-rail">
+          <p class="ls-rail-k">In this lesson</p>
+          <button class="ls-item {{ l0 }}" type="button" onClick="{{ jump0 }}">The trap</button>
+          <button class="ls-item {{ l1 }}" type="button" onClick="{{ jump1 }}">The key idea</button>
+          <button class="ls-item {{ l2 }}" type="button" onClick="{{ jump2 }}">The formula</button>
+          <button class="ls-item {{ l3 }}" type="button" onClick="{{ jump3 }}">Try it</button>
+        </div>
+        <div class="lesson-scroll" tabindex="0" role="region" aria-label="Sample lesson: Chords in a circle">
+          <article class="lesson">
+            <div class="ls-chips"><span class="ls-chip">Combinatorics</span><span class="ls-chip">AIME</span></div>
+            <h3 class="ls-title">Chords in a circle</h3>
+            <p class="ls-sub">Why 1, 2, 4, 8, 16 stops doubling.</p>
+            <section class="ls-sec" data-ls="0">
+              <h4>The trap</h4>
+              <p>Put <i class="mv">n</i> points on a circle and draw every chord between them, with no three chords meeting at one point. Then count the regions inside the circle.</p>
+              <div class="ls-table" role="table" aria-label="Regions for n points">
+                <div class="lt-row" role="row"><span class="lt-h" role="rowheader"><i class="mv">n</i></span><span role="cell">1</span><span role="cell">2</span><span role="cell">3</span><span role="cell">4</span><span role="cell">5</span><span role="cell">6</span></div>
+                <div class="lt-row" role="row"><span class="lt-h" role="rowheader">Regions</span><span role="cell">1</span><span role="cell">2</span><span role="cell">4</span><span role="cell">8</span><span role="cell">16</span><span class="lt-hit" role="cell">31</span></div>
+              </div>
+              <p>One point gives 1 region, two give 2, then 4, 8 and 16. It's hard not to guess 32 for six points. The real answer is 31.</p>
+              <figure class="ls-fig"><svg viewBox="0 0 260 260" role="img" aria-label="Six points on a circle joined by all 15 chords"><circle class="lsf-c" cx="130" cy="130" r="110"></circle><path class="lsf-ch" d="M233.4 167.6L136.3 239.8M233.4 167.6L47 202.2M233.4 167.6L42.6 63.2M233.4 167.6L111.7 21.5M233.4 167.6L223.9 72.7M136.3 239.8L47 202.2M136.3 239.8L42.6 63.2M136.3 239.8L111.7 21.5M136.3 239.8L223.9 72.7M47 202.2L42.6 63.2M47 202.2L111.7 21.5M47 202.2L223.9 72.7M42.6 63.2L111.7 21.5M42.6 63.2L223.9 72.7M111.7 21.5L223.9 72.7"></path><circle class="lsf-p" cx="233.4" cy="167.6" r="5"></circle><circle class="lsf-p" cx="136.3" cy="239.8" r="5"></circle><circle class="lsf-p" cx="47" cy="202.2" r="5"></circle><circle class="lsf-p" cx="42.6" cy="63.2" r="5"></circle><circle class="lsf-p" cx="111.7" cy="21.5" r="5"></circle><circle class="lsf-p" cx="223.9" cy="72.7" r="5"></circle></svg><figcaption>Six points, 15 chords, 31 regions.</figcaption></figure>
+            </section>
+            <section class="ls-sec" data-ls="1">
+              <h4>The key idea</h4>
+              <p>Draw the chords one at a time. A new chord adds one region, plus one more for every chord it crosses on the way. So the total is 1, plus one for every chord, plus one for every crossing.</p>
+              <p>There are <span class="bi"><span class="bi-c"><i class="mv">n</i><span>2</span></span></span> chords. A crossing needs two chords with four different endpoints, and any four points on the circle give exactly one crossing: the two diagonals of their quadrilateral. So there are <span class="bi"><span class="bi-c"><i class="mv">n</i><span>4</span></span></span> crossings.</p>
+            </section>
+            <section class="ls-sec" data-ls="2">
+              <h4>The formula</h4>
+              <div class="ls-formula"><i class="mv">R</i>(<i class="mv">n</i>) = 1 + <span class="bi"><span class="bi-c"><i class="mv">n</i><span>2</span></span></span> + <span class="bi"><span class="bi-c"><i class="mv">n</i><span>4</span></span></span></div>
+              <p>Check it with six points: 1 + 15 + 15 = 31.</p>
+              <p>So why did it look like doubling? By Pascal's rule, 1 + <span class="bi"><span class="bi-c"><i class="mv">n</i><span>2</span></span></span> + <span class="bi"><span class="bi-c"><i class="mv">n</i><span>4</span></span></span> adds up the first five entries of row <i class="mv">n</i> − 1 of Pascal's triangle. For <i class="mv">n</i> ≤ 5 that's the whole row, which sums to 2<sup><i class="mv">n</i>−1</sup>. At <i class="mv">n</i> = 6 the row has six entries, so the sum misses the last one: 32 − 1 = 31.</p>
+            </section>
+            <section class="ls-sec" data-ls="3">
+              <h4>Try it</h4>
+              <div class="ls-try">
+                <p>How many regions do 7 points make?</p>
+                <details class="ls-ans"><summary>Show answer</summary><p>1 + 21 + 35 = 57</p></details>
+              </div>
+              <p class="ls-take">A pattern is only a guess until you can say why it holds.</p>
+            </section>
+          </article>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ladder" id="path">
+  <div class="dz dz-trophy" aria-hidden="true"><div class="dd-in rv" style="--d: 200ms"><svg class="dd-svg" viewBox="0 0 180 206"><path class="cup-fill" d="M50 42C50.7 48 50.7 68 54 78C57.3 88 64 96.7 70 102C76 107.3 83.3 110 90 110C96.7 110 104 107.3 110 102C116 96.7 122.7 88 126 78C129.3 68 129.3 48 130 42Z"></path><path class="ink dr" pathLength="1" d="M50 42C50.7 48 50.7 68 54 78C57.3 88 64 96.7 70 102C76 107.3 83.3 110 90 110C96.7 110 104 107.3 110 102C116 96.7 122.7 88 126 78C129.3 68 129.3 48 130 42"></path><path class="ink dr" pathLength="1" d="M128.3 42.6C127.7 43.2 126.8 44.9 124.2 46C121.7 47 117.7 48.1 112.9 48.7C108.2 49.3 101.5 49.5 95.8 49.6C90.1 49.7 84.1 49.7 78.7 49.4C73.4 49 68.1 48.4 63.6 47.7C59.1 47 53.9 46.1 51.9 45C49.9 44 51.1 42.6 51.5 41.5C51.9 40.3 51.8 39 54.4 38C56.9 36.9 61.9 35.9 66.8 35.3C71.8 34.7 78.1 34.6 83.9 34.4C89.7 34.2 96 34 101.4 34.3C106.9 34.6 112.5 35.3 116.7 36.1C121 36.9 124.2 37.9 126.7 39C129.3 40.1 132.4 41.4 131.9 42.5C131.4 43.6 126.8 44.8 123.5 45.7C120.2 46.7 113.9 47.8 111.9 48.2"></path><path class="ink dr dr2" pathLength="1" d="M52 54C48.7 53.7 36.3 49.7 32 52C27.7 54.3 25.3 62.7 26 68C26.7 73.3 30.7 80.3 36 84C41.3 87.7 54.3 89 58 90"></path><path class="ink dr dr2" pathLength="1" d="M128 54C131.3 53.7 143.7 49.7 148 52C152.3 54.3 154.7 62.7 154 68C153.3 73.3 149.3 80.3 144 84C138.7 87.7 125.7 89 122 90"></path><path class="ink dr" pathLength="1" d="M83.6 109.8C83.5 118.4 84.1 129.6 83.8 138.5M96.1 110.1C96.3 118.4 96.3 129.6 96.5 138.4"></path><path class="ink dr" pathLength="1" d="M64.4 138.6C79.6 137.6 100.4 137.2 115.4 138.3M115.7 138.4C115.6 143.5 117 150.6 118.3 155.6M117.4 155.8C101.2 155.6 78.8 156.8 61.8 155.9M62.6 156.6C63 150.6 64.3 143.5 64.6 138.3"></path><path class="ink dr" pathLength="1" d="M54.1 156.1C75.6 155.5 104.4 155.1 126.2 155.5M126.1 156.2C127.5 160.1 126.2 166 127.5 169.9M128.6 169.6C105.2 168.9 74.8 169.6 51.9 170.4M52.1 169.5C52.4 165.8 54.2 160.3 53.5 156.6"></path><path class="spk" d="M90 57Q91.3 68.7 103 70Q91.3 71.3 90 83Q88.7 71.3 77 70Q88.7 68.7 90 57Z"></path><text class="dd-n" x="90" y="200">the finish line</text></svg></div></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2 rv" style="--d: 60ms">Train with purpose, not guesswork.</h2>
+      <p class="sec-lede rv" style="--d: 120ms">Curated topics run from AMC foundations to olympiad depth, organized into battle-tested problem-solving tracks. Jump in wherever you actually are.</p>
+    </div>
+    <div class="lad-grid">
+      <div class="lad-pinwrap">
+        <div class="lad-pin" aria-hidden="true">
+          <div class="pin-top">
+            <span class="lbl pin-k">Rung {{ stepNo }} / 04</span>
+            <span class="segs"><span class="seg {{ r0 }}"></span><span class="seg {{ r1 }}"></span><span class="seg {{ r2 }}"></span><span class="seg {{ r3 }}"></span></span>
+          </div>
+          <div class="rn-box">
+            <div class="rn {{ r0 }}">AMC 8</div>
+            <div class="rn {{ r1 }}">AMC 10/12</div>
+            <div class="rn {{ r2 }}">AIME</div>
+            <div class="rn {{ r3 }}">USA(J)MO</div>
+          </div>
+          <div class="rd-box lbl">
+            <div class="rd {{ r0 }}">25 questions · multiple choice</div>
+            <div class="rd {{ r1 }}">25 questions · multiple choice</div>
+            <div class="rd {{ r2 }}">15 questions · numerical answers</div>
+            <div class="rd {{ r3 }}">6 problems · written proofs</div>
+          </div>
+          <div class="stair" data-s="{{ step }}">
+            <div class="bars"><span class="bar {{ r0 }}"></span><span class="bar {{ r1 }}"></span><span class="bar {{ r2 }}"></span><span class="bar {{ r3 }}"></span></div>
+            <span class="mk"></span>
+          </div>
+          <div class="bar-labels lbl"><span>AMC 8</span><span>AMC 10/12</span><span>AIME</span><span>USA(J)MO</span></div>
+          <div class="pin-prog"></div>
+        </div>
+      </div>
+      <div class="lad-steps">
+        <article class="lstep {{ r0 }}">
+          <div class="lstep-in">
+            <p class="lstep-k lbl"><span class="lstep-n">01</span><span>Middle school</span></p>
+            <h3 class="lstep-t">AMC 8</h3>
+            <p class="lstep-p">25 multiple-choice questions, and day one for a lot of people. The Guide starts at the basics, so you don't need a head start.</p>
+          </div>
+        </article>
+        <article class="lstep {{ r1 }}">
+          <div class="lstep-in">
+            <p class="lstep-k lbl"><span class="lstep-n">02</span><span>High school</span></p>
+            <h3 class="lstep-t">AMC 10/12</h3>
+            <p class="lstep-p">Also 25 multiple-choice questions, written for high schoolers. Score well enough and you qualify for the AIME.</p>
+          </div>
+        </article>
+        <article class="lstep {{ r2 }}">
+          <div class="lstep-in">
+            <p class="lstep-k lbl"><span class="lstep-n">03</span><span>Invitational</span></p>
+            <h3 class="lstep-t">AIME</h3>
+            <p class="lstep-p">A much harder exam: 15 questions, and every answer is a number. Do well here too and you're in USAMO or USAJMO territory.</p>
+          </div>
+        </article>
+        <article class="lstep {{ r3 }}">
+          <div class="lstep-in">
+            <p class="lstep-k lbl"><span class="lstep-n">04</span><span>Olympiad</span></p>
+            <h3 class="lstep-t">USA(J)MO</h3>
+            <p class="lstep-p">Six proof problems over two days. Probably the toughest math test most high schoolers will ever take, and the one this Guide's authors medaled on.</p>
+          </div>
+        </article>
+        <p class="lad-foot rv">Official dates and registration live on the <a href="https://maa.org/student-programs/amc/">MAA competitions page<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec mission" id="mission">
+  <div class="mi-geo" aria-hidden="true"><span class="mi-circle"></span></div>
+  <div class="dz dz-free" aria-hidden="true"><div class="dd-in rv" style="--d: 300ms"><span class="stk taped">free, forever</span></div></div>
+  <div class="wrap">
+    <p class="mf" style="--n: 44"><span class="w" style="--i: 0">Gatekept</span> <span class="w" style="--i: 1">resources,</span> <span class="w" style="--i: 2">unstructured</span> <span class="w" style="--i: 3">learning,</span> <span class="w" style="--i: 4">and</span> <span class="w" style="--i: 5">courses</span> <span class="w" style="--i: 6">that</span> <span class="w" style="--i: 7">cost</span> <span class="w" style="--i: 8">hundreds</span> <span class="w" style="--i: 9">have</span> <span class="w" style="--i: 10">kept</span> <span class="w" style="--i: 11">olympiad</span> <span class="w" style="--i: 12">math</span> <span class="w" style="--i: 13">away</span> <span class="w" style="--i: 14">from</span> <span class="w" style="--i: 15">the</span> <span class="w" style="--i: 16">rest</span> <span class="w" style="--i: 17">of</span> <span class="w" style="--i: 18">us.</span> <span class="w" style="--i: 19">We're</span> <span class="w" style="--i: 20">high</span> <span class="w" style="--i: 21">schoolers</span> <span class="w" style="--i: 22">who</span> <span class="w" style="--i: 23">went</span> <span class="w" style="--i: 24">through</span> <span class="w" style="--i: 25">that</span> <span class="w" style="--i: 26">ourselves.</span> <span class="w" style="--i: 27">We</span> <span class="w" style="--i: 28">have</span> <span class="w" style="--i: 29">no</span> <span class="w" style="--i: 30">intention</span> <span class="w" style="--i: 31">of</span> <span class="w" style="--i: 32">making</span> <span class="w" style="--i: 33">money</span> <span class="w" style="--i: 34">off</span> <span class="w" style="--i: 35">you.</span> <span class="w" style="--i: 36">We</span> <span class="w" style="--i: 37">exist</span> <span class="w" style="--i: 38">to</span> <span class="w" style="--i: 39">promote</span> <span class="w" style="--i: 40">equity</span> <span class="w" style="--i: 41">in</span> <span class="w" style="--i: 42">learning</span> <span class="w" style="--i: 43">math.</span></p>
+  </div>
+</section>
+
+<section class="sec scene" id="platform" aria-labelledby="ug-scene-h">
+  <div class="dz dz-dice" aria-hidden="true"><div class="dd-in rv" style="--d: 200ms"><svg class="dd-svg" viewBox="0 0 210 170"><path class="die-fill" d="M95.1 66.7C96.2 71 97.5 76.6 98 79.7C98.6 82.7 98.5 83.5 98.5 85C98.5 86.6 98.3 87.9 98 89.1C97.6 90.3 97.2 91.4 96.6 92.4C96 93.4 95.2 94.3 94.3 95.1C93.4 96 92.4 96.7 91 97.5C89.6 98.2 89 98.7 86 99.6C83.1 100.6 77.5 102 73.3 103.1C69 104.2 63.4 105.5 60.3 106C57.3 106.6 56.5 106.5 55 106.5C53.4 106.5 52.1 106.3 50.9 106C49.7 105.6 48.6 105.2 47.6 104.6C46.6 104 45.7 103.2 44.9 102.3C44 101.4 43.3 100.4 42.5 99C41.8 97.6 41.3 97 40.4 94C39.4 91.1 38 85.5 36.9 81.3C35.8 77 34.5 71.4 34 68.3C33.4 65.3 33.5 64.5 33.5 63C33.5 61.4 33.7 60.1 34 58.9C34.4 57.7 34.8 56.6 35.4 55.6C36 54.6 36.8 53.7 37.7 52.9C38.6 52 39.6 51.3 41 50.5C42.4 49.8 43 49.3 46 48.4C48.9 47.4 54.5 46 58.7 44.9C63 43.8 68.6 42.5 71.7 42C74.7 41.4 75.5 41.5 77 41.5C78.6 41.5 79.9 41.7 81.1 42C82.3 42.4 83.4 42.8 84.4 43.4C85.4 44 86.3 44.8 87.1 45.7C88 46.6 88.7 47.6 89.5 49C90.2 50.4 90.7 51 91.6 54C92.6 56.9 94 62.5 95.1 66.7Z"></path><path class="ink dr" pathLength="1" d="M34.8 55.6C35.3 54.9 36.5 53 37.8 51.8C39.2 50.6 40.1 49.6 42.9 48.5C45.7 47.4 49.5 46.7 54.6 45.4C59.6 44.1 69.2 41.3 73.3 40.8C77.4 40.4 77.2 42.4 79 42.8C80.7 43.2 82.4 42.9 84 43.3C85.6 43.7 87.2 44.1 88.3 45.4C89.5 46.8 89.8 48.5 90.9 51.2C92 53.9 93.7 56.8 94.7 61.7C95.8 66.7 96.8 76.5 97.3 80.7C97.9 85 98.4 85.4 98.2 87.2C98.1 89.1 97 90.2 96.3 91.6C95.6 93 95.1 94.5 93.9 95.6C92.7 96.8 91.5 97.8 88.9 98.7C86.2 99.6 83 99.7 78.1 100.8C73.2 102 63.6 104.7 59.5 105.5C55.3 106.4 55 105.8 53.1 105.8C51.1 105.9 49.2 106.4 47.7 105.8C46.2 105.2 45 104 44.1 102.4C43.2 100.9 43.1 98.9 42.1 96.4C41 93.9 39 92.1 37.8 87.3C36.5 82.5 35.4 72.1 34.7 67.7C33.9 63.3 33.2 62.7 33.4 60.9C33.6 59.1 34.9 58 35.9 56.8C36.8 55.5 37.9 54.6 39 53.3C40 52 40 50 42.3 48.9C44.6 47.9 51 47.4 52.7 47"></path><circle class="pip" cx="48.7" cy="64.3" r="5"></circle><circle class="pip" cx="66.4" cy="73.8" r="5"></circle><circle class="pip" cx="83.4" cy="84.2" r="5"></circle><path class="die-fill" d="M175.4 91.7C174.6 96.1 173.4 101.7 172.6 104.7C171.9 107.7 171.4 108.3 170.8 109.7C170.1 111.1 169.4 112.2 168.6 113.2C167.8 114.1 166.9 114.9 165.9 115.6C165 116.2 163.9 116.7 162.7 117.1C161.5 117.5 160.3 117.8 158.7 117.8C157.1 117.9 156.4 118.1 153.3 117.7C150.3 117.3 144.6 116.3 140.3 115.4C135.9 114.6 130.3 113.4 127.3 112.6C124.3 111.9 123.7 111.4 122.3 110.8C120.9 110.1 119.8 109.4 118.8 108.6C117.9 107.8 117.1 106.9 116.4 105.9C115.8 105 115.3 103.9 114.9 102.7C114.5 101.5 114.2 100.3 114.2 98.7C114.1 97.1 113.9 96.4 114.3 93.3C114.7 90.3 115.7 84.6 116.6 80.3C117.4 75.9 118.6 70.3 119.4 67.3C120.1 64.3 120.6 63.7 121.2 62.3C121.9 60.9 122.6 59.8 123.4 58.8C124.2 57.9 125.1 57.1 126.1 56.4C127 55.8 128.1 55.3 129.3 54.9C130.5 54.5 131.7 54.2 133.3 54.2C134.9 54.1 135.6 53.9 138.7 54.3C141.7 54.7 147.4 55.7 151.7 56.6C156.1 57.4 161.7 58.6 164.7 59.4C167.7 60.1 168.3 60.6 169.7 61.2C171.1 61.9 172.2 62.6 173.2 63.4C174.1 64.2 174.9 65.1 175.6 66.1C176.2 67 176.7 68.1 177.1 69.3C177.5 70.5 177.8 71.7 177.8 73.3C177.9 74.9 178.1 75.6 177.7 78.7C177.3 81.7 176.3 87.4 175.4 91.7Z"></path><path class="ink dr" pathLength="1" d="M132.2 55C133.2 54.7 133.9 52.9 138.5 53.3C143 53.8 154.4 56.6 159.4 57.7C164.5 58.7 166.6 58.9 169 59.7C171.4 60.6 172.8 61.5 173.9 62.8C175 64 175.1 65.7 175.7 67.3C176.3 68.8 177.2 70 177.4 71.9C177.6 73.8 177.6 74.2 177 78.7C176.3 83.1 174.4 93.7 173.3 98.5C172.3 103.3 171.5 105.1 170.7 107.4C169.9 109.8 169.3 111.2 168.4 112.7C167.5 114.1 166.7 115.7 165.2 116.3C163.8 117 161.8 116.3 159.9 116.6C158 116.9 158.2 118.6 153.8 118.1C149.5 117.7 138.6 115 133.7 113.8C128.8 112.7 126.9 112 124.4 111.2C121.8 110.5 119.9 110.3 118.5 109.3C117.1 108.3 116.6 106.7 116 105.2C115.4 103.7 115.1 102.2 114.8 100.4C114.5 98.5 113.9 98.4 114.3 94C114.7 89.5 116.2 78.7 117.4 73.9C118.5 69 120.3 67.5 121.2 64.9C122 62.3 121.4 59.6 122.4 58.3C123.4 57 125.9 57.8 127.3 57C128.8 56.3 129.3 54.4 131 53.8C132.8 53.2 133.3 52.7 137.6 53.5C141.9 54.3 152 57.6 157.1 58.6C162.1 59.7 166.2 59.6 168 59.8"></path><circle class="pip" cx="135.6" cy="70.8" r="5"></circle><circle class="pip" cx="160.8" cy="75.3" r="5"></circle><circle class="pip" cx="130.4" cy="96.7" r="5"></circle><circle class="pip" cx="156" cy="101.5" r="5"></circle><path class="ink dr dr2" pathLength="1" d="M13.8 57.8C19 56.8 25.4 54.5 30 52.3M10.4 76.4C14.7 74.8 21.2 75 25.4 74.5M16.1 94.5C20.4 94.6 25.9 96.6 29.8 98.5"></path><text class="dd-n" x="105" y="160">P(sum = 7) = 1/6</text></svg></div></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2 rv" id="ug-scene-h" style="--d: 60ms">From stuck to solved.</h2>
+      <p class="sec-lede rv" style="--d: 120ms">The Guide covers the whole loop: learn an idea, practice it, get stuck, get help, then test yourself under real contest conditions.</p>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-pinwrap" aria-hidden="true">
+        <div class="sc-pin">
+          <div class="sc-stage">
+            <span class="sc-disc"></span>
+            <span class="sc-ground"></span>
+            <img class="sc-fox {{ f0 }}" src="img/panda-read.webp" alt="" width="450" height="464">
+            <img class="sc-fox {{ f1 }}" src="img/panda-think.webp" alt="" width="450" height="464">
+            <img class="sc-fox {{ f2 }}" src="img/panda-stuck.webp" alt="" width="450" height="464">
+            <img class="sc-fox {{ f3 }}" src="img/panda-idea.webp" alt="" width="450" height="464">
+            <img class="sc-fox {{ f4 }}" src="img/panda-focus.webp" alt="" width="450" height="464">
+            <span class="stk sc-stk {{ f0 }}">C(6, 2) = 15</span>
+            <span class="stk sc-stk {{ f1 }}">hmm, case 2?</span>
+            <span class="stk sc-stk {{ f2 }}">wait, 31??</span>
+            <span class="stk sc-stk {{ f3 }}">oh! Pascal's rule</span>
+            <span class="stk sc-stk {{ f4 }}">74:59 left</span>
+          </div>
+        </div>
+      </div>
+      <ol class="sc-steps">
+        <li class="sc-step rv {{ f0 }}"><div class="sc-in"><img class="sc-mini" src="img/panda-read.webp" alt="" width="450" height="464"><p class="sc-k"><span class="sc-n">01</span>Learn</p><h3 class="sc-t">Read one idea at a time.</h3><p class="sc-p">Lessons run from AMC basics to olympiad technique. Each one teaches a single idea with worked examples, like the sample above.</p></div></li>
+        <li class="sc-step rv {{ f1 }}"><div class="sc-in"><img class="sc-mini" src="img/panda-think.webp" alt="" width="450" height="464"><p class="sc-k"><span class="sc-n">02</span>Practice</p><h3 class="sc-t">Then try it yourself.</h3><p class="sc-p">Problem-solving tracks climb from warm-ups to olympiad-hard problems, so every session has a direction.</p></div></li>
+        <li class="sc-step rv {{ f2 }}"><div class="sc-in"><img class="sc-mini" src="img/panda-stuck.webp" alt="" width="450" height="464"><p class="sc-k"><span class="sc-n">03</span>Get stuck</p><h3 class="sc-t">Getting stuck is part of it.</h3><p class="sc-p">Every strong problem solver has stared at one problem for an hour. It means you found the edge of what you know.</p></div></li>
+        <li class="sc-step rv {{ f3 }}"><div class="sc-in"><img class="sc-mini" src="img/panda-idea.webp" alt="" width="450" height="464"><p class="sc-k"><span class="sc-n">04</span>Get unstuck</p><h3 class="sc-t">Ask, and someone answers.</h3><p class="sc-p">Bring it to the Discord, join a study group, or get paired with a mentor.</p></div></li>
+        <li class="sc-step rv {{ f4 }}"><div class="sc-in"><img class="sc-mini" src="img/panda-focus.webp" alt="" width="450" height="464"><p class="sc-k"><span class="sc-n">05</span>Compete</p><h3 class="sc-t">Then test it under the clock.</h3><p class="sc-p">Mock AMC and AIME contests run in the real format, and rated contests show how far you've come.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec o4e" id="o4e" aria-labelledby="ug-o4e-h">
+  <div class="wrap">
+    <div class="o4-head">
+      <div class="o4-copy">
+        <h2 class="h2 rv" id="ug-o4e-h" style="--d: 60ms">Olympiad math belongs to everyone.</h2>
+        <p class="sec-lede rv" style="--d: 120ms">Olympiad4Everyone is how USAMO Guide gives back in real life. We pay for the AMC at schools that can't afford it, and we run a free, proctored olympiad that anyone in the world can take.</p>
+        <div class="cta-row rv" style="--d: 180ms">
+          <a class="btn btn-w" href="https://olympiad4everyone.com" target="_blank" rel="noopener" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Register for the contest<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+          <a class="btn btn-o" href="mailto:team@usamoguide.com" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Become a sponsor</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+        </div>
+      </div>
+      <div class="o4-tk-wrap rv" style="--d: 160ms">
+        <div class="tk" aria-hidden="true">
+          <div class="tk-main">
+            <p class="tk-k">admit one</p>
+            <p class="tk-big">AMC 10</p>
+            <p class="tk-row"><span>student</span><b>you</b><i></i></p>
+            <p class="tk-row"><span>entry fee</span><i></i></p>
+          </div>
+          <div class="tk-stub"><span>No. 0001</span></div>
+          <span class="tk-stamp"><b>Fee covered</b><i>Olympiad4Everyone</i></span>
+          <p class="o4-note"><svg viewBox="0 0 64 48"><path d="M58 42C44 44 26 38 16 16"></path><path d="M16 16L13.5 29M16 16L27 22.5"></path></svg>we cover this part</p>
+        </div>
+        <p class="o4-cap">The AMC is the first olympiad for a lot of students, and a school has to pay to offer it. When a school can't, we raise the money so its students still get to sit it.</p>
+      </div>
+    </div>
+    <div class="o4-climb-head">
+      <div class="o4-climb-copy">
+        <h3 class="o4-h3 rv">No AMC at your school? Climb anyway.</h3>
+        <p class="o4-sub rv" style="--d: 60ms">Thanksgiving Edition 1 runs over three weekends in November. Stage 1 is AMC 10 level. The top 30% go on to an AMC 12 round, and the best 20 to 50 meet in an AIME-level final. It's free, and you can take it from anywhere.</p>
+      </div>
+      <ul class="o4-facts rv" style="--d: 120ms">
+        <li>Every stage runs twice, Saturday and Sunday, so you pick the day.</li>
+        <li>Proctors watch your screen and your desk. They never need to see your face.</li>
+      </ul>
+    </div>
+    <div class="o4-climb" data-climb="{{ climb }}">
+      <svg class="o4-svg" viewBox="0 0 1000 580" aria-hidden="true"><path class="o4-ground" d="M0 561C41.7 560.6 163.3 558.5 250 558.5C336.7 558.5 435 561.1 520 561.2C605 561.3 680 559.1 760 559C840 558.9 960 560.5 1000 560.8"></path><g class="o4-steps"><path class="o4-step" d="M19 560.5C19.1 546.9 19.3 505.8 19.5 479C19.6 452.3 9.6 413.2 20 400C30.4 386.8 61.4 400 81.9 399.9C102.5 399.7 122.5 399.3 143.2 399.2C164 399.1 185.7 399.2 206.6 399.4C227.5 399.7 247.8 400.6 268.6 400.9C289.3 401.2 321.1 388.4 331.2 401.4C341.3 414.5 329.3 452.7 329.2 479.2C329 505.6 330.2 546.5 330.5 560"></path><path class="o4-step" d="M345.2 559C345.3 547.3 345.4 512.9 345.6 488.7C345.7 464.5 346.3 438.7 346.1 414.1C345.9 389.5 344.3 365.1 344.4 340.9C344.4 316.8 336 280.9 346.5 269.1C357.1 257.3 387.3 270 407.7 270.1C428.2 270.3 448.6 270.1 469.3 270.1C490 270.1 511.5 270.5 532 270.3C552.6 270.1 571.9 268.6 592.4 268.8C612.9 268.9 644.7 259 654.9 271.4C665.2 283.7 653.8 319.3 653.9 343.1C653.9 366.8 655.4 389.7 655.4 413.9C655.5 438.1 654.2 463.7 654.1 488.1C654 512.4 654.7 548 654.9 560"></path><path class="o4-step" d="M669.7 559.9C669.5 550.1 668.6 520.6 668.7 500.7C668.8 480.7 670.2 460.1 670.3 440.1C670.4 420.2 669.4 401 669.5 381C669.6 361 671.2 340.5 671 320.1C670.9 299.8 669 279.1 668.7 258.9C668.3 238.6 668.6 218.4 668.9 198.7C669.2 178.9 660.1 149.7 670.5 140.1C680.8 130.6 710.4 141.2 731.1 141.3C751.7 141.4 773.4 141.1 794.4 140.9C815.4 140.8 836.4 140.5 857 140.6C877.6 140.7 897.8 141.5 918.1 141.6C938.4 141.6 968.3 130.9 978.8 140.6C989.3 150.3 980.9 180.2 981.2 199.9C981.6 219.7 981.3 239.1 981 259C980.8 278.9 980 299 979.7 319.3C979.5 339.5 979.8 360.6 979.7 380.6C979.5 400.7 978.6 419.7 978.9 439.5C979.1 459.3 981 479.3 981.1 499.4C981.2 519.5 979.6 549.9 979.3 560"></path></g><path class="o4-ar o4-ar1" pathLength="1" d="M300 284C304.3 276.3 314.3 250.7 326 238C337.7 225.3 354.3 213.3 370 208C385.7 202.7 411.7 206.3 420 206"></path><path class="o4-ar o4-ah o4-ar1" pathLength="1" d="M407.5 214.2L420 206L406.8 198.8"></path><path class="o4-ar o4-ar2" pathLength="1" d="M596 196C601 187 611.3 157 626 142C640.7 127 664.3 113.3 684 106C703.7 98.7 734 99.3 744 98"></path><path class="o4-ar o4-ah o4-ar2" pathLength="1" d="M732.3 107.4L744 98L730.2 92"></path><g class="o4-flag"><path class="o4-pole" d="M948 140C948.8 110 947.4 80 948 56"></path><path class="o4-cloth" d="M948 56C962 51 974 61 988 63C976 70 962 78 948 78Z"></path></g><path class="o4-spk s1" d="M902 51Q904.7 63.3 917 66Q904.7 68.7 902 81Q899.3 68.7 887 66Q899.3 63.3 902 51Z"></path><path class="o4-spk s2" d="M744 60Q745.8 68.2 754 70Q745.8 71.8 744 80Q742.2 71.8 734 70Q742.2 68.2 744 60Z"></path><path class="o4-spk s3" d="M986 17Q987.6 24.4 995 26Q987.6 27.6 986 35Q984.4 27.6 977 26Q984.4 24.4 986 17Z"></path><g class="o4-dots"><circle class="o4-d a2 a3" r="10" style="--x1: 44.5px; --y1: 378px; --i: 0; --x2: 456.5px; --y2: 221px; --j: 1; --x3: 753px; --y3: 118px; --k: 1"></circle><circle class="o4-d a2 a3" r="10" style="--x1: 73.5px; --y1: 378px; --i: 1; --x2: 485.5px; --y2: 221px; --j: 3; --x3: 861px; --y3: 118px; --k: 3"></circle><circle class="o4-d" r="10" style="--x1: 102.5px; --y1: 378px; --i: 2"></circle><circle class="o4-d" r="10" style="--x1: 131.5px; --y1: 378px; --i: 3"></circle><circle class="o4-d" r="10" style="--x1: 160.5px; --y1: 378px; --i: 4"></circle><circle class="o4-d" r="10" style="--x1: 189.5px; --y1: 378px; --i: 5"></circle><circle class="o4-d" r="10" style="--x1: 247.5px; --y1: 378px; --i: 7"></circle><circle class="o4-d" r="10" style="--x1: 276.5px; --y1: 378px; --i: 8"></circle><circle class="o4-d" r="10" style="--x1: 305.5px; --y1: 378px; --i: 9"></circle><circle class="o4-d a2" r="10" style="--x1: 44.5px; --y1: 351px; --i: 2; --x2: 427.5px; --y2: 248px; --j: 5"></circle><circle class="o4-d a2" r="10" style="--x1: 73.5px; --y1: 351px; --i: 3; --x2: 456.5px; --y2: 248px; --j: 6"></circle><circle class="o4-d" r="10" style="--x1: 102.5px; --y1: 351px; --i: 4"></circle><circle class="o4-d" r="10" style="--x1: 131.5px; --y1: 351px; --i: 5"></circle><circle class="o4-d" r="10" style="--x1: 160.5px; --y1: 351px; --i: 6"></circle><circle class="o4-d" r="10" style="--x1: 189.5px; --y1: 351px; --i: 7"></circle><circle class="o4-d" r="10" style="--x1: 218.5px; --y1: 351px; --i: 8"></circle><circle class="o4-d a2" r="10" style="--x1: 247.5px; --y1: 351px; --i: 9; --x2: 543.5px; --y2: 248px; --j: 9"></circle><circle class="o4-d a2" r="10" style="--x1: 276.5px; --y1: 351px; --i: 10; --x2: 572.5px; --y2: 248px; --j: 11"></circle><circle class="o4-d" r="10" style="--x1: 305.5px; --y1: 351px; --i: 11"></circle><circle class="o4-d" r="10" style="--x1: 44.5px; --y1: 324px; --i: 4"></circle><circle class="o4-d" r="10" style="--x1: 73.5px; --y1: 324px; --i: 5"></circle><circle class="o4-d" r="10" style="--x1: 102.5px; --y1: 324px; --i: 6"></circle><circle class="o4-d" r="10" style="--x1: 131.5px; --y1: 324px; --i: 7"></circle><circle class="o4-d" r="10" style="--x1: 160.5px; --y1: 324px; --i: 8"></circle><circle class="o4-d" r="10" style="--x1: 189.5px; --y1: 324px; --i: 9"></circle><circle class="o4-d" r="10" style="--x1: 218.5px; --y1: 324px; --i: 10"></circle><circle class="o4-d" r="10" style="--x1: 247.5px; --y1: 324px; --i: 11"></circle><circle class="o4-d a2" r="10" style="--x1: 276.5px; --y1: 324px; --i: 12; --x2: 572.5px; --y2: 221px; --j: 10"></circle><circle class="o4-d" r="10" style="--x1: 305.5px; --y1: 324px; --i: 13"></circle><circle class="o4-d a2 a3" r="10" style="--x1: 44.5px; --y1: 297px; --i: 6; --x2: 427.5px; --y2: 221px; --j: 2; --x3: 789px; --y3: 118px; --k: 2"></circle><circle class="o4-d" r="10" style="--x1: 73.5px; --y1: 297px; --i: 7"></circle><circle class="o4-d" r="10" style="--x1: 102.5px; --y1: 297px; --i: 8"></circle><circle class="o4-d" r="10" style="--x1: 131.5px; --y1: 297px; --i: 9"></circle><circle class="o4-d" r="10" style="--x1: 160.5px; --y1: 297px; --i: 10"></circle><circle class="o4-d a2 a3" r="10" style="--x1: 189.5px; --y1: 297px; --i: 11; --x2: 485.5px; --y2: 248px; --j: 4; --x3: 897px; --y3: 118px; --k: 4"></circle><circle class="o4-d a2" r="10" style="--x1: 218.5px; --y1: 297px; --i: 12; --x2: 514.5px; --y2: 221px; --j: 7"></circle><circle class="o4-d a2" r="10" style="--x1: 247.5px; --y1: 297px; --i: 13; --x2: 543.5px; --y2: 221px; --j: 8"></circle><circle class="o4-d" r="10" style="--x1: 276.5px; --y1: 297px; --i: 14"></circle><circle class="o4-d" r="10" style="--x1: 305.5px; --y1: 297px; --i: 15"></circle><g class="o4-d o4-you a2 a3" style="--x1: 218.5px; --y1: 374px; --i: 6; --x2: 514.5px; --y2: 244px; --j: 0; --x3: 825px; --y3: 114px; --k: 0"><image href="img/panda-head.webp" x="-24" y="-30" width="48" height="48"></image><text class="o4-you-l" x="0" y="-38">you</text></g></g></svg>
+      <ol class="o4-stages">
+        <li class="o4-st o4-st1"><p class="o4-k">Stage 1 · Nov 7 or 8</p><p class="o4-lvl">AMC 10 level</p><p class="o4-meta">20 multiple-choice problems in 60 minutes</p></li>
+        <li class="o4-cut o4-cut1">top 30% move on</li>
+        <li class="o4-st o4-st2"><p class="o4-k">Stage 2 · Nov 14 or 15</p><p class="o4-lvl">AMC 12 level</p><p class="o4-meta">20 problems in 60 minutes, with no answer choices</p></li>
+        <li class="o4-cut o4-cut2">about 20 to 50 make the finals</li>
+        <li class="o4-st o4-st3"><p class="o4-k">Finals · Nov 21</p><p class="o4-lvl">AIME level</p><p class="o4-meta">11 problems in 2.5 hours, the last one a tiebreaker</p></li>
+      </ol>
+    </div>
+    <p class="o4-wk rv">Hundreds of students from <b>32 countries</b> have signed up so far.</p>
+  </div>
+  <div class="o4-marq rv" style="--d: 80ms">
+    <div class="o4-row "><span class="o4-set"><span><i class="fl" style="--f: 0"></i>Albania</span><span><i class="fl" style="--f: 1"></i>Bangladesh</span><span><i class="fl" style="--f: 2"></i>Canada</span><span><i class="fl" style="--f: 3"></i>Croatia</span><span><i class="fl" style="--f: 4"></i>Finland</span><span><i class="fl" style="--f: 5"></i>Germany</span><span><i class="fl" style="--f: 6"></i>India</span><span><i class="fl" style="--f: 7"></i>Kazakhstan</span><span><i class="fl" style="--f: 8"></i>Malaysia</span><span><i class="fl" style="--f: 9"></i>Morocco</span><span><i class="fl" style="--f: 10"></i>Nigeria</span><span><i class="fl" style="--f: 11"></i>Peru</span><span><i class="fl" style="--f: 12"></i>Rwanda</span><span><i class="fl" style="--f: 13"></i>Sri Lanka</span><span><i class="fl" style="--f: 14"></i>Uganda</span><span><i class="fl" style="--f: 15"></i>United Kingdom</span></span><span class="o4-set" aria-hidden="true"><span><i class="fl" style="--f: 0"></i>Albania</span><span><i class="fl" style="--f: 1"></i>Bangladesh</span><span><i class="fl" style="--f: 2"></i>Canada</span><span><i class="fl" style="--f: 3"></i>Croatia</span><span><i class="fl" style="--f: 4"></i>Finland</span><span><i class="fl" style="--f: 5"></i>Germany</span><span><i class="fl" style="--f: 6"></i>India</span><span><i class="fl" style="--f: 7"></i>Kazakhstan</span><span><i class="fl" style="--f: 8"></i>Malaysia</span><span><i class="fl" style="--f: 9"></i>Morocco</span><span><i class="fl" style="--f: 10"></i>Nigeria</span><span><i class="fl" style="--f: 11"></i>Peru</span><span><i class="fl" style="--f: 12"></i>Rwanda</span><span><i class="fl" style="--f: 13"></i>Sri Lanka</span><span><i class="fl" style="--f: 14"></i>Uganda</span><span><i class="fl" style="--f: 15"></i>United Kingdom</span></span></div>
+    <div class="o4-row rev"><span class="o4-set"><span><i class="fl" style="--f: 16"></i>Azerbaijan</span><span><i class="fl" style="--f: 17"></i>Brazil</span><span><i class="fl" style="--f: 18"></i>Chile</span><span><i class="fl" style="--f: 19"></i>Estonia</span><span><i class="fl" style="--f: 20"></i>Georgia</span><span><i class="fl" style="--f: 21"></i>Hong Kong</span><span><i class="fl" style="--f: 22"></i>Indonesia</span><span><i class="fl" style="--f: 23"></i>Kosovo</span><span><i class="fl" style="--f: 24"></i>Mongolia</span><span><i class="fl fl-np" style="--f: 25"></i>Nepal</span><span><i class="fl" style="--f: 26"></i>Pakistan</span><span><i class="fl" style="--f: 27"></i>Portugal</span><span><i class="fl" style="--f: 28"></i>Singapore</span><span><i class="fl" style="--f: 29"></i>Tunisia</span><span><i class="fl" style="--f: 30"></i>United Arab Emirates</span><span><i class="fl" style="--f: 31"></i>United States</span></span><span class="o4-set" aria-hidden="true"><span><i class="fl" style="--f: 16"></i>Azerbaijan</span><span><i class="fl" style="--f: 17"></i>Brazil</span><span><i class="fl" style="--f: 18"></i>Chile</span><span><i class="fl" style="--f: 19"></i>Estonia</span><span><i class="fl" style="--f: 20"></i>Georgia</span><span><i class="fl" style="--f: 21"></i>Hong Kong</span><span><i class="fl" style="--f: 22"></i>Indonesia</span><span><i class="fl" style="--f: 23"></i>Kosovo</span><span><i class="fl" style="--f: 24"></i>Mongolia</span><span><i class="fl fl-np" style="--f: 25"></i>Nepal</span><span><i class="fl" style="--f: 26"></i>Pakistan</span><span><i class="fl" style="--f: 27"></i>Portugal</span><span><i class="fl" style="--f: 28"></i>Singapore</span><span><i class="fl" style="--f: 29"></i>Tunisia</span><span><i class="fl" style="--f: 30"></i>United Arab Emirates</span><span><i class="fl" style="--f: 31"></i>United States</span></span></div>
+  </div>
+</section>
+
+<section class="sec community" id="community">
+  <div class="dz dz-os" aria-hidden="true"><div class="dd-in rv" style="--d: 300ms"><span class="stk taped">every line open source</span></div></div>
+  <div class="wrap com-grid">
+    <div class="com-copy">
+      <h2 class="h2 rv" style="--d: 60ms">Write the lesson you wish you'd had.</h2>
+      <p class="sec-lede rv" style="--d: 120ms">USAMO Guide is a student-run community for olympiad mathematics. Join us to write lessons, curate problem sets, and grow as a mentor alongside other contest students.</p>
+      <div class="cta-row rv" style="--d: 180ms">
+        <a class="btn btn-p" href="#github" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"></path></svg>Contribute on GitHub</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+        <a class="btn btn-s" href="#discord" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Join the Discord</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      </div>
+      <p class="os-note rv" style="--d: 240ms"><span class="os-dot" aria-hidden="true"></span><span>Fully open source. Fork it, build on it, see how it works. Attribution required, commercial use not allowed.</span></p>
+    </div>
+    <div class="team">
+      <p class="team-k lbl rv">The team</p>
+      <div class="team-grid">
+        <div class="person rv" style="--pk: 0"><span class="shape" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"></circle></svg><span class="ini">PR</span></span><span class="p-name">Pranav Ramesh</span><span class="p-role lbl">Founder &amp; CEO</span></div>
+        <div class="person rv" style="--pk: 40; --d: 80ms"><span class="shape sh-tri" aria-hidden="true"><svg viewBox="0 0 64 64"><polygon points="32,3 61,59 3,59"></polygon></svg><span class="ini">SD</span></span><span class="p-name">Spursh Deshpande</span><span class="p-role lbl">CTO</span></div>
+        <div class="person rv" style="--pk: 0; --d: 160ms"><span class="shape" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="8"></rect></svg><span class="ini">SA</span></span><span class="p-name">Siddhant Arora</span><span class="p-role lbl">COO</span></div>
+        <div class="person rv" style="--pk: 40; --d: 240ms"><span class="shape" aria-hidden="true"><svg viewBox="0 0 64 64"><polygon points="32,2 58,17 58,47 32,62 6,47 6,17"></polygon></svg><span class="ini">DL</span></span><span class="p-name">Daniel Liao</span><span class="p-role lbl">CMO</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-aside">
+      <h2 class="h2 rv" style="--d: 60ms">Frequently asked questions</h2>
+      <p class="sec-lede rv" style="--d: 120ms">The essentials about the competition path, how the Guide works, and how to get involved.</p>
+      <a class="mail rv" style="--d: 180ms" href="mailto:contact@usamoguide.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4 7.5l8 5.5 8-5.5"></path></svg>contact@usamoguide.com</a>
+      <img class="faq-fox rv" style="--d: 240ms" src="img/panda-think.webp" alt="" width="450" height="464">
+    </div>
+    <div class="faq-list">
+      <details class="faq-item rv"><summary><span>What are AMC, AIME, and USAMO?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>These are the big rungs of the US math competition ladder. AMC 8 is for middle schoolers and AMC 10/12 is for high schoolers, and both are 25-question multiple-choice contests. Score well enough and you qualify for the AIME, a much harder 15-question exam with numerical answers. Do well on the AIME too and you're in USAMO (or USAJMO) territory, probably the toughest math test most high schoolers will ever take. For official dates and registration, check the <a href="https://maa.org/student-programs/amc/">MAA competitions page</a>.</p></div></details>
+      <details class="faq-item rv" style="--d: 50ms"><summary><span>Is this an official syllabus?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Nope. USAMO Guide is built by the community, for the community. It's our best attempt at organizing what actually works for AMC, AIME, and USAMO prep, and it isn't blessed by the MAA :/ Think of it as notes passed down and refined by people who've been through the process. It keeps getting better as more people chip in.</p></div></details>
+      <details class="faq-item rv" style="--d: 100ms"><summary><span>I found a bug, typo, or confusing explanation. What do I do?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Tell us! Email <a href="mailto:contact@usamoguide.com">contact@usamoguide.com</a>. If you're comfortable with GitHub, you can also open an issue on our <a href="#github">repository</a>, which is often the fastest way to get something fixed.</p></div></details>
+      <details class="faq-item rv" style="--d: 150ms"><summary><span>I want live classes or one-on-one tutoring.</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>That's not really what we do. We're a self-paced resource, and AoPS runs solid online classes if you want live instruction. If you still want structure and other people around, join one of our study groups or hop into a weekly mock contest to practice under real conditions.</p></div></details>
+      <details class="faq-item rv" style="--d: 200ms"><summary><span>Do I need to be good at math, or qualified for USAMO, to use this?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Not even close. Start on day one of AMC 8 prep or show up already grinding toward USAMO. Either way there's a place for you here. The material ramps from the basics up to olympiad level, so you can jump in wherever you actually are.</p></div></details>
+      <details class="faq-item rv" style="--d: 250ms"><summary><span>Where can I get help when I'm stuck?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Our <a href="#discord">Discord</a> is the best place. People are usually around to help with a specific problem or concept. Beyond that, you can join a study group, get paired with a mentor, or email us if it's a question about the Guide itself.</p></div></details>
+      <details class="faq-item rv" style="--d: 300ms"><summary><span>How can I contribute?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Please do. Fix a typo, rewrite a confusing explanation, add a problem, improve a diagram, or clean up some code. It all helps. Our <a href="#github">GitHub</a> has contribution guidelines and open issues.</p></div></details>
+      <details class="faq-item rv" style="--d: 350ms"><summary><span>Is this open source?</span><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Yes, all of it! Fork it, build on it, poke around and see how it works. Nothing's hidden. Attribution is required, and commercial use isn't allowed.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="ug-cta-h">
+  <div class="cta-geo" aria-hidden="true"><span class="cg c3"></span><span class="cg c2"></span><span class="cg c1"></span></div>
+  <div class="wrap cta-in">
+    <div class="cta-art rv"><img class="cta-fox" src="img/panda-idea.webp" alt="" width="450" height="464"><span class="cta-spk" aria-hidden="true"><svg class="dd-svg" viewBox="0 0 90 70"><path class="spk spk1" d="M30 20Q31.8 36.2 48 38Q31.8 39.8 30 56Q28.2 39.8 12 38Q28.2 36.2 30 20Z"></path><path class="spk spk2" d="M70 7Q70.9 15.1 79 16Q70.9 16.9 70 25Q69.1 16.9 61 16Q69.1 15.1 70 7Z"></path></svg></span></div>
+    <h2 class="cta-h rv" id="ug-cta-h">Your second home for contest math.</h2>
+    <p class="cta-p rv" style="--d: 80ms">Lessons, resources, problem sets, and community support in one place, for AMC, AIME, and olympiad prep.</p>
+    <div class="cta-row cta-row-c rv" style="--d: 160ms">
+      <a class="btn btn-w btn-lg" href="start.html" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Start learning<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <a class="btn btn-o btn-lg" href="#discord" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Join the Discord</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand rv">
+      <a class="brand" href="#top" aria-label="USAMO Guide, back to top"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use class="mark-spin" href="#ug-mark" width="100" height="100"></use></svg><span class="wm" aria-hidden="true">USAMO Guide</span></a>
+      <p>Written by USA(J)MO medalists. Free for everyone and fully open source.</p>
+    </div>
+    <nav class="foot-col rv" style="--d: 60ms" aria-label="Learn"><p class="foot-k lbl">Learn</p><a href="start.html">Start learning</a><a href="#path">The Path</a><a href="#faq">FAQ</a></nav>
+    <nav class="foot-col rv" style="--d: 120ms" aria-label="Community"><p class="foot-k lbl">Community</p><a href="#discord">Discord</a><a href="#github">GitHub</a><a href="#community">Contribute</a><a href="https://olympiad4everyone.com" target="_blank" rel="noopener">Olympiad4Everyone</a></nav>
+    <div class="foot-col rv" style="--d: 180ms"><p class="foot-k lbl">Contact</p><a href="mailto:contact@usamoguide.com">contact@usamoguide.com</a><a href="https://maa.org/student-programs/amc/">MAA competitions</a></div>
+  </div>
+  <div class="wrap foot-bar lbl"><span>© 2026 USAMO Guide</span><span>Attribution required. Commercial use not allowed.</span><span>Not an official MAA syllabus.</span></div>
+  <div class="foot-mark" aria-hidden="true">USAMO Guid<span class="fm-e">e<span class="foot-bubble">bye! go solve something</span><img class="foot-fox" src="img/panda-wave.webp" alt="" width="450" height="464"></span></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#6B2DE6","options":["#6B2DE6","#5D1FBE","#8022D1","#5038D9"],"section":"Theme"},"theme":{"editor":"enum","options":["Light","Dark"],"default":"Light","section":"Theme"},"display":{"editor":"enum","options":["Bricolage Grotesque","Instrument Sans"],"default":"Bricolage Grotesque","section":"Theme"},"highlight":{"editor":"enum","options":["Gold","Coral","Mint"],"default":"Gold","section":"Theme"},"motion":{"editor":"boolean","default":true,"section":"Motion"},"$preview":{"width":1440,"height":14186}}'>
+/*! Lenis 1.3.26 (smooth scroll) | MIT License | Copyright (c) 2024 darkroom.engineering | github.com/darkroomengineering/lenis */
+const UGLenis = (function(){var e=`1.3.26`;function t(e,t,n){return Math.max(e,Math.min(t,n))}function n(e,t,n){return(1-n)*e+n*t}function r(e,t,r,i){return n(e,t,1-Math.exp(-r*i))}function i(e,t){return(e%t+t)%t}var a=class{isRunning=!1;value=0;from=0;to=0;currentTime=0;lerp;duration;easing;onUpdate;advance(e){if(!this.isRunning)return;let n=!1;if(this.duration&&this.easing){this.currentTime+=e;let r=t(0,this.currentTime/this.duration,1);n=r>=1;let i=n?1:this.easing(r);this.value=this.from+(this.to-this.from)*i}else this.lerp?(this.value=r(this.value,this.to,this.lerp*60,e),Math.round(this.value)===Math.round(this.to)&&(this.value=this.to,n=!0)):(this.value=this.to,n=!0);n&&this.stop(),this.onUpdate?.(this.value,n)}stop(){this.isRunning=!1}fromTo(e,t,{lerp:n,duration:r,easing:i,onStart:a,onUpdate:o}){this.from=this.value=e,this.to=t,this.lerp=n,this.duration=r,this.easing=i,this.currentTime=0,this.isRunning=!0,a?.(),this.onUpdate=o}};function o(e,t){let n;return function(...r){clearTimeout(n),n=setTimeout(()=>{n=void 0,e.apply(this,r)},t)}}var s=class{width=0;height=0;scrollHeight=0;scrollWidth=0;debouncedResize;wrapperResizeObserver;contentResizeObserver;constructor(e,t,{autoResize:n=!0,debounce:r=250}={}){this.wrapper=e,this.content=t,n&&(this.debouncedResize=o(this.resize,r),this.wrapper instanceof Window?window.addEventListener(`resize`,this.debouncedResize):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}destroy(){this.wrapperResizeObserver?.disconnect(),this.contentResizeObserver?.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener(`resize`,this.debouncedResize)}resize=()=>{this.onWrapperResize(),this.onContentResize()};onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)};onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)};get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}},c=class{events={};emit(e,...t){let n=this.events[e]||[];for(let e=0,r=n.length;e<r;e++)n[e]?.(...t)}on(e,t){return this.events[e]?this.events[e].push(t):this.events[e]=[t],()=>{this.events[e]=this.events[e]?.filter(e=>t!==e)}}off(e,t){this.events[e]=this.events[e]?.filter(e=>t!==e)}destroy(){this.events={}}};let l={passive:!1};function u(e,t){return e===1?16.666666666666668:e===2?t:1}var d=class{touchStart={x:0,y:0};lastDelta={x:0,y:0};window={width:0,height:0};emitter=new c;constructor(e,t={wheelMultiplier:1,touchMultiplier:1}){this.element=e,this.options=t,window.addEventListener(`resize`,this.onWindowResize),this.onWindowResize(),this.element.addEventListener(`wheel`,this.onWheel,l),this.element.addEventListener(`touchstart`,this.onTouchStart,l),this.element.addEventListener(`touchmove`,this.onTouchMove,l),this.element.addEventListener(`touchend`,this.onTouchEnd,l)}on(e,t){return this.emitter.on(e,t)}destroy(){this.emitter.destroy(),window.removeEventListener(`resize`,this.onWindowResize),this.element.removeEventListener(`wheel`,this.onWheel,l),this.element.removeEventListener(`touchstart`,this.onTouchStart,l),this.element.removeEventListener(`touchmove`,this.onTouchMove,l),this.element.removeEventListener(`touchend`,this.onTouchEnd,l)}onTouchStart=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:0,y:0},this.emitter.emit(`scroll`,{deltaX:0,deltaY:0,event:e})};onTouchMove=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e,r=-(t-this.touchStart.x)*this.options.touchMultiplier,i=-(n-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:r,y:i},this.emitter.emit(`scroll`,{deltaX:r,deltaY:i,event:e})};onTouchEnd=e=>{this.emitter.emit(`scroll`,{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:e})};onWheel=e=>{let{deltaX:t,deltaY:n,deltaMode:r}=e,i=u(r,this.window.width),a=u(r,this.window.height);t*=i,n*=a,t*=this.options.wheelMultiplier,n*=this.options.wheelMultiplier,this.emitter.emit(`scroll`,{deltaX:t,deltaY:n,event:e})};onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}}};let f=e=>Math.min(1,1.001-2**(-10*e));var p=class{_isScrolling=!1;_isStopped=!1;_isLocked=!1;_preventNextNativeScrollEvent=!1;_resetVelocityTimeout=null;_rafId=null;_isDraggingSelection=!1;reducedMotionMediaQuery=window.matchMedia(`(prefers-reduced-motion: reduce)`);isTouching;isIos;time=0;userData={};lastVelocity=0;velocity=0;direction=0;options;targetScroll;animatedScroll;animate=new a;emitter=new c;dimensions;virtualScroll;constructor({wrapper:t=window,content:n=document.documentElement,eventsTarget:r=t,smoothWheel:i=!0,syncTouch:a=!1,syncTouchLerp:o=.075,touchInertiaExponent:c=1.7,duration:l,easing:u,lerp:p=.1,infinite:m=!1,orientation:h=`vertical`,gestureOrientation:g=h===`horizontal`?`both`:`vertical`,touchMultiplier:_=1,wheelMultiplier:v=1,autoResize:y=!0,prevent:b,virtualScroll:x,overscroll:S=!0,autoRaf:C=!1,anchors:w=!1,autoToggle:T=!1,allowNestedScroll:E=!1,__experimental__naiveDimensions:D=!1,naiveDimensions:O=D,stopInertiaOnNavigate:k=!1,respectReducedMotion:A=!0}={}){window.lenisVersion=e,window.lenis||(window.lenis={}),window.lenis.version=e,h===`horizontal`&&(window.lenis.horizontal=!0),a===!0&&(window.lenis.touch=!0),this.isIos=/(iPad|iPhone|iPod)/g.test(navigator.userAgent),(!t||t===document.documentElement)&&(t=window),typeof l==`number`&&typeof u!=`function`?u=f:typeof u==`function`&&typeof l!=`number`&&(l=1),this.options={wrapper:t,content:n,eventsTarget:r,smoothWheel:i,syncTouch:a,syncTouchLerp:o,touchInertiaExponent:c,duration:l,easing:u,lerp:p,infinite:m,gestureOrientation:g,orientation:h,touchMultiplier:_,wheelMultiplier:v,autoResize:y,prevent:b,virtualScroll:x,overscroll:S,autoRaf:C,anchors:w,autoToggle:T,allowNestedScroll:E,naiveDimensions:O,stopInertiaOnNavigate:k,respectReducedMotion:A},this.dimensions=new s(t,n,{autoResize:y}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.addEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.addEventListener(`click`,this.onClick),this.options.wrapper.addEventListener(`pointerdown`,this.onPointerDown),this.virtualScroll=new d(r,{touchMultiplier:_,wheelMultiplier:v}),this.virtualScroll.on(`scroll`,this.onVirtualScroll),this.options.autoToggle&&(this.checkOverflow(),this.rootElement.addEventListener(`transitionend`,this.onTransitionEnd)),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))}destroy(){this.emitter.destroy(),this.options.wrapper.removeEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.removeEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),this.options.wrapper.removeEventListener(`pointerdown`,this.onPointerDown),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.removeEventListener(`click`,this.onClick),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName(),this._rafId&&cancelAnimationFrame(this._rafId)}on(e,t){return this.emitter.on(e,t)}off(e,t){return this.emitter.off(e,t)}onScrollEnd=e=>{e instanceof CustomEvent||(this.isScrolling===`smooth`||this.isScrolling===!1)&&e.stopPropagation()};dispatchScrollendEvent=()=>{this.options.wrapper.dispatchEvent(new CustomEvent(`scrollend`,{bubbles:this.options.wrapper===window,detail:{lenisScrollEnd:!0}}))};get overflow(){let e=this.isHorizontal?`overflow-x`:`overflow-y`;return getComputedStyle(this.rootElement)[e]}checkOverflow(){[`hidden`,`clip`].includes(this.overflow)?this.internalStop():this.internalStart()}onTransitionEnd=e=>{e.propertyName?.includes(`overflow`)&&e.target===this.rootElement&&this.checkOverflow()};setScroll(e){this.isHorizontal?this.options.wrapper.scrollTo({left:e,behavior:`instant`}):this.options.wrapper.scrollTo({top:e,behavior:`instant`})}onClick=e=>{let t=e.composedPath().filter(e=>e instanceof HTMLAnchorElement&&e.href).map(e=>new URL(e.href)),n=new URL(window.location.href);if(this.options.anchors){let e=t.find(e=>n.host===e.host&&n.pathname===e.pathname&&e.hash);if(e){let t=typeof this.options.anchors==`object`&&this.options.anchors?this.options.anchors:void 0,n=decodeURIComponent(e.hash);this.scrollTo(n,t);return}}if(this.options.stopInertiaOnNavigate&&t.some(e=>n.host===e.host&&n.pathname!==e.pathname)){this.reset();return}};onPointerDown=e=>{e.button===1&&this.reset()};isTouchOnSelectionHandle(e){let t=window.getSelection();if(!t||t.isCollapsed||t.rangeCount===0)return!1;let n=e.targetTouches[0]??e.changedTouches[0];if(!n)return!1;let r=t.getRangeAt(0).getClientRects();if(r.length===0)return!1;let i=r[0],a=r[r.length-1],o=Math.hypot(n.clientX-i.left,n.clientY-i.top)<=40,s=Math.hypot(n.clientX-a.right,n.clientY-a.bottom)<=40;return o||s}onVirtualScroll=e=>{if(typeof this.options.virtualScroll==`function`&&this.options.virtualScroll(e)===!1)return;let{deltaX:t,deltaY:n,event:r}=e;if(this.emitter.emit(`virtual-scroll`,{deltaX:t,deltaY:n,event:r}),r.ctrlKey||r.lenisStopPropagation)return;let i=r.type.includes(`touch`),a=r.type.includes(`wheel`);if(i&&this.isIos&&(r.type===`touchstart`&&(this._isDraggingSelection=this.isTouchOnSelectionHandle(r)),this._isDraggingSelection)){r.type===`touchend`&&(this._isDraggingSelection=!1);return}this.isTouching=r.type===`touchstart`||r.type===`touchmove`;let o=t===0&&n===0;if(this.options.syncTouch&&i&&r.type===`touchstart`&&o&&!this.isStopped&&!this.isLocked){this.reset();return}let s=this.options.gestureOrientation===`vertical`&&n===0||this.options.gestureOrientation===`horizontal`&&t===0;if(o||s)return;let c=r.composedPath();c=c.slice(0,c.indexOf(this.rootElement));let l=this.options.prevent,u=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`;if(c.find(e=>e instanceof HTMLElement&&(typeof l==`function`&&l?.(e)||e.hasAttribute?.(`data-lenis-prevent`)||u===`vertical`&&e.hasAttribute?.(`data-lenis-prevent-vertical`)||u===`horizontal`&&e.hasAttribute?.(`data-lenis-prevent-horizontal`)||i&&e.hasAttribute?.(`data-lenis-prevent-touch`)||a&&e.hasAttribute?.(`data-lenis-prevent-wheel`)||this.options.allowNestedScroll&&this.hasNestedScroll(e,{deltaX:t,deltaY:n}))))return;if(this.isStopped||this.isLocked){r.cancelable&&r.preventDefault();return}if(!(this.options.syncTouch&&i||this.options.smoothWheel&&a)){this.isScrolling=`native`,this.animate.stop(),r.lenisStopPropagation=!0;return}let d=n;this.options.gestureOrientation===`both`?d=Math.abs(n)>Math.abs(t)?n:t:this.options.gestureOrientation===`horizontal`&&(d=t),(!this.options.overscroll||this.options.infinite||this.options.wrapper!==window&&this.limit>0&&(this.animatedScroll>0&&this.animatedScroll<this.limit||this.animatedScroll===0&&n>0||this.animatedScroll===this.limit&&n<0))&&(r.lenisStopPropagation=!0),r.cancelable&&r.preventDefault();let f=i&&this.options.syncTouch,p=i&&r.type===`touchend`;p&&(d=Math.sign(d)*Math.abs(this.velocity)**this.options.touchInertiaExponent),this.scrollTo(this.targetScroll+d,{programmatic:!1,...f?{lerp:p?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}})};resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit(`scroll`,this)}onNativeScroll=()=>{if(this._resetVelocityTimeout!==null&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent){this._preventNextNativeScrollEvent=!1;return}if(this.isScrolling===!1||this.isScrolling===`native`){let e=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-e,this.direction=Math.sign(this.animatedScroll-e),this.isStopped||(this.isScrolling=`native`),this.emit(),this.velocity!==0&&(this._resetVelocityTimeout=setTimeout(()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()},400))}};reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){if(this.isStopped){if(this.options.autoToggle){this.rootElement.style.removeProperty(`overflow`);return}this.internalStart()}}internalStart(){this.isStopped&&(this.reset(),this.isStopped=!1,this.emit())}stop(){if(!this.isStopped){if(this.options.autoToggle){this.rootElement.style.setProperty(`overflow`,`clip`);return}this.internalStop()}}internalStop(){this.isStopped||(this.reset(),this.isStopped=!0,this.emit())}raf=e=>{let t=e-(this.time||e);this.time=e,this.animate.advance(t*.001),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))};scrollTo(e,{offset:n=0,immediate:r=!1,lock:i=!1,programmatic:a=!0,lerp:o=a?this.options.lerp:void 0,duration:s=a?this.options.duration:void 0,easing:c=a?this.options.easing:void 0,onStart:l,onComplete:u,force:d=!1,userData:p}={}){if(this.prefersReducedMotion&&(a?r=!0:(o=1,s=void 0,c=void 0)),(this.isStopped||this.isLocked)&&!d)return;let m=e,h=n;if(typeof m==`string`&&[`top`,`left`,`start`,`#`].includes(m))m=0;else if(typeof m==`string`&&[`bottom`,`right`,`end`].includes(m))m=this.limit;else{let e=null;if(typeof m==`string`?(e=m.startsWith(`#`)?document.getElementById(m.slice(1)):document.querySelector(m),e||(m===`#top`?m=0:console.warn(`Lenis: Target not found`,m))):m instanceof HTMLElement&&m?.nodeType&&(e=m),e){if(this.options.wrapper!==window){let e=this.rootElement.getBoundingClientRect();h-=this.isHorizontal?e.left:e.top}let t=e.getBoundingClientRect(),n=getComputedStyle(e),r=this.isHorizontal?Number.parseFloat(n.scrollMarginLeft):Number.parseFloat(n.scrollMarginTop),i=getComputedStyle(this.rootElement),a=this.isHorizontal?Number.parseFloat(i.scrollPaddingLeft):Number.parseFloat(i.scrollPaddingTop);m=(this.isHorizontal?t.left:t.top)+this.animatedScroll-(Number.isNaN(r)?0:r)-(Number.isNaN(a)?0:a)}}if(typeof m==`number`){if(m+=h,this.options.infinite){if(a){this.targetScroll=this.animatedScroll=this.scroll;let e=m-this.animatedScroll;e>this.limit/2?m-=this.limit:e<-this.limit/2&&(m+=this.limit)}}else m=t(0,m,this.limit);if(m===this.targetScroll){l?.(this),u?.(this);return}if(this.userData=p??{},r){this.animatedScroll=this.targetScroll=m,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()});return}a||(this.targetScroll=m),typeof s==`number`&&typeof c!=`function`?c=f:typeof c==`function`&&typeof s!=`number`&&(s=1),this.animate.fromTo(this.animatedScroll,m,{duration:s,easing:c,lerp:o,onStart:()=>{i&&(this.isLocked=!0),this.isScrolling=`smooth`,l?.(this)},onUpdate:(e,t)=>{this.isScrolling=`smooth`,this.lastVelocity=this.velocity,this.velocity=e-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=e,this.setScroll(this.scroll),a&&(this.targetScroll=e),t||this.emit(),t&&(this.reset(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()}),this.preventNextNativeScrollEvent())}})}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame(()=>{this._preventNextNativeScrollEvent=!1})}hasNestedScroll(e,{deltaX:t,deltaY:n}){let r=Date.now();e._lenis||={};let i=e._lenis,a,o,s,c,l,u,d,f,p,m;if(r-(i.time??0)>2e3){i.time=Date.now();let t=window.getComputedStyle(e);if(i.computedStyle=t,a=[`auto`,`overlay`,`scroll`].includes(t.overflowX),o=[`auto`,`overlay`,`scroll`].includes(t.overflowY),l=[`auto`].includes(t.overscrollBehaviorX),u=[`auto`].includes(t.overscrollBehaviorY),i.hasOverflowX=a,i.hasOverflowY=o,!(a||o))return!1;d=e.scrollWidth,f=e.scrollHeight,p=e.clientWidth,m=e.clientHeight,s=d>p,c=f>m,i.isScrollableX=s,i.isScrollableY=c,i.scrollWidth=d,i.scrollHeight=f,i.clientWidth=p,i.clientHeight=m,i.hasOverscrollBehaviorX=l,i.hasOverscrollBehaviorY=u}else s=i.isScrollableX,c=i.isScrollableY,a=i.hasOverflowX,o=i.hasOverflowY,d=i.scrollWidth,f=i.scrollHeight,p=i.clientWidth,m=i.clientHeight,l=i.hasOverscrollBehaviorX,u=i.hasOverscrollBehaviorY;if(!(a&&s||o&&c))return!1;let h=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`,g,_,v,y,b,x;if(h===`horizontal`)g=Math.round(e.scrollLeft),_=d-p,v=t,y=a,b=s,x=l;else if(h===`vertical`)g=Math.round(e.scrollTop),_=f-m,v=n,y=o,b=c,x=u;else return!1;return!x&&(g>=_||g<=0)?!0:(v>0?g<_:g>0)&&y&&b}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?`x`:`y`]}get isHorizontal(){return this.options.orientation===`horizontal`}get actualScroll(){let e=this.options.wrapper;return this.isHorizontal?e.scrollX??e.scrollLeft:e.scrollY??e.scrollTop}get scroll(){return this.options.infinite?i(this.animatedScroll,this.limit):this.animatedScroll}get progress(){return this.limit===0?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(e){this._isScrolling!==e&&(this._isScrolling=e,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(e){this._isStopped!==e&&(this._isStopped=e,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(e){this._isLocked!==e&&(this._isLocked=e,this.updateClassName())}get isSmooth(){return this.isScrolling===`smooth`}get prefersReducedMotion(){return this.options.respectReducedMotion&&this.reducedMotionMediaQuery.matches}get className(){let e=`lenis`;return this.options.autoToggle&&(e+=` lenis-autoToggle`),this.isStopped&&(e+=` lenis-stopped`),this.isLocked&&(e+=` lenis-locked`),this.isScrolling&&(e+=` lenis-scrolling`),this.isScrolling===`smooth`&&(e+=` lenis-smooth`),e}updateClassName(){this.cleanUpClassName(),this.className.split(` `).forEach(e=>{this.rootElement.classList.add(e)})}cleanUpClassName(){for(let e of Array.from(this.rootElement.classList))(e===`lenis`||e.startsWith(`lenis-`))&&this.rootElement.classList.remove(e)}};return p})();
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    let saved = null;
+    try { saved = window.localStorage.getItem('ug-theme'); } catch (err) {}
+    this.state = { step: 0, sstep: 0, lsec: 0, climb: 3, themeSet: saved === 'dark' || saved === 'light' ? saved : null };
+    this.climbAt = 0;
+    this.climbTimer = 0;
+    this.themeProp = undefined;
+    this.jump = [0, 1, 2, 3].map((i) => () => this.jumpTo(i));
+    // light is the default; the toggle overrides it and is remembered on this device
+    this.toggleTheme = (e) => {
+      const next = this.isDark() ? 'light' : 'dark';
+      try { window.localStorage.setItem('ug-theme', next); } catch (err) {}
+      const go = () => {
+        if (this.root) this.root.setAttribute('data-theme', next);
+        document.documentElement.classList.toggle('ug-dark', next === 'dark');
+        this.setState({ themeSet: next });
+      };
+      const btn = e && e.currentTarget;
+      if (btn && typeof document.startViewTransition === 'function' && this.motionAllowed()) {
+        const r = btn.getBoundingClientRect();
+        const st = document.documentElement.style;
+        st.setProperty('--vtx', Math.round(r.left + r.width / 2) + 'px');
+        st.setProperty('--vty', Math.round(r.top + r.height / 2) + 'px');
+        try { document.startViewTransition(go); } catch (err) { go(); }
+      } else {
+        go();
+      }
+    };
+    // restart the pop lines on every press
+    this.pop = (e) => {
+      const el = e && e.currentTarget;
+      if (!el || !el.setAttribute) return;
+      el.removeAttribute('data-pop');
+      void el.offsetWidth;
+      el.setAttribute('data-pop', '');
+    };
+    this.root = null;
+    this.live = false;
+    this.mounted = false;
+    this.raf = 0;
+    this.evalT = 0;
+    this.sc = null;
+    this.io = null;
+    this.els = null;
+    this.mx = 0; this.my = 0; this.tx = 0; this.ty = 0;
+    this.lenis = null;
+    // with smooth scroll on, in-page links glide instead of jumping
+    this.onAnchor = (e) => {
+      const mm = this.root ? this.root.querySelector('.nav-mm[open]') : null;
+      if (mm && (!mm.contains(e.target) || (e.target.closest && e.target.closest('.nav-sheet a')))) mm.open = false;
+      if (!this.lenis || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      const id = decodeURIComponent((a.getAttribute('href') || '').slice(1));
+      const t = id ? document.getElementById(id) : null;
+      if (!t) return;
+      e.preventDefault();
+      this.lenis.scrollTo(t, { duration: 1.3 });
+    };
+    this.setRoot = (el) => {
+      if (!el || el === this.root) return;
+      this.root = el;
+      if (this.mounted && !this.live) this.onResize();
+    };
+    this.request = () => { if (!this.raf) this.raf = requestAnimationFrame(this.tick); };
+    this.tick = () => { this.raf = 0; this.frame(); };
+    this.onScroll = (e) => {
+      const t = e && e.target;
+      if (t && t.classList && t.classList.contains('lesson-scroll')) this.syncLesson(t);
+      if (this.live) this.request();
+    };
+    this.onResize = () => {
+      if (this.evalT) clearTimeout(this.evalT);
+      this.evalT = setTimeout(() => { this.evalT = 0; this.evaluate(); }, 140);
+      if (this.live) this.request();
+    };
+    this.onPointer = (e) => {
+      if (!this.live) return;
+      const w = window.innerWidth || 1;
+      const h = window.innerHeight || 1;
+      this.tx = (e.clientX / w) * 2 - 1;
+      this.ty = (e.clientY / h) * 2 - 1;
+      this.request();
+    };
+    this.onIO = (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.setAttribute('data-st', 'in');
+        if (this.io) this.io.unobserve(en.target);
+      });
+    };
+  }
+
+  isDark() {
+    const t = this.state.themeSet;
+    return t ? t === 'dark' : this.props.theme === 'Dark';
+  }
+
+  syncTheme() {
+    // changing the tweak resets any choice made with the toggle
+    if (this.themeProp !== undefined && this.themeProp !== this.props.theme) {
+      this.themeProp = this.props.theme;
+      try { window.localStorage.removeItem('ug-theme'); } catch (err) {}
+      if (this.state.themeSet) { this.setState({ themeSet: null }); return; }
+    }
+    this.themeProp = this.props.theme;
+    document.documentElement.classList.toggle('ug-dark', this.isDark());
+  }
+
+  componentDidMount() {
+    this.mounted = true;
+    this.themeProp = this.props.theme;
+    document.documentElement.classList.toggle('ug-dark', this.isDark());
+    document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('pointermove', this.onPointer, { passive: true });
+    this.evaluate();
+  }
+
+  componentDidUpdate(prev) {
+    if (prev && prev.motion !== this.props.motion) this.evaluate();
+    this.syncTheme();
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointermove', this.onPointer);
+    if (this.evalT) clearTimeout(this.evalT);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    this.raf = 0;
+    this.disable(true);
+    document.documentElement.classList.remove('ug-dark');
+  }
+
+  motionAllowed() {
+    if (this.props.motion === false) return false;
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    } catch (e) {}
+    return true;
+  }
+
+  // The page scrolls inside its own frame when it is opened full window.
+  // On the canvas the frame is as tall as the page, so nothing scrolls and
+  // everything stays visible and static.
+  findScroller() {
+    let n = this.root ? this.root.parentElement : null;
+    while (n && n !== document.body && n !== document.documentElement) {
+      const s = getComputedStyle(n);
+      if (/(auto|scroll|overlay)/.test(s.overflowY) && n.scrollHeight > n.clientHeight + 4) return n;
+      n = n.parentElement;
+    }
+    return null;
+  }
+
+  viewH() { return this.sc ? this.sc.clientHeight : (window.innerHeight || document.documentElement.clientHeight || 0); }
+
+  scrollY() { return this.sc ? this.sc.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || 0); }
+
+  scrollH() {
+    if (this.sc) return this.sc.scrollHeight;
+    const b = document.body;
+    return Math.max(document.documentElement.scrollHeight, b ? b.scrollHeight : 0);
+  }
+
+  evaluate() {
+    if (!this.root) return;
+    this.sc = this.findScroller();
+    const vh = this.viewH();
+    const want = this.motionAllowed() && vh > 200 && 2400 > vh && this.scrollH() > vh + 40;
+    if (want && !this.live) this.enable();
+    else if (!want && this.live) this.disable(false);
+    if (this.live) this.request();
+  }
+
+  enable() {
+    const root = this.root;
+    this.live = true;
+    root.setAttribute('data-rvinit', '');
+    document.documentElement.classList.add('ug-live');
+    const vh = this.viewH();
+    this.io = ('IntersectionObserver' in window) ? new IntersectionObserver(this.onIO, { threshold: 0.12 }) : null;
+    if (this.io) {
+      root.querySelectorAll('.rv').forEach((el) => {
+        if (el.getBoundingClientRect().top > vh * 0.92) {
+          el.setAttribute('data-st', 'wait');
+          this.io.observe(el);
+        }
+      });
+    }
+    this.cache();
+    this.climbAt = 0;
+    if (this.state.climb !== 0) this.setState({ climb: 0 });
+    this.startLenis();
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (this.root) this.root.removeAttribute('data-rvinit');
+    }));
+  }
+
+  disable(unmounting) {
+    const html = document.documentElement;
+    this.stopLenis();
+    this.live = false;
+    this.navDark = false;
+    html.classList.remove('ug-live', 'ug-navdark');
+    ['--sy', '--prog', '--lp', '--mp', '--fp', '--tp', '--cp', '--mq', '--mx', '--my', '--fr'].forEach((k) => html.style.removeProperty(k));
+    if (this.io) { this.io.disconnect(); this.io = null; }
+    if (this.root) this.root.querySelectorAll('[data-st]').forEach((el) => el.removeAttribute('data-st'));
+    if (this.root) this.root.querySelectorAll('.dz').forEach((el) => el.style.removeProperty('--dp'));
+    if (this.climbTimer) { clearTimeout(this.climbTimer); this.climbTimer = 0; }
+    if (!unmounting && (this.state.step !== 0 || this.state.sstep !== 0 || this.state.climb !== 3)) {
+      this.setState({ step: 0, sstep: 0, climb: 3 });
+    }
+  }
+
+  // Lenis smooths wheel scrolling. Touch stays native, and the lesson window
+  // keeps its own scroll until it reaches an end, then hands off to the page.
+  startLenis() {
+    if (this.lenis || typeof UGLenis !== 'function') return;
+    try {
+      this.lenis = new UGLenis({
+        wrapper: this.sc || window,
+        content: this.sc ? (this.sc.firstElementChild || this.sc) : document.documentElement,
+        autoRaf: true,
+        lerp: 0.1,
+        allowNestedScroll: true
+      });
+    } catch (e) {
+      this.lenis = null;
+      return;
+    }
+    if (this.root) this.root.addEventListener('click', this.onAnchor);
+  }
+
+  stopLenis() {
+    if (this.root) this.root.removeEventListener('click', this.onAnchor);
+    if (this.lenis) {
+      try { this.lenis.destroy(); } catch (e) {}
+      this.lenis = null;
+    }
+  }
+
+  cache() {
+    const r = this.root;
+    this.els = {
+      steps: Array.prototype.slice.call(r.querySelectorAll('.lstep')),
+      sstepEls: Array.prototype.slice.call(r.querySelectorAll('.sc-step')),
+      scpin: r.querySelector('.sc-pinwrap'),
+      ladpin: r.querySelector('.lad-pinwrap'),
+      o4: r.querySelector('.o4e'),
+      o4climb: r.querySelector('.o4-climb'),
+      dz: Array.prototype.slice.call(r.querySelectorAll('.dz')),
+      lframe: r.querySelector('.lf-wrap'),
+      mf: r.querySelector('.mf'),
+      mission: r.querySelector('.mission'),
+      team: r.querySelector('.team-grid'),
+      cta: r.querySelector('.cta'),
+      foot: r.querySelector('.foot')
+    };
+  }
+
+  frame() {
+    if (!this.live || !this.root) return;
+    if (!this.els || !this.els.foot || !this.root.contains(this.els.foot)) this.cache();
+    const E = this.els;
+    const vh = this.viewH();
+    const y = this.scrollY();
+    const max = Math.max(1, this.scrollH() - vh);
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const mid = (el) => { const r = el.getBoundingClientRect(); return r.top + r.height / 2; };
+    const rel = (el) => (el ? clamp((mid(el) - vh / 2) / vh, -1.5, 1.5) : 0);
+
+    // reads first
+    // where a step's text starts (its top padding is the gap above the words)
+    const textTop = (el) => el.getBoundingClientRect().top + (parseFloat(getComputedStyle(el).paddingTop) || 0);
+    const pinned = (el) => !!el && getComputedStyle(el).position === 'sticky';
+    // on phones the card or circle pins under the nav, so the reading line sits in the space left below it
+    const below = (el) => { const pb = el.getBoundingClientRect().bottom; return pb + (vh - pb) * 0.42; };
+    let step = 0;
+    let lp = 0;
+    const st = E.steps;
+    const ladPinned = pinned(E.ladpin);
+    const line = ladPinned ? below(E.ladpin) : vh * 0.6;
+    const at = ladPinned ? textTop : mid;
+    for (let i = 0; i !== st.length; i++) {
+      if (line > at(st[i])) step = i;
+    }
+    if (st.length) {
+      const a = at(st[0]);
+      const b = at(st[st.length - 1]);
+      lp = clamp((line - a) / Math.max(1, b - a), 0, 1);
+    }
+    // the fox scene: whichever step has crossed the middle of the screen sets the pose
+    let sstep = 0;
+    const ss = E.sstepEls || [];
+    const scPinned = pinned(E.scpin);
+    const sline = scPinned ? below(E.scpin) : vh * 0.56;
+    for (let i = 0; i !== ss.length; i++) {
+      if (sline > (scPinned ? textTop(ss[i]) : mid(ss[i]))) sstep = i;
+    }
+    // the sample lesson window tilts back and flattens as it comes up the screen
+    let fr = 1;
+    if (E.lframe) {
+      const r = E.lframe.getBoundingClientRect();
+      fr = clamp((vh * 0.96 - r.top) / (vh * 0.55), 0, 1);
+    }
+    let mp = 1;
+    if (E.mf) {
+      const r = E.mf.getBoundingClientRect();
+      mp = clamp((vh * 0.86 - r.top) / (vh * 0.42 + r.height), 0, 1);
+    }
+    let fp = 1;
+    if (E.foot) {
+      const r = E.foot.getBoundingClientRect();
+      fp = clamp((vh - r.top) / Math.max(1, r.height), 0, 1);
+    }
+    const dzp = (E.dz || []).map((el) => {
+      const p = el.parentElement;
+      if (!p) return 0;
+      const c = p.getBoundingClientRect().top + el.offsetTop + el.offsetHeight / 2;
+      return clamp((c - vh / 2) / vh, -1.5, 1.5);
+    });
+    const tp = rel(E.team);
+    const cp = rel(E.cta);
+    const mq = rel(E.mission);
+    const under = (el) => { if (!el) return false; const r = el.getBoundingClientRect(); return 34 >= r.top && r.bottom >= 34; };
+    const dark = under(E.mission) || under(E.cta) || under(E.o4);
+    // the contest climb: one step at a time while it is on screen, reset once it drops below the fold
+    let climb = this.state.climb;
+    let climbLater = false;
+    if (E.o4climb) {
+      const r = E.o4climb.getBoundingClientRect();
+      if (r.top > vh) {
+        climb = 0;
+      } else {
+        const c1 = r.top + r.height * 0.6;
+        const c2 = r.top + r.height * 0.42;
+        let want = vh * 0.9 > c1 ? 1 : 0;
+        if (vh * 0.66 > c1) want = 2;
+        if (want === 2 && vh * 0.5 > c2) want = 3;
+        if (want > climb) {
+          const now = performance.now();
+          if (climb === 0 || now - this.climbAt > 1050) { climb += 1; this.climbAt = now; }
+          if (want > climb) climbLater = true;
+        }
+      }
+    }
+    this.mx += (this.tx - this.mx) * 0.08;
+    this.my += (this.ty - this.my) * 0.08;
+    const settling = Math.abs(this.tx - this.mx) > 0.001 || Math.abs(this.ty - this.my) > 0.001;
+
+    // then writes
+    const s = document.documentElement.style;
+    s.setProperty('--sy', y.toFixed(1));
+    s.setProperty('--prog', clamp(y / max, 0, 1).toFixed(4));
+    s.setProperty('--lp', lp.toFixed(4));
+    s.setProperty('--mp', mp.toFixed(4));
+    s.setProperty('--fp', fp.toFixed(4));
+    s.setProperty('--tp', tp.toFixed(4));
+    s.setProperty('--cp', cp.toFixed(4));
+    s.setProperty('--mq', mq.toFixed(4));
+    s.setProperty('--mx', this.mx.toFixed(4));
+    s.setProperty('--my', this.my.toFixed(4));
+    s.setProperty('--fr', fr.toFixed(4));
+    (E.dz || []).forEach((el, i) => el.style.setProperty('--dp', dzp[i].toFixed(3)));
+    if (dark !== this.navDark) {
+      this.navDark = dark;
+      document.documentElement.classList.toggle('ug-navdark', dark);
+    }
+    if (step !== this.state.step || sstep !== this.state.sstep || climb !== this.state.climb) {
+      this.setState({ step: step, sstep: sstep, climb: climb });
+    }
+    if (climbLater && !this.climbTimer) {
+      this.climbTimer = setTimeout(() => { this.climbTimer = 0; this.request(); }, 1100);
+    }
+    if (settling) this.request();
+  }
+
+  // the lesson rail follows the section you are reading inside the window
+  syncLesson(sc) {
+    const secs = sc.querySelectorAll('[data-ls]');
+    let a = 0;
+    for (let i = 0; i !== secs.length; i++) {
+      if (sc.scrollTop + 60 >= secs[i].offsetTop) a = i;
+    }
+    if (sc.scrollTop + sc.clientHeight >= sc.scrollHeight - 4) a = secs.length - 1;
+    if (a !== this.state.lsec) this.setState({ lsec: a });
+  }
+
+  jumpTo(i) {
+    const sc = this.root ? this.root.querySelector('.lesson-scroll') : null;
+    const t = sc ? sc.querySelector('[data-ls="' + i + '"]') : null;
+    if (sc && t) sc.scrollTo({ top: i === 0 ? 0 : Math.max(0, t.offsetTop - 20), behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const s = this.state.step || 0;
+    const c = (i) => (i === s ? 'on' : (s > i ? 'past' : ''));
+    const ss = this.state.sstep || 0;
+    const fc = (i) => (i === ss ? 'on' : '');
+    const ls = this.state.lsec || 0;
+    const lc = (i) => (i === ls ? 'on' : '');
+    return {
+      l0: lc(0),
+      l1: lc(1),
+      l2: lc(2),
+      l3: lc(3),
+      jump0: this.jump[0],
+      jump1: this.jump[1],
+      jump2: this.jump[2],
+      jump3: this.jump[3],
+      f0: fc(0),
+      f1: fc(1),
+      f2: fc(2),
+      f3: fc(3),
+      f4: fc(4),
+      setRoot: this.setRoot,
+      pop: this.pop,
+      theme: this.isDark() ? 'dark' : 'light',
+      climb: String(this.state.climb),
+      darkPressed: this.isDark() ? 'true' : 'false',
+      toggleTheme: this.toggleTheme,
+      accent: this.props.accent ?? '#6B2DE6',
+      acc: ({ Coral: '#FF8A65', Mint: '#3DDC97' })[this.props.highlight] || '#FFC53D',
+      accDk: ({ Coral: '#B3401F', Mint: '#0B7A50' })[this.props.highlight] || '#9A5B00',
+      display: this.props.display === 'Instrument Sans' ? 'Instrument Sans, sans-serif' : 'Bricolage Grotesque, Instrument Sans, sans-serif',
+      amb: this.props.motion === false ? 'off' : 'on',
+      r0: c(0),
+      r1: c(1),
+      r2: c(2),
+      r3: c(3),
+      step: String(s),
+      stepNo: '0' + String(s + 1)
+    };
+  }
+}
+</script>
+</body>
+</html>

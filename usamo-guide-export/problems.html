@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>USAMO Guide · Problems</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/problems.css">
+<script src="runtime/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=Instrument+Sans:wdth,wght@75..100,400..700&amp;family=Instrument+Serif:ital@1&amp;family=Noto+Sans+Bengali:wght@500&amp;family=Shadows+Into+Light&amp;display=swap">
+</helmet>
+<div class="ug" ref="{{ setRoot }}" data-theme="{{ theme }}" style="--acc: {{ acc }}; --acc-dk: {{ accDk }}">
+<svg class="ug-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><symbol id="ug-mark" viewBox="78 70 340 340"><path style="fill: var(--mk-light)" d="M145.2 377.8C102.6 372.7 79.6 348.2 85.7 314.5C87.5 304.7 88.6 300.6 92.4 290.5C97.5 276.6 102 266.4 107 257.4C108 255.6 109.8 252.1 111 249.6C112.3 247.2 114.1 243.7 115.1 241.9C116.1 240.1 117.9 236.8 119.1 234.7C120.3 232.5 121.9 229.7 122.7 228.4C123.5 227.2 124.8 225.1 125.5 223.8C127.4 220.3 133.8 210.8 134.2 210.7C136.4 210.2 136.3 210.9 132.6 221C130.3 227 129.5 229.4 126.2 239.1C123.1 248.1 121 256.6 118.8 268.8C112.3 305.2 132.9 328 175.1 331C177.1 331.1 179.4 331.4 180.2 331.6C182.5 332 196.8 332 198.9 331.6C199.7 331.4 202.2 331.1 204.5 331C206.8 330.9 209.2 330.6 210 330.5C210.8 330.3 213.4 330.1 215.9 330C219 329.8 221.6 329.6 224.4 329C226.6 328.6 229.3 328.2 230.5 328C231.7 327.9 233.9 327.4 235.4 327C236.9 326.6 240.8 325.7 244 325C255.7 322.4 270.8 317.8 276.8 315.1C278.5 314.3 281.6 313 283.7 312.1C285.7 311.2 289.1 309.7 291.2 308.7C297.8 305.4 300.5 305.2 299.2 308.3C298.5 309.9 290.1 319.5 287.1 322.2C286.1 323 283.6 325.2 281.5 327.2C274.1 333.9 259.5 344.7 252.9 348.3C251.8 348.8 249.2 350.3 247.2 351.5C237.8 357.2 219 365.9 212.2 367.8C210.7 368.2 208.3 368.9 206.9 369.5C189.9 375.9 161.1 379.8 145.2 377.8Z"></path><path style="fill: var(--mk-mid)" d="M159 320.1C140.1 314.5 130.9 304.8 127.1 286.8C124.9 276.4 126.5 259.2 130.9 245.8C131.4 244.3 132 242.2 132.3 241C133.7 234.9 140.6 215.5 144.3 206.8C145.8 203.4 147.4 199.5 148 198.1C151.4 189.4 156.1 179.4 158.5 175.3C159.2 174.1 160.1 172.2 160.6 170.9C161.9 167.5 164.5 163 168.4 157.1C170.3 154.2 172.9 150.2 174.2 148.2C177.2 143.3 185.3 132.8 189.2 128.7C190.3 127.5 191.7 125.9 192.2 125.1C195.4 120.4 200.5 114.7 204 111.9C204.9 111.2 206.8 109.5 208.2 108.1C211.1 105.3 212.1 104.7 217.8 101.2C229.5 94.2 244.9 90.1 252.9 92C254.2 92.3 256.6 92.7 258.4 93C267.7 94.5 283.8 103 283.8 106.4C283.7 108.3 282.4 108.7 274.2 109C262.9 109.4 253.2 115 245 125.9C244.1 127.1 242.7 128.9 241.9 129.8C241.2 130.7 240 132.5 239.4 133.8C237.9 136.7 236.9 138.4 234.5 142.1C233.4 143.8 232.1 146.2 231.6 147.5C229.7 151.8 227.3 156.7 225.9 159C225.2 160.2 224.1 162.3 223.5 163.7C222.9 165 221.8 167.4 221 169C220.2 170.6 219 173.2 218.3 174.9C217.6 176.5 215.2 181.2 213.1 185.4C211 189.5 208.7 194.4 207.9 196.4C207.1 198.3 206 200.8 205.4 202C203.9 205.4 200.2 214 198 219.5C196.9 222.3 195.4 225.7 194.7 227.1C194 228.4 192.7 231.8 191.8 234.5C190.8 237.2 189.3 241.6 188.3 244.2C187.3 246.9 185.9 251.2 185.1 253.6C183.1 260 182 263.2 180 268.5C178 273.8 177.4 275.6 176.9 279.1C176.7 280.5 176.1 283 175.6 284.8C175.2 286.5 174.6 288.7 174.4 289.6C174.2 290.6 173.4 293.1 172.8 295.1C171.3 299.7 170.3 304.4 170 309.1C169.2 320 166.7 322.4 159 320.1Z"></path><path style="fill: var(--mk-deep)" d="M215.9 388.7C215.2 388.7 213.3 388.4 211.8 388.3C210.2 388.1 207.6 387.8 206 387.6C204.4 387.4 201.5 387.1 199.5 387C191.4 386.5 182 384.7 181.6 383.5C181.3 382.3 182.1 381.8 185.7 381.2C186.5 381.1 188.4 380.7 189.8 380.3C193.5 379.2 201 377.4 203.5 376.9C204.7 376.6 207.2 375.9 209.1 375.1C211.1 374.4 214.2 373.3 216.1 372.7C225.9 369.5 227 369 244.9 360.1C256.6 354.2 257.8 353.5 270.2 344.8C275.4 341.1 283.3 334.8 287 331.4C294.5 324.3 299.5 319.4 301.2 317.3C302.2 316 304.1 313.6 305.4 312.1C313.4 302.5 321.5 286.8 322.7 278.7C323.4 273.9 323.8 270.9 324 268.3C324.7 260.2 328.7 263.4 336.2 278.1C337.2 280.2 338.9 283.2 339.8 284.8C341.8 287.9 343.9 292.3 346.2 297.8C347.1 299.7 348.6 303.1 349.6 305.3C356.1 318.9 359.8 339.3 357.3 347.9C357 348.8 356.4 351.1 355.9 353C353.1 363.5 344.7 374.2 336.9 377.1C336 377.4 334.1 378.3 332.6 379C325.8 382.1 319.5 384 312.6 385C310.7 385.3 307.9 385.7 306.5 386C305.1 386.3 302.1 386.6 300 386.8C297.9 386.9 295.1 387.2 293.8 387.4C292.4 387.6 289 387.9 286.2 388C283.3 388.1 280.9 388.3 280.7 388.4C280.1 388.8 218.5 389.1 215.9 388.7ZM344.7 379.7C342.5 378.9 343.5 377.4 348.9 373.9C355.5 369.5 358 366.8 360.9 361.4C366.9 350 367.6 338.2 363.3 321.1C360.1 308.6 349.9 285.7 342.1 273.8C341.3 272.4 339.7 269.7 338.5 267.6C334.4 260.2 327.1 249.3 321.2 241.8C319.9 240.2 318.1 237.6 317 236C315.9 234.4 314 231.8 312.7 230.2C311.4 228.7 309.7 226.5 309 225.5C308.3 224.5 306.7 222.4 305.5 221C304.3 219.6 302.6 217.4 301.8 216.2C300.9 214.9 298.8 212.5 297.1 210.7C295.5 208.9 292.7 205.6 291 203.5C289.3 201.4 286.3 197.9 284.4 195.8C282.5 193.8 278.3 189.3 275.2 185.9C269.9 180.1 256.3 166.6 253.1 164.1C252.3 163.4 250 161.4 248 159.5C246 157.6 243 155 241.2 153.6C235.7 149.2 235.5 147.4 240.1 140.5C241.2 138.8 242.8 136.4 243.6 135.2C244.5 133.8 246.2 131.8 248 130C249.6 128.4 251.8 126.1 253 124.8C266.9 110.1 291.1 110.5 302.6 125.6C303.4 126.7 305.2 128.8 306.6 130.2C308 131.7 309.9 133.9 310.7 135.1C311.6 136.4 313.3 138.6 314.5 140C315.7 141.4 317.3 143.5 318 144.5C318.7 145.5 320.3 147.6 321.4 149C322.5 150.4 324.2 152.8 325.2 154.2C326.1 155.7 328.3 158.7 329.9 160.9C331.6 163.1 334.1 166.7 335.5 168.9C336.9 171.2 339 174.2 340.1 175.6C341.2 177.1 343.2 180 344.5 182.1C345.8 184.2 347.8 187.2 349 188.9C351.4 192.2 356.2 199.8 357.5 202.1C358.6 204 362.8 210.8 365.1 214.2C366 215.7 367.3 218 368 219.3C369.2 221.7 373.1 228.1 376 232.5C376.8 233.8 378.5 236.7 379.6 238.9C380.7 241.1 382.3 244.1 383.2 245.6C385 248.5 392.8 263.9 396.8 272.4C398.3 275.4 400 279.5 401.1 282.8C402.1 285.7 403.7 289.9 404.6 292.1C406.9 297.8 410.2 308.6 410.7 312C410.9 313 411.2 315.3 411.4 317C415 341.7 402.2 361.5 376.4 371.6C374.7 372.3 372.1 373.3 370.5 374C368.6 374.8 366.3 375.6 363.8 376.1C361.8 376.6 358.8 377.3 357.3 377.7C351.1 379.5 346.1 380.2 344.7 379.7Z"></path></symbol></defs></svg>
+<sc-if value="{{ annOn }}" hint-placeholder-val="{{ true }}">
+<div class="ann" role="region" aria-label="Announcement">
+  <div class="wrap-w ann-in">
+    <p>Join the USAMO Guide Discord. Updates are posted there first.</p>
+    <a class="ann-a" href="#discord">Join the server<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    <button class="ann-x" type="button" aria-label="Dismiss announcement" onClick="{{ hideAnn }}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"></path></svg></button>
+  </div>
+</div>
+</sc-if>
+<header class="nav">
+  <div class="wrap-w nav-in">
+    <a class="brand" href="index.html" aria-label="USAMO Guide, home"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use class="mark-spin" href="#ug-mark" width="100" height="100"></use></svg><span class="wm" aria-hidden="true">USAMO Guide</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-dd">
+        <button class="nav-dd-t" type="button" aria-haspopup="true">Tracks<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></button>
+        <div class="nav-menu">
+          <a href="track.html">Foundations (AMC 8)</a>
+          <a href="track.html">Intermediate (AMC 10/12)</a>
+          <a href="track.html">Advanced (AIME)</a>
+          <a href="track.html">Olympiad (USA(J)MO)</a>
+        </div>
+      </div>
+      <a href="problems.html" aria-current="page">Problems</a>
+      <a href="#contests">Contests</a>
+      <div class="nav-dd">
+        <button class="nav-dd-t" type="button" aria-haspopup="true">Resources<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></button>
+        <div class="nav-menu">
+          <a href="index.html#o4e">Olympiad4Everyone</a>
+          <a href="#discord">Discord</a>
+          <a href="#github">GitHub</a>
+          <a href="index.html#faq">FAQ</a>
+        </div>
+      </div>
+      <a href="#about">About</a>
+      <a href="mailto:contact@usamoguide.com">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a class="nav-login" href="dashboard.html">Login</a>
+      <details class="set" data-dismiss><summary class="set-btn" aria-label="Settings"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></summary><div class="set-pop" role="group" aria-label="Settings"><p class="set-k">Settings</p><button class="set-row" type="button" role="switch" aria-checked="{{ prefTags }}" onClick="{{ flipTags }}"><span class="set-t">Show problem tags<small>Tags can give away the method</small></span><span class="sw" aria-hidden="true"></span></button><button class="set-row" type="button" role="switch" aria-checked="{{ prefDiff }}" onClick="{{ flipDiff }}"><span class="set-t">Show difficulty<small>Hide it to go in without expectations</small></span><span class="sw" aria-hidden="true"></span></button><button class="set-row" type="button" role="switch" aria-checked="{{ prefIgn }}" onClick="{{ flipIgn }}"><span class="set-t">Show ignored problems<small>Problems you marked Ignored</small></span><span class="sw" aria-hidden="true"></span></button></div></details>
+      <button class="theme-tg" type="button" onClick="{{ toggleTheme }}" aria-label="Dark mode" aria-pressed="{{ darkPressed }}"><svg class="ico tg-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"></path></svg><svg class="ico tg-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"></path></svg></button>
+      <a class="btn btn-p btn-sm nav-start" href="start.html" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Start learning<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <details class="nav-mm" data-dismiss>
+        <summary aria-label="Menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></summary>
+        <div class="nav-sheet">
+          <p class="nav-sheet-k">Tracks</p>
+          <a href="track.html">Foundations (AMC 8)</a>
+          <a href="track.html">Intermediate (AMC 10/12)</a>
+          <a href="track.html">Advanced (AIME)</a>
+          <a href="track.html">Olympiad (USA(J)MO)</a>
+          <hr>
+          <a href="problems.html">Problems</a>
+          <a href="#contests">Contests</a>
+          <a href="start.html">Start learning</a>
+          <p class="nav-sheet-k">Resources</p>
+          <a href="index.html#o4e">Olympiad4Everyone</a>
+          <a href="#discord">Discord</a>
+          <a href="#github">GitHub</a>
+          <a href="index.html#faq">FAQ</a>
+          <hr>
+          <a href="#about">About</a>
+          <a href="mailto:contact@usamoguide.com">Contact Us</a>
+          <a href="dashboard.html">Login</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+<main class="pb-shell wrap-w">
+  <aside class="pb-side" aria-label="Filters">
+    <div class="pb-fdet {{ fCls }}">
+      <button class="pb-fsum" type="button" aria-expanded="{{ fExp }}" aria-controls="pb-side-in" onClick="{{ fToggle }}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg><span>Filters</span><span class="pb-fn">{{ activeN }}</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></button>
+      <div class="pb-side-in" id="pb-side-in">
+        <button class="pb-tagtg" type="button" aria-pressed="{{ tagsHidden }}" onClick="{{ flipTags }}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="2.8"></circle></svg><span>{{ tagsBtn }}</span></button>
+        <div class="fl-group">
+          <p class="fl-k">Topics</p>
+          <sc-for list="{{ topics }}" as="g" hint-placeholder-count="5">
+            <details class="fl-topic" open="{{ g.open }}">
+              <summary><span>{{ g.name }}</span><span class="cnt">{{ g.total }}</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></summary>
+              <div class="fl-items">
+                <sc-for list="{{ g.items }}" as="o" hint-placeholder-count="5">
+                  <button class="fchk" type="button" role="checkbox" aria-checked="{{ o.checked }}" onClick="{{ o.toggle }}"><span class="box" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span class="fchk-t">{{ o.name }}</span><span class="cnt">{{ o.count }}</span></button>
+                </sc-for>
+              </div>
+            </details>
+          </sc-for>
+        </div>
+        <div class="fl-group">
+          <p class="fl-k">Difficulty</p>
+          <sc-for list="{{ diffs }}" as="o" hint-placeholder-count="5">
+            <button class="fchk" type="button" role="checkbox" aria-checked="{{ o.checked }}" onClick="{{ o.toggle }}"><span class="box" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span class="diff {{ o.dcls }}">{{ o.name }}</span><span class="cnt">{{ o.count }}</span></button>
+          </sc-for>
+        </div>
+        <div class="fl-group">
+          <p class="fl-k">Source</p>
+          <sc-for list="{{ sources }}" as="o" hint-placeholder-count="6">
+            <button class="fchk" type="button" role="checkbox" aria-checked="{{ o.checked }}" onClick="{{ o.toggle }}"><span class="box" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span class="fchk-t">{{ o.name }}</span><span class="cnt">{{ o.count }}</span></button>
+          </sc-for>
+        </div>
+        <button class="fl-clear" type="button" onClick="{{ clearAll }}">Clear all filters</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="pb-main">
+    <header class="pb-head">
+      <div class="pb-intro">
+        <h1 class="pb-h1">Problems</h1>
+        <p class="pb-lede">2,140 problems from the AMC, AIME, USAMO and our own sets, each tagged by topic and difficulty.</p>
+      </div>
+      <img class="pb-pose" src="img/panda-search.webp" alt="" width="440" height="395">
+    </header>
+    <label class="pb-search"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg><input type="search" placeholder="Search by name, year or topic" aria-label="Search problems" value="{{ q }}" onChange="{{ onQ }}"><kbd class="pb-kbd">/</kbd></label>
+    <div class="pb-filters" role="group" aria-label="Narrow the list">
+      <label class="sel"><span class="sel-k">Module</span><select value="{{ fMod }}" onChange="{{ onMod }}"><option value="">All modules</option><option value="Kinematics and Rates">Kinematics and Rates</option><option value="Linear Relationships and Word Problems">Linear Relationships and Word Problems</option><option value="Area and Perimeter">Area and Perimeter</option><option value="Polynomials">Polynomials</option><option value="Counting with Recursion">Counting with Recursion</option><option value="Advanced Geometry">Advanced Geometry</option><option value="Modular Arithmetic for the AIME">Modular Arithmetic for the AIME</option><option value="Trig Identities">Trig Identities</option><option value="Proof Writing Basics">Proof Writing Basics</option><option value="Induction on Olympiads">Induction on Olympiads</option><option value="Olympiad Geometry">Olympiad Geometry</option><option value="Olympiad Number Theory">Olympiad Number Theory</option><option value="Graph Theory (Intro)">Graph Theory (Intro)</option></select><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></label>
+      <label class="sel"><span class="sel-k">Track</span><select value="{{ fTrack }}" onChange="{{ onTrack }}"><option value="">All tracks</option><option value="0">Foundations (AMC 8)</option><option value="1">Intermediate (AMC 10/12)</option><option value="2">Advanced (AIME)</option><option value="3">Olympiad (USA(J)MO)</option></select><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></label>
+      <label class="sel"><span class="sel-k">Status</span><select value="{{ fSt }}" onChange="{{ onSt }}"><option value="">Any status</option><option value="0">Not attempted</option><option value="1">Solving</option><option value="2">Solved</option><option value="3">Reviewing</option><option value="4">Skipped</option><option value="5">Ignored</option></select><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg></label>
+      <div class="pb-acts">
+        <button class="tbtn" type="button" onClick="{{ shuffle }}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c2.6 0 3.9 1.6 5 5s2.4 5 5 5h3"></path><path d="M17.5 14.5L20 17l-2.5 2.5"></path><path d="M4 17h3c1.3 0 2.2-.4 2.9-1.1M13.9 8.1C14.7 7.4 15.6 7 17 7h3"></path><path d="M17.5 4.5L20 7l-2.5 2.5"></path></svg>Shuffle</button>
+        <a class="btn btn-p btn-sm pb-rand" href="module.html" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"></rect><path d="M9 9h.01M15 9h.01M12 12h.01M9 15h.01M15 15h.01"></path></svg>Random problem</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      </div>
+    </div>
+
+    <div class="pb-bar">
+      <p class="pb-count"><b>{{ shownN }}</b> {{ shownWord }}<span class="pb-count-k">{{ sortLabel }}</span></p>
+      <button class="tbtn" type="button" onClick="{{ toggleSort }}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14M4 16l3 3 3-3M17 19V5M14 8l3-3 3 3"></path></svg>{{ sortBtn }}</button>
+    </div>
+    <div class="pb-cards">
+      <sc-for list="{{ probs }}" as="p" hint-placeholder-count="9">
+        <article class="pc {{ p.cls }}">
+          <div class="pc-top">
+            <span class="pc-src">{{ p.src }}</span>
+            <sc-if value="{{ p.feat }}" hint-placeholder-val="{{ false }}"><span class="pc-feat"><svg class="ico-star" viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0-7C.7-1.8 1.8-.7 7 0C1.8.7.7 1.8 0 7C-.7 1.8-1.8.7-7 0C-1.8-.7-.7-1.8 0-7Z"></path></svg>Featured</span></sc-if>
+            <details class="ps" data-dismiss>
+              <summary class="ps-btn" aria-label="{{ p.stLabel }}"><span class="ps-ic {{ p.ic }}" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></summary>
+              <div class="ps-menu r" role="menu" aria-label="Problem status">
+                <sc-for list="{{ p.opts }}" as="o" hint-placeholder-count="6">
+                  <button class="ps-opt {{ o.on }}" type="button" role="menuitemradio" aria-checked="{{ o.checked }}" onClick="{{ o.pick }}"><span class="ps-ic {{ o.ic }}" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>{{ o.name }}</button>
+                </sc-for>
+              </div>
+            </details>
+          </div>
+          <h3 class="pc-t"><a href="module.html">{{ p.name }}</a></h3>
+          <div class="pc-in">
+            <p class="pc-in-k">Appears in</p>
+            <ul class="pc-mods">
+              <sc-for list="{{ p.mods }}" as="m" hint-placeholder-count="1"><li><a href="module.html">{{ m.n }}</a></li></sc-for>
+            </ul>
+          </div>
+          <div class="pc-foot">
+            <sc-if value="{{ p.showDiff }}" hint-placeholder-val="{{ true }}"><span class="diff {{ p.dcls }}">{{ p.diff }}</span></sc-if>
+            <sc-if value="{{ p.showTags }}" hint-placeholder-val="{{ true }}">
+              <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="2"><span class="tag">{{ t.t }}</span></sc-for>
+            </sc-if>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <sc-if value="{{ none }}" hint-placeholder-val="{{ false }}">
+      <div class="pb-empty"><p>No problems match these filters.</p><button class="tbtn" type="button" onClick="{{ clearAll }}">Clear all filters</button></div>
+    </sc-if>
+    <sc-if value="{{ ignHidden }}" hint-placeholder-val="{{ false }}">
+      <p class="pb-ign">{{ ignNote }} <button type="button" onClick="{{ flipIgn }}">Show ignored</button></p>
+    </sc-if>
+    <div class="pb-more">
+      <a class="btn btn-s" href="#more" onPointerDown="{{ pop }}"><span class="btn-edge" aria-hidden="true"></span><span class="btn-face">Load more problems</span><span class="btn-pop" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <p class="pb-more-n">Showing {{ shownN }} of 2,140</p>
+    </div>
+  </div>
+</main>
+<footer class="afoot">
+  <div class="wrap-w afoot-in">
+    <a class="brand" href="index.html" aria-label="USAMO Guide, home"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use class="mark-spin" href="#ug-mark" width="100" height="100"></use></svg><span class="wm" aria-hidden="true">USAMO Guide</span></a>
+    <nav class="afoot-links" aria-label="Footer"><a href="track.html">Tracks</a><a href="problems.html">Problems</a><a href="#contests">Contests</a><a href="#discord">Discord</a><a href="#github">GitHub</a><a href="mailto:contact@usamoguide.com">Contact</a></nav>
+    <p class="afoot-note"><span>© 2026 USAMO Guide</span><span>Attribution required. Commercial use not allowed.</span><span>Not an official MAA syllabus.</span></p>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["Light","Dark"],"default":"Light","section":"Theme"},"highlight":{"editor":"enum","options":["Gold","Coral","Mint"],"default":"Gold","section":"Theme"},"$preview":{"width":1440,"height":2237}}'>
+// modules the placeholder problems appear in: [module, track index]
+const UG_MODS = [["Kinematics and Rates", 0], ["Linear Relationships and Word Problems", 0], ["Area and Perimeter", 0], ["Polynomials", 1], ["Counting with Recursion", 1], ["Advanced Geometry", 2], ["Modular Arithmetic for the AIME", 2], ["Trig Identities", 2], ["Proof Writing Basics", 3], ["Induction on Olympiads", 3], ["Olympiad Geometry", 3], ["Olympiad Number Theory", 3], ["Graph Theory (Intro)", 3]];
+// placeholder problems: name, source, difficulty (0 easy to 4 insane), modules it appears in, tags, featured
+const UG_PB = [
+  ['Problem 5 (2017 USAMO)', 'USAMO', 4, ['Olympiad Geometry'], ['Circles'], true],
+  ['Problem 4 (2011 USAMO)', 'USAMO', 4, ['Olympiad Number Theory'], ['Modular Arithmetic'], true],
+  ['Problem 5 (2015 USAMO)', 'USAMO', 4, ['Graph Theory (Intro)'], ['Graph Theory'], false],
+  ['Problem 15 (2019 AIME I)', 'AIME', 4, ['Advanced Geometry', 'Olympiad Geometry'], ['Circles', 'Area'], false],
+  ['Problem 2 (2016 USAMO)', 'USAMO', 3, ['Olympiad Number Theory'], ['Prime numbers'], false],
+  ['Problem 1 (2014 USAMO)', 'USAMO', 3, ['Olympiad Geometry'], ['Area'], false],
+  ['Problem 1 (2012 USAMO)', 'USAMO', 3, ['Proof Writing Basics'], ['Inequalities'], false],
+  ['Problem 1 (2011 USAMO)', 'USAMO', 3, ['Proof Writing Basics'], ['Inequalities'], true],
+  ['Problem 3 (2005 USAMO)', 'USAMO', 3, ['Olympiad Geometry'], ['Circles'], true],
+  ['Problem 24 (2021 AMC 12A)', 'AMC 12', 3, ['Polynomials'], ['Polynomials'], false],
+  ['Problem 2 (2009 USAMO)', 'USAMO', 2, ['Induction on Olympiads'], ['Induction'], false],
+  ['Telescoping Sine Sum', 'Custom', 2, ['Trig Identities'], ['Identities', 'Series'], true],
+  ['Problem 8 (2021 AIME II)', 'AIME', 2, ['Counting with Recursion'], ['Recursion', 'Counting'], false],
+  ['Problem 22 (2022 AMC 8)', 'AMC 8', 2, ['Kinematics and Rates', 'Linear Relationships and Word Problems'], ['Linear Equations'], false],
+  ['Sum-to-Product Ratio', 'Custom', 1, ['Trig Identities'], ['Identities'], false],
+  ['Product-to-Sum Chains', 'Custom', 1, ['Trig Identities'], ['Identities', 'Sequences'], false],
+  ['Problem 4 (2023 AIME I)', 'AIME', 1, ['Modular Arithmetic for the AIME'], ['Modular Arithmetic'], false],
+  ['Problem 10 (2023 AMC 10B)', 'AMC 10', 0, ['Area and Perimeter'], ['Area'], false]
+];
+const UG_SRC = [['AMC 8', '412'], ['AMC 10', '538'], ['AMC 12', '497'], ['AIME', '365'], ['USAMO', '178'], ['Custom', '150']];
+const UG_DIFFS = [['Easy', 'd-easy', '520'], ['Medium', 'd-med', '690'], ['Hard', 'd-hard', '480'], ['Very hard', 'd-vhard', '290'], ['Insane', 'd-insane', '160']];
+// topic tree with problem counts; the first three start open
+const UG_TOPICS = [
+  ['Number Theory', [['Modular Arithmetic', 62], ['Prime numbers', 53], ['Number Theory', 14], ['Divisibility', 7], ['Congruence', 2], ['Factorization', 2], ['LCM', 2]]],
+  ['Algebra', [['Optimization', 30], ['Algebra', 19], ['Polynomials', 17], ['Linear Equations', 13], ['Inequalities', 8], ['Sequences', 6], ['Functions', 4], ['Series', 4], ['Exponents', 3], ['Induction', 3]]],
+  ['Geometry', [['Area', 97], ['Circles', 65], ['Vectors', 32], ['3D Geometry', 31], ['Geometry', 30], ['Symmetry', 11], ['Angles', 7], ['Coordinates', 3], ['Graphing', 3]]],
+  ['Trigonometry', [['Identities', 21], ['Trig equations', 14]]],
+  ['Combinatorics', [['Counting', 84], ['Probability', 61], ['Recursion', 12], ['Graph Theory', 9]]]
+];
+const UG_PS = ['Not attempted', 'Solving', 'Solved', 'Reviewing', 'Skipped', 'Ignored'];
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    let saved = null;
+    try { saved = window.localStorage.getItem('ug-theme'); } catch (err) {}
+    // display settings carry across every screen on this device
+    let prefs = null;
+    try { prefs = JSON.parse(window.localStorage.getItem('ug-prefs') || 'null'); } catch (err) {}
+    this.state = Object.assign({
+      themeSet: saved === 'dark' || saved === 'light' ? saved : null,
+      prefs: Object.assign({ tags: true, diff: true, ign: false }, prefs && typeof prefs === 'object' ? prefs : {}),
+      annOff: false,
+      folds: {}
+    }, this.initialState());
+    this.foldHandlers = {};
+    this.themeProp = undefined;
+    this.root = null;
+    this.setRoot = (el) => { if (el) this.root = el; };
+    // light is the default; the toggle overrides it and is remembered on this device
+    this.toggleTheme = (e) => {
+      const next = this.isDark() ? 'light' : 'dark';
+      try { window.localStorage.setItem('ug-theme', next); } catch (err) {}
+      const go = () => {
+        if (this.root) this.root.setAttribute('data-theme', next);
+        document.documentElement.classList.toggle('ug-dark', next === 'dark');
+        this.setState({ themeSet: next });
+      };
+      const btn = e && e.currentTarget;
+      if (btn && typeof document.startViewTransition === 'function' && this.motionAllowed()) {
+        const r = btn.getBoundingClientRect();
+        const st = document.documentElement.style;
+        st.setProperty('--vtx', Math.round(r.left + r.width / 2) + 'px');
+        st.setProperty('--vty', Math.round(r.top + r.height / 2) + 'px');
+        try { document.startViewTransition(go); } catch (err) { go(); }
+      } else {
+        go();
+      }
+    };
+    // restart the pop lines on every press
+    this.pop = (e) => {
+      const el = e && e.currentTarget;
+      if (!el || !el.setAttribute) return;
+      el.removeAttribute('data-pop');
+      void el.offsetWidth;
+      el.setAttribute('data-pop', '');
+    };
+    // the phone menu closes when you pick a link or tap anywhere else
+    // and so does any other pop-up menu (status, sort)
+    this.onDocClick = (e) => {
+      if (!this.root) return;
+      const pick = e.target && e.target.closest ? e.target.closest('details[data-dismiss] a, details[data-dismiss] [role="menuitemradio"]') : null;
+      this.root.querySelectorAll('details[data-dismiss][open]').forEach((d) => {
+        if (!d.contains(e.target) || (pick && d.contains(pick))) d.open = false;
+      });
+    };
+    const flip = (key) => () => {
+      const next = Object.assign({}, this.state.prefs, { [key]: !this.state.prefs[key] });
+      try { window.localStorage.setItem('ug-prefs', JSON.stringify(next)); } catch (err) {}
+      this.setState({ prefs: next });
+    };
+    this.flipTags = flip('tags');
+    this.flipDiff = flip('diff');
+    this.flipIgn = flip('ign');
+    this.hideAnn = () => this.setState({ annOff: true });
+    // a pick inside a pop-up menu closes that menu
+    this.closeMenu = (e) => {
+      const d = e && e.currentTarget && e.currentTarget.closest ? e.currentTarget.closest('details') : null;
+      if (d) d.open = false;
+    };
+    this.setup();
+  }
+
+  initialState() {
+    return { src: {}, diff: {}, topic: {}, q: '', fMod: '', fTrack: '', fSt: '', easyFirst: false, seed: 0, ps: { 17: 2, 16: 2, 13: 1, 9: 3, 14: 4, 15: 5 } };
+  }
+  setup() {
+    const flip = (key, id) => () => {
+      const next = Object.assign({}, this.state[key]);
+      if (next[id]) delete next[id]; else next[id] = 1;
+      this.setState({ [key]: next });
+    };
+    this.srcToggle = UG_SRC.map((s) => flip('src', s[0]));
+    this.diffToggle = UG_DIFFS.map((d, k) => flip('diff', String(k)));
+    this.topicToggle = {};
+    UG_TOPICS.forEach((g) => g[1].forEach((t) => { this.topicToggle[t[0]] = flip('topic', t[0]); }));
+    this.pickPs = UG_PB.map((p, k) => UG_PS.map((s, j) => (e) => {
+      this.closeMenu(e);
+      const next = Object.assign({}, this.state.ps);
+      if (j === 0) delete next[k]; else next[k] = j;
+      this.setState({ ps: next });
+    }));
+    this.trackOf = {};
+    UG_MODS.forEach((m) => { this.trackOf[m[0]] = m[1]; });
+    const val = (e) => (e && e.target ? e.target.value : '');
+    this.onQ = (e) => this.setState({ q: val(e) });
+    this.onMod = (e) => this.setState({ fMod: val(e) });
+    this.onTrack = (e) => this.setState({ fTrack: val(e) });
+    this.onSt = (e) => this.setState({ fSt: val(e) });
+    this.clearAll = () => this.setState({ src: {}, diff: {}, topic: {}, q: '', fMod: '', fTrack: '', fSt: '' });
+    this.toggleSort = () => this.setState({ easyFirst: !this.state.easyFirst, seed: 0 });
+    this.shuffle = () => this.setState({ seed: (this.state.seed || 0) + 1 });
+  }
+  afterMount() {}
+  beforeUnmount() {}
+
+  isDark() {
+    const t = this.state.themeSet;
+    return t ? t === 'dark' : this.props.theme === 'Dark';
+  }
+
+  syncTheme() {
+    // changing the tweak resets any choice made with the toggle
+    if (this.themeProp !== undefined && this.themeProp !== this.props.theme) {
+      this.themeProp = this.props.theme;
+      try { window.localStorage.removeItem('ug-theme'); } catch (err) {}
+      if (this.state.themeSet) { this.setState({ themeSet: null }); return; }
+    }
+    this.themeProp = this.props.theme;
+    document.documentElement.classList.toggle('ug-dark', this.isDark());
+  }
+
+  motionAllowed() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    } catch (e) {}
+    return true;
+  }
+
+  componentDidMount() {
+    this.themeProp = this.props.theme;
+    document.documentElement.classList.toggle('ug-dark', this.isDark());
+    document.addEventListener('click', this.onDocClick);
+    this.afterMount();
+  }
+
+  componentDidUpdate() {
+    this.syncTheme();
+  }
+
+  componentWillUnmount() {
+    this.beforeUnmount();
+    document.removeEventListener('click', this.onDocClick);
+    document.documentElement.classList.remove('ug-dark');
+  }
+
+  renderVals() {
+    const dark = this.isDark();
+    const p = this.state.prefs;
+    return Object.assign({
+      setRoot: this.setRoot,
+      pop: this.pop,
+      toggleTheme: this.toggleTheme,
+      theme: dark ? 'dark' : 'light',
+      darkPressed: dark ? 'true' : 'false',
+      prefTags: p.tags ? 'true' : 'false',
+      prefDiff: p.diff ? 'true' : 'false',
+      prefIgn: p.ign ? 'true' : 'false',
+      flipTags: this.flipTags,
+      flipDiff: this.flipDiff,
+      flipIgn: this.flipIgn,
+      annOn: !this.state.annOff,
+      hideAnn: this.hideAnn,
+      // the second colour (gold unless the tweak says otherwise) and a darker cut of it for text on white
+      acc: ({ Coral: '#FF8A65', Mint: '#3DDC97' })[this.props.highlight] || '#FFC53D',
+      accDk: ({ Coral: '#B3401F', Mint: '#0B7A50' })[this.props.highlight] || '#9A5B00'
+    }, this.pageVals());
+  }
+
+  pageVals() {
+    const S = this.state;
+    const prefs = S.prefs;
+    const anySrc = Object.keys(S.src).length > 0;
+    const anyDiff = Object.keys(S.diff).length > 0;
+    const anyTopic = Object.keys(S.topic).length > 0;
+    const q = (S.q || '').trim().toLowerCase();
+    let ignN = 0;
+    let list = UG_PB.map((p, k) => ({ p: p, k: k, s: S.ps[k] || 0 })).filter((r) => {
+      const p = r.p;
+      if (anySrc && !S.src[p[1]]) return false;
+      if (anyDiff && !S.diff[String(p[2])]) return false;
+      if (anyTopic && !p[4].some((t) => S.topic[t])) return false;
+      if (S.fMod && p[3].indexOf(S.fMod) < 0) return false;
+      if (S.fTrack !== '' && !p[3].some((m) => String(this.trackOf[m]) === S.fTrack)) return false;
+      if (S.fSt !== '' && String(r.s) !== S.fSt) return false;
+      if (q && (p[0] + ' ' + p[1] + ' ' + p[3].join(' ') + ' ' + p[4].join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      // ignored problems stay out of the way unless you ask for them
+      if (r.s === 5 && !prefs.ign && S.fSt !== '5') { ignN++; return false; }
+      return true;
+    });
+    list.sort((a, b) => (S.easyFirst ? a.p[2] - b.p[2] : b.p[2] - a.p[2]) || a.k - b.k);
+    if (S.seed) {
+      // a small seeded shuffle, so the same press gives the same order
+      let x = S.seed * 9301 + 49297;
+      for (let i = list.length - 1; i > 0; i--) {
+        x = (x * 9301 + 49297) % 233280;
+        const j = Math.floor((x / 233280) * (i + 1));
+        const t = list[i]; list[i] = list[j]; list[j] = t;
+      }
+    }
+    const probs = list.map((r) => {
+      const p = r.p;
+      return {
+        name: p[0],
+        src: p[1],
+        diff: UG_DIFFS[p[2]][0],
+        dcls: UG_DIFFS[p[2]][1],
+        mods: p[3].map((m) => ({ n: m })),
+        tags: p[4].map((t) => ({ t: t })),
+        showTags: !!prefs.tags,
+        showDiff: !!prefs.diff,
+        feat: p[5],
+        cls: r.s === 2 ? 'solved' : (r.s === 5 ? 'ignored' : ''),
+        ic: 'p' + r.s,
+        stLabel: 'Status: ' + UG_PS[r.s] + '. Change the status of ' + p[0],
+        opts: UG_PS.map((s, j) => ({ name: s, ic: 'p' + j, on: j === r.s ? 'on' : '', checked: j === r.s ? 'true' : 'false', pick: this.pickPs[r.k][j] }))
+      };
+    });
+    const activeN = Object.keys(S.src).length + Object.keys(S.diff).length + Object.keys(S.topic).length + (S.fMod ? 1 : 0) + (S.fTrack !== '' ? 1 : 0) + (S.fSt !== '' ? 1 : 0);
+    return {
+      q: S.q || '',
+      onQ: this.onQ,
+      fMod: S.fMod,
+      fTrack: S.fTrack,
+      fSt: S.fSt,
+      onMod: this.onMod,
+      onTrack: this.onTrack,
+      onSt: this.onSt,
+      clearAll: this.clearAll,
+      activeN: activeN ? activeN + ' on' : 'None on',
+      tagsHidden: prefs.tags ? 'false' : 'true',
+      tagsBtn: prefs.tags ? 'Hide tags' : 'Show tags',
+      sources: UG_SRC.map((s, k) => ({ name: s[0], count: s[1], checked: S.src[s[0]] ? 'true' : 'false', toggle: this.srcToggle[k] })),
+      diffs: UG_DIFFS.map((d, k) => ({ name: d[0], dcls: d[1], count: d[2], checked: S.diff[String(k)] ? 'true' : 'false', toggle: this.diffToggle[k] })),
+      topics: UG_TOPICS.map((g, gi) => ({
+        name: g[0],
+        open: gi < 3,
+        total: String(g[1].reduce((n, t) => n + t[1], 0)),
+        items: g[1].map((t) => ({ name: t[0], count: String(t[1]), checked: S.topic[t[0]] ? 'true' : 'false', toggle: this.topicToggle[t[0]] }))
+      })),
+      probs: probs,
+      none: probs.length === 0,
+      ignHidden: ignN > 0,
+      ignNote: ignN === 1 ? '1 problem you marked Ignored is hidden.' : ignN + ' problems you marked Ignored are hidden.',
+      shownN: String(probs.length),
+      shownWord: probs.length === 1 ? 'problem' : 'problems',
+      sortLabel: S.seed ? 'Shuffled' : (S.easyFirst ? 'Easiest first' : 'Hardest first'),
+      sortBtn: S.easyFirst ? 'Hardest first' : 'Easiest first',
+      toggleSort: this.toggleSort,
+      shuffle: this.shuffle,
+      fCls: this.foldOpen('filters') ? 'open' : '',
+      fExp: this.foldOpen('filters') ? 'true' : 'false',
+      fToggle: this.foldToggle('filters')
+    };
+  }
+
+  // panels that fold on small screens: the open state lives here, and the CSS ignores it on wide screens
+  foldOpen(key, def) {
+    const f = this.state.folds || {};
+    return Object.prototype.hasOwnProperty.call(f, key) ? !!f[key] : !!def;
+  }
+
+  foldToggle(key, def) {
+    if (!this.foldHandlers[key]) {
+      this.foldHandlers[key] = () => {
+        const f = Object.assign({}, this.state.folds);
+        f[key] = !this.foldOpen(key, def);
+        this.setState({ folds: f });
+      };
+    }
+    return this.foldHandlers[key];
+  }
+}
+
+</script>
+</body>
+</html>
