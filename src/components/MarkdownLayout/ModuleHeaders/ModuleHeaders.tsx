@@ -98,7 +98,7 @@ export default function ModuleHeaders({
           )}
         <div className="mb-4 sm:flex sm:items-center sm:justify-between">
           <div className="min-w-0 flex-1">
-            <h1 className="dark:text-dark-high-emphasis text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h1 className="dark:text-dark-high-emphasis text-4xl font-bold text-gray-900 sm:text-6xl">
               {markdownData.title}
             </h1>
             {markdownData.author && (
@@ -143,7 +143,9 @@ export default function ModuleHeaders({
         {/*)}*/}
 
         {markdownData instanceof ModuleInfo && markdownData.description && (
-          <p className="mb-4 italic">{markdownData.description}</p>
+          <p className="mb-4 text-xl leading-relaxed italic">
+            {markdownData.description}
+          </p>
         )}
 
         {moduleHeaderLinks?.length > 0 || problem ? (
@@ -182,7 +184,9 @@ export default function ModuleHeaders({
 
             {problem && (
               <div>
-                {moduleHeaderLinks?.length > 0 && <div className="h-4 sm:h-6" />}
+                {moduleHeaderLinks?.length > 0 && (
+                  <div className="h-4 sm:h-6" />
+                )}
                 <Link
                   to={getProblemURL(problem)}
                   className="my-0 inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-100"

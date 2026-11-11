@@ -54,30 +54,6 @@
       }
     },
     {
-      "uniqueId": "algebra-algebraic-expressions-polynomials-symmetric-functions-auto-0120",
-      "name": "Berkeley Math Circle Monthly Contest 5 #0hm0",
-      "url": "https://usamoguide.com/",
-      "source": "Berkeley Math Circle Monthly Contest 5",
-      "difficulty": "Hard",
-      "isStarred": false,
-      "tags": [
-        "Triangle inequalities",
-        "Constructions and loci",
-        "Symmetric functions"
-      ],
-      "statement": "Problem:\nProve that there exists a polynomial $f(x, y, z)$ with the following property: the numbers $|x|, |y|$, and $|z|$ are the sides of a triangle if and only if $f(x, y, z) > 0$.",
-      "interaction": {
-        "type": "none"
-      },
-      "solutionReveal": {
-        "mode": "inline",
-        "markdown": "Solution:\n$$\nf(x, y, z) = (x + y + z)(-x + y + z)(x - y + z)(x + y - z) \\quad \\left[= x^{2} y^{2} + y^{2} z^{2} + z^{2} x^{2} - x^{4} - y^{4} - z^{4}\\right]\n$$\nIt is easily seen that the transformation $x \\mapsto -x$, and symmetrically $y \\mapsto -y$ and $z \\mapsto -z$, do not change $f$, so it is enough to prove the following statement: If $x, y$, and $z$ are nonnegative reals, then $x, y$, and $z$ are the sides of a triangle if and only if $f(x, y, z) > 0$.\n\nMoreover, changing the order of $x, y$, and $z$ does not change $f$, so we may assume that $x \\leq y \\leq z$. Now three of the factors of $f(x, y, z)$, namely $x + y + z$, $-x + y + z$, and $x - y + z$, are clearly nonnegative.\n\nIf $x, y$, and $z$ are the sides of a triangle, the familiar triangle inequality $x + y \\geq z$ implies that the fourth factor $x + y - z$ is positive. Also, a side of a triangle cannot be zero, from which we get $x + y + z > 0$, $-x + y + z > 0$, $x - y + z > 0$, and hence $f(x, y, z) > 0$.\n\nConversely, if $f(x, y, z) > 0$, then the four factors must be positive, so $x, y$, and $z$ are positive and the triangle inequality $x + y > z$ holds. To construct the triangle, we may draw two circles of radii $x$ and $y$ whose centers $Y$, $X$ are a distance $z$ apart. Because each circle passes both inside and outside the other, the circles intersect at two points. Let $Z$ be one. Then $X Y Z$ is the desired triangle."
-      },
-      "solutionMetadata": {
-        "kind": "none"
-      }
-    },
-    {
       "uniqueId": "algebra-algebraic-expressions-polynomials-symmetric-functions-auto-0295",
       "name": "Berkeley Math Circle Monthly Contest 5 #0hqv",
       "url": "https://usamoguide.com/",

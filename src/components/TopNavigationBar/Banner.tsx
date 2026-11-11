@@ -48,14 +48,13 @@ export default function Banner({
               className="inline h-0.5 w-0.5 fill-current"
               aria-hidden="true"
             >
-              <circle cx={1} cy={1} r={1} />
             </svg>
 
             <a
               href={link}
               className="accent-button flex-none rounded-full px-3.5 py-1 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus)]"
             >
-              {action} <span aria-hidden="true">&rarr;</span>
+              {action}
             </a>
           </>
         ) : (

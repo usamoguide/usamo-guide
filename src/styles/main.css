@@ -1,40 +1,110 @@
-/* Use self-hosted Inter font files from static/Font to avoid Google Fonts requests. */
+/* Use self-hosted Phantom Sans font files from static/Font. */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Phantom Sans';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 100;
   font-display: swap;
-  src: url('/Font/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  src: url('/Font/PhantomSans0.8-Thin.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Phantom Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: normal;
+  font-weight: 350;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Book.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
   font-style: italic;
-  font-weight: 100 900;
+  font-weight: 350;
   font-display: swap;
-  src: url('/Font/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  src: url('/Font/PhantomSans0.8-BookItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Phantom Sans';
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 400;
   font-display: swap;
-  src: url('/Font/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  src: url('/Font/PhantomSans0.8-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-MedItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-SemboldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Phantom Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/Font/PhantomSans0.8-BoldItalic.ttf') format('truetype');
 }
 
 @import 'tailwindcss';
 @import './theme.css' layer(base);
 
-
 @theme {
   --color-dark-surface: #101010; /* updated surface base */
   /* replace white-based emphasis with cream-based emphasis */
-  --color-dark-high-emphasis: rgba(244, 237, 234, 0.90);
+  --color-dark-high-emphasis: rgba(244, 237, 234, 0.9);
   --color-dark-med-emphasis: rgba(244, 237, 234, 0.68);
   --color-dark-disabled-emphasis: rgba(244, 237, 234, 0.42);
 }
-
 
 @import './generalStyles.css' layer(components);
 @import './components.css' layer(components);
@@ -42,7 +112,6 @@
 @import './link-with-progress.css' layer(components);
 @import './anchor.css' layer(utilities);
 @import './animations.css' layer(utilities);
-
 
 @source "../../src/components";
 @source "../../src/context";
@@ -54,9 +123,7 @@
 @source "../../content";
 @source "../../.storybook/preview.js";
 
-
 @config "../../tailwind.config.js";
-
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -76,7 +143,6 @@
     border-color: var(--color-gray-200, currentColor);
     font-family: var(--font-family);
   }
-
 
   button,
   [role='button'] {
@@ -107,4 +173,3 @@
     color: #171413;
   }
 }
-

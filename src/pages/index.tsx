@@ -1,9 +1,9 @@
 import { useLocation } from '@gatsbyjs/reach-router';
-import classNames from 'classnames';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import classNames from 'classnames';
 import { Link, navigate } from 'gatsby';
-import * as React from 'react';
 import { Github, Instagram, Twitter } from 'lucide-react';
+import * as React from 'react';
 import AetherFlowHero from '../components/Index/AetherFlowHero';
 import { Feature } from '../components/Index/Feature';
 import { ProblemsetsFeature } from '../components/Index/features/ProblemsetsFeature';
@@ -12,7 +12,6 @@ import { ResourcesFeature } from '../components/Index/features/ResourcesFeature'
 import LightRays from '../components/Index/LightRays';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import TopNavigationBar from '../components/TopNavigationBar/TopNavigationBar';
 import {
   useCurrentUser,
   useIsUserDataLoaded,
@@ -29,6 +28,11 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
  *   - “AMC to Olympiad” text
  *   - “Browse Topics” button background
  * - Remove glow around “Browse Topics” (no GlowingRing wrapper, no shadow)
+ *   {
+    label: 'Twitter',
+    href: 'https://twitter.com/usamoguide',
+    icon: Twitter,
+  },
  */
 /* Every page shares one base background; see --bg-page in src/styles/theme.css. */
 const PAGE_BG = 'var(--bg-page)';
@@ -46,14 +50,10 @@ const FAQ_CARD_STYLE: React.CSSProperties = {
 const footerSocialLinks = [
   {
     label: 'Instagram',
-    href: 'https://instagram.com/usamoguide',
+    href: 'https://www.instagram.com/usamo.guide/',
     icon: Instagram,
   },
-  {
-    label: 'Twitter',
-    href: 'https://twitter.com/usamoguide',
-    icon: Twitter,
-  },
+
   {
     label: 'GitHub',
     href: 'https://github.com/usamoguide/usamo-guide',
@@ -64,7 +64,11 @@ const footerSocialLinks = [
 const containerClasses = 'max-w-(--breakpoint-xl) mx-auto px-4 sm:px-6 lg:px-8';
 
 const builderProfiles = [
-  { name: 'Pranav Ramesh', role: 'Founder & CEO', imageSrc: 'images/Founder_Pranav.jpg' },
+  {
+    name: 'Pranav Ramesh',
+    role: 'Founder & CEO',
+    imageSrc: 'images/pranav_pic_ioaa.jpg',
+  },
   { name: 'Spursh Deshpande', role: 'CTO', imageSrc: 'images/CTO.jpeg' },
   { name: 'Siddhant Arora', role: 'COO', imageSrc: 'images/COO.png' },
   { name: 'Daniel Liao', role: 'CMO', imageSrc: 'images/CMO.jpeg' },
@@ -122,14 +126,16 @@ function FaqCard({
           aria-expanded={isOpen}
           aria-controls={`${id}-content`}
           onClick={onToggle}
-          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#F0C2FF] transition hover:bg-white/5 hover:text-[#F4EDEA] focus:outline-none focus:ring-2 focus:ring-[#F0C2FF]/60"
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#F0C2FF] transition hover:bg-white/5 hover:text-[#F4EDEA] focus:ring-2 focus:ring-[#F0C2FF]/60 focus:outline-none"
         >
           {isOpen ? (
             <ChevronDownIcon className="h-5 w-5" />
           ) : (
             <ChevronRightIcon className="h-5 w-5" />
           )}
-          <span className="sr-only">{isOpen ? 'Close answer' : 'Open answer'}</span>
+          <span className="sr-only">
+            {isOpen ? 'Close answer' : 'Open answer'}
+          </span>
         </button>
       </div>
       {isOpen && (
@@ -215,12 +221,6 @@ export default function IndexPage({ path }): JSX.Element {
   return (
     <Layout>
       <SEO title={null} image={null} pathname={path} />
-
-      <div className="fixed top-0 z-50 w-full">
-        <div className="backdrop-blur-lg">
-          <TopNavigationBar hidePromoBar />
-        </div>
-      </div>
 
       {/* Begin Hero */}
       <AetherFlowHero />
@@ -380,7 +380,7 @@ export default function IndexPage({ path }): JSX.Element {
           <div className="h-16 md:h-20 2xl:h-36"></div>
         </div>
       </div>
-      
+
       {/* Section divider */}
       <div
         className="pointer-events-none mx-auto w-2/3"
@@ -459,7 +459,7 @@ export default function IndexPage({ path }): JSX.Element {
 
                 <div className="w-full max-w-5xl">
                   <div className="grid grid-cols-2 justify-items-center gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 md:gap-x-8 md:gap-y-10">
-                    {builderProfiles.map((builder) => (
+                    {builderProfiles.map(builder => (
                       <div
                         key={builder.name}
                         className="flex flex-col items-center text-center"
@@ -480,7 +480,7 @@ export default function IndexPage({ path }): JSX.Element {
                               <span className="font-mono text-2xl font-bold tracking-tight text-[#4A345B] md:text-3xl">
                                 {builder.name
                                   .split(' ')
-                                  .map((part) => part[0])
+                                  .map(part => part[0])
                                   .slice(0, 2)
                                   .join('')}
                               </span>
@@ -545,25 +545,29 @@ export default function IndexPage({ path }): JSX.Element {
                     isOpen={openFaqs.amc}
                     onToggle={() => toggleFaq('amc')}
                   >
-                      <p
-                        className="text-base leading-6"
-                        style={{ color: TEXT_SECONDARY }}
+                    <p
+                      className="text-base leading-6"
+                      style={{ color: TEXT_SECONDARY }}
+                    >
+                      These are the three big rungs of the US math competition
+                      ladder. AMC 8 is for middle schoolers, AMC 10/12 for high
+                      schoolers. While both are 25-question multiple choice
+                      contests, score well enough on them and you would qualify
+                      for AIME, a much harder 15-question numerical exam. Do
+                      well on the AIME aswell and you're at the USAMO (or
+                      USAJMO) territory. This would probably be the toughest
+                      math test most high schoolers will ever take. For official
+                      dates and registration, check the{' '}
+                      <a
+                        href="https://www.maa.org/math-competitions"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={linkStyle}
                       >
-                        These are the three big rungs of the US math competition ladder. 
-                      AMC 8 is for middle schoolers, AMC 10/12 for high schoolers. 
-                      While both are 25-question multiple choice contests, score well enough on them and you would qualify for AIME, a much harder 15-question numerical exam.
-                      Do well on the AIME aswell and you're at the USAMO (or USAJMO) territory.
-                      This would probably be the toughest math test most high schoolers will ever take. For official dates and registration, check the{' '}
-                        <a
-                          href="https://www.maa.org/math-competitions"
-                          target="_blank"
-                          rel="noreferrer"
-                          style={linkStyle}
-                        >
-                          MAA competitions page
-                        </a>
-                        .
-                      </p>
+                        MAA competitions page
+                      </a>
+                      .
+                    </p>
                   </FaqCard>
                   <div className="mt-6">
                     <FaqCard
@@ -576,8 +580,13 @@ export default function IndexPage({ path }): JSX.Element {
                         className="text-base leading-6"
                         style={{ color: TEXT_SECONDARY }}
                       >
-                        Nope. USAMO Guide is built by the community, for the community. It's our best attempt at organizing what actually works for AMC/AIME/USAMO prep, not something blessed by the MAA :/
-                        Think of it as notes that are passed down and refined by people who've been through the process, constantly getting better as more people chip in.
+                        Nope. USAMO Guide is built by the community, for the
+                        community. It's our best attempt at organizing what
+                        actually works for AMC/AIME/USAMO prep, not something
+                        blessed by the MAA :/ Think of it as notes that are
+                        passed down and refined by people who've been through
+                        the process, constantly getting better as more people
+                        chip in.
                       </p>
                     </FaqCard>
                   </div>
@@ -592,14 +601,16 @@ export default function IndexPage({ path }): JSX.Element {
                         className="text-base leading-6"
                         style={{ color: TEXT_SECONDARY }}
                       >
-                        Tell us! Hit "Contact Us" at the top of the page, or email{' '}
+                        Tell us! Hit "Contact Us" at the top of the page, or
+                        email{' '}
                         <a
                           href="mailto:contact@usamoguide.com"
                           style={linkStyle}
                         >
                           contact@usamoguide.com
                         </a>
-                        . If you're comfortable with GitHub, you can also open an issue directly on our{' '}
+                        . If you're comfortable with GitHub, you can also open
+                        an issue directly on our{' '}
                         <a
                           href="https://github.com/usamoguide/usamo-guide"
                           target="_blank"
@@ -607,8 +618,8 @@ export default function IndexPage({ path }): JSX.Element {
                           style={linkStyle}
                         >
                           GitHub repository
-                        </a>
-                        {' '}, It's often the fastest way to get something fixed.
+                        </a>{' '}
+                        , It's often the fastest way to get something fixed.
                       </p>
                     </FaqCard>
                   </div>
@@ -623,7 +634,11 @@ export default function IndexPage({ path }): JSX.Element {
                         className="text-base leading-6"
                         style={{ color: TEXT_SECONDARY }}
                       >
-                        That's not really what we do.. We're a self-paced resource. For live instruction, AoPS runs solid online classes. If you still want structure and other people around, join one of our study groups or hop into a weekly mock contest for practice under real conditions.
+                        That's not really what we do.. We're a self-paced
+                        resource. For live instruction, AoPS runs solid online
+                        classes. If you still want structure and other people
+                        around, join one of our study groups or hop into a
+                        weekly mock contest for practice under real conditions.
                       </p>
                     </FaqCard>
                   </div>
@@ -635,12 +650,16 @@ export default function IndexPage({ path }): JSX.Element {
                     isOpen={openFaqs.qualify}
                     onToggle={() => toggleFaq('qualify')}
                   >
-                      <p
-                        className="text-base leading-6"
-                        style={{ color: TEXT_SECONDARY }}
-                      >
-                        Not even close. Start on day one of AMC 8 prep or show up already grinding toward USAMO, either way, there's a place for you here. The material ramps from the basics up to olympiad-level, so you can jump in wherever you actually are.
-                      </p>
+                    <p
+                      className="text-base leading-6"
+                      style={{ color: TEXT_SECONDARY }}
+                    >
+                      Not even close. Start on day one of AMC 8 prep or show up
+                      already grinding toward USAMO, either way, there's a place
+                      for you here. The material ramps from the basics up to
+                      olympiad-level, so you can jump in wherever you actually
+                      are.
+                    </p>
                   </FaqCard>
                   <div className="mt-6">
                     <FaqCard
@@ -662,7 +681,10 @@ export default function IndexPage({ path }): JSX.Element {
                         >
                           Discord
                         </a>{' '}
-                        is the best place. People are usually around to help with a specific problem or concept. Beyond that, you can join a study group, get paired with a mentor, or just email us if it's a question about the guide itself.
+                        is the best place. People are usually around to help
+                        with a specific problem or concept. Beyond that, you can
+                        join a study group, get paired with a mentor, or just
+                        email us if it's a question about the guide itself.
                       </p>
                     </FaqCard>
                   </div>
@@ -677,7 +699,9 @@ export default function IndexPage({ path }): JSX.Element {
                         className="text-base leading-6"
                         style={{ color: TEXT_SECONDARY }}
                       >
-                        Please do. Fix a typo, rewrite a confusing explanation, add a problem, improve a diagram, clean up some code - it all helps. Head to our{' '}
+                        Please do. Fix a typo, rewrite a confusing explanation,
+                        add a problem, improve a diagram, clean up some code -
+                        it all helps. Head to our{' '}
                         <a
                           href="https://github.com/usamoguide/usamo-guide"
                           target="_blank"
@@ -701,8 +725,9 @@ export default function IndexPage({ path }): JSX.Element {
                         className="text-base leading-6"
                         style={{ color: TEXT_SECONDARY }}
                       >
-                        Yes, all of it! Fork it, build on it, poke around and see how it works. Nothing's hidden. 
-                        (Attribution required + Commerical use not allowed.)
+                        Yes, all of it! Fork it, build on it, poke around and
+                        see how it works. Nothing's hidden. (Attribution
+                        required + Commerical use not allowed.)
                       </p>
                     </FaqCard>
                   </div>
@@ -713,7 +738,7 @@ export default function IndexPage({ path }): JSX.Element {
         </div>
       </div>
       {/*End FAQ*/}
-      <footer className="relative bg-[#0F1020] text-[#F4EDEA] overflow-hidden">
+      <footer className="relative overflow-hidden bg-[#0F1020] text-[#F4EDEA]">
         <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-10 lg:pt-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_repeat(3,minmax(0,0.75fr))] lg:gap-16">
             <div className="max-w-xl">
@@ -779,7 +804,9 @@ export default function IndexPage({ path }): JSX.Element {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[#F4EDEA]">Community</h3>
+              <h3 className="text-lg font-semibold text-[#F4EDEA]">
+                Community
+              </h3>
               <ul className="mt-5 space-y-4 text-base text-[#B8B4C5]">
                 <li>
                   <Link to="/contact-us" style={footerLinkStyle}>
@@ -805,16 +832,6 @@ export default function IndexPage({ path }): JSX.Element {
                   >
                     GitHub Repository
                   </a>
-                </li>
-                <li>
-                  <Link to="/privacy-policy" style={footerLinkStyle}>
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/terms-of-service" style={footerLinkStyle}>
-                    Terms of Service
-                  </Link>
                 </li>
               </ul>
             </div>
@@ -847,7 +864,10 @@ export default function IndexPage({ path }): JSX.Element {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-end gap-4 text-sm text-[#8E8AA1]">
-            <span>&copy; {new Date().getFullYear()} USAMO Guide - All rights reserved</span>
+            <span>
+              &copy; {new Date().getFullYear()} USAMO Guide - All rights
+              reserved
+            </span>
             <div className="flex items-center gap-2">
               {footerSocialLinks.map(({ label, href, icon: Icon }) => (
                 <a
@@ -867,38 +887,38 @@ export default function IndexPage({ path }): JSX.Element {
         </div>
 
         {/* Full-bleed wordmark, with tree canopy behind it and grass overlapping in front */}
-      <div className="pointer-events-none mt-4 w-screen relative left-1/2 -translate-x-1/2 overflow-hidden">
-        <img
-          src="images/tree-canopy-pink.png"
-          alt=""
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-0 h-[clamp(8rem,22vw,22rem)] w-auto select-none object-contain"
-        />
+        <div className="pointer-events-none relative left-1/2 mt-4 w-screen -translate-x-1/2 overflow-hidden">
+          <img
+            src="images/tree-canopy-pink.png"
+            alt=""
+            className="absolute top-1/2 right-0 z-0 h-[clamp(8rem,22vw,22rem)] w-auto -translate-y-1/2 object-contain select-none"
+          />
 
-        <svg
-          viewBox="0 0 1200 140"
-          preserveAspectRatio="xMidYMax meet"
-          className="relative z-10 w-full h-[clamp(5.5rem,18vw,18rem)] block"
-        >
-          <text
-            x="50%"
-            y="132"
-            textAnchor="middle"
-            fontSize="140"
-            fontWeight="600"
-            letterSpacing="-8"
-            fill="#F7F4EC"
-            fontFamily="inherit"
+          <svg
+            viewBox="0 0 1200 140"
+            preserveAspectRatio="xMidYMax meet"
+            className="relative z-10 block h-[clamp(5.5rem,18vw,18rem)] w-full"
           >
-            USAMO Guide
-          </text>
-        </svg>
+            <text
+              x="50%"
+              y="132"
+              textAnchor="middle"
+              fontSize="140"
+              fontWeight="600"
+              letterSpacing="-8"
+              fill="#F7F4EC"
+              fontFamily="inherit"
+            >
+              USAMO Guide
+            </text>
+          </svg>
 
-        <img
-          src="images/ground-grass-wide.png"
-          alt=""
-          className="relative z-20 w-full h-auto select-none block mt-[clamp(-4rem,-8vw,-1.5rem)]"
-        />
-      </div>
+          <img
+            src="images/ground-grass-wide.png"
+            alt=""
+            className="relative z-20 mt-[clamp(-4rem,-8vw,-1.5rem)] block h-auto w-full select-none"
+          />
+        </div>
       </footer>
     </Layout>
   );

@@ -1,5 +1,7 @@
-import { graphql, Link, PageProps } from 'gatsby';
+import { useLocation } from '@gatsbyjs/reach-router';
+import { Link, PageProps } from 'gatsby';
 import * as React from 'react';
+import * as SqlJsModule from 'sql.js';
 import DifficultyBox from '../components/DifficultyBox';
 import Layout from '../components/layout';
 import ProblemStatusCheckbox from '../components/markdown/ProblemsList/ProblemStatusCheckbox';
@@ -15,11 +17,11 @@ import {
 import { supabase } from '../lib/supabaseClient';
 import { ProblemDifficulty, ProblemInfo, probSources } from '../models/problem';
 
-type ProblemTemplateData = {
-  allProblemInfo: {
-    nodes: ProblemTemplateNode[];
-  };
+const sqlJsExports = SqlJsModule as unknown as {
+  default?: typeof import('sql.js');
 };
+const initSqlJs =
+  sqlJsExports.default ?? (SqlJsModule as unknown as typeof import('sql.js'));
 
 type ProblemTemplateNode = {
   uniqueId: string;
@@ -153,10 +155,64 @@ const DIFFICULTY_OPTIONS = Array.from({ length: 20 }, (_, index) =>
   Number((index / 2 + 0.5).toFixed(1))
 );
 
-export default function ProblemTemplate(
-  props: PageProps<ProblemTemplateData, { uniqueId: string }>
-): JSX.Element {
-  const node = props.data.allProblemInfo.nodes[0];
+export default function ProblemTemplate(props: PageProps): JSX.Element {
+  const location = useLocation();
+  const [node, setNode] = React.useState<ProblemTemplateNode | null>(null);
+  const [loadState, setLoadState] = React.useState<
+    'loading' | 'ready' | 'error'
+  >('loading');
+  const [loadError, setLoadError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let active = true;
+    const problemPath = location.pathname.replace(/\/+$/, '') || '/';
+
+    const loadProblem = async () => {
+      try {
+        const [SQL, response] = await Promise.all([
+          initSqlJs({ locateFile: () => '/sql-wasm.wasm' }),
+          fetch('/problems.sqlite'),
+        ]);
+        if (!response.ok) {
+          throw new Error(
+            `Unable to load problem database (${response.status})`
+          );
+        }
+        const database = new SQL.Database(
+          new Uint8Array(await response.arrayBuffer())
+        );
+        try {
+          const result = database.exec(
+            'SELECT data FROM problems WHERE path = ? LIMIT 1',
+            [problemPath]
+          );
+          const data = result[0]?.values[0]?.[0];
+          if (typeof data !== 'string') {
+            if (active) setNode(null);
+          } else if (active) {
+            setNode(JSON.parse(data) as ProblemTemplateNode);
+          }
+        } finally {
+          database.close();
+        }
+        if (active) setLoadState('ready');
+      } catch (error) {
+        console.error('Failed to load problem from SQLite database', error);
+        if (active) {
+          setLoadError(
+            error instanceof Error ? error.message : 'Unknown database error'
+          );
+          setLoadState('error');
+        }
+      }
+    };
+
+    void loadProblem();
+    return () => {
+      active = false;
+    };
+  }, [location.pathname]);
+
   const problem = node ? templateNodeToProblemInfo(node) : null;
   const [solutionOpen, setSolutionOpen] = React.useState(false);
   const [integerInput, setIntegerInput] = React.useState('');
@@ -292,15 +348,39 @@ export default function ProblemTemplate(
     };
   }, [problem?.uniqueId]);
 
-  if (!node || !problem) {
+  if (loadState === 'loading') {
     return (
       <Layout>
-        <SEO title="Problem not found" image={null} pathname={props.path} />
+        <SEO title="Loading problem" image={null} pathname={props.path} />
         <div className="ui-page min-h-screen">
           <TopNavigationBar />
           <main className="mx-auto max-w-3xl px-4 py-16">
             <p className="text-gray-600 dark:text-gray-400">
-              Problem not found.
+              Loading problem...
+            </p>
+          </main>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (loadState === 'error' || !node || !problem) {
+    return (
+      <Layout>
+        <SEO
+          title={
+            loadState === 'error' ? 'Problem unavailable' : 'Problem not found'
+          }
+          image={null}
+          pathname={props.path}
+        />
+        <div className="ui-page min-h-screen">
+          <TopNavigationBar />
+          <main className="mx-auto max-w-3xl px-4 py-16">
+            <p className="text-gray-600 dark:text-gray-400">
+              {loadState === 'error'
+                ? `Problem database unavailable: ${loadError}`
+                : 'Problem not found.'}
             </p>
             <Link to="/problems/" className="mt-4 inline-block text-blue-600">
               All problems
@@ -971,50 +1051,3 @@ export default function ProblemTemplate(
     </Layout>
   );
 }
-
-export const pageQuery = graphql`
-  query ProblemTemplate($uniqueId: String!) {
-    allProblemInfo(filter: { uniqueId: { eq: $uniqueId } }, limit: 1) {
-      nodes {
-        uniqueId
-        name
-        url
-        source
-        sourceDescription
-        difficulty
-        isStarred
-        tags
-        statement
-        author
-        interaction {
-          type
-          correct
-          choices
-          correctIndex
-        }
-        solutionReveal {
-          mode
-          url
-          markdown
-        }
-        solution {
-          kind
-          label
-          labelTooltip
-          url
-          hasHints
-          sketch
-        }
-        module {
-          frontmatter {
-            id
-            title
-          }
-          fields {
-            division
-          }
-        }
-      }
-    }
-  }
-`;

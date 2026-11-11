@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        brand: ['Inter', ...defaultTheme.fontFamily.sans],
-        serif: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Phantom Sans', 'system-ui', 'sans-serif'],
+        brand: ['Phantom Sans', 'system-ui', 'sans-serif'],
+        serif: ['Phantom Sans', 'system-ui', 'sans-serif'],
+        mono: ['Phantom Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',

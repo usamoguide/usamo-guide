@@ -18,10 +18,11 @@ export default function SectionsDropdown({
           <div className="relative h-full">
             <MenuButton
               className={clsx(
-                'group dark:text-dark-high-emphasis inline-flex h-full items-center space-x-2 text-base leading-6 font-medium transition duration-160 ease-in-out hover:text-gray-900 focus:text-gray-900 focus:outline-hidden',
-                open || sidebarNav ? 'text-gray-900' : 'text-gray-500',
-                !sidebarNav &&
-                  'border-b-2 border-transparent pt-0.5 hover:border-gray-300 focus:border-gray-300 dark:hover:border-gray-500 dark:focus:border-gray-500'
+                'sections-dropdown-trigger group inline-flex h-full items-center gap-1 bg-transparent text-[18px] font-normal transition-colors focus:outline-hidden',
+                open || sidebarNav
+                  ? 'text-[#F5F0ED]'
+                  : 'text-[#F5F0ED]/80 hover:text-[#F5F0ED]',
+                !sidebarNav && 'focus:text-[#F5F0ED]'
               )}
             >
               <span>
@@ -29,23 +30,22 @@ export default function SectionsDropdown({
               </span>
               <ChevronDownIcon
                 className={`${
-                  open ? 'text-gray-500' : 'text-gray-400'
-                } h-5 w-5 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500 ${'dark:text-dark-med-emphasis dark:group-hover:text-dark-med-emphasis dark:group-focus:text-dark-med-emphasis'}`}
+                  open ? 'rotate-180 text-[#F5F0ED]' : 'text-[#F5F0ED]/60'
+                } h-4 w-4 transition duration-150 ease-out group-hover:text-[#F5F0ED] group-focus:text-[#F5F0ED]`}
                 aria-hidden="true"
               />
             </MenuButton>
             <MenuItems
               transition
               anchor="top start"
-              className={`absolute left-0 z-[100] -ml-4 w-72 max-w-[calc(100vw-1rem)] rounded-lg bg-white ring-1 ring-black/5 focus:outline-none dark:bg-[#0D0D0D] ${
-                sidebarNav ? 'mt-2' : '-mt-2'
-              } transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in`}
+              className={`sections-dropdown-panel absolute left-0 z-[100] max-w-[calc(100vw-1rem)] min-w-[220px] rounded-xl bg-[#1D171D] p-2 shadow-[0_16px_36px_rgba(0,0,0,0.28)] ring-1 ring-white/5 focus:outline-none ${
+                sidebarNav ? 'mt-2' : 'mt-3'
+              } transition data-[closed]:-translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-150 data-[leave]:duration-100`}
               style={{ zIndex: 9999 }}
             >
-              <div className="py-1">
+              <div className="sections-dropdown-list py-1">
                 {SECTIONS.map(section => {
-                  const className =
-                    'w-full text-left block px-4 py-2 text-base font-medium leading-6 whitespace-normal break-words focus:outline-hidden text-gray-700 dark:text-gray-100 data-[active]:bg-gray-100 data-[active]:text-gray-900 dark:data-[active]:bg-gray-700 dark:data-[active]:text-gray-100 data-[disabled]:text-gray-400 dark:data-[disabled]:text-dark-med-emphasis relative';
+                  const className = `sections-dropdown-item relative block w-full rounded-lg px-5 py-2.5 text-left font-['Phantom_Sans'] text-[18px] leading-normal whitespace-nowrap text-[#F4EDEA] transition-[background-color,color,padding-left,box-shadow] duration-200 hover:bg-white/10 hover:pl-[26px] hover:text-[#FF3764] hover:shadow-[0_4px_12px_rgba(236,55,80,0.12)] focus:outline-hidden data-[active]:bg-white/10 data-[active]:text-[#F4EDEA] data-[disabled]:text-[#F4EDEA]/45 ${section === currentSection ? 'sections-dropdown-item-current' : ''}`;
                   const children = (
                     <>
                       {SECTION_LABELS[section]}

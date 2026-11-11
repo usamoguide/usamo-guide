@@ -80,11 +80,11 @@ function SEO({
     content?: unknown;
   }>;
   const image =
-    metaImage && metaImage.src
-      ? `${siteUrl}${metaImage.src}`
-      : null;
+    metaImage && metaImage.src ? `${siteUrl}${metaImage.src}` : null;
   const normalizedPathname = normalizePathname(pathname);
-  const canonical = normalizedPathname ? new URL(normalizedPathname, siteUrl).toString() : null;
+  const canonical = normalizedPathname
+    ? new URL(normalizedPathname, siteUrl).toString()
+    : null;
   const normalizedCanonical = canonical || siteUrl;
   const isHome = !normalizedPathname || normalizedPathname === '/';
   const metaRobots = noIndex
@@ -95,7 +95,7 @@ function SEO({
     { name: 'Problem Sets', url: `${siteUrl}/problems` },
     { name: 'Contests', url: 'https://contests.usamoguide.com/' },
     { name: 'Resources', url: `${siteUrl}/other-useful-resources` },
-    { name: 'About', url: `${siteUrl}/about` },
+    { name: 'Philosophy', url: `${siteUrl}/philosophy` },
   ];
   const structuredDataEntries: JsonLdEntry[] = [
     {
@@ -138,7 +138,10 @@ function SEO({
           url: item.url,
         }))
       : []),
-    ...(Array.isArray(structuredData) ? structuredData : [structuredData]).filter(Boolean),
+    ...(Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    ).filter(Boolean),
   ];
   return (
     <Helmet
@@ -205,7 +208,8 @@ function SEO({
         },
         {
           name: `twitter:site`,
-          content: site.siteMetadata.twitterUsername || site.siteMetadata.author,
+          content:
+            site.siteMetadata.twitterUsername || site.siteMetadata.author,
         },
         {
           name: `twitter:url`,
@@ -252,11 +256,11 @@ function SEO({
               ]
         )
         .concat(metaTags as any)}
-          script={structuredDataEntries.map((schema, index) => ({
-            type: 'application/ld+json',
-            key: `jsonld-${index}`,
-            children: JSON.stringify(schema),
-          }))}
+      script={structuredDataEntries.map((schema, index) => ({
+        type: 'application/ld+json',
+        key: `jsonld-${index}`,
+        children: JSON.stringify(schema),
+      }))}
     />
   );
 }
@@ -264,19 +268,19 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-      noIndex: false,
-      structuredData: [],
+  noIndex: false,
+  structuredData: [],
 };
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
-      noIndex: PropTypes.bool,
-      structuredData: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.arrayOf(PropTypes.object),
-      ]),
+  noIndex: PropTypes.bool,
+  structuredData: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]),
   image: PropTypes.shape({
     src: PropTypes.string.isRequired,
     height: PropTypes.number.isRequired,

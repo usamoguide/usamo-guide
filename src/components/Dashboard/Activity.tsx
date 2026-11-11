@@ -72,13 +72,11 @@ export function ActivityHeatmap({
                   if (!value) setActiveDate(null);
                   else setActiveDate(value.date);
                 }}
-                transformDayElement={(element: React.ReactElement) => {
+                transformDayElement={element => {
                   const size = 13;
                   return React.cloneElement(element, {
                     width: size,
                     height: size,
-                    x: element.props.x,
-                    y: element.props.y,
                     rx: 0,
                     ry: 0,
                   });
@@ -89,14 +87,14 @@ export function ActivityHeatmap({
                   }
                   return `color-scale-${Math.min(value.count, 4)}`;
                 }}
-                tooltipDataAttrs={value => {
+                titleForValue={value => {
                   if (!value || !value.date || value.count === 0) {
-                    return { title: 'No activity' };
+                    return 'No activity';
                   }
 
-                  return {
-                    title: `${value.count} activit${value.count === 1 ? 'y' : 'ies'}`,
-                  };
+                  return `${value.count} activit${
+                    value.count === 1 ? 'y' : 'ies'
+                  }`;
                 }}
               />
             </div>

@@ -63,6 +63,7 @@ export default function NotSignedInWarning() {
                 src="/images/cryingmascot.png"
                 alt="Crying mascot"
                 className="h-20 w-auto shrink-0 object-contain sm:h-24"
+                style={{ backgroundColor: 'transparent' }}
               />
             </div>
           </div>

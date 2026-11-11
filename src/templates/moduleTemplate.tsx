@@ -9,10 +9,7 @@ import MarkdownLayout from '../components/MarkdownLayout/MarkdownLayout';
 import SEO from '../components/seo';
 import { ConfettiProvider } from '../context/ConfettiContext';
 import { MarkdownProblemListsProvider } from '../context/MarkdownProblemListsContext';
-import {
-  useCurrentUser,
-  useIsUserDataLoaded,
-} from '../context/UserDataContext/UserDataContext';
+import { useIsUserDataLoaded } from '../context/UserDataContext/UserDataContext';
 import { graphqlToModuleInfo } from '../utils/utils';
 
 export default function Template(props): JSX.Element {
@@ -20,24 +17,14 @@ export default function Template(props): JSX.Element {
   const { body } = xdm;
   const module = React.useMemo(() => graphqlToModuleInfo(xdm), [xdm]);
   const isLoaded = useIsUserDataLoaded();
-  const currentUser = useCurrentUser();
   const isDevelopmentSection =
     module.section === 'advanced' || module.section === 'usamo';
-  const [isAccessModalDismissed, setIsAccessModalDismissed] =
-    React.useState(false);
   const [isDevModalDismissed, setIsDevModalDismissed] = React.useState(false);
-  const isContentLocked = !currentUser;
-  const showContentAccessModal =
-    isLoaded &&
-    !isDevelopmentSection &&
-    isContentLocked &&
-    !isAccessModalDismissed;
   const showDevelopmentModal =
     isLoaded && isDevelopmentSection && !isDevModalDismissed;
 
   useEffect(() => {
     // Modal dismissal should reset on page navigation/module change.
-    setIsAccessModalDismissed(false);
     setIsDevModalDismissed(false);
   }, [module.id]);
 
@@ -124,7 +111,7 @@ export default function Template(props): JSX.Element {
 
         <div
           className={
-            showContentAccessModal || showDevelopmentModal
+            showDevelopmentModal
               ? 'pointer-events-none blur-[4px] select-none'
               : ''
           }
@@ -143,13 +130,6 @@ export default function Template(props): JSX.Element {
         </div>
       </div>
 
-      <ContentAccessModal
-        isOpen={showContentAccessModal}
-        sectionLabel={SECTION_LABELS[module.section]}
-        onClose={() => {
-          setIsAccessModalDismissed(true);
-        }}
-      />
       <ContentAccessModal
         isOpen={showDevelopmentModal}
         mode="development"

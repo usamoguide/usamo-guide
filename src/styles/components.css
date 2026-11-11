@@ -428,6 +428,436 @@
   }
 }
 
+.top-navigation .top-nav-link {
+  transition: opacity 150ms ease;
+}
+
+.hero-navbar {
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    backdrop-filter 300ms ease;
+}
+
+.hero-nav-typography {
+  font-family: 'Phantom Sans', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(244, 237, 234, 0.78);
+  background-color: transparent;
+}
+
+.hero-nav-cta {
+  --red: #ff3764;
+  --paper: #f4edea;
+  color: #17171d;
+  background-color: var(--paper);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.hero-nav-cta:hover {
+  background-color: var(--red);
+  color: var(--paper);
+}
+
+.hero-nav-cta:active {
+  transform: scale(0.98);
+}
+
+.hero-nav-auth {
+  transition: color 180ms ease;
+}
+
+.hero-nav-auth:hover {
+  color: #ff3764;
+}
+
+.hero-nav-arrow {
+  opacity: 0.8;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.hero-nav-link:hover .hero-nav-arrow,
+.hero-nav-link:focus-visible .hero-nav-arrow {
+  opacity: 1;
+  transform: translateY(1px);
+}
+
+.hero-mobile-overlay {
+  transition:
+    opacity 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0ms linear 240ms;
+}
+
+.hero-mobile-overlay.visible {
+  transition:
+    opacity 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0ms linear 0ms;
+}
+
+.hero-mobile-item {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 180ms ease-out;
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item:nth-child(1) {
+  transition-delay: 40ms;
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item:nth-child(2) {
+  transition-delay: 65ms;
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item:nth-child(3) {
+  transition-delay: 90ms;
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item:nth-child(4) {
+  transition-delay: 115ms;
+}
+
+.hero-mobile-overlay.visible .hero-mobile-item:nth-child(5) {
+  transition-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-nav-arrow,
+  .hero-mobile-overlay,
+  .hero-mobile-item {
+    animation: none;
+    transition: none;
+  }
+
+  .hero-mobile-item {
+    transform: none;
+  }
+}
+
+.top-navigation .top-nav-link:hover {
+  opacity: 0.6;
+}
+
+.top-navigation .top-nav-link:focus-visible {
+  opacity: 1;
+}
+
+.top-navigation .top-nav-link-current:hover {
+  opacity: 0.6;
+}
+
+.top-navigation .top-nav-link-current {
+  position: relative;
+  color: #ff3764;
+  text-shadow: 0 0 18px rgba(255, 55, 100, 0.18);
+}
+
+.top-navigation .top-nav-link-current::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -0.5rem;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #ff3764;
+  transform: scaleX(0.65);
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .top-nav-link-current:hover::after,
+.top-navigation .top-nav-link-current:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.top-navigation .top-nav-settings,
+.top-navigation .top-nav-login {
+  transition:
+    background-color 180ms ease,
+    color 150ms ease,
+    opacity 150ms ease,
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .top-nav-login:hover {
+  color: #f5f0ed;
+}
+
+.top-navigation .top-nav-login:active {
+  opacity: 0.7;
+}
+
+.top-navigation .top-nav-settings:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f5f0ed;
+}
+
+.top-navigation .top-nav-settings:active {
+  transform: scale(0.96);
+}
+
+.top-navigation .mobile-nav-link,
+.top-navigation .mobile-nav-overlay .nav-cta {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .mobile-nav-link:hover,
+.top-navigation .mobile-nav-link:focus-visible {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f5f0ed;
+}
+
+.top-navigation .mobile-nav-link:active {
+  transform: scale(0.99);
+}
+
+.top-navigation .mobile-nav-link[aria-current='page'] {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ff3764;
+}
+
+.top-navigation .mobile-nav-link:focus-visible,
+.top-navigation .mobile-nav-overlay .nav-cta:focus-visible,
+.top-navigation .mobile-menu-button-container:focus-visible {
+  outline: 2px solid #ff3764;
+  outline-offset: 2px;
+}
+
+.top-navigation .sections-dropdown-trigger {
+  transition:
+    opacity 150ms ease,
+    color 160ms ease;
+}
+
+.top-navigation .sections-dropdown-trigger:hover {
+  opacity: 0.6;
+}
+
+.top-navigation .sections-dropdown-panel,
+.top-navigation .user-avatar-panel {
+  will-change: transform, opacity;
+  transition:
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .sections-dropdown-panel[data-closed],
+.top-navigation .user-avatar-panel[data-closed] {
+  transform: translateY(-6px);
+  opacity: 0;
+}
+
+.top-navigation .sections-dropdown-item,
+.top-navigation .user-avatar-item {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    padding-left 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.top-navigation .sections-dropdown-item:hover,
+.top-navigation .sections-dropdown-item:focus-visible,
+.top-navigation .user-avatar-item:hover,
+.top-navigation .user-avatar-item:focus-visible,
+.top-navigation .user-avatar-item-focused {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ff3764;
+  padding-left: calc(0.75rem + 6px);
+  box-shadow: 0 4px 12px rgba(236, 55, 80, 0.12);
+}
+
+.top-navigation .sections-dropdown-item-current {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ff3764;
+  box-shadow: inset 3px 0 0 #ff3764;
+  padding-left: calc(0.75rem + 6px);
+}
+
+.top-navigation .top-nav-dropdown-item-current {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ff3764;
+  box-shadow: inset 3px 0 0 #ff3764;
+  padding-left: calc(0.75rem + 6px);
+}
+
+.top-navigation .sections-dropdown-item:focus-visible,
+.top-navigation .top-nav-dropdown-item:focus-visible,
+.top-navigation .user-avatar-item:focus-visible {
+  outline: 2px solid #ff3764;
+  outline-offset: -2px;
+}
+
+.top-navigation .user-avatar-trigger {
+  transition:
+    border-color 180ms ease,
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .user-avatar-trigger:active {
+  transform: scale(0.96);
+}
+
+.top-navigation .nav-arrow {
+  opacity: 0.8;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.top-navigation .top-nav-link:hover .nav-arrow,
+.top-navigation .top-nav-link:focus-visible .nav-arrow {
+  opacity: 1;
+  transform: translateY(1px);
+}
+
+.top-navigation .top-nav-dropdown {
+  will-change: transform, opacity;
+  transition:
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .top-nav-dropdown[data-closed] {
+  transform: translateY(-6px);
+  opacity: 0;
+}
+
+.top-navigation .top-nav-dropdown-item {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    padding-left 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.top-navigation .top-nav-dropdown-item:hover,
+.top-navigation .top-nav-dropdown-item:focus-visible {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff3764;
+  padding-left: calc(0.75rem + 6px);
+  box-shadow: 0 4px 12px rgba(236, 55, 80, 0.12);
+}
+
+.top-navigation .nav-cta {
+  color: #241d25;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-navigation .nav-cta:hover {
+  background-color: #ff3764;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.top-navigation .nav-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.top-navigation .mobile-nav-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0ms linear 220ms;
+}
+
+.top-navigation .mobile-nav-overlay[data-menu-state='opening'],
+.top-navigation .mobile-nav-overlay[data-menu-state='open'],
+.top-navigation .mobile-nav-overlay[data-menu-state='closing'] {
+  visibility: visible;
+}
+
+.top-navigation .mobile-nav-overlay[data-menu-state='open'] {
+  opacity: 1;
+  pointer-events: auto;
+  transition:
+    opacity 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0ms linear 0ms;
+}
+
+.top-navigation .mobile-nav-panel {
+  transform: translate3d(0, -14px, 0);
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.top-navigation .mobile-nav-overlay[data-menu-state='open'] .mobile-nav-panel {
+  transform: translate3d(0, 0, 0);
+}
+
+.top-navigation .mobile-nav-item {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 180ms ease-out,
+    background-color 180ms ease,
+    color 180ms ease;
+  transition-delay: 0ms;
+  will-change: transform, opacity;
+}
+
+.top-navigation .mobile-nav-overlay[data-menu-state='open'] .mobile-nav-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: var(--mobile-nav-delay, 40ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-navigation .top-nav-link,
+  .top-navigation .top-nav-link-current::after,
+  .top-navigation .nav-arrow,
+  .top-navigation .top-nav-dropdown,
+  .top-navigation .top-nav-dropdown-item,
+  .top-navigation .nav-cta,
+  .top-navigation .mobile-nav-overlay,
+  .top-navigation .mobile-nav-panel,
+  .top-navigation .mobile-nav-item {
+    transition: none;
+  }
+
+  .top-navigation .top-nav-dropdown,
+  .top-navigation .top-nav-dropdown[data-closed],
+  .top-navigation .mobile-nav-panel,
+  .top-navigation .mobile-nav-item {
+    transform: none;
+  }
+
+  .top-navigation .mobile-nav-overlay[data-menu-state='opening'],
+  .top-navigation .mobile-nav-overlay[data-menu-state='open'] {
+    opacity: 1;
+  }
+
+  .top-navigation .mobile-nav-overlay[data-menu-state='open'] .mobile-nav-item {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   /* make Tailwind's bg-white map to your cream-ish surface token */
   .bg-white {

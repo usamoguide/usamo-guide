@@ -69,7 +69,7 @@ Usage rules
 ## 3. Typography
 
 Base choices
-- System stack for performance: `Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial`.
+- Primary typeface: `Phantom Sans, system-ui, sans-serif`, with locally hosted weight-specific assets.
 - Weight scale: 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
 
 Scale
@@ -320,4 +320,3 @@ CSS example (to include in global styles)
 If you'd like, I can:
 - Convert these tokens into `:root` CSS file and `tailwind.config.js` entries.
 - Implement React primitives for the core components (`Button`, `Input`, `Modal`) using the tokens.
-

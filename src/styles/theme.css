@@ -15,8 +15,11 @@
   */
 
   :root {
+    font-size: 120%;
+
     /* Single source of truth for the app-wide font family */
-    --font-family: 'Inter', system-ui, sans-serif;
+    --font-family: 'Phantom Sans', system-ui, sans-serif;
+    --font-phantom: var(--font-family);
 
     /* LIGHT MODE (cream-based, not white) */
     --bg-page: #f4edea;
@@ -192,7 +195,7 @@
 
     --shadow: none;
 
-    --card-bg: rgba(45,53,85,0.45);
+    --card-bg: rgba(45, 53, 85, 0.45);
     /* Solid background for modals/dropdowns — never translucent */
     --modal-bg: #0b0919;
     --modal-btn-bg: #6d3b9f;
@@ -202,6 +205,5 @@
     --modal-btn-border: rgba(240, 194, 255, 0.34);
     /*     --card-bg: rgba(72, 45, 85, 0.45);
     --modal-bg: rgb(66, 45, 85); */
-
   }
 }
