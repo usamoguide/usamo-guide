@@ -6,12 +6,16 @@ import MODULE_ORDERING, {
 } from '../../../../content/ordering';
 import Markdown, { evaluateMdx } from '../../markdown/Markdown';
 import { components as mdxComponents } from '../../markdown/MDXComponents';
+import Btn from '../Btn';
 import { UG_TRACKS } from '../links';
 import { PASCAL_ARROW } from './paths';
-import { css, cx, IcoLock, IcoOut, onIf } from './util';
+import { css, cx, IcoOut, onIf } from './util';
 
-/** The module the landing page shows in its lesson window (the page query fetches it). */
+/** The module the landing page opens (the page query fetches it). */
 export const SAMPLE_MODULE_ID = 'shoelace-theorem-p1';
+
+/** How many of its sections the landing page shows before "Keep reading". */
+const SHOWN = 2;
 
 /** The landing page query's result for that module. */
 export type SampleLessonData = {
@@ -98,17 +102,24 @@ const LESSON_COMPONENTS = {
   a: A,
 };
 
+type Sec = {
+  head: React.ReactElement<Kids>;
+  /** the heading's slug, which is also the section's id on the lesson page */
+  id: string | null;
+  body: React.ReactNode[];
+};
+
 /** Top-level blocks before the first h2, then one group per h2. */
 function splitSections(children: React.ReactNode): {
   intro: React.ReactNode[];
-  secs: { head: React.ReactElement<Kids>; body: React.ReactNode[] }[];
+  secs: Sec[];
 } {
   const intro: React.ReactNode[] = [];
-  const secs: { head: React.ReactElement<Kids>; body: React.ReactNode[] }[] =
-    [];
+  const secs: Sec[] = [];
   React.Children.toArray(children).forEach(c => {
     if (React.isValidElement(c) && c.type === H2) {
-      secs.push({ head: c as React.ReactElement<Kids>, body: [] });
+      const head = c as React.ReactElement<Kids & { id?: string }>;
+      secs.push({ head, id: head.props.id ?? null, body: [] });
     } else if (secs.length) {
       secs[secs.length - 1].body.push(c);
     } else {
@@ -119,16 +130,22 @@ function splitSections(children: React.ReactNode): {
 }
 
 /**
- * Markdown's `transform`: wraps each h2 and what follows it in the export's
- * `section.ls-sec[data-ls]`, which the contents rail and its scroll-spy use.
+ * Markdown's `transform`: the intro and the first SHOWN sections, each h2 and
+ * what follows it in a `section.ls-sec[data-ls]` that the contents list
+ * follows as the page scrolls.
  */
-function toSections(children: React.ReactNode): React.ReactNode {
+function toExcerpt(children: React.ReactNode): React.ReactNode {
   const { intro, secs } = splitSections(children);
   return (
     <>
       {intro.length ? <div className="ls-intro">{intro}</div> : null}
-      {secs.map((s, i) => (
-        <section key={i} className="ls-sec" data-ls={String(i)}>
+      {secs.slice(0, SHOWN).map((s, i) => (
+        <section
+          key={i}
+          id={`sl-${i}`}
+          className="ls-sec"
+          data-ls={String(i)}
+        >
           {s.head}
           {s.body}
         </section>
@@ -153,8 +170,9 @@ function chapterOf(
 }
 
 /**
- * "Read a lesson right here": a real module from the Guide, framed as a page
- * that scrolls inside its own window, with the export's contents rail.
+ * "Read a lesson right here": the opening of a real module from the Guide, as
+ * part of the page (no window of its own to scroll), with the export's
+ * contents list beside it. Its later sections link to the full lesson.
  */
 function SampleLesson({
   lesson,
@@ -178,14 +196,16 @@ function SampleLesson({
     () => evaluateMdx(lesson.body, LESSON_COMPONENTS),
     [lesson.body]
   );
-  // the rail lists the same h2s the sections are cut at, so index i is data-ls i
-  const rail = React.useMemo(
+  // the contents list uses the same h2s the sections are cut at, so index i is data-ls i
+  const outline = React.useMemo(
     () =>
-      splitSections(childrenOf(content)).secs.map(s =>
-        withoutAnchors(s.head.props.children)
-      ),
+      splitSections(childrenOf(content)).secs.map(s => ({
+        label: withoutAnchors(s.head.props.children),
+        id: s.id,
+      })),
     [content]
   );
+  const more = outline.length - SHOWN;
 
   return (
     <section className="sec sample" id="sample" aria-labelledby="ug-sample-h">
@@ -220,83 +240,77 @@ function SampleLesson({
           </h2>
           <p className="sec-lede rv" style={css({ '--d': '120ms' })}>
             This one finds the area of any polygon straight from the coordinates
-            of its corners, no cutting it into triangles. Scroll inside the
-            window to read it, then work through the examples at the end.
+            of its corners, no cutting it into triangles. Start reading below,
+            then keep going in the full lesson for the worked examples.
           </p>
         </div>
-        <div className="lf-wrap rv" style={css({ '--d': '160ms' })}>
-          <img
-            className="lf-fox"
-            src="/ug/img/panda-read.webp"
-            alt=""
-            width="450"
-            height="464"
-          />
-          <span className="lf-note" aria-hidden="true">
-            it scrolls, try it
-            <svg className="arw" viewBox="0 0 60 70">
-              <path className="ink ink-v" d="M10 6C30 8 44 24 40 58" />
-              <path
-                className="ink ink-v"
-                d="M40 58L34.6 47.3M40 58L47.2 48.4"
+        <div className="sl rv" style={css({ '--d': '160ms' })}>
+          <nav className="ls-rail sl-rail" aria-label="In this lesson">
+            <p className="ls-rail-k">In this lesson</p>
+            {outline.map((s, i) =>
+              i < SHOWN ? (
+                <a
+                  key={i}
+                  className={cx('ls-item', onIf(i, lsec))}
+                  href={`#sl-${i}`}
+                  aria-current={i === lsec ? 'location' : undefined}
+                  onClick={e => {
+                    e.preventDefault();
+                    jumpTo(i);
+                  }}
+                >
+                  {s.label}
+                </a>
+              ) : (
+                <Link
+                  key={i}
+                  className="ls-item sl-out"
+                  to={s.id ? `${moduleUrl}#${s.id}` : moduleUrl}
+                >
+                  <span>{s.label}</span>
+                  <IcoOut />
+                </Link>
+              )
+            )}
+          </nav>
+          <div className="sl-card">
+            <img
+              className="lf-fox"
+              src="/ug/img/panda-read.webp"
+              alt=""
+              width="450"
+              height="464"
+            />
+            <article className="lesson" aria-labelledby="ug-sample-t">
+              {chips.length ? (
+                <div className="ls-chips">
+                  {chips.map(c => (
+                    <span key={c} className="ls-chip">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+              <h3 className="ls-title" id="ug-sample-t">
+                {title}
+              </h3>
+              {description ? <p className="ls-sub">{description}</p> : null}
+              <Markdown
+                content={content}
+                transform={toExcerpt}
+                className="ls-md"
               />
-            </svg>
-          </span>
-          <div className="lesson-frame">
-            <div className="lf-bar">
-              <span className="lf-url">
-                <IcoLock />
-                usamoguide.com
-              </span>
-              <span className="lf-tag">Sample lesson</span>
-              <Link
-                className="lf-open"
-                to={moduleUrl}
-                aria-label="Open this lesson in the Guide"
-              >
-                <span>Open in the Guide</span>
-                <IcoOut />
-              </Link>
-            </div>
-            <div className="lf-body">
-              <div className="ls-rail">
-                <p className="ls-rail-k">In this lesson</p>
-                {rail.map((label, i) => (
-                  <button
-                    key={i}
-                    className={cx('ls-item', onIf(i, lsec))}
-                    type="button"
-                    onClick={() => jumpTo(i)}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <div
-                className="lesson-scroll"
-                tabIndex={0}
-                role="region"
-                aria-label={`Sample lesson: ${title}`}
-              >
-                <article className="lesson">
-                  {chips.length ? (
-                    <div className="ls-chips">
-                      {chips.map(c => (
-                        <span key={c} className="ls-chip">
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                  <h3 className="ls-title">{title}</h3>
-                  {description ? <p className="ls-sub">{description}</p> : null}
-                  <Markdown
-                    content={content}
-                    transform={toSections}
-                    className="ls-md"
-                  />
-                </article>
-              </div>
+            </article>
+            <div className="sl-more">
+              {more > 0 ? (
+                <p className="sl-more-t">
+                  {more} more {more === 1 ? 'section' : 'sections'} in the full
+                  lesson, worked examples included.
+                </p>
+              ) : null}
+              <Btn kind="p" to={moduleUrl} arrow>
+                Keep reading
+              </Btn>
             </div>
           </div>
         </div>
@@ -305,5 +319,5 @@ function SampleLesson({
   );
 }
 
-// the page re-renders on every ladder/scene step; the lesson only needs to when its rail moves
+// the page re-renders on every ladder/scene step; the lesson only needs to when its contents list moves
 export default React.memo(SampleLesson);

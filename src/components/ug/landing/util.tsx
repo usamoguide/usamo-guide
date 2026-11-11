@@ -65,12 +65,6 @@ export const IcoChat = ico(
     <path d="M8.5 10.75h.01M12 10.75h.01M15.5 10.75h.01" />
   </>
 );
-export const IcoLock = ico(
-  <>
-    <rect x="5" y="10.5" width="14" height="10" rx="2.5" />
-    <path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" />
-  </>
-);
 export const IcoOut = ico(<path d="M7 17L17 7M9 7h8v8" />);
 export const IcoCode = ico(
   <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15" />

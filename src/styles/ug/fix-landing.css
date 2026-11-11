@@ -42,3 +42,38 @@
 @media (max-width:600px){
   :where(.ugv-landing) .ls-sec .katex{font-size:1em}
 }
+
+/* ---------- the sample lesson as part of the page (SampleLesson.tsx) ----------
+   The export frames it as a browser window that scrolls on its own and tilts in
+   3D; here it is a section of the page: the contents list stays beside the
+   lesson's opening, which ends in "Keep reading" to the full lesson. */
+:where(.ugv-landing) .sl{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start;margin-top:clamp(56px,6vw,88px)}
+:where(.ugv-landing) .sl-rail{position:sticky;top:96px;padding:6px 0;border-right:0}
+:where(.ugv-landing) .sl-rail .ls-item{text-decoration:none}
+:where(.ugv-landing) .sl-out{color:var(--ink-2)}
+:where(.ugv-landing) .sl-out::before{background:var(--haze)}
+:where(.ugv-landing) .sl-out span{flex:1}
+:where(.ugv-landing) .sl-out .ico{flex:none;width:14px;height:14px;color:var(--vt);opacity:.7}
+:where(.ugv-landing) .sl-card{position:relative;border:1px solid var(--haze);border-radius:22px;background:var(--paper);box-shadow:0 40px 80px -48px rgba(23,18,46,.35)}
+:where(.ugv-landing) .sl-card .lesson{padding-bottom:0}
+:where(.ugv-landing) .sl-card .ls-sec{scroll-margin-top:96px}
+/* the end of the excerpt fades into "Keep reading" */
+:where(.ugv-landing) .sl-more{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:-150px;padding:150px 24px 44px;border-radius:0 0 22px 22px;background:linear-gradient(to bottom,transparent,var(--paper) 120px);text-align:center}
+:where(.ugv-landing) .sl-more-t{margin:0;font-size:16px;color:var(--ink-2)}
+@media (max-width:900px){
+  :where(.ugv-landing) .sl{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  :where(.ugv-landing) .sl{margin-top:56px}
+  :where(.ugv-landing) .sl-more{margin-top:-120px;padding:120px 18px 32px;background:linear-gradient(to bottom,transparent,var(--paper) 84px)}
+}
+
+/* ---------- looping decorations pause while their section is off screen (useLandingMotion: data-idle) ---------- */
+:where(.ugv-landing) [data-idle] *,:where(.ugv-landing) [data-idle] *::before,:where(.ugv-landing) [data-idle] *::after{animation-play-state:paused!important}
+
+/* ---------- "start here": the arrow ends at the Start learning button instead of under it ---------- */
+:where(.ugv-landing) .hero .hand-note{z-index:2}
+:where(.ugv-landing) .hand-note svg{margin-right:-14px}
+@media (max-width:900px){
+  :where(.ugv-landing) .hand-note svg{margin-right:0}
+}

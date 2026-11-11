@@ -7,27 +7,35 @@ import { motionAllowed } from '../hooks';
  * usamo-guide-export/index.html:
  *  - "live" mode (motion allowed, a normal-sized window): `ug-live` on <html>,
  *    blur-in reveals for every `.rv` below the fold, Lenis smooth scrolling;
- *  - every frame while live: the scroll-linked CSS variables on <html>
- *    (--sy, --prog, --lp, --mp, --fp, --tp, --cp, --mq, --mx, --my, --fr), the
- *    doodles' --dp, the ladder rung, the fox scene pose, the contest climb, and
- *    `ug-navdark` while the nav sits over a purple band;
- *  - the sample lesson's rail follows the section being read in its window.
- * Everything it puts on <html> is removed again on unmount.
+ *  - on each frame that scrolling or the pointer asks for: the scroll-linked
+ *    CSS variables (--sy, --prog, --lp, --mp, --fp, --tp, --cp, --mq, --mx,
+ *    --my, the doodles' --dp), the ladder rung, the fox scene pose, the contest
+ *    climb, the sample lesson section being read, and `ug-navdark` while the
+ *    nav sits over a purple band.
+ * The export puts those variables on <html>; here each goes on the elements
+ * that read it (VAR_TARGETS), and only when its value changes. A custom
+ * property changed on <html> restyles the whole page, every scroll frame.
+ * Nothing runs per frame while the page is still: Lenis only gets frames while
+ * a smooth scroll is moving, and the looping decorations pause while their
+ * section is off screen (`data-idle`, fix-landing.css).
+ * Everything it sets is removed again on unmount.
  */
 
-const HTML_VARS = [
-  '--sy',
-  '--prog',
-  '--lp',
-  '--mp',
-  '--fp',
-  '--tp',
-  '--cp',
-  '--mq',
-  '--mx',
-  '--my',
-  '--fr',
-];
+/** The elements that read each scroll-linked variable (landing.css). */
+const VAR_TARGETS = {
+  sy: '.hero-in, .dd',
+  pointer: '.dd', // --mx, --my
+  prog: '.nav-prog',
+  lp: '.pin-prog',
+  mp: '.mf', // its words (.w) inherit it
+  fp: '.foot-mark',
+  tp: '.person',
+  cp: '.cg',
+  mq: '.mi-circle',
+};
+
+/** Sections whose looping decorations pause while they are off screen. */
+const IDLE_SECTIONS = '.hero, .sec, .cta, .foot';
 
 type Els = {
   steps: HTMLElement[];
@@ -37,7 +45,8 @@ type Els = {
   o4: HTMLElement | null;
   o4climb: HTMLElement | null;
   dz: HTMLElement[];
-  lframe: HTMLElement | null;
+  lsecs: HTMLElement[];
+  vars: { [K in keyof typeof VAR_TARGETS]: HTMLElement[] };
   mf: HTMLElement | null;
   mission: HTMLElement | null;
   team: HTMLElement | null;
@@ -50,7 +59,7 @@ export type LandingState = {
   step: number;
   /** fox scene pose, 0..4 */
   sstep: number;
-  /** sample lesson section being read, 0..3 */
+  /** sample lesson section being read (index into its shown sections) */
   lsec: number;
   /** contest climb stage, 0..3 (3 is the static, fully drawn state) */
   climb: number;
@@ -61,7 +70,7 @@ export type LandingMotion = LandingState & {
   hookRef: React.RefObject<HTMLElement>;
   /** in-page anchors (#faq, #top, ...) glide with smooth scrolling */
   onAnchor: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-  /** the lesson rail buttons: scroll the lesson window to section i */
+  /** the sample lesson's contents list: scroll the page to its section i */
   jumpTo: (i: number) => void;
 };
 
@@ -73,6 +82,8 @@ export function useLandingMotion(): LandingMotion {
   // the latest state, readable from the frame loop without re-subscribing
   const cur = React.useRef<LandingState>(STATIC);
   const lenisRef = React.useRef<Lenis | null>(null);
+  // starts Lenis's frame loop (it sleeps while nothing is scrolling)
+  const wakeRef = React.useRef<() => void>(() => undefined);
 
   const update = React.useCallback((patch: Partial<LandingState>) => {
     const prev = cur.current;
@@ -102,6 +113,8 @@ export function useLandingMotion(): LandingMotion {
     let navDark = false;
     let sc: HTMLElement | null = null;
     let io: IntersectionObserver | null = null;
+    let idleIO: IntersectionObserver | null = null;
+    let lraf = 0;
     let els: Els | null = null;
     let mx = 0;
     let my = 0;
@@ -153,6 +166,26 @@ export function useLandingMotion(): LandingMotion {
     const all = (sel: string) =>
       Array.prototype.slice.call(root.querySelectorAll(sel)) as HTMLElement[];
     const one = (sel: string) => root.querySelector(sel) as HTMLElement | null;
+    // what each element was last given, so unchanged values aren't rewritten
+    const written = new Map<HTMLElement, Record<string, string>>();
+    const setVar = (els: HTMLElement[], k: string, v: string) => {
+      els.forEach(el => {
+        let w = written.get(el);
+        if (!w) {
+          w = {};
+          written.set(el, w);
+        }
+        if (w[k] === v) return;
+        w[k] = v;
+        el.style.setProperty(k, v);
+      });
+    };
+    const clearVars = () => {
+      written.forEach((w, el) =>
+        Object.keys(w).forEach(k => el.style.removeProperty(k))
+      );
+      written.clear();
+    };
     const cache = () => {
       els = {
         steps: all('.lstep'),
@@ -162,7 +195,10 @@ export function useLandingMotion(): LandingMotion {
         o4: one('.o4e'),
         o4climb: one('.o4-climb'),
         dz: all('.dz'),
-        lframe: one('.lf-wrap'),
+        lsecs: all('.sl [data-ls]'),
+        vars: Object.fromEntries(
+          Object.entries(VAR_TARGETS).map(([k, sel]) => [k, all(sel)])
+        ) as Els['vars'],
         mf: one('.mf'),
         mission: one('.mission'),
         team: one('.team-grid'),
@@ -171,8 +207,25 @@ export function useLandingMotion(): LandingMotion {
       };
     };
 
-    // Lenis smooths wheel scrolling. Touch stays native, and the lesson window
-    // keeps its own scroll until it reaches an end, then hands off to the page.
+    // Lenis smooths wheel scrolling; touch stays native. Its own loop
+    // (`autoRaf`) asks for a frame forever, which repaints the whole page 60
+    // times a second while it sits still. Drive it here instead, only while a
+    // smooth scroll is moving.
+    const lenisLoop = (t: number) => {
+      lraf = 0;
+      const l = lenisRef.current;
+      if (!l) return;
+      l.raf(t);
+      if (l.isScrolling === 'smooth') lraf = requestAnimationFrame(lenisLoop);
+    };
+    const wakeLenis = () => {
+      const l = lenisRef.current;
+      if (!l || lraf) return;
+      // restart its clock, or the first frame after a pause jumps to the target
+      l.time = performance.now();
+      lraf = requestAnimationFrame(lenisLoop);
+    };
+    wakeRef.current = wakeLenis;
     const startLenis = () => {
       if (lenisRef.current) return;
       try {
@@ -181,7 +234,7 @@ export function useLandingMotion(): LandingMotion {
           content: sc
             ? (sc.firstElementChild as HTMLElement | null) || sc
             : html,
-          autoRaf: true,
+          autoRaf: false,
           lerp: 0.1,
           allowNestedScroll: true,
         });
@@ -190,6 +243,10 @@ export function useLandingMotion(): LandingMotion {
       }
     };
     const stopLenis = () => {
+      if (lraf) {
+        cancelAnimationFrame(lraf);
+        lraf = 0;
+      }
       if (lenisRef.current) {
         try {
           lenisRef.current.destroy();
@@ -218,6 +275,16 @@ export function useLandingMotion(): LandingMotion {
           }
         });
       }
+      if ('IntersectionObserver' in window) {
+        idleIO = new IntersectionObserver(
+          entries =>
+            entries.forEach(en =>
+              en.target.toggleAttribute('data-idle', !en.isIntersecting)
+            ),
+          { rootMargin: '200px 0px' }
+        );
+        all(IDLE_SECTIONS).forEach(el => idleIO?.observe(el));
+      }
       cache();
       climbAt = 0;
       update({ climb: 0 });
@@ -234,14 +301,18 @@ export function useLandingMotion(): LandingMotion {
       live = false;
       navDark = false;
       html.classList.remove('ug-live', 'ug-navdark');
-      HTML_VARS.forEach(k => html.style.removeProperty(k));
+      clearVars();
       if (io) {
         io.disconnect();
         io = null;
       }
+      if (idleIO) {
+        idleIO.disconnect();
+        idleIO = null;
+      }
+      all('[data-idle]').forEach(el => el.removeAttribute('data-idle'));
       root.removeAttribute('data-rvinit');
       all('[data-st]').forEach(el => el.removeAttribute('data-st'));
-      all('.dz').forEach(el => el.style.removeProperty('--dp'));
       if (climbTimer) {
         clearTimeout(climbTimer);
         climbTimer = 0;
@@ -309,12 +380,11 @@ export function useLandingMotion(): LandingMotion {
       for (let i = 0; i !== ss.length; i++) {
         if (sline > (scPinned ? textTop(ss[i]) : mid(ss[i]))) sstep = i;
       }
-      // the sample lesson window tilts back and flattens as it comes up the screen
-      let fr = 1;
-      if (E.lframe) {
-        const r = E.lframe.getBoundingClientRect();
-        fr = clamp((vh * 0.96 - r.top) / (vh * 0.55), 0, 1);
-      }
+      // the sample lesson's contents list: the last section whose top has passed 40% down the screen
+      let lsec = 0;
+      E.lsecs.forEach((el, i) => {
+        if (el.getBoundingClientRect().top < vh * 0.4) lsec = i;
+      });
       let mp = 1;
       if (E.mf) {
         const r = E.mf.getBoundingClientRect();
@@ -369,24 +439,23 @@ export function useLandingMotion(): LandingMotion {
       const settling = Math.abs(tx - mx) > 0.001 || Math.abs(ty - my) > 0.001;
 
       // then writes
-      const s = html.style;
-      s.setProperty('--sy', y.toFixed(1));
-      s.setProperty('--prog', clamp(y / max, 0, 1).toFixed(4));
-      s.setProperty('--lp', lp.toFixed(4));
-      s.setProperty('--mp', mp.toFixed(4));
-      s.setProperty('--fp', fp.toFixed(4));
-      s.setProperty('--tp', tp.toFixed(4));
-      s.setProperty('--cp', cp.toFixed(4));
-      s.setProperty('--mq', mq.toFixed(4));
-      s.setProperty('--mx', mx.toFixed(4));
-      s.setProperty('--my', my.toFixed(4));
-      s.setProperty('--fr', fr.toFixed(4));
-      E.dz.forEach((el, i) => el.style.setProperty('--dp', dzp[i].toFixed(3)));
+      const V = E.vars;
+      setVar(V.sy, '--sy', y.toFixed(1));
+      setVar(V.prog, '--prog', clamp(y / max, 0, 1).toFixed(4));
+      setVar(V.lp, '--lp', lp.toFixed(4));
+      setVar(V.mp, '--mp', mp.toFixed(4));
+      setVar(V.fp, '--fp', fp.toFixed(4));
+      setVar(V.tp, '--tp', tp.toFixed(4));
+      setVar(V.cp, '--cp', cp.toFixed(4));
+      setVar(V.mq, '--mq', mq.toFixed(4));
+      setVar(V.pointer, '--mx', mx.toFixed(4));
+      setVar(V.pointer, '--my', my.toFixed(4));
+      E.dz.forEach((el, i) => setVar([el], '--dp', dzp[i].toFixed(3)));
       if (dark !== navDark) {
         navDark = dark;
         html.classList.toggle('ug-navdark', dark);
       }
-      update({ step, sstep, climb });
+      update({ step, sstep, climb, lsec });
       if (climbLater && !climbTimer) {
         climbTimer = window.setTimeout(() => {
           climbTimer = 0;
@@ -396,24 +465,7 @@ export function useLandingMotion(): LandingMotion {
       if (settling) request();
     };
 
-    // the lesson rail follows the section you are reading inside the window
-    const syncLesson = (box: HTMLElement) => {
-      const secs = box.querySelectorAll<HTMLElement>('[data-ls]');
-      let a = 0;
-      for (let i = 0; i !== secs.length; i++) {
-        if (box.scrollTop + 60 >= secs[i].offsetTop) a = i;
-      }
-      if (box.scrollTop + box.clientHeight >= box.scrollHeight - 4) {
-        a = secs.length - 1;
-      }
-      update({ lsec: a });
-    };
-
-    const onScroll = (e: Event) => {
-      const t = e.target as HTMLElement | null;
-      if (t && t.classList && t.classList.contains('lesson-scroll')) {
-        syncLesson(t);
-      }
+    const onScroll = () => {
       if (live) request();
     };
     const onResize = () => {
@@ -439,12 +491,16 @@ export function useLandingMotion(): LandingMotion {
     });
     window.addEventListener('resize', onResize);
     window.addEventListener('pointermove', onPointer, { passive: true });
+    // capture, so the clock restarts before Lenis's own wheel handler starts a scroll
+    window.addEventListener('wheel', wakeLenis, { passive: true, capture: true });
     evaluate();
 
     return () => {
       document.removeEventListener('scroll', onScroll, { capture: true });
       window.removeEventListener('resize', onResize);
       window.removeEventListener('pointermove', onPointer);
+      window.removeEventListener('wheel', wakeLenis, { capture: true });
+      wakeRef.current = () => undefined;
       if (evalT) clearTimeout(evalT);
       if (raf) cancelAnimationFrame(raf);
       raf = 0;
@@ -476,23 +532,24 @@ export function useLandingMotion(): LandingMotion {
       if (!t) return;
       e.preventDefault();
       lenis.scrollTo(t, { duration: 1.3 });
+      wakeRef.current();
     },
     []
   );
 
   const jumpTo = React.useCallback((i: number) => {
     const root = hookRef.current?.closest('.ug');
-    const box = root
-      ? (root.querySelector('.lesson-scroll') as HTMLElement | null)
+    const t = root
+      ? (root.querySelector(`.sl [data-ls="${i}"]`) as HTMLElement | null)
       : null;
-    const t = box
-      ? (box.querySelector(`[data-ls="${i}"]`) as HTMLElement | null)
-      : null;
-    if (box && t) {
-      box.scrollTo({
-        top: i === 0 ? 0 : Math.max(0, t.offsetTop - 20),
-        behavior: 'smooth',
-      });
+    if (!t) return;
+    // both keep the section's scroll-margin-top (clear of the sticky nav, fix-landing.css)
+    const lenis = lenisRef.current;
+    if (lenis) {
+      lenis.scrollTo(t, { duration: 1.1 });
+      wakeRef.current();
+    } else {
+      t.scrollIntoView({ behavior: motionAllowed() ? 'smooth' : 'auto' });
     }
   }, []);
 
