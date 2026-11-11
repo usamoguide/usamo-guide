@@ -341,7 +341,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       items: ['olympiad-number-theory',
         'lifting-the-exponent-lemma-p1',
         'lifting-the-exponent-lemma-p2', 
-        'vieta-root-jumping'],
+        'vieta-root-jumping',
+        'advanced-diophantine-equations'],
     },
     {
       name: 'Olympiad Geometry',
