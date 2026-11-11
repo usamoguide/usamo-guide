@@ -34,14 +34,25 @@ export function ResourcesList({
 
 const moduleSources = {
   AoPS: ['https://artofproblemsolving.com/', 'Art of Problem Solving'],
-  AoPSWiki: [
-    'https://artofproblemsolving.com/wiki/index.php',
-    'AoPS Wiki',
-  ],
+  AoPSWiki: ['https://artofproblemsolving.com/wiki/index.php', 'AoPS Wiki'],
   MAA: ['https://www.maa.org/math-competitions', 'MAA Competitions'],
   Khan: ['https://www.khanacademy.org/math', 'Khan Academy'],
   Brilliant: ['https://brilliant.org/courses/', 'Brilliant'],
   AoPSOnline: ['https://artofproblemsolving.com/online', 'AoPS Online'],
+  OL: ['https://www.omegalearn.org/', 'OmegaLearn'],
+  DA: ['https://davidaltizio.web.illinois.edu/', 'David Altizio'],
+  EC: ['https://web.evanchen.cc/', 'Evan Chen'],
+  JS: ['https://artofproblemsolving.com/articles', 'Justin Stevens'],
+  YZ: ['https://yufeizhao.com/olympiad/', 'Yufei Zhao'],
+  CJQ: ['https://cjquines.com/math/handouts.html', 'CJ Quines'],
+  AK: ['https://preparamates.com/', 'Aditya Khurmi'],
+  DY: ['https://yu-dylan.github.io/', 'Dylan Yu'],
+  AHP: [
+    'https://pregatirematematicaolimpiadejuniori.wordpress.com/',
+    'Amir Hossein Parvardi',
+  ],
+  CS250: ['https://web.stanford.edu/class/cs250/', 'Stanford CS 250'],
+  WP: ['https://en.wikipedia.org/wiki/', 'Wikipedia'],
 };
 
 export function Resource({

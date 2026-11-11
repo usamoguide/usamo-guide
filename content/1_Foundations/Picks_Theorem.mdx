@@ -1,0 +1,300 @@
+---
+id: picks-theorem
+title: Pick's Theorem
+author: Raymond Li
+description: Conversion between lattice points and area.
+prerequisites: []
+---
+
+## Introduction
+
+While most area formulas relate area to lengths/angles, Pick's Theorem relates a polygon's area to the way it's laid out on a grid. If a polygon has all vertices on gridpoints, its area can be determined by the number of grid points within and bordering it. This means you can essentially use counting (as opposed to less trivial methods) for finding the area of lattice polygons.
+
+Some useful definitions:
+
+**Lattice point**: A point $(x, y)$ with $x, y \in \mathbb{Z}$. The set of all of them is the **lattice** $\mathbb{Z}^2$.
+
+**Lattice polygon**: A simple polygon (noncrossing edges) whose vertices all lie on lattice points.
+
+> **Pick's Theorem.** Let $P$ be a lattice polygon with area $A$. Let $I$ be the number of lattice points strictly inside $P$, and let $B$ be the number of lattice points on the boundary of $P$ (including vertices). Then
+> $$
+> A = I + \frac{B}{2} - 1
+> $$
+> **Exceptions:** The polygon must not self-intersect or have "holes."
+
+Example 1: The **hollow** points are interior, the **solid** points are on the boundary.
+
+<svg viewBox="0 0 390 378" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lattice pentagon with 11 boundary points and 10 interior points"
+     style={{ width: '100%', maxWidth: '430px', height: 'auto', display: 'block',
+              margin: '1.5rem auto', fontFamily: 'Georgia, serif' }}>
+  <g>
+  <circle cx="34" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="264" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="218" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="172" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="126" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="34" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="218" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="172" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="126" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="80" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="126" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="126" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="126" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="172" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="172" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="172" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="218" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="218" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="264" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="264" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="264" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="310" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="310" cy="126" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="310" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="310" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="310" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="264" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="218" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="172" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="126" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="80" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="356" cy="34" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  </g>
+  <polygon points="80,264 310,264 310,172 218,80 126,126" fill="#ffffff" fillOpacity="0.06" stroke="#ffffff" strokeWidth="1.4" strokeLinejoin="round"/>
+  <circle cx="80" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="126" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="126" cy="126" r="3.6" fill="#ffffff"/>
+  <circle cx="172" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="218" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="218" cy="80" r="3.6" fill="#ffffff"/>
+  <circle cx="264" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="264" cy="126" r="3.6" fill="#ffffff"/>
+  <circle cx="310" cy="264" r="3.6" fill="#ffffff"/>
+  <circle cx="310" cy="218" r="3.6" fill="#ffffff"/>
+  <circle cx="310" cy="172" r="3.6" fill="#ffffff"/>
+  <circle cx="126" cy="218" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="126" cy="172" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="172" cy="218" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="172" cy="172" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="172" cy="126" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="218" cy="218" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="218" cy="172" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="218" cy="126" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="264" cy="218" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="264" cy="172" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <text x="71" y="281" fontSize="13" fill="#ffffff" textAnchor="end">(0, 0)</text>
+  <text x="319" y="281" fontSize="13" fill="#ffffff">(5, 0)</text>
+  <text x="320" y="165" fontSize="13" fill="#ffffff">(5, 2)</text>
+  <text x="218" y="69" fontSize="13" fill="#ffffff" textAnchor="middle">(3, 4)</text>
+  <text x="116" y="118" fontSize="13" fill="#ffffff" textAnchor="end">(1, 3)</text>
+  <circle cx="112" cy="348" r="3.6" fill="#ffffff"/>
+  <text x="123" y="352" fontSize="12" fill="#ffffff" fillOpacity="0.72">boundary</text>
+  <circle cx="222" cy="348" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <text x="233" y="352" fontSize="12" fill="#ffffff" fillOpacity="0.72">interior</text>
+</svg>
+
+Counting gives $I = 10$ and $B = 11$, so by Pick's Theorem,
+
+$$
+A = 10 + \frac{11}{2} - 1 = \frac{29}{2}.
+$$
+
+## Key Ideas
+
+### Counting $B$ with the GCD
+
+Counting boundary points by squinting at a picture is fine for a small diagram, but can get tedious with larger ones. Instead of counting, you can use the GCD formula to find the number of boundary points.
+
+> The segment from $(x_1, y_1)$ to $(x_2, y_2)$ contains exactly
+> $$
+> \gcd(|x_2 - x_1|,\; |y_2 - y_1|) + 1
+> $$
+> lattice points, counting both endpoints.
+
+Summing the formula over all edges (each vertex gets counted once by attributing it to one of its two edges) gives the formula:
+
+$$
+\boxed{\;B = \sum_{i=1}^{n} \gcd\left(|x_{i+1} - x_i|,\; |y_{i+1} - y_i|\right)\;}
+$$
+
+with indices taken cyclically. This allows you to find the number of boundary points of larger shapes, making it such that you do not need to count out the points manually.
+
+### Pick's Theorem Converse
+
+Some problems may ask for lattice points that satisfy inequalities instead of just the area of a lattice polygon. Here, the converse of Pick's Theorem is more useful, stating that:
+
+$$
+I + B = \left(A - \frac{B}{2} + 1\right) + B = A + \frac{B}{2} + 1.
+$$
+
+This means you can find the area by any means, count the boundary points with the GCD formula, and with it, compute the interior lattice point count. This is nearly always faster than summing a floor-function series, and is much less likely to result in off-by-one errors.
+
+### Pick's Theorem with Holes
+
+Sometimes, the polygon you need to work with has "holes" on the interior. If $P$ is a polygonal region with $h$ polygonal holes (all vertices still at lattice points, $B$ counting *all* boundary points including the holes' boundaries), the corrected formula is:
+
+$$
+A = I + \frac{B}{2} + h - 1.
+$$
+
+## Worked Examples
+
+> **2019 AMC 10A Problem 7 (also 2019 AMC 12A Problem 5)**
+>
+> Two lines with slopes $\dfrac{1}{2}$ and $2$ intersect at $(2,2)$. What is the area of the triangle enclosed by these two lines and the line $x + y = 10$?
+>
+> $\textbf{(A) } 4 \qquad\textbf{(B) } 4\sqrt{2} \qquad\textbf{(C) } 6 \qquad\textbf{(D) } 8 \qquad\textbf{(E) } 6\sqrt{2}$
+
+The three lines are $y = \tfrac{x}{2} + 1$, $y = 2x - 2$, and $y = -x + 10$. Intersecting them gives vertices $(2,2)$, $(4,6)$, and $(6,4)$.
+
+Instead of Heron's formula or coordinate bashing, recognize that every vertex is a lattice point, so Pick's Theorem can be used.
+
+<svg viewBox="0 0 356 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triangle with vertices (2,2), (4,6) and (6,4) on the lattice"
+     style={{ width: '100%', maxWidth: '400px', height: 'auto', display: 'block',
+              margin: '1.5rem auto', fontFamily: 'Georgia, serif' }}>
+  <g>
+  <circle cx="40" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="224" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="178" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="132" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="40" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="224" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="178" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="132" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="86" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="132" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="132" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="132" cy="132" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="132" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="132" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="178" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="178" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="178" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="224" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="224" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="224" cy="224" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="224" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="224" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="224" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="132" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="270" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="316" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="270" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="224" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="178" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="132" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="86" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  <circle cx="316" cy="40" r="1.6" fill="#ffffff" fillOpacity="0.32"/>
+  </g>
+  <polygon points="86,270 178,86 270,178" fill="#ffffff" fillOpacity="0.06" stroke="#ffffff" strokeWidth="1.4" strokeLinejoin="round"/>
+  <circle cx="86" cy="270" r="3.6" fill="#ffffff"/>
+  <circle cx="132" cy="178" r="3.6" fill="#ffffff"/>
+  <circle cx="178" cy="224" r="3.6" fill="#ffffff"/>
+  <circle cx="178" cy="86" r="3.6" fill="#ffffff"/>
+  <circle cx="224" cy="132" r="3.6" fill="#ffffff"/>
+  <circle cx="270" cy="178" r="3.6" fill="#ffffff"/>
+  <circle cx="132" cy="224" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="178" cy="178" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="178" cy="132" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <circle cx="224" cy="178" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <text x="77" y="287" fontSize="13" fill="#ffffff" textAnchor="end">(2, 2)</text>
+  <text x="178" y="75" fontSize="13" fill="#ffffff" textAnchor="middle">(4, 6)</text>
+  <text x="280" y="171" fontSize="13" fill="#ffffff">(6, 4)</text>
+  <circle cx="60" cy="360" r="3.6" fill="#ffffff"/>
+  <text x="71" y="364" fontSize="12" fill="#ffffff" fillOpacity="0.72">boundary</text>
+  <circle cx="170" cy="360" r="3.4" fill="none" stroke="#ffffff" strokeWidth="1.2"/>
+  <text x="181" y="364" fontSize="12" fill="#ffffff" fillOpacity="0.72">interior</text>
+</svg>
+
+Boundary points by the GCD formula (note that since the polygon is small, counting by hand is a faster option; the formula is used here as an example):
+
+$$
+B = \gcd(2,4) + \gcd(2,2) + \gcd(4,2) = 2 + 2 + 2 = 6.
+$$
+
+The interior points are $(3,3), (4,4), (4,5), (5,4)$, so $I = 4$. Then
+
+$$
+A = 4 + \frac{6}{2} - 1 = \boxed{\textbf{(C) } 6}.
+$$
+
+> **1998 AIME Problem 2**
+>
+> Find the number of ordered pairs $(x, y)$ of positive integers that satisfy $x \le 2y \le 60$ and $y \le 2x \le 60$.
+
+This is a counting problem with no geometry in sight, but the condition of integer ordered pairs (lattice points) signals that Pick's Theorem can be used. First, unpack the two compound inequalities into four:
+
+$$
+x \le 30, \qquad y \le 30, \qquad x \le 2y, \qquad y \le 2x.
+$$
+
+Together with $x, y \ge 0$ these form a quadrilateral with vertices $(0,0)$, $(30,15)$, $(30,30)$, $(15,30)$.
+
+<svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quadrilateral with vertices (0,0), (30,15), (30,30) and (15,30)"
+     style={{ width: '100%', maxWidth: '440px', height: 'auto', display: 'block',
+              margin: '1.5rem auto', fontFamily: 'Georgia, serif' }}>
+  <defs>
+    <marker id="pk-ax" markerWidth="7" markerHeight="7" refX="6" refY="2.6" orient="auto"><path d="M0,0 L0,5.2 L7,2.6 z" fill="#ffffff" fillOpacity="0.55"/></marker>
+  </defs>
+  <line x1="46" y1="340" x2="352" y2="340" stroke="#ffffff" strokeOpacity="0.55" strokeWidth="1" markerEnd="url(#pk-ax)"/>
+  <line x1="46" y1="340" x2="46" y2="34" stroke="#ffffff" strokeOpacity="0.55" strokeWidth="1" markerEnd="url(#pk-ax)"/>
+  <polygon points="46,340 316,340 316,70 46,70" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="0.9" strokeDasharray="4 4"/>
+  <polygon points="46,340 316,205 316,70 181,70" fill="#ffffff" fillOpacity="0.06" stroke="#ffffff" strokeWidth="1.4" strokeLinejoin="round"/>
+  <circle cx="46" cy="340" r="3.6" fill="#ffffff"/>
+  <circle cx="316" cy="205" r="3.6" fill="#ffffff"/>
+  <circle cx="316" cy="70" r="3.6" fill="#ffffff"/>
+  <circle cx="181" cy="70" r="3.6" fill="#ffffff"/>
+  <text x="37" y="357" fontSize="13" fill="#ffffff" textAnchor="end">(0, 0)</text>
+  <text x="327" y="210" fontSize="13" fill="#ffffff">(30, 15)</text>
+  <text x="327" y="64" fontSize="13" fill="#ffffff">(30, 30)</text>
+  <text x="181" y="59" fontSize="13" fill="#ffffff" textAnchor="middle">(15, 30)</text>
+  <text x="137" y="110" fontSize="12" fill="#ffffff" fillOpacity="0.78" textAnchor="end">y = 2x</text>
+  <text x="262" y="250" fontSize="12" fill="#ffffff" fillOpacity="0.78" textAnchor="middle">x = 2y</text>
+</svg>
+
+**Area:** The quadrilateral is the $30 \times 30$ square minus the two right triangles cut off by $y = 2x$ and $x = 2y$. Each of those triangles has legs $15$ and $30$, so area $225$, and
+
+$$
+A = 900 - 2(225) = 450.
+$$
+
+**Boundaries:** By the GCD formula:
+
+$$
+B = \gcd(30,15) + \gcd(0,15) + \gcd(15,0) + \gcd(15,30) = 15 + 15 + 15 + 15 = 60.
+$$
+
+**Interior:** Solving Pick's Theorem for $I$:
+
+$$
+450 = I + \frac{60}{2} - 1 \implies I = 421.
+$$
+
+The inequalities are non-strict, so we want the entire region: $I + B = 421 + 60 = 481$ lattice points. Finally, the problem asks for *positive* integers, meaning the origin $(0,0)$ does not work. The answer is $481 - 1 = \boxed{480}$.
+
+## Final Remarks
+
+**Every lattice polygon has area in $\tfrac{1}{2}\mathbb{Z}$.** This means if you get anything else, you're doing something wrong. (See the next remark.)
+
+**Transformations:** If a polygon does not completely fit lattice points, try transforming it such that it does. Remember to account for dilations changing the area of the polygon.
+
+**Holes:** If the polygon has holes, make sure to use the right formula.
+
+**Usage:** Whenever given a polygon with integer (or easily convertible to integer) points, see if Pick's Theorem could be used to solve it more efficiently. When given inequalities or asked for lattice points, try using Pick's Theorem's converse.
+
+**Common Pitfalls:** Not accounting for holes, misinterpreting boundary and interior points, and using Pick's Theorem on polygons with overlapping edges.
+
+## Practice Problems
+
+<Problems problems="practice" />

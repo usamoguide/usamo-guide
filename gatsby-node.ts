@@ -19,6 +19,8 @@ const SECTION_FROM_CONTENT_DIR = {
   '4_USAMO': 'usamo',
 } as const;
 
+const READ_ONLY_EXTRA_PROBLEMS = "false"
+
 type SectionID = keyof typeof freshOrdering.SECTION_LABELS;
 
 const normalizePath = (p?: string | null) => (p ?? '').replace(/\\/g, '/');

@@ -1,4 +1,259 @@
 {
   "MODULE_ID": "proportionality-thales",
-  "practice": []
+  "practice": [
+    {
+      "uniqueId": "amc8-2007-8",
+      "name": "Problem 8 (2007 AMC 8)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2007_AMC_8_Problems/Problem_8",
+      "source": "AMC 8",
+      "difficulty": "Very Easy",
+      "isStarred": false,
+      "tags": [
+        "Parallel Lines",
+        "Trapezoids",
+        "Area"
+      ],
+      "statement": "In trapezoid $ABCD$, $\\overline{AD}$ is perpendicular to $\\overline{DC}$, $AD = AB = 3$, and $DC = 6$. In addition, $E$ is on $\\overline{DC}$, and $\\overline{BE}$ is parallel to $\\overline{AD}$. Find the area of $\\triangle BEC$.",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$3$",
+          "$4.5$",
+          "$6$",
+          "$9$",
+          "$18$"
+        ],
+        "correctIndex": 1
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10-2000-5",
+      "name": "Problem 5 (2000 AMC 10)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2000_AMC_10_Problems/Problem_5",
+      "source": "AMC 10",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": [
+        "Midpoint Theorem",
+        "Parallel Lines",
+        "Area"
+      ],
+      "statement": "Points $M$ and $N$ are the midpoints of sides $PA$ and $PB$ of $\\triangle PAB$. As $P$ moves along a line that is parallel to side $AB$, how many of the four quantities listed below change?\n\n(a) the length of the segment $MN$\n\n(b) the perimeter of $\\triangle PAB$\n\n(c) the area of $\\triangle PAB$\n\n(d) the area of trapezoid $ABNM$",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$"
+        ],
+        "correctIndex": 1
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc8-2018-20",
+      "name": "Problem 20 (2018 AMC 8)",
+      "url": "https://artofproblemsolving.com/wiki/index.php?title=2018_AMC_8_Problems/Problem_20",
+      "source": "AMC 8",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": [
+        "Basic Proportionality Theorem",
+        "Parallel Lines",
+        "Area Ratios"
+      ],
+      "statement": "In $\\triangle ABC$, a point $E$ is on $\\overline{AB}$ with $AE=1$ and $EB=2$. Point $D$ is on $\\overline{AC}$ so that $\\overline{DE}\\parallel\\overline{BC}$ and point $F$ is on $\\overline{BC}$ so that $\\overline{EF}\\parallel\\overline{AC}$. What is the ratio of the area of $CDEF$ to the area of $\\triangle ABC$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$\\frac{4}{9}$",
+          "$\\frac{1}{2}$",
+          "$\\frac{5}{9}$",
+          "$\\frac{3}{5}$",
+          "$\\frac{2}{3}$"
+        ],
+        "correctIndex": 0
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc12a-2011-13",
+      "name": "Problem 13 (2011 AMC 12A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2011_AMC_12A_Problems/Problem_13",
+      "source": "AMC 12",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": [
+        "Basic Proportionality Theorem",
+        "Parallel Lines",
+        "Incenter",
+        "Perimeter"
+      ],
+      "statement": "Triangle $ABC$ has side-lengths $AB = 12$, $BC = 24$, and $AC = 18$. The line through the incenter of $\\triangle ABC$ parallel to $\\overline{BC}$ intersects $\\overline{AB}$ at $M$ and $\\overline{AC}$ at $N$. What is the perimeter of $\\triangle AMN$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$27$",
+          "$30$",
+          "$33$",
+          "$36$",
+          "$42$"
+        ],
+        "correctIndex": 1
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10b-2005-23",
+      "name": "Problem 23 (2005 AMC 10B)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2005_AMC_10B_Problems/Problem_23",
+      "source": "AMC 10",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": [
+        "Midsegment",
+        "Trapezoids",
+        "Area Ratios"
+      ],
+      "statement": "In trapezoid $ABCD$ we have $\\overline{AB}$ parallel to $\\overline{DC}$, $E$ as the midpoint of $\\overline{BC}$, and $F$ as the midpoint of $\\overline{DA}$. The area of $ABEF$ is twice the area of $FECD$. What is $AB/DC$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$5$",
+          "$6$",
+          "$8$"
+        ],
+        "correctIndex": 2
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc8-2019-24",
+      "name": "Problem 24 (2019 AMC 8)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2019_AMC_8_Problems/Problem_24",
+      "source": "AMC 8",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Segment Ratios",
+        "Midpoints",
+        "Area Ratios"
+      ],
+      "statement": "In triangle $\\triangle ABC$, point $D$ divides side $\\overline{AC}$ so that $AD:DC=1:2$. Let $E$ be the midpoint of $\\overline{BD}$ and let $F$ be the point of intersection of line $\\overline{BC}$ and line $\\overline{AE}$. Given that the area of $\\triangle ABC$ is $360$, what is the area of $\\triangle EBF$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$24$",
+          "$30$",
+          "$32$",
+          "$36$",
+          "$40$"
+        ],
+        "correctIndex": 1
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10a-2022-13",
+      "name": "Problem 13 (2022 AMC 10A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Problems/Problem_13",
+      "source": "AMC 10",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Parallel Lines",
+        "Angle Bisector",
+        "Similar Triangles"
+      ],
+      "statement": "Let $\\triangle ABC$ be a scalene triangle. Point $P$ lies on $\\overline{BC}$ so that $\\overline{AP}$ bisects $\\angle BAC$. The line through $B$ perpendicular to $\\overline{AP}$ intersects the line through $A$ parallel to $\\overline{BC}$ at point $D$. Suppose $BP=2$ and $PC=3$. What is $AD$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$8$",
+          "$9$",
+          "$10$",
+          "$11$",
+          "$12$"
+        ],
+        "correctIndex": 2
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10a-2018-24",
+      "name": "Problem 24 (2018 AMC 10A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Problems/Problem_24",
+      "source": "AMC 10",
+      "difficulty": "Hard",
+      "isStarred": false,
+      "tags": [
+        "Midsegment",
+        "Parallel Lines",
+        "Angle Bisector",
+        "Area"
+      ],
+      "statement": "Triangle $ABC$ with $AB=50$ and $AC=10$ has area $120$. Let $D$ be the midpoint of $\\overline{AB}$, and let $E$ be the midpoint of $\\overline{AC}$. The angle bisector of $\\angle BAC$ intersects $\\overline{DE}$ and $\\overline{BC}$ at $F$ and $G$, respectively. What is the area of quadrilateral $FDBG$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$60$",
+          "$65$",
+          "$70$",
+          "$75$",
+          "$80$"
+        ],
+        "correctIndex": 3
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "amc10a-2021-17",
+      "name": "Problem 17 (2021 AMC 10A)",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Problems/Problem_17",
+      "source": "AMC 10",
+      "difficulty": "Very Hard",
+      "isStarred": false,
+      "tags": [
+        "Trapezoid Diagonals",
+        "Parallel Lines",
+        "Segment Ratios"
+      ],
+      "statement": "Trapezoid $ABCD$ has $\\overline{AB}\\parallel\\overline{CD}$, $BC=CD=43$, and $\\overline{AD}\\perp\\overline{BD}$. Let $O$ be the intersection of the diagonals $\\overline{AC}$ and $\\overline{BD}$, and let $P$ be the midpoint of $\\overline{BD}$. Given that $OP=11$, the length of $AD$ can be written in the form $m\\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. What is $m+n$?",
+      "interaction": {
+        "type": "mcq",
+        "choices": [
+          "$65$",
+          "$132$",
+          "$157$",
+          "$194$",
+          "$215$"
+        ],
+        "correctIndex": 3
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
 }

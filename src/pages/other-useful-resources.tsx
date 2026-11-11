@@ -1,5 +1,6 @@
 import {
   AcademicCapIcon,
+  BookOpenIcon,
   ChartBarIcon,
   ClipboardListIcon,
   LightBulbIcon,
@@ -216,6 +217,59 @@ const RESOURCES: TopicResources[] = [
         imageSrc:
           'https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=1280&q=80',
         imageAlt: 'Olympiad-style problem sheets laid out for training.',
+      },
+    ],
+  },
+  {
+    topic: 'Handout Libraries and Free Books',
+    icon: BookOpenIcon,
+    intro:
+      'Site-wide hubs worth bookmarking: complete handout indexes, free textbooks, and video playlists that span every module.',
+    imageSrc:
+      'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1280&q=80',
+    imageAlt: 'Shelves of books representing a library of math handouts.',
+    links: [
+      {
+        name: 'Evan Chen - Olympiad Handout Index',
+        href: 'https://web.evanchen.cc/olympiad.html',
+        description:
+          'Index of every Evan Chen handout, sorted by subject and difficulty.',
+      },
+      {
+        name: 'David Altizio - Handout Index',
+        href: 'https://davidaltizio.web.illinois.edu/mathlinks.html',
+        description:
+          'AIME-focused handouts on algebra, number theory, geometry, and counting.',
+      },
+      {
+        name: 'CJ Quines - Handout Index',
+        href: 'https://cjquines.com/math/handouts.html',
+        description:
+          'Short, readable olympiad handouts, including lifting the exponent.',
+      },
+      {
+        name: 'Yufei Zhao - Olympiad Handouts',
+        href: 'https://yufeizhao.com/olympiad/',
+        description:
+          'Classic MOP-style handouts with accompanying solution files.',
+      },
+      {
+        name: 'OmegaLearn - Free Books Hub',
+        href: 'https://www.omegalearn.org/books',
+        description:
+          'Free Mastering AMC 8 and AMC 10/12 books plus the Book of Formulas.',
+      },
+      {
+        name: 'OmegaLearn - Mastering AMC 10/12 (Direct PDF)',
+        href: 'https://www.omegalearn.org/books/Mastering_AMC_1012_Book.pdf',
+        description:
+          'The full AMC 10/12 textbook as a single downloadable PDF.',
+      },
+      {
+        name: 'OmegaLearn - AMC 10/12 Video Playlist',
+        href: 'https://www.youtube.com/playlist?list=PLT9bNzqjDoMkoIg9K_bs4EjdpHYlS0L51',
+        description:
+          'Video lectures covering the full AMC 10/12 syllabus, topic by topic.',
       },
     ],
   },
