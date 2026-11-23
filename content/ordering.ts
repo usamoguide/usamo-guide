@@ -1,6 +1,7 @@
 // Section -> Chapter -> Module
 
 export type SectionID =
+  | 'general'
   | 'foundations'
   | 'intermediate'
   | 'advanced'
@@ -13,6 +14,27 @@ export type Chapter = {
 };
 
 const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
+  general: [
+    {
+      name: 'Getting Started',
+      description: 'How this guide works and how olympiad math works around the world.',
+      items: [
+        'using-this-guide',
+        'intro-olympiad-math',
+        'other-contests',
+      ],
+    },
+    {
+      name: 'Training',
+      description: 'How to practice, get unstuck, and perform on contest day.',
+      items: ['how-to-practice', 'getting-unstuck', 'contest-strategy'],
+    },
+    {
+      name: 'Resources and Community',
+      description: 'Books, handouts, the Discord, and how to contribute.',
+      items: ['other-resources', 'contributing'],
+    },
+  ],
   foundations: [
     {
       name: 'Basic Arithmetic and Notation',
@@ -359,12 +381,15 @@ export const SECTIONS: SectionID[] = Object.keys(
   MODULE_ORDERING
 ) as SectionID[];
 export const SECTION_LABELS: { [key in SectionID]: string } = {
+  general: 'General',
   foundations: 'Foundations (AMC 8)',
   intermediate: 'Intermediate (AMC 10-12)',
   advanced: 'Advanced (AIME)',
   usamo: 'Olympiad (USA(J)MO)',
 } as const;
 export const SECTION_SEO_DESCRIPTION: { [key in SectionID]: string } = {
+  general:
+    'Getting started with olympiad math: using this guide, contest pathways worldwide, practice habits, contest strategy, and resources.',
   foundations:
     'AMC 8 preparation: arithmetic, data analysis, algebra, geometry, number theory, combinatorics, and probability.',
   intermediate:
@@ -375,6 +400,7 @@ export const SECTION_SEO_DESCRIPTION: { [key in SectionID]: string } = {
     'USAMO preparation: proof writing, induction, extremal arguments, olympiad number theory and geometry, and contest strategy.',
 };
 export const SECTION_SEO_TITLES: { [key in SectionID]: string } = {
+  general: 'General',
   foundations: 'Foundations (AMC 8)',
   intermediate: 'Intermediate (AMC 10-12)',
   advanced: 'Advanced (AIME)',

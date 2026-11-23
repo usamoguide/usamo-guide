@@ -13,6 +13,7 @@ import {
 const initSqlJs = require('sql.js') as typeof import('sql.js');
 
 const SECTION_FROM_CONTENT_DIR = {
+  '0_General': 'general',
   '1_Foundations': 'foundations',
   '2_Intermediate': 'intermediate',
   '3_Advanced': 'advanced',

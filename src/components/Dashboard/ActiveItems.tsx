@@ -52,7 +52,7 @@ export default function ActiveItems({
     if (astatus != bstatus) return astatus - bstatus;
     const getLabel = x => {
       // put active modules in section order
-      const secs = ['Foundations', 'Intermediate', 'Advanced', 'USAMO'];
+      const secs = ['General', 'Foundations', 'Intermediate', 'Advanced', 'USAMO'];
       for (let i = 0; i < secs.length; ++i) if (x.startsWith(secs[i])) return i;
       return 100;
     };

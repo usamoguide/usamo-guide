@@ -246,6 +246,7 @@ const slugify = (value: string) =>
 
 const orderingFilePath = 'content/ordering.ts';
 const sectionFolderMap: Record<string, string> = {
+  'content/0_General': 'general',
   'content/1_Foundations': 'foundations',
   'content/2_Intermediate': 'intermediate',
   'content/3_Advanced': 'advanced',

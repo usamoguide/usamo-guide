@@ -1,0 +1,92 @@
+---
+id: contest-strategy
+title: Contest Strategy
+author: Aarav Uniyal
+description: Pacing, skipping, checking, and guessing on timed contests, with the US contest formats as worked examples.
+prerequisites: []
+---
+
+## Strategy for any timed contest
+
+Everything in this first section applies to any timed contest, in any country.
+
+Before the day, first make sure you know the actual format of the contest. How
+many problems are there? How much time do you get? How is it scored, and do
+wrong answers lose points? It might seem like a waste of time to look all of
+this up, but two contests with the same problems and different scoring rules
+would always be taken quite differently.
+
+During the contest, first skim the entire test paper. Problems aren't always
+in order of difficulty, and there can be deceptively easy ones sitting right at
+the end, which you'd never get to if you went strictly in order. If you've been
+stuck on a problem for a few minutes, mark it and move on, since you can always
+come back to it later.
+
+For multiple-choice questions, if you're stuck, try to cross out impossible
+choices. Plugging answers back into the problem and checking whether they
+give a valid answer is also a strategy that's fine to use. The most important
+tip I'd give, though, is that you should always reread the question before
+answering. It's almost a rite of passage to solve for $x$ when the question
+had wanted $2x$, for example.
+
+It's also quite important to get good sleep the night before. After all, your
+brain isn't going to function properly without it. On test day, bring only
+what's allowed, and arrive early so that you're not late.
+
+## US formats
+
+Test formats change, so check the
+[MAA's website](https://maa.org/student-programs/amc/) just in case. Even the
+AMC 8 and the AMC 10 score completely differently, despite being run by the
+same people. If you compete somewhere else, look up your own contest's rules
+and use the same reasoning.
+
+### AMC 8
+
+On the AMC 8, you get 40 minutes for 25 multiple-choice questions. That works
+out to about a minute and a half per question, which goes by faster than you'd
+think. There's no penalty for wrong answers, so never leave anything blank,
+even if it's a complete guess.
+
+### AMC 10 and AMC 12
+
+Both are 25 multiple-choice questions in 75 minutes. You get 6 points for a
+correct answer, 1.5 for a blank, and 0 for a wrong answer. With five choices
+per question, whether a guess is worth it comes down to how many of them
+you've ruled out:
+
+| Choices left | Expected value of a guess | Versus a blank (1.5) |
+| --- | --- | --- |
+| 5 | $6/5 = 1.2$ | Worse |
+| 4 | $6/4 = 1.5$ | Even |
+| 3 | $6/3 = 2$ | Better |
+| 2 | $6/2 = 3$ | Much better |
+
+So guessing blind actually costs you points on average. Cross out two choices
+first, and then it's worth it.
+
+It's also better to be accurate than to rush through every problem. If you
+answer 14 correctly and leave the other 11 blank, that's
+$14 \cdot 6 + 11 \cdot 1.5 = 100.5$, which on the AMC 10 is already enough to
+qualify for the AIME. In other words, **you can leave more than a third of the
+test blank and still make the AIME.**
+
+### AIME
+
+On the AIME, you're given 3 hours for 15 problems. If you divide the time
+equally, that's about 12 minutes each. Answers are integers from 0 to 999, and
+there's no penalty for wrong answers, so always answer every question. Since
+the answer space is so wide, you can't really confirm whether your answer
+"makes sense" from meta-information (such as the choices in a multiple-choice
+question). Thus, it's of utmost importance to always check your arithmetic
+and make sure you aren't making any silly mistakes.
+
+### USAJMO and USAMO
+
+The USA(J)MO is two days long. Each day you get 3 proof-based problems and 4.5
+hours to do them, and every problem is graded out of 7, with partial credit if
+you've made any actual progress. Don't rush. Try to gain intuition for the
+problems, and try to focus on one problem, since a full solution to one
+problem is generally worth more than partial credit on all three. Also, leave
+time to write up your solutions properly. Don't leave steps as "trivial, and
+an exercise for the reader."

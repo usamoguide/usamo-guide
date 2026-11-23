@@ -796,7 +796,7 @@ export default function IndexPage({ path }): JSX.Element {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/other-useful-resources" style={footerLinkStyle}>
+                  <Link to="/general/other-resources" style={footerLinkStyle}>
                     Resources
                   </Link>
                 </li>
