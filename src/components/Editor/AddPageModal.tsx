@@ -5,6 +5,7 @@ import { createNewPageFileAtom } from '../../atoms/editor';
 import MODULE_ORDERING from '../../../content/ordering';
 
 const sectionOptions = [
+  'content/0_General',
   'content/1_Foundations',
   'content/2_Intermediate',
   'content/3_Advanced',
@@ -12,6 +13,7 @@ const sectionOptions = [
 ] as const;
 
 const sectionPathToId: Record<string, keyof typeof MODULE_ORDERING> = {
+  'content/0_General': 'general',
   'content/1_Foundations': 'foundations',
   'content/2_Intermediate': 'intermediate',
   'content/3_Advanced': 'advanced',

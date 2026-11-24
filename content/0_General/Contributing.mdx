@@ -1,0 +1,63 @@
+---
+id: contributing
+title: Contributing
+author: Aarav Uniyal
+description: How to write modules, add problems, and submit changes to USAMO Guide.
+prerequisites: []
+---
+
+## Written by students
+
+USAMO Guide is free, open source, and written by students just like you, and
+there are multitudes of ways to help with the website. You can write a module,
+add problems and solutions to an already existing one, make existing modules
+clearer, or even just fix any mistakes you find. Before you get started on
+anything, though, coordinate with other contributors in our
+[Discord](https://discord.gg/Rb65gHqX8J).
+
+## Ways to contribute
+
+If you find a typo or a broken link, just tell us through the **Contact Us**
+link at the bottom of the module sidebar, or in the Discord. Same with mislabeled problems, problems you think we're
+missing, etc.; for anything bigger, you'll want to go through GitHub (still tell us in Discord). Pick an
+[open issue](https://github.com/usamoguide/usamo-guide/issues), or build
+something new yourself, and then open a pull request.
+
+## Writing a module
+
+Each module is just an MDX file, which is Markdown that you can also drop
+components into. They live in section folders under `content/` (the General
+modules, for instance, are in `content/0_General/`), and if a module has
+practice problems, those go in a `.problems.json` file with the same name.
+
+Before writing anything, read our
+[Math Topic Template](https://github.com/usamoguide/usamo-guide/blob/main/docs/Math_Topic_Template.md);
+it shows how modules are usually laid out. After that, the
+[MDX Guide](https://github.com/usamoguide/usamo-guide/blob/main/docs/MDX_Guide.md)
+covers how to write math, figures, and the `<Problems>` component. When you're
+done, make sure to put the module's id into `content/ordering.ts`, because
+otherwise it just won't appear in its track. (If you don't want to deal with
+setting up the repo, you can also write and preview modules in the browser
+with the [editor](/editor).)
+
+## Adding problems
+
+To add problems, edit the module's `.problems.json` file. Each problem needs a
+name, a link, a source, a difficulty, and an id nobody else is using (the full
+rules are in `content/problems.schema.json`). Tags and the statement are
+optional, but it's nice to add them.
+
+Some problems need a figure. For those, use an `[asy]` block for Asymptote or
+a `[latex]` block for LaTeX, then run `yarn compile:figures` and commit the
+SVGs it spits out. There's more on this in
+[Problem Figures](https://github.com/usamoguide/usamo-guide/blob/main/docs/Problem_Figures.md).
+
+## Submitting your change
+
+If you've never used GitHub, don't fret; it's honestly quite a LOT simpler than it looks. First, fork the
+[repository](https://github.com/usamoguide/usamo-guide) and make a new branch
+on your copy for whatever you're working on. While you're editing, run `yarn dev`
+and open `localhost:8000` to see your changes as you make them. When you're happy with it, open a
+pull request and write a couple of lines about what you changed. Someone on
+the team will then review it, and they might ask for a few edits before it's
+merged.

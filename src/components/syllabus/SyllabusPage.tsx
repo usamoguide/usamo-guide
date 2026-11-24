@@ -25,6 +25,7 @@ import { useUserProgressOnModules } from '../../context/UserDataContext/properti
 
 /* All sections share the one page background; see --bg-page in src/styles/theme.css. */
 const HeroAccentColor: { [key in SectionID]: string } = {
+  general: 'bg-[var(--bg-page)]',
   foundations: 'bg-[var(--bg-page)]',
   intermediate: 'bg-[var(--bg-page)]',
   advanced: 'bg-[var(--bg-page)]',
@@ -32,6 +33,15 @@ const HeroAccentColor: { [key in SectionID]: string } = {
 };
 
 const SECTION_DESCRIPTION: { [key in SectionID]: React.ReactNode } = {
+  general: (
+    <>
+      New to olympiad math, or to this guide? Start here: how the guide works,
+      how contest pathways work in the US and around the world, and how to
+      practice effectively.
+      <br />
+      Everything here applies wherever you compete, all the way to the IMO.
+    </>
+  ),
   foundations: (
     <>
       Build your core toolbox first: algebra, geometry, counting, and number

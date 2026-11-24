@@ -15,13 +15,14 @@ type HeroNavItem = { label: string; href: string };
 
 const heroNavDropdowns: Record<string, HeroNavItem[]> = {
   Tracks: [
+    { label: 'General', href: '/general' },
     { label: 'Foundations', href: '/foundations' },
     { label: 'Intermediate', href: '/intermediate' },
     { label: 'Advanced', href: '/advanced' },
     { label: 'Olympiad', href: '/usamo' },
   ],
   Resources: [
-    { label: 'Other Useful Resources', href: '/other-useful-resources' },
+    { label: 'Other Useful Resources', href: '/general/other-resources' },
     { label: 'USAMO Contests', href: 'https://contests.usamoguide.com/' },
     {
       label: 'Past AMC/AIME',

@@ -1,2 +1,3 @@
 # FROM-URL	TO-URL
 /liveupdate	/editor
+/other-useful-resources	/general/other-resources

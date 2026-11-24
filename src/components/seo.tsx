@@ -94,7 +94,7 @@ function SEO({
     { name: 'Foundations', url: `${siteUrl}/foundations` },
     { name: 'Problem Sets', url: `${siteUrl}/problems` },
     { name: 'Contests', url: 'https://contests.usamoguide.com/' },
-    { name: 'Resources', url: `${siteUrl}/other-useful-resources` },
+    { name: 'Resources', url: `${siteUrl}/general/other-resources` },
     { name: 'Philosophy', url: `${siteUrl}/philosophy` },
   ];
   const structuredDataEntries: JsonLdEntry[] = [
