@@ -1,0 +1,266 @@
+{
+  "MODULE_ID": "advanced-diophantine-equations",
+  "practice": [
+    {
+      "uniqueId": "custom-advanced-diophantine-factor-pairs-and-signs",
+      "name": "Advanced Diophantine Factor Pairs and Signs",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-factor-pairs-and-signs-custom-advanced-diophantine-factor-pairs-and-signs/",
+      "source": "Custom",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Diophantine Equations", "Factorization techniques"],
+      "statement": "Find all integer pairs $(x,y)$ satisfying\n$$\nx^2-y^2=77.\n$$\nRemember to include negative values of either variable.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nBecause $x^2>y^2$, put $X=|x|$ and $Y=|y|$, so $X>Y\\geq 0$. Factoring gives\n$$\n(X-Y)(X+Y)=77.\n$$\nBoth factors are positive, and the first is at most the second. The positive factor pairs of $77$ are $(1,77)$ and $(7,11)$. If $u=X-Y$ and $v=X+Y$, then\n$$\nX=\\frac{u+v}{2},\\qquad Y=\\frac{v-u}{2}.\n$$\nBoth pairs have matching parity, so they give integer values. They produce $(X,Y)=(39,38)$ and $(9,2)$.\n\nConversely, $39^2-38^2=77$ and $9^2-2^2=77$. Changing either sign preserves the equation. Thus the complete answer is\n$$\n\\boxed{(x,y)=(\\pm39,\\pm38)\\ \\text{or}\\ (\\pm9,\\pm2),}\n$$\nwhere the two signs in each pair may be chosen independently."
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-a-modulo-four-obstruction",
+      "name": "Advanced Diophantine A Modulo Four Obstruction",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-a-modulo-four-obstruction-custom-advanced-diophantine-a-modulo-four-obstruction/",
+      "source": "Custom",
+      "difficulty": "Easy",
+      "isStarred": false,
+      "tags": ["Diophantine Equations", "Modular Arithmetic"],
+      "statement": "Prove that there are no integers $x,y,z$ satisfying\n$$\nx^2+y^2=4z^2+3.\n$$",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nAn even integer has square congruent to $0$ modulo $4$, and an odd integer has square congruent to $1$ modulo $4$. Therefore a sum of two squares can have only the residues\n$$\n0+0=0,\\qquad 0+1=1,\\qquad 1+1=2\\pmod 4.\n$$\nBut $4z^2+3\\equiv3\\pmod4$. The two sides cannot have the same residue, regardless of the signs or sizes of the variables. Hence\n$$\n\\boxed{\\text{there are no integer solutions}.}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-coprime-factors-of-a-square",
+      "name": "Advanced Diophantine Coprime Factors of a Square",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-coprime-factors-of-a-square-custom-advanced-diophantine-coprime-factors-of-a-square/",
+      "source": "Custom",
+      "difficulty": "Easy",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Greatest common divisors (gcd)",
+        "Unique factorization"
+      ],
+      "statement": "Find all positive integer triples $(x,y,z)$ such that\n$$\n\\gcd(x,y)=1,\\qquad x+y=25,\\qquad xy=z^2.\n$$",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nEvery prime occurs to an even exponent in a square. Since $\\gcd(x,y)=1$, no prime divides both $x$ and $y$. Thus the exponent of any prime in $xy$ comes entirely from one of these two factors. The equation $xy=z^2$ forces every exponent in both $x$ and $y$ to be even. Consequently\n$$\nx=a^2,\\qquad y=b^2\n$$\nfor positive integers $a,b$.\n\nNow $a^2+b^2=25$. Since both squares are positive, each is less than $25$, so each belongs to $\\{1,4,9,16\\}$. The only two members of this set whose sum is $25$ are $9$ and $16$. Their product is $144$, whose positive square root is $12$.\n\nFinally, $\\gcd(9,16)=1$, $9+16=25$, and $9\\cdot16=12^2$, so both orders actually satisfy all the conditions. Therefore\n$$\n\\boxed{(x,y,z)=(9,16,12)\\ \\text{or}\\ (16,9,12).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-an-odd-exponent-of-two",
+      "name": "Advanced Diophantine An Odd Exponent of Two",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-an-odd-exponent-of-two-custom-advanced-diophantine-an-odd-exponent-of-two/",
+      "source": "Custom",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": ["Diophantine Equations", "Unique factorization"],
+      "statement": "Find all integer pairs $(x,y)$ satisfying\n$$\nx^2=10y^4.\n$$\nUse the exponent of a prime in the factorization, rather than estimates of square roots.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nIf $y=0$, the equation forces $x=0$, giving $(0,0)$.\n\nSuppose $y\\ne0$. Write $|y|=2^k u$, where $k\\geq0$ and $u$ is odd. This means that $k$ is the exact number of factors of $2$ in $|y|$. Then\n$$\n10y^4=2^{1+4k}\\cdot5u^4.\n$$\nBecause $5u^4$ is odd, the exact exponent of $2$ on the right is $1+4k$, an odd integer.\n\nThe right side is positive, so $x\\ne0$. If $|x|=2^\\ell v$ with $v$ odd, the exact exponent of $2$ in $x^2$ is $2\\ell$, an even integer. Equality would require\n$$\n2\\ell=1+4k,\n$$\nwhich is impossible. Thus no solution has $y\\ne0$. Substitution verifies the remaining pair, so\n$$\n\\boxed{(x,y)=(0,0).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-between-consecutive-squares",
+      "name": "Advanced Diophantine Between Consecutive Squares",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-between-consecutive-squares-custom-advanced-diophantine-between-consecutive-squares/",
+      "source": "Custom",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": ["Diophantine Equations", "Perfect Squares"],
+      "statement": "Find all pairs of nonnegative integers $(n,m)$ satisfying\n$$\nm^2=n^2+3n+1.\n$$",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nWhen $n=0$, the equation gives $m^2=1$. Since $m$ is nonnegative, this gives $m=1$.\n\nNow suppose $n\\geq1$. Compare the expression with the squares of the consecutive integers $n+1$ and $n+2$:\n$$\n(n^2+3n+1)-(n+1)^2=n>0,\n$$\nwhile\n$$\n(n+2)^2-(n^2+3n+1)=n+3>0.\n$$\nHence\n$$\n(n+1)^2<m^2<(n+2)^2.\n$$\nBecause all the quantities being squared are nonnegative, this implies $n+1<m<n+2$. There is no integer strictly between two consecutive integers. We have excluded every $n\\geq1$, and $(0,1)$ satisfies the original equation. Therefore\n$$\n\\boxed{(n,m)=(0,1).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-a-power-of-two-between-factors",
+      "name": "Advanced Diophantine A Power of Two Between Factors",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-a-power-of-two-between-factors-custom-advanced-diophantine-a-power-of-two-between-factors/",
+      "source": "Custom",
+      "difficulty": "Normal",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Factorization techniques",
+        "Unique factorization"
+      ],
+      "statement": "Find all pairs $(x,n)$ with $x$ an integer and $n$ a nonnegative integer such that\n$$\nx^2=2^n+9.\n$$",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nSet $X=|x|$. Since $2^n>0$, we have $X^2>9$ and hence $X>3$. Factoring gives two positive integer factors:\n$$\n(X-3)(X+3)=2^n.\n$$\nEvery positive divisor of a power of $2$ is itself a power of $2$. Thus\n$$\nX-3=2^a,\\qquad X+3=2^b\n$$\nfor integers $0\\leq a<b$, and $n=a+b$. Subtracting yields\n$$\n6=2^b-2^a=2^a(2^{b-a}-1).\n$$\nSince $b-a\\geq1$, the factor $2^{b-a}-1$ is odd. Therefore the exact exponent of $2$ on the right is $a$. The exact exponent in $6$ is $1$, so $a=1$. We then get $2^{b-1}-1=3$, which gives $b=3$.\n\nIt follows that $X-3=2$, so $X=5$, and $n=1+3=4$. Conversely, $5^2=2^4+9$, and either sign of $x$ has the same square. Thus\n$$\n\\boxed{(x,n)=(5,4)\\ \\text{or}\\ (-5,4).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-primitive-triples-with-hypotenuse-sixty-five",
+      "name": "Advanced Diophantine Primitive Triples with Hypotenuse Sixty Five",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-primitive-triples-with-hypotenuse-sixty-five-custom-advanced-diophantine-primitive-triples-with-hypotenuse-sixty-five/",
+      "source": "Custom",
+      "difficulty": "Normal",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Pythagorean triples",
+        "Greatest common divisors (gcd)"
+      ],
+      "statement": "A Pythagorean triple is a triple of positive integers $(a,b,c)$ with $a^2+b^2=c^2$. It is primitive if $\\gcd(a,b,c)=1$.\n\nFind all ordered primitive Pythagorean triples with $c=65$. Derive the parameterization you use from a factorization; do not assume the Pythagorean triple formula.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nWe first derive the required formula for a primitive triple. Its legs cannot both be odd: then their squares sum to $2$ modulo $4$, which is not a square. They cannot both be even, because the equation would make $c$ even too, contradicting primitivity. Thus exactly one leg is even. Temporarily call the odd leg $A$ and the even leg $B$. The hypotenuse $c$ is odd.\n\nAlso, $\\gcd(A,c)=1$. Indeed, a prime dividing both would divide $B^2=c^2-A^2$, hence $B$, and would then divide all three coordinates.\n\nThe positive integers\n$$\nu=\\frac{c+A}{2},\\qquad v=\\frac{c-A}{2}\n$$\nsatisfy $u>v$ and\n$$\nuv=\\left(\\frac B2\\right)^2.\n$$\nAny common divisor of $u$ and $v$ divides their sum $c$ and their difference $A$, so $\\gcd(u,v)=1$. As in the coprime square product argument, all prime exponents in each factor must be even. Therefore $u=r^2$ and $v=s^2$ for positive integers $r>s$. Adding and subtracting now give\n$$\nc=r^2+s^2,\\qquad A=r^2-s^2,\\qquad B=2rs.\n$$\nThe last identity follows from $B>0$ and $B^2=4r^2s^2$.\n\nFor $c=65$, we must solve $r^2+s^2=65$ with $r>s\\geq1$. The inequality $2s^2<65$ implies $s\\leq5$. For $s=1,2,3,4,5$, the corresponding values of $r^2$ are $64,61,56,49,40$. Only $64=8^2$ and $49=7^2$ are squares. The two possibilities $(r,s)=(8,1)$ and $(7,4)$ give legs $(63,16)$ and $(33,56)$.\n\nBoth triples are primitive: $\\gcd(63,16)=1$ and $\\gcd(33,56)=1$. Directly, $63^2+16^2=4225=65^2$ and $33^2+56^2=4225$. Since either original leg could have been the even one, the ordered triples are\n$$\n\\boxed{(16,63,65),\\ (63,16,65),\\ (33,56,65),\\ (56,33,65).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-divisibility-in-a-primitive-triple",
+      "name": "Advanced Diophantine Divisibility in a Primitive Triple",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-divisibility-in-a-primitive-triple-custom-advanced-diophantine-divisibility-in-a-primitive-triple/",
+      "source": "Custom",
+      "difficulty": "Normal",
+      "isStarred": false,
+      "tags": [
+        "Diophantine Equations",
+        "Pythagorean triples",
+        "Modular Arithmetic"
+      ],
+      "statement": "Let $(a,b,c)$ be a primitive Pythagorean triple of positive integers, so $a^2+b^2=c^2$ and $\\gcd(a,b,c)=1$. Prove that $60$ divides $abc$.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nWe will show separately that $4$, $3$, and $5$ divide the product. These integers are pairwise coprime, so this will imply that their product $60$ divides it.\n\nFirst, exactly one leg is even. Both legs odd would give $c^2\\equiv2\\pmod4$, which is impossible. Both legs even would make $c$ even, contradicting primitivity. Relabel the legs if necessary so that $a$ and $c$ are odd and $b$ is even.\n\nEvery odd square is $1$ modulo $8$: if the integer is $2t+1$, its square is $4t(t+1)+1$, and $t(t+1)$ is even. Thus\n$$\nb^2=c^2-a^2\\equiv0\\pmod8.\n$$\nAn even number not divisible by $4$ has the form $2u$ with $u$ odd, whose square is $4\\pmod8$. Therefore $4\\mid b$, and $4\\mid abc$.\n\nSquares modulo $3$ are $0$ and $1$. If neither $a$ nor $b$ were divisible by $3$, then $c^2\\equiv1+1=2\\pmod3$, which is impossible. Hence $3$ divides at least one leg, so $3\\mid abc$.\n\nFinally, suppose none of $a,b,c$ were divisible by $5$. Each of their squares would then be $1$ or $4$ modulo $5$. But the possible sums of two such residues are $2$, $0$, and $3$, none of which is $1$ or $4$. This contradicts $a^2+b^2=c^2$. Therefore $5$ divides one of the three coordinates, so $5\\mid abc$.\n\nCombining the three divisibilities gives\n$$\n\\boxed{60\\mid abc.}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-descent-after-a-modular-test",
+      "name": "Advanced Diophantine Descent After a Modular Test",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-descent-after-a-modular-test-custom-advanced-diophantine-descent-after-a-modular-test/",
+      "source": "Custom",
+      "difficulty": "Hard",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Modular Arithmetic",
+        "Infinite descent / root flipping"
+      ],
+      "statement": "Find all integer triples $(x,y,z)$ satisfying\n$$\nx^2+y^2=7z^2.\n$$\nA congruence alone will show that certain coordinates are divisible by $7$. Explain why repeating that observation rules out every nonzero solution.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nThe square residues modulo $7$ are $0,1,2,4$. The negatives of the three nonzero square residues are $6,5,3$, none of which is a square residue. Thus the only way two square residues can sum to $0$ modulo $7$ is $0+0$.\n\nReducing the equation modulo $7$ therefore gives $7\\mid x$ and $7\\mid y$. Write $x=7a$ and $y=7b$. Substitution gives\n$$\nz^2=7(a^2+b^2).\n$$\nHence $7\\mid z^2$, so $7\\mid z$ as well; this also follows from the list of square residues. Write $z=7c$. Dividing the original equation by $49$ yields\n$$\na^2+b^2=7c^2.\n$$\nWe have obtained another integer solution by dividing every coordinate by $7$.\n\nSuppose a nonzero solution exists, and choose one with $|z|$ as small as possible. Such a choice is valid because a nonzero solution has $z\\ne0$: if $z=0$, then $x^2+y^2=0$ forces $x=y=0$. Thus $|z|$ is a positive integer. The constructed solution $(a,b,c)$ has $c=z/7\\ne0$ and\n$$\n0<|c|=\\frac{|z|}{7}<|z|,\n$$\ncontradicting our choice. No nonzero solution exists. The zero triple satisfies the equation, so\n$$\n\\boxed{(x,y,z)=(0,0,0).}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-a-pell-recurrence-and-its-completeness",
+      "name": "Advanced Diophantine A Pell Recurrence and Its Completeness",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-a-pell-recurrence-and-its-completeness-custom-advanced-diophantine-a-pell-recurrence-and-its-completeness/",
+      "source": "Custom",
+      "difficulty": "Hard",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Pell's equations",
+        "Infinite descent / root flipping",
+        "Recurrence relations"
+      ],
+      "statement": "Determine all pairs of nonnegative integers $(x,y)$ satisfying\n$$\nx^2-3y^2=1.\n$$\nExpress the answer by a recurrence and prove that the recurrence produces every solution, rather than merely infinitely many solutions.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nDefine a sequence of pairs by\n$$\n(x_0,y_0)=(1,0),\\qquad\n(x_{k+1},y_{k+1})=(2x_k+3y_k,\\ x_k+2y_k)\n\\quad(k\\geq0).\n$$\nWe will prove that these are exactly the desired pairs.\n\nFirst, the recurrence preserves nonnegative integers. Expanding shows that\n$$\n(2x+3y)^2-3(x+2y)^2=x^2-3y^2.\n$$\nSince $(1,0)$ satisfies the equation, every pair in the sequence does too. The first few are $(1,0),(2,1),(7,4),(26,15)$.\n\nFor completeness, start with any solution having $y\\geq1$. Then $x^2=3y^2+1$, so $x>0$. Define the reverse step\n$$\nx'=2x-3y,\\qquad y'=2y-x.\n$$\nThese are integers, and direct expansion gives $x'^2-3y'^2=x^2-3y^2=1$. We must check their signs and that a coordinate decreases.\n\nBecause $x^2=3y^2+1>\\tfrac94 y^2$, we have $2x>3y$, hence $x'>0$. Also, $3y^2+1\\leq4y^2$ for $y\\geq1$, so $x\\leq2y$ and $y'\\geq0$. Finally, $x^2>y^2$ implies $x>y$, so\n$$\ny'=2y-x<y.\n$$\nThus the reverse step gives another nonnegative solution with a strictly smaller second coordinate. Repetition must eventually reach $y=0$, when the equation forces $x=1$.\n\nThe reverse and forward transformations are inverse: if $x'=2x-3y$ and $y'=2y-x$, then $2x'+3y'=x$ and $x'+2y'=y$. Reversing the finite descent therefore reconstructs the original solution from $(1,0)$ using the stated recurrence. Hence\n$$\n\\boxed{(x,y)=(x_k,y_k)\\ \\text{for an integer}\\ k\\geq0.}\n$$"
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    },
+    {
+      "uniqueId": "custom-advanced-diophantine-vieta-jumping-with-two-starting-pairs",
+      "name": "Advanced Diophantine Vieta Jumping with Two Starting Pairs",
+      "url": "https://usamoguide.com/problems/custom-advanced-diophantine-vieta-jumping-with-two-starting-pairs-custom-advanced-diophantine-vieta-jumping-with-two-starting-pairs/",
+      "source": "Custom",
+      "difficulty": "Very Hard",
+      "isStarred": true,
+      "tags": [
+        "Diophantine Equations",
+        "Vieta's formulas",
+        "Infinite descent / root flipping",
+        "Recurrence relations"
+      ],
+      "statement": "Determine all ordered pairs of positive integers $(x,y)$ satisfying\n$$\nx^2+y^2+5=5xy.\n$$\nGive a rule that generates all the pairs, and prove both that the generated pairs satisfy the equation and that no other pairs exist.",
+      "author": "Neal Shandilya",
+      "interaction": {
+        "type": "none"
+      },
+      "solutionReveal": {
+        "mode": "inline",
+        "markdown": "## Solution\nThe equation is symmetric, so first arrange a solution as $x\\leq y$. Regard it as a quadratic equation in the larger coordinate:\n$$\nf(t)=t^2-5xt+x^2+5=0.\n$$\nOne root is $y$. By the sum of roots, the other is the integer\n$$\ny'=5x-y.\n$$\nBy the product of roots,\n$$\nyy'=x^2+5>0,\n$$\nso $y'>0$. Replacing $y$ by $y'$ therefore preserves the equation and positivity.\n\nIf $x\\geq2$, then\n$$\nf(x)=5-3x^2<0.\n$$\nSince $f(x)=(x-y)(x-y')$ and $x\\leq y$, this strict negativity forces $y>x$ and $y'<x$. Thus\n$$\n(x,y)\\longmapsto(y',x)=(5x-y,x)\n$$\nis another ordered solution, with a strictly smaller maximum coordinate. Repeating this step cannot continue forever, because the maximum is a positive integer. It must reach a solution whose smaller coordinate is $1$. For $x=1$, the equation becomes\n$$\ny^2-5y+6=(y-2)(y-3)=0,\n$$\nso the terminal pair is $(1,2)$ or $(1,3)$.\n\nNow reverse the step. For an ordered pair $(u,v)$, define\n$$\nT(u,v)=(v,5v-u).\n$$\nThe computation\n$$\nv^2+(5v-u)^2+5-5v(5v-u)\n=u^2+v^2+5-5uv\n$$\nshows that $T$ preserves the equation. If $0<u\\leq v$, then $5v-u\\geq4v>v$, so the new pair is positive and ordered. Both starting pairs satisfy the equation. Their forward chains begin\n$$\n(1,2)\\to(2,9)\\to(9,43)\\to\\cdots,\n$$\n$$\n(1,3)\\to(3,14)\\to(14,67)\\to\\cdots.\n$$\nEvery solution ordered as $x\\leq y$ descends to a starting pair, and each descent step is inverted by $T$. Therefore the complete answer is\n$$\n\\boxed{T^k(1,2)\\ \\text{or}\\ T^k(1,3)\\quad(k\\geq0),}\n$$\ntogether with the coordinate swaps of all these pairs. Here $T^k$ means applying $T$ exactly $k$ times, and $T^0$ leaves the starting pair unchanged."
+      },
+      "solutionMetadata": {
+        "kind": "none"
+      }
+    }
+  ]
+}
