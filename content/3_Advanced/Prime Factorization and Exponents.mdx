@@ -1,0 +1,215 @@
+---
+id: prime-factorization-exponent-methods
+title: Prime Factorization and Exponent Methods
+author: Wonwoo Choi 
+description: Exponents, divisor counting, gcd and lcm prime by prime, Legendre and Kummer's Theorem, and orders at the AIME level.
+prerequisites: [arithmetic-nt-basics, exponent-rules, counting-fundamentals]
+---
+
+## Introduction
+
+AIME problems 1-5 usually include a variety of number theory problem that mentions divisors, gcd, lcm, factorials, or powers of huge numbers. Obviously, the numbers in these problems are far too large to compute directly, such as $12^{12}$, $100!$, $10^{2025}-1$ and they are never meant to be expanded. 
+In this module, we build into the various strategies and ideas that shape these types of problems. We start with exponents and divisor counting, then to more advanced gcd and lcm problems, then to factorials (Legendre and Kummer's theorem), and lastly how to lift the exponent and orders. 
+
+---
+
+## Explanation of Concepts
+
+### 1. The Exponent 
+
+By the Fundamental Theorem of Arithmetic (Or otherwise known as the unique factorization theorem), every positive integer has a unique factorization
+
+$$n = p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k}.$$
+
+We notate $v_p(n)$ for the exponent of the prime $p$ in $n$ (zero if $p$ does not divide $n$). This is also known as the $p$-adic valuation, and it satisfies various equations such as $v_p(ab) = v_p(a) + v_p(b)$. For sums, $v_p(a+b) \ge \min(v_p(a), v_p(b))$, with equality whenever the two valuations are different.
+A summarization of this can be useful when having to deal with exponent problems mid AIME. 
+
+| In terms of integers | In terms of exponents |
+|---|---|
+| $ab$ | add: $v_p(ab) = v_p(a) + v_p(b)$ |
+| $a \mid b$ | $v_p(a) \le v_p(b)$ for every prime $p$ |
+| $\gcd(a,b)$ | $\min(v_p(a), v_p(b))$ for every $p$ |
+| $\text{lcm}(a,b)$ | $\max(v_p(a), v_p(b))$ for every $p$ |
+| $a$ is a perfect $k$-th power | every $v_p(a)$ is divisible by $k$ |
+| $\gcd(a,b) = 1$ | no prime has both $v_p(a) \gt 0$ and $v_p(b) \gt 0$ |
+
+Also, since $\min(x,y) + \max(x,y) = x + y$ for any two numbers, we can get the formal identity
+
+$$\gcd(a,b) \cdot \text{lcm}(a,b) = ab.$$
+
+**Factorizations worth recognizing for AIME** Common factorizations should be memorized to save time. 
+
+- $1001 = 7 \cdot 11 \cdot 13$, $\ 999 = 3^3 \cdot 37$, $\ 9999 = 3^2 \cdot 11 \cdot 101$, $\ 10001 = 73 \cdot 137$.
+- $2^{10}-1 = 3 \cdot 11 \cdot 31$, $\ 2^{12}-1 = 3^2 \cdot 5 \cdot 7 \cdot 13$, $\ 2^{20}-1 = 3 \cdot 5^2 \cdot 11 \cdot 31 \cdot 41$.
+- $10^6 - 1 = 3^3 \cdot 7 \cdot 11 \cdot 13 \cdot 37$.
+- $2024 = 2^3 \cdot 11 \cdot 23$ and $2025 = 3^4 \cdot 5^2$.
+
+NOTE: Remembering the current's year's factorization can be useful. For example, if you are taking the AIME/AMC at 2027, memorize the prime factorization for 2027 as there is a high chance that it will emerge. 
+
+### 2. Counting and Summing Divisors
+
+Next, $n = p_1^{a_1} \cdots p_k^{a_k}$, a divisor of $n$ is the exponent $0 \le b_i \le a_i$ for each prime. Hence, that gives the number of divisors where 
+
+$$\tau(n) = (a_1 + 1)(a_2 + 1) \cdots (a_k + 1).$$
+
+For the sum of the divisors, we note that expanding the product $(1 + p_1 + \cdots + p_1^{a_1}) \cdots (1 + p_k + \cdots + p_k^{a_k})$ produces every divisor of $n$ exactly once, by uniqueness of factorization. So
+
+$$\sigma(n) = \prod_{i=1}^{k} \frac{p_i^{a_i+1} - 1}{p_i - 1}.$$
+
+Some examples: 
+
+- **Pairing.** Divisors are in pairs $d$ and $n/d$, so the product of all divisors is $n^{\tau(n)/2}$. Also $\tau(n)$ is odd exactly when $n$ is a perfect square, because we know that the unpaired divisor is $\sqrt{n}$.
+- **Reciprocals.** The sum of the reciprocals of the divisors is $\sigma(n)/n$, because $1/d = (n/d)/n$. For instance $n = 360 = 2^3 \cdot 3^2 \cdot 5$ we get $\sigma = 15 \cdot 13 \cdot 6 = 1170$, so the reciprocals sum to $1170/360 = 13/4$.
+- **Divisors below the square root.** The divisors of $N$ less than $\sqrt{N}$ number $\tau(N)/2$ if $N$ is not a perfect square, and $(\tau(N)-1)/2$ if it is.
+
+NOTE: We dive more into restricted divisor counts in the USAMO Level. 
+
+### 3. GCD and LCM 
+
+For a single prime, we count the pairs of exponents $(x, y)$ with $x, y \ge 0$ and $\max(x,y) = e$, as $x = e$ and $y$ is anything in $0, \ldots, e$ (that is $e+1$ pairs), or $y = e$ and $x$ is anything in $0, \ldots, e$ ($e + 1$ pairs), and we double counted $(e,e)$. Therefore, there are $2e + 1$ pairs. So if $n = p_1^{a_1} \cdots p_k^{a_k}$ and $L(n)$ denotes the number of ordered pairs $(a,b)$ of positive integers with $\text{lcm}(a,b) = n$, then
+
+$$L(n) = \prod_{i=1}^{k} (2a_i + 1).$$
+
+If we also fix the gcd $g$ with $g \mid n$, then for each prime we need $\min = \alpha$ and $\max = \beta$ with $\alpha \le \beta$. That is one pair of exponents if $\alpha = \beta$ and two pairs (the values in either order) if $\alpha \lt \beta$. So the number of ordered pairs $(a,b)$ with $\gcd(a,b) = g$ and $\text{lcm}(a,b) = n$ is $2^{\omega(n/g)}$, where $\omega$ denotes the distinct primes of $n/g$.
+
+**LCM Conditions** Frequently in AMC 12 or early AIME problems, it asks for three unknowns $x, y, z$ with $\text{lcm}(x,y)$, $\text{lcm}(x,z)$, $\text{lcm}(y,z)$ given. Looking at one prime at a time, we have three target exponents $A = \max(x,y)$, $B = \max(x,z)$, $C = \max(y,z)$. Thus the largest of $A, B, C$ must appear at least twice (as the biggest of $x,y,z$ is involved in two of the three maxes). We use the smallest possible value which then forces the third, and count what is left over.
+
+### 4. Legendre and Kummer's Theorem 
+
+**Legendre's formula.** Among $1, 2, \ldots, n$, the multiples of $p$ are in one factor of $p$, the multiples of $p^2$ are in a second, the multiples of $p^3$ are in a third, and so on. Hence, we write
+
+$$v_p(n!) = \sum_{k \ge 1} \left\lfloor \frac{n}{p^k} \right\rfloor = \frac{n - s_p(n)}{p - 1},$$
+
+where $s_p(n)$ is the digit sum of $n$ in base $p$. Both forms can be used, but the second form is more likely in proofs. 
+
+For example, the number of trailing zeros of $n!$ is $v_5(n!)$, because factors of $2$ are always more plentiful. More generally, the largest $k$ with $m^k \mid n!$ is the minimum over the primes of $m$ of $\left\lfloor v_p(n!) / v_p(m) \right\rfloor$. For example, to find the largest $k$ with $12^k \mid 100!$: $v_2(100!) = 97$ and $v_3(100!) = 48$, and $12 = 2^2 \cdot 3$, so $k = \min(\lfloor 97/2 \rfloor, 48) = 48$.
+
+**Kummer's theorem.** This is a useful application of Legendre's theorem to $\binom{m+n}{m} = \frac{(m+n)!}{m!\,n!}$ where the digit-sum form gives
+
+$$v_p\binom{m+n}{m} = \frac{s_p(m) + s_p(n) - s_p(m+n)}{p-1}.$$
+
+Hence, when a problem involves a product like $1! \cdot 2! \cdots n!$, compute $v_p$ of each factorial and adding them would solve the problem. 
+
+### 5. Lifting the Exponent (More in: https://artofproblemsolving.com/wiki/index.php/Lifting_the_Exponent_Lemma) 
+
+When you need $v_p(x^n - y^n)$ for large $n$, the Lifting the Exponent lemma (or LTE) can be very fruitful. Throughout, $x$ and $y$ are integers.
+
+- **Odd prime $p$.** If $p \mid x - y$ and $p \nmid xy$, then
+$$v_p(x^n - y^n) = v_p(x - y) + v_p(n).$$
+- **Sums.** If $p$ is odd, $n$ is odd, $p \mid x + y$, and $p \nmid xy$, then
+$$v_p(x^n + y^n) = v_p(x + y) + v_p(n).$$
+This is the previous case with $y$ replaced by $-y$.
+- **The prime $2$.** If $x$ and $y$ are odd and $n$ is even, then
+$$v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1.$$
+If $n$ is odd, then $v_2(x^n - y^n) = v_2(x - y)$.
+
+A sketch of the proof is when we take odd $p$ with $p \mid x - y$. Then $x^p - y^p = (x - y)(x^{p-1} + x^{p-2}y + \cdots + y^{p-1})$, and each of the $p$ terms in the second factor is congruent to $y^{p-1}$ modulo $p$, so the factor is divisible by $p$ but only to the first power. That is one extra factor of $p$ for the exponent $p$. For an exponent $m$ coprime to $p$ the second factor is $\equiv m\,y^{m-1} \not\equiv 0 \pmod p$, so there is no extra factor. Writing $n = p^k m$ and combining gives the lemma.
+
+### 6. Orders 
+
+If $\gcd(a, m) = 1$, the **order** of $a$ modulo $m$, written $\text{ord}_m(a)$, is the smallest positive $k$ with $a^k \equiv 1 \pmod m$. The key property is
+
+$$m \mid a^n - 1 \iff \text{ord}_m(a) \mid n,$$
+
+and by Euler's theorem (more in the USAMO section) the order always divides $\varphi(m)$. To compute an order, factor $\varphi(m)$ and test its divisors.
+
+An additional identity for $a \gt 1$ is that $$\gcd(a^m - 1, a^n - 1) = a^{\gcd(m,n)} - 1.$$
+To see this, note $a^m - 1 = a^{m-n}(a^n - 1) + (a^{m-n} - 1)$, so $\gcd(a^m - 1, a^n - 1) = \gcd(a^{m-n} - 1, a^n - 1)$. For example, $\gcd(2^{100} - 1,\ 2^{120} - 1) = 2^{20} - 1$.
+
+- $x - 1$, $\ x + 1$, $\ x^2 + x + 1$, $\ x^2 + 1$, $\ x^2 - x + 1$.
+- For instance $x^6 - 1 = (x-1)(x+1)(x^2+x+1)(x^2-x+1)$. Plugging in $x = 10$ gives $999999 = 9 \cdot 11 \cdot 111 \cdot 91$, which explains why $1001 = 7 \cdot 11 \cdot 13$ divides $10^6 - 1$.
+
+---
+
+## Some Examples
+
+### Example 1 
+
+**Problem.** Let $N = 1! \cdot 2! \cdot 3! \cdots 9!$. Find the number of positive divisors of $N$ that are perfect squares.
+
+**Solution.** We need the exponent of each prime in $N$. By Legendre's formula, we can create a table of $v_p(k!)$ for each $k$ and add across. (Note that there are also other/faster methods to solving this problem, but here we use the earlier concept explained)
+
+| prime | $k=1$ | $k=2$ | $k=3$ | $k=4$ | $k=5$ | $k=6$ | $k=7$ | $k=8$ | $k=9$ | total |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2 | 0 | 1 | 1 | 3 | 3 | 4 | 4 | 7 | 7 | 30 |
+| 3 | 0 | 0 | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 13 |
+| 5 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 5 |
+| 7 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 3 |
+
+Thus, $N = 2^{30} \cdot 3^{13} \cdot 5^{5} \cdot 7^{3}$. A divisor is a perfect square when all of its exponents are even, so each prime contributes $\lfloor a_i/2 \rfloor + 1$ choices:
+
+$$(15+1)(6+1)(2+1)(1+1) = 16 \cdot 7 \cdot 3 \cdot 2 = \mathbf{672}.$$
+
+---
+
+### Example 2
+
+**Problem.** Let $n = 2^{31} \cdot 3^{19}$. How many positive divisors of $n^2$ are less than $n$ but do not divide $n$?
+
+**Solution.** We have $n^2 = 2^{62} \cdot 3^{38}$, so $\tau(n^2) = 63 \cdot 39 = 2457$. Thus we pair each divisor $d$ with $n^2/d$. Since the only unpaired divisor is $n$ itself, the number of divisors below $n$ is $(2457 - 1)/2 = 1228$.
+
+Of all those, the ones that do divide $n$ are the divisors of $n$ other than $n$ itself. Since $\tau(n) = 32 \cdot 20 = 640$, there are $639$ of them. Therefore
+
+$$1228 - 639 = \mathbf{589}.$$
+
+---
+
+### Example 3
+
+**Problem.** For how many positive integers $k$ is $12^{12}$ the least common multiple of $6^6$, $8^8$, and $k$?
+
+**Solution.** First it is useful to convert everything in prime factorized exponents: $6^6 = 2^6 \cdot 3^6$, $8^8 = 2^{24}$, and $12^{12} = 2^{24} \cdot 3^{24}$. The number $k$ cannot contain any other prime, so $k = 2^a 3^b$.
+
+- Prime $3$: $\max(6, 0, b) = 24$ forces $b = 24$. One choice.
+- Prime $2$: $\max(6, 24, a) = 24$ holds for every $a$ from $0$ to $24$. That is $25$ choices.
+
+The total , therefore, is $1 \cdot 25 = \mathbf{25}$.
+
+---
+
+### Example 4: 
+
+**Problem.** Find the number of ordered triples of positive integers $(x, y, z)$ with
+$\text{lcm}(x,y) = 72$, $\text{lcm}(x,z) = 600$, $\text{lcm}(y,z) = 900$.
+
+**Solution.** Factor: $72 = 2^3 \cdot 3^2$, $600 = 2^3 \cdot 3 \cdot 5^2$, $900 = 2^2 \cdot 3^2 \cdot 5^2$. Treat each prime separately, writing $x, y, z$ for the exponents of that prime.
+
+*Prime $2$:* $\max(x,y) = 3$, $\max(x,z) = 3$, $\max(y,z) = 2$. The last condition caps $y, z \le 2$, so the first forces $x = 3$. It remains to count pairs $(y,z)$ with $\max = 2$, which is $2 \cdot 2 + 1 = 5$.
+
+*Prime $3$:* $\max(x,y) = 2$, $\max(x,z) = 1$, $\max(y,z) = 2$. The second condition caps $x, z \le 1$, so the first forces $y = 2$. Pairs $(x,z)$ with $\max = 1$: $2 \cdot 1 + 1 = 3$.
+
+*Prime $5$:* $\max(x,y) = 0$, $\max(x,z) = 2$, $\max(y,z) = 2$. The first forces $x = y = 0$, which then forces $z = 2$. One way.
+
+The total is $5 \cdot 3 \cdot 1 = \mathbf{15}$.
+
+(Note that this problem is a basic example of multiple lcm's, and AIME problems will advance on these variants significantly.)
+
+### Example 5
+
+**Problem.** Let $n$ be the smallest positive integer such that $n/2$ is a perfect square, $n/3$ is a perfect cube, and $n/5$ is a perfect fifth power. How many positive divisors of $n$ are not multiples of $10$?
+
+**Solution.** First, let $n = 2^a 3^b 5^c \cdots$. Dividing this into the 3 primes, 
+
+- Prime $2$: $a - 1$ is even, $a \equiv 0 \pmod 3$, $a \equiv 0 \pmod 5$. So $a$ is an odd multiple of $15$, and the smallest is $a = 15$.
+- Prime $3$: $b$ is even, $b - 1 \equiv 0 \pmod 3$, $b \equiv 0 \pmod 5$. So $b$ is a multiple of $10$ with $b \equiv 1 \pmod 3$, and $b = 10$ works.
+- Prime $5$: $c$ is even, $c \equiv 0 \pmod 3$, $c - 1 \equiv 0 \pmod 5$. So $c$ is a multiple of $6$ with $c \equiv 1 \pmod 5$, and $c = 6$ works.
+
+Any other prime would need an exponent divisible by $2$, $3$, and $5$, so by $30$, which can only increase $n$. Hence $n = 2^{15} \cdot 3^{10} \cdot 5^{6}$.
+
+The number of divisors is $16 \cdot 11 \cdot 7 = 1232$. A divisor is a multiple of $10$ exactly when it contains at least one $2$ and at least one $5$, which gives $15 \cdot 11 \cdot 6 = 990$ divisors. Therefore the answer is $1232 - 990 = \mathbf{242}$.
+
+### Example 6
+
+**Problem.** How many positive integer multiples of $1001$ can be expressed in the form $10^j - 10^i$, where $0 \le i \lt j \le 99$?
+
+**Solution.** Write $10^j - 10^i = 10^i (10^{j-i} - 1)$. Since $1001 = 7 \cdot 11 \cdot 13$ is coprime to $10$, we have $1001 \mid 10^j - 10^i$ if and only if $1001 \mid 10^{j-i} - 1$. In other words, that is, if and only if $\text{ord}_{1001}(10)$ divides $j - i$.
+
+Now $10^6 - 1 = 999999 = 999 \cdot 1001$, so the order divides $6$. We also know that $10^2 = 100 \not\equiv 1$ and $10^3 = 1000 \equiv -1 \pmod{1001}$, so the order is not $1$, $2$, or $3$. Hence the order is exactly $6$.
+
+So we need $j - i = 6t$ for some positive integer $t$. For a fixed difference $6t$ with $6t \le 99$ (that is $t \le 16$), the number of pairs $0 \le i \lt j \le 99$ with $j - i = 6t$ is $100 - 6t$. Therefore the sum of these can be expressed as:
+
+$$\sum_{t=1}^{16} (100 - 6t) = 1600 - 6 \cdot 136 = \mathbf{784}.$$
+
+## Additional Practice/Mock Problems
+
+<Problems problems="practice" />
